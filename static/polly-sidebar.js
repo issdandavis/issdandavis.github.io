@@ -46,8 +46,8 @@
 
   const data = contexts[context] || contexts.site;
   const links = [
-    { href: `${root}/index.html`, title: 'Home', text: 'Main overview, pricing, benchmarks, and core links.' },
-    { href: `${root}/demos/index.html`, title: 'Demos', text: 'Story-first tour of Hydra, GeoSeal, and the public surfaces.' },
+    { href: `${root}/index.html`, title: 'Home', text: 'Main overview, products, demos, and core links.' },
+    { href: `${root}/demos/index.html`, title: 'Demos', text: 'Interactive proof-of-concept demonstrations of the SCBE pipeline.' },
     { href: `${root}/product-manual/index.html`, title: 'Manuals', text: 'Buyer-facing package manuals and setup guides.' },
     { href: `${root}/support.html`, title: 'Support', text: 'Delivery, setup, AI troubleshooting, and broken-link recovery.' }
   ];
