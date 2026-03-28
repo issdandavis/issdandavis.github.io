@@ -75,308 +75,151 @@
   </script>
   <style>
     :root {
-      --bg: #0b0d12;
-      --bg-soft: #11161f;
-      --panel: rgba(18, 23, 32, 0.92);
-      --line: rgba(214, 167, 86, 0.18);
-      --text: #f2f0ea;
-      --muted: #a3acb9;
-      --accent: #d6a756;
-      --accent-strong: #f0bf67;
-      --cool: #8cb4ff;
-      --max: 1180px;
-      --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+      --bg: #0b0d12; --bg-soft: #11161f; --panel: rgba(18, 23, 32, 0.92);
+      --line: rgba(214, 167, 86, 0.18); --text: #f2f0ea; --muted: #a3acb9;
+      --accent: #d6a756; --accent-strong: #f0bf67; --cool: #8cb4ff;
+      --green: #2dd3a6; --max: 1180px; --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
       font-family: Georgia, "Times New Roman", serif;
-      background:
-        radial-gradient(circle at top, rgba(214, 167, 86, 0.12), transparent 34%),
+      background: radial-gradient(circle at top, rgba(214, 167, 86, 0.12), transparent 34%),
         linear-gradient(180deg, #0b0d12 0%, #0e131b 40%, #0b0d12 100%);
-      color: var(--text);
-      line-height: 1.6;
+      color: var(--text); line-height: 1.6;
     }
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(14px);
-      background: rgba(11, 13, 18, 0.82);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .topbar-inner, .section-inner, .footer-inner {
-      width: min(var(--max), calc(100% - 32px));
-      margin: 0 auto;
-    }
-    .topbar-inner {
-      min-height: 68px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-    .brand {
-      font-size: 14px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent);
-      font-weight: 700;
-    }
-    .nav {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      font-size: 14px;
-      color: var(--muted);
-    }
+    .topbar { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(14px);
+      background: rgba(11, 13, 18, 0.82); border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .topbar-inner, .section-inner, .footer-inner { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+    .topbar-inner { min-height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
+    .nav { display: flex; gap: 20px; flex-wrap: wrap; justify-content: flex-end; font-size: 14px; color: var(--muted); }
     .nav a:hover { color: var(--text); }
-    .hero {
-      padding: 92px 0 72px;
-    }
-    .hero-grid {
-      width: min(var(--max), calc(100% - 32px));
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 40px;
-      align-items: end;
-    }
-    .eyebrow {
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      font-size: 12px;
-      font-weight: 700;
-      margin-bottom: 18px;
-    }
-    h1 {
-      font-size: clamp(42px, 7vw, 88px);
-      line-height: 0.94;
-      letter-spacing: -0.04em;
-      max-width: 9.5ch;
-      margin-bottom: 22px;
-    }
-    .hero-copy p {
-      max-width: 56ch;
-      font-size: clamp(17px, 2vw, 21px);
-      color: var(--muted);
-      margin-bottom: 28px;
-    }
-    .cta-row {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-bottom: 18px;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 22px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      font-weight: 700;
-      transition: 160ms ease;
-      min-width: 180px;
-    }
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-      color: #14110c;
-      box-shadow: var(--shadow);
-    }
+    .hero { padding: 92px 0 72px; }
+    .hero-grid { width: min(var(--max), calc(100% - 32px)); margin: 0 auto;
+      display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: end; }
+    .eyebrow { color: var(--accent); text-transform: uppercase; letter-spacing: 0.18em;
+      font-size: 12px; font-weight: 700; margin-bottom: 18px; }
+    h1 { font-size: clamp(42px, 7vw, 88px); line-height: 0.94; letter-spacing: -0.04em;
+      max-width: 9.5ch; margin-bottom: 22px; }
+    .hero-copy p { max-width: 56ch; font-size: clamp(17px, 2vw, 21px); color: var(--muted); margin-bottom: 28px; }
+    .cta-row { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 18px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center;
+      padding: 14px 22px; border-radius: 999px; border: 1px solid transparent;
+      font-weight: 700; transition: 160ms ease; min-width: 180px; }
+    .btn-primary { background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: #14110c; box-shadow: var(--shadow); }
     .btn-primary:hover { transform: translateY(-1px); }
-    .btn-secondary {
-      border-color: rgba(255,255,255,0.12);
-      color: var(--text);
-      background: rgba(255,255,255,0.02);
-    }
+    .btn-secondary { border-color: rgba(255,255,255,0.12); color: var(--text); background: rgba(255,255,255,0.02); }
     .btn-secondary:hover { border-color: var(--accent); }
-    .meta {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      color: var(--muted);
-      font-size: 14px;
-    }
-    .meta span::before {
-      content: "";
-      display: inline-block;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      margin-right: 8px;
-      vertical-align: middle;
-    }
-    .offer-panel {
-      background: linear-gradient(180deg, rgba(18,23,32,0.95), rgba(12,16,22,0.95));
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      padding: 28px;
-      box-shadow: var(--shadow);
-    }
-    .offer-panel .label {
-      color: var(--cool);
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      margin-bottom: 12px;
-    }
-    .offer-panel h2 {
-      font-size: 28px;
-      margin-bottom: 8px;
-    }
-    .price {
-      font-size: 56px;
-      line-height: 1;
-      color: var(--accent-strong);
-      margin: 18px 0 10px;
-    }
-    .price small {
-      font-size: 15px;
-      color: var(--muted);
-      margin-left: 8px;
-    }
-    .offer-panel p {
-      color: var(--muted);
-      margin-bottom: 18px;
-    }
-    .offer-list {
-      list-style: none;
-      display: grid;
-      gap: 10px;
-      margin: 18px 0 24px;
-      color: var(--text);
-    }
-    .offer-list li::before {
-      content: "•";
-      color: var(--accent);
-      margin-right: 10px;
-    }
+    .btn-arena { background: linear-gradient(135deg, #17c6cf, #2e98dd); color: #fff;
+      box-shadow: 0 12px 40px rgba(23,198,207,0.25); }
+    .btn-arena:hover { transform: translateY(-1px); }
+    .btn-green { background: linear-gradient(135deg, var(--green), #1aab88); color: #0a1a14;
+      box-shadow: 0 12px 40px rgba(45,211,166,0.2); }
+    .btn-green:hover { transform: translateY(-1px); }
+    .meta { display: flex; gap: 16px; flex-wrap: wrap; color: var(--muted); font-size: 14px; }
+    .meta span::before { content: ""; display: inline-block; width: 6px; height: 6px;
+      border-radius: 50%; background: var(--accent); margin-right: 8px; vertical-align: middle; }
+    .offer-panel { background: linear-gradient(180deg, rgba(18,23,32,0.95), rgba(12,16,22,0.95));
+      border: 1px solid var(--line); border-radius: 28px; padding: 28px; box-shadow: var(--shadow); }
+    .offer-panel .label { color: var(--cool); font-size: 13px; text-transform: uppercase;
+      letter-spacing: 0.16em; margin-bottom: 12px; }
+    .offer-panel h2 { font-size: 28px; margin-bottom: 8px; }
+    .price { font-size: 56px; line-height: 1; color: var(--accent-strong); margin: 18px 0 10px; }
+    .price small { font-size: 15px; color: var(--muted); margin-left: 8px; }
+    .offer-panel p { color: var(--muted); margin-bottom: 18px; }
+    .offer-list { list-style: none; display: grid; gap: 10px; margin: 18px 0 24px; color: var(--text); }
+    .offer-list li::before { content: "\2022"; color: var(--accent); margin-right: 10px; }
     section { padding: 72px 0; }
-    .section-inner {
-      display: grid;
-      gap: 22px;
-    }
-    .section-head {
-      display: grid;
-      gap: 10px;
-      max-width: 62ch;
-    }
-    .section-head h2 {
-      font-size: clamp(30px, 4vw, 46px);
-      line-height: 1.02;
-      letter-spacing: -0.03em;
-    }
-    .section-head p {
-      color: var(--muted);
-      font-size: 18px;
-    }
-    .split {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 22px;
-    }
-    .slab {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 24px;
-      padding: 24px;
-    }
+    .section-inner { display: grid; gap: 22px; }
+    .section-head { display: grid; gap: 10px; max-width: 62ch; }
+    .section-head h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1.02; letter-spacing: -0.03em; }
+    .section-head p { color: var(--muted); font-size: 18px; }
+    .split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+    .slab { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 24px; padding: 24px; }
     .slab h3 { font-size: 22px; margin-bottom: 10px; }
-    .slab p, .slab li {
-      color: var(--muted);
-      font-size: 16px;
-    }
-    .slab ul, .faq ul {
-      padding-left: 18px;
-      display: grid;
-      gap: 10px;
-    }
-    .flow {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-    }
-    .flow-step {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 22px;
-      padding: 20px;
-    }
-    .flow-step strong {
-      display: block;
-      color: var(--accent);
-      margin-bottom: 8px;
-      font-size: 13px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
+    .slab p, .slab li { color: var(--muted); font-size: 16px; }
+    .slab ul, .faq ul { padding-left: 18px; display: grid; gap: 10px; }
+    .flow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+    .flow-step { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 22px; padding: 20px; }
+    .flow-step strong { display: block; color: var(--accent); margin-bottom: 8px;
+      font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; }
     .flow-step span { color: var(--muted); font-size: 15px; }
-    .faq {
-      display: grid;
-      gap: 14px;
-    }
-    .faq-item {
-      padding: 22px;
-      border-radius: 20px;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.06);
-    }
-    .faq-item h3 {
-      font-size: 18px;
-      margin-bottom: 8px;
-    }
+    .faq { display: grid; gap: 14px; }
+    .faq-item { padding: 22px; border-radius: 20px; background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06); }
+    .faq-item h3 { font-size: 18px; margin-bottom: 8px; }
     .faq-item p { color: var(--muted); }
-    .final-cta {
-      text-align: center;
-      padding: 76px 0 88px;
-    }
-    .final-cta h2 {
-      font-size: clamp(34px, 5vw, 58px);
-      line-height: 0.98;
-      letter-spacing: -0.04em;
-      margin-bottom: 14px;
-    }
-    .final-cta p {
-      color: var(--muted);
-      max-width: 54ch;
-      margin: 0 auto 24px;
-      font-size: 18px;
-    }
-    .footer {
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding: 26px 0 48px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .footer-links {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
+    .final-cta { text-align: center; padding: 76px 0 88px; }
+    .final-cta h2 { font-size: clamp(34px, 5vw, 58px); line-height: 0.98;
+      letter-spacing: -0.04em; margin-bottom: 14px; }
+    .final-cta p { color: var(--muted); max-width: 54ch; margin: 0 auto 24px; font-size: 18px; }
+    .footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 26px 0 48px;
+      color: var(--muted); font-size: 14px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .footer-links { display: flex; gap: 18px; flex-wrap: wrap; }
     .footer a { color: var(--muted); }
     .footer a:hover { color: var(--text); }
+
+    .arena-callout { background: linear-gradient(135deg, rgba(23,198,207,0.08), rgba(46,152,221,0.06));
+      border: 1px solid rgba(23,198,207,0.22); border-radius: 28px; padding: 36px; text-align: center; }
+    .arena-callout h2 { font-size: clamp(26px, 3.5vw, 40px); line-height: 1.06;
+      letter-spacing: -0.03em; margin-bottom: 12px; }
+    .arena-callout p { color: var(--muted); font-size: 18px; max-width: 58ch; margin: 0 auto 22px; }
+    .arena-callout .arena-tagline { color: #17c6cf; font-size: 15px; font-weight: 700;
+      letter-spacing: 0.04em; margin-bottom: 14px; }
+
+    .demo-callout { background: linear-gradient(135deg, rgba(45,211,166,0.08), rgba(26,171,136,0.05));
+      border: 1px solid rgba(45,211,166,0.22); border-radius: 28px; padding: 36px; text-align: center; }
+    .demo-callout h2 { font-size: clamp(26px, 3.5vw, 40px); line-height: 1.06;
+      letter-spacing: -0.03em; margin-bottom: 12px; }
+    .demo-callout p { color: var(--muted); font-size: 18px; max-width: 58ch; margin: 0 auto 22px; }
+    .demo-callout .demo-tagline { color: var(--green); font-size: 15px; font-weight: 700;
+      letter-spacing: 0.04em; margin-bottom: 14px; }
+
+    .checklist { list-style: none; display: grid; gap: 14px; padding: 0; }
+    .checklist li { display: flex; align-items: flex-start; gap: 14px; font-size: 17px; color: var(--text); }
+    .checklist li .check { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%;
+      background: rgba(45,211,166,0.14); border: 1px solid rgba(45,211,166,0.35);
+      display: grid; place-items: center; color: var(--green);
+      font-size: 14px; font-weight: 700; line-height: 1; }
+    .checklist li a { color: var(--cool); border-bottom: 1px solid rgba(140,180,255,0.3); }
+    .checklist li a:hover { color: var(--text); border-color: var(--text); }
+
+    .proof-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+    .proof-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 20px; padding: 22px; text-align: center; }
+    .proof-card .proof-number { font-size: 36px; font-weight: 700; line-height: 1;
+      margin-bottom: 8px; color: var(--accent-strong); }
+    .proof-card .proof-label { color: var(--muted); font-size: 14px; line-height: 1.4; }
+
+    .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+    .tool-card { display: block; background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.08); border-radius: 22px; padding: 24px; transition: 200ms ease; }
+    .tool-card:hover { border-color: var(--accent); background: rgba(255,255,255,0.04);
+      transform: translateY(-2px); }
+    .tool-card h3 { font-size: 20px; margin-bottom: 8px; }
+    .tool-card p { color: var(--muted); font-size: 15px; margin-bottom: 12px; }
+    .tool-card .tool-link { color: var(--accent); font-size: 14px; font-weight: 700; }
+
     @media (max-width: 920px) {
       .hero-grid, .split, .flow { grid-template-columns: 1fr; }
       .offer-panel { order: -1; }
       h1 { max-width: 12ch; }
+      .proof-grid { grid-template-columns: repeat(2, 1fr); }
+      .tools-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 640px) {
       .topbar-inner { padding: 14px 0; align-items: flex-start; }
       .nav { gap: 12px; }
       .hero { padding-top: 72px; }
       .btn { width: 100%; }
+      .proof-grid { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
@@ -386,8 +229,9 @@
       <a class="brand" href="index.html">SCBE AETHERMOORE</a>
       <nav class="nav" aria-label="Primary">
         <a href="#offer">Offer</a>
-        <a href="#includes">What you get</a>
-        <a href="#delivery">Delivery</a>
+        <a href="#what-you-get">What you get</a>
+        <a href="arena.html">Arena</a>
+        <a href="demos/index.html">Demos</a>
         <a href="product-manual/ai-governance-toolkit.html">Manual</a>
         <a href="support.html">Support</a>
         <a href="https://github.com/issdandavis/SCBE-AETHERMOORE">GitHub</a>
@@ -433,34 +277,83 @@
       </div>
     </section>
 
-    <section id="includes">
+    <section id="arena">
+      <div class="section-inner">
+        <div class="arena-callout">
+          <div class="arena-tagline">Free tool -- no account required</div>
+          <h2>Try the AI Arena</h2>
+          <p>9 AI models. One command. Watch them discuss your question in a round-table format. Bring your own API keys, run everything in your browser.</p>
+          <div class="cta-row" style="justify-content:center;">
+            <a class="btn btn-arena" href="arena.html">Open the Arena</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="demos">
+      <div class="section-inner">
+        <div class="demo-callout">
+          <div class="demo-tagline">Interactive demos -- no install, no API key</div>
+          <h2>Try the Demos</h2>
+          <p>17 interactive demos covering the Sacred Tongue encoder, hyperbolic risk calculator, governance gate, swarm formations, spectral coherence, and more. All run in your browser.</p>
+          <div class="cta-row" style="justify-content:center;">
+            <a class="btn btn-green" href="demos/index.html">Browse all demos</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="what-you-get">
       <div class="section-inner">
         <div class="section-head">
           <div class="eyebrow">What you get</div>
-          <h2>This is not the whole repo. It is the usable layer.</h2>
-          <p>
-            The package is built for buyers who want to start using the governed workflow pieces without digging through the full architecture, research archive, or old experiments.
-          </p>
+          <h2>Everything in the toolkit, plus the free layer.</h2>
+          <p>The package is built for buyers who want to start using the governed workflow pieces without digging through the full architecture, research archive, or old experiments.</p>
         </div>
         <div class="split">
-          <article class="slab">
-            <h3>Inside the package</h3>
-            <ul>
-              <li>SCBE governance starter materials</li>
-              <li>Readable configuration and decision scaffolds</li>
-              <li>Examples that show what to change first</li>
-              <li>A package-specific manual instead of a repo dump</li>
-            </ul>
-          </article>
-          <article class="slab">
-            <h3>What it is for</h3>
-            <ul>
-              <li>Independent builders who need a structured starting point</li>
-              <li>People testing governed AI workflow ideas</li>
-              <li>Buyers who want usable SCBE material, not just theory</li>
-              <li>Operators who want a manual and support route</li>
-            </ul>
-          </article>
+          <ul class="checklist">
+            <li><span class="check">&#10003;</span><span>AI Governance Toolkit templates -- starter policies, thresholds, and decision scaffolds</span></li>
+            <li><span class="check">&#10003;</span><span>Decision record system -- structured records for every governance decision</span></li>
+            <li><span class="check">&#10003;</span><span>Setup guide + buyer manual -- step-by-step from checkout to running</span></li>
+            <li><span class="check">&#10003;</span><span>Direct email support -- real person at aethermoregames@pm.me</span></li>
+          </ul>
+          <ul class="checklist">
+            <li><span class="check">&#10003;</span><span>Access to the AI Arena -- 9-model round table, BYOK, runs in-browser</span></li>
+            <li><span class="check">&#10003;</span><span>17 interactive demos -- tongue encoder, risk calculator, governance gate, and more</span></li>
+            <li><span class="check">&#10003;</span><span>The book &ldquo;The Six Tongues Protocol&rdquo; -- <a href="https://www.amazon.com/dp/B0F28PHSPR" target="_blank" rel="noopener">available on Amazon</a></span></li>
+            <li><span class="check">&#10003;</span><span>AetherBot: local AI model running on Ollama (included in the repo)</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="proof">
+      <div class="section-inner">
+        <div class="section-head">
+          <div class="eyebrow">Proof</div>
+          <h2>This is not a pitch. The system already runs.</h2>
+        </div>
+        <div class="proof-grid">
+          <div class="proof-card">
+            <div class="proof-number">184</div>
+            <div class="proof-label">Tests passing<br>(TypeScript + Python)</div>
+          </div>
+          <div class="proof-card">
+            <div class="proof-number">470+</div>
+            <div class="proof-label">Training pairs published<br>on HuggingFace</div>
+          </div>
+          <div class="proof-card">
+            <div class="proof-number" style="font-size:22px;">USPTO<br>#63/961,403</div>
+            <div class="proof-label">Patent pending<br>(provisional filed)</div>
+          </div>
+          <div class="proof-card">
+            <div class="proof-number">141K</div>
+            <div class="proof-label">Words in the<br>published novel</div>
+          </div>
+          <div class="proof-card">
+            <div class="proof-number" style="font-size:22px;">AetherBot</div>
+            <div class="proof-label">Local AI model<br>running on Ollama</div>
+          </div>
         </div>
       </div>
     </section>
@@ -470,9 +363,7 @@
         <div class="section-head">
           <div class="eyebrow">Delivery</div>
           <h2>Buy, receive, open the manual, get moving.</h2>
-          <p>
-            The buyer path matters more than the story around it. This offer is paired with a manual and a recovery route so you do not get stranded after checkout.
-          </p>
+          <p>The buyer path matters more than the story around it. This offer is paired with a manual and a recovery route so you do not get stranded after checkout.</p>
         </div>
         <div class="flow" role="img" aria-label="Checkout, receipt, delivery, manual, support.">
           <div class="flow-step"><strong>1. Checkout</strong><span>Use the Stripe payment link and keep the receipt email.</span></div>
@@ -491,10 +382,39 @@
           </article>
           <article class="slab">
             <h3>Public contact</h3>
-            <p>
-              If delivery fails or a file is broken, the public support route is <a href="mailto:aethermoregames@pm.me?subject=SCBE%20Toolkit%20Support">aethermoregames@pm.me</a>.
-            </p>
+            <p>If delivery fails or a file is broken, the public support route is <a href="mailto:aethermoregames@pm.me?subject=SCBE%20Toolkit%20Support">aethermoregames@pm.me</a>.</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="free-tools">
+      <div class="section-inner">
+        <div class="section-head">
+          <div class="eyebrow">Free tools</div>
+          <h2>Use these right now. No purchase required.</h2>
+        </div>
+        <div class="tools-grid">
+          <a class="tool-card" href="arena.html">
+            <h3>AI Arena</h3>
+            <p>9-model round table. Bring your own keys, ask a question, watch models discuss it.</p>
+            <span class="tool-link">Open Arena &rarr;</span>
+          </a>
+          <a class="tool-card" href="demos/index.html">
+            <h3>Demo Lab</h3>
+            <p>17 interactive demos for the Sacred Tongue encoder, risk calculator, governance gate, and more.</p>
+            <span class="tool-link">Browse demos &rarr;</span>
+          </a>
+          <a class="tool-card" href="redteam.html">
+            <h3>Red Team Sandbox</h3>
+            <p>Test adversarial inputs against the hyperbolic cost scaling. See how attacks get exponentially expensive.</p>
+            <span class="tool-link">Try red team &rarr;</span>
+          </a>
+          <a class="tool-card" href="support.html">
+            <h3>Support</h3>
+            <p>Polly-guided issue routing for access, AI, CLI, and broken-page problems.</p>
+            <span class="tool-link">Get help &rarr;</span>
+          </a>
         </div>
       </div>
     </section>
@@ -522,6 +442,10 @@
             <h3>Why this offer first?</h3>
             <p>Because one clear product converts better than a homepage trying to sell subscriptions, enterprise pilots, demos, books, and four packages at once.</p>
           </article>
+          <article class="faq-item">
+            <h3>What is the AI Arena?</h3>
+            <p>A free browser tool that lets you ask a question to 9 AI models at once and watch them discuss it in a round-table format. You bring your own API keys. Nothing is stored on our servers.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -529,12 +453,11 @@
     <section class="final-cta">
       <div class="section-inner">
         <div class="eyebrow">Final CTA</div>
-        <h2>One click is better than another week of “maybe later.”</h2>
-        <p>
-          If a post gets attention, this is the page it should land on. One product. One price. One manual. One support route.
-        </p>
+        <h2>One click is better than another week of &ldquo;maybe later.&rdquo;</h2>
+        <p>If a post gets attention, this is the page it should land on. One product. One price. One manual. One support route.</p>
         <div class="cta-row" style="justify-content:center;">
           <a class="btn btn-primary" href="https://buy.stripe.com/cNibJ25Ca2TJ9gQ3a6dby06" target="_blank" rel="noopener">Buy the toolkit</a>
+          <a class="btn btn-arena" href="arena.html">Try the Arena free</a>
           <a class="btn btn-secondary" href="product-manual/index.html">See all package manuals</a>
         </div>
       </div>
@@ -546,6 +469,8 @@
       <div class="footer-links">
         <a href="product-manual/ai-governance-toolkit.html">Manual</a>
         <a href="product-manual/delivery-and-access.html">Delivery</a>
+        <a href="arena.html">Arena</a>
+        <a href="demos/index.html">Demos</a>
         <a href="support.html">Support</a>
         <a href="mailto:aethermoregames@pm.me?subject=SCBE%20Toolkit%20Support">Email</a>
         <a href="https://github.com/issdandavis/SCBE-AETHERMOORE">GitHub</a>

@@ -77,6 +77,41 @@ body{
 .seat-status.error{color:var(--red);background:rgba(239,68,68,0.1)}
 .seat-status.offline{color:var(--dim);background:rgba(148,163,184,0.1)}
 .seat-status.proxy{color:#67e8f9;background:rgba(6,182,212,0.14)}
+.seat-status.nokey{color:var(--amber);background:rgba(255,184,74,0.1)}
+
+/* BYOK Settings Modal */
+.settings-btn{
+  background:none;border:none;color:var(--dim);cursor:pointer;font-size:18px;padding:4px 6px;border-radius:6px;
+  transition:color .15s,background .15s
+}
+.settings-btn:hover{color:var(--accent);background:rgba(23,198,207,.12)}
+.settings-overlay{
+  display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:9999;
+  align-items:center;justify-content:center
+}
+.settings-overlay.open{display:flex}
+.settings-panel{
+  background:linear-gradient(160deg,#0e1622,#151f30);border:1px solid var(--border);
+  border-radius:14px;padding:20px 24px 24px;width:440px;max-width:92vw;max-height:85vh;overflow-y:auto;
+  box-shadow:0 12px 40px rgba(0,0,0,.6)
+}
+.settings-panel h3{font-size:16px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between}
+.settings-panel h3 .close-settings{background:none;border:none;color:var(--dim);font-size:20px;cursor:pointer}
+.settings-panel h3 .close-settings:hover{color:var(--red)}
+.settings-row{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.settings-row label{font-size:12px;font-weight:600;width:110px;flex-shrink:0;color:var(--dim)}
+.settings-row input{
+  flex:1;background:var(--bg);border:1px solid var(--border);color:var(--text);
+  padding:6px 10px;border-radius:6px;font-size:12px;font-family:var(--mono)
+}
+.settings-row input:focus{border-color:var(--accent);outline:none}
+.settings-row .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.settings-save{
+  background:linear-gradient(135deg,var(--accent),#2e98dd);color:#fff;border:none;
+  padding:8px 20px;border-radius:8px;font-weight:700;font-size:13px;cursor:pointer;margin-top:10px;width:100%
+}
+.settings-save:hover{opacity:.9}
+.settings-note{font-size:10px;color:var(--dim);margin-top:8px;line-height:1.4}
 
 .seat-chat{flex:1;overflow-y:auto;padding:6px 10px;font-size:12px;line-height:1.4;min-height:0}
 .seat-chat .msg{margin-bottom:6px;padding:5px 8px;border-radius:6px;word-wrap:break-word}
@@ -101,6 +136,18 @@ body{
 .file-tab.active{background:var(--bg);color:var(--text);border-color:var(--accent)}
 .code-editor{flex:1;overflow:auto;padding:0;margin:0;min-height:0}
 .code-editor textarea{width:100%;height:100%;background:var(--bg);color:var(--text);border:none;padding:12px 16px;font-family:var(--mono);font-size:13px;line-height:1.6;resize:none;outline:none;tab-size:4}
+.service-pane{flex:1;overflow:auto;padding:12px 12px 14px;background:rgba(8,13,22,.96);min-height:0}
+.service-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.service-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px;display:flex;flex-direction:column;gap:8px}
+.service-head{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.service-name{font-size:12px;font-weight:700;color:var(--text)}
+.service-zone{font-size:9px;font-weight:700;padding:2px 6px;border-radius:999px;border:1px solid transparent}
+.service-zone.green{color:var(--green);border-color:rgba(45,211,166,.38);background:rgba(45,211,166,.12)}
+.service-zone.yellow{color:var(--amber);border-color:rgba(255,184,74,.4);background:rgba(255,184,74,.12)}
+.service-zone.red{color:var(--red);border-color:rgba(255,114,114,.42);background:rgba(255,114,114,.12)}
+.service-path{font-size:10px;color:var(--dim);line-height:1.35;word-break:break-word}
+.service-open{display:inline-flex;justify-content:center;align-items:center;text-decoration:none;color:#fff;background:linear-gradient(135deg,var(--accent),#2e98dd);padding:6px 10px;border-radius:7px;font-size:11px;font-weight:700}
+.service-hint{font-size:10px;color:var(--dim)}
 
 /* Deal prompt bar */
 .deal-bar{display:flex;gap:8px;padding:8px 16px;border-top:1px solid var(--border);background:var(--surface);flex-shrink:0}
@@ -111,6 +158,7 @@ body{
 @media(max-width:1100px){
   .table-layout{grid-template-columns:1fr}
   .seat-column{display:grid;grid-template-columns:1fr 1fr}
+  .service-grid{grid-template-columns:1fr}
 }
 
 ::-webkit-scrollbar{width:5px}
@@ -129,9 +177,19 @@ body{
     <span id="agentCallsign">Lyra Forge</span>
     <button class="scout-btn" id="replitScoutBtn" onclick="scoutReplitLegacy()">Scout Replit</button>
     <button class="xtalk-btn" onclick="emitCrossTalk()">Cross-talk</button>
+    <button class="settings-btn" id="settingsBtn" onclick="openSettings()" title="API Key Settings">&#9881;</button>
     <button class="install-btn" id="arenaInstallBtn" onclick="promptInstall()">Install</button>
     <button class="train-btn" onclick="flushTraining()">Train</button>
     <span id="clock"></span>
+  </div>
+</div>
+
+<div class="settings-overlay" id="settingsOverlay">
+  <div class="settings-panel">
+    <h3>API Keys (BYOK) <button class="close-settings" onclick="closeSettings()">&times;</button></h3>
+    <div id="settingsRows"></div>
+    <button class="settings-save" onclick="saveSettings()">Save &amp; Apply</button>
+    <div class="settings-note">Keys are stored in your browser's localStorage only. They are sent directly to each provider's API from your browser — never to any intermediary server. Ollama runs locally and needs no key.</div>
   </div>
 </div>
 
@@ -155,7 +213,7 @@ const PLAYERS = [
   { id: 'groq',          name: 'Groq',         color: '#f97316', model: 'llama-3.3-70b-versatile', tongue: 'KO', role: 'Intent Analyst' },
   { id: 'cerebras',      name: 'Cerebras',      color: '#06b6d4', model: 'llama-3.3-70b',         tongue: 'RU', role: 'Security Auditor' },
   { id: 'google_ai',     name: 'Google AI',     color: '#34d399', model: 'gemini-2.5-flash',       tongue: 'DR', role: 'Lead Architect' },
-  { id: 'claude',        name: 'Claude',        color: '#a78bfa', model: 'claude-sonnet',          tongue: 'UM', role: 'Governance Arbiter' },
+  { id: 'claude',        name: 'Claude',        color: '#a78bfa', model: 'claude-sonnet-4-20250514', tongue: 'UM', role: 'Governance Arbiter' },
   { id: 'xai',           name: 'xAI (Grok)',    color: '#f472b6', model: 'grok-3-mini',            tongue: 'AV', role: 'Creative Advocate' },
   { id: 'openrouter',    name: 'Kimi',          color: '#60a5fa', model: 'kimi-k2-instruct',       tongue: 'CA', role: 'Compute Optimizer' },
   { id: 'github_models', name: 'GitHub',        color: '#e2e8f0', model: 'gpt-4o-mini',            tongue: 'RU', role: 'Code Reviewer' },
@@ -192,6 +250,37 @@ const LORE_FALLBACK = [
   { title: 'Codex III', url: '/v1/lore/art/polloneth-protocol' },
   { title: 'Atlas', url: '/v1/lore/art/spiral-risk-zones' },
 ];
+const SERVICE_PORTALS = [
+  { id: 'github',     name: 'GitHub',            zone: 'GREEN',  url: 'https://github.com/issdandavis',                                path: 'https://api.github.com',                                 hint: 'Code + PR lanes' },
+  { id: 'codespaces', name: 'GitHub Codespaces', zone: 'GREEN',  url: 'https://github.com/codespaces',                                 path: 'https://api.github.com/user/codespaces',                 hint: 'Cloud dev environments' },
+  { id: 'huggingface',name: 'Hugging Face',      zone: 'GREEN',  url: 'https://huggingface.co/issdandavis',                            path: 'https://huggingface.co',                                 hint: 'Models + datasets' },
+  { id: 'firebase',   name: 'Firebase Console',  zone: 'GREEN',  url: 'https://console.firebase.google.com/',                           path: 'https://firebase.google.com',                             hint: 'Hosting + project ops' },
+  { id: 'shopify',    name: 'Shopify Admin',     zone: 'GREEN',  url: 'https://admin.shopify.com/store/aethermore-works',              path: 'https://aethermore-works.myshopify.com/admin/api/2025-01', hint: 'Store products + orders' },
+  { id: 'gumroad',    name: 'Gumroad',           zone: 'GREEN',  url: 'https://app.gumroad.com/products',                               path: 'https://api.gumroad.com/v2',                              hint: 'Digital product sales' },
+  { id: 'notion',     name: 'Notion',            zone: 'GREEN',  url: 'https://www.notion.so/',                                         path: 'https://api.notion.com/v1',                               hint: 'Knowledge + planning' },
+  { id: 'kaggle',     name: 'Kaggle',            zone: 'GREEN',  url: 'https://www.kaggle.com/',                                        path: 'https://www.kaggle.com/api/v1',                           hint: 'Data + benchmarks' },
+  { id: 'n8n',        name: 'n8n',               zone: 'GREEN',  url: 'http://127.0.0.1:5680',                                         path: 'http://127.0.0.1:5680',                                   hint: 'Local automation' },
+  { id: 'zapier',     name: 'Zapier',            zone: 'GREEN',  url: 'https://zapier.com/app/zaps',                                   path: 'https://hooks.zapier.com',                                hint: 'Webhook automations' },
+  { id: 'gamma',      name: 'Gamma',             zone: 'YELLOW', url: 'https://gamma.app/',                                            path: 'https://gamma.app',                                       hint: 'Deck generation' },
+  { id: 'x',          name: 'X / Twitter',       zone: 'YELLOW', url: 'https://x.com/home',                                            path: 'https://api.twitter.com/2',                               hint: 'Distribution lane' },
+  { id: 'newgrounds', name: 'Newgrounds',        zone: 'YELLOW', url: 'https://www.newgrounds.com/',                                   path: 'https://www.newgrounds.com',                              hint: 'Game discovery channel' },
+  { id: 'godot',      name: 'Godot Docs',        zone: 'GREEN',  url: 'https://docs.godotengine.org/en/stable/',                       path: 'https://docs.godotengine.org',                            hint: 'Game dev reference' },
+  { id: 'unity',      name: 'Unity Learn',       zone: 'YELLOW', url: 'https://learn.unity.com/',                                      path: 'https://learn.unity.com',                                 hint: 'Engine training' },
+];
+
+const GAMMA_FALLBACK_SITES = [
+  {
+    id: 'gamma-fallback-1',
+    title: 'Aether Research Briefs',
+    resource_url: 'https://arxiv.org/',
+    gamma_url: '',
+    status: 'draft',
+    goal: 'Lead magnet for weekly research briefs',
+    primary_cta: 'Join the research digest',
+  },
+];
+
+let gammaLandingSites = [...GAMMA_FALLBACK_SITES];
 
 async function loadLoreStrip() {
   const strip = document.getElementById('loreStrip');
@@ -295,6 +384,91 @@ async function emitCrossTalk() {
   }
 }
 
+function setCenterView(view) {
+  const code = document.getElementById('centerCodeView');
+  const services = document.getElementById('centerServicesView');
+  const gamma = document.getElementById('centerGammaView');
+  const tabs = document.querySelectorAll('.file-tab[data-center-view]');
+  tabs.forEach((tab) => {
+    if (tab.getAttribute('data-center-view') === view) tab.classList.add('active');
+    else tab.classList.remove('active');
+  });
+  if (view === 'services') {
+    if (code) code.style.display = 'none';
+    if (services) services.style.display = 'block';
+    if (gamma) gamma.style.display = 'none';
+  } else if (view === 'gamma') {
+    if (code) code.style.display = 'none';
+    if (services) services.style.display = 'none';
+    if (gamma) gamma.style.display = 'block';
+  } else {
+    if (code) code.style.display = 'block';
+    if (services) services.style.display = 'none';
+    if (gamma) gamma.style.display = 'none';
+  }
+}
+
+function renderServiceGrid() {
+  const grid = document.getElementById('serviceGrid');
+  if (!grid) return;
+  grid.innerHTML = SERVICE_PORTALS.map((svc) => `
+    <div class="service-card">
+      <div class="service-head">
+        <span class="service-name">${escHtml(svc.name)}</span>
+        <span class="service-zone ${svc.zone.toLowerCase()}">${svc.zone}</span>
+      </div>
+      <div class="service-path">${escHtml(svc.path)}</div>
+      <div class="service-hint">${escHtml(svc.hint)}</div>
+      <a class="service-open" href="${svc.url}" target="_blank" rel="noreferrer">Open</a>
+    </div>
+  `).join('');
+}
+
+function gammaStatusClass(status) {
+  const s = String(status || '').toLowerCase();
+  if (s === 'live') return 'green';
+  if (s === 'draft') return 'yellow';
+  return 'red';
+}
+
+function renderGammaGrid() {
+  const grid = document.getElementById('gammaGrid');
+  if (!grid) return;
+  grid.innerHTML = gammaLandingSites.map((site) => {
+    const status = String(site.status || 'draft').toUpperCase();
+    const gammaUrl = site.gamma_url || 'https://gamma.app/';
+    const gammaLabel = site.gamma_url ? 'Open Gamma Page' : 'Open Gamma Workspace';
+    return `
+      <div class="service-card">
+        <div class="service-head">
+          <span class="service-name">${escHtml(site.title)}</span>
+          <span class="service-zone ${gammaStatusClass(site.status)}">${status}</span>
+        </div>
+        <div class="service-hint">${escHtml(site.goal || 'Landing page slot')}</div>
+        <div class="service-path">Resource: ${escHtml(site.resource_url || '')}</div>
+        <div class="service-path">Primary CTA: ${escHtml(site.primary_cta || '')}</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <a class="service-open" href="${site.resource_url}" target="_blank" rel="noreferrer">Open Source</a>
+          <a class="service-open" href="${gammaUrl}" target="_blank" rel="noreferrer">${gammaLabel}</a>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+async function loadGammaLandingSites() {
+  try {
+    const resp = await fetch(API + '/data/gamma_landing_sites.json');
+    if (!resp.ok) throw new Error('gamma config missing');
+    const data = await resp.json();
+    const sites = Array.isArray(data.sites) ? data.sites : [];
+    if (sites.length > 0) gammaLandingSites = sites;
+  } catch (_err) {
+    gammaLandingSites = [...GAMMA_FALLBACK_SITES];
+  }
+  renderGammaGrid();
+}
+
 function buildTable() {
   const table = document.getElementById('table');
   table.innerHTML = '';
@@ -315,11 +489,19 @@ function buildTable() {
     <div class="center-header">
       <h2>Shared Code</h2>
       <div class="file-tabs">
-        <div class="file-tab active">main.py</div>
+        <div class="file-tab active" data-center-view="code">main.py</div>
+        <div class="file-tab" data-center-view="services">Services</div>
+        <div class="file-tab" data-center-view="gamma">Gamma Wing</div>
       </div>
     </div>
-    <div class="code-editor">
+    <div class="code-editor" id="centerCodeView">
       <textarea id="sharedEditor" spellcheck="false">${escHtml(sharedCode)}</textarea>
+    </div>
+    <div class="service-pane" id="centerServicesView" style="display:none">
+      <div class="service-grid" id="serviceGrid"></div>
+    </div>
+    <div class="service-pane" id="centerGammaView" style="display:none">
+      <div class="service-grid" id="gammaGrid"></div>
     </div>
   `;
   table.appendChild(center);
@@ -331,9 +513,23 @@ function buildTable() {
   table.appendChild(rightCol);
 
   document.getElementById('playerCount').textContent = PLAYERS.length + ' seated';
-  document.getElementById('sharedEditor').addEventListener('input', e => {
-    sharedCode = e.target.value;
+  const editor = document.getElementById('sharedEditor');
+  if (editor) {
+    editor.addEventListener('input', e => {
+      sharedCode = e.target.value;
+    });
+  }
+
+  const tabs = center.querySelectorAll('.file-tab');
+  tabs.forEach((tabEl) => {
+    tabEl.addEventListener('click', () => {
+      const view = tabEl.getAttribute('data-center-view') || 'code';
+      setCenterView(view);
+    });
   });
+
+  renderServiceGrid();
+  loadGammaLandingSites();
 }
 
 function createSeat(player) {
@@ -441,21 +637,204 @@ function setStatus(playerId, status, label) {
   el.textContent = label || status;
 }
 
-// Check which providers are actually configured
-async function loadProviderStatus() {
-  try {
-    const resp = await fetch(API + '/v1/providers');
-    if (!resp.ok) return;
-    const data = await resp.json();
-    const rows = Array.isArray(data.tentacles) ? data.tentacles : [];
-    rows.forEach((row) => {
-      const id = row.tentacle;
-      providerStatus[id] = row;
-      if (!row.available) {
-        setStatus(id, 'offline', 'no key');
-      }
-    });
-  } catch (_err) {}
+// BYOK — provider key config stored in localStorage
+const PROVIDER_KEY_MAP = {
+  groq:          { label: 'Groq',           envName: 'GROQ_API_KEY' },
+  cerebras:      { label: 'Cerebras',       envName: 'CEREBRAS_API_KEY' },
+  google_ai:     { label: 'Google AI',      envName: 'GOOGLE_AI_KEY' },
+  claude:        { label: 'Claude',         envName: 'ANTHROPIC_API_KEY' },
+  xai:           { label: 'xAI (Grok)',     envName: 'XAI_API_KEY' },
+  openrouter:    { label: 'OpenRouter',     envName: 'OPENROUTER_API_KEY' },
+  github_models: { label: 'GitHub Models',  envName: 'GITHUB_TOKEN' },
+  huggingface:   { label: 'HuggingFace',    envName: 'HF_TOKEN' },
+  ollama:        { label: 'Ollama (local)',  envName: null },
+};
+
+function loadArenaKeys() {
+  try { return JSON.parse(localStorage.getItem('arena_keys') || '{}'); } catch { return {}; }
+}
+function saveArenaKeys(keys) {
+  localStorage.setItem('arena_keys', JSON.stringify(keys));
+}
+
+function hasKey(playerId) {
+  if (playerId === 'ollama') return true;
+  const keys = loadArenaKeys();
+  return !!(keys[playerId] && keys[playerId].trim());
+}
+
+function getKey(playerId) {
+  const keys = loadArenaKeys();
+  return (keys[playerId] || '').trim();
+}
+
+// Settings panel
+function openSettings() {
+  const overlay = document.getElementById('settingsOverlay');
+  const container = document.getElementById('settingsRows');
+  const keys = loadArenaKeys();
+  container.innerHTML = '';
+  PLAYERS.forEach(p => {
+    const cfg = PROVIDER_KEY_MAP[p.id];
+    if (!cfg) return;
+    if (p.id === 'ollama') {
+      const row = document.createElement('div');
+      row.className = 'settings-row';
+      row.innerHTML = `<div class="dot" style="background:${p.color}"></div><label>${cfg.label}</label><input disabled value="localhost:11434 (no key needed)" style="opacity:.5"/>`;
+      container.appendChild(row);
+      return;
+    }
+    const row = document.createElement('div');
+    row.className = 'settings-row';
+    row.innerHTML = `<div class="dot" style="background:${p.color}"></div><label>${cfg.label}</label><input type="password" id="key-${p.id}" placeholder="${cfg.envName}" value="${escHtml(keys[p.id] || '')}"/>`;
+    container.appendChild(row);
+  });
+  overlay.classList.add('open');
+}
+
+function closeSettings() {
+  document.getElementById('settingsOverlay').classList.remove('open');
+}
+
+function saveSettings() {
+  const keys = {};
+  PLAYERS.forEach(p => {
+    if (p.id === 'ollama') return;
+    const input = document.getElementById('key-' + p.id);
+    if (input && input.value.trim()) keys[p.id] = input.value.trim();
+  });
+  saveArenaKeys(keys);
+  closeSettings();
+  refreshKeyStatus();
+}
+
+function refreshKeyStatus() {
+  PLAYERS.forEach(p => {
+    const has = hasKey(p.id);
+    providerStatus[p.id] = { available: has };
+    if (!has) {
+      setStatus(p.id, 'nokey', 'no key');
+    } else {
+      setStatus(p.id, 'idle', 'ready');
+    }
+  });
+}
+
+// Close settings on overlay click
+document.addEventListener('click', (e) => {
+  const overlay = document.getElementById('settingsOverlay');
+  if (e.target === overlay) closeSettings();
+});
+
+// ---- Direct API calls per provider ----
+
+// Shared helper for OpenAI-compatible chat completions endpoints
+async function callOpenAICompatible(url, apiKey, model, systemPrompt, userMessage, extraHeaders) {
+  const headers = { 'Content-Type': 'application/json', ...extraHeaders };
+  if (apiKey) headers['Authorization'] = 'Bearer ' + apiKey;
+  const body = {
+    model: model,
+    messages: [
+      { role: 'system', content: systemPrompt },
+      { role: 'user', content: userMessage },
+    ],
+    max_tokens: 1024,
+    temperature: 0.7,
+  };
+  const resp = await fetch(url, { method: 'POST', headers, body: JSON.stringify(body) });
+  const data = await resp.json();
+  if (!resp.ok) throw new Error(data.error?.message || data.detail || JSON.stringify(data));
+  const choice = data.choices && data.choices[0];
+  return (choice && choice.message && choice.message.content) || '';
+}
+
+async function callGoogle(apiKey, model, systemPrompt, userMessage) {
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+  const body = {
+    system_instruction: { parts: [{ text: systemPrompt }] },
+    contents: [{ role: 'user', parts: [{ text: userMessage }] }],
+    generationConfig: { maxOutputTokens: 1024, temperature: 0.7 },
+  };
+  const resp = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+  const data = await resp.json();
+  if (!resp.ok) throw new Error(data.error?.message || JSON.stringify(data));
+  const parts = data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts;
+  return parts ? parts.map(p => p.text || '').join('') : '';
+}
+
+async function callClaude(apiKey, model, systemPrompt, userMessage) {
+  const resp = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': apiKey,
+      'anthropic-version': '2023-06-01',
+      'anthropic-dangerous-direct-browser-access': 'true',
+    },
+    body: JSON.stringify({
+      model: model,
+      max_tokens: 1024,
+      system: systemPrompt,
+      messages: [{ role: 'user', content: userMessage }],
+    }),
+  });
+  const data = await resp.json();
+  if (!resp.ok) throw new Error(data.error?.message || JSON.stringify(data));
+  return (data.content && data.content.map(b => b.text || '').join('')) || '';
+}
+
+async function callHuggingFace(apiKey, userMessage) {
+  const url = 'https://api-inference.huggingface.co/models/meta-llama/Llama-3.3-70B-Instruct';
+  const resp = await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
+    body: JSON.stringify({ inputs: userMessage, parameters: { max_new_tokens: 1024, temperature: 0.7, return_full_text: false } }),
+  });
+  const data = await resp.json();
+  if (!resp.ok) throw new Error(data.error || JSON.stringify(data));
+  if (Array.isArray(data) && data[0]) return data[0].generated_text || '';
+  return typeof data === 'string' ? data : JSON.stringify(data);
+}
+
+async function callOllama(model, systemPrompt, userMessage) {
+  const resp = await fetch('http://localhost:11434/api/generate', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ model: model || 'llama3', system: systemPrompt, prompt: userMessage, stream: false }),
+  });
+  const data = await resp.json();
+  if (!resp.ok) throw new Error(data.error || JSON.stringify(data));
+  return data.response || '';
+}
+
+// Route a call to the correct provider
+async function callProvider(playerId, systemPrompt, userMessage) {
+  const player = PLAYERS.find(p => p.id === playerId);
+  const model = player ? player.model : '';
+  const key = getKey(playerId);
+
+  switch (playerId) {
+    case 'groq':
+      return callOpenAICompatible('https://api.groq.com/openai/v1/chat/completions', key, model, systemPrompt, userMessage);
+    case 'cerebras':
+      return callOpenAICompatible('https://api.cerebras.ai/v1/chat/completions', key, model, systemPrompt, userMessage);
+    case 'xai':
+      return callOpenAICompatible('https://api.x.ai/v1/chat/completions', key, model, systemPrompt, userMessage);
+    case 'openrouter':
+      return callOpenAICompatible('https://openrouter.ai/api/v1/chat/completions', key, 'moonshotai/kimi-k2-0711-preview', systemPrompt, userMessage, { 'HTTP-Referer': window.location.origin, 'X-Title': 'AetherCode Arena' });
+    case 'github_models':
+      return callOpenAICompatible('https://models.inference.ai.azure.com/chat/completions', key, model, systemPrompt, userMessage);
+    case 'google_ai':
+      return callGoogle(key, model, systemPrompt, userMessage);
+    case 'claude':
+      return callClaude(key, model, systemPrompt, userMessage);
+    case 'huggingface':
+      return callHuggingFace(key, systemPrompt + '\n\n' + userMessage);
+    case 'ollama':
+      return callOllama(model !== 'local' ? model : 'llama3', systemPrompt, userMessage);
+    default:
+      throw new Error('Unknown provider: ' + playerId);
+  }
 }
 
 // Ask a single player — returns the response for Deliberate mode
@@ -464,12 +843,9 @@ async function askPlayer(playerId, message) {
   const text = message || (input ? input.value.trim() : '');
   if (!text) return null;
 
-  const provider = providerStatus[playerId];
-  const route = resolveTentacleForSeat(playerId);
-  if (provider && !provider.available && route.proxied) {
-    setStatus(playerId, 'proxy', `proxy:${route.via}`);
-  } else if (provider && !provider.available) {
-    addMessage(playerId, 'error', `No API key. Set ${provider.required_env || 'key'} in .env`);
+  if (!hasKey(playerId)) {
+    const cfg = PROVIDER_KEY_MAP[playerId];
+    addMessage(playerId, 'error', `No API key set. Click the gear icon and enter your ${cfg ? cfg.envName : 'key'}.`);
     return null;
   }
 
@@ -481,43 +857,22 @@ async function askPlayer(playerId, message) {
   const tongueInstruction = player ? TONGUE_INSTRUCTIONS[player.tongue] || '' : '';
   const roleContext = player ? `You are the ${player.role} (${player.tongue} tongue) in the AI Round Table. ${tongueInstruction}` : '';
 
+  const systemParts = [roleContext];
+  if (sharedCode) systemParts.push('Shared code:\n```\n' + sharedCode + '\n```');
+  const systemPrompt = systemParts.join('\n\n');
+
+  const t0 = performance.now();
   try {
-    const body = {
-      message: text,
-      mode: 'chat',
-      tentacle: route.tentacle,
-      context: [
-        ...(route.proxied ? [{ role: 'system', content: `Proxy mode: provider ${route.via} is responding as seat ${playerId}. Keep the seat persona/role exactly.` }] : []),
-        { role: 'system', content: roleContext },
-        ...(sharedCode ? [{ role: 'system', content: 'Shared code:\n```\n' + sharedCode + '\n```' }] : []),
-      ],
-    };
+    const response = await callProvider(playerId, systemPrompt, text);
+    const latency = Math.round(performance.now() - t0);
 
-    const resp = await fetch(API + '/v1/chat', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body),
-    });
-
-    const data = await resp.json();
-
-    if (resp.ok && data.response) {
-      const routeMeta = route.proxied ? `proxy:${route.via} / ` : '';
-      addMessage(playerId, 'ai', data.response,
-        `${routeMeta}${data.tentacle} / ${data.model} / ${Math.round(data.latency_ms)}ms / ${Math.round(data.governance_score * 100)}%`
-      );
-      setStatus(playerId, 'idle', 'ready');
-      return { id: playerId, name: player.name, tongue: player.tongue, role: player.role, response: data.response };
-    } else {
-      const errMsg = data.detail || data.response || JSON.stringify(data);
-      addMessage(playerId, 'error', errMsg);
-      setStatus(playerId, 'error', 'error');
-      setTimeout(() => setStatus(playerId, 'idle', 'ready'), 5000);
-      return null;
-    }
+    addMessage(playerId, 'ai', response, `${player.model} / ${latency}ms`);
+    setStatus(playerId, 'idle', 'ready');
+    return { id: playerId, name: player.name, tongue: player.tongue, role: player.role, response };
   } catch (err) {
     addMessage(playerId, 'error', err.message);
-    setStatus(playerId, 'offline', 'offline');
+    setStatus(playerId, 'error', 'error');
+    setTimeout(() => setStatus(playerId, 'idle', 'ready'), 5000);
     return null;
   }
 }
@@ -776,7 +1131,7 @@ loadLoreStrip();
 registerServiceWorker();
 setupInstallPrompt();
 updateInstallUi();
-loadProviderStatus();
+refreshKeyStatus();
 updateTrainingCount();
 </script>
 </body>
