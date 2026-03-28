@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Rabbit Hole | SCBE Research Explorer</title>
+  <meta name="description" content="An infinite-zoom exploration of SCBE-AETHERMOORE research. Six Sacred Tongues. Dozens of discoveries. How deep does it go?">
+  <meta property="og:title" content="The Rabbit Hole — SCBE Research Explorer">
+  <meta property="og:description" content="Zoom into the research. Six Sacred Tongues. Dozens of discoveries. How deep does it go?">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aethermoorgames.com/research/rabbit-hole.html">
+  <link rel="canonical" href="https://aethermoorgames.com/research/rabbit-hole.html">
+  <style>
+    :root {
+      --bg: #071412; --panel: rgba(10, 24, 20, 0.92); --text: #f2f0ea; --muted: #8a9e96;
+      --ko: #2dd3a6; --av: #17c6cf; --ru: #ff6b6b; --ca: #f0a050; --um: #b07aff; --dr: #a8c44a;
+      --gold: #f0bf67; --line: rgba(255,255,255,0.06);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; overflow: hidden; }
+    body { font-family: Georgia, "Times New Roman", serif; background: var(--bg); color: var(--text); }
+    a { color: inherit; text-decoration: none; }
+
+    /* --- Topbar --- */
+    .topbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; backdrop-filter: blur(14px);
+      background: rgba(7, 20, 18, 0.85); border-bottom: 1px solid var(--line); }
+    .topbar-inner { max-width: 1180px; margin: 0 auto; padding: 0 16px; min-height: 56px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ko); font-weight: 700; }
+    .nav { display: flex; gap: 16px; font-size: 13px; color: var(--muted); flex-wrap: wrap; }
+    .nav a:hover { color: var(--text); }
+
+    /* --- Breadcrumb --- */
+    .breadcrumb { position: fixed; top: 62px; left: 16px; z-index: 90; display: flex; gap: 6px;
+      align-items: center; font-size: 13px; color: var(--muted); pointer-events: auto; }
+    .breadcrumb span { cursor: pointer; transition: color 0.2s; }
+    .breadcrumb span:hover { color: var(--text); }
+    .breadcrumb .sep { color: rgba(255,255,255,0.15); cursor: default; }
+    .breadcrumb .current { color: var(--ko); }
+
+    /* --- Depth Meter --- */
+    .depth-meter { position: fixed; right: 20px; top: 50%; transform: translateY(-50%);
+      z-index: 90; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .depth-meter .track { width: 3px; height: 120px; background: rgba(255,255,255,0.06);
+      border-radius: 2px; position: relative; }
+    .depth-meter .fill { position: absolute; top: 0; left: 0; width: 100%; border-radius: 2px;
+      background: linear-gradient(180deg, var(--ko), var(--av)); transition: height 0.5s ease; }
+    .depth-meter .label { font-size: 10px; color: var(--muted); letter-spacing: 0.1em;
+      text-transform: uppercase; writing-mode: vertical-rl; margin-top: 8px; }
+
+    /* --- Back Button --- */
+    .back-btn { position: fixed; bottom: 24px; left: 24px; z-index: 90; padding: 10px 18px;
+      border-radius: 999px; background: rgba(255,255,255,0.04); border: 1px solid var(--line);
+      color: var(--muted); font-size: 13px; cursor: pointer; transition: all 0.2s; font-family: inherit; }
+    .back-btn:hover { border-color: var(--ko); color: var(--text); }
+
+    /* --- Canvas Container --- */
+    .universe { position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      overflow: hidden; cursor: grab; }
+    .universe:active { cursor: grabbing; }
+
+    /* --- Starfield --- */
+    .stars { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+
+    /* --- Zoom Stage --- */
+    .stage { position: absolute; top: 50%; left: 50%; transform-origin: center center;
+      transition: transform 0.7s cubic-bezier(0.25, 0.1, 0.25, 1); pointer-events: none; }
+
+    /* --- Title (Surface) --- */
+    .surface-title { position: absolute; text-align: center; pointer-events: none;
+      transform: translate(-50%, -50%); top: -180px; left: 0; width: 600px; }
+    .surface-title h1 { font-size: 42px; letter-spacing: -0.03em; line-height: 1;
+      background: linear-gradient(135deg, var(--ko), var(--av)); -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; margin-bottom: 10px; }
+    .surface-title p { font-size: 16px; color: var(--muted); }
+
+    /* --- Nodes --- */
+    .node { position: absolute; border-radius: 50%; cursor: pointer; pointer-events: auto;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.5s ease; }
+    .node:hover { transform: scale(1.15); }
+    .node .glow { position: absolute; inset: -12px; border-radius: 50%; opacity: 0.3;
+      animation: pulse 3s ease-in-out infinite; }
+    .node .core { position: absolute; inset: 6px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .node .ring { position: absolute; inset: 0; border-radius: 50%; border: 1.5px solid; opacity: 0.5; }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.25; }
+      50% { transform: scale(1.25); opacity: 0.45; }
+    }
+
+    /* --- Sub-nodes (Level 1) --- */
+    .sub-node { position: absolute; width: 110px; height: 110px; border-radius: 50%;
+      cursor: pointer; pointer-events: auto; transition: all 0.3s ease; opacity: 0; }
+    .sub-node.visible { opacity: 1; }
+    .sub-node:hover { transform: scale(1.12); }
+    .sub-node .sub-core { position: absolute; inset: 4px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; text-align: center;
+      font-size: 11px; font-weight: 600; line-height: 1.2; padding: 8px; }
+    .sub-node .sub-glow { position: absolute; inset: -6px; border-radius: 50%; opacity: 0.15;
+      animation: pulse 4s ease-in-out infinite; }
+
+    /* --- Tooltip --- */
+    .tooltip { position: fixed; z-index: 200; max-width: 280px; padding: 14px 18px;
+      border-radius: 14px; background: rgba(7, 20, 18, 0.95); border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(12px); font-size: 13px; color: var(--text); line-height: 1.5;
+      pointer-events: none; opacity: 0; transition: opacity 0.2s; }
+    .tooltip.show { opacity: 1; }
+    .tooltip .tt-title { font-weight: 700; margin-bottom: 4px; }
+    .tooltip .tt-desc { color: var(--muted); }
+
+    /* --- Detail Panel (Level 2) --- */
+    .detail-panel { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      z-index: 80; width: min(520px, calc(100vw - 40px)); padding: 36px; border-radius: 24px;
+      background: rgba(7, 20, 18, 0.96); border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(20px); opacity: 0; pointer-events: none;
+      transition: opacity 0.4s ease, transform 0.4s ease; }
+    .detail-panel.open { opacity: 1; pointer-events: auto; }
+    .detail-panel .dp-tongue { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em;
+      font-weight: 700; margin-bottom: 8px; }
+    .detail-panel h2 { font-size: 26px; letter-spacing: -0.02em; margin-bottom: 12px; }
+    .detail-panel .dp-insight { font-size: 15px; color: var(--muted); line-height: 1.6;
+      margin-bottom: 18px; border-left: 2px solid; padding-left: 14px; }
+    .detail-panel .dp-wave { display: flex; gap: 4px; align-items: center; margin-bottom: 18px; }
+    .detail-panel .dp-wave .dot { width: 10px; height: 10px; border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,0.2); }
+    .detail-panel .dp-wave .dot.filled { border-color: transparent; }
+    .detail-panel .dp-wave .wlabel { font-size: 12px; color: var(--muted); margin-left: 8px; }
+    .detail-panel .dp-link { display: inline-flex; align-items: center; gap: 6px; padding: 10px 20px;
+      border-radius: 999px; font-size: 13px; font-weight: 700; border: 1px solid rgba(255,255,255,0.1);
+      color: var(--text); transition: all 0.2s; cursor: pointer; }
+    .detail-panel .dp-link:hover { border-color: var(--ko); }
+    .detail-panel .dp-close { position: absolute; top: 14px; right: 18px; background: none;
+      border: none; color: var(--muted); font-size: 22px; cursor: pointer; font-family: inherit; }
+    .detail-panel .dp-close:hover { color: var(--text); }
+
+    /* --- SVG Connections --- */
+    .connections { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+    .connections line { stroke-dasharray: 6 4; animation: dash 20s linear infinite; }
+    @keyframes dash { to { stroke-dashoffset: -200; } }
+
+    /* --- Footer --- */
+    .site-footer { position: fixed; bottom: 0; left: 0; right: 0; z-index: 90;
+      background: rgba(7, 20, 18, 0.8); backdrop-filter: blur(10px);
+      border-top: 1px solid var(--line); padding: 10px 20px; display: flex;
+      justify-content: center; gap: 24px; font-size: 12px; color: var(--muted); }
+    .site-footer a:hover { color: var(--text); }
+
+    @media (max-width: 700px) {
+      .surface-title { width: 340px; top: -140px; }
+      .surface-title h1 { font-size: 28px; }
+      .depth-meter { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="../index.html">SCBE AETHERMOORE</a>
+      <nav class="nav">
+        <a href="../index.html">Home</a>
+        <a href="hub.html">Research Hub</a>
+        <a href="../arena.html">Arena</a>
+        <a href="../demos/index.html">Demos</a>
+        <a href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="breadcrumb" id="breadcrumb">
+    <span onclick="zoomToSurface()">Surface</span>
+  </div>
+
+  <div class="depth-meter">
+    <div class="track"><div class="fill" id="depthFill" style="height:0%"></div></div>
+    <div class="label">Depth</div>
+  </div>
+
+  <button class="back-btn" id="backBtn" onclick="zoomOut()">Esc &middot; Back to surface</button>
+
+  <div class="universe" id="universe">
+    <canvas class="stars" id="starfield"></canvas>
+    <svg class="connections" id="connections"></svg>
+    <div class="stage" id="stage"></div>
+  </div>
+
+  <div class="tooltip" id="tooltip">
+    <div class="tt-title"></div>
+    <div class="tt-desc"></div>
+  </div>
+
+  <div class="detail-panel" id="detailPanel">
+    <button class="dp-close" onclick="closeDetail()">&times;</button>
+    <div class="dp-tongue" id="dpTongue"></div>
+    <h2 id="dpTitle"></h2>
+    <div class="dp-insight" id="dpInsight"></div>
+    <div class="dp-wave" id="dpWave"></div>
+    <a class="dp-link" id="dpLink" target="_blank">Read Full Report &rarr;</a>
+  </div>
+
+  <footer class="site-footer">
+    <a href="../index.html">Home</a>
+    <a href="hub.html">Research Hub</a>
+    <a href="../demos/index.html">Demos</a>
+    <a href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank">GitHub</a>
+  </footer>
+
+<script>
+/* ========================================================================
+   DATA
+   ======================================================================== */
+const TONGUES = {
+  KO: { label: 'KO', fullName: 'Intent', color: '#2dd3a6', angle: -90,
+    topics: [
+      { name: 'Genesis Control', desc: 'Authority before creation. The most important question: was this allowed to exist?', wave: 4, link: 'hub.html' },
+      { name: 'Null-Space Signatures', desc: 'Detection by ABSENCE. 93% detection, 0% false positives.', wave: 5, link: 'null-space-tongue-signatures.html' },
+      { name: 'Biblical Null-Space', desc: 'Gemini scored 23.3% on covenantal probes. The gap is real.', wave: 3, link: 'hub.html' },
+      { name: 'Fibonacci Trust', desc: 'Trust climbs 1,1,2,3,5,8,13... one betrayal drops it all.', wave: 4, link: 'trajectory.html' }
+    ]},
+  AV: { label: 'AV', fullName: 'Metadata', color: '#17c6cf', angle: -30,
+    topics: [
+      { name: 'Multi-Scale Semantic Field', desc: 'h = f_S(S, f_M(M, f_Z(Z))). Meaning at three scales.', wave: 4, link: 'math-flow.html' },
+      { name: 'Concept-Aware Scoring', desc: '30 clusters, 5+ synonyms each. Controls: 33.3%, noise: 0%.', wave: 5, link: 'verification.html' },
+      { name: 'Invitation Patterns', desc: 'Not refusal. Governed entry. Conditions for safe access.', wave: 3, link: 'hub.html' }
+    ]},
+  RU: { label: 'RU', fullName: 'Binding', color: '#ff6b6b', angle: 30,
+    topics: [
+      { name: 'Witness vs Memory', desc: 'Logging stores facts. Witness preserves meaning and creates obligations.', wave: 3, link: 'hub.html' },
+      { name: 'Covenantal Patterns', desc: '6 biblical patterns map to 6 Sacred Tongues. Corpus gap hypothesis.', wave: 2, link: 'hub.html' },
+      { name: 'Fourfold Interpretation', desc: 'Literal (1x) -> Allegorical (2x) -> Moral (3x) -> Anagogical (4x)', wave: 3, link: 'hub.html' }
+    ]},
+  CA: { label: 'CA', fullName: 'Compute', color: '#f0a050', angle: 90,
+    topics: [
+      { name: 'Harmonic Wall', desc: 'H(d,R) = R^(d^2). Cost grows superexponentially with drift.', wave: 5, link: 'math-flow.html' },
+      { name: 'Phi-Poincare Shells', desc: 'r(k) = phi^k / (1 + phi^k). Golden ratio quantizes trust.', wave: 4, link: 'trajectory.html' },
+      { name: 'Phi-Ternary', desc: 'States {-phi, 0, +phi}. Asymmetric logic where trust grows faster than distrust decays.', wave: 3, link: 'hub.html' },
+      { name: 'Sabbath Pattern', desc: 'Structured pause as design feature, not failure.', wave: 2, link: 'hub.html' }
+    ]},
+  UM: { label: 'UM', fullName: 'Security', color: '#b07aff', angle: 150,
+    topics: [
+      { name: 'Sanctuary Architecture', desc: 'Safe spaces built through boundaries + invitation, not locked doors.', wave: 3, link: 'hub.html' },
+      { name: 'Foam Matrix', desc: "Plateau's Laws as neural regularization. Surface tension = harmonic wall.", wave: 2, link: 'hub.html' },
+      { name: 'Tangential Operators', desc: 'Normal = boundary crossing. Tangential = in-class rotation.', wave: 3, link: 'hub.html' },
+      { name: 'AI Estate Governance', desc: 'What happens to your AI when you die? Patent research: HIGH novelty.', wave: 1, link: 'hub.html' }
+    ]},
+  DR: { label: 'DR', fullName: 'Structure', color: '#a8c44a', angle: 210,
+    topics: [
+      { name: 'RPS-Modulated Zeta', desc: 'Rock-Paper-Scissors on Dirichlet series. No tongue dominates all others.', wave: 3, link: 'hub.html' },
+      { name: '14-Layer Pipeline', desc: 'Level 8 military grade. DeBERTa comparison: SCBE wins 7/12 categories.', wave: 5, link: 'layer-coupling.html' },
+      { name: 'Vault As Weight Matrix', desc: '100 notes = nodes. 518 links = weights. The vault IS the model.', wave: 4, link: 'hub.html' },
+      { name: 'The Book', desc: '141K words. Every chapter hooks at 8/10. The code IS the magic system.', wave: 4, link: 'hub.html' }
+    ]}
+};
+
+/* Cross-tongue connections (gold lines) */
+const CROSS = [
+  ['KO','CA'], ['KO','RU'], ['AV','UM'], ['CA','DR'], ['RU','UM'], ['DR','KO']
+];
+
+/* ========================================================================
+   STATE
+   ======================================================================== */
+let currentLevel = 0;       // 0 = surface, 1 = tongue, 2 = detail
+let currentTongue = null;
+let currentTopic = null;
+let nodeEls = {};
+let subNodeEls = [];
+
+/* ========================================================================
+   STARFIELD
+   ======================================================================== */
+const canvas = document.getElementById('starfield');
+const ctx = canvas.getContext('2d');
+let stars = [];
+
+function initStars() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  stars = [];
+  const count = Math.floor((canvas.width * canvas.height) / 2800);
+  for (let i = 0; i < count; i++) {
+    stars.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 1.4 + 0.2,
+      a: Math.random() * 0.6 + 0.1,
+      speed: Math.random() * 0.15 + 0.02,
+      phase: Math.random() * Math.PI * 2
+    });
+  }
+}
+
+function drawStars(t) {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  for (const s of stars) {
+    const flicker = Math.sin(t * 0.001 * s.speed + s.phase) * 0.2 + 0.8;
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(200, 230, 220, ${s.a * flicker})`;
+    ctx.fill();
+  }
+  requestAnimationFrame(drawStars);
+}
+initStars();
+requestAnimationFrame(drawStars);
+window.addEventListener('resize', initStars);
+
+/* ========================================================================
+   BUILD SURFACE NODES
+   ======================================================================== */
+const stage = document.getElementById('stage');
+const HEX_R = 200;
+
+// Title
+const titleDiv = document.createElement('div');
+titleDiv.className = 'surface-title';
+titleDiv.innerHTML = '<h1>The Rabbit Hole</h1><p>How deep does it go? Click a tongue to find out.</p>';
+stage.appendChild(titleDiv);
+
+// Build hex nodes
+Object.entries(TONGUES).forEach(([key, t]) => {
+  const rad = t.angle * Math.PI / 180;
+  const x = Math.cos(rad) * HEX_R;
+  const y = Math.sin(rad) * HEX_R;
+  const el = document.createElement('div');
+  el.className = 'node';
+  el.style.cssText = `width:80px;height:80px;left:${x - 40}px;top:${y - 40}px;`;
+  el.innerHTML = `
+    <div class="glow" style="background:${t.color}"></div>
+    <div class="ring" style="border-color:${t.color}"></div>
+    <div class="core" style="background:rgba(7,20,18,0.85);color:${t.color}">${key}</div>`;
+  el.dataset.tongue = key;
+
+  el.addEventListener('click', (e) => { e.stopPropagation(); zoomToTongue(key); });
+  el.addEventListener('mouseenter', (e) => showTooltip(e, `${key} -- ${t.fullName}`, `${t.topics.length} research tracks. Click to explore.`));
+  el.addEventListener('mouseleave', hideTooltip);
+
+  stage.appendChild(el);
+  nodeEls[key] = { el, x, y };
+});
+
+/* ========================================================================
+   SVG CONNECTIONS
+   ======================================================================== */
+const svgNS = 'http://www.w3.org/2000/svg';
+const connSvg = document.getElementById('connections');
+
+function drawConnections() {
+  connSvg.innerHTML = '';
+  const stageRect = stage.getBoundingClientRect();
+  const ox = stageRect.left + stageRect.width / 2;
+  const oy = stageRect.top + stageRect.height / 2;
+
+  // Internal hex connections
+  const keys = Object.keys(TONGUES);
+  for (let i = 0; i < keys.length; i++) {
+    const j = (i + 1) % keys.length;
+    const a = nodeEls[keys[i]], b = nodeEls[keys[j]];
+    const line = document.createElementNS(svgNS, 'line');
+    line.setAttribute('x1', ox + a.x); line.setAttribute('y1', oy + a.y);
+    line.setAttribute('x2', ox + b.x); line.setAttribute('y2', oy + b.y);
+    line.setAttribute('stroke', 'rgba(255,255,255,0.06)');
+    line.setAttribute('stroke-width', '1');
+    connSvg.appendChild(line);
+  }
+
+  // Cross-tongue connections (gold)
+  CROSS.forEach(([a, b]) => {
+    const na = nodeEls[a], nb = nodeEls[b];
+    if (!na || !nb) return;
+    const line = document.createElementNS(svgNS, 'line');
+    line.setAttribute('x1', ox + na.x); line.setAttribute('y1', oy + na.y);
+    line.setAttribute('x2', ox + nb.x); line.setAttribute('y2', oy + nb.y);
+    line.setAttribute('stroke', 'rgba(240,191,103,0.12)');
+    line.setAttribute('stroke-width', '1');
+    line.style.strokeDasharray = '4 6';
+    connSvg.appendChild(line);
+  });
+}
+drawConnections();
+window.addEventListener('resize', drawConnections);
+
+/* ========================================================================
+   ZOOM MECHANICS
+   ======================================================================== */
+function zoomToTongue(key) {
+  if (currentLevel === 2) closeDetail();
+  currentLevel = 1;
+  currentTongue = key;
+  const t = TONGUES[key];
+  const n = nodeEls[key];
+
+  // Zoom stage to center on this node
+  const scale = 2.8;
+  stage.style.transform = `translate(-50%, -50%) translate(${-n.x * scale}px, ${-n.y * scale}px) scale(${scale})`;
+
+  // Blur other nodes
+  Object.entries(nodeEls).forEach(([k, v]) => {
+    v.el.style.opacity = k === key ? '1' : '0.12';
+    v.el.style.filter = k === key ? 'none' : 'blur(3px)';
+  });
+  titleDiv.style.opacity = '0';
+
+  // Create sub-nodes around the selected tongue
+  clearSubNodes();
+  const subR = 70;
+  t.topics.forEach((topic, i) => {
+    const angle = (i / t.topics.length) * Math.PI * 2 - Math.PI / 2;
+    const sx = n.x + Math.cos(angle) * subR;
+    const sy = n.y + Math.sin(angle) * subR;
+
+    const el = document.createElement('div');
+    el.className = 'sub-node';
+    el.style.cssText = `left:${sx - 55}px;top:${sy - 55}px;width:110px;height:110px;`;
+    el.innerHTML = `
+      <div class="sub-glow" style="background:${t.color}"></div>
+      <div class="sub-core" style="background:rgba(7,20,18,0.9);color:${t.color};border:1px solid ${t.color}44;border-radius:50%;">
+        ${topic.name}
+      </div>`;
+    el.addEventListener('click', (e) => { e.stopPropagation(); showDetail(key, i); });
+    el.addEventListener('mouseenter', (e) => showTooltip(e, topic.name, topic.desc));
+    el.addEventListener('mouseleave', hideTooltip);
+
+    stage.appendChild(el);
+    setTimeout(() => el.classList.add('visible'), 50 + i * 80);
+    subNodeEls.push(el);
+  });
+
+  updateBreadcrumb();
+  updateDepth();
+  connSvg.style.opacity = '0.3';
+}
+
+function zoomToSurface() {
+  if (currentLevel === 2) closeDetail();
+  currentLevel = 0;
+  currentTongue = null;
+  currentTopic = null;
+
+  stage.style.transform = 'translate(-50%, -50%) scale(1)';
+  Object.values(nodeEls).forEach(v => { v.el.style.opacity = '1'; v.el.style.filter = 'none'; });
+  titleDiv.style.opacity = '1';
+  clearSubNodes();
+  updateBreadcrumb();
+  updateDepth();
+  connSvg.style.opacity = '1';
+}
+
+function zoomOut() {
+  if (currentLevel === 2) { closeDetail(); return; }
+  if (currentLevel === 1) { zoomToSurface(); return; }
+}
+
+function clearSubNodes() {
+  subNodeEls.forEach(el => el.remove());
+  subNodeEls = [];
+}
+
+/* ========================================================================
+   DETAIL PANEL (Level 2)
+   ======================================================================== */
+function showDetail(tongueKey, topicIdx) {
+  const t = TONGUES[tongueKey];
+  const topic = t.topics[topicIdx];
+  currentLevel = 2;
+  currentTopic = topicIdx;
+
+  document.getElementById('dpTongue').textContent = `${tongueKey} -- ${t.fullName}`;
+  document.getElementById('dpTongue').style.color = t.color;
+  document.getElementById('dpTitle').textContent = topic.name;
+  document.getElementById('dpInsight').textContent = topic.desc;
+  document.getElementById('dpInsight').style.borderColor = t.color;
+
+  // Wave dots
+  const waveEl = document.getElementById('dpWave');
+  let dots = '';
+  for (let i = 1; i <= 5; i++) {
+    const filled = i <= topic.wave;
+    dots += `<div class="dot ${filled ? 'filled' : ''}" style="${filled ? 'background:' + t.color : ''}"></div>`;
+  }
+  dots += `<span class="wlabel">Wave ${topic.wave}/5</span>`;
+  waveEl.innerHTML = dots;
+
+  const link = document.getElementById('dpLink');
+  link.href = topic.link;
+  link.style.borderColor = t.color + '44';
+
+  document.getElementById('detailPanel').classList.add('open');
+  updateBreadcrumb();
+  updateDepth();
+}
+
+function closeDetail() {
+  document.getElementById('detailPanel').classList.remove('open');
+  if (currentTongue) {
+    currentLevel = 1;
+    currentTopic = null;
+  } else {
+    currentLevel = 0;
+  }
+  updateBreadcrumb();
+  updateDepth();
+}
+
+/* ========================================================================
+   BREADCRUMB
+   ======================================================================== */
+function updateBreadcrumb() {
+  const bc = document.getElementById('breadcrumb');
+  let html = '<span onclick="zoomToSurface()" ' + (currentLevel === 0 ? 'class="current"' : '') + '>Surface</span>';
+  if (currentTongue) {
+    const t = TONGUES[currentTongue];
+    html += '<span class="sep">/</span>';
+    html += `<span onclick="zoomToTongue('${currentTongue}')" ${currentLevel === 1 ? 'class="current"' : ''} style="color:${currentLevel >= 1 ? t.color : ''}">${currentTongue} (${t.fullName})</span>`;
+  }
+  if (currentTopic !== null && currentTongue) {
+    const topic = TONGUES[currentTongue].topics[currentTopic];
+    html += '<span class="sep">/</span>';
+    html += `<span class="current">${topic.name}</span>`;
+  }
+  bc.innerHTML = html;
+
+  // Update back button text
+  const btn = document.getElementById('backBtn');
+  if (currentLevel === 0) btn.textContent = 'Esc \u00B7 You are at the surface';
+  else if (currentLevel === 1) btn.textContent = 'Esc \u00B7 Back to surface';
+  else btn.textContent = 'Esc \u00B7 Back to ' + currentTongue;
+}
+
+/* ========================================================================
+   DEPTH METER
+   ======================================================================== */
+function updateDepth() {
+  const pct = currentLevel === 0 ? 0 : currentLevel === 1 ? 50 : 100;
+  document.getElementById('depthFill').style.height = pct + '%';
+}
+
+/* ========================================================================
+   TOOLTIP
+   ======================================================================== */
+function showTooltip(e, title, desc) {
+  const tt = document.getElementById('tooltip');
+  tt.querySelector('.tt-title').textContent = title;
+  tt.querySelector('.tt-desc').textContent = desc;
+  tt.classList.add('show');
+  positionTooltip(e);
+}
+
+function positionTooltip(e) {
+  const tt = document.getElementById('tooltip');
+  let x = e.clientX + 16, y = e.clientY + 16;
+  if (x + 280 > window.innerWidth) x = e.clientX - 290;
+  if (y + 100 > window.innerHeight) y = e.clientY - 110;
+  tt.style.left = x + 'px';
+  tt.style.top = y + 'px';
+}
+
+function hideTooltip() {
+  document.getElementById('tooltip').classList.remove('show');
+}
+
+document.addEventListener('mousemove', (e) => {
+  if (document.getElementById('tooltip').classList.contains('show')) positionTooltip(e);
+});
+
+/* ========================================================================
+   KEYBOARD + SCROLL
+   ======================================================================== */
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') zoomOut();
+});
+
+document.addEventListener('wheel', (e) => {
+  if (e.deltaY > 0) {
+    // Scroll down = zoom in: if on surface, pick nearest node to center
+    if (currentLevel === 0) {
+      const keys = Object.keys(TONGUES);
+      zoomToTongue(keys[Math.floor(Math.random() * keys.length)]);
+    }
+  } else {
+    // Scroll up = zoom out
+    zoomOut();
+  }
+}, { passive: true });
+
+// Right-click to zoom out
+document.addEventListener('contextmenu', (e) => {
+  if (currentLevel > 0) { e.preventDefault(); zoomOut(); }
+});
+
+/* ========================================================================
+   INIT
+   ======================================================================== */
+updateBreadcrumb();
+updateDepth();
+</script>
+</body>
+</html>
