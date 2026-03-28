@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Six Tongues Protocol | A Novel by Issac Davis</title>
+  <meta name="description" content="The Six Tongues Protocol: a 70,000-word sci-fi novel where the magic system is a real security architecture. Available on Amazon KDP.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="The Six Tongues Protocol by Issac Davis">
+  <meta property="og:description" content="A sci-fi novel where the magic system is a real security architecture. Available on Amazon KDP.">
+  <meta property="og:type" content="book">
+  <meta property="og:url" content="https://aethermoorgames.com/book.html">
+  <meta property="og:image" content="https://aethermoorgames.com/hero.png">
+  <link rel="canonical" href="https://aethermoorgames.com/book.html">
+  <style>:root {
+      --bg: #071412; --bg-deep: #04100f; --bg-soft: #0d1d1a;
+      --panel: rgba(10, 28, 24, 0.82); --panel-strong: rgba(8, 24, 20, 0.94);
+      --line: rgba(139, 255, 223, 0.15); --line-bright: rgba(139, 255, 223, 0.30);
+      --text: #e7fff7; --muted: #9bc5ba; --dim: #6a9488;
+      --mint: #8fffd3; --aqua: #6dd8ff; --gold: #ffd977;
+      --rose: #ff9ec7; --violet: #c49cff;
+      --shadow: 0 30px 80px rgba(0, 0, 0, 0.45); --max: 1220px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(ellipse at 15% 8%, rgba(109,216,255,0.10), transparent 32%),
+        radial-gradient(ellipse at 80% 5%, rgba(143,255,211,0.12), transparent 28%),
+        linear-gradient(180deg, var(--bg-deep) 0%, var(--bg) 30%, var(--bg-soft) 100%);
+      color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .topbar { position: sticky; top: 0; z-index: 100; backdrop-filter: blur(16px); background: rgba(4,16,15,0.85); border-bottom: 1px solid var(--line); }
+    .topbar-inner { max-width: var(--max); margin: 0 auto; padding: 0 24px; min-height: 60px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mint); font-weight: 700; white-space: nowrap; }
+    .nav { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav a { padding: 6px 12px; border-radius: 8px; font-size: 13px; font-weight: 500; color: var(--muted); transition: all 150ms; }
+    .nav a:hover { color: var(--text); background: rgba(143,255,211,0.08); }
+    .nav a.nav-cta { background: rgba(143,255,211,0.12); color: var(--mint); border: 1px solid rgba(143,255,211,0.25); }
+    .nav a.nav-cta:hover { background: rgba(143,255,211,0.20); }
+    .mobile-toggle { display: none; background: none; border: none; color: var(--mint); font-size: 24px; cursor: pointer; padding: 8px; }
+    .section { padding: 80px 24px; }
+    .section-inner { max-width: var(--max); margin: 0 auto; }
+    .section-label { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mint); margin-bottom: 16px; padding: 4px 12px; border-radius: 20px; background: rgba(143,255,211,0.08); border: 1px solid rgba(143,255,211,0.15); }
+    .section-title { font-size: clamp(28px, 4.5vw, 48px); font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 16px; }
+    .section-subtitle { color: var(--muted); font-size: clamp(16px, 2vw, 20px); max-width: 64ch; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 24px; border-radius: 12px; font-size: 15px; font-weight: 600; border: 1px solid transparent; transition: all 180ms; cursor: pointer; text-decoration: none; }
+    .btn-primary { background: linear-gradient(135deg, rgba(143,255,211,0.18), rgba(109,216,255,0.12)); border-color: rgba(143,255,211,0.35); color: var(--mint); }
+    .btn-primary:hover { background: linear-gradient(135deg, rgba(143,255,211,0.28), rgba(109,216,255,0.18)); transform: translateY(-1px); }
+    .btn-secondary { border-color: var(--line); color: var(--muted); }
+    .btn-secondary:hover { border-color: var(--line-bright); color: var(--text); }
+    .btn-gold { background: linear-gradient(135deg, rgba(255,217,119,0.18), rgba(240,191,103,0.10)); border-color: rgba(255,217,119,0.35); color: var(--gold); }
+    .btn-gold:hover { background: linear-gradient(135deg, rgba(255,217,119,0.28), rgba(240,191,103,0.18)); transform: translateY(-1px); }
+    .footer { border-top: 1px solid var(--line); padding: 32px 24px 48px; color: var(--dim); font-size: 13px; }
+    .footer-inner { max-width: var(--max); margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; flex-wrap: wrap; }
+    .footer-left { display: flex; flex-direction: column; gap: 6px; }
+    .footer-left .footer-brand { color: var(--muted); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; font-size: 12px; }
+    .footer-links-row { display: flex; gap: 16px; flex-wrap: wrap; }
+    .footer-links-row a { color: var(--dim); transition: color 150ms; }
+    .footer-links-row a:hover { color: var(--mint); }
+    @media (max-width: 768px) {
+      .nav { display: none; }
+      .nav.open { display: flex; flex-direction: column; position: absolute; top: 60px; left: 0; right: 0; background: rgba(4,16,15,0.96); padding: 16px 24px; border-bottom: 1px solid var(--line); gap: 4px; z-index: 200; }
+      .nav.open a { padding: 10px 12px; }
+      .mobile-toggle { display: block; }
+    }
+    @media (max-width: 480px) {
+      .section { padding: 60px 16px; }
+      .btn { width: 100%; }
+    }
+    .page { max-width: 860px; margin: 0 auto; padding: 80px 24px 100px; }
+    .book-hero { text-align: center; margin-bottom: 60px; }
+    .book-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 600; color: var(--gold); letter-spacing: 0.06em; background: rgba(255,217,119,0.08); border: 1px solid rgba(255,217,119,0.20); margin-bottom: 20px; }
+    .book-hero h1 { font-size: clamp(36px, 6vw, 60px); font-weight: 800; line-height: 1.0; letter-spacing: -0.03em; margin-bottom: 12px; }
+    .book-hero h1 .gradient { background: linear-gradient(135deg, var(--gold), var(--rose)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .book-hero .byline { font-size: 20px; color: var(--muted); margin-bottom: 8px; }
+    .book-hero .tagline { font-size: 22px; color: var(--mint); font-weight: 600; font-style: italic; margin-bottom: 24px; }
+    .book-hero .desc { font-size: 18px; color: var(--muted); max-width: 56ch; margin: 0 auto 28px; line-height: 1.7; }
+    .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .divider { height: 1px; background: var(--line); margin: 48px 0; }
+    .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 48px; }
+    .detail-card { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 24px; }
+    .detail-card h3 { font-size: 14px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mint); margin-bottom: 10px; }
+    .detail-card p { color: var(--muted); font-size: 15px; }
+    .detail-card ul { list-style: none; padding: 0; }
+    .detail-card ul li { color: var(--muted); font-size: 15px; padding: 4px 0; }
+    .detail-card ul li::before { content: "\2022"; color: var(--gold); margin-right: 8px; }
+    .excerpt { background: var(--panel); border: 1px solid var(--line); border-radius: 20px; padding: 36px; margin-bottom: 48px; }
+    .excerpt-label { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; padding: 4px 12px; border-radius: 20px; display: inline-block; background: rgba(255,217,119,0.08); border: 1px solid rgba(255,217,119,0.15); }
+    .excerpt p { font-family: Georgia, "Times New Roman", serif; font-size: 17px; line-height: 1.85; color: var(--text); margin-bottom: 16px; }
+    .excerpt p:last-child { margin-bottom: 0; }
+    .excerpt .em { color: var(--mint); }
+    .real-tech { background: linear-gradient(135deg, rgba(143,255,211,0.04), rgba(109,216,255,0.03)); border: 1px solid var(--line); border-radius: 20px; padding: 36px; text-align: center; margin-bottom: 48px; }
+    .real-tech h2 { font-size: 28px; font-weight: 700; margin-bottom: 12px; }
+    .real-tech p { color: var(--muted); font-size: 17px; max-width: 52ch; margin: 0 auto 20px; line-height: 1.7; }
+    .tech-pills { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .tech-pill { padding: 6px 14px; border-radius: 10px; font-size: 13px; font-weight: 600; background: rgba(143,255,211,0.08); border: 1px solid var(--line); color: var(--muted); }
+    .youtube-section { text-align: center; }
+    .youtube-section h2 { font-size: 24px; margin-bottom: 12px; }
+    .youtube-section p { color: var(--muted); font-size: 16px; margin-bottom: 20px; }
+    @media (max-width: 768px) { .details-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 480px) { .page { padding: 60px 16px 80px; } .cta-row { flex-direction: column; } }</style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">SCBE-AETHERMOORE</a>
+      <button class="mobile-toggle" onclick="document.querySelector('.nav').classList.toggle('open')" aria-label="Toggle navigation">&#9776;</button>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="book.html">Book</a>
+        <a href="tools.html">Tools</a>
+        <a href="demos/index.html">Demos</a>
+        <a href="research/index.html">Research</a>
+        <a href="arena.html" class="nav-cta">Arena</a>
+        <a href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </header>
+  <main class="page">
+    <div class="book-hero">
+      <div class="book-badge">Available on Amazon KDP</div>
+      <h1><span class="gradient">The Six Tongues Protocol</span></h1>
+      <p class="byline">by Issac Davis</p>
+      <p class="tagline">&ldquo;The code IS the magic system.&rdquo;</p>
+      <p class="desc">22 chapters. 70,000+ words. A sci-fi/isekai novel where the fictional magic system is the real SCBE security architecture. The 14-layer pipeline, the Sacred Tongues, the harmonic wall &mdash; they are all running code.</p>
+      <div class="cta-row">
+        <a class="btn btn-gold" href="https://www.amazon.com/dp/B0F28PHSPR" target="_blank" rel="noopener">Buy on Amazon</a>
+        <a class="btn btn-secondary" href="https://www.youtube.com/playlist?list=PL4NrJc8z1YGBSCOM4wYBQw3PJWnJKM7XG" target="_blank" rel="noopener">Listen on YouTube</a>
+      </div>
+    </div>
+    <div class="details-grid">
+      <div class="detail-card"><h3>The Book</h3><ul><li>22 chapters, 70,000+ words</li><li>Sci-fi / Isekai / LitRPG</li><li>Available as Kindle eBook</li><li>Audio chapters on YouTube</li></ul></div>
+      <div class="detail-card"><h3>The Premise</h3><p>Marcus Chen, a systems architect, wakes up inside Aethermoor &mdash; a world where the laws of physics run on the same math as the security framework he built. The six sacred tongues that govern magic are the same six dimensions that protect the AI pipeline.</p></div>
+      <div class="detail-card"><h3>The Magic System</h3><ul><li>KO (Intent) &mdash; weight 1.00</li><li>AV (Vision) &mdash; weight 1.62</li><li>RU (Binding) &mdash; weight 2.62</li><li>CA (Compute) &mdash; weight 4.24</li><li>UM (Security) &mdash; weight 6.85</li><li>DR (Structure) &mdash; weight 11.09</li></ul></div>
+      <div class="detail-card"><h3>The Origin</h3><p>Born from 12,596 paragraphs of Everweave.ai game logs. What started as a DnD campaign became the seed corpus for a security framework &mdash; and then became the novel that explains it all.</p></div>
+    </div>
+    <div class="excerpt">
+      <span class="excerpt-label">Chapter 1 Preview</span>
+      <p>Marcus Chen had been awake for thirty-seven hours when the monitors went dark. Not a crash &mdash; the system had simply stopped acknowledging that he existed.</p>
+      <p>He was used to code disobeying him. Every systems architect was. But this was different. The 14-layer pipeline he had spent three years building was supposed to be the most mathematically rigorous security stack ever deployed. Each layer fed into the next: context realification, Poincare embedding, hyperbolic distance, harmonic scaling. Fourteen transformations between raw input and final decision.</p>
+      <p>Fourteen ways to say &ldquo;no&rdquo; to anything adversarial.</p>
+      <p>Except the pipeline was not saying no. It was saying nothing. And then &mdash; <span class="em">between one heartbeat and the next</span> &mdash; Marcus was not sitting in his chair anymore.</p>
+      <p>The floor was stone. The air tasted like copper and rain. Above him, six moons hung in a sky the color of deep water, each one a different shade: white, amber, crimson, silver, violet, and one that seemed to shift between all colors at once.</p>
+      <p>Six moons. Six tongues. Six dimensions of the security framework he had built.</p>
+      <p>Marcus stood up, brushed limestone dust from his jeans, and said the first thing that came to mind: <span class="em">&ldquo;This is not a buffer overflow.&rdquo;</span></p>
+    </div>
+    <div class="real-tech">
+      <h2>The tech in this book is real.</h2>
+      <p>The 14-layer pipeline, the Sacred Tongues, the harmonic wall, the Poincare embeddings, the post-quantum cryptography &mdash; they are all running code in the SCBE-AETHERMOORE repository.</p>
+      <div class="tech-pills"><span class="tech-pill">14-Layer Pipeline</span><span class="tech-pill">Hyperbolic Geometry</span><span class="tech-pill">Sacred Tongues</span><span class="tech-pill">Poincare Embeddings</span><span class="tech-pill">Post-Quantum Crypto</span><span class="tech-pill">Harmonic Wall</span></div>
+    </div>
+    <div class="divider"></div>
+    <div class="youtube-section">
+      <h2>Listen to the story</h2>
+      <p>Chapters 1-8 are available as narrated audio on YouTube, with new chapters releasing regularly.</p>
+      <div class="cta-row">
+        <a class="btn btn-secondary" href="https://www.youtube.com/playlist?list=PL4NrJc8z1YGBSCOM4wYBQw3PJWnJKM7XG" target="_blank" rel="noopener">Watch the Story Series</a>
+        <a class="btn btn-secondary" href="https://www.youtube.com/@id8461" target="_blank" rel="noopener">Subscribe on YouTube</a>
+      </div>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <span class="footer-brand">SCBE-AETHERMOORE</span>
+        <span>Built by Issac Davis in Port Angeles, WA</span>
+        <span>Patent Pending: USPTO #63/961,403</span>
+      </div>
+      <div class="footer-links-row">
+        <a href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://huggingface.co/issdandavis" target="_blank" rel="noopener">HuggingFace</a>
+        <a href="https://www.amazon.com/dp/B0F28PHSPR" target="_blank" rel="noopener">Amazon</a>
+        <a href="https://www.youtube.com/@id8461" target="_blank" rel="noopener">YouTube</a>
+        <a href="mailto:aethermoregames@pm.me">Email</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

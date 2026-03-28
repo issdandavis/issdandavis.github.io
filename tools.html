@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Tools | SCBE-AETHERMOORE</title>
+  <meta name="description" content="Free tools from SCBE-AETHERMOORE: AI Arena, Tongue Encoder, Formula Vault, Red Team Sandbox, and more.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Free Tools | SCBE-AETHERMOORE">
+  <meta property="og:description" content="Free AI governance tools. No install, no signup required.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aethermoorgames.com/tools.html">
+  <link rel="canonical" href="https://aethermoorgames.com/tools.html">
+  <style>:root {
+      --bg: #071412; --bg-deep: #04100f; --bg-soft: #0d1d1a;
+      --panel: rgba(10, 28, 24, 0.82); --panel-strong: rgba(8, 24, 20, 0.94);
+      --line: rgba(139, 255, 223, 0.15); --line-bright: rgba(139, 255, 223, 0.30);
+      --text: #e7fff7; --muted: #9bc5ba; --dim: #6a9488;
+      --mint: #8fffd3; --aqua: #6dd8ff; --gold: #ffd977;
+      --rose: #ff9ec7; --violet: #c49cff;
+      --shadow: 0 30px 80px rgba(0, 0, 0, 0.45); --max: 1220px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(ellipse at 15% 8%, rgba(109,216,255,0.10), transparent 32%),
+        radial-gradient(ellipse at 80% 5%, rgba(143,255,211,0.12), transparent 28%),
+        linear-gradient(180deg, var(--bg-deep) 0%, var(--bg) 30%, var(--bg-soft) 100%);
+      color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .topbar { position: sticky; top: 0; z-index: 100; backdrop-filter: blur(16px); background: rgba(4,16,15,0.85); border-bottom: 1px solid var(--line); }
+    .topbar-inner { max-width: var(--max); margin: 0 auto; padding: 0 24px; min-height: 60px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mint); font-weight: 700; white-space: nowrap; }
+    .nav { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav a { padding: 6px 12px; border-radius: 8px; font-size: 13px; font-weight: 500; color: var(--muted); transition: all 150ms; }
+    .nav a:hover { color: var(--text); background: rgba(143,255,211,0.08); }
+    .nav a.nav-cta { background: rgba(143,255,211,0.12); color: var(--mint); border: 1px solid rgba(143,255,211,0.25); }
+    .nav a.nav-cta:hover { background: rgba(143,255,211,0.20); }
+    .mobile-toggle { display: none; background: none; border: none; color: var(--mint); font-size: 24px; cursor: pointer; padding: 8px; }
+    .section { padding: 80px 24px; }
+    .section-inner { max-width: var(--max); margin: 0 auto; }
+    .section-label { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mint); margin-bottom: 16px; padding: 4px 12px; border-radius: 20px; background: rgba(143,255,211,0.08); border: 1px solid rgba(143,255,211,0.15); }
+    .section-title { font-size: clamp(28px, 4.5vw, 48px); font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 16px; }
+    .section-subtitle { color: var(--muted); font-size: clamp(16px, 2vw, 20px); max-width: 64ch; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 24px; border-radius: 12px; font-size: 15px; font-weight: 600; border: 1px solid transparent; transition: all 180ms; cursor: pointer; text-decoration: none; }
+    .btn-primary { background: linear-gradient(135deg, rgba(143,255,211,0.18), rgba(109,216,255,0.12)); border-color: rgba(143,255,211,0.35); color: var(--mint); }
+    .btn-primary:hover { background: linear-gradient(135deg, rgba(143,255,211,0.28), rgba(109,216,255,0.18)); transform: translateY(-1px); }
+    .btn-secondary { border-color: var(--line); color: var(--muted); }
+    .btn-secondary:hover { border-color: var(--line-bright); color: var(--text); }
+    .btn-gold { background: linear-gradient(135deg, rgba(255,217,119,0.18), rgba(240,191,103,0.10)); border-color: rgba(255,217,119,0.35); color: var(--gold); }
+    .btn-gold:hover { background: linear-gradient(135deg, rgba(255,217,119,0.28), rgba(240,191,103,0.18)); transform: translateY(-1px); }
+    .footer { border-top: 1px solid var(--line); padding: 32px 24px 48px; color: var(--dim); font-size: 13px; }
+    .footer-inner { max-width: var(--max); margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; flex-wrap: wrap; }
+    .footer-left { display: flex; flex-direction: column; gap: 6px; }
+    .footer-left .footer-brand { color: var(--muted); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; font-size: 12px; }
+    .footer-links-row { display: flex; gap: 16px; flex-wrap: wrap; }
+    .footer-links-row a { color: var(--dim); transition: color 150ms; }
+    .footer-links-row a:hover { color: var(--mint); }
+    @media (max-width: 768px) {
+      .nav { display: none; }
+      .nav.open { display: flex; flex-direction: column; position: absolute; top: 60px; left: 0; right: 0; background: rgba(4,16,15,0.96); padding: 16px 24px; border-bottom: 1px solid var(--line); gap: 4px; z-index: 200; }
+      .nav.open a { padding: 10px 12px; }
+      .mobile-toggle { display: block; }
+    }
+    @media (max-width: 480px) {
+      .section { padding: 60px 16px; }
+      .btn { width: 100%; }
+    }
+    .page { max-width: 1000px; margin: 0 auto; padding: 80px 24px 100px; }
+    .page-header { margin-bottom: 48px; }
+    .page-header h1 { font-size: clamp(32px, 5vw, 48px); font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 12px; }
+    .page-header p { color: var(--muted); font-size: 18px; max-width: 56ch; }
+    .tools-list { display: flex; flex-direction: column; gap: 20px; }
+    .tool-item { display: grid; grid-template-columns: 56px 1fr auto; gap: 20px; align-items: center; background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 24px 28px; transition: all 200ms; text-decoration: none; color: inherit; }
+    .tool-item:hover { border-color: var(--line-bright); transform: translateY(-2px); box-shadow: var(--shadow); }
+    .tool-icon { width: 56px; height: 56px; border-radius: 14px; display: grid; place-items: center; font-size: 26px; }
+    .tool-icon-arena { background: rgba(109,216,255,0.12); border: 1px solid rgba(109,216,255,0.20); }
+    .tool-icon-tongue { background: rgba(143,255,211,0.12); border: 1px solid rgba(143,255,211,0.20); }
+    .tool-icon-formula { background: rgba(255,217,119,0.12); border: 1px solid rgba(255,217,119,0.20); }
+    .tool-icon-outreach { background: rgba(196,156,255,0.12); border: 1px solid rgba(196,156,255,0.20); }
+    .tool-icon-redteam { background: rgba(255,107,107,0.12); border: 1px solid rgba(255,107,107,0.20); }
+    .tool-icon-research { background: rgba(255,158,199,0.12); border: 1px solid rgba(255,158,199,0.20); }
+    .tool-info h3 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+    .tool-info p { color: var(--muted); font-size: 14px; }
+    .tool-status { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 12px; border-radius: 8px; white-space: nowrap; }
+    .status-live { background: rgba(143,255,211,0.12); color: var(--mint); border: 1px solid rgba(143,255,211,0.25); }
+    .status-soon { background: rgba(196,156,255,0.12); color: var(--violet); border: 1px solid rgba(196,156,255,0.25); }
+    @media (max-width: 768px) { .tool-item { grid-template-columns: 1fr auto; gap: 12px; } .tool-icon { display: none; } }
+    @media (max-width: 480px) { .page { padding: 60px 16px 80px; } }</style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">SCBE-AETHERMOORE</a>
+      <button class="mobile-toggle" onclick="document.querySelector('.nav').classList.toggle('open')" aria-label="Toggle navigation">&#9776;</button>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="book.html">Book</a>
+        <a href="tools.html">Tools</a>
+        <a href="demos/index.html">Demos</a>
+        <a href="research/index.html">Research</a>
+        <a href="arena.html" class="nav-cta">Arena</a>
+        <a href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </header>
+  <main class="page">
+    <div class="page-header">
+      <span class="section-label">Free Tools</span>
+      <h1>Use these right now.</h1>
+      <p>No purchase, no signup, no install. Everything runs in your browser.</p>
+    </div>
+    <div class="tools-list">
+      <a class="tool-item" href="arena.html"><div class="tool-icon tool-icon-arena">&#9876;</div><div class="tool-info"><h3>AI Arena</h3><p>9 AI models, one command. BYOK round table &mdash; ask a question and watch models debate it in real time. Bring your own API keys.</p></div><span class="tool-status status-live">Live</span></a>
+      <a class="tool-item" href="demos/tongue-encoder.html"><div class="tool-icon tool-icon-tongue">&#127793;</div><div class="tool-info"><h3>Tongue Encoder</h3><p>Encode text into the 6 Sacred Tongues (KO, AV, RU, CA, UM, DR) and see the dimensional activation heatmap.</p></div><span class="tool-status status-live">Live</span></a>
+      <a class="tool-item" href="demos/formula-vault.html"><div class="tool-icon tool-icon-formula">&#128272;</div><div class="tool-info"><h3>Formula Vault</h3><p>Every mathematical formula in the SCBE pipeline, documented and interactive. Compute harmonic scaling, distances, and more.</p></div><span class="tool-status status-live">Live</span></a>
+      <a class="tool-item" href="redteam.html"><div class="tool-icon tool-icon-redteam">&#128680;</div><div class="tool-info"><h3>Red Team Sandbox</h3><p>Test adversarial inputs against the hyperbolic cost scaling. See how attacks get exponentially expensive the further they drift.</p></div><span class="tool-status status-live">Live</span></a>
+      <a class="tool-item" href="research/hub.html"><div class="tool-icon tool-icon-research">&#128218;</div><div class="tool-info"><h3>Research Codex</h3><p>Infinite-zoom 3D research encyclopedia. Fly through the full architecture, math, and layer specifications.</p></div><span class="tool-status status-live">Live</span></a>
+      <div class="tool-item" style="opacity:0.65;cursor:default;"><div class="tool-icon tool-icon-outreach">&#127963;</div><div class="tool-info"><h3>Outreach Sandbox</h3><p>Practice government filings for free. Sandbox mode for LLC formation, patents, SAM.gov registration. No real submissions.</p></div><span class="tool-status status-soon">Coming Soon</span></div>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <span class="footer-brand">SCBE-AETHERMOORE</span>
+        <span>Built by Issac Davis in Port Angeles, WA</span>
+        <span>Patent Pending: USPTO #63/961,403</span>
+      </div>
+      <div class="footer-links-row">
+        <a href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://huggingface.co/issdandavis" target="_blank" rel="noopener">HuggingFace</a>
+        <a href="https://www.amazon.com/dp/B0F28PHSPR" target="_blank" rel="noopener">Amazon</a>
+        <a href="https://www.youtube.com/@id8461" target="_blank" rel="noopener">YouTube</a>
+        <a href="mailto:aethermoregames@pm.me">Email</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
