@@ -1,0 +1,16 @@
+
+// ---- State ----
+var state={level:0,activeTongue:null,activeEntry:null,rotX:-15,rotY:0,dragging:false,dragStart:{x:0,y:0},audioOn:false,autoRotate:true,autoRotateAngle:0};
+
+// ---- Camera system (true Z-axis) ----
+var camera={x:0,y:0,z:0};
+var cameraTarget={x:0,y:0,z:0};
+var cameraVelocity={x:0,y:0,z:0};
+var CAM_SPRING=0.08;
+var CAM_DAMPING=0.85;
+var CAM_Z_MIN=-100;
+var CAM_Z_MAX=1800;
+
+var wormholeTravel=null;
+
+function updateCamera(){if(wormholeTravel){var wt=wormholeTravel;wt.t+=1/wt.duration;if(wt.t>=1){wt.t=1;camera.x=wt.end.x;camera.y=wt.end.y;camera.z=wt.end.z;var cb=wt.callback;wormholeTravel=null;if(cb)cb();return}var t=wt.t,mt=1-t;camera.x=mt*mt*mt*wt.start.x+3*mt*mt*t*wt.cp1.x+3*mt*t*t*wt.cp2.x+t*t*t*wt.end.x;camera.y=mt*mt*mt*wt.start.y+3*mt*mt*t*wt.cp1.y+3*mt*t*t*wt.cp2.y+t*t*t*wt.end.y;camera.z=mt*mt*mt*wt.start.z+3*mt*mt*t*wt.cp1.z+3*mt*t*t*wt.cp2.z+t*t*t*wt.end.z;cameraTarget.x=camera.x;cameraTarget.y=camera.y;cameraTarget.z=camera.z;return}var dx=cameraTarget.x-camera.x,dy=cameraTarget.y-camera.y,dz=cameraTarget.z-camera.z;cameraVelocity.x=(cameraVelocity.x+dx*CAM_SPRING)*CAM_DAMPING;cameraVelocity.y=(cameraVelocity.y+dy*CAM_SPRING)*CAM_DAMPING;cameraVelocity.z=(cameraVelocity.z+dz*CAM_SPRING)*CAM_DAMPING;camera.x+=cameraVelocity.x;camera.y+=cameraVelocity.y;camera.z+=cameraVelocity.z}
