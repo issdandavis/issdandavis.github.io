@@ -136,9 +136,50 @@
     .link-card .link-label { color: var(--muted); font-size: 12px; display: block; }
     .link-card .link-name { color: var(--text); }
     @media (max-width: 768px) { .hero h1 { max-width: 100%; } .products-grid { grid-template-columns: 1fr; } .story-grid { grid-template-columns: 1fr; } .stats-grid { grid-template-columns: repeat(2, 1fr); } .links-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 480px) { .hero { padding: 72px 16px 60px; } .hero-ctas { flex-direction: column; } }</style>
+    @media (max-width: 480px) { .hero { padding: 72px 16px 60px; } .hero-ctas { flex-direction: column; } }
+
+    /* Tongue color bar */
+    .tongue-bar {
+      height: 3px;
+      background: linear-gradient(90deg, #2dd3a6, #17c6cf, #ff6b6b, #f0a050, #b07aff, #a8c44a, #2dd3a6);
+      background-size: 200% 100%;
+      animation: tongue-flow 8s linear infinite;
+    }
+    @keyframes tongue-flow {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+
+    /* Hero particles */
+    .hero-particles {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-particles .particle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.15;
+      filter: blur(40px);
+      animation: float 20s ease-in-out infinite;
+    }
+    .hero-particles .particle:nth-child(1) { background: #2dd3a6; width: 300px; height: 300px; top: -50px; left: -50px; animation-delay: 0s; }
+    .hero-particles .particle:nth-child(2) { background: #17c6cf; width: 250px; height: 250px; top: 20%; right: -30px; animation-delay: -4s; }
+    .hero-particles .particle:nth-child(3) { background: #ff6b6b; width: 200px; height: 200px; bottom: 10%; left: 20%; animation-delay: -8s; }
+    .hero-particles .particle:nth-child(4) { background: #f0a050; width: 280px; height: 280px; top: 40%; right: 20%; animation-delay: -12s; }
+    .hero-particles .particle:nth-child(5) { background: #b07aff; width: 220px; height: 220px; bottom: -30px; right: 40%; animation-delay: -16s; }
+    .hero-particles .particle:nth-child(6) { background: #a8c44a; width: 260px; height: 260px; top: 10%; left: 40%; animation-delay: -20s; }
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(30px, -20px) scale(1.1); }
+      50% { transform: translate(-20px, 30px) scale(0.9); }
+      75% { transform: translate(10px, 10px) scale(1.05); }
+    }</style>
 </head>
 <body>
+  <div class="tongue-bar"></div>
   <header class="topbar">
     <div class="topbar-inner">
       <a class="brand" href="index.html">SCBE-AETHERMOORE</a>
@@ -156,6 +197,14 @@
   </header>
   <main>
     <section class="hero">
+      <div class="hero-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+      </div>
       <div class="hero-inner">
         <div class="hero-badge"><span class="dot"></span> Open Source &middot; Patent Pending</div>
         <h1><span class="gradient">SCBE-AETHERMOORE</span></h1>
@@ -220,6 +269,19 @@
           </div>
           <div class="story-visual"><div class="big-number">12,596</div><div class="big-label">paragraphs of game logs<br>became the seed corpus</div><div class="patent">Patent pending: <strong>USPTO #63/961,403</strong></div></div>
         </div>
+        <div style="margin-top: 32px; border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08);">
+          <iframe width="100%" height="400"
+            src="https://www.youtube.com/embed/videoseries?list=PL4NrJc8z1YGBSCOM4wYBQw3PJWnJKM7XG&autoplay=0"
+            title="The Six Tongues Protocol — Story Series"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            style="aspect-ratio: 16/9; width: 100%;">
+          </iframe>
+          <div style="padding: 16px; background: rgba(10,20,18,0.8); font-size: 14px; color: #8a9e96;">
+            Listen to the story that started it all. 22 chapters, narrated by AI, set in the universe of the tech.
+          </div>
+        </div>
       </div>
     </section>
     <section class="section" id="numbers" style="background:rgba(0,0,0,0.15);">
@@ -228,12 +290,12 @@
         <h2 class="section-title">The system already runs.</h2>
         <p class="section-subtitle">Not a whitepaper. Not a pitch deck. Running code with real tests and real publications.</p>
         <div class="stats-grid">
-          <div class="stat-card stat-mint"><div class="stat-number">5,954</div><div class="stat-label">TypeScript tests passing</div></div>
-          <div class="stat-card stat-aqua"><div class="stat-number">112</div><div class="stat-label">Python tests passing</div></div>
-          <div class="stat-card stat-gold"><div class="stat-number">0.813</div><div class="stat-label">F1 score (semantic projector)</div></div>
-          <div class="stat-card stat-mint"><div class="stat-number">14</div><div class="stat-label">Security layers</div></div>
-          <div class="stat-card stat-rose"><div class="stat-number">6</div><div class="stat-label">Sacred Tongues</div></div>
-          <div class="stat-card stat-aqua"><div class="stat-number">97</div><div class="stat-label">GitHub repos</div></div>
+          <div class="stat-card stat-mint"><div class="stat-number" data-target="5954">0</div><div class="stat-label">TypeScript tests passing</div></div>
+          <div class="stat-card stat-aqua"><div class="stat-number" data-target="112">0</div><div class="stat-label">Python tests passing</div></div>
+          <div class="stat-card stat-gold"><div class="stat-number" data-target="0.813">0</div><div class="stat-label">F1 score (semantic projector)</div></div>
+          <div class="stat-card stat-mint"><div class="stat-number" data-target="14">0</div><div class="stat-label">Security layers</div></div>
+          <div class="stat-card stat-rose"><div class="stat-number" data-target="6">0</div><div class="stat-label">Sacred Tongues</div></div>
+          <div class="stat-card stat-aqua"><div class="stat-number" data-target="97">0</div><div class="stat-label">GitHub repos</div></div>
           <div class="stat-card stat-violet"><div class="stat-number" style="font-size:18px;padding-top:6px;">USPTO<br>#63/961,403</div><div class="stat-label">Patent pending</div></div>
         </div>
       </div>
@@ -269,5 +331,32 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    // Intersection Observer to trigger count-up animation
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseFloat(el.dataset.target);
+          const isDecimal = el.dataset.target.includes('.');
+          const duration = 2000;
+          const start = performance.now();
+
+          function update(now) {
+            const progress = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = eased * target;
+            el.textContent = isDecimal ? current.toFixed(3) : Math.floor(current).toLocaleString();
+            if (progress < 1) requestAnimationFrame(update);
+          }
+          requestAnimationFrame(update);
+          observer.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('[data-target]').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
