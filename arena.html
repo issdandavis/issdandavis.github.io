@@ -15,11 +15,11 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#071412;--bg-deep:#04100f;--bg-soft:#0d1d1a;--panel:rgba(10,28,24,0.82);--line:rgba(139,255,223,0.15);--line-bright:rgba(139,255,223,0.30);--text:#e7fff7;--muted:#9bc5ba;--dim:#6a9488;--mint:#8fffd3;--aqua:#6dd8ff;--gold:#ffd977;--rose:#ff9ec7;--violet:#c49cff;--red:#ff7272;--amber:#ffb84a;--green:#2dd3a6;--shadow:0 30px 80px rgba(0,0,0,0.45);--max:1220px;--mono:"Cascadia Code","JetBrains Mono","Consolas",monospace;--font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+:root{--bg:#071412;--bg-deep:#04100f;--bg-soft:#0d1d1a;--panel:rgba(10,28,24,0.82);--line:rgba(139,255,223,0.15);--line-bright:rgba(139,255,223,0.30);--text:#e7fff7;--muted:#9bc5ba;--dim:#6a9488;--mint:#8fffd3;--aqua:#6dd8ff;--gold:#ffd977;--rose:#ff9ec7;--violet:#c49cff;--red:#ff7272;--amber:#ffb84a;--green:#2dd3a6;--shadow:0 30px 80px rgba(0,0,0,0.45);--max:1400px;--mono:"Cascadia Code","JetBrains Mono","Consolas",monospace;--font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
 html{scroll-behavior:smooth}
-body{font-family:var(--font);background:radial-gradient(ellipse at 15% 8%,rgba(109,216,255,0.10),transparent 32%),radial-gradient(ellipse at 80% 5%,rgba(143,255,211,0.12),transparent 28%),linear-gradient(180deg,var(--bg-deep) 0%,var(--bg) 30%,var(--bg-soft) 100%);color:var(--text);line-height:1.6;min-height:100vh}
+body{font-family:var(--font);background:radial-gradient(ellipse at 15% 8%,rgba(109,216,255,0.10),transparent 32%),radial-gradient(ellipse at 80% 5%,rgba(143,255,211,0.12),transparent 28%),linear-gradient(180deg,var(--bg-deep) 0%,var(--bg) 30%,var(--bg-soft) 100%);color:var(--text);line-height:1.6;min-height:100vh;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
-.topbar{position:sticky;top:0;z-index:100;backdrop-filter:blur(16px);background:rgba(4,16,15,0.85);border-bottom:1px solid var(--line)}
+.topbar{position:sticky;top:0;z-index:1000;backdrop-filter:blur(16px);background:rgba(4,16,15,0.85);border-bottom:1px solid var(--line)}
 .topbar-inner{max-width:var(--max);margin:0 auto;padding:0 24px;min-height:60px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .brand{font-size:14px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mint);font-weight:700;white-space:nowrap}
 .nav{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
@@ -28,55 +28,46 @@ a{color:inherit;text-decoration:none}
 .nav a.nav-cta{background:rgba(143,255,211,0.12);color:var(--mint);border:1px solid rgba(143,255,211,0.25)}
 .mobile-toggle{display:none;background:none;border:none;color:var(--mint);font-size:24px;cursor:pointer;padding:8px}
 @media(max-width:768px){.nav{display:none}.nav.open{display:flex;flex-direction:column;position:absolute;top:60px;left:0;right:0;background:rgba(4,16,15,0.96);padding:16px 24px;border-bottom:1px solid var(--line);gap:4px;z-index:200}.nav.open a{padding:10px 12px}.mobile-toggle{display:block}}
-.page-wrap{max-width:var(--max);margin:0 auto;padding:24px 24px 80px}
-.page-header{margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
-.page-header h1{font-size:clamp(24px,4vw,36px);font-weight:700;letter-spacing:-0.02em}
-.page-header h1 .accent{color:var(--mint)}
-.header-actions{display:flex;gap:8px;flex-wrap:wrap}
-.btn-sm{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:10px;font-size:13px;font-weight:600;border:1px solid var(--line);background:rgba(143,255,211,0.06);color:var(--muted);cursor:pointer;transition:all 150ms}
-.btn-sm:hover{border-color:var(--line-bright);color:var(--text);background:rgba(143,255,211,0.12)}
-.btn-sm.primary{background:linear-gradient(135deg,rgba(143,255,211,0.18),rgba(109,216,255,0.12));border-color:rgba(143,255,211,0.35);color:var(--mint)}
-.setup-banner{background:var(--panel);border:1px solid rgba(255,217,119,0.25);border-radius:16px;padding:20px 24px;margin-bottom:24px;display:none}
-.setup-banner.visible{display:block}
-.setup-banner h2{font-size:18px;font-weight:700;color:var(--gold);margin-bottom:8px}
-.setup-banner p{color:var(--muted);font-size:14px;margin-bottom:12px}
-.model-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px;margin-bottom:24px}
-@media(max-width:480px){.model-grid{grid-template-columns:1fr}}
-.model-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;display:flex;flex-direction:column;overflow:hidden;transition:border-color 200ms}
-.model-card:hover{border-color:var(--line-bright)}
-.model-card-header{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line);flex-shrink:0}
-.model-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
-.model-name{font-size:14px;font-weight:700;flex:1}
-.model-tongue{font-size:10px;font-weight:700;padding:2px 8px;border-radius:6px;background:rgba(143,255,211,0.10);color:var(--mint);border:1px solid rgba(143,255,211,0.20)}
-.model-status{font-size:10px;font-weight:600;padding:2px 8px;border-radius:6px}
-.model-status.ready{color:var(--green);background:rgba(45,211,166,0.10)}
-.model-status.thinking{color:var(--amber);background:rgba(255,184,74,0.10)}
-.model-status.error{color:var(--red);background:rgba(255,114,114,0.10)}
-.model-status.nokey{color:var(--gold);background:rgba(255,217,119,0.10)}
-.model-meta{font-size:10px;color:var(--dim);padding:4px 16px;display:flex;gap:8px;align-items:center;flex-shrink:0}
-.model-chat{flex:1;min-height:120px;max-height:300px;overflow-y:auto;padding:10px 16px;font-size:13px;line-height:1.5}
-.model-chat .msg{margin-bottom:8px;padding:8px 10px;border-radius:10px;word-wrap:break-word}
-.model-chat .msg.user{background:rgba(143,255,211,0.08);color:var(--mint);border:1px solid rgba(143,255,211,0.15)}
-.model-chat .msg.ai{background:rgba(10,28,24,0.6);border:1px solid var(--line)}
-.model-chat .msg.err{background:rgba(255,114,114,0.08);color:var(--red);border:1px solid rgba(255,114,114,0.15)}
-.model-chat .msg.synthesis{background:rgba(45,211,166,0.08);border:1px solid rgba(45,211,166,0.20);color:var(--green)}
-.model-chat .msg pre{font-family:var(--mono);font-size:11px;white-space:pre-wrap;margin-top:4px}
-.model-chat .msg .meta{font-size:10px;color:var(--dim);margin-top:4px}
-.model-chat .msg code{background:rgba(255,255,255,0.06);padding:1px 4px;border-radius:3px;font-size:11px}
-.model-input-row{display:flex;gap:6px;padding:10px 16px;border-top:1px solid var(--line);flex-shrink:0}
-.model-input{flex:1;background:rgba(4,16,15,0.6);border:1px solid var(--line);color:var(--text);padding:8px 12px;border-radius:8px;font-size:13px;font-family:var(--font)}
-.model-input:focus{border-color:var(--mint);outline:none}
-.model-send{background:linear-gradient(135deg,rgba(143,255,211,0.18),rgba(109,216,255,0.12));border:1px solid rgba(143,255,211,0.35);color:var(--mint);padding:8px 14px;border-radius:8px;font-size:13px;cursor:pointer;font-weight:600}
-.deal-bar{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.deal-input{flex:1;min-width:200px;background:rgba(4,16,15,0.6);border:1px solid var(--line);color:var(--text);padding:12px 16px;border-radius:10px;font-size:15px;font-family:var(--font)}
-.deal-input:focus{border-color:var(--mint);outline:none}
-.deal-input::placeholder{color:var(--dim)}
-.deal-btn{padding:10px 20px;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;border:none;transition:opacity 150ms}
-.deal-btn:hover{opacity:0.9}.deal-btn:disabled{opacity:0.5;cursor:not-allowed}
-.deal-btn.deal{background:linear-gradient(135deg,rgba(143,255,211,0.30),rgba(109,216,255,0.20));color:var(--mint);border:1px solid rgba(143,255,211,0.35)}
-.deal-btn.relay{background:rgba(109,216,255,0.15);color:var(--aqua);border:1px solid rgba(109,216,255,0.35)}
-.deal-btn.debate{background:rgba(255,217,119,0.15);color:var(--gold);border:1px solid rgba(255,217,119,0.35)}
-.deal-btn.deliberate{background:rgba(45,211,166,0.15);color:var(--green);border:1px solid rgba(45,211,166,0.35)}
+
+/* Round Table Styles */
+.arena-container{position:relative;width:100%;height:calc(100vh - 60px);display:flex;flex-direction:column;padding:20px;max-width:var(--max);margin:0 auto}
+.table-area{position:relative;flex:1;background:radial-gradient(circle at center, rgba(13,29,26,0.8) 0%, transparent 70%);border:2px dashed var(--line);border-radius:50%;margin:40px auto;aspect-ratio:1/1;max-height:70vh;display:flex;align-items:center;justify-content:center}
+.center-scroll{width:40%;height:40%;background:rgba(10,28,24,0.9);border:1px solid var(--line-bright);border-radius:12px;padding:15px;overflow-y:auto;box-shadow:inset 0 0 20px rgba(0,0,0,0.5);z-index:10;font-family:var(--mono);font-size:12px;color:var(--mint)}
+.center-scroll h4{font-size:10px;text-transform:uppercase;color:var(--dim);border-bottom:1px solid var(--line);margin-bottom:8px;padding-bottom:4px}
+
+.seat{position:absolute;width:120px;display:flex;flex-direction:column;align-items:center;transition:all 300ms cubic-bezier(0.4, 0, 0.2, 1);z-index:20}
+.seat.thinking{transform:scale(1.1)}
+.avatar-wrap{position:relative;width:64px;height:64px;border-radius:50%;background:var(--bg-deep);border:2px solid var(--line);overflow:hidden;margin-bottom:8px;box-shadow:0 0 15px rgba(143,255,211,0.1)}
+.seat.thinking .avatar-wrap{border-color:var(--mint);box-shadow:0 0 20px var(--mint)}
+.avatar-img{width:100%;height:100%;object-fit:cover;opacity:0.8}
+.name-tag{font-size:10px;font-weight:700;letter-spacing:0.05em;color:var(--text);background:var(--panel);padding:2px 8px;border-radius:4px;border:1px solid var(--line);white-space:nowrap}
+.seat-role{font-size:8px;color:var(--dim);text-transform:uppercase;margin-top:2px}
+
+.speech-bubble{position:absolute;bottom:85px;left:50%;transform:translateX(-50%);width:220px;max-height:180px;background:var(--panel);border:1px solid var(--line-bright);border-radius:12px;padding:12px;font-size:12px;line-height:1.4;overflow-y:auto;opacity:0;pointer-events:none;transition:all 200ms;box-shadow:var(--shadow)}
+.seat.active .speech-bubble{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(-10px)}
+.speech-bubble::after{content:'';position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);border-width:10px 10px 0;border-style:solid;border-color:var(--line-bright) transparent transparent}
+
+/* DM Controller */
+.dm-controller{background:var(--panel);border-top:1px solid var(--line-bright);padding:20px 24px;border-radius:24px 24px 0 0;backdrop-filter:blur(20px);box-shadow:0 -10px 40px rgba(0,0,0,0.5)}
+.dm-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}
+.dm-header h3{font-size:14px;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold)}
+.dm-input-wrap{display:flex;gap:12px;align-items:center}
+.dm-input{flex:1;background:rgba(4,16,15,0.7);border:1px solid var(--line);border-radius:12px;padding:12px 20px;color:var(--text);font-size:15px;transition:border-color 200ms}
+.dm-input:focus{border-color:var(--mint);outline:none}
+.dm-actions{display:flex;gap:8px}
+
+.btn-dm{padding:10px 20px;border-radius:10px;font-weight:700;font-size:13px;cursor:pointer;border:1px solid var(--line);transition:all 150ms;white-space:nowrap}
+.btn-dm.primary{background:linear-gradient(135deg,rgba(143,255,211,0.2),rgba(109,216,255,0.15));color:var(--mint);border-color:rgba(143,255,211,0.4)}
+.btn-dm:hover{background:rgba(143,255,211,0.1);border-color:var(--mint)}
+
+/* Mobile Responsive Adjustments */
+@media(max-width:900px){
+    .table-area{aspect-ratio:auto;height:500px;border-radius:20px;margin:20px 0}
+    .center-scroll{width:90%;height:30%;margin-top:auto;margin-bottom:20px}
+    .seat{width:100px}
+    .speech-bubble{width:180px}
+}
+
 .settings-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:9999;align-items:center;justify-content:center}
 .settings-overlay.open{display:flex}
 .settings-panel{background:#0a0a0f;border:1px solid rgba(139,255,223,0.30);border-radius:16px;padding:24px;width:500px;max-width:92vw;max-height:85vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.6)}
@@ -100,19 +91,49 @@ a{color:inherit;text-decoration:none}
 .footer-links-row{display:flex;gap:16px;flex-wrap:wrap}
 .footer-links-row a{color:var(--dim);transition:color 150ms}
 .footer-links-row a:hover{color:var(--mint)}
-.polly-panel{background:#0a0a0f !important;border:1px solid rgba(139,255,223,0.30) !important}
 ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-thumb{background:var(--line);border-radius:3px}
 </style>
 </head>
 <body>
 <header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html">SCBE-AETHERMOORE</a><button class="mobile-toggle" onclick="document.querySelector('.nav').classList.toggle('open')" aria-label="Toggle navigation">&#9776;</button><nav class="nav" aria-label="Primary"><a href="index.html">Home</a><a href="book.html">Book</a><a href="tools.html">Tools</a><a href="demos/index.html">Demos</a><a href="research/index.html">Research</a><a href="arena.html" class="nav-cta">Arena</a><a href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank" rel="noopener">GitHub</a></nav></div></header>
-<main class="page-wrap">
-<div class="page-header"><h1><span class="accent">AI Arena</span> &mdash; Round Table</h1><div class="header-actions"><button class="btn-sm primary" onclick="openSettings()">Configure API Keys</button><button class="btn-sm" id="arenaInstallBtn" onclick="promptInstall()">Install App</button></div></div>
-<div class="setup-banner visible" id="setupBanner"><h2>Configure your API keys to get started</h2><p>The Arena runs entirely in your browser. Each AI model needs your own API key (BYOK). Keys are stored in localStorage only and sent directly to each provider.</p><button class="btn-sm primary" onclick="openSettings()">Open Settings</button> <button class="btn-sm" onclick="document.getElementById('setupBanner').classList.remove('visible')">Dismiss</button></div>
-<div class="model-grid" id="modelGrid"></div>
-<div class="deal-bar"><input class="deal-input" id="dealInput" placeholder="Ask all models at once, or Shift+Enter to Deliberate..." autocomplete="off" /><button class="deal-btn deal" id="dealBtn" onclick="dealToAll()">Deal</button><button class="deal-btn relay" id="relayBtn" onclick="relayChain()">Relay</button><button class="deal-btn debate" id="debateBtn" onclick="debateDuel()">Debate</button><button class="deal-btn deliberate" id="deliberateBtn" onclick="deliberate()">Deliberate</button></div>
+
+<main class="arena-container">
+    <div class="setup-banner visible" id="setupBanner" style="margin-bottom: 0;">
+        <h2>Gamified Arena v2</h2>
+        <p>No API keys? Use HuggingFace, Kaggle, or Ollama (Local) for free. Configure keys to unlock more agents.</p>
+        <button class="btn-sm primary" onclick="openSettings()">Open Settings</button> 
+        <button class="btn-sm" onclick="document.getElementById('setupBanner').classList.remove('visible')">Dismiss</button>
+    </div>
+
+    <div class="table-area" id="tableArea">
+        <!-- Seats generated by JS -->
+        <div class="center-scroll" id="sharedScroll">
+            <h4>Shared Collaborative Scroll</h4>
+            <div id="scrollContent" style="white-space: pre-wrap; font-family: var(--mono);">Waiting for DM prompt...</div>
+        </div>
+    </div>
+
+    <div class="dm-controller">
+        <div class="dm-header">
+            <h3>Dungeon Master Terminal</h3>
+            <div class="header-actions">
+                <button class="btn-sm primary" onclick="openSettings()">Keys</button>
+                <button class="btn-sm" id="arenaInstallBtn" onclick="promptInstall()">App</button>
+            </div>
+        </div>
+        <div class="dm-input-wrap">
+            <input class="dm-input" id="dealInput" placeholder="Command the agents (e.g. 'Synthesize a plan for...')" autocomplete="off" />
+            <div class="dm-actions">
+                <button class="btn-dm primary" id="dealBtn" onclick="dealToAll()">Deal</button>
+                <button class="btn-dm" id="relayBtn" onclick="relayChain()">Relay</button>
+                <button class="btn-dm" id="deliberateBtn" onclick="deliberate()">Deliberate</button>
+            </div>
+        </div>
+    </div>
 </main>
-<div class="settings-overlay" id="settingsOverlay"><div class="settings-panel"><h3>API Keys (BYOK) <button class="close-settings" onclick="closeSettings()">&times;</button></h3><div class="settings-section"><h4>Cloud Providers</h4><div id="settingsCloudRows"></div></div><div class="settings-section"><h4>Local Models</h4><div class="settings-row"><div class="dot" style="background:#fbbf24"></div><label>Ollama URL</label><input type="text" id="ollamaBaseUrl" placeholder="http://localhost:11434" /><button class="test-btn" onclick="testOllama()">Test</button><span class="test-result" id="testOllama"></span></div><div class="settings-note" style="margin-top:4px;margin-bottom:10px">Ollama runs locally (no key needed). Set <code style="background:rgba(255,255,255,0.08);padding:2px 5px;border-radius:3px">OLLAMA_ORIGINS=*</code> before starting Ollama to allow browser access.</div></div><button class="settings-save" onclick="saveSettings()">Save &amp; Apply</button><div class="settings-note">Keys stored in browser localStorage only. Sent directly to each provider. No intermediary.</div></div></div>
+
+<div class="settings-overlay" id="settingsOverlay"><div class="settings-panel"><h3>API Keys (BYOK) <button class="close-settings" onclick="closeSettings()">&times;</button></h3><div class="settings-section"><h4>Cloud Providers</h4><div id="settingsCloudRows"></div></div><div class="settings-section"><h4>Local & Free Models</h4><div class="settings-row"><div class="dot" style="background:#fbbf24"></div><label>Ollama URL</label><input type="text" id="ollamaBaseUrl" placeholder="http://localhost:11434" /><button class="test-btn" onclick="testOllama()">Test</button><span class="test-result" id="testOllama"></span></div><div class="settings-note" style="margin-top:4px;margin-bottom:10px">Ollama runs locally (no key needed). Set <code style="background:rgba(255,255,255,0.08);padding:2px 5px;border-radius:3px">OLLAMA_ORIGINS=*</code> before starting Ollama.</div></div><button class="settings-save" onclick="saveSettings()">Save &amp; Apply</button></div></div>
+
 <footer class="footer"><div class="footer-inner"><div class="footer-left"><span class="footer-brand">SCBE-AETHERMOORE</span><span>Built by Issac Davis in Port Angeles, WA</span><span>Patent Pending: USPTO #63/961,403</span></div><div class="footer-links-row"><a href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank" rel="noopener">GitHub</a><a href="https://huggingface.co/issdandavis" target="_blank" rel="noopener">HuggingFace</a><a href="https://www.amazon.com/dp/B0F28PHSPR" target="_blank" rel="noopener">Amazon</a><a href="https://www.youtube.com/@id8461" target="_blank" rel="noopener">YouTube</a><a href="mailto:aethermoregames@pm.me">Email</a></div></div></footer>
 <script src="arena.js"></script>
 </body>
