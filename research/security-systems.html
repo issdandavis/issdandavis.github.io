@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security Systems Catalog | SCBE-AETHERMOORE</title>
+  <meta name="description" content="Full catalog of cybersecurity systems built on hyperbolic geometry. H(d,R) = R^(d^2). Spec sheets for every detection, response, and counter-attack module.">
+  <meta property="og:title" content="Security Systems Catalog | SCBE-AETHERMOORE">
+  <meta property="og:description" content="20+ cybersecurity modules. Hyperbolic cost pricing. Pick your stack.">
+  <meta property="og:url" content="https://aethermoorgames.com/research/security-systems.html">
+  <meta property="og:type" content="website">
+  <meta name="keywords" content="cybersecurity, hyperbolic geometry, IDS, EDR, SIEM, honeypot, tripwire, zero trust, AI governance, threat detection, SCBE">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #070711;
+      color: #edf0ff;
+      line-height: 1.7;
+    }
+    a { color: inherit; text-decoration: none; }
+    .topbar {
+      position: sticky; top: 0; z-index: 30;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 16px 24px;
+      background: rgba(7, 7, 17, 0.9); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(123, 140, 255, 0.14);
+    }
+    .topbar .brand { font-weight: 800; letter-spacing: 0.08em; }
+    .topbar nav { display: flex; gap: 18px; flex-wrap: wrap; color: #b4b9df; font-size: 14px; }
+    .topbar nav a:hover { color: #fff; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 42px 24px 80px; }
+
+    .hero-section {
+      text-align: center; padding: 60px 0 40px;
+      border-bottom: 1px solid rgba(123, 140, 255, 0.10);
+      margin-bottom: 48px;
+    }
+    .hero-section h1 {
+      font-size: clamp(28px, 5vw, 52px); font-weight: 800;
+      letter-spacing: -0.03em; margin-bottom: 16px;
+      background: linear-gradient(135deg, #8fffd3, #6dd8ff, #c49cff);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-section .subtitle { color: #9ba3d0; font-size: 18px; max-width: 680px; margin: 0 auto 24px; }
+    .formula-box {
+      display: inline-block; padding: 12px 32px; border-radius: 12px;
+      background: rgba(143, 255, 211, 0.06); border: 1px solid rgba(143, 255, 211, 0.20);
+      font-family: 'Courier New', monospace; font-size: 22px; font-weight: 700;
+      color: #8fffd3; letter-spacing: 0.05em;
+    }
+
+    .tier-label {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      padding: 4px 14px; border-radius: 20px; margin-bottom: 24px;
+    }
+    .tier-core { background: rgba(143, 255, 211, 0.10); border: 1px solid rgba(143, 255, 211, 0.25); color: #8fffd3; }
+    .tier-detection { background: rgba(109, 216, 255, 0.10); border: 1px solid rgba(109, 216, 255, 0.25); color: #6dd8ff; }
+    .tier-response { background: rgba(255, 158, 199, 0.10); border: 1px solid rgba(255, 158, 199, 0.25); color: #ff9ec7; }
+    .tier-intel { background: rgba(196, 156, 255, 0.10); border: 1px solid rgba(196, 156, 255, 0.25); color: #c49cff; }
+    .tier-counter { background: rgba(255, 217, 119, 0.10); border: 1px solid rgba(255, 217, 119, 0.25); color: #ffd977; }
+    .tier-enterprise { background: rgba(255, 140, 105, 0.10); border: 1px solid rgba(255, 140, 105, 0.25); color: #ff8c69; }
+
+    .category { margin-bottom: 60px; }
+    .category h2 {
+      font-size: 28px; font-weight: 700; margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+    .category > p { color: #8a90b8; margin-bottom: 28px; font-size: 15px; }
+
+    .spec-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 20px;
+    }
+    .spec-card {
+      background: rgba(14, 14, 30, 0.85);
+      border: 1px solid rgba(123, 140, 255, 0.12);
+      border-radius: 16px; padding: 28px;
+      transition: border-color 200ms, transform 200ms;
+    }
+    .spec-card:hover {
+      border-color: rgba(143, 255, 211, 0.30);
+      transform: translateY(-2px);
+    }
+    .spec-card h3 {
+      font-size: 18px; font-weight: 700; margin-bottom: 6px;
+    }
+    .spec-card .tagline {
+      color: #8a90b8; font-size: 13px; margin-bottom: 16px;
+    }
+    .spec-table {
+      width: 100%; font-size: 13px; border-collapse: collapse;
+    }
+    .spec-table tr { border-bottom: 1px solid rgba(123, 140, 255, 0.06); }
+    .spec-table tr:last-child { border-bottom: none; }
+    .spec-table td {
+      padding: 6px 0; vertical-align: top;
+    }
+    .spec-table td:first-child {
+      color: #6a7099; font-weight: 600; white-space: nowrap;
+      width: 110px; padding-right: 12px;
+    }
+    .spec-table td:last-child { color: #c8ccef; }
+
+    .tongue-badge {
+      display: inline-block; font-size: 10px; font-weight: 700;
+      padding: 2px 8px; border-radius: 10px; letter-spacing: 0.1em;
+      background: rgba(143, 255, 211, 0.08); border: 1px solid rgba(143, 255, 211, 0.15);
+      color: #8fffd3;
+    }
+    .status-badge {
+      display: inline-block; font-size: 10px; font-weight: 700;
+      padding: 2px 8px; border-radius: 10px; letter-spacing: 0.05em;
+    }
+    .status-live { background: rgba(143, 255, 211, 0.15); color: #8fffd3; }
+    .status-spec { background: rgba(109, 216, 255, 0.15); color: #6dd8ff; }
+    .status-planned { background: rgba(196, 156, 255, 0.15); color: #c49cff; }
+
+    .coverage-bar {
+      display: flex; gap: 2px; margin-top: 4px;
+    }
+    .coverage-bar span {
+      width: 18px; height: 6px; border-radius: 3px;
+      background: rgba(123, 140, 255, 0.12);
+    }
+    .coverage-bar span.filled { background: #8fffd3; }
+    .coverage-bar span.half { background: rgba(143, 255, 211, 0.40); }
+
+    .integration-section {
+      margin-top: 60px; padding-top: 48px;
+      border-top: 1px solid rgba(123, 140, 255, 0.10);
+    }
+    .integration-section h2 { font-size: 28px; margin-bottom: 24px; }
+
+    .matrix-table {
+      width: 100%; border-collapse: collapse; font-size: 13px;
+      margin-bottom: 32px; overflow-x: auto; display: block;
+    }
+    .matrix-table th, .matrix-table td {
+      padding: 10px 14px; text-align: left;
+      border-bottom: 1px solid rgba(123, 140, 255, 0.08);
+    }
+    .matrix-table th {
+      color: #8a90b8; font-weight: 600; font-size: 11px;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      position: sticky; top: 0; background: #070711;
+    }
+    .matrix-table td { color: #c8ccef; }
+    .matrix-table tr:hover td { background: rgba(143, 255, 211, 0.03); }
+
+    .footer {
+      margin-top: 80px; padding-top: 32px;
+      border-top: 1px solid rgba(123, 140, 255, 0.10);
+      color: #5a5f82; font-size: 13px;
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .footer a:hover { color: #8fffd3; }
+
+    @media (max-width: 768px) {
+      .spec-grid { grid-template-columns: 1fr; }
+      .topbar { flex-direction: column; gap: 8px; }
+      .topbar nav { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="brand" href="/">SCBE-AETHERMOORE</a>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/research/">Research</a>
+    <a href="/research/security-systems.html" style="color:#8fffd3;">Security Systems</a>
+    <a href="/product-manual/">Docs</a>
+    <a href="https://github.com/issdandavis/SCBE-AETHERMOORE">GitHub</a>
+  </nav>
+</div>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="hero-section">
+    <h1>Security Systems Catalog</h1>
+    <p class="subtitle">Every detection, response, and counter-attack module in the SCBE security stack. All priced by one law.</p>
+    <div class="formula-box">H(d, R) = R<sup>(d&sup2;)</sup></div>
+    <p style="color:#6a7099; font-size:13px; margin-top:12px;">Patent Pending &mdash; USPTO #63/961,403</p>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- CORE ENGINE -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="category">
+    <span class="tier-label tier-core">Core Engine</span>
+    <h2>Hyperbolic Cost Engine</h2>
+    <p>The single decision point. Every system feeds through this. One formula, one verdict.</p>
+
+    <div class="spec-grid">
+
+      <div class="spec-card">
+        <h3>Cost Engine <span class="status-badge status-live">LIVE</span></h3>
+        <p class="tagline">Central pricing function for all attack vectors</p>
+        <table class="spec-table">
+          <tr><td>Formula</td><td><code>H(d,R) = R^(d&sup2;)</code></td></tr>
+          <tr><td>Inputs</td><td>depth (d), radius (R), Sacred Tongue domain</td></tr>
+          <tr><td>Outputs</td><td>cost, cost_class, blocked (bool), verdict dict</td></tr>
+          <tr><td>Tongue Weights</td><td>KO=1.0, AV=1.618, RU=2.618, CA=4.236, UM=6.854, DR=11.09</td></tr>
+          <tr><td>Cost Classes</td><td>TRIVIAL &lt;10 | LOW &lt;1K | MODERATE &lt;1M | HIGH &lt;1T | PRICED_OUT</td></tr>
+          <tr><td>RAM</td><td>&lt;5MB</td></tr>
+          <tr><td>Dependencies</td><td>None (pure Python)</td></tr>
+          <tr><td>Domain</td><td><span class="tongue-badge">ALL TONGUES</span></td></tr>
+        </table>
+      </div>
+
+      <div class="spec-card">
+        <h3>Event Correlator <span class="status-badge status-spec">SPEC</span></h3>
+        <p class="tagline">Cross-component event correlation via sliding windows</p>
+        <table class="spec-table">
+          <tr><td>Method</td><td>SQLite event bus, sliding window queries</td></tr>
+          <tr><td>Integration</td><td>All monitors + tripwires write events; correlator reads</td></tr>
+          <tr><td>Key Feature</td><td>Same IP across 2+ systems = summed depth. Exponential cost compound.</td></tr>
+          <tr><td>Example</td><td>Port scan (d=2) + canary touch (d=5) = d=7 &rarr; cost explodes</td></tr>
+          <tr><td>RAM</td><td>~5MB (SQLite in-process)</td></tr>
+          <tr><td>Disk</td><td>~1MB/day at 1 event/sec</td></tr>
+          <tr><td>Latency</td><td>&lt;10ms per correlation</td></tr>
+          <tr><td>Domain</td><td><span class="tongue-badge">KO</span> Control &amp; Orchestration</td></tr>
+        </table>
+      </div>
+
+      <div class="spec-card">
+        <h3>SOAR Playbook Engine <span class="status-badge status-spec">SPEC</span></h3>
+        <p class="tagline">Automated response orchestration via directed action graphs</p>
+        <table class="spec-table">
+          <tr><td>Method</td><td>DAG of conditional actions: trigger &rarr; decision &rarr; action</td></tr>
+          <tr><td>Escalation</td><td>OBSERVE &rarr; ALERT &rarr; COUNTER &rarr; LOCKDOWN</td></tr>
+          <tr><td>Actions</td><td>Log, alert, evidence collect, block, tarpit redirect, forensic dump</td></tr>
+          <tr><td>Approval Gates</td><td>Destructive actions require human confirmation</td></tr>
+          <tr><td>Concept From</td><td>Enterprise SOAR (Splunk SOAR, Cortex XSOAR)</td></tr>
+          <tr><td>RAM</td><td>&lt;10MB</td></tr>
+          <tr><td>Domain</td><td><span class="tongue-badge">KO</span> Control &amp; Orchestration</td></tr>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- DETECTION SYSTEMS -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="category">
+    <span class="tier-label tier-detection">Detection</span>
+    <h2>Detection Systems</h2>
+    <p>Eyes on the network, filesystem, and processes. Each feeds the cost engine.</p>
+
+    <div class="spec-grid">
+
+      <div class="spec-card">
+        <h3>Port Watcher <span class="status-badge status-live">LIVE</span></h3>
+        <p class="tagline">Monitors listening ports, flags unknown services</p>
+        <table class="spec-table">
+          <tr><td>Method</td><td><code>ss -tlnp</code> polling</td></tr>
+          <tr><td>Depth Model</td><td>Fixed d=2.0 (port exposure layer)</td></tr>
+          <tr><td>Radius Model</td><td>port_number / 1000 (higher port = wider scope)</td></tr>
+          <tr><td>Interval</td><td>30s default (configurable)</td></tr>
+          <tr><td>False Positives</td><td>~30% (dev servers flag as unknown)</td></tr>
+          <tr><td>RAM</td><td>&lt;5MB</td></tr>
+          <tr><td>Domain</td><td><span class="tongue-badge">AV</span> I/O &amp; Messaging</td></tr>
+        </table>
+      </div>
+
+      <div class="spec-card">
+        <h3>Connection Tracker <span class="status-badge status-live">LIVE</span></h3>
+        <p class="tagline">Monitors active TCP connections, detects repeat offenders</p>
+        <table class="spec-table">
+          <tr><td>Method</td><td><code>ss -tnp</code> polling + IP counting</td></tr>
+          <tr><td>Depth Model</td><td>1.0 + (0.5 &times; repeat_count), caps at d=6</td></tr>
+          <tr><td>Radius Model</td><td>1.5 for standard ports, 3.0+ for unusual ports</td></tr>
+          <tr><td>Interval</td><td>60s default</td></tr>
+          <tr><td>False Positives</td><td>~40% (flags legitimate API connections)</td></tr>
+          <tr><td>RAM</td><td>&lt;5MB</td></tr>
+          <tr><td>Domain</td><td><span class="tongue-badge">UM</span> Security &amp; Privacy</td></tr>
+        </table>
+      </div>
+
+      <div class="spec-card">
+        <h3>Scapy Packet IDS <span class="status-badge status-spec">SPEC</span></h3>
+        <p class="tagline">Real-time packet inspection with custom detection rules</p>
+        <table class="spec-table">
+          <tr><td>Method</td><td><code>scapy.sniff()</code> with BPF filters, per-packet callback</td></tr>
+          <tr><td>Detects</td><td>SYN floods, port scans, payload anomalies, protocol violations</td></tr>
+          <tr><td>Depth Model</td><td>Rule-dependent: scan=2, exploit=3, payload_anomaly=4</td></tr>
+          <tr><td>Latency</td><td>&lt;1ms per packet</td></tr>
+          <tr><td>Throughput</td><td>~10K packets/sec on Celeron N4020</td></tr>
+          <tr><td>Requires</td><td>CAP_NET_RAW or root</td></tr>
+          <tr><td>RAM</td><td>40-80MB</td></tr>
+          <tr><td>Domain</td><td><span class="tongue-badge">AV</span> I/O &amp; Messaging</td></tr>
+        </table>
+      </div>
+
+      <div class="spec-card">
+        <h3>Behavioral Baseline Engine <span class="status-badge status-spec">SPEC</span></h3>
+        <p class="tagline">Learns "normal" from /proc, alerts on statistical anomalies</p>
+        <table class="spec-table">
+          <tr><td>Method</td><td>/proc sampling + EWMA (alpha=0.1) + 3-sigma alerting</td></tr>
+          <tr><td>Baselines</td><td>Process count, FD count, connection count, outbound bytes, DNS entropy</td></tr>
+          <tr><td>Warm-up</td><td>1-2 hours before baselines are meaningful</td></tr>
+          <tr><td>Depth Model</td><td>sigma_deviation / 2 (3-sigma = d=1.5, 6-sigma = d=3)</td></tr>
+          <tr><td>Radius Model</td><td>Learned from baseline &mdash; replaces static values</td></tr>
+          <tr><td>False Positives</td><td>~10% after warm-up, ~80% during warm-up</td></tr>
+          <tr><td>RAM</td><td>~20MB for 1000 entities</td></tr>
+          <tr><td>Concept From</td><td>Darktrace NDR, Zeek behavioral analysis</td></tr>
+          <tr><td>Domain</td><td><span class="tongue-badge">CA</span> Logic &amp; Computation</td></tr>
+        </table>
+      </div>
+
+      <div class="spec-card">
+        <h3>Entropy Analyzer <span class="status-badge status-spec">SPEC</span></h3>
+        <p class="tagline">Shannon entropy of payloads and DNS queries. Spikes = exfil or encoding.</p>
+        <table class="spec-table">
+          <tr><td>Method</td><td>Shannon entropy: H = -&Sigma; p(x) log2 p(x)</td></tr>
+          <tr><td>Detects</td><td>Encrypted exfiltration, base64 C2 comms, DNS tunneling</td></tr>
+          <tr><td>Threshold</td><td>Normal text ~4.5 bits, encrypted &gt;7.5 bits</td></tr>
+          <tr><td>Depth Model</td><td>entropy / 2 (7.5 bits = d=3.75)</td></tr>
+          <tr><td>RAM</td><td>&lt;5MB</td></tr>
+          <tr><td>Implementation</td><td>~30 lines Python</td></tr>
+          <tr><td>Domain</td><td><span class="tongue-badge">CA</span> Logic &amp; Computation</td></tr>
+        </table>
+      </div>
+
+      <div class="spec-card">
+        <h3>Rootkit Scanner <span class="status-badge status-spec">SPEC</span></h3>
+        <p class="tagline">Wraps rkhunter + chkrootkit with cost engine integration</p>
+        <table class="spec-table">
+          <tr><td>Tools</td><td><code>rkhunter</code> + <code>chkrootkit</code> (run both, different coverage)</td></tr>
+          <tr><td>Depth Model</td><td>Rootkit finding = d=5 (kernel-level compromise)</td></tr>
+          <tr><td>Radius Model</td><td>R=10 (full system access implied)</td></tr>
+          <tr><td>Schedule</td><td>Daily cron scan</td></tr>
+          <tr><td>Limitation</td><td>Cannot detect kernel-level rootkits reliably</td></tr>
+          <tr><td>RAM</td><td>&lt;30MB during scan</td></tr>
+          <tr><td>Domain</td><td><span class="tongue-badge">UM</span> Security &amp; Privacy</td></tr>
+        </table>
+      </div>
+
+      <div class="spec-card">
+        <h3>Traffic Analyzer (tshark) <span class="status-badge status-spec">SPEC</span></h3>
+        <p class="tagline">Deep packet inspection and protocol dissection</p>
+        <table class="spec-table">
+          <tr><td>Method</td><td><code>tshark</code> capture + custom filter scripts</td></tr>
+          <tr><td>Protocols</td><td>HTTP, DNS, TLS (JA3 fingerprint), SMB, SSH</td></tr>
+          <tr><td>Depth Model</td><td>Protocol anomaly severity mapping</td></tr>
+          <tr><td>Output</td><td>PCAP files + structured JSON for correlator</td></tr>
+          <tr><td>RAM</td><td>30-80MB per capture session</td></tr>
+          <tr><td>Disk</td><td>PCAP rotation: 24h retention</td></tr>
+          <tr><td>Domain</td><td><span class="tongue-badge">AV</span> I/O &amp; Messaging</td></tr>
+        </table>
+      </div>
+
+      <div class="spec-card">
+        <h3>File Integrity Monitor (AIDE) <span class="status-badge status-spec">SPEC</span></h3>
+        <p class="tagline">Full-system file integrity verification via AIDE</p>
+        <table class="spec-table">
+          <tr><td>Method</td><td>AIDE database comparison: baseline vs current</td></tr>
+          <tr><td>Scope</td><td>All binaries, configs, system files</td></tr>
+          <tr><td>Schedule</td><td>Daily cron, results fed to cost engine</td></tr>
+          <tr><td>Depth Model</td><td>Binary change = d=4, config change = d=2.5</td></tr>
+          <tr><td>RAM</td><td>&lt;50MB during scan</td></tr>
+          <tr><td>Disk</td><td>~5MB for database</td></tr>
+          <tr><td>Domain</td><td><span class="tongue-badge">DR</span> Types &amp; Structures</td></tr>
+        </table>
+      </div>
+
+      <div class="spec-card">
+        <h3>Process Genealogy Tracker <span class="status-badge status-spec">SPEC</span></h3>
+        <p class="tagline">Builds process parent-child DAGs, scores suspicious lineage</p>
+        <table class="spec-table">
+          <tr><td>Method</td><td>/proc traversal, build process trees, score chains</td></tr>
+          <tr><td>Detects</td><td>Shell spawned by web server, unexpected privilege chains</td></tr>
+          <tr><td>Depth Model</td><td>Process tree depth = attack depth d</td></tr>
+          <tr><td>Concept From</td><td>CrowdStrike Storylines, SentinelOne DAGs</td></tr>
+          <tr><td>RAM</td><td>~15MB</td></tr>
+          <tr><td>Domain</td><td><span class="tongue-badge">RU</span> Policy &amp; Constraints</td></tr>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- INTEGRITY & TRIPWIRES -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="category">
+    <span class="tier-label tier-counter">Integrity &amp; Tripwires</span>
+    <h2>Integrity Systems</h2>
+    <p>Canaries, Merkle trees, and cryptographic proof. Any tampering hits the cost engine.</p>
+
+    <div class="spec-grid">
+
+      <div class="spec-card">
+        <h3>Canary Tripwires <span class="status-badge status-live">LIVE</span></h3>
+        <p class="tagline">Decoy files that should never be touched. Any access = alarm.</p>
+        <table class="spec-table">
+          <tr><td>Method</td><td>SHA-256 baseline + periodic check</td></tr>
+          <tr><td>Canaries</td><td>Fake .env, credentials, SSH keys</td></tr>
+          <tr><td>Depth Model</td><td>Canary touch = d=5 (deep intrusion confirmed)</td></tr>
+          <tr><td>False Positives</td><td>~0% (no legitimate access to canary files)</td></tr>
+          <tr><td>RAM</td><td>&lt;5MB</td></tr>
+          <tr><td>Domain</td><td><span class="tongue-badge">UM</span> Security &amp; Privacy</td></tr>
+        </table>
+      </div>
+
+      <div class="spec-card">
+        <h3>HMAC Merkle Tripwires <span class="status-badge status-spec">SPEC</span></h3>
+        <p class="tagline">Cryptographically signed integrity tree. Attacker can't forge after compromise.</p>
+        <table class="spec-table">
+          <tr><td>Method</td><td>HMAC-SHA256 per file, Merkle tree to root hash</td></tr>
+          <tr><td>Upgrade Over</td><td>Plain SHA-256 (current) &mdash; adds secret key requirement</td></tr>
+          <tr><td>Verification</td><td>O(log N) per file, verify single file without full scan</td></tr>
+          <tr><td>Key Storage</td><td>Off-device (USB or env var at boot). Never on disk.</td></tr>
+          <tr><td>RAM</td><td>&lt;1MB</td></tr>
+          <tr><td>Implementation</td><td>~50 lines Python</td></tr>
+          <tr><td>Domain</td><td><span class="tongue-badge">UM</span> Security &amp; Privacy</td></tr>
+        </table>
+      </div>
+
+      <div class="spec-card">
+        <h3>Real-time Filesystem Watcher <span class="status-badge status-spec">SPEC</span></h3>
+        <p class="tagline">Instant detection via kernel inotify. Replaces polling.</p>
+        <table class="spec-table">
+          <tr><td>Method</td><td><code>watchdog</code> library + inotify kernel events</td></tr>
+          <tr><td>Latency</td><td>&lt;100ms from file touch to alert</td></tr>
+          <tr><td>Replaces</td><td>Cron-based tripwire checks</td></tr>
+          <tr><td>Limitation</td><td>~8192 inotify watches (Linux default), can't cross mount boundaries</td></tr>
+          <tr><td>RAM</td><td>~15MB resident</td></tr>
+          <tr><td>Domain</td><td><span class="tongue-badge">DR</span> Types &amp; Structures</td></tr>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- COUNTER-ATTACK SYSTEMS -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="category">
+    <span class="tier-label tier-response">Counter-Attack</span>
+    <h2>Counter-Attack Systems</h2>
+    <p>Active defense. Waste attacker time, collect evidence, escalate response.</p>
+
+    <div class="spec-grid">
+
+      <div class="spec-card">
+        <h3>Response Engine <span class="status-badge status-live">LIVE</span></h3>
+        <p class="tagline">Escalating countermeasures triggered by cost verdicts</p>
+        <table class="spec-table">
+          <tr><td>Levels</td><td>OBSERVE &rarr; ALERT &rarr; COUNTER &rarr; LOCKDOWN</td></tr>
+          <tr><td>OBSERVE</td><td>cost &lt;1K: log to disk</td></tr>
+          <tr><td>ALERT</td><td>cost &ge;1K: alert file + log</td></tr>
+          <tr><td>COUNTER</td><td>cost &ge;1M: evidence snapshot (processes, connections, logins, env)</td></tr>
+          <tr><td>LOCKDOWN</td><td>cost &ge;1T: full forensic dump + lockdown report</td></tr>
+          <tr><td>RAM</td><td>&lt;10MB</td></tr>
+          <tr><td>Domain</td><td><span class="tongue-badge">KO</span> Control &amp; Orchestration</td></tr>
+        </table>
+      </div>
+
+      <div class="spec-card">
+        <h3>TCP Tarpit <span class="status-badge status-spec">SPEC</span></h3>
+        <p class="tagline">Accepts connections, drips data at 1 byte/sec. Wastes attacker sockets.</p>
+        <table class="spec-table">
+          <tr><td>Method</td><td><code>asyncio</code> server, deliberate sleep per byte</td></tr>
+          <tr><td>Capacity</td><td>Thousands of trapped connections simultaneously</td></tr>
+          <tr><td>Integration</td><td>Every trapped connection &rarr; event bus &rarr; correlator</td></tr>
+          <tr><td>Trade-off</td><td>Exposes ports (increases surface by design)</td></tr>
+          <tr><td>RAM</td><td>~5MB base + 100 bytes per connection</td></tr>
+          <tr><td>Domain</td><td><span class="tongue-badge">AV</span> I/O &amp; Messaging</td></tr>
+        </table>
+      </div>
+
+      <div class="spec-card">
+        <h3>Labyrinth Filesystem <span class="status-badge status-spec">SPEC</span></h3>
+        <p class="tagline">FUSE-based infinite fake directory tree. Logs every access.</p>
+        <table class="spec-table">
+          <tr><td>Method</td><td><code>fusepy</code> generates dirs on-the-fly with plausible names</td></tr>
+          <tr><td>Purpose</td><td>Burns attacker time traversing nonexistent data</td></tr>
+          <tr><td>Detection</td><td>Any access = malicious (no legitimate users in the labyrinth)</td></tr>
+          <tr><td>RAM</td><td>~10MB</td></tr>
+          <tr><td>Implementation</td><td>~100 lines Python</td></tr>
+          <tr><td>Domain</td><td><span class="tongue-badge">DR</span> Types &amp; Structures</td></tr>
+        </table>
+      </div>
+
+      <div class="spec-card">
+        <h3>Adaptive Rate Limiter <span class="status-badge status-spec">SPEC</span></h3>
+        <p class="tagline">Token bucket + exponential backoff. Each failure makes the next harder.</p>
+        <table class="spec-table">
+          <tr><td>Method</td><td>Token bucket per source IP, SQLite-backed state</td></tr>
+          <tr><td>Penalty</td><td>delay = min(base &times; 2^N, cap) per failed attempt</td></tr>
+          <tr><td>Integration</td><td>Failed attempts increase depth in cost engine</td></tr>
+          <tr><td>Concept From</td><td>Enterprise WAF rate limiting, API gateway patterns</td></tr>
+          <tr><td>RAM</td><td>&lt;5MB + SQLite</td></tr>
+          <tr><td>Domain</td><td><span class="tongue-badge">RU</span> Policy &amp; Constraints</td></tr>
+        </table>
+      </div>
+
+      <div class="spec-card">
+        <h3>Honeytoken Network <span class="status-badge status-spec">SPEC</span></h3>
+        <p class="tagline">Fake credentials scattered across the system. Any use = confirmed compromise.</p>
+        <table class="spec-table">
+          <tr><td>Types</td><td>Fake AWS keys, API tokens, SSH keys, DB credentials, DNS canaries</td></tr>
+          <tr><td>Monitoring</td><td><code>watchdog</code> inotify on token files + DNS listener for canary domains</td></tr>
+          <tr><td>Detection</td><td>100% true positive rate, 0% false positive</td></tr>
+          <tr><td>Depth Model</td><td>d=5 (confirmed compromise)</td></tr>
+          <tr><td>Concept From</td><td>Attivo Networks, Thinkst Canary</td></tr>
+          <tr><td>Domain</td><td><span class="tongue-badge">UM</span> Security &amp; Privacy</td></tr>
+        </table>
+      </div>
+
+      <div class="spec-card">
+        <h3>Forensic Collector <span class="status-badge status-spec">SPEC</span></h3>
+        <p class="tagline">On-detection evidence snapshot with chain-of-custody hashing</p>
+        <table class="spec-table">
+          <tr><td>Captures</td><td>/proc trees, network state, file timelines, env vars, login history</td></tr>
+          <tr><td>Integrity</td><td>SHA-256 hash of every collected artifact, append-only log (chattr +a)</td></tr>
+          <tr><td>Memory</td><td>Optional /proc/kcore dump, analyzed via Volatility 3</td></tr>
+          <tr><td>Trigger</td><td>Automatic at COUNTER and LOCKDOWN response levels</td></tr>
+          <tr><td>Domain</td><td><span class="tongue-badge">CA</span> Logic &amp; Computation</td></tr>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- ENTERPRISE CONCEPTS -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="category">
+    <span class="tier-label tier-enterprise">Enterprise Architecture</span>
+    <h2>Enterprise-Grade Concepts</h2>
+    <p>Core logic extracted from enterprise systems. Lightweight Python implementations of billion-dollar ideas.</p>
+
+    <div class="spec-grid">
+
+      <div class="spec-card">
+        <h3>SIEM Correlator <span class="status-badge status-spec">SPEC</span></h3>
+        <p class="tagline">Temporal event correlation with sliding-window state machines</p>
+        <table class="spec-table">
+          <tr><td>Method</td><td>Sigma-style rules: "5 failed logins in 60s from same IP &rarr; success"</td></tr>
+          <tr><td>Scoring</td><td>credibility &times; relevance &times; severity &rarr; maps to H(d,R)</td></tr>
+          <tr><td>Correlation depth</td><td>Chain length = depth d in cost function</td></tr>
+          <tr><td>Concept From</td><td>Splunk, Wazuh, IBM QRadar</td></tr>
+          <tr><td>Domain</td><td><span class="tongue-badge">KO</span> Control &amp; Orchestration</td></tr>
+        </table>
+      </div>
+
+      <div class="spec-card">
+        <h3>XDR / EDR Engine <span class="status-badge status-spec">SPEC</span></h3>
+        <p class="tagline">Process genealogy DAGs with per-node threat scoring</p>
+        <table class="spec-table">
+          <tr><td>Method</td><td>Directed acyclic graph of process events, causality-linked</td></tr>
+          <tr><td>Detection</td><td>Parent-child anomalies, API call sequences, memory allocation patterns</td></tr>
+          <tr><td>Scoring</td><td>Per-node score + graph aggregate. DAG depth = attack depth.</td></tr>
+          <tr><td>Concept From</td><td>CrowdStrike Storylines, SentinelOne ActiveEDR</td></tr>
+          <tr><td>Domain</td><td><span class="tongue-badge">RU</span> Policy &amp; Constraints</td></tr>
+        </table>
+      </div>
+
+      <div class="spec-card">
+        <h3>Zero Trust Scoring <span class="status-badge status-spec">SPEC</span></h3>
+        <p class="tagline">Per-request trust evaluation with time-decay</p>
+        <table class="spec-table">
+          <tr><td>Formula</td><td>access = trust_score &ge; resource_sensitivity</td></tr>
+          <tr><td>Inputs</td><td>Identity confidence, device posture, network context, behavioral consistency</td></tr>
+          <tr><td>Decay</td><td>Trust scores decay over time, forcing re-verification</td></tr>
+          <tr><td>Maps to H(d,R)</td><td>Trust decay fits hyperbolic distance metrics naturally</td></tr>
+          <tr><td>Concept From</td><td>Google BeyondCorp, Zscaler ZPA</td></tr>
+          <tr><td>Domain</td><td><span class="tongue-badge">RU</span> Policy &amp; Constraints</td></tr>
+        </table>
+      </div>
+
+      <div class="spec-card">
+        <h3>NDR Baseline <span class="status-badge status-spec">SPEC</span></h3>
+        <p class="tagline">Per-device behavioral clustering, distance-from-centroid anomaly detection</p>
+        <table class="spec-table">
+          <tr><td>Method</td><td>Feature vectors per entity, unsupervised clustering, deviation scoring</td></tr>
+          <tr><td>Features</td><td>Peers, protocols, data volumes, timing patterns, TLS fingerprints</td></tr>
+          <tr><td>Detection</td><td>Device changes cluster &rarr; flag. Distance-from-normal = radius R.</td></tr>
+          <tr><td>Concept From</td><td>Darktrace, Zeek/Bro network analysis</td></tr>
+          <tr><td>Domain</td><td><span class="tongue-badge">CA</span> Logic &amp; Computation</td></tr>
+        </table>
+      </div>
+
+      <div class="spec-card">
+        <h3>MITRE ATT&amp;CK Mapper <span class="status-badge status-spec">SPEC</span></h3>
+        <p class="tagline">Tags every detection with ATT&amp;CK technique IDs, scores kill-chain completeness</p>
+        <table class="spec-table">
+          <tr><td>Method</td><td>STIX/TAXII JSON graph: indicators, malware, threat-actors, relationships</td></tr>
+          <tr><td>Tactics</td><td>14 tactics, ~200 techniques mapped to detection rules</td></tr>
+          <tr><td>Scoring</td><td>Kill-chain completeness metric: more phases covered = higher depth</td></tr>
+          <tr><td>Concept From</td><td>MITRE ATT&amp;CK Framework</td></tr>
+          <tr><td>Domain</td><td><span class="tongue-badge">CA</span> Logic &amp; Computation</td></tr>
+        </table>
+      </div>
+
+      <div class="spec-card">
+        <h3>Deception Mesh <span class="status-badge status-spec">SPEC</span></h3>
+        <p class="tagline">Breadcrumb trails + decoy services + honeynet for lateral movement detection</p>
+        <table class="spec-table">
+          <tr><td>Method</td><td>Fake assets planted on real endpoints pointing to decoy systems</td></tr>
+          <tr><td>Breadcrumbs</td><td>Fake SSH keys, RDP shortcuts, credential cache entries</td></tr>
+          <tr><td>Detection</td><td>Any interaction = confidence 1.0 (zero false positives)</td></tr>
+          <tr><td>Concept From</td><td>Attivo Networks, Illusive Networks</td></tr>
+          <tr><td>Domain</td><td><span class="tongue-badge">UM</span> Security &amp; Privacy</td></tr>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- LOW-LEVEL TOOLS -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="category">
+    <span class="tier-label tier-intel">Infrastructure Tools</span>
+    <h2>Infrastructure Layer</h2>
+    <p>Installable tools that feed the detection and response stack.</p>
+
+    <div class="spec-grid">
+
+      <div class="spec-card">
+        <h3>nmap <span class="status-badge status-spec">SPEC</span></h3>
+        <p class="tagline">Port/service scanning for defensive auditing</p>
+        <table class="spec-table">
+          <tr><td>Install</td><td><code>apt install nmap</code></td></tr>
+          <tr><td>Usage</td><td><code>nmap -sV -O localhost</code></td></tr>
+          <tr><td>Disk</td><td>~25MB</td></tr>
+          <tr><td>RAM</td><td>50-100MB per scan</td></tr>
+          <tr><td>Integration</td><td>python-nmap wrapper feeds cost engine</td></tr>
+        </table>
+      </div>
+
+      <div class="spec-card">
+        <h3>tcpdump <span class="status-badge status-spec">SPEC</span></h3>
+        <p class="tagline">Raw packet capture for offline analysis</p>
+        <table class="spec-table">
+          <tr><td>Install</td><td><code>apt install tcpdump</code></td></tr>
+          <tr><td>Usage</td><td>Capture to PCAP, analyze with tshark</td></tr>
+          <tr><td>Disk</td><td>~2MB + PCAP storage</td></tr>
+          <tr><td>RAM</td><td>~10MB</td></tr>
+          <tr><td>Integration</td><td>On-demand capture during COUNTER/LOCKDOWN</td></tr>
+        </table>
+      </div>
+
+      <div class="spec-card">
+        <h3>Log Analyzer (logcheck) <span class="status-badge status-spec">SPEC</span></h3>
+        <p class="tagline">Filters syslog for anomalous entries</p>
+        <table class="spec-table">
+          <tr><td>Install</td><td><code>apt install logcheck</code></td></tr>
+          <tr><td>Method</td><td>Cron-based, regex filters, flags unusual log lines</td></tr>
+          <tr><td>Disk</td><td>~2MB</td></tr>
+          <tr><td>RAM</td><td>Negligible</td></tr>
+          <tr><td>Integration</td><td>Anomalous log lines fed to correlator as events</td></tr>
+        </table>
+      </div>
+
+      <div class="spec-card">
+        <h3>Bandwidth Monitor (iftop/nethogs) <span class="status-badge status-spec">SPEC</span></h3>
+        <p class="tagline">Real-time per-connection and per-process bandwidth</p>
+        <table class="spec-table">
+          <tr><td>Install</td><td><code>apt install iftop nethogs</code></td></tr>
+          <tr><td>iftop</td><td>Per-connection bandwidth</td></tr>
+          <tr><td>nethogs</td><td>Per-process bandwidth</td></tr>
+          <tr><td>Disk</td><td>~1MB each</td></tr>
+          <tr><td>Integration</td><td>Bandwidth spikes feed baseline engine</td></tr>
+        </table>
+      </div>
+
+      <div class="spec-card">
+        <h3>SSH Honeypot (Cowrie) <span class="status-badge status-spec">SPEC</span></h3>
+        <p class="tagline">Emulates SSH, logs brute-force attempts and attacker sessions</p>
+        <table class="spec-table">
+          <tr><td>Install</td><td><code>pip install cowrie</code></td></tr>
+          <tr><td>Captures</td><td>Credentials tried, commands run, files uploaded</td></tr>
+          <tr><td>RAM</td><td>~50MB</td></tr>
+          <tr><td>Integration</td><td>Every login attempt &rarr; AttackVector &rarr; cost engine</td></tr>
+          <tr><td>Domain</td><td><span class="tongue-badge">UM</span> Security &amp; Privacy</td></tr>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- RESOURCE MATRIX -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="integration-section">
+    <h2>Resource Budget</h2>
+    <p style="color:#8a90b8; margin-bottom:20px;">Total system: 2.7GB RAM, 10GB disk. All systems must coexist.</p>
+
+    <table class="matrix-table">
+      <thead>
+        <tr>
+          <th>System</th>
+          <th>RAM</th>
+          <th>Disk</th>
+          <th>CPU</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Cost Engine</td><td>&lt;5MB</td><td>&lt;1MB</td><td>Negligible</td><td><span class="status-badge status-live">LIVE</span></td></tr>
+        <tr><td>Port Watcher</td><td>&lt;5MB</td><td>Log only</td><td>Burst every 30s</td><td><span class="status-badge status-live">LIVE</span></td></tr>
+        <tr><td>Connection Tracker</td><td>&lt;5MB</td><td>Log only</td><td>Burst every 60s</td><td><span class="status-badge status-live">LIVE</span></td></tr>
+        <tr><td>Canary Tripwires</td><td>&lt;5MB</td><td>~1MB</td><td>Burst on check</td><td><span class="status-badge status-live">LIVE</span></td></tr>
+        <tr><td>Response Engine</td><td>&lt;10MB</td><td>~5MB/mo</td><td>Burst on trigger</td><td><span class="status-badge status-live">LIVE</span></td></tr>
+        <tr><td>Event Bus (SQLite)</td><td>~5MB</td><td>~30MB/mo</td><td>Negligible</td><td><span class="status-badge status-spec">SPEC</span></td></tr>
+        <tr><td>Filesystem Watcher</td><td>~15MB</td><td>0</td><td>Idle (kernel events)</td><td><span class="status-badge status-spec">SPEC</span></td></tr>
+        <tr><td>HMAC Merkle</td><td>&lt;1MB</td><td>&lt;1MB</td><td>Burst on verify</td><td><span class="status-badge status-spec">SPEC</span></td></tr>
+        <tr><td>Behavioral Baseline</td><td>~20MB</td><td>~10MB/mo</td><td>Sampling every 10s</td><td><span class="status-badge status-spec">SPEC</span></td></tr>
+        <tr><td>Entropy Analyzer</td><td>&lt;5MB</td><td>Log only</td><td>Per-packet</td><td><span class="status-badge status-spec">SPEC</span></td></tr>
+        <tr><td>TCP Tarpit</td><td>~5MB</td><td>Log only</td><td>Async idle</td><td><span class="status-badge status-spec">SPEC</span></td></tr>
+        <tr><td>Scapy IDS</td><td>40-80MB</td><td>~100MB/mo (PCAP)</td><td>~10K pps max</td><td><span class="status-badge status-spec">SPEC</span></td></tr>
+        <tr><td>Cowrie Honeypot</td><td>~50MB</td><td>~20MB</td><td>Per-session</td><td><span class="status-badge status-spec">SPEC</span></td></tr>
+        <tr style="background:rgba(143,255,211,0.05); font-weight:600;">
+          <td>TOTAL (all running)</td><td>~155MB</td><td>~170MB/mo</td><td>Fits N4020</td><td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- COVERAGE MATRIX -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="integration-section">
+    <h2>Attack Phase Coverage</h2>
+    <p style="color:#8a90b8; margin-bottom:20px;">Which systems detect which attack phases. Combined coverage approaches full spectrum.</p>
+
+    <table class="matrix-table">
+      <thead>
+        <tr>
+          <th>System</th>
+          <th>Recon</th>
+          <th>Exploit</th>
+          <th>Persist</th>
+          <th>Exfil</th>
+          <th>Lateral</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Port Watcher</td><td>++</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+        <tr><td>Connection Tracker</td><td>++</td><td>+</td><td>-</td><td>++</td><td>+</td></tr>
+        <tr><td>Scapy IDS</td><td>+++++</td><td>+++</td><td>-</td><td>+++</td><td>++</td></tr>
+        <tr><td>Behavioral Baseline</td><td>++</td><td>++</td><td>+++</td><td>++++</td><td>+++</td></tr>
+        <tr><td>Canary Tripwires</td><td>-</td><td>-</td><td>++++</td><td>-</td><td>++</td></tr>
+        <tr><td>HMAC Merkle</td><td>-</td><td>-</td><td>+++++</td><td>-</td><td>+++</td></tr>
+        <tr><td>Honeytoken Network</td><td>-</td><td>-</td><td>+++++</td><td>-</td><td>++++</td></tr>
+        <tr><td>TCP Tarpit</td><td>+++</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+        <tr><td>Entropy Analyzer</td><td>-</td><td>+</td><td>-</td><td>+++++</td><td>+</td></tr>
+        <tr><td>Process Genealogy</td><td>-</td><td>++++</td><td>++</td><td>+</td><td>++</td></tr>
+        <tr><td>Cowrie Honeypot</td><td>++++</td><td>++</td><td>+</td><td>-</td><td>++</td></tr>
+        <tr style="background:rgba(143,255,211,0.05); font-weight:600;">
+          <td>COMBINED</td><td>+++++</td><td>++++</td><td>+++++</td><td>+++++</td><td>+++++</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- THE LAW -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="integration-section" style="text-align:center; padding:48px 0;">
+    <p style="color:#6a7099; font-size:13px; letter-spacing:0.15em; text-transform:uppercase; margin-bottom:16px;">The Law</p>
+    <div class="formula-box" style="font-size:28px; padding:16px 40px;">H(d, R) = R<sup>(d&sup2;)</sup></div>
+    <p style="color:#8a90b8; margin-top:16px; max-width:500px; margin-left:auto; margin-right:auto;">
+      Every system on this page feeds through one formula.
+      Depth compounds. Radius scales. The geometry prices attackers out.
+    </p>
+    <p style="color:#5a5f82; font-size:13px; margin-top:24px;">
+      Patent Pending &mdash; USPTO #63/961,403<br>
+      SCBE-AETHERMOORE &copy; 2024-2026 Issac Davis
+    </p>
+  </div>
+
+  <div class="footer">
+    <div>
+      <span style="color:#8a90b8; font-weight:600;">SCBE-AETHERMOORE</span><br>
+      AI Governance. Mathematical Security.
+    </div>
+    <div style="display:flex; gap:16px;">
+      <a href="/">Home</a>
+      <a href="/research/">Research</a>
+      <a href="/product-manual/">Docs</a>
+      <a href="https://github.com/issdandavis/SCBE-AETHERMOORE">GitHub</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
