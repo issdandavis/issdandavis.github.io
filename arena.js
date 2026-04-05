@@ -25,21 +25,16 @@ function buildTableSeats(){
     if(!table) return;
     var existingSeats=document.querySelectorAll('.seat');
     existingSeats.forEach(s => s.remove());
-
     var radius = window.innerWidth > 900 ? 38 : 42; 
-    
     PLAYERS.forEach(function(p, i){
         var seat=document.createElement('div');
         seat.className='seat';
         seat.id='seat-'+p.id;
-        
         var angle = (i / PLAYERS.length) * (2 * Math.PI) - (Math.PI / 2);
         var x = 50 + radius * Math.cos(angle);
         var y = 50 + radius * Math.sin(angle);
-        
         seat.style.left = x + '%';
         seat.style.top = y + '%';
-        
         seat.innerHTML=`
             <div class="speech-bubble" id="bubble-${p.id}"></div>
             <div class="avatar-wrap" style="border-color:${p.color}">
@@ -49,7 +44,6 @@ function buildTableSeats(){
             <div class="seat-role">${p.role}</div>
             <div class="model-status nokey" id="status-${p.id}" style="font-size:8px; margin-top:4px">no key</div>
         `;
-        
         table.appendChild(seat);
         seats[p.id]={player:p,messages:[]};
     });
@@ -58,14 +52,11 @@ function addMessage(pid,role,text,meta){
     var bubble=document.getElementById('bubble-'+pid);
     var seat=document.getElementById('seat-'+pid);
     if(!bubble || !seat) return;
-    
     var c=escHtml(text);
     c=c.replace(/```(\w*)\n([\s\S]*?)```/g,'<pre>$2</pre>');
     c=c.replace(/`([^`]+)`/g,'<code>$1</code>');
-    
     bubble.innerHTML = `<div class="msg-text">${c}</div><div class="msg-meta" style="font-size:8px; color:var(--dim); margin-top:4px">${meta||''}</div>`;
     seat.classList.add('active');
-    
     var scroll=document.getElementById('scrollContent');
     if(scroll && role !== 'error' && role !== 'user'){
         if(scroll.innerText === 'Waiting for DM prompt...') scroll.innerText = '';
@@ -73,10 +64,6 @@ function addMessage(pid,role,text,meta){
         var sharedScroll = document.getElementById('sharedScroll');
         if(sharedScroll) sharedScroll.scrollTop = sharedScroll.scrollHeight;
     }
-
-    setTimeout(() => {
-        // Keep active for 15s or until next message
-    }, 15000);
 }
 function setStatus(pid,status,label){
     var el=document.getElementById('status-'+pid);
@@ -84,7 +71,6 @@ function setStatus(pid,status,label){
     if(!el || !seat) return;
     el.className='model-status '+status;
     el.textContent=label||status;
-    
     if(status === 'thinking') seat.classList.add('thinking');
     else seat.classList.remove('thinking');
 }
@@ -113,4 +99,49 @@ window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();def
 window.addEventListener('appinstalled',function(){deferredInstallPrompt=null;updateInstallUi()});
 async function promptInstall(){if(isStandaloneMode())return;if(!deferredInstallPrompt){alert('Use your browser menu to install (Add to Home Screen).');return}deferredInstallPrompt.prompt();try{await deferredInstallPrompt.userChoice}finally{deferredInstallPrompt=null;updateInstallUi()}}
 document.getElementById('dealInput').addEventListener('keydown',function(e){if(e.key==='Enter'&&e.shiftKey){e.preventDefault();deliberate()}else if(e.key==='Enter')dealToAll()});
-buildTableSeats();updateInstallUi();refreshKeyStatus();
+
+function shareDebate(){
+    const content = document.getElementById('scrollContent').innerText;
+    if(!content || content === 'Waiting for DM prompt...') {
+        alert('Start a debate first to share!');
+        return;
+    }
+    const blob = btoa(unescape(encodeURIComponent(content)));
+    const url = window.location.origin + window.location.pathname + '#debate=' + blob;
+    
+    navigator.clipboard.writeText(url).then(() => {
+        const btn = document.getElementById('shareBtn');
+        const oldText = btn.textContent;
+        btn.textContent = 'Copied Link!';
+        btn.style.color = 'var(--mint)';
+        setTimeout(() => {
+            btn.textContent = oldText;
+            btn.style.color = 'var(--aqua)';
+        }, 2000);
+    });
+}
+
+function loadSharedDebate(){
+    const hash = window.location.hash;
+    if(hash && hash.startsWith('#debate=')){
+        const blob = hash.substring(8);
+        try {
+            const content = decodeURIComponent(escape(atob(blob)));
+            const scroll = document.getElementById('scrollContent');
+            if(scroll) {
+                scroll.innerText = content;
+                const sharedScroll = document.getElementById('sharedScroll');
+                if(sharedScroll) sharedScroll.scrollTop = sharedScroll.scrollHeight;
+            }
+        } catch(e) {
+            console.error('Failed to load shared debate', e);
+        }
+    }
+}
+
+window.addEventListener('load', () => {
+    buildTableSeats();
+    updateInstallUi();
+    refreshKeyStatus();
+    loadSharedDebate();
+});
