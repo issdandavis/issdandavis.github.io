@@ -1,0 +1,24 @@
+name: Sync SCBE Stats
+on:
+  repository_dispatch:
+    types: [scbe-tests-passed]
+  workflow_dispatch:
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Count SCBE tests and update site
+        run: |
+          git clone --depth 1 https://github.com/issdandavis/SCBE-AETHERMOORE.git /tmp/scbe
+          TOTAL=$(find /tmp/scbe -name '*.test.*' -o -name 'test_*.py' | wc -l)
+          echo "Found $TOTAL test files"
+          # Update would go here with sed on index.html
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git diff --quiet || (git add -A && git commit -m "chore: sync SCBE test stats" && git push)
