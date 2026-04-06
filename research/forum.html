@@ -138,7 +138,11 @@
     }
     .footer a:hover { color: #8fffd3; }
 
-    /* ── Mobile ──────────────────────────────────────── */
+    /* ── Tablet (1024px) ─────────────────────────────── */
+    @media (max-width: 1024px) {
+      .sources { grid-template-columns: repeat(2, 1fr); }
+    }
+    /* ── Mobile (768px) ──────────────────────────────── */
     @media (max-width: 768px) {
       .topbar { flex-direction: column; gap: 8px; }
       .topbar nav { justify-content: center; font-size: 12px; }
@@ -146,11 +150,29 @@
       .article-card { flex-direction: column; }
       .article-meta { width: auto; text-align: left; display: flex; gap: 8px; align-items: center; }
       .polly-input-wrap { flex-direction: column; }
-      .polly-btn { width: 100%; }
+      .polly-btn { width: 100%; min-height: 48px; }
+      /* Touch targets */
+      .topbar nav a { padding: 8px 10px; min-height: 44px; display: inline-flex; align-items: center; }
+      .source-card { padding: 20px; }
+      .source-link { padding: 8px 16px; min-height: 44px; display: inline-flex; align-items: center; }
+      .disc-thread { min-height: 48px; padding: 14px 0; }
+      .footer a { padding: 8px 4px; min-height: 44px; display: inline-flex; align-items: center; }
+      .polly-input { min-height: 48px; font-size: 16px; }
     }
+    /* ── Small phone (480px) ─────────────────────────── */
     @media (max-width: 480px) {
       .wrap { padding: 20px 12px 60px; }
       h1 { font-size: 24px; }
+      .polly-bar { padding: 16px; }
+      .article-card { padding: 16px; }
+      .discussions { padding: 16px; }
+      .footer { flex-direction: column; text-align: center; align-items: center; }
+      .topbar nav { gap: 4px; }
+    }
+    /* ── Touch devices ──────────────────────────────── */
+    @media (hover: none) and (pointer: coarse) {
+      .source-card:hover, .article-card:hover { border-color: rgba(123,140,255,0.12); }
+      * { -webkit-tap-highlight-color: rgba(143,255,211,0.15); }
     }
   </style>
 </head>

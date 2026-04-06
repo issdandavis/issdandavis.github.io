@@ -152,8 +152,56 @@
     .nav a.nav-commercial { background: rgba(255,217,119,0.12); color: var(--gold); border: 1px solid rgba(255,217,119,0.25); }
     .nav a.nav-commercial:hover { background: rgba(255,217,119,0.20); }
 
-    @media (max-width: 768px) { .hero h1 { max-width: 100%; } .products-grid { grid-template-columns: 1fr; } .story-grid { grid-template-columns: 1fr; } .stats-grid { grid-template-columns: repeat(2, 1fr); } .links-grid { grid-template-columns: 1fr 1fr; } .pricing-grid { grid-template-columns: 1fr; } }
-    @media (max-width: 480px) { .hero { padding: 72px 16px 60px; } .hero-ctas { flex-direction: column; } }
+    /* ── Tablet (1024px) ── */
+    @media (max-width: 1024px) {
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .demos-grid { grid-template-columns: repeat(2, 1fr); }
+      .pricing-grid { grid-template-columns: 1fr 1fr; }
+      .stats-grid { grid-template-columns: repeat(3, 1fr); }
+      .links-grid { grid-template-columns: repeat(2, 1fr); }
+      .story-grid { gap: 24px; }
+    }
+    /* ── Mobile (768px) ── */
+    @media (max-width: 768px) {
+      .hero h1 { max-width: 100%; }
+      .products-grid { grid-template-columns: 1fr; }
+      .story-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .links-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .demos-grid { grid-template-columns: 1fr 1fr; }
+      /* Touch targets: min 44px for all interactive elements */
+      .nav.open a { min-height: 44px; display: flex; align-items: center; }
+      .btn { min-height: 48px; }
+      .link-card { min-height: 48px; }
+      .demo-card { min-height: 48px; }
+      .footer-links-row a { padding: 8px 4px; min-height: 44px; display: inline-flex; align-items: center; }
+      .footer-links-row { gap: 8px; }
+      /* Prevent horizontal overflow */
+      .hero-inner, .section-inner, .footer-inner { overflow-x: hidden; }
+      .pricing-price { font-size: 36px; }
+      .pricing-card { padding: 28px; }
+    }
+    /* ── Small phone (480px) ── */
+    @media (max-width: 480px) {
+      .hero { padding: 72px 16px 60px; }
+      .hero-ctas { flex-direction: column; }
+      .demos-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .links-grid { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; text-align: center; align-items: center; }
+      .footer-links-row { justify-content: center; }
+      .story-visual .big-number { font-size: 48px; }
+      .product-card { padding: 20px; }
+      .stat-card { padding: 16px; }
+      .stat-card .stat-number { font-size: 26px; }
+    }
+    /* ── Touch and responsive utilities ── */
+    @media (hover: none) and (pointer: coarse) {
+      .product-card:hover, .demo-card:hover, .link-card:hover, .spec-card:hover { transform: none; }
+      .btn:active { transform: scale(0.97); }
+      * { -webkit-tap-highlight-color: rgba(143,255,211,0.15); }
+    }
 
     /* Tongue color bar */
     .tongue-bar {
@@ -378,6 +426,43 @@
           <div class="stat-card stat-rose"><div class="stat-number" data-target="6">0</div><div class="stat-label">Sacred Tongues</div></div>
           <div class="stat-card stat-aqua"><div class="stat-number" data-target="97">0</div><div class="stat-label">GitHub repos</div></div>
           <div class="stat-card stat-violet"><div class="stat-number" style="font-size:18px;padding-top:6px;">USPTO<br>#63/961,403</div><div class="stat-label">Patent pending</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="data">
+      <div class="section-inner">
+        <span class="section-label">Data Marketplace</span>
+        <h2 class="section-title">High-Fidelity Training Sets.</h2>
+        <p class="section-subtitle">We've proven that training on multiple layers of semantic intent produces superior model reasoning. Buy our verified SCBE datasets to harden your own AI.</p>
+        
+        <div class="products-grid">
+          <div class="product-card">
+            <div class="product-badge badge-live">Creative</div>
+            <div class="product-icon">&#128214;</div>
+            <h3>The Lore Verbatim Pack</h3>
+            <p>12,500+ paragraphs of consistent, mathematically-grounded worldbuilding and conlang data. Perfect for fine-tuning creative/roleplay models.</p>
+            <div style="font-weight:800; font-size:24px; color:var(--mint); margin-bottom:16px;">$99</div>
+            <a href="mailto:aethermoregames@pm.me?subject=Buy%20Lore%20Verbatim%20Pack" class="btn btn-primary">Purchase License</a>
+          </div>
+          
+          <div class="product-card popular">
+            <div class="product-badge badge-live">Technical</div>
+            <div class="product-icon">&#128208;</div>
+            <h3>The Technical Core</h3>
+            <p>Comprehensive semantic layers for Geometry, Distributed Systems, and NLP. Structured for 14-layer SCBE alignment. 50,000+ verified pairs.</p>
+            <div style="font-weight:800; font-size:24px; color:var(--mint); margin-bottom:16px;">$299</div>
+            <a href="mailto:aethermoregames@pm.me?subject=Buy%20Technical%20Core%20Pack" class="btn btn-primary">Purchase License</a>
+          </div>
+          
+          <div class="product-card">
+            <div class="product-badge badge-live">Enterprise</div>
+            <div class="product-icon">&#128737;</div>
+            <h3>The Red Team Fortress</h3>
+            <p>Our gold-standard adversarial dataset. Thousands of failed prompt injection attempts, labeled by failure layer (L1-L14). The ultimate defense training set.</p>
+            <div style="font-weight:800; font-size:24px; color:var(--mint); margin-bottom:16px;">$999</div>
+            <a href="mailto:aethermoregames@pm.me?subject=Buy%20Red%20Team%20Fortress%20Pack" class="btn btn-gold">Request Access</a>
+          </div>
         </div>
       </div>
     </section>
