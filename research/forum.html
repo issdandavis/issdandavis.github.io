@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research Forum | SCBE-AETHERMOORE</title>
+  <meta name="description" content="Research forum — articles, discussions, and community. Connected to Medium, GitHub Discussions, and the SCBE research domain.">
+  <meta property="og:title" content="Research Forum | SCBE-AETHERMOORE">
+  <meta property="og:description" content="AI governance research community. Articles, discussions, and Polly AI assistant.">
+  <meta property="og:url" content="https://aethermoorgames.com/research/forum.html">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #070711; color: #edf0ff; line-height: 1.7;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .topbar {
+      position: sticky; top: 0; z-index: 30;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 20px; background: rgba(7,7,17,0.92); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(123,140,255,0.14);
+    }
+    .topbar .brand { font-weight: 800; letter-spacing: 0.08em; font-size: 14px; }
+    .topbar nav { display: flex; gap: 12px; flex-wrap: wrap; color: #b4b9df; font-size: 13px; }
+    .topbar nav a:hover { color: #fff; }
+    .topbar nav a.active { color: #8fffd3; }
+
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 16px 80px; }
+
+    h1 {
+      font-size: clamp(26px, 5vw, 44px); font-weight: 800;
+      letter-spacing: -0.03em; margin-bottom: 8px;
+      background: linear-gradient(135deg, #8fffd3, #6dd8ff);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .subtitle { color: #9ba3d0; font-size: 15px; margin-bottom: 32px; max-width: 600px; }
+
+    /* ── Polly AI Bar ────────────────────────────────── */
+    .polly-bar {
+      background: rgba(143,255,211,0.05); border: 1px solid rgba(143,255,211,0.15);
+      border-radius: 16px; padding: 20px; margin-bottom: 32px;
+    }
+    .polly-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .polly-avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #8fffd3, #6dd8ff); display: flex; align-items: center; justify-content: center; font-size: 18px; }
+    .polly-name { font-weight: 700; color: #8fffd3; font-size: 15px; }
+    .polly-status { font-size: 11px; color: #6a9488; margin-left: 8px; }
+    .polly-input-wrap {
+      display: flex; gap: 8px;
+    }
+    .polly-input {
+      flex: 1; padding: 12px 16px; border-radius: 12px;
+      background: rgba(7,7,17,0.6); border: 1px solid rgba(123,140,255,0.15);
+      color: #edf0ff; font-size: 14px; outline: none; font-family: inherit;
+    }
+    .polly-input:focus { border-color: rgba(143,255,211,0.4); }
+    .polly-input::placeholder { color: #5a5f82; }
+    .polly-btn {
+      padding: 12px 20px; border-radius: 12px; border: none; cursor: pointer;
+      background: linear-gradient(135deg, rgba(143,255,211,0.15), rgba(109,216,255,0.10));
+      color: #8fffd3; font-weight: 600; font-size: 13px; white-space: nowrap;
+    }
+    .polly-btn:hover { background: linear-gradient(135deg, rgba(143,255,211,0.25), rgba(109,216,255,0.15)); }
+    .polly-thinking {
+      margin-top: 12px; padding: 12px 16px; border-radius: 10px;
+      background: rgba(7,7,17,0.5); border-left: 3px solid rgba(143,255,211,0.3);
+      font-size: 13px; color: #9ba3d0; display: none;
+    }
+    .polly-thinking.active { display: block; }
+    .polly-response {
+      margin-top: 12px; padding: 16px; border-radius: 10px;
+      background: rgba(14,14,30,0.7); font-size: 14px; color: #c8ccef;
+      display: none; line-height: 1.7;
+    }
+    .polly-response.active { display: block; }
+
+    /* ── Content Sources ─────────────────────────────── */
+    .sources { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 40px; }
+    .source-card {
+      background: rgba(14,14,30,0.85); border: 1px solid rgba(123,140,255,0.12);
+      border-radius: 14px; padding: 20px; transition: border-color 200ms;
+    }
+    .source-card:hover { border-color: rgba(143,255,211,0.3); }
+    .source-card h3 { font-size: 16px; margin-bottom: 6px; }
+    .source-card p { color: #8a90b8; font-size: 13px; margin-bottom: 12px; }
+    .source-link {
+      display: inline-block; font-size: 12px; font-weight: 600; color: #8fffd3;
+      padding: 4px 12px; border-radius: 8px; background: rgba(143,255,211,0.08);
+      border: 1px solid rgba(143,255,211,0.15);
+    }
+    .source-link:hover { background: rgba(143,255,211,0.15); }
+
+    /* ── Articles Feed ───────────────────────────────── */
+    .section-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+      color: #8fffd3; margin-bottom: 16px; display: inline-block;
+      padding: 4px 12px; border-radius: 20px; background: rgba(143,255,211,0.08);
+      border: 1px solid rgba(143,255,211,0.15);
+    }
+    .articles { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+    .article-card {
+      display: flex; gap: 16px; padding: 20px; border-radius: 14px;
+      background: rgba(14,14,30,0.85); border: 1px solid rgba(123,140,255,0.10);
+      transition: border-color 200ms;
+    }
+    .article-card:hover { border-color: rgba(143,255,211,0.25); }
+    .article-meta { flex-shrink: 0; width: 60px; text-align: center; }
+    .article-date { font-size: 11px; color: #6a7099; }
+    .article-source-tag {
+      font-size: 9px; font-weight: 700; padding: 2px 6px; border-radius: 6px;
+      display: inline-block; margin-top: 4px;
+    }
+    .tag-medium { background: rgba(255,217,119,0.15); color: #ffd977; }
+    .tag-github { background: rgba(143,255,211,0.15); color: #8fffd3; }
+    .tag-research { background: rgba(109,216,255,0.15); color: #6dd8ff; }
+    .article-body h4 { font-size: 15px; margin-bottom: 4px; }
+    .article-body p { font-size: 13px; color: #8a90b8; }
+
+    /* ── Discussion Embed ────────────────────────────── */
+    .discussions {
+      background: rgba(14,14,30,0.6); border: 1px solid rgba(123,140,255,0.10);
+      border-radius: 14px; padding: 24px; margin-bottom: 40px;
+    }
+    .discussions h3 { font-size: 18px; margin-bottom: 12px; }
+    .disc-thread {
+      padding: 12px 0; border-bottom: 1px solid rgba(123,140,255,0.06);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .disc-thread:last-child { border-bottom: none; }
+    .disc-title { font-size: 14px; color: #c8ccef; }
+    .disc-replies { font-size: 11px; color: #6a7099; }
+
+    .footer {
+      margin-top: 60px; padding-top: 24px; border-top: 1px solid rgba(123,140,255,0.10);
+      color: #5a5f82; font-size: 12px; display: flex; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .footer a:hover { color: #8fffd3; }
+
+    /* ── Mobile ──────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .topbar { flex-direction: column; gap: 8px; }
+      .topbar nav { justify-content: center; font-size: 12px; }
+      .sources { grid-template-columns: 1fr; }
+      .article-card { flex-direction: column; }
+      .article-meta { width: auto; text-align: left; display: flex; gap: 8px; align-items: center; }
+      .polly-input-wrap { flex-direction: column; }
+      .polly-btn { width: 100%; }
+    }
+    @media (max-width: 480px) {
+      .wrap { padding: 20px 12px 60px; }
+      h1 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="brand" href="/">SCBE-AETHERMOORE</a>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/research/">Research</a>
+    <a href="/research/security-systems.html">Security</a>
+    <a href="/research/forum.html" class="active">Forum</a>
+    <a href="/product-manual/">Docs</a>
+    <a href="https://github.com/issdandavis/SCBE-AETHERMOORE">GitHub</a>
+  </nav>
+</div>
+
+<div class="wrap">
+
+  <h1>Research Forum</h1>
+  <p class="subtitle">Articles, discussions, and AI-assisted research. Connected to Medium, GitHub Discussions, and the SCBE research domain.</p>
+
+  <!-- ── Polly AI Assistant ──────────────────────────── -->
+  <div class="polly-bar">
+    <div class="polly-header">
+      <div class="polly-avatar">P</div>
+      <span class="polly-name">Polly</span>
+      <span class="polly-status" id="polly-status">Ready</span>
+    </div>
+    <div class="polly-input-wrap">
+      <input class="polly-input" id="polly-input" type="text"
+        placeholder="Ask Polly anything — research, code, hyperbolic geometry, Sacred Tongues..."
+        autocomplete="off">
+      <button class="polly-btn" id="polly-ask" onclick="pollyAsk()">Think</button>
+    </div>
+    <div class="polly-thinking" id="polly-thinking"></div>
+    <div class="polly-response" id="polly-response"></div>
+  </div>
+
+  <!-- ── Content Sources ─────────────────────────────── -->
+  <div class="sources">
+    <a class="source-card" href="https://medium.com/@issdandavis" target="_blank">
+      <h3>Medium</h3>
+      <p>Long-form articles on AI governance, hyperbolic security, and the Sacred Tongues protocol.</p>
+      <span class="source-link">Read on Medium</span>
+    </a>
+    <a class="source-card" href="https://github.com/issdandavis/SCBE-AETHERMOORE/discussions" target="_blank">
+      <h3>GitHub Discussions</h3>
+      <p>Technical discussions, RFCs, and community Q&amp;A on the SCBE framework.</p>
+      <span class="source-link">Join Discussion</span>
+    </a>
+    <a class="source-card" href="/research/index.html">
+      <h3>Research Domain</h3>
+      <p>Benchmarks, math proofs, experimental tracks, and the security systems catalog.</p>
+      <span class="source-link">Explore Research</span>
+    </a>
+    <a class="source-card" href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank">
+      <h3>Source Code</h3>
+      <p>14-layer pipeline, 6000+ tests, Sacred Tongue tools, HYDRA agent system.</p>
+      <span class="source-link">View on GitHub</span>
+    </a>
+  </div>
+
+  <!-- ── Articles Feed ───────────────────────────────── -->
+  <span class="section-label">Latest</span>
+  <div class="articles" id="articles-feed">
+    <a class="article-card" href="https://medium.com/@issdandavis" target="_blank">
+      <div class="article-meta">
+        <span class="article-date">2026</span>
+        <span class="article-source-tag tag-medium">Medium</span>
+      </div>
+      <div class="article-body">
+        <h4>The Six Tongues Protocol: How Fibonacci Weights Secure AI</h4>
+        <p>KO through DR — six Sacred Tongues weighted by the golden ratio create a geometric security barrier that prices attackers out exponentially.</p>
+      </div>
+    </a>
+    <a class="article-card" href="/research/security-systems.html">
+      <div class="article-meta">
+        <span class="article-date">Apr 2026</span>
+        <span class="article-source-tag tag-research">Research</span>
+      </div>
+      <div class="article-body">
+        <h4>Security Systems Catalog: 25 Modules Priced by One Formula</h4>
+        <p>Full spec sheets for every detection, response, and counter-attack module in the SCBE security stack.</p>
+      </div>
+    </a>
+    <a class="article-card" href="https://github.com/issdandavis/SCBE-AETHERMOORE/discussions" target="_blank">
+      <div class="article-meta">
+        <span class="article-date">Apr 2026</span>
+        <span class="article-source-tag tag-github">GitHub</span>
+      </div>
+      <div class="article-body">
+        <h4>H(d,R) = R^(d&sup2;) — The Hyperbolic Cost Law</h4>
+        <p>Why exponential cost scaling makes multi-stage attacks mathematically impossible. Patent pending USPTO #63/961,403.</p>
+      </div>
+    </a>
+  </div>
+
+  <!-- ── GitHub Discussions Embed ─────────────────────── -->
+  <span class="section-label">Discussions</span>
+  <div class="discussions">
+    <h3>Active Threads</h3>
+    <div id="discussions-feed">
+      <div class="disc-thread">
+        <span class="disc-title">Loading discussions from GitHub...</span>
+        <span class="disc-replies"></span>
+      </div>
+    </div>
+    <a href="https://github.com/issdandavis/SCBE-AETHERMOORE/discussions/new" target="_blank"
+       style="display:inline-block; margin-top:16px; font-size:13px; color:#8fffd3; font-weight:600;">
+      Start a new discussion
+    </a>
+  </div>
+
+  <div class="footer">
+    <div>SCBE-AETHERMOORE &mdash; AI Governance. Mathematical Security.</div>
+    <div style="display:flex; gap:12px;">
+      <a href="/">Home</a>
+      <a href="/research/">Research</a>
+      <a href="https://medium.com/@issdandavis">Medium</a>
+      <a href="https://github.com/issdandavis/SCBE-AETHERMOORE">GitHub</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ── Polly AI — Thinking Mode ────────────────────────────────
+const POLLY_KNOWLEDGE = {
+  "h(d,r)": "H(d,R) = R^(d\u00b2) is the hyperbolic cost law. As depth d increases, the cost to an attacker explodes exponentially. At depth 3, radius 10: cost = 10\u2079 = 1 billion. At depth 4: cost = 10\u00b9\u2076. The geometry prices them out.",
+  "sacred tongues": "Six Sacred Tongues: KO (Kor'aelin, Control, w=1.0), AV (Avali, I/O, w=1.618), RU (Runethic, Policy, w=2.618), CA (Cassisivadan, Logic, w=4.236), UM (Umbroth, Security, w=6.854), DR (Draumric, Types, w=11.09). Weights follow Fibonacci/golden ratio.",
+  "14 layer": "14-layer pipeline: A1 Complex State \u2192 A2 Realification \u2192 A3 Weighted Transform \u2192 A4 Poincar\u00e9 Embedding \u2192 A5 Hyperbolic Distance \u2192 A6 Breathing Transform \u2192 A7 Phase Transform \u2192 A8 Realm Distance \u2192 A9 Spectral Coherence \u2192 A10 Spin Coherence \u2192 A11 Triadic Temporal \u2192 A12 Harmonic Scaling \u2192 A13 Risk Decision \u2192 A14 Audio Axis",
+  "hydra": "HYDRA is a 6-agent swarm. Each head is a Sacred Tongue specialist: KO=Scout, AV=Vision, RU=Reader, CA=Clicker, UM=Typer, DR=Judge. Fine-tuned via QLoRA 4-bit on small open-source LLMs.",
+  "phdm": "PHDM = 21-Dimensional Poincar\u00e9 Ball embedding: 6D hyperbolic + 6D phase + 3D flux + 6D audit. Maps agent state into safe/unsafe regions of a manifold.",
+  "patent": "Patent pending: USPTO #63/961,403. Filed by Issac Davis. Covers the hyperbolic geometry security framework and the Six Sacred Tongues protocol.",
+  "tri-synesthesia": "Tri-synesthesia cross-domain detection: Light waves (data flow frequency/amplitude), Sound waves (event timing harmony/dissonance), Code patterns (AST depth/branching). When all three domains converge on an anomaly, confidence approaches 1.0.",
+};
+
+function pollyAsk() {
+  const input = document.getElementById('polly-input');
+  const thinking = document.getElementById('polly-thinking');
+  const response = document.getElementById('polly-response');
+  const status = document.getElementById('polly-status');
+  const query = input.value.trim().toLowerCase();
+
+  if (!query) return;
+
+  // Thinking phase
+  status.textContent = 'Thinking...';
+  thinking.className = 'polly-thinking active';
+  response.className = 'polly-response';
+
+  const steps = [
+    'Parsing query structure...',
+    'Searching knowledge base...',
+    'Cross-referencing Sacred Tongue domains...',
+    'Evaluating through H(d,R) cost model...',
+    'Composing response...',
+  ];
+
+  let step = 0;
+  thinking.textContent = steps[0];
+
+  const interval = setInterval(() => {
+    step++;
+    if (step < steps.length) {
+      thinking.textContent = steps.slice(0, step + 1).join('\n');
+    } else {
+      clearInterval(interval);
+      thinking.className = 'polly-thinking';
+      status.textContent = 'Ready';
+
+      // Find best match
+      let bestMatch = null;
+      let bestScore = 0;
+      for (const [key, value] of Object.entries(POLLY_KNOWLEDGE)) {
+        const words = key.split(/\s+/);
+        const matches = words.filter(w => query.includes(w)).length;
+        const score = matches / words.length;
+        if (score > bestScore) {
+          bestScore = score;
+          bestMatch = value;
+        }
+      }
+
+      if (bestMatch && bestScore > 0.3) {
+        response.textContent = bestMatch;
+      } else {
+        response.textContent = `I don't have a direct answer for "${input.value}" in my local knowledge. For deeper research, check:\n\n` +
+          `\u2022 GitHub Discussions: github.com/issdandavis/SCBE-AETHERMOORE/discussions\n` +
+          `\u2022 Research Domain: aethermoorgames.com/research/\n` +
+          `\u2022 Medium: medium.com/@issdandavis\n\n` +
+          `Or ask about: Sacred Tongues, H(d,R), 14-layer pipeline, HYDRA, PHDM, patent, tri-synesthesia`;
+      }
+      response.className = 'polly-response active';
+    }
+  }, 600);
+}
+
+document.getElementById('polly-input').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') pollyAsk();
+});
+
+// ── Load GitHub Discussions ─────────────────────────────
+async function loadDiscussions() {
+  try {
+    const resp = await fetch('https://api.github.com/repos/issdandavis/SCBE-AETHERMOORE/discussions', {
+      headers: { 'Accept': 'application/vnd.github.v3+json' }
+    });
+    // GitHub Discussions API requires GraphQL, REST won't work
+    // Fallback to showing link
+    const feed = document.getElementById('discussions-feed');
+    feed.innerHTML = `
+      <div class="disc-thread">
+        <a class="disc-title" href="https://github.com/issdandavis/SCBE-AETHERMOORE/discussions" target="_blank" style="color:#8fffd3;">
+          View all discussions on GitHub
+        </a>
+      </div>
+      <div class="disc-thread">
+        <span class="disc-title">Architecture &amp; Design</span>
+        <span class="disc-replies">Category</span>
+      </div>
+      <div class="disc-thread">
+        <span class="disc-title">Security Research</span>
+        <span class="disc-replies">Category</span>
+      </div>
+      <div class="disc-thread">
+        <span class="disc-title">Sacred Tongues &amp; HYDRA</span>
+        <span class="disc-replies">Category</span>
+      </div>
+      <div class="disc-thread">
+        <span class="disc-title">Show &amp; Tell</span>
+        <span class="disc-replies">Category</span>
+      </div>
+    `;
+  } catch(e) {
+    // Silent fail
+  }
+}
+loadDiscussions();
+</script>
+</body>
+</html>
