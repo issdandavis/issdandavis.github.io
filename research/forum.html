@@ -311,7 +311,7 @@ const POLLY_KNOWLEDGE = {
   "tri-synesthesia": "Tri-synesthesia cross-domain detection: Light waves (data flow frequency/amplitude), Sound waves (event timing harmony/dissonance), Code patterns (AST depth/branching). When all three domains converge on an anomaly, confidence approaches 1.0.",
 };
 
-function pollyAsk() {
+async function pollyAsk() {
   const input = document.getElementById('polly-input');
   const thinking = document.getElementById('polly-thinking');
   const response = document.getElementById('polly-response');
@@ -345,27 +345,42 @@ function pollyAsk() {
       thinking.className = 'polly-thinking';
       status.textContent = 'Ready';
 
-      // Find best match
+      // Try local knowledge first
       let bestMatch = null;
       let bestScore = 0;
       for (const [key, value] of Object.entries(POLLY_KNOWLEDGE)) {
         const words = key.split(/\s+/);
         const matches = words.filter(w => query.includes(w)).length;
         const score = matches / words.length;
-        if (score > bestScore) {
-          bestScore = score;
-          bestMatch = value;
-        }
+        if (score > bestScore) { bestScore = score; bestMatch = value; }
       }
 
       if (bestMatch && bestScore > 0.3) {
         response.textContent = bestMatch;
       } else {
-        response.textContent = `I don't have a direct answer for "${input.value}" in my local knowledge. For deeper research, check:\n\n` +
-          `\u2022 GitHub Discussions: github.com/issdandavis/SCBE-AETHERMOORE/discussions\n` +
-          `\u2022 Research Domain: aethermoorgames.com/research/\n` +
-          `\u2022 Medium: medium.com/@issdandavis\n\n` +
-          `Or ask about: Sacred Tongues, H(d,R), 14-layer pipeline, HYDRA, PHDM, patent, tri-synesthesia`;
+        // Try HF model if token available
+        try {
+          const keys = JSON.parse(localStorage.getItem('arena_keys') || '{}');
+          const token = keys['huggingface'];
+          if (token) {
+            const resp = await fetch('https://api-inference.huggingface.co/models/Qwen/Qwen2.5-72B-Instruct', {
+              method: 'POST',
+              headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                inputs: '<|im_start|>system\nYou are Polly, the AI guide for SCBE-AETHERMOORE. Answer questions about AI governance, hyperbolic security H(d,R)=R^(d^2), and the Six Sacred Tongues. Be concise.\n<|im_end|>\n<|im_start|>user\n' + input.value + '\n<|im_end|>\n<|im_start|>assistant\n',
+                parameters: { max_new_tokens: 300, temperature: 0.7 }
+              })
+            });
+            const data = await resp.json();
+            let text = data[0]?.generated_text || '';
+            if (text.includes('assistant\n')) text = text.split('assistant\n').pop();
+            response.textContent = text.trim() || 'No response from model.';
+          } else {
+            response.textContent = 'No HuggingFace token set. I can answer from local knowledge about: Sacred Tongues, H(d,R), 14-layer pipeline, HYDRA, PHDM, patent, tri-synesthesia.\n\nTo enable AI answers, open browser console and run:\nlocalStorage.setItem("arena_keys", JSON.stringify({huggingface: "hf_YOUR_TOKEN"}))';
+          }
+        } catch(e) {
+          response.textContent = 'Error connecting to AI: ' + e.message + '\n\nTry asking about: Sacred Tongues, H(d,R), 14-layer pipeline, HYDRA, PHDM';
+        }
       }
       response.className = 'polly-response active';
     }

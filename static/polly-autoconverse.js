@@ -220,9 +220,10 @@
       feed.style.display = 'none';
     } else {
       if (!getAutoToken()) {
-        alert('Set your HuggingFace token first (localStorage: arena_keys.huggingface)');
+        alert('Set your HuggingFace token first.\n\nOpen browser console and run:\nlocalStorage.setItem("arena_keys", JSON.stringify({huggingface: "hf_YOUR_TOKEN"}))');
         return;
       }
+      if (!confirm('Start Polly Auto-Training?\n\nThis will use your HuggingFace API token to run AI conversations in the background (1 round every 30s).\n\nTraining data is stored locally and can be exported as JSONL.\n\nContinue?')) return;
       state.running = true;
       feedToggle.textContent = 'Auto-Train: ON';
       feed.style.display = 'block';
