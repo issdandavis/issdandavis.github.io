@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blockchain Algorithms for Anonymous Routing: Mixnets, ZK Proofs, and Hyperbolic Greedy Routing | SCBE-AETHERMOORE</title>
+  <meta name="description" content="Nym, HOPR, Orchid — blockchain-incentivized anonymous routing is replacing Tor. Hyperbolic geometry enables greedy routing where attack paths are geometrically prohibitive.">
+  <meta name="keywords" content="AI governance framework, prompt injection defense, LLM security pipeline, hyperbolic geometry AI, AI guardrails open source, blockchain routing, Tor, mixnet, zero knowledge proofs">
+  <meta property="og:title" content="Blockchain Algorithms for Anonymous Routing: Mixnets, ZK Proofs, and Hyperbolic Greedy Routing">
+  <meta property="og:description" content="Blockchain replaces Tor's volunteer model. Hyperbolic space makes adversarial relay paths geometrically prohibitive.">
+  <meta property="og:url" content="https://aethermoore.com/articles/blockchain-tor-routing.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://aethermoore.com/hero.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://aethermoore.com/articles/blockchain-tor-routing.html">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #070711; color: #edf0ff; line-height: 1.7; }
+    a { color: #8fffd3; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .topbar { position: sticky; top: 0; z-index: 30; display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; background: rgba(7,7,17,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(123,140,255,0.14); }
+    .topbar .brand { font-weight: 800; letter-spacing: 0.08em; font-size: 14px; color: #edf0ff; }
+    .topbar nav { display: flex; gap: 12px; color: #b4b9df; font-size: 13px; }
+    .topbar nav a { color: #b4b9df; }
+    .topbar nav a:hover { color: #fff; text-decoration: none; }
+    .wrap { max-width: 740px; margin: 0 auto; padding: 40px 16px 80px; }
+    .back { display: inline-block; font-size: 13px; color: #6a7099; margin-bottom: 24px; }
+    .back:hover { color: #8fffd3; text-decoration: none; }
+    .article-date { font-size: 12px; color: #6a7099; margin-bottom: 8px; }
+    .article-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 20px; }
+    .tag { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 8px; letter-spacing: 0.05em; text-transform: uppercase; }
+    .tag-security { background: rgba(255,158,199,0.12); color: #ff9ec7; }
+    .tag-research { background: rgba(109,216,255,0.12); color: #6dd8ff; }
+    h1 { font-size: clamp(24px, 5vw, 36px); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 16px; background: linear-gradient(135deg, #8fffd3, #6dd8ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.2; }
+    h2 { font-size: 22px; font-weight: 700; margin: 32px 0 12px; color: #c4d0ff; }
+    h3 { font-size: 17px; font-weight: 700; margin: 24px 0 8px; color: #8fffd3; }
+    p { margin-bottom: 16px; color: #b4b9df; font-size: 15px; }
+    ul, ol { margin: 0 0 16px 20px; color: #b4b9df; font-size: 15px; }
+    li { margin-bottom: 8px; }
+    strong { color: #edf0ff; }
+    .highlight { padding: 20px; border-radius: 12px; background: rgba(143,255,211,0.04); border: 1px solid rgba(143,255,211,0.15); margin: 24px 0; }
+    .highlight p { margin-bottom: 0; }
+    code { background: rgba(123,140,255,0.1); padding: 2px 6px; border-radius: 4px; font-size: 13px; color: #c49cff; }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    th { text-align: left; padding: 10px 12px; border-bottom: 2px solid rgba(123,140,255,0.2); color: #8fffd3; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+    td { padding: 10px 12px; border-bottom: 1px solid rgba(123,140,255,0.08); color: #b4b9df; }
+    .footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid rgba(123,140,255,0.10); color: #5a5f82; font-size: 12px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer a { color: #5a5f82; }
+    .footer a:hover { color: #8fffd3; }
+    @media (max-width: 768px) { .topbar { flex-direction: column; gap: 8px; } .topbar nav { justify-content: center; font-size: 12px; } }
+  </style>
+</head>
+<body>
+<div class="topbar">
+  <a class="brand" href="/">SCBE-AETHERMOORE</a>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/research/">Research</a>
+    <a href="/articles/">Articles</a>
+    <a href="/product-manual/">Docs</a>
+    <a href="https://github.com/issdandavis/SCBE-AETHERMOORE">GitHub</a>
+  </nav>
+</div>
+<div class="wrap">
+  <a class="back" href="/articles/">&larr; All Articles</a>
+  <div class="article-date">April 7, 2026 &middot; 6 min read &middot; Issac Davis</div>
+  <div class="article-tags">
+    <span class="tag tag-security">Security</span>
+    <span class="tag tag-research">Research</span>
+  </div>
+  <h1>Blockchain Algorithms for Anonymous Routing: Mixnets, ZK Proofs, and Hyperbolic Greedy Routing</h1>
+
+  <p>Tor's volunteer relay model is showing its age. Blockchain-incentivized anonymous routing networks are replacing altruism with economics, and hyperbolic geometry &mdash; the same math SCBE uses for threat pricing &mdash; turns out to be <strong>the natural coordinate system for network routing</strong>.</p>
+
+  <h2>The New Anonymous Routing Stack</h2>
+
+  <table>
+    <tr><th>Network</th><th>Architecture</th><th>Token Model</th></tr>
+    <tr><td><strong>Nym</strong></td><td>Loopix-based mixnet</td><td>NYM — epoch rewards for mixing quality</td></tr>
+    <tr><td><strong>HOPR</strong></td><td>Incentivized mixnet</td><td>HOPR — per-hop probabilistic micropayments</td></tr>
+    <tr><td><strong>Orchid</strong></td><td>Nanopayment bandwidth market</td><td>OXT — staking + weighted random relay selection</td></tr>
+    <tr><td><strong>Sentinel</strong></td><td>Cosmos SDK dVPN</td><td>DVPN — per-byte relay earnings</td></tr>
+  </table>
+
+  <h2>Mixnets vs Onion Routing</h2>
+  <p><strong>Onion routing</strong> (Tor) is low-latency but vulnerable to traffic analysis &mdash; a global observer can correlate entry and exit timing. <strong>Mixnets</strong> add deliberate delays and batch processing, breaking timing correlation at the cost of latency.</p>
+  <p>The 2025 consensus: mixnets win on metadata privacy; onion routing wins on usability. Nym already surpasses Tor in metadata resistance by fundamentally decoupling timing correlation.</p>
+
+  <h2>Zero-Knowledge Proofs in Routing</h2>
+  <p>zk-SNARKs are now used to prove relay compliance &mdash; correct forwarding, no logging &mdash; <strong>without revealing traffic content</strong>. This is the routing equivalent of cryptographic governance proofs.</p>
+  <ul>
+    <li><strong>Nym's 2025 roadmap</strong> includes zk-based credential issuance for unlinkable service access</li>
+    <li><strong>HOPR</strong> explores zk proofs for verifiable packet mixing &mdash; proving shuffles happened without revealing the permutation</li>
+    <li><strong>Coconut credentials</strong> (Sentinel, Nym) use threshold issuance via smart contracts for anonymous access control</li>
+  </ul>
+
+  <h2>Hyperbolic Geometry in Network Routing</h2>
+  <p>This is where it gets directly relevant to SCBE. Bogu&ntilde;&aacute;, Krioukov, et al. proved that <strong>the internet's AS-level topology embeds naturally in hyperbolic space</strong>. Greedy routing in the Poincar&eacute; disk achieves near-100% reachability without routing tables &mdash; each node simply forwards to the neighbor closest to the destination in hyperbolic coordinates.</p>
+
+  <div class="highlight">
+    <p><strong>Direct connection to SCBE:</strong> The <code>H(d,R) = R^(d&sup2;)</code> cost function maps naturally to routing economics. Hops deeper into hyperbolic space become exponentially expensive. Embedding relay nodes in hyperbolic space could enable <strong>greedy anonymous routing where adversarial relay paths are geometrically prohibitive</strong> &mdash; the same principle that prices out prompt injection attacks.</p>
+  </div>
+
+  <h2>Post-Quantum Considerations</h2>
+  <p>Both Nym and the Tor Project are prototyping <strong>hybrid key exchange (ML-KEM + X25519)</strong> for relay handshakes. NIST PQC standards (FIPS 203/204) finalized August 2024, but integration into routing protocols isn't default yet. Any new routing system built today must be PQC-ready from day one.</p>
+
+  <h2>Smart Contract Governance</h2>
+  <p>On-chain governance for routing policies is production-ready:</p>
+  <ul>
+    <li><strong>Minimum stake requirements</strong> to run a relay (Sybil resistance)</li>
+    <li><strong>Geographic diversity requirements</strong> enforced by contract</li>
+    <li><strong>Slashing conditions</strong> for misbehaving nodes</li>
+    <li><strong>Threshold credential issuance</strong> for anonymous access control</li>
+  </ul>
+  <p>This is governance infrastructure &mdash; and it's an area where SCBE's governance pipeline could provide the mathematical foundation for routing policy decisions, not just AI security decisions.</p>
+
+  <h2>The Synthesis</h2>
+  <p>Hyperbolic geometry is simultaneously the natural coordinate system for internet routing <em>and</em> the foundation of SCBE's security cost function. The same <code>H(d,R) = R^(d&sup2;)</code> that makes AI attacks expensive can make adversarial routing paths expensive. This isn't a coincidence &mdash; it's a property of hyperbolic space itself.</p>
+
+  <div class="footer">
+    <div>SCBE-AETHERMOORE &mdash; AI Governance. Mathematical Security.</div>
+    <div style="display:flex; gap:12px;">
+      <a href="/">Home</a>
+      <a href="/research/">Research</a>
+      <a href="/articles/">Articles</a>
+      <a href="https://github.com/issdandavis/SCBE-AETHERMOORE">GitHub</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>
