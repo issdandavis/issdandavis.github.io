@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Articles | SCBE-AETHERMOORE</title>
+  <meta name="description" content="News, articles, and updates from SCBE-AETHERMOORE. AI governance, hyperbolic security, Sacred Tongues, and the Spiralverse.">
+  <meta property="og:title" content="Articles | SCBE-AETHERMOORE">
+  <meta property="og:description" content="Latest news and deep dives on AI governance and hyperbolic security.">
+  <meta property="og:url" content="https://aethermoorgames.com/articles/">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #070711; color: #edf0ff; line-height: 1.7;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .topbar {
+      position: sticky; top: 0; z-index: 30;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 20px; background: rgba(7,7,17,0.92); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(123,140,255,0.14);
+    }
+    .topbar .brand { font-weight: 800; letter-spacing: 0.08em; font-size: 14px; }
+    .topbar nav { display: flex; gap: 12px; flex-wrap: wrap; color: #b4b9df; font-size: 13px; }
+    .topbar nav a:hover { color: #fff; }
+    .topbar nav a.active { color: #8fffd3; }
+
+    .wrap { max-width: 860px; margin: 0 auto; padding: 32px 16px 80px; }
+
+    h1 {
+      font-size: clamp(28px, 5vw, 48px); font-weight: 800;
+      letter-spacing: -0.03em; margin-bottom: 8px;
+      background: linear-gradient(135deg, #8fffd3, #6dd8ff);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .subtitle { color: #9ba3d0; font-size: 15px; margin-bottom: 32px; }
+
+    /* ── Filter Tabs ─────────────────────────────── */
+    .filters {
+      display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap;
+    }
+    .filter-btn {
+      padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600;
+      background: rgba(123,140,255,0.08); border: 1px solid rgba(123,140,255,0.15);
+      color: #9ba3d0; cursor: pointer; transition: all 150ms;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: rgba(143,255,211,0.12); border-color: rgba(143,255,211,0.3); color: #8fffd3;
+    }
+
+    /* ── Article Cards ───────────────────────────── */
+    .articles { display: flex; flex-direction: column; gap: 20px; }
+
+    .article {
+      display: block; padding: 24px; border-radius: 16px;
+      background: rgba(14,14,30,0.85); border: 1px solid rgba(123,140,255,0.10);
+      transition: border-color 200ms, transform 200ms;
+    }
+    .article:hover { border-color: rgba(143,255,211,0.25); transform: translateY(-1px); }
+
+    .article-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 8px; }
+    .article h2 { font-size: 20px; font-weight: 700; line-height: 1.3; }
+    .article-date { font-size: 11px; color: #6a7099; white-space: nowrap; }
+
+    .article-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+    .tag {
+      font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 8px;
+      letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    .tag-security { background: rgba(255,158,199,0.12); color: #ff9ec7; }
+    .tag-research { background: rgba(109,216,255,0.12); color: #6dd8ff; }
+    .tag-update { background: rgba(143,255,211,0.12); color: #8fffd3; }
+    .tag-polly { background: rgba(196,156,255,0.12); color: #c49cff; }
+    .tag-tutorial { background: rgba(255,217,119,0.12); color: #ffd977; }
+    .tag-release { background: rgba(255,140,105,0.12); color: #ff8c69; }
+
+    .article-excerpt { color: #8a90b8; font-size: 14px; line-height: 1.6; }
+
+    .article-footer {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(123,140,255,0.06);
+    }
+    .read-more { font-size: 12px; font-weight: 600; color: #8fffd3; }
+    .article-meta { font-size: 11px; color: #5a5f82; }
+
+    /* ── Write Article CTA ───────────────────────── */
+    .write-cta {
+      margin-top: 40px; padding: 24px; border-radius: 16px; text-align: center;
+      background: rgba(143,255,211,0.04); border: 1px dashed rgba(143,255,211,0.2);
+    }
+    .write-cta h3 { color: #8fffd3; margin-bottom: 6px; }
+    .write-cta p { color: #6a7099; font-size: 13px; margin-bottom: 12px; }
+    .write-cta a {
+      display: inline-block; padding: 10px 20px; border-radius: 10px;
+      background: rgba(143,255,211,0.12); border: 1px solid rgba(143,255,211,0.25);
+      color: #8fffd3; font-weight: 600; font-size: 13px;
+    }
+    .write-cta a:hover { background: rgba(143,255,211,0.2); }
+
+    .footer {
+      margin-top: 60px; padding-top: 24px; border-top: 1px solid rgba(123,140,255,0.10);
+      color: #5a5f82; font-size: 12px; display: flex; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .footer a:hover { color: #8fffd3; }
+
+    @media (max-width: 768px) {
+      .topbar { flex-direction: column; gap: 8px; }
+      .topbar nav { justify-content: center; font-size: 12px; }
+      .topbar nav a { padding: 8px 6px; min-height: 44px; display: inline-flex; align-items: center; }
+      .article { padding: 18px; }
+      .article h2 { font-size: 17px; }
+      .article-header { flex-direction: column; }
+    }
+    @media (max-width: 480px) {
+      .wrap { padding: 20px 12px 60px; }
+      .footer { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="brand" href="/">SCBE-AETHERMOORE</a>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/research/">Research</a>
+    <a href="/research/forum.html">Forum</a>
+    <a href="/articles/" class="active">Articles</a>
+    <a href="/product-manual/">Docs</a>
+    <a href="https://github.com/issdandavis/SCBE-AETHERMOORE">GitHub</a>
+  </nav>
+</div>
+
+<div class="wrap">
+  <h1>Articles</h1>
+  <p class="subtitle">News, deep dives, and updates from the SCBE-AETHERMOORE project.</p>
+
+  <div class="filters">
+    <button class="filter-btn active" onclick="filterArticles('all')">All</button>
+    <button class="filter-btn" onclick="filterArticles('security')">Security</button>
+    <button class="filter-btn" onclick="filterArticles('research')">Research</button>
+    <button class="filter-btn" onclick="filterArticles('update')">Updates</button>
+    <button class="filter-btn" onclick="filterArticles('polly')">Polly</button>
+    <button class="filter-btn" onclick="filterArticles('tutorial')">Tutorials</button>
+    <button class="filter-btn" onclick="filterArticles('release')">Releases</button>
+  </div>
+
+  <div class="articles" id="articles-list">
+
+    <a class="article" href="/articles/cyber-suite-launch.html" data-tags="security,release">
+      <div class="article-header">
+        <h2>Introducing the Hyperbolic Security Suite</h2>
+        <span class="article-date">Apr 6, 2026</span>
+      </div>
+      <div class="article-tags">
+        <span class="tag tag-security">Security</span>
+        <span class="tag tag-release">Release</span>
+      </div>
+      <p class="article-excerpt">A custom cybersecurity framework where every threat is priced by one formula: H(d,R) = R^(d&sup2;). Firewall, malware scanner, rootkit detector, DNA bi-strand audit, and tri-synesthesia engine &mdash; all built from scratch, all feeding through the cost engine.</p>
+      <div class="article-footer">
+        <span class="read-more">Read more &rarr;</span>
+        <span class="article-meta">5 min read &middot; Issac Davis</span>
+      </div>
+    </a>
+
+    <a class="article" href="/articles/polly-autoconverse.html" data-tags="polly,research">
+      <div class="article-header">
+        <h2>Polly Learns to Talk to Herself: Auto-Conversation Training</h2>
+        <span class="article-date">Apr 6, 2026</span>
+      </div>
+      <div class="article-tags">
+        <span class="tag tag-polly">Polly</span>
+        <span class="tag tag-research">Research</span>
+      </div>
+      <p class="article-excerpt">Two AI instances debate SCBE topics in the background, generating SFT training pairs from every exchange. Qwen 72B answers, Mixtral asks follow-ups, Llama fact-checks. The website becomes a training data factory.</p>
+      <div class="article-footer">
+        <span class="read-more">Read more &rarr;</span>
+        <span class="article-meta">4 min read &middot; Issac Davis</span>
+      </div>
+    </a>
+
+    <a class="article" href="/articles/14-layer-explained.html" data-tags="research,tutorial">
+      <div class="article-header">
+        <h2>The 14-Layer Pipeline: From Complex State to Audio Axis</h2>
+        <span class="article-date">Apr 5, 2026</span>
+      </div>
+      <div class="article-tags">
+        <span class="tag tag-research">Research</span>
+        <span class="tag tag-tutorial">Tutorial</span>
+      </div>
+      <p class="article-excerpt">A complete walkthrough of the SCBE-AETHERMOORE security pipeline. What happens at each layer, why hyperbolic geometry beats Euclidean for security, and how the Harmonic Trust Tube keeps agents in the safe operating envelope.</p>
+      <div class="article-footer">
+        <span class="read-more">Read more &rarr;</span>
+        <span class="article-meta">8 min read &middot; Issac Davis</span>
+      </div>
+    </a>
+
+    <a class="article" href="/articles/sacred-tongues-protocol.html" data-tags="research,security">
+      <div class="article-header">
+        <h2>The Six Sacred Tongues: Fibonacci-Weighted Security Domains</h2>
+        <span class="article-date">Apr 4, 2026</span>
+      </div>
+      <div class="article-tags">
+        <span class="tag tag-research">Research</span>
+        <span class="tag tag-security">Security</span>
+      </div>
+      <p class="article-excerpt">KO through DR &mdash; six domains weighted by the golden ratio create a geometric barrier that prices attackers out exponentially. Why 1.0, 1.618, 2.618, 4.236, 6.854, 11.09 aren't arbitrary numbers.</p>
+      <div class="article-footer">
+        <span class="read-more">Read more &rarr;</span>
+        <span class="article-meta">6 min read &middot; Issac Davis</span>
+      </div>
+    </a>
+
+    <a class="article" href="/articles/tri-synesthesia.html" data-tags="security,research">
+      <div class="article-header">
+        <h2>Tri-Synesthesia: Detecting Threats with Light, Sound, and Code</h2>
+        <span class="article-date">Apr 5, 2026</span>
+      </div>
+      <div class="article-tags">
+        <span class="tag tag-security">Security</span>
+        <span class="tag tag-research">Research</span>
+      </div>
+      <p class="article-excerpt">Cross-domain pattern detection using three wave types. Data flow as electromagnetic waves, event timing as acoustic patterns, AST structure as waveforms. When all three converge, confidence approaches 1.0.</p>
+      <div class="article-footer">
+        <span class="read-more">Read more &rarr;</span>
+        <span class="article-meta">5 min read &middot; Issac Davis</span>
+      </div>
+    </a>
+
+    <a class="article" href="/articles/dna-audit.html" data-tags="security,tutorial">
+      <div class="article-header">
+        <h2>DNA Bi-Strand Audit: Top-Down Meets Bottom-Up</h2>
+        <span class="article-date">Apr 5, 2026</span>
+      </div>
+      <div class="article-tags">
+        <span class="tag tag-security">Security</span>
+        <span class="tag tag-tutorial">Tutorial</span>
+      </div>
+      <p class="article-excerpt">Like a double helix, two analysis strands run in opposite directions. Strand A checks architecture &rarr; code &rarr; tests &rarr; deployment. Strand B checks deps &rarr; files &rarr; integration &rarr; system. Base pairs where they meet confirm real issues.</p>
+      <div class="article-footer">
+        <span class="read-more">Read more &rarr;</span>
+        <span class="article-meta">4 min read &middot; Issac Davis</span>
+      </div>
+    </a>
+
+    <a class="article" href="/articles/github-ecosystem.html" data-tags="update">
+      <div class="article-header">
+        <h2>58 Repos, One Ecosystem: Managing the SCBE GitHub Fleet</h2>
+        <span class="article-date">Apr 6, 2026</span>
+      </div>
+      <div class="article-tags">
+        <span class="tag tag-update">Update</span>
+      </div>
+      <p class="article-excerpt">How we manage 58 repositories, 43 active workflows, cross-repo coordination via repository_dispatch, automated dependency updates, and Claude Code agents that fix their own CI. Plus: how we went from 29 failing workflows to 3.</p>
+      <div class="article-footer">
+        <span class="read-more">Read more &rarr;</span>
+        <span class="article-meta">7 min read &middot; Issac Davis</span>
+      </div>
+    </a>
+
+    <a class="article" href="/articles/hydra-swarm.html" data-tags="polly,research">
+      <div class="article-header">
+        <h2>HYDRA: A 6-Agent Swarm with Sacred Tongue Specialization</h2>
+        <span class="article-date">Apr 3, 2026</span>
+      </div>
+      <div class="article-tags">
+        <span class="tag tag-polly">Polly</span>
+        <span class="tag tag-research">Research</span>
+      </div>
+      <p class="article-excerpt">Each HYDRA head is a QLoRA fine-tuned LLM specialized in one Sacred Tongue domain. KO scouts, AV sees, RU reads, CA clicks, UM types, DR judges. Federated quality gates ensure only safe, high-quality outputs promote.</p>
+      <div class="article-footer">
+        <span class="read-more">Read more &rarr;</span>
+        <span class="article-meta">6 min read &middot; Issac Davis</span>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="write-cta">
+    <h3>Contribute an Article</h3>
+    <p>Have something to share about AI governance, security, or the Sacred Tongues? Submit via GitHub.</p>
+    <a href="https://github.com/issdandavis/SCBE-AETHERMOORE/discussions/new?category=articles" target="_blank">Submit Article</a>
+  </div>
+
+  <div class="footer">
+    <div>SCBE-AETHERMOORE &mdash; AI Governance. Mathematical Security.</div>
+    <div style="display:flex; gap:12px;">
+      <a href="/">Home</a>
+      <a href="/research/">Research</a>
+      <a href="/articles/">Articles</a>
+      <a href="https://medium.com/@issdandavis">Medium</a>
+      <a href="https://github.com/issdandavis/SCBE-AETHERMOORE">GitHub</a>
+    </div>
+  </div>
+</div>
+
+<script>
+function filterArticles(tag) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+
+  document.querySelectorAll('.article').forEach(a => {
+    if (tag === 'all') {
+      a.style.display = 'block';
+    } else {
+      const tags = a.dataset.tags || '';
+      a.style.display = tags.includes(tag) ? 'block' : 'none';
+    }
+  });
+}
+</script>
+<script src="/static/polly-sidebar.js"></script>
+<script src="/static/polly-autoconverse.js"></script>
+</body>
+</html>
