@@ -1,0 +1,86 @@
+name: Auto-Update Sitemap
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**.html'
+      - '!.github/**'
+
+permissions:
+  contents: write
+
+jobs:
+  sitemap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Regenerate sitemap
+        run: |
+          python3 - <<'PYEOF'
+          import os, re
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          SITE = "https://aethermoore.com"
+          today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
+          # Priority rules
+          def priority(path):
+              if path == "index.html": return "1.0"
+              if path.startswith("research/hub"): return "0.9"
+              if path.startswith("articles/") and "index" not in path: return "0.8"
+              if path.startswith("research/"): return "0.8"
+              if path.startswith("demos/"): return "0.7"
+              if path.startswith("product-manual/"): return "0.7"
+              if "index" in path: return "0.8"
+              return "0.7"
+
+          def freq(path):
+              if path == "index.html": return "weekly"
+              if path.startswith("articles/"): return "weekly"
+              if path.startswith("research/"): return "weekly"
+              return "monthly"
+
+          # Find all HTML files
+          skip = {"google", "receipt", "thank-you"}
+          pages = []
+          for f in sorted(Path(".").rglob("*.html")):
+              rel = str(f)
+              if rel.startswith(".github"): continue
+              if rel.startswith("node_modules"): continue
+              if any(s in rel for s in skip): continue
+              pages.append(rel)
+
+          # Build sitemap
+          xml = ['<?xml version="1.0" encoding="UTF-8"?>']
+          xml.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
+          for p in pages:
+              url = f"{SITE}/{p}" if p != "index.html" else f"{SITE}/"
+              xml.append(f"  <url>")
+              xml.append(f"    <loc>{url}</loc>")
+              xml.append(f"    <lastmod>{today}</lastmod>")
+              xml.append(f"    <changefreq>{freq(p)}</changefreq>")
+              xml.append(f"    <priority>{priority(p)}</priority>")
+              xml.append(f"  </url>")
+          xml.append("</urlset>")
+          xml.append("")
+
+          Path("sitemap.xml").write_text("\n".join(xml))
+          print(f"Sitemap updated: {len(pages)} pages")
+          PYEOF
+
+      - name: Commit if changed
+        run: |
+          git config user.name "HYDRA Sitemap Bot"
+          git config user.email "noreply@aethermoore.com"
+          git add sitemap.xml
+          git diff --cached --quiet || git commit -m "chore: auto-update sitemap"
+          git push

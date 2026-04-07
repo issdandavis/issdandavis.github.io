@@ -1,0 +1,39 @@
+name: Lighthouse Performance
+
+on:
+  schedule:
+    # Every Sunday 6am UTC
+    - cron: '0 6 * * 0'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Lighthouse
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          urls: |
+            https://aethermoore.com/
+            https://aethermoore.com/articles/
+            https://aethermoore.com/research/hub.html
+            https://aethermoore.com/demos/index.html
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+
+      - name: Save results
+        run: |
+          mkdir -p drills
+          if [ -d ".lighthouseci" ]; then
+            cp .lighthouseci/lhr-*.json drills/lighthouse_latest.json 2>/dev/null || true
+          fi
+          git config user.name "HYDRA Lighthouse"
+          git config user.email "noreply@aethermoore.com"
+          git add drills/lighthouse_latest.json 2>/dev/null
+          git diff --cached --quiet || git commit -m "chore: lighthouse audit $(date -u +%Y-%m-%d)"
+          git push || true

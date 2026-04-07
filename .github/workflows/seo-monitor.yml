@@ -1,0 +1,93 @@
+name: SEO Monitor
+
+on:
+  schedule:
+    # Weekly Monday 7am UTC
+    - cron: '0 7 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  seo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install deps
+        run: pip install requests beautifulsoup4 lxml
+
+      - name: SEO audit
+        run: |
+          python3 - <<'PYEOF'
+          import requests, json, re
+          from bs4 import BeautifulSoup
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          SITE = "https://aethermoore.com"
+          now = datetime.now(timezone.utc)
+          issues = []
+
+          # 1. Check sitemap vs actual pages
+          r = requests.get(f"{SITE}/sitemap.xml", timeout=15)
+          soup = BeautifulSoup(r.text, "lxml-xml")
+          sitemap_urls = {loc.text for loc in soup.find_all("loc")}
+
+          # 2. Check for stale dates (>30 days)
+          for url_tag in soup.find_all("url"):
+              loc = url_tag.find("loc").text
+              lm = url_tag.find("lastmod")
+              if lm:
+                  d = datetime.fromisoformat(lm.text + "T00:00:00+00:00")
+                  age = (now - d).days
+                  if age > 30:
+                      issues.append(f"STALE: {loc} — lastmod {lm.text} ({age}d ago)")
+
+          # 3. Check each page for meta description length
+          for url in list(sitemap_urls)[:50]:  # cap at 50 to stay in free tier
+              try:
+                  r = requests.get(url, timeout=10)
+                  page = BeautifulSoup(r.text, "html.parser")
+                  desc = page.find("meta", attrs={"name": "description"})
+                  if not desc or not desc.get("content"):
+                      issues.append(f"NO_META: {url}")
+                  elif len(desc["content"]) < 50:
+                      issues.append(f"SHORT_META: {url} ({len(desc['content'])} chars)")
+                  elif len(desc["content"]) > 160:
+                      issues.append(f"LONG_META: {url} ({len(desc['content'])} chars)")
+              except Exception:
+                  pass
+
+          # 4. Check robots.txt and llms.txt exist
+          for f in ["robots.txt", "llms.txt", "sitemap.xml"]:
+              try:
+                  r = requests.head(f"{SITE}/{f}", timeout=10)
+                  if r.status_code != 200:
+                      issues.append(f"MISSING: {f} (status {r.status_code})")
+              except Exception:
+                  issues.append(f"MISSING: {f} (unreachable)")
+
+          report = {"date": now.strftime("%Y-%m-%d"), "issues": len(issues), "details": issues}
+          Path("drills").mkdir(exist_ok=True)
+          with open("drills/seo_latest.json", "w") as f:
+              json.dump(report, f, indent=2)
+
+          print(f"SEO Audit: {len(issues)} issues found")
+          for i in issues[:20]:
+              print(f"  {i}")
+          PYEOF
+
+      - name: Commit report
+        run: |
+          git config user.name "HYDRA SEO Monitor"
+          git config user.email "noreply@aethermoore.com"
+          git add drills/seo_latest.json
+          git diff --cached --quiet || git commit -m "chore: weekly SEO audit $(date -u +%Y-%m-%d)"
+          git push
