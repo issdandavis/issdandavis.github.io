@@ -336,7 +336,7 @@ async function pollyAsk() {
   let step = 0;
   thinking.textContent = steps[0];
 
-  const interval = setInterval(() => {
+  const interval = setInterval(async () => {
     step++;
     if (step < steps.length) {
       thinking.textContent = steps.slice(0, step + 1).join('\n');
