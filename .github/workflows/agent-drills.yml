@@ -1,0 +1,43 @@
+name: Agent Training Drills
+
+on:
+  schedule:
+    # Run daily at 6am UTC (11pm PDT — while Issac sleeps)
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+    inputs:
+      drill:
+        description: 'Which drill to run (all, patrol, security, review)'
+        required: false
+        default: 'all'
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  drills:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 lxml
+
+      - name: Run training drills
+        env:
+          DRILL: ${{ github.event.inputs.drill || 'all' }}
+          SITE_URL: https://aethermoore.com
+        run: python .github/scripts/agent_drills.py
+
+      - name: Commit drill reports
+        run: |
+          git config user.name "HYDRA Drill Runner"
+          git config user.email "noreply@aethermoore.com"
+          git add -A drills/ sitemap.xml
+          git diff --cached --quiet || git commit -m "chore: agent drill report $(date -u +%Y-%m-%d)"
+          git push

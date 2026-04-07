@@ -1,0 +1,22 @@
+{
+  "date": "2026-04-07",
+  "drills_run": [
+    "patrol",
+    "security",
+    "review"
+  ],
+  "patrol": {
+    "pages": 87,
+    "broken_links": 0
+  },
+  "security": {
+    "score": 2,
+    "max_score": 8
+  },
+  "review": {
+    "articles": 3,
+    "research": 26,
+    "demos": 25
+  },
+  "sft_pairs_generated": 7
+}
