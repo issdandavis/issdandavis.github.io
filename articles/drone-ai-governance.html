@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drone AI Brains: Edge Computing, Swarms, and Governance at the Edge | SCBE-AETHERMOORE</title>
+  <meta name="description" content="Jetson Orin, swarm intelligence, and the unsolved problem: enforcing AI governance when comms are severed. Sacred Tongue domain separation formalizes human-in-the-loop as architecture.">
+  <meta name="keywords" content="AI governance framework, drone AI, swarm intelligence, hyperbolic geometry AI, autonomous systems, edge computing, LLM security pipeline">
+  <meta property="og:title" content="Drone AI Brains: Edge Computing, Swarms, and Governance at the Edge">
+  <meta property="og:description" content="The unsolved drone problem: enforcing policy when comms are severed. Sacred Tongue domain separation is the answer.">
+  <meta property="og:url" content="https://aethermoore.com/articles/drone-ai-governance.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://aethermoore.com/hero.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://aethermoore.com/articles/drone-ai-governance.html">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #070711; color: #edf0ff; line-height: 1.7; }
+    a { color: #8fffd3; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .topbar { position: sticky; top: 0; z-index: 30; display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; background: rgba(7,7,17,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(123,140,255,0.14); }
+    .topbar .brand { font-weight: 800; letter-spacing: 0.08em; font-size: 14px; color: #edf0ff; }
+    .topbar nav { display: flex; gap: 12px; color: #b4b9df; font-size: 13px; }
+    .topbar nav a { color: #b4b9df; }
+    .topbar nav a:hover { color: #fff; text-decoration: none; }
+    .wrap { max-width: 740px; margin: 0 auto; padding: 40px 16px 80px; }
+    .back { display: inline-block; font-size: 13px; color: #6a7099; margin-bottom: 24px; }
+    .back:hover { color: #8fffd3; text-decoration: none; }
+    .article-date { font-size: 12px; color: #6a7099; margin-bottom: 8px; }
+    .article-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 20px; }
+    .tag { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 8px; letter-spacing: 0.05em; text-transform: uppercase; }
+    .tag-security { background: rgba(255,158,199,0.12); color: #ff9ec7; }
+    .tag-research { background: rgba(109,216,255,0.12); color: #6dd8ff; }
+    h1 { font-size: clamp(24px, 5vw, 40px); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 16px; background: linear-gradient(135deg, #8fffd3, #6dd8ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.2; }
+    h2 { font-size: 22px; font-weight: 700; margin: 32px 0 12px; color: #c4d0ff; }
+    h3 { font-size: 17px; font-weight: 700; margin: 24px 0 8px; color: #8fffd3; }
+    p { margin-bottom: 16px; color: #b4b9df; font-size: 15px; }
+    ul, ol { margin: 0 0 16px 20px; color: #b4b9df; font-size: 15px; }
+    li { margin-bottom: 8px; }
+    strong { color: #edf0ff; }
+    .highlight { padding: 20px; border-radius: 12px; background: rgba(143,255,211,0.04); border: 1px solid rgba(143,255,211,0.15); margin: 24px 0; }
+    .highlight p { margin-bottom: 0; }
+    code { background: rgba(123,140,255,0.1); padding: 2px 6px; border-radius: 4px; font-size: 13px; color: #c49cff; }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    th { text-align: left; padding: 10px 12px; border-bottom: 2px solid rgba(123,140,255,0.2); color: #8fffd3; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+    td { padding: 10px 12px; border-bottom: 1px solid rgba(123,140,255,0.08); color: #b4b9df; }
+    .footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid rgba(123,140,255,0.10); color: #5a5f82; font-size: 12px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer a { color: #5a5f82; }
+    .footer a:hover { color: #8fffd3; }
+    @media (max-width: 768px) { .topbar { flex-direction: column; gap: 8px; } .topbar nav { justify-content: center; font-size: 12px; } }
+  </style>
+</head>
+<body>
+<div class="topbar">
+  <a class="brand" href="/">SCBE-AETHERMOORE</a>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/research/">Research</a>
+    <a href="/articles/">Articles</a>
+    <a href="/product-manual/">Docs</a>
+    <a href="https://github.com/issdandavis/SCBE-AETHERMOORE">GitHub</a>
+  </nav>
+</div>
+<div class="wrap">
+  <a class="back" href="/articles/">&larr; All Articles</a>
+  <div class="article-date">April 7, 2026 &middot; 6 min read &middot; Issac Davis</div>
+  <div class="article-tags">
+    <span class="tag tag-security">Security</span>
+    <span class="tag tag-research">Research</span>
+  </div>
+  <h1>Drone AI Brains: Edge Computing, Swarms, and Governance at the Edge</h1>
+
+  <p>The DoD's Replicator Initiative is fielding thousands of autonomous drones. Boeing's MQ-28 Ghost Bat is in flight test. Ukraine accelerated FPV drone AI with real-time target classification. The hardware is ready. The software is ready. <strong>The governance isn't.</strong></p>
+
+  <h2>The Edge AI Hardware Stack</h2>
+
+  <table>
+    <tr><th>Chip</th><th>Performance</th><th>Power</th><th>Use Case</th></tr>
+    <tr><td><strong>NVIDIA Jetson Orin</strong></td><td>275 TOPS INT8</td><td>~60W</td><td>High-end autonomous nav</td></tr>
+    <tr><td><strong>Qualcomm RB5/RB7</strong></td><td>15 TOPS</td><td>~10W</td><td>Mid-tier with 5G integration</td></tr>
+    <tr><td><strong>Hailo-8L</strong></td><td>26 TOPS</td><td>~13W</td><td>Ultra-low-power inference</td></tr>
+  </table>
+
+  <p>Vision models have caught up: <strong>YOLOv8-nano</strong> and <strong>YOLOv9-tiny</strong> run 30+ FPS on Jetson Orin Nano. INT4/INT8 quantization is mandatory for payload-constrained platforms. Neural SLAM and learned depth estimation (DepthAnything v2) are replacing classical stereo pipelines.</p>
+
+  <h2>Swarm Intelligence</h2>
+  <p>DARPA's ACE and OFFSET programs demonstrated <strong>50+ drone swarms</strong> with emergent task allocation using multi-agent reinforcement learning (MARL). Decentralized consensus algorithms handle degraded-comms scenarios where central command is unavailable.</p>
+  <p>The open-source stack &mdash; PX4 v1.15+, ArduPilot 4.5+, ROS2 Nav2 &mdash; now integrates swarm coordination natively.</p>
+
+  <h2>The Unsolved Problem</h2>
+  <p>DoD Directive 3000.09 requires human-in-the-loop for lethal decisions. But OODA loop compression creates an impossible tension: <strong>AI recommends, human approves, but latency kills the advantage</strong>. NATO AI governance frameworks are emerging for interoperability, but the core question remains:</p>
+
+  <div class="highlight">
+    <p><strong>How do you enforce governance policy at the edge when communications are severed?</strong> This is the problem that can't be solved by dashboards or compliance checklists. It requires governance embedded in the architecture itself.</p>
+  </div>
+
+  <h2>Hyperbolic Geometry for Swarm Command</h2>
+  <p>Hierarchical command structures &mdash; battalion &gt; squad &gt; individual drone &mdash; embed naturally in Poincar&eacute; space. The tree-like branching of military command maps to hyperbolic geometry's exponential volume growth.</p>
+  <p>SCBE's <code>H(d,R) = R^(d&sup2;)</code> cost scaling prices out <strong>unauthorized command escalation</strong>. A rogue drone attempting to assume squad-leader authority faces exponential cost. The geometry itself enforces the chain of command, even when the radio link to HQ is dead.</p>
+
+  <h2>Sacred Tongues as Subsystem Governance</h2>
+  <p>Each Sacred Tongue maps to a drone subsystem domain:</p>
+
+  <table>
+    <tr><th>Tongue</th><th>Domain</th><th>Drone Function</th></tr>
+    <tr><td><strong>KO</strong> (Kor'aelin)</td><td>Orchestration</td><td>Mission planning</td></tr>
+    <tr><td><strong>AV</strong> (Avali)</td><td>I/O &amp; Messaging</td><td>Sensor fusion</td></tr>
+    <tr><td><strong>RU</strong> (Runethic)</td><td>Policy &amp; Constraints</td><td>Rules of engagement</td></tr>
+    <tr><td><strong>CA</strong> (Cassisivadan)</td><td>Logic &amp; Computation</td><td>Navigation &amp; targeting</td></tr>
+    <tr><td><strong>UM</strong> (Umbroth)</td><td>Security &amp; Privacy</td><td>Encrypted comms</td></tr>
+    <tr><td><strong>DR</strong> (Draumric)</td><td>Types &amp; Structures</td><td>Payload schema</td></tr>
+  </table>
+
+  <p>Cross-domain violations &mdash; like sensor data directly triggering weapons without passing through RU (policy) &mdash; require explicit governance gates. <strong>This is the human-in-the-loop problem formalized as architecture.</strong> Even when the human can't be in the loop, the policy gates remain.</p>
+
+  <h2>Why This Matters</h2>
+  <p>Autonomous drones are deploying faster than governance can keep up. The frameworks being proposed &mdash; NATO guidelines, DoD directives, EU regulations &mdash; are policy documents. They describe <em>what</em> should happen but not <em>how</em> to enforce it at the edge, in real-time, without connectivity.</p>
+  <p>SCBE provides the <em>how</em>: geometric cost functions that enforce governance mathematically, domain separation that prevents unauthorized cross-system actions, and a pipeline that operates independently of external connectivity.</p>
+
+  <div class="footer">
+    <div>SCBE-AETHERMOORE &mdash; AI Governance. Mathematical Security.</div>
+    <div style="display:flex; gap:12px;">
+      <a href="/">Home</a>
+      <a href="/research/">Research</a>
+      <a href="/articles/">Articles</a>
+      <a href="https://github.com/issdandavis/SCBE-AETHERMOORE">GitHub</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>
