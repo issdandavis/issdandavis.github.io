@@ -20,55 +20,81 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "SCBE-AETHERMOORE",
-    "applicationCategory": "SecurityApplication",
-    "operatingSystem": "Cross-platform",
-    "description": "AI governance framework using hyperbolic geometry. 14-layer security pipeline with 29,000+ passing tests.",
-    "url": "https://aethermoore.com",
-    "author": {
-      "@type": "Person",
-      "name": "Issac Davis",
-      "url": "https://github.com/issdandavis"
-    },
-    "license": "https://opensource.org/licenses/MIT",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "softwareVersion": "1.0",
-    "codeRepository": "https://github.com/issdandavis/SCBE-AETHERMOORE"
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
+    "@graph": [
       {
-        "@type": "Question",
-        "name": "What is SCBE-AETHERMOORE?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "SCBE-AETHERMOORE is an open-source AI governance framework that uses hyperbolic geometry to make AI attacks mathematically impossible. It uses a 14-layer security pipeline where every threat is priced by the formula H(d,R) = R^(d²). Patent pending USPTO #63/961,403."
+        "@type": "Organization",
+        "@id": "https://aethermoore.com/#org",
+        "name": "SCBE-AETHERMOORE",
+        "url": "https://aethermoore.com/",
+        "logo": "https://aethermoore.com/favicon.svg",
+        "email": "ai@aethermoore.com"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "SCBE-AETHERMOORE",
+        "applicationCategory": "SecurityApplication",
+        "operatingSystem": "Linux, Windows, macOS",
+        "description": "Hyperbolic AI governance framework and 14-layer security pipeline.",
+        "author": { "@id": "https://aethermoore.com/#org" },
+        "softwareVersion": "5.0",
+        "codeRepository": "https://github.com/issdandavis/SCBE-AETHERMOORE"
+      },
+      {
+        "@type": "Product",
+        "name": "SCBE AI Governance Toolkit",
+        "description": "A one-time package for governed AI workflows with templates, decision records, setup guidance, buyer manual, and direct support.",
+        "image": "https://aethermoore.com/hero.png",
+        "brand": { "@type": "Brand", "name": "AetherMoore" },
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "USD",
+          "price": "29",
+          "availability": "https://schema.org/InStock",
+          "url": "https://buy.stripe.com/cNibJ25Ca2TJ9gQ3a6dby06"
         }
       },
       {
-        "@type": "Question",
-        "name": "How does hyperbolic security pricing work?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The formula H(d,R) = R^(d²) means that as an attacker goes deeper (d) with wider scope (R), the cost explodes exponentially. At depth 3 and radius 10, the cost is 10^9 (1 billion). At depth 4, it's 10^16. Legitimate users stay shallow and pay trivial costs. Attackers are priced out by geometry."
+        "@type": "Product",
+        "name": "SCBE AI Security Training Vault",
+        "description": "Training data, projector weights, benchmark suite, and Colab notebook for fine-tuning your own governed AI model.",
+        "image": "https://aethermoore.com/hero.png",
+        "brand": { "@type": "Brand", "name": "AetherMoore" },
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "USD",
+          "price": "29",
+          "availability": "https://schema.org/InStock",
+          "url": "https://buy.stripe.com/28E8wQ5Cacuj64EaCydby0g"
         }
       },
       {
-        "@type": "Question",
-        "name": "What are the Six Sacred Tongues?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Six security domains weighted by the Fibonacci/golden ratio sequence: KO (Control, 1.0), AV (I/O, 1.618), RU (Policy, 2.618), CA (Logic, 4.236), UM (Security, 6.854), DR (Types, 11.09). Each tongue governs a different aspect of AI governance."
-        }
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is SCBE-AETHERMOORE?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "SCBE-AETHERMOORE is an open-source AI governance framework that uses hyperbolic geometry to make AI attacks mathematically impossible. It uses a 14-layer security pipeline where every threat is priced by the formula H(d,R) = R^(d²). Patent pending USPTO #63/961,403."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does hyperbolic security pricing work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The formula H(d,R) = R^(d²) means that as an attacker goes deeper (d) with wider scope (R), the cost explodes exponentially. At depth 3 and radius 10, the cost is 10^9 (1 billion). At depth 4, it's 10^16. Legitimate users stay shallow and pay trivial costs. Attackers are priced out by geometry."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What are the Six Sacred Tongues?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Six security domains weighted by the Fibonacci/golden ratio sequence: KO (Control, 1.0), AV (I/O, 1.618), RU (Policy, 2.618), CA (Logic, 4.236), UM (Security, 6.854), DR (Types, 11.09). Each tongue governs a different aspect of AI governance."
+            }
+          }
+        ]
       }
     ]
   }
