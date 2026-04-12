@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sacred Tongue Encoder — Live Demo</title>
+<link rel="canonical" href="https://aethermoore.com/demos/tongue-encoder.html">
+<meta property="og:image" content="https://aethermoore.com/hero.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sacred Tongue Encoder - SCBE">
+<meta name="twitter:description" content="Encode text in 6 Sacred Tongues. Live tokenizer demo with phi-weighting.">
+<meta name="twitter:image" content="https://aethermoore.com/hero.png">
   <meta name="description" content="Encode text using the 6 Sacred Tongues (KO, AV, RU, CA, UM, DR). Live tokenizer with golden ratio weighting.">
   <meta property="og:title" content="Sacred Tongue Encoder - SCBE">
   <meta property="og:description" content="Encode text in 6 Sacred Tongues. Live tokenizer demo with phi-weighting.">
@@ -39,6 +45,11 @@ select { cursor: pointer; }
 .stat .label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
 .btn { display: inline-block; background: #6c5ce7; color: #fff; padding: 10px 24px; border-radius: 8px; border: none; cursor: pointer; font-size: 14px; }
 .btn:hover { background: #5a4bd1; }
+.btn-primary { display: inline-block; background: #6c5ce7; color: #fff; padding: 12px 28px; border-radius: 8px; border: none; cursor: pointer; font-size: 14px; font-weight: 600; text-decoration: none; transition: background 0.2s; }
+.btn-primary:hover { background: #5a4bd1; }
+.cta-section { text-align: center; margin: 32px 0 16px 0; }
+.explainer { background: #12122e; border: 1px solid #1a1a3e; border-radius: 8px; padding: 14px 18px; margin: 0 0 20px 0; font-size: 14px; color: #bbb; line-height: 1.6; }
+.explainer strong { color: #a29bfe; }
 .info { background: #12122e; border-left: 3px solid #6c5ce7; padding: 16px; border-radius: 0 8px 8px 0; margin: 24px 0; font-size: 14px; color: #aaa; line-height: 1.6; }
 </style>
 </head>
@@ -52,6 +63,7 @@ select { cursor: pointer; }
   </div>
 
   <h1>Sacred Tongue Encoder</h1>
+  <p class="explainer">A <strong>tongue</strong> is one of six constructed languages (KO, AV, RU, CA, UM, DR), each tied to a governance domain &mdash; every byte of your input is mapped to a unique syllable token in the chosen tongue, and the tongue's golden-ratio weight sets the cost of operating in that domain.</p>
   <p class="subtitle">Type text, pick a tongue, see it encoded in real time. Each byte maps to a unique token in the selected conlang.</p>
 
   <div class="grid">
@@ -101,6 +113,10 @@ select { cursor: pointer; }
     <a href="https://www.amazon.com/dp/B0GSSFQD9G">Read the novel</a> |
     <a href="https://github.com/issdandavis/SCBE-AETHERMOORE">View source</a> |
     <code>pip install scbe-aethermoore</code>
+  </div>
+
+  <div class="cta-section">
+    <a href="https://github.com/issdandavis/SCBE-AETHERMOORE" class="btn-primary" target="_blank" rel="noopener">View on GitHub &rarr;</a>
   </div>
 </div>
 

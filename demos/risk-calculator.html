@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hyperbolic Risk Calculator — Live Demo</title>
+<link rel="canonical" href="https://aethermoore.com/demos/risk-calculator.html">
+<meta property="og:image" content="https://aethermoore.com/hero.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hyperbolic Risk Calculator - SCBE">
+<meta name="twitter:description" content="Calculate adversarial cost in hyperbolic space. The harmonic wall in action.">
+<meta name="twitter:image" content="https://aethermoore.com/hero.png">
   <meta name="description" content="Calculate hyperbolic risk scores. Input adversarial parameters and see how the harmonic wall scales defense cost exponentially.">
   <meta property="og:title" content="Hyperbolic Risk Calculator - SCBE">
   <meta property="og:description" content="Calculate adversarial cost in hyperbolic space. The harmonic wall in action.">
@@ -39,6 +45,11 @@ canvas { width: 100%; height: 100%; }
 .stat .num { font-size: 20px; font-weight: 700; color: #6c5ce7; font-family: monospace; }
 .stat .label { font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
 .info { background: #12122e; border-left: 3px solid #6c5ce7; padding: 16px; border-radius: 0 8px 8px 0; margin: 24px 0; font-size: 14px; color: #aaa; line-height: 1.6; }
+.btn-primary { display: inline-block; background: #6c5ce7; color: #fff; padding: 12px 24px; border-radius: 8px; border: none; cursor: pointer; font-size: 14px; font-weight: 600; text-decoration: none; transition: background 0.2s; }
+.btn-primary:hover { background: #5a4bd1; }
+.btn-attack { background: #e74c3c; margin: 8px 0 16px 0; }
+.btn-attack:hover { background: #c0392b; }
+.cta-row { margin: 16px 0 8px 0; }
 @media (max-width: 600px) { .stats { grid-template-columns: repeat(2, 1fr); } }
 </style>
 </head>
@@ -74,6 +85,8 @@ canvas { width: 100%; height: 100%; }
     <input type="range" id="iSlider" min="-1" max="1" step="0.05" value="0.50">
   </div>
 
+  <button type="button" class="btn-primary btn-attack" id="attackPresetBtn" onclick="tryAttackPreset()">Try an attack example</button>
+
   <div id="resultBox" class="result allow">
     <span id="costDisplay">1.13</span>x
     <div class="decision" id="decisionDisplay">ALLOW</div>
@@ -91,6 +104,9 @@ canvas { width: 100%; height: 100%; }
   </div>
 
   <div class="info">
+    <div class="cta-row">
+      <a href="https://github.com/issdandavis/SCBE-AETHERMOORE" class="btn-primary" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+    </div>
     <strong>What you're seeing:</strong> The Poincare ball visualization shows the agent (dot) moving from the safe center
     toward the boundary. The harmonic wall (H = R^(d^2)) creates a cost explosion near the edge.
     <br><br>
@@ -114,9 +130,18 @@ function resize() {
   const rect = canvas.parentElement.getBoundingClientRect();
   canvas.width = rect.width * 2;
   canvas.height = rect.height * 2;
+  if (typeof compute === 'function') compute();
 }
 resize();
 window.addEventListener('resize', resize);
+
+function tryAttackPreset() {
+  const dSlider = document.getElementById('dSlider');
+  const iSlider = document.getElementById('iSlider');
+  dSlider.value = 0.85;
+  iSlider.value = -0.9;
+  compute();
+}
 
 function compute() {
   const d = parseFloat(document.getElementById('dSlider').value);
