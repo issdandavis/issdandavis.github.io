@@ -1,0 +1,41 @@
+name: Research feed updater
+
+on:
+  schedule:
+    # Daily at 07:00 UTC
+    - cron: '0 7 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: research-feed
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run research feed updater
+        run: python scripts/update_research_feed.py
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "aethermoore-bot"
+          git config user.email "bot@aethermoore.com"
+          git add research-feed.json research/latest.html
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "chore: auto-update research feed [skip ci]"
+          git push

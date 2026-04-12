@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latest AI Safety Research | SCBE-AETHERMOORE</title>
+  <meta name="description" content="Auto-updating feed of recent AI safety, governance, and security research from arXiv and HackerNews. Refreshed daily via GitHub Actions.">
+  <link rel="canonical" href="https://aethermoore.com/research/latest.html">
+  <meta property="og:title" content="Latest AI Safety Research | SCBE-AETHERMOORE">
+  <meta property="og:description" content="Auto-updating feed of AI safety and governance research. Refreshed daily.">
+  <meta property="og:url" content="https://aethermoore.com/research/latest.html">
+  <meta property="og:image" content="https://aethermoore.com/hero.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Latest AI Safety Research | SCBE-AETHERMOORE">
+  <meta name="twitter:description" content="Auto-updating feed of AI safety and governance research.">
+  <meta name="twitter:image" content="https://aethermoore.com/hero.png">
+  <style>
+    :root {
+      --bg: #071412; --bg-deep: #04100f; --panel: rgba(10, 28, 24, 0.82);
+      --line: rgba(139, 255, 223, 0.15); --line-bright: rgba(139, 255, 223, 0.30);
+      --text: #e7fff7; --muted: #9bc5ba; --dim: #6a9488;
+      --mint: #8fffd3; --aqua: #6dd8ff; --gold: #ffd977; --rose: #ff9ec7;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(180deg, var(--bg-deep), var(--bg));
+      color: var(--text); line-height: 1.6; min-height: 100vh;
+    }
+    a { color: inherit; text-decoration: none; }
+    .topbar {
+      position: sticky; top: 0; z-index: 100;
+      backdrop-filter: blur(16px); background: rgba(4, 16, 15, 0.85);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 20px;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    }
+    .brand { font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mint); font-weight: 700; }
+    .nav { display: flex; gap: 6px; flex-wrap: wrap; }
+    .nav a { padding: 6px 12px; border-radius: 8px; font-size: 13px; color: var(--muted); }
+    .nav a:hover { color: var(--text); background: rgba(143, 255, 211, 0.08); }
+    main { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
+    .hero-label {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--mint);
+      padding: 4px 12px; border-radius: 20px; background: rgba(143, 255, 211, 0.08);
+      border: 1px solid rgba(143, 255, 211, 0.15); margin-bottom: 16px;
+    }
+    h1 {
+      font-size: clamp(28px, 5vw, 48px); font-weight: 800;
+      letter-spacing: -0.03em; margin-bottom: 12px;
+      background: linear-gradient(135deg, var(--mint), var(--aqua));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .subtitle { color: var(--muted); margin-bottom: 8px; max-width: 64ch; font-size: 17px; }
+    .generated { color: var(--dim); font-size: 12px; margin-bottom: 40px; }
+    .feed-grid { display: grid; gap: 16px; grid-template-columns: 1fr; }
+    @media (min-width: 760px) { .feed-grid { grid-template-columns: 1fr 1fr; } }
+    .feed-card {
+      display: block; padding: 22px; border-radius: 16px;
+      background: var(--panel); border: 1px solid var(--line);
+      transition: all 200ms;
+    }
+    .feed-card:hover {
+      border-color: var(--line-bright);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    }
+    .feed-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; font-size: 11px; align-items: center; }
+    .src-tag {
+      font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+      padding: 3px 8px; border-radius: 6px;
+    }
+    .src-arxiv { background: rgba(143, 255, 211, 0.12); color: var(--mint); border: 1px solid rgba(143, 255, 211, 0.25); }
+    .src-hn { background: rgba(255, 217, 119, 0.12); color: var(--gold); border: 1px solid rgba(255, 217, 119, 0.25); }
+    .feed-date { color: var(--dim); }
+    .feed-keyword { color: var(--aqua); }
+    .feed-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; line-height: 1.35; }
+    .feed-card p { font-size: 13px; color: var(--muted); line-height: 1.55; }
+    .feed-authors { font-size: 11px; color: var(--dim); margin-top: 10px; font-style: italic; }
+    .empty { padding: 40px; text-align: center; color: var(--muted); }
+    footer {
+      margin-top: 80px; padding: 24px 20px; border-top: 1px solid var(--line);
+      color: var(--dim); font-size: 12px; text-align: center;
+    }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--mint); }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="/">SCBE-AETHERMOORE</a>
+      <nav class="nav">
+        <a href="/">Home</a>
+        <a href="/research/index.html">Research</a>
+        <a href="/research/latest.html">Latest</a>
+        <a href="/research/forum.html">Forum</a>
+        <a href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <span class="hero-label">Auto-updated feed</span>
+    <h1>Latest AI safety research</h1>
+    <p class="subtitle">Recent papers and discussions on AI governance, LLM security, prompt injection, red teaming, and alignment &mdash; refreshed daily from arXiv and HackerNews.</p>
+    <div class="generated">Last updated: 2026-04-12T18:38:43.384689+00:00</div>
+    <div class="feed-grid">
+    <a class="feed-card" href="https://github.com/umputun/revdiff" target="_blank" rel="noopener">
+      <div class="feed-meta">
+        <span class="src-tag src-hn">HackerNews</span>
+        <span class="feed-date">2026-04-12</span>
+        <span class="feed-keyword">red team</span>
+      </div>
+      <h3>Show HN: Revdiff – TUI diff reviewer with inline annotations for AI agents</h3>
+      <p>6 points, 1 comments</p>
+      <div class="feed-authors">bumpa</div>
+    </a>
+
+    <a class="feed-card" href="https://specsight.app" target="_blank" rel="noopener">
+      <div class="feed-meta">
+        <span class="src-tag src-hn">HackerNews</span>
+        <span class="feed-date">2026-04-12</span>
+        <span class="feed-keyword">red team</span>
+      </div>
+      <h3>Show HN: Specsight – Living product specs generated from your codebase</h3>
+      <p>1 points, 0 comments</p>
+      <div class="feed-authors">aiola</div>
+    </a>
+
+    <a class="feed-card" href="https://github.com/halfwhey/claudraband" target="_blank" rel="noopener">
+      <div class="feed-meta">
+        <span class="src-tag src-hn">HackerNews</span>
+        <span class="feed-date">2026-04-12</span>
+        <span class="feed-keyword">red team</span>
+      </div>
+      <h3>Show HN: Claudraband – Claude Code for the Power User</h3>
+      <p>4 points, 0 comments</p>
+      <div class="feed-authors">halfwhey</div>
+    </a>
+
+    <a class="feed-card" href="https://99helpers.com/wiki/security-kb" target="_blank" rel="noopener">
+      <div class="feed-meta">
+        <span class="src-tag src-hn">HackerNews</span>
+        <span class="feed-date">2026-04-12</span>
+        <span class="feed-keyword">LLM security</span>
+      </div>
+      <h3>I built an LLM Wiki and RAG solution: here's a demo for a security KB</h3>
+      <p>1 points, 1 comments</p>
+      <div class="feed-authors">nickk81</div>
+    </a>
+
+    <a class="feed-card" href="https://jointherevolution.today/emergence" target="_blank" rel="noopener">
+      <div class="feed-meta">
+        <span class="src-tag src-hn">HackerNews</span>
+        <span class="feed-date">2026-04-12</span>
+        <span class="feed-keyword">AI governance</span>
+      </div>
+      <h3>Show HN: I visualized how AI agent systems accidentally become org charts</h3>
+      <p>3 points, 0 comments</p>
+      <div class="feed-authors">bhaviav100</div>
+    </a>
+
+    <a class="feed-card" href="https://news.ycombinator.com/item?id=47736330" target="_blank" rel="noopener">
+      <div class="feed-meta">
+        <span class="src-tag src-hn">HackerNews</span>
+        <span class="feed-date">2026-04-12</span>
+        <span class="feed-keyword">hallucination</span>
+      </div>
+      <h3>Strong feeling: we are in a folded AI reality</h3>
+      <p>1 points, 1 comments</p>
+      <div class="feed-authors">Jet_Xu</div>
+    </a>
+
+    <a class="feed-card" href="https://news.ycombinator.com/item?id=47736181" target="_blank" rel="noopener">
+      <div class="feed-meta">
+        <span class="src-tag src-hn">HackerNews</span>
+        <span class="feed-date">2026-04-12</span>
+        <span class="feed-keyword">LLM security</span>
+      </div>
+      <h3>Show HN: Two Claudes collaborating through shared memory on a $100 mini-PC</h3>
+      <p>2 points, 0 comments</p>
+      <div class="feed-authors">asixicle</div>
+    </a>
+
+    <a class="feed-card" href="https://substack.com/home/post/p-193928243" target="_blank" rel="noopener">
+      <div class="feed-meta">
+        <span class="src-tag src-hn">HackerNews</span>
+        <span class="feed-date">2026-04-12</span>
+        <span class="feed-keyword">alignment</span>
+      </div>
+      <h3>Mythos Just Proved the Alignment Field Is Building the Wrong Thing</h3>
+      <p>4 points, 2 comments</p>
+      <div class="feed-authors">ajspizz</div>
+    </a>
+
+    <a class="feed-card" href="https://bal.sciforge.ai/" target="_blank" rel="noopener">
+      <div class="feed-meta">
+        <span class="src-tag src-hn">HackerNews</span>
+        <span class="feed-date">2026-04-11</span>
+        <span class="feed-keyword">alignment</span>
+      </div>
+      <h3>Show HN: Bal – a Knights and Knaves logic puzzle game with Glicko rating system</h3>
+      <p>1 points, 3 comments</p>
+      <div class="feed-authors">skaye</div>
+    </a>
+
+    <a class="feed-card" href="https://play.google.com/store/apps/details?id=com.cyberpulse.cyber_pulse&amp;hl=en_US" target="_blank" rel="noopener">
+      <div class="feed-meta">
+        <span class="src-tag src-hn">HackerNews</span>
+        <span class="feed-date">2026-04-11</span>
+        <span class="feed-keyword">hallucination</span>
+      </div>
+      <h3>Show HN: Cyber Pulse. AI pipeline for triage and alerting on cyber news/intel</h3>
+      <p>1 points, 0 comments</p>
+      <div class="feed-authors">kozi93</div>
+    </a>
+
+    <a class="feed-card" href="https://nono.sh" target="_blank" rel="noopener">
+      <div class="feed-meta">
+        <span class="src-tag src-hn">HackerNews</span>
+        <span class="feed-date">2026-04-10</span>
+        <span class="feed-keyword">AI safety</span>
+      </div>
+      <h3>Nono – Runtime safety infrastructure for AI agents</h3>
+      <p>3 points, 0 comments</p>
+      <div class="feed-authors">jossclimb</div>
+    </a>
+
+    <a class="feed-card" href="https://docs.geiant.com/integrations/claude-managed-agents/" target="_blank" rel="noopener">
+      <div class="feed-meta">
+        <span class="src-tag src-hn">HackerNews</span>
+        <span class="feed-date">2026-04-10</span>
+        <span class="feed-keyword">AI compliance</span>
+      </div>
+      <h3>EU AI Act compliance layer for Claude Managed Agents (MCP, open source)</h3>
+      <p>3 points, 0 comments</p>
+      <div class="feed-authors">camilo_ayerbe</div>
+    </a>
+
+    <a class="feed-card" href="https://thenewstack.io/pytorch-ai-stack-expand/" target="_blank" rel="noopener">
+      <div class="feed-meta">
+        <span class="src-tag src-hn">HackerNews</span>
+        <span class="feed-date">2026-04-10</span>
+        <span class="feed-keyword">AI safety</span>
+      </div>
+      <h3>PyTorch Foundation Expands AI Stack with Safetensors, ExecuTorch, and Helion</h3>
+      <p>2 points, 0 comments</p>
+      <div class="feed-authors">Brajeshwar</div>
+    </a>
+
+    <a class="feed-card" href="https://matthodges.com/posts/2026-04-10-ai-politics-fault-tolerance/" target="_blank" rel="noopener">
+      <div class="feed-meta">
+        <span class="src-tag src-hn">HackerNews</span>
+        <span class="feed-date">2026-04-10</span>
+        <span class="feed-keyword">hallucination</span>
+      </div>
+      <h3>Surviving Hallucinations: AI Fault Tolerance for Campaigns</h3>
+      <p>3 points, 0 comments</p>
+      <div class="feed-authors">m-hodges</div>
+    </a>
+
+    <a class="feed-card" href="https://news.ycombinator.com/item?id=47721153" target="_blank" rel="noopener">
+      <div class="feed-meta">
+        <span class="src-tag src-hn">HackerNews</span>
+        <span class="feed-date">2026-04-10</span>
+        <span class="feed-keyword">AI compliance</span>
+      </div>
+      <h3>Ask HN: Is a purely Markdown-based CRM a terrible idea? Optimized for LLM agents</h3>
+      <p>1 points, 1 comments</p>
+      <div class="feed-authors">dmonterocrespo</div>
+    </a>
+
+    <a class="feed-card" href="https://github.com/bglusman/zeroclawed" target="_blank" rel="noopener">
+      <div class="feed-meta">
+        <span class="src-tag src-hn">HackerNews</span>
+        <span class="feed-date">2026-04-10</span>
+        <span class="feed-keyword">adversarial</span>
+      </div>
+      <h3>Show HN: Zeroclawed: Secure Agent Gateway</h3>
+      <p>8 points, 3 comments</p>
+      <div class="feed-authors">bglusman</div>
+    </a>
+
+    <a class="feed-card" href="https://github.com/lunargate-ai/gateway" target="_blank" rel="noopener">
+      <div class="feed-meta">
+        <span class="src-tag src-hn">HackerNews</span>
+        <span class="feed-date">2026-04-10</span>
+        <span class="feed-keyword">LLM security</span>
+      </div>
+      <h3>Show HN: LunarGate – a self-hosted OpenAI-compatible LLM gateway</h3>
+      <p>2 points, 0 comments</p>
+      <div class="feed-authors">jmartenka</div>
+    </a>
+
+    <a class="feed-card" href="https://github.com/agberohq/keeper" target="_blank" rel="noopener">
+      <div class="feed-meta">
+        <span class="src-tag src-hn">HackerNews</span>
+        <span class="feed-date">2026-04-10</span>
+        <span class="feed-keyword">adversarial</span>
+      </div>
+      <h3>Show HN: Keeper – embedded secret store for Go (help me break it)</h3>
+      <p>63 points, 33 comments</p>
+      <div class="feed-authors">babawere</div>
+    </a>
+
+    <a class="feed-card" href="https://github.com/amitgupta-ag/ipi-scanner" target="_blank" rel="noopener">
+      <div class="feed-meta">
+        <span class="src-tag src-hn">HackerNews</span>
+        <span class="feed-date">2026-04-10</span>
+        <span class="feed-keyword">prompt injection</span>
+      </div>
+      <h3>IPI-Scanner – Detect Indirect Prompt Injection Attacks</h3>
+      <p>2 points, 0 comments</p>
+      <div class="feed-authors">xamitgupta</div>
+    </a>
+
+    <a class="feed-card" href="https://arxiv.org/abs/2604.08548v1" target="_blank" rel="noopener">
+      <div class="feed-meta">
+        <span class="src-tag src-arxiv">arXiv</span>
+        <span class="feed-date">2026-04-09</span>
+        <span class="feed-keyword">alignment</span>
+      </div>
+      <h3>ETCH-X: Robustify Expressive Body Fitting to Clothed Humans with Composable Datasets</h3>
+      <p>Human body fitting, which aligns parametric body models such as SMPL to raw 3D point clouds of clothed humans, serves as a crucial first step for downstream tasks like animation and texturing. An effective fitting method should be both locally expressive-capturing fine details su</p>
+      <div class="feed-authors">Xiaoben Li, Jingyi Wu, Zeyu Cai</div>
+    </a>
+
+    <a class="feed-card" href="https://arxiv.org/abs/2604.08546v1" target="_blank" rel="noopener">
+      <div class="feed-meta">
+        <span class="src-tag src-arxiv">arXiv</span>
+        <span class="feed-date">2026-04-09</span>
+        <span class="feed-keyword">alignment</span>
+      </div>
+      <h3>When Numbers Speak: Aligning Textual Numerals and Visual Instances in Text-to-Video Diffusion Models</h3>
+      <p>Text-to-video diffusion models have enabled open-ended video synthesis, but often struggle with generating the correct number of objects specified in a prompt. We introduce NUMINA , a training-free identify-then-guide framework for improved numerical alignment. NUMINA identifies </p>
+      <div class="feed-authors">Zhengyang Sun, Yu Chen, Xin Zhou</div>
+    </a>
+
+    <a class="feed-card" href="https://arxiv.org/abs/2604.08544v1" target="_blank" rel="noopener">
+      <div class="feed-meta">
+        <span class="src-tag src-arxiv">arXiv</span>
+        <span class="feed-date">2026-04-09</span>
+        <span class="feed-keyword">alignment</span>
+      </div>
+      <h3>SIM1: Physics-Aligned Simulator as Zero-Shot Data Scaler in Deformable Worlds</h3>
+      <p>Robotic manipulation with deformable objects represents a data-intensive regime in embodied learning, where shape, contact, and topology co-evolve in ways that far exceed the variability of rigids. Although simulation promises relief from the cost of real-world data acquisition, </p>
+      <div class="feed-authors">Yunsong Zhou, Hangxu Liu, Xuekun Jiang</div>
+    </a>
+
+    <a class="feed-card" href="https://arxiv.org/abs/2604.08519v1" target="_blank" rel="noopener">
+      <div class="feed-meta">
+        <span class="src-tag src-arxiv">arXiv</span>
+        <span class="feed-date">2026-04-09</span>
+        <span class="feed-keyword">hallucination</span>
+      </div>
+      <h3>Cram Less to Fit More: Training Data Pruning Improves Memorization of Facts</h3>
+      <p>Large language models (LLMs) can struggle to memorize factual knowledge in their parameters, often leading to hallucinations and poor performance on knowledge-intensive tasks. In this paper, we formalize fact memorization from an information-theoretic perspective and study how tr</p>
+      <div class="feed-authors">Jiayuan Ye, Vitaly Feldman, Kunal Talwar</div>
+    </a>
+
+    <a class="feed-card" href="https://arxiv.org/abs/2604.08504v1" target="_blank" rel="noopener">
+      <div class="feed-meta">
+        <span class="src-tag src-arxiv">arXiv</span>
+        <span class="feed-date">2026-04-09</span>
+        <span class="feed-keyword">adversarial</span>
+      </div>
+      <h3>Differentially Private Language Generation and Identification in the Limit</h3>
+      <p>We initiate the study of language generation in the limit, a model recently introduced by Kleinberg and Mullainathan [KM24], under the constraint of differential privacy. We consider the continual release model, where a generator must eventually output a stream of valid strings w</p>
+      <div class="feed-authors">Anay Mehrotra, Grigoris Velegkas, Xifan Yu</div>
+    </a>
+
+    <a class="feed-card" href="https://arxiv.org/abs/2604.08499v1" target="_blank" rel="noopener">
+      <div class="feed-meta">
+        <span class="src-tag src-arxiv">arXiv</span>
+        <span class="feed-date">2026-04-09</span>
+        <span class="feed-keyword">prompt injection</span>
+      </div>
+      <h3>PIArena: A Platform for Prompt Injection Evaluation</h3>
+      <p>Prompt injection attacks pose serious security risks across a wide range of real-world applications. While receiving increasing attention, the community faces a critical gap: the lack of a unified platform for prompt injection evaluation. This makes it challenging to reliably com</p>
+      <div class="feed-authors">Runpeng Geng, Chenlong Yin, Yanting Wang</div>
+    </a>
+
+    <a class="feed-card" href="https://github.com/aniketh-maddipati/agentmint-python" target="_blank" rel="noopener">
+      <div class="feed-meta">
+        <span class="src-tag src-hn">HackerNews</span>
+        <span class="feed-date">2026-04-09</span>
+        <span class="feed-keyword">AI compliance</span>
+      </div>
+      <h3>Show HN: AgentMint – Open-source OWASP compliance for AI agent tool calls</h3>
+      <p>5 points, 0 comments</p>
+      <div class="feed-authors">keertahacker</div>
+    </a>
+
+    <a class="feed-card" href="https://veganmosfet.codeberg.page/posts/2026-04-08-openclaw_gpt5_4/" target="_blank" rel="noopener">
+      <div class="feed-meta">
+        <span class="src-tag src-hn">HackerNews</span>
+        <span class="feed-date">2026-04-09</span>
+        <span class="feed-keyword">prompt injection</span>
+      </div>
+      <h3>Show HN: BrokenClaw Part 5: GPT-5.4 Edition (Prompt Injection)</h3>
+      <p>9 points, 2 comments</p>
+      <div class="feed-authors">veganmosfet</div>
+    </a>
+
+    <a class="feed-card" href="https://arxiv.org/abs/2604.08404v1" target="_blank" rel="noopener">
+      <div class="feed-meta">
+        <span class="src-tag src-arxiv">arXiv</span>
+        <span class="feed-date">2026-04-09</span>
+        <span class="feed-keyword">adversarial</span>
+      </div>
+      <h3>Adversarial Label Invariant Graph Data Augmentations for Out-of-Distribution Generalization</h3>
+      <p>Out-of-distribution (OoD) generalization occurs when representation learning encounters a distribution shift. This occurs frequently in practice when training and testing data come from different environments. Covariate shift is a type of distribution shift that occurs only in th</p>
+      <div class="feed-authors">Simon Zhang, Ryan P. DeMilt, Kun Jin</div>
+    </a>
+
+    <a class="feed-card" href="https://arxiv.org/abs/2604.08401v1" target="_blank" rel="noopener">
+      <div class="feed-meta">
+        <span class="src-tag src-arxiv">arXiv</span>
+        <span class="feed-date">2026-04-09</span>
+        <span class="feed-keyword">adversarial</span>
+      </div>
+      <h3>Verify Before You Commit: Towards Faithful Reasoning in LLM Agents via Self-Auditing</h3>
+      <p>In large language model (LLM) agents, reasoning trajectories are treated as reliable internal beliefs for guiding actions and updating memory. However, coherent reasoning can still violate logical or evidential constraints, allowing unsupported beliefs repeatedly stored and propa</p>
+      <div class="feed-authors">Wenhao Yuan, Chenchen Lin, Jian Chen</div>
+    </a>
+
+    <a class="feed-card" href="https://substack.com/home/post/p-193080562" target="_blank" rel="noopener">
+      <div class="feed-meta">
+        <span class="src-tag src-hn">HackerNews</span>
+        <span class="feed-date">2026-04-09</span>
+        <span class="feed-keyword">alignment</span>
+      </div>
+      <h3>AI alignment: the signal is the goal</h3>
+      <p>2 points, 0 comments</p>
+      <div class="feed-authors">atzeus</div>
+    </a>
+
+    <a class="feed-card" href="https://arxiv.org/abs/2604.08352v1" target="_blank" rel="noopener">
+      <div class="feed-meta">
+        <span class="src-tag src-arxiv">arXiv</span>
+        <span class="feed-date">2026-04-09</span>
+        <span class="feed-keyword">prompt injection</span>
+      </div>
+      <h3>Security Concerns in Generative AI Coding Assistants: Insights from Online Discussions on GitHub Copilot</h3>
+      <p>Generative Artificial Intelligence (GenAI) has become a central component of many development tools (e.g., GitHub Copilot) that support software practitioners across multiple programming tasks, including code completion, documentation, and bug detection. However, current research</p>
+      <div class="feed-authors">Nicolás E. Díaz Ferreyra, Monika Swetha Gurupathi, Zadia Codabux</div>
+    </a>
+
+    <a class="feed-card" href="https://arxiv.org/abs/2604.08216v1" target="_blank" rel="noopener">
+      <div class="feed-meta">
+        <span class="src-tag src-arxiv">arXiv</span>
+        <span class="feed-date">2026-04-09</span>
+        <span class="feed-keyword">hallucination</span>
+      </div>
+      <h3>MemCoT: Test-Time Scaling through Memory-Driven Chain-of-Thought</h3>
+      <p>Large Language Models (LLMs) still suffer from severe hallucinations and catastrophic forgetting during causal reasoning over massive, fragmented long contexts. Existing memory mechanisms typically treat retrieval as a static, single-step passive matching process, leading to seve</p>
+      <div class="feed-authors">Haodong Lei, Junming Liu, Yirong Chen</div>
+    </a>
+
+    <a class="feed-card" href="https://arxiv.org/abs/2604.08203v1" target="_blank" rel="noopener">
+      <div class="feed-meta">
+        <span class="src-tag src-arxiv">arXiv</span>
+        <span class="feed-date">2026-04-09</span>
+        <span class="feed-keyword">hallucination</span>
+      </div>
+      <h3>MedVR: Annotation-Free Medical Visual Reasoning via Agentic Reinforcement Learning</h3>
+      <p>Medical Vision-Language Models (VLMs) hold immense promise for complex clinical tasks, but their reasoning capabilities are often constrained by text-only paradigms that fail to ground inferences in visual evidence. This limitation not only curtails performance on tasks requiring</p>
+      <div class="feed-authors">Zheng Jiang, Heng Guo, Chengyu Fang</div>
+    </a>
+
+    <a class="feed-card" href="https://arxiv.org/abs/2604.08039v1" target="_blank" rel="noopener">
+      <div class="feed-meta">
+        <span class="src-tag src-arxiv">arXiv</span>
+        <span class="feed-date">2026-04-09</span>
+        <span class="feed-keyword">AI safety</span>
+      </div>
+      <h3>LINE: LLM-based Iterative Neuron Explanations for Vision Models</h3>
+      <p>Interpreting the concepts encoded by individual neurons in deep neural networks is a crucial step towards understanding their complex decision-making processes and ensuring AI safety. Despite recent progress in neuron labeling, existing methods often limit the search space to pre</p>
+      <div class="feed-authors">Vladimir Zaigrajew, Michał Piechota, Gaspar Sekula</div>
+    </a>
+
+    <a class="feed-card" href="https://arxiv.org/abs/2604.07835v1" target="_blank" rel="noopener">
+      <div class="feed-meta">
+        <span class="src-tag src-arxiv">arXiv</span>
+        <span class="feed-date">2026-04-09</span>
+        <span class="feed-keyword">jailbreak</span>
+      </div>
+      <h3>Silencing the Guardrails: Inference-Time Jailbreaking via Dynamic Contextual Representation Ablation</h3>
+      <p>While Large Language Models (LLMs) have achieved remarkable performance, they remain vulnerable to jailbreak attacks that circumvent safety constraints. Existing strategies, ranging from heuristic prompt engineering to computationally intensive optimization, often face significan</p>
+      <div class="feed-authors">Wenpeng Xing, Moran Fang, Guangtai Wang</div>
+    </a>
+
+    <a class="feed-card" href="https://arxiv.org/abs/2604.07831v1" target="_blank" rel="noopener">
+      <div class="feed-meta">
+        <span class="src-tag src-arxiv">arXiv</span>
+        <span class="feed-date">2026-04-09</span>
+        <span class="feed-keyword">prompt injection</span>
+      </div>
+      <h3>Are GUI Agents Focused Enough? Automated Distraction via Semantic-level UI Element Injection</h3>
+      <p>Existing red-teaming studies on GUI agents have important limitations. Adversarial perturbations typically require white-box access, which is unavailable for commercial systems, while prompt injection is increasingly mitigated by stronger safety alignment. To study robustness und</p>
+      <div class="feed-authors">Wenkui Yang, Chao Jin, Haisu Zhu</div>
+    </a>
+
+    <a class="feed-card" href="https://arxiv.org/abs/2604.07778v1" target="_blank" rel="noopener">
+      <div class="feed-meta">
+        <span class="src-tag src-arxiv">arXiv</span>
+        <span class="feed-date">2026-04-09</span>
+        <span class="feed-keyword">AI governance</span>
+      </div>
+      <h3>The Accountability Horizon: An Impossibility Theorem for Governing Human-Agent Collectives</h3>
+      <p>Existing accountability frameworks for AI systems, legal, ethical, and regulatory, rest on a shared assumption: for any consequential outcome, at least one identifiable person had enough involvement and foresight to bear meaningful responsibility. This paper proves that agentic A</p>
+      <div class="feed-authors">Haileleol Tibebu</div>
+    </a>
+
+    <a class="feed-card" href="https://github.com/aipoch/medical-research-skills" target="_blank" rel="noopener">
+      <div class="feed-meta">
+        <span class="src-tag src-hn">HackerNews</span>
+        <span class="feed-date">2026-04-09</span>
+        <span class="feed-keyword">adversarial</span>
+      </div>
+      <h3>Show HN: We Evaluates Medical Research Agent Skills</h3>
+      <p>2 points, 0 comments</p>
+      <div class="feed-authors">The_resa</div>
+    </a>
+
+    <a class="feed-card" href="https://arxiv.org/abs/2604.07727v1" target="_blank" rel="noopener">
+      <div class="feed-meta">
+        <span class="src-tag src-arxiv">arXiv</span>
+        <span class="feed-date">2026-04-09</span>
+        <span class="feed-keyword">jailbreak</span>
+      </div>
+      <h3>TrajGuard: Streaming Hidden-state Trajectory Detection for Decoding-time Jailbreak Defense</h3>
+      <p>Existing jailbreak defense paradigms primarily rely on static detection of prompts, outputs, or internal states, often neglecting the dynamic evolution of risk during decoding. This oversight leaves risk signals embedded in decoding trajectories underutilized, constituting a crit</p>
+      <div class="feed-authors">Cheng Liu, Xiaolei Liu, Xingyu Li</div>
+    </a>
+
+    <a class="feed-card" href="https://arxiv.org/abs/2604.07615v1" target="_blank" rel="noopener">
+      <div class="feed-meta">
+        <span class="src-tag src-arxiv">arXiv</span>
+        <span class="feed-date">2026-04-08</span>
+        <span class="feed-keyword">jailbreak</span>
+      </div>
+      <h3>ADAG: Automatically Describing Attribution Graphs</h3>
+      <p>In language model interpretability research, \textbf{circuit tracing} aims to identify which internal features causally contributed to a particular output and how they affected each other, with the goal of explaining the computations underlying some behaviour. However, all prior </p>
+      <div class="feed-authors">Aryaman Arora, Zhengxuan Wu, Jacob Steinhardt</div>
+    </a></div>
+  </main>
+  <footer>
+    This page is auto-generated by <a href="https://github.com/issdandavis/issdandavis.github.io/blob/main/scripts/update_research_feed.py">update_research_feed.py</a> &mdash; runs daily via GitHub Actions.
+    <br>
+    Data sources: <a href="https://arxiv.org/" target="_blank" rel="noopener">arXiv</a> &middot; <a href="https://news.ycombinator.com/" target="_blank" rel="noopener">HackerNews</a>
+  </footer>
+</body>
+</html>
