@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-12T18:38:43.384689+00:00",
+  "generated_at": "2026-04-12T20:55:03.896106+00:00",
   "source_keywords": [
     "AI safety",
     "LLM security",
@@ -16,8 +16,26 @@
   "items": [
     {
       "source": "HackerNews",
-      "title": "Show HN: Revdiff \u2013 TUI diff reviewer with inline annotations for AI agents",
+      "title": "Core views on AI safety (March 2023)",
+      "summary": "2 points, 0 comments",
+      "url": "https://www.anthropic.com/news/core-views-on-ai-safety",
+      "published": "2026-04-12T19:27:50Z",
+      "authors": "Olshansky",
+      "keyword": "AI safety"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Claude Opus 4.6 accuracy on BridgeBench hallucination test drops from 83% to 68%",
       "summary": "6 points, 1 comments",
+      "url": "https://twitter.com/bridgemindai/status/2043321284113670594",
+      "published": "2026-04-12T18:53:35Z",
+      "authors": "bratao",
+      "keyword": "hallucination"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: Revdiff \u2013 TUI diff reviewer with inline annotations for AI agents",
+      "summary": "8 points, 2 comments",
       "url": "https://github.com/umputun/revdiff",
       "published": "2026-04-12T17:52:48Z",
       "authors": "bumpa",
@@ -35,7 +53,7 @@
     {
       "source": "HackerNews",
       "title": "Show HN: Claudraband \u2013 Claude Code for the Power User",
-      "summary": "4 points, 0 comments",
+      "summary": "56 points, 12 comments",
       "url": "https://github.com/halfwhey/claudraband",
       "published": "2026-04-12T16:55:20Z",
       "authors": "halfwhey",
@@ -130,15 +148,6 @@
       "published": "2026-04-10T18:36:42Z",
       "authors": "Brajeshwar",
       "keyword": "AI safety"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Surviving Hallucinations: AI Fault Tolerance for Campaigns",
-      "summary": "3 points, 0 comments",
-      "url": "https://matthodges.com/posts/2026-04-10-ai-politics-fault-tolerance/",
-      "published": "2026-04-10T17:32:08Z",
-      "authors": "m-hodges",
-      "keyword": "hallucination"
     },
     {
       "source": "HackerNews",
@@ -363,15 +372,6 @@
       "url": "https://arxiv.org/abs/2604.07727v1",
       "published": "2026-04-09T02:22:44Z",
       "authors": "Cheng Liu, Xiaolei Liu, Xingyu Li",
-      "keyword": "jailbreak"
-    },
-    {
-      "source": "arXiv",
-      "title": "ADAG: Automatically Describing Attribution Graphs",
-      "summary": "In language model interpretability research, \\textbf{circuit tracing} aims to identify which internal features causally contributed to a particular output and how they affected each other, with the goal of explaining the computations underlying some behaviour. However, all prior ",
-      "url": "https://arxiv.org/abs/2604.07615v1",
-      "published": "2026-04-08T21:34:37Z",
-      "authors": "Aryaman Arora, Zhengxuan Wu, Jacob Steinhardt",
       "keyword": "jailbreak"
     }
   ]
