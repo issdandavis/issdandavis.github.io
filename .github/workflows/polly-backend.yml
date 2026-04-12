@@ -1,0 +1,102 @@
+name: Polly backend (ephemeral)
+
+# Starts the Polly backend inside a GitHub Actions runner and tunnels it
+# through a Cloudflare trycloudflare.com subdomain so the public site can
+# hit it. Free tier: 2000 min/month, max 6 hours per job.
+#
+# Trigger manually (workflow_dispatch) when you want a live backend. The
+# public URL is printed to the job log and posted as a job summary.
+
+on:
+  workflow_dispatch:
+    inputs:
+      duration_minutes:
+        description: 'How long to keep the tunnel open (minutes, max 330)'
+        required: true
+        default: '120'
+
+permissions:
+  contents: read
+
+jobs:
+  serve:
+    runs-on: ubuntu-latest
+    timeout-minutes: 345
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install backend deps
+        run: |
+          cd scripts/polly-backend
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Install cloudflared
+        run: |
+          wget -q https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
+          sudo dpkg -i cloudflared-linux-amd64.deb
+
+      - name: Start Polly backend
+        run: |
+          cd scripts/polly-backend
+          nohup python server.py > /tmp/polly.log 2>&1 &
+          echo "POLLY_PID=$!" >> $GITHUB_ENV
+          sleep 4
+          curl -fsS http://127.0.0.1:8001/health || (cat /tmp/polly.log && exit 1)
+
+      - name: Start Cloudflare tunnel
+        run: |
+          nohup cloudflared tunnel --url http://127.0.0.1:8001 --no-autoupdate > /tmp/tunnel.log 2>&1 &
+          echo "TUNNEL_PID=$!" >> $GITHUB_ENV
+          # Wait for tunnel URL to appear in the log
+          for i in $(seq 1 30); do
+            URL=$(grep -oE 'https://[a-z0-9-]+\.trycloudflare\.com' /tmp/tunnel.log | head -n1 || true)
+            if [ -n "$URL" ]; then break; fi
+            sleep 2
+          done
+          if [ -z "$URL" ]; then
+            echo "Failed to obtain tunnel URL"
+            cat /tmp/tunnel.log
+            exit 1
+          fi
+          echo "TUNNEL_URL=$URL" >> $GITHUB_ENV
+          echo "## Polly backend live" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Public URL: $URL" >> $GITHUB_STEP_SUMMARY
+          echo "Health: $URL/health" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "To wire this into the site, set in any page:" >> $GITHUB_STEP_SUMMARY
+          echo '```html' >> $GITHUB_STEP_SUMMARY
+          echo "<script>window.__POLLY_BACKEND_HTTP__ = \"$URL\";</script>" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+
+      - name: Smoke test
+        run: |
+          curl -fsS "$TUNNEL_URL/health"
+          echo ""
+          curl -fsS -X POST "$TUNNEL_URL/v1/polly/search" \
+            -H 'Content-Type: application/json' \
+            -d '{"query":"cx guardrail","limit":2}'
+
+      - name: Hold tunnel open
+        run: |
+          DURATION=${{ github.event.inputs.duration_minutes }}
+          : "${DURATION:=120}"
+          echo "Holding backend + tunnel open for $DURATION minutes..."
+          echo "Public URL: $TUNNEL_URL"
+          sleep $((DURATION * 60))
+
+      - name: Shutdown
+        if: always()
+        run: |
+          echo "Shutting down..."
+          kill ${TUNNEL_PID:-0} 2>/dev/null || true
+          kill ${POLLY_PID:-0} 2>/dev/null || true
+          cat /tmp/polly.log || true
+          cat /tmp/tunnel.log || true

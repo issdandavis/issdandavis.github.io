@@ -1,0 +1,67 @@
+{
+  "version": "2026-04-12",
+  "currency": "USD",
+  "solutions": [
+    {
+      "id": "cx-guardrail",
+      "name": "CX Refund Guardrail",
+      "url": "https://aethermoore.com/cx-guardrail.html",
+      "pitch": "Stop your chatbot from promising refunds it can't deliver. Policy enforcement middleware between LLM and customer.",
+      "vertical": "customer support",
+      "keywords": ["chatbot", "customer support", "cx", "refund", "policy", "airline", "retail", "guardrail", "middleware"],
+      "tiers": [
+        {"name": "Starter", "price": 500, "unit": "month", "includes": ["10K messages/mo", "standard policy templates", "email support", "monthly audit log export"]},
+        {"name": "Growth", "price": 2000, "unit": "month", "includes": ["100K messages/mo", "custom policy authoring", "Slack integration", "real-time dashboard", "weekly audit reports"]},
+        {"name": "Enterprise", "price": 5000, "unit": "month", "includes": ["unlimited volume", "white-glove onboarding", "dedicated Slack", "custom integrations", "SLA"]}
+      ]
+    },
+    {
+      "id": "iso-42001",
+      "name": "ISO 42001 Evidence Service",
+      "url": "https://aethermoore.com/iso-42001.html",
+      "pitch": "Audit evidence for banks, insurers, and regulated enterprises. ISO 42001 + SR 11-7 + EU AI Act.",
+      "vertical": "compliance",
+      "keywords": ["iso 42001", "iso42001", "compliance", "audit", "regulation", "sr 11-7", "eu ai act", "bank", "insurer", "risk assessment", "drift"],
+      "tiers": [
+        {"name": "Initial Audit", "price": 50000, "unit": "one-time", "includes": ["one-time test run", "full evidence package", "risk assessment report", "30-day support"]},
+        {"name": "Annual Program", "price": 100000, "unit": "year", "includes": ["initial audit", "quarterly re-tests", "drift monitoring", "audit response support", "policy updates"]},
+        {"name": "Enterprise", "price": 150000, "unit": "year", "includes": ["annual program", "custom test authoring", "dedicated compliance liaison", "direct-to-auditor support"]}
+      ]
+    },
+    {
+      "id": "red-team",
+      "name": "AI Red Team as a Service",
+      "url": "https://aethermoore.com/red-team.html",
+      "pitch": "6,066 adversarial tests against your LLM application. Branded PDF report. Remediation roadmap.",
+      "vertical": "security",
+      "keywords": ["red team", "redteam", "pen test", "pentest", "adversarial", "jailbreak", "prompt injection", "security test", "vulnerability"],
+      "tiers": [
+        {"name": "Quick Scan", "price": 5000, "unit": "engagement", "includes": ["4-week delivery", "standard report", "single endpoint"]},
+        {"name": "Deep Engagement", "price": 25000, "unit": "engagement", "includes": ["custom threat model", "executive briefing", "remediation support"]},
+        {"name": "Quarterly Retainer", "price": 50000, "unit": "year", "includes": ["4 engagements/yr", "drift monitoring", "priority response", "dedicated Slack"]}
+      ]
+    }
+  ],
+  "packages": [
+    {"id": "governance-toolkit", "name": "AI Governance Toolkit", "price": 29, "unit": "one-time", "url": "https://aethermoore.com/product-manual/ai-governance-toolkit.html", "buy_url": "https://buy.stripe.com/cNibJ25Ca2TJ9gQ3a6dby06", "keywords": ["governance", "toolkit", "templates", "decision records"]},
+    {"id": "hydra-agent-templates", "name": "HYDRA Agent Templates", "price": 29, "unit": "one-time", "url": "https://aethermoore.com/product-manual/hydra-agent-templates.html", "buy_url": "https://buy.stripe.com/6oUeVe5Ca2TJdx6262dby08", "keywords": ["hydra", "agent", "template", "swarm"]},
+    {"id": "n8n-workflow-pack", "name": "n8n Workflow Pack", "price": 29, "unit": "one-time", "url": "https://aethermoore.com/product-manual/n8n-workflow-pack.html", "buy_url": "https://buy.stripe.com/8x228sc0y3XNeBafWSdby05", "keywords": ["n8n", "workflow", "automation", "import"]},
+    {"id": "content-spin-engine", "name": "Content Spin Engine", "price": 29, "unit": "one-time", "url": "https://aethermoore.com/product-manual/content-spin-engine.html", "buy_url": "https://buy.stripe.com/5kQ5kE5Ca65V78I5iedby07", "keywords": ["content", "spin", "publishing", "repurpose"]}
+  ],
+  "datasets": [
+    {"id": "governance-sft", "name": "SCBE Governance SFT Pack", "price": 99, "unit": "one-time", "url": "https://aethermoore.com/datasets.html", "keywords": ["sft", "governance", "training data", "fine-tune"]},
+    {"id": "red-team-fortress", "name": "Red Team Fortress", "price": 149, "unit": "one-time", "url": "https://aethermoore.com/datasets.html", "keywords": ["red team", "adversarial", "attack", "benchmark"]},
+    {"id": "theory-bundle", "name": "Theory Documents Bundle", "price": 129, "unit": "one-time", "url": "https://aethermoore.com/datasets.html", "keywords": ["theory", "architecture", "crypto", "patent", "docs"]},
+    {"id": "conlang-pack", "name": "Six Tongues Conlang Pack", "price": 79, "unit": "one-time", "url": "https://aethermoore.com/datasets.html", "keywords": ["conlang", "language", "tokenization", "tongues"]},
+    {"id": "session-transcripts", "name": "Spiralverse Session Transcripts", "price": 49, "unit": "one-time", "url": "https://aethermoore.com/datasets.html", "keywords": ["rpg", "session", "transcript", "spiralverse", "game"]},
+    {"id": "full-arsenal", "name": "The Full Arsenal", "price": 399, "unit": "one-time", "url": "https://aethermoore.com/datasets.html", "keywords": ["bundle", "everything", "arsenal", "full"]}
+  ],
+  "free": [
+    {"id": "scbe-aethermoore", "name": "SCBE-AETHERMOORE", "license": "MIT", "url": "https://github.com/issdandavis/SCBE-AETHERMOORE", "npm": "scbe-aethermoore", "pypi": "scbe-aethermoore"},
+    {"id": "huggingface", "name": "HuggingFace datasets and models", "url": "https://huggingface.co/issdandavis"}
+  ],
+  "contact": {
+    "email": "aethermoregames@pm.me",
+    "github": "https://github.com/issdandavis/SCBE-AETHERMOORE/discussions"
+  }
+}
