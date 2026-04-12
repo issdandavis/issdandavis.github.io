@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tri-Synesthesia: Detecting Threats with Light, Sound, and Code</title>
+  <meta name="description" content="Cross-domain threat detection using three wave types: data flow as light, event timing as sound, AST structure as code waveforms. Convergence drives confidence to 1.0.">
+  <meta name="keywords" content="tri-synesthesia, cross-domain detection, AST waveforms, spectral coherence, SCBE threat detection">
+  <meta property="og:title" content="Tri-Synesthesia: Detecting Threats with Light, Sound, and Code">
+  <meta property="og:description" content="Three wave types, three domains, one anomaly. When all three converge, confidence approaches 1.0.">
+  <meta property="og:url" content="https://aethermoore.com/articles/tri-synesthesia.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://aethermoore.com/hero.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://aethermoore.com/hero.png">
+  <link rel="canonical" href="https://aethermoore.com/articles/tri-synesthesia.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Tri-Synesthesia: Detecting Threats with Light, Sound, and Code",
+    "description": "Cross-domain pattern detection using three wave types. When all three converge, confidence approaches 1.0.",
+    "author": { "@type": "Person", "name": "Issac Davis", "url": "https://aethermoore.com/profile.html" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "SCBE-AETHERMOORE",
+      "url": "https://aethermoore.com/",
+      "logo": { "@type": "ImageObject", "url": "https://aethermoore.com/favicon.svg" }
+    },
+    "datePublished": "2026-04-05",
+    "dateModified": "2026-04-12",
+    "mainEntityOfPage": "https://aethermoore.com/articles/tri-synesthesia.html",
+    "image": "https://aethermoore.com/hero.png"
+  }
+  </script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #070711; color: #edf0ff; line-height: 1.7; }
+    a { color: #8fffd3; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .topbar { position: sticky; top: 0; z-index: 30; display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; background: rgba(7,7,17,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(123,140,255,0.14); }
+    .topbar .brand { font-weight: 800; letter-spacing: 0.08em; font-size: 14px; color: #edf0ff; }
+    .topbar nav { display: flex; gap: 12px; color: #b4b9df; font-size: 13px; }
+    .topbar nav a { color: #b4b9df; }
+    .topbar nav a:hover { color: #fff; text-decoration: none; }
+    .wrap { max-width: 740px; margin: 0 auto; padding: 40px 16px 80px; }
+    .back { display: inline-block; font-size: 13px; color: #6a7099; margin-bottom: 24px; }
+    .back:hover { color: #8fffd3; text-decoration: none; }
+    .article-date { font-size: 12px; color: #6a7099; margin-bottom: 8px; }
+    .article-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 20px; }
+    .tag { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 8px; letter-spacing: 0.05em; text-transform: uppercase; }
+    .tag-security { background: rgba(255,158,199,0.12); color: #ff9ec7; }
+    .tag-research { background: rgba(109,216,255,0.12); color: #6dd8ff; }
+    h1 { font-size: clamp(24px, 5vw, 40px); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 16px; background: linear-gradient(135deg, #8fffd3, #6dd8ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.2; }
+    h2 { font-size: 22px; font-weight: 700; margin: 32px 0 12px; color: #c4d0ff; }
+    h3 { font-size: 17px; font-weight: 700; margin: 24px 0 8px; color: #8fffd3; }
+    p { margin-bottom: 16px; color: #b4b9df; font-size: 15px; }
+    ul, ol { margin: 0 0 16px 20px; color: #b4b9df; font-size: 15px; }
+    li { margin-bottom: 8px; }
+    strong { color: #edf0ff; }
+    .highlight { padding: 20px; border-radius: 12px; background: rgba(143,255,211,0.04); border: 1px solid rgba(143,255,211,0.15); margin: 24px 0; }
+    .highlight p { margin-bottom: 0; }
+    code { background: rgba(123,140,255,0.1); padding: 2px 6px; border-radius: 4px; font-size: 13px; color: #c49cff; }
+    .footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid rgba(123,140,255,0.10); color: #5a5f82; font-size: 12px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer a { color: #5a5f82; }
+    .footer a:hover { color: #8fffd3; }
+    @media (max-width: 768px) { .topbar { flex-direction: column; gap: 8px; } .topbar nav { justify-content: center; font-size: 12px; } }
+  </style>
+</head>
+<body>
+<div class="topbar">
+  <a class="brand" href="/">SCBE-AETHERMOORE</a>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/research/">Research</a>
+    <a href="/articles/">Articles</a>
+    <a href="/product-manual/">Docs</a>
+    <a href="https://github.com/issdandavis/SCBE-AETHERMOORE">GitHub</a>
+  </nav>
+</div>
+<div class="wrap">
+  <a class="back" href="/articles/">&larr; All Articles</a>
+  <div class="article-date">April 5, 2026 &middot; 6 min read &middot; Issac Davis</div>
+  <div class="article-tags">
+    <span class="tag tag-security">Security</span>
+    <span class="tag tag-research">Research</span>
+  </div>
+  <h1>Tri-Synesthesia: Detecting Threats with Light, Sound, and Code</h1>
+
+  <p>A single-sensor security detector is easy to fool. You write a rule that says "if the data-flow rate doubles, raise an alarm," and an attacker simply makes sure the data-flow rate never doubles. You add a second rule, they sidestep that one too. This arms race eats every SIEM on the planet. The Tri-Synesthesia engine, one of the five modules in the <a href="/articles/cyber-suite-launch.html">Hyperbolic Security Suite</a>, changes the game by running three <em>different physical metaphors</em> on the same event stream and only trusting a detection when all three agree.</p>
+
+  <h2>Three Domains, Three Waves</h2>
+
+  <h3>Light: Data Flow as Electromagnetic Waves</h3>
+  <p>Every flow of bytes through the system &mdash; sockets, pipes, disk reads, shared memory writes &mdash; is treated as a photonic signal. Byte rate becomes frequency, entropy becomes amplitude, and destination diversity becomes polarization. A running sliding-window FFT produces a continuous "light spectrum" of the system. Healthy systems emit smooth, mostly monochromatic spectra. Data exfiltration shows up as a characteristic broadband flare because it has to spread across many destinations at once.</p>
+
+  <h3>Sound: Event Timing as Acoustic Patterns</h3>
+  <p>The timing of syscalls, process forks, and RPC invocations is sampled into a waveform and analyzed as if it were audio. Legitimate workloads have rhythm &mdash; cron jobs tick, web servers have a request cadence, user sessions breathe at roughly human rates. Malicious code almost always sounds wrong. Rootkit hooks introduce microsecond-scale dissonance. Crypto miners emit a steady high-frequency whine. Ransomware sounds like a crescendo of disk writes climbing into a cliff.</p>
+
+  <h3>Code: AST Structure as Waveforms</h3>
+  <p>Running code has a shape. The engine parses every function that gets called &mdash; in user space via <code>perf</code> hooks, in kernel space via <code>eBPF</code> &mdash; and turns the AST depth and branching factor at each moment into a one-dimensional waveform. Handwritten, unobfuscated code produces gentle, compressible waveforms. Packed or polymorphic code produces high-entropy jagged noise. Control-flow flattening &mdash; a common obfuscator technique &mdash; produces a perfectly uniform waveform that is suspiciously <em>too clean</em>.</p>
+
+  <h2>The Convergence Rule</h2>
+  <p>None of the three domains is reliable on its own. Data flow alone has far too many benign spikes. Event timing alone trips on cron storms. AST shape alone can be gamed by deliberately ugly-looking legitimate code. But <strong>an attacker would have to fool all three metaphors simultaneously</strong>, and that is a much harder problem, because the three metaphors are not correlated in the ways attackers are used to.</p>
+
+  <div class="highlight">
+    <p>The convergence rule is simple: compute anomaly probability in each domain, multiply them, and gate at a hyperbolic threshold. If light says 0.6, sound says 0.7, and code says 0.65, the joint probability is <code>0.6 &times; 0.7 &times; 0.65 = 0.273</code> &mdash; not enough to trigger. But if an event shows 0.95 in each domain, the joint probability is <code>0.857</code>, and any two near-1 values plus one mid-range value will almost always exceed the gate.</p>
+  </div>
+
+  <h2>Why Cross-Domain Is Harder to Fool</h2>
+  <p>A prompt-injection attack, for example, has to push a lot of bytes (light), at an unusual cadence (sound), while invoking an unusual call graph (code). An attacker who hides in the light domain by staying under the byte-rate threshold ends up with an even weirder rhythm in the sound domain. An attacker who smooths the cadence has to use extra tool calls, which lights up the code domain. The three detectors are connected through a physical constraint: you cannot change one without budging the other two.</p>
+
+  <h2>Spectral Coherence</h2>
+  <p>The engine ties into Layer A9 of the <a href="/articles/14-layer-explained.html">14-layer pipeline</a>. Spectral coherence is the mathematical way of asking "are these three waves in phase?" When coherence is high across light, sound, and code, the joint signal is locked. Any attack that misaligns one of them lowers coherence &mdash; and because coherence feeds <code>H(d, R)</code> through a hyperbolic penalty, even a small coherence drop translates to a steep cost climb.</p>
+
+  <h2>See It Live</h2>
+  <p>The <a href="/demos/spectral-coherence.html">spectral coherence demo</a> streams a simulated system through the three-domain analyzer in real time. You can inject faux-attacks (spike flow, stutter the timing, add a call-graph obfuscator) and watch the coherence indicator collapse. The demo is deliberately exaggerated so you can see what each domain contributes, but the underlying math is the same one running in the production tri-synesthesia engine.</p>
+
+  <h2>Caveats</h2>
+  <p>The engine is not free. FFTs on byte flow and AST-waveform synthesis on hot paths add real CPU cost, which is why tri-synesthesia is usually applied selectively &mdash; to agents inside the HYDRA swarm, to boundary processes, and to anything flagged by cheaper upstream detectors. Nobody runs cross-domain analysis on every syscall in the kernel. But wherever it runs, fool-rates drop from "tunable by a motivated attacker" to "requires simultaneous physical violation of three independent models," and that is a very different threat landscape.</p>
+
+  <div class="footer">
+    <div>SCBE-AETHERMOORE &mdash; AI Governance. Mathematical Security.</div>
+    <div style="display:flex; gap:12px;">
+      <a href="/">Home</a>
+      <a href="/research/">Research</a>
+      <a href="/articles/">Articles</a>
+      <a href="https://github.com/issdandavis/SCBE-AETHERMOORE">GitHub</a>
+    </div>
+  </div>
+</div>
+<script>window.__POLLY_BACKEND_HTTP__ = window.__POLLY_BACKEND_HTTP__ || "http://localhost:8001";</script>
+<script src="/static/polly-sidebar.js"></script>
+</body>
+</html>

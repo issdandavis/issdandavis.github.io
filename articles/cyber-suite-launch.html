@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Introducing the Hyperbolic Security Suite</title>
+  <meta name="description" content="A cybersecurity framework where every threat is priced by one formula: H(d,R) = R^(d^2). Firewall, malware scanner, rootkit detector, DNA audit, tri-synesthesia.">
+  <meta name="keywords" content="hyperbolic security, cybersecurity suite, malware scanner, rootkit detector, DNA audit, tri-synesthesia, SCBE AETHERMOORE">
+  <meta property="og:title" content="Introducing the Hyperbolic Security Suite">
+  <meta property="og:description" content="One formula prices every threat: H(d,R) = R^(d^2). Firewall, malware, rootkit, DNA audit, tri-synesthesia, all feeding a unified cost engine.">
+  <meta property="og:url" content="https://aethermoore.com/articles/cyber-suite-launch.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://aethermoore.com/hero.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://aethermoore.com/hero.png">
+  <link rel="canonical" href="https://aethermoore.com/articles/cyber-suite-launch.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Introducing the Hyperbolic Security Suite",
+    "description": "A custom cybersecurity framework where every threat is priced by one formula: H(d,R) = R^(d^2).",
+    "author": { "@type": "Person", "name": "Issac Davis", "url": "https://aethermoore.com/profile.html" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "SCBE-AETHERMOORE",
+      "url": "https://aethermoore.com/",
+      "logo": { "@type": "ImageObject", "url": "https://aethermoore.com/favicon.svg" }
+    },
+    "datePublished": "2026-04-06",
+    "dateModified": "2026-04-12",
+    "mainEntityOfPage": "https://aethermoore.com/articles/cyber-suite-launch.html",
+    "image": "https://aethermoore.com/hero.png"
+  }
+  </script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #070711; color: #edf0ff; line-height: 1.7; }
+    a { color: #8fffd3; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .topbar { position: sticky; top: 0; z-index: 30; display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; background: rgba(7,7,17,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(123,140,255,0.14); }
+    .topbar .brand { font-weight: 800; letter-spacing: 0.08em; font-size: 14px; color: #edf0ff; }
+    .topbar nav { display: flex; gap: 12px; color: #b4b9df; font-size: 13px; }
+    .topbar nav a { color: #b4b9df; }
+    .topbar nav a:hover { color: #fff; text-decoration: none; }
+    .wrap { max-width: 740px; margin: 0 auto; padding: 40px 16px 80px; }
+    .back { display: inline-block; font-size: 13px; color: #6a7099; margin-bottom: 24px; }
+    .back:hover { color: #8fffd3; text-decoration: none; }
+    .article-date { font-size: 12px; color: #6a7099; margin-bottom: 8px; }
+    .article-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 20px; }
+    .tag { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 8px; letter-spacing: 0.05em; text-transform: uppercase; }
+    .tag-security { background: rgba(255,158,199,0.12); color: #ff9ec7; }
+    .tag-research { background: rgba(109,216,255,0.12); color: #6dd8ff; }
+    h1 { font-size: clamp(24px, 5vw, 40px); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 16px; background: linear-gradient(135deg, #8fffd3, #6dd8ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.2; }
+    h2 { font-size: 22px; font-weight: 700; margin: 32px 0 12px; color: #c4d0ff; }
+    h3 { font-size: 17px; font-weight: 700; margin: 24px 0 8px; color: #8fffd3; }
+    p { margin-bottom: 16px; color: #b4b9df; font-size: 15px; }
+    ul, ol { margin: 0 0 16px 20px; color: #b4b9df; font-size: 15px; }
+    li { margin-bottom: 8px; }
+    strong { color: #edf0ff; }
+    .highlight { padding: 20px; border-radius: 12px; background: rgba(143,255,211,0.04); border: 1px solid rgba(143,255,211,0.15); margin: 24px 0; }
+    .highlight p { margin-bottom: 0; }
+    code { background: rgba(123,140,255,0.1); padding: 2px 6px; border-radius: 4px; font-size: 13px; color: #c49cff; }
+    .footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid rgba(123,140,255,0.10); color: #5a5f82; font-size: 12px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer a { color: #5a5f82; }
+    .footer a:hover { color: #8fffd3; }
+    @media (max-width: 768px) { .topbar { flex-direction: column; gap: 8px; } .topbar nav { justify-content: center; font-size: 12px; } }
+  </style>
+</head>
+<body>
+<div class="topbar">
+  <a class="brand" href="/">SCBE-AETHERMOORE</a>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/research/">Research</a>
+    <a href="/articles/">Articles</a>
+    <a href="/product-manual/">Docs</a>
+    <a href="https://github.com/issdandavis/SCBE-AETHERMOORE">GitHub</a>
+  </nav>
+</div>
+<div class="wrap">
+  <a class="back" href="/articles/">&larr; All Articles</a>
+  <div class="article-date">April 6, 2026 &middot; 6 min read &middot; Issac Davis</div>
+  <div class="article-tags">
+    <span class="tag tag-security">Security</span>
+    <span class="tag tag-research">Research</span>
+  </div>
+  <h1>Introducing the Hyperbolic Security Suite</h1>
+
+  <p>Most cybersecurity stacks are a drawer full of unrelated tools. The firewall speaks in IPs and ports. The antivirus speaks in signatures. The EDR speaks in behavioral scores. The SIEM tries to correlate all of it after the fact, in a language none of the underlying tools actually use. The Hyperbolic Security Suite, which now lives at <code>~/cyber-suite/</code>, was built from scratch to fix exactly that problem: <strong>every module emits the same currency &mdash; hyperbolic cost</strong>.</p>
+
+  <div class="highlight">
+    <p>Every detection in the suite &mdash; packet, file, syscall, kernel hook, DNA strand, synesthesia frame &mdash; is converted into a single scalar through <code>H(d, R) = R^(d&sup2;)</code>, where <em>d</em> is hyperbolic distance from a trusted manifold and <em>R</em> is a realm-dependent radius. Risk becomes arithmetic.</p>
+  </div>
+
+  <h2>Why Build From Scratch</h2>
+  <p>Off-the-shelf security tools are excellent at what they do, but they were never designed to share a cost space. If the firewall says "score 78" and the malware scanner says "confidence 0.9," there is no principled way to compare them. You end up weighting by hand, tuning thresholds for months, and calling the result "intuition." The SCBE-AETHERMOORE thesis is that security should be a single convex optimization in hyperbolic space. To get there, every sensor had to be rewritten to emit a geometric distance, not a vendor-specific score.</p>
+
+  <h2>The Five Modules</h2>
+
+  <h3>1. Hyperbolic Firewall</h3>
+  <p>Packets are embedded as points in a 6D Poincar&eacute; ball based on source, destination, protocol, payload entropy, temporal cadence, and peer-reputation. A TCP handshake from a familiar peer sits near the center. A burst of UDP to a never-seen ASN sits near the boundary, where hyperbolic volume explodes and <code>H(d, R)</code> returns an enormous cost. The "rule" is geometry, not an ACL.</p>
+
+  <h3>2. Malware Scanner</h3>
+  <p>Instead of signature hashing, the scanner unpacks binaries, extracts an import graph, and embeds it via the PHDM-21D model. Known-good software clusters tightly; polymorphic and packed malware lands near the boundary because its import graph is geometrically abnormal. False positives drop because the scanner does not match strings &mdash; it measures distance.</p>
+
+  <h3>3. Rootkit Detector</h3>
+  <p>The detector compares two views of the kernel: the syscall table as reported by the running kernel, and the syscall table as reconstructed from <code>/proc/kallsyms</code> plus a direct memory scan through <code>/dev/mem</code> on supported hosts. The two views are embedded independently. Anything beyond an infinitesimal hyperbolic delta between them is a kernel-level hook.</p>
+
+  <h3>4. DNA Bi-Strand Audit</h3>
+  <p>Borrowed from biology and described in detail in <a href="/articles/dna-audit.html">the DNA audit article</a>, two analysis strands run in opposite directions through a codebase. Strand A goes architecture &rarr; code &rarr; tests &rarr; deployment. Strand B goes dependencies &rarr; files &rarr; integration &rarr; system. Findings only count where the two strands form a base pair. False positives die at the seam.</p>
+
+  <h3>5. Tri-Synesthesia Engine</h3>
+  <p>The most unusual module. It treats program behavior as three simultaneous signals &mdash; data flow as light, event cadence as sound, AST structure as code waveform &mdash; and looks for cross-domain anomalies. Full writeup in <a href="/articles/tri-synesthesia.html">Tri-Synesthesia: Detecting Threats with Light, Sound, and Code</a>.</p>
+
+  <h2>One Cost Engine to Rule Them All</h2>
+  <p>Each module is a sensor. Each sensor emits a <code>(d, R, tongue)</code> triple &mdash; hyperbolic distance, realm radius, and which of the <a href="/articles/sacred-tongues-protocol.html">Six Sacred Tongues</a> flagged it. A central aggregator sums the costs with golden-ratio weights and decides whether to allow, quarantine, or escalate. Because the cost function is <code>R^(d&sup2;)</code>, doubling the distance does not double the cost &mdash; it squares the exponent. Attackers do not get a linear bill, they get a geometric one.</p>
+
+  <h2>Where to Find It</h2>
+  <p>The full suite source is part of the SCBE-AETHERMOORE monorepo at <a href="https://github.com/issdandavis/SCBE-AETHERMOORE">github.com/issdandavis/SCBE-AETHERMOORE</a>. Benchmark results, attack pricing tables, and a module-by-module breakdown live on the <a href="/research/security-systems.html">security systems research page</a>. If you want to see the pricing engine run live against an adversarial input, open the <a href="/demos/governance-gate.html">governance gate demo</a>.</p>
+
+  <div class="footer">
+    <div>SCBE-AETHERMOORE &mdash; AI Governance. Mathematical Security.</div>
+    <div style="display:flex; gap:12px;">
+      <a href="/">Home</a>
+      <a href="/research/">Research</a>
+      <a href="/articles/">Articles</a>
+      <a href="https://github.com/issdandavis/SCBE-AETHERMOORE">GitHub</a>
+    </div>
+  </div>
+</div>
+<script>window.__POLLY_BACKEND_HTTP__ = window.__POLLY_BACKEND_HTTP__ || "http://localhost:8001";</script>
+<script src="/static/polly-sidebar.js"></script>
+</body>
+</html>

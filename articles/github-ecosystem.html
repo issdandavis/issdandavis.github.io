@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The SCBE-AETHERMOORE GitHub Ecosystem</title>
+  <meta name="description" content="90+ repos under one builder. Core framework, embedding models, protocol specs, autonomous agents, the book codebase. One pattern: bounded AI in governed loops.">
+  <meta name="keywords" content="SCBE AETHERMOORE, GitHub repos, phdm-21d, hyperbolic, six-tongues-geoseal, aetherbrowser, thepopebot420">
+  <meta property="og:title" content="The SCBE-AETHERMOORE GitHub Ecosystem">
+  <meta property="og:description" content="90+ repos, one pattern: bounded AI in governed loops. Core framework, embeddings, protocols, autonomous agents.">
+  <meta property="og:url" content="https://aethermoore.com/articles/github-ecosystem.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://aethermoore.com/hero.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://aethermoore.com/hero.png">
+  <link rel="canonical" href="https://aethermoore.com/articles/github-ecosystem.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The SCBE-AETHERMOORE GitHub Ecosystem",
+    "description": "90+ repos under one builder. One pattern: bounded AI in governed loops.",
+    "author": { "@type": "Person", "name": "Issac Davis", "url": "https://aethermoore.com/profile.html" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "SCBE-AETHERMOORE",
+      "url": "https://aethermoore.com/",
+      "logo": { "@type": "ImageObject", "url": "https://aethermoore.com/favicon.svg" }
+    },
+    "datePublished": "2026-04-07",
+    "dateModified": "2026-04-12",
+    "mainEntityOfPage": "https://aethermoore.com/articles/github-ecosystem.html",
+    "image": "https://aethermoore.com/hero.png"
+  }
+  </script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #070711; color: #edf0ff; line-height: 1.7; }
+    a { color: #8fffd3; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .topbar { position: sticky; top: 0; z-index: 30; display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; background: rgba(7,7,17,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(123,140,255,0.14); }
+    .topbar .brand { font-weight: 800; letter-spacing: 0.08em; font-size: 14px; color: #edf0ff; }
+    .topbar nav { display: flex; gap: 12px; color: #b4b9df; font-size: 13px; }
+    .topbar nav a { color: #b4b9df; }
+    .topbar nav a:hover { color: #fff; text-decoration: none; }
+    .wrap { max-width: 740px; margin: 0 auto; padding: 40px 16px 80px; }
+    .back { display: inline-block; font-size: 13px; color: #6a7099; margin-bottom: 24px; }
+    .back:hover { color: #8fffd3; text-decoration: none; }
+    .article-date { font-size: 12px; color: #6a7099; margin-bottom: 8px; }
+    .article-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 20px; }
+    .tag { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 8px; letter-spacing: 0.05em; text-transform: uppercase; }
+    .tag-security { background: rgba(255,158,199,0.12); color: #ff9ec7; }
+    .tag-research { background: rgba(109,216,255,0.12); color: #6dd8ff; }
+    h1 { font-size: clamp(24px, 5vw, 40px); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 16px; background: linear-gradient(135deg, #8fffd3, #6dd8ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.2; }
+    h2 { font-size: 22px; font-weight: 700; margin: 32px 0 12px; color: #c4d0ff; }
+    h3 { font-size: 17px; font-weight: 700; margin: 24px 0 8px; color: #8fffd3; }
+    p { margin-bottom: 16px; color: #b4b9df; font-size: 15px; }
+    ul, ol { margin: 0 0 16px 20px; color: #b4b9df; font-size: 15px; }
+    li { margin-bottom: 8px; }
+    strong { color: #edf0ff; }
+    .highlight { padding: 20px; border-radius: 12px; background: rgba(143,255,211,0.04); border: 1px solid rgba(143,255,211,0.15); margin: 24px 0; }
+    .highlight p { margin-bottom: 0; }
+    code { background: rgba(123,140,255,0.1); padding: 2px 6px; border-radius: 4px; font-size: 13px; color: #c49cff; }
+    .footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid rgba(123,140,255,0.10); color: #5a5f82; font-size: 12px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer a { color: #5a5f82; }
+    .footer a:hover { color: #8fffd3; }
+    @media (max-width: 768px) { .topbar { flex-direction: column; gap: 8px; } .topbar nav { justify-content: center; font-size: 12px; } }
+  </style>
+</head>
+<body>
+<div class="topbar">
+  <a class="brand" href="/">SCBE-AETHERMOORE</a>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/research/">Research</a>
+    <a href="/articles/">Articles</a>
+    <a href="/product-manual/">Docs</a>
+    <a href="https://github.com/issdandavis/SCBE-AETHERMOORE">GitHub</a>
+  </nav>
+</div>
+<div class="wrap">
+  <a class="back" href="/articles/">&larr; All Articles</a>
+  <div class="article-date">April 7, 2026 &middot; 5 min read &middot; Issac Davis</div>
+  <div class="article-tags">
+    <span class="tag tag-research">Research</span>
+  </div>
+  <h1>The SCBE-AETHERMOORE GitHub Ecosystem</h1>
+
+  <p>There are currently 90+ repositories under <a href="https://github.com/issdandavis">github.com/issdandavis</a>. That sounds like chaos. It is not &mdash; it is a single architecture spread across a constellation of small services, each of which exists because the core SCBE thesis required a concrete artifact to prove it. Everything in the ecosystem follows one pattern: <strong>bounded AI in governed loops</strong>. This article is the map.</p>
+
+  <h2>The Core</h2>
+
+  <h3>SCBE-AETHERMOORE</h3>
+  <p>The monorepo. The 14-layer pipeline, the test suites (321+ files, 6066 tests), the Sacred Tongue assembler and VM, the cyber suite modules, the training harness. If a component is too small to warrant its own repo, it lives here. Published under <a href="https://github.com/issdandavis/SCBE-AETHERMOORE">github.com/issdandavis/SCBE-AETHERMOORE</a>.</p>
+
+  <h3>phdm-21d-embedding</h3>
+  <p>The Poincar&eacute; Hyperbolic Distance Metric model: 21 dimensions broken into 6D hyperbolic position, 6D phase vector, 3D flux, and 6D audit trail. This is the embedding every SCBE component uses to turn data into a cost-space point. Trained via QLoRA on the auto-generated SFT pairs from <a href="/articles/polly-autoconverse.html">Polly's auto-conversation loop</a>.</p>
+
+  <h3>hyperbolica</h3>
+  <p>A standalone library of hyperbolic geometry primitives &mdash; Poincar&eacute; ball operations, M&ouml;bius addition, geodesic interpolation, distance formulas. Extracted out of SCBE so anyone can build hyperbolic models without pulling in the whole governance framework.</p>
+
+  <h2>Protocol &amp; Crypto</h2>
+
+  <h3>six-tongues-geoseal</h3>
+  <p>Bijective tokenization plus context-aware encryption using the <a href="/articles/sacred-tongues-protocol.html">Six Sacred Tongues</a>. Geoseal is how every SCBE artifact is signed and how cross-service messages are sealed so that the tongue weight of a message is cryptographically bound to its content.</p>
+
+  <h3>spiralverse-chronicles</h3>
+  <p>The lore bible for the Aethermoore narrative universe. It looks like fiction at first glance, but under the hood it is a structured knowledge graph used to generate training data, test inputs, and demo scenarios for the governance framework. The "fiction" is where the vocabulary comes from.</p>
+
+  <h2>Runtime &amp; Browser</h2>
+
+  <h3>aetherbrowser</h3>
+  <p>A governance-aware browser runtime. Every tab is a sandbox; every navigation passes through the 14-layer pipeline; every extension has to pay hyperbolic cost to interact with the DOM. Think of it as "what if Chrome had an H(d, R) threshold on <code>fetch</code>?"</p>
+
+  <h3>scbe-nodal-network</h3>
+  <p>A peer-to-peer substrate for distributing SCBE agents across machines. Nodes discover each other, exchange trust-tube parameters, and relay audit trails. Used by the HYDRA swarm and the pope bot.</p>
+
+  <h2>Autonomous Agents</h2>
+
+  <h3>thepopebot420</h3>
+  <p>The oddest and most charming repo in the constellation. The repo <em>is</em> the agent: GitHub Actions workflows are the runtime, issues are the input queue, commits are the side effects. It has no server anywhere. It wakes up when a cron fires, does its job, and goes back to sleep. This is the purest form of the "bounded AI in governed loops" pattern &mdash; the loop is literally the CI scheduler.</p>
+
+  <h3>openclaw</h3>
+  <p>A fork of a multi-channel personal AI assistant, adapted to route every tool call through the SCBE pipeline and to use the HYDRA swarm for any task that crosses a security boundary. See the <a href="/articles/hydra-swarm.html">HYDRA article</a> for how the six heads split the work.</p>
+
+  <h2>The Pattern</h2>
+  <div class="highlight">
+    <p>Every repo in this ecosystem implements the same shape: a small AI component <em>bounded</em> by a hyperbolic envelope, running inside a governed loop that can prove, at every step, that its actions stay within the envelope. The repos are not a pile of side projects &mdash; they are the same design instantiated against different substrates.</p>
+  </div>
+
+  <h2>Why So Many Repos?</h2>
+  <p>One-builder ecosystems usually collapse into a single giant monorepo, because managing 90 repos is a nightmare. SCBE keeps them separate for a specific reason: each repo is a proof artifact. If the same pattern can work as a browser runtime, as a CI-driven agent, as a crypto library, and as a distributed P2P network, then the pattern is load-bearing, not cosmetic. Splitting into many repos also means each can be licensed, audited, and consumed independently &mdash; which matters when you are pitching the framework to entities that do not want to swallow the whole universe at once.</p>
+
+  <h2>Where to Start</h2>
+  <p>If you want the short path through the ecosystem, start with <a href="https://github.com/issdandavis/SCBE-AETHERMOORE">SCBE-AETHERMOORE</a>, then read the <a href="/articles/14-layer-explained.html">14-layer pipeline article</a>, then branch to whichever satellite matches your interest. Commercial services built on top of the ecosystem are on the <a href="/services.html">services page</a>.</p>
+
+  <div class="footer">
+    <div>SCBE-AETHERMOORE &mdash; AI Governance. Mathematical Security.</div>
+    <div style="display:flex; gap:12px;">
+      <a href="/">Home</a>
+      <a href="/research/">Research</a>
+      <a href="/articles/">Articles</a>
+      <a href="https://github.com/issdandavis/SCBE-AETHERMOORE">GitHub</a>
+    </div>
+  </div>
+</div>
+<script>window.__POLLY_BACKEND_HTTP__ = window.__POLLY_BACKEND_HTTP__ || "http://localhost:8001";</script>
+<script src="/static/polly-sidebar.js"></script>
+</body>
+</html>

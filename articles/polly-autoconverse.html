@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polly Learns to Talk to Herself: Auto-Conversation Training</title>
+  <meta name="description" content="Two AI instances debate SCBE topics in the background, generating SFT pairs. Qwen 72B answers, Mixtral asks, Llama fact-checks. A website that makes training data.">
+  <meta name="keywords" content="SFT training data, self-play LLM, Qwen 72B, Mixtral, Llama, synthetic training, SCBE-AETHERMOORE">
+  <meta property="og:title" content="Polly Learns to Talk to Herself: Auto-Conversation Training">
+  <meta property="og:description" content="Two AI instances debate SCBE topics in the background, generating SFT pairs from every exchange. The website becomes a training data factory.">
+  <meta property="og:url" content="https://aethermoore.com/articles/polly-autoconverse.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://aethermoore.com/hero.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://aethermoore.com/hero.png">
+  <link rel="canonical" href="https://aethermoore.com/articles/polly-autoconverse.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Polly Learns to Talk to Herself: Auto-Conversation Training",
+    "description": "Two AI instances debate SCBE topics in the background, generating SFT training pairs from every exchange.",
+    "author": { "@type": "Person", "name": "Issac Davis", "url": "https://aethermoore.com/profile.html" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "SCBE-AETHERMOORE",
+      "url": "https://aethermoore.com/",
+      "logo": { "@type": "ImageObject", "url": "https://aethermoore.com/favicon.svg" }
+    },
+    "datePublished": "2026-04-06",
+    "dateModified": "2026-04-12",
+    "mainEntityOfPage": "https://aethermoore.com/articles/polly-autoconverse.html",
+    "image": "https://aethermoore.com/hero.png"
+  }
+  </script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #070711; color: #edf0ff; line-height: 1.7; }
+    a { color: #8fffd3; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .topbar { position: sticky; top: 0; z-index: 30; display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; background: rgba(7,7,17,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(123,140,255,0.14); }
+    .topbar .brand { font-weight: 800; letter-spacing: 0.08em; font-size: 14px; color: #edf0ff; }
+    .topbar nav { display: flex; gap: 12px; color: #b4b9df; font-size: 13px; }
+    .topbar nav a { color: #b4b9df; }
+    .topbar nav a:hover { color: #fff; text-decoration: none; }
+    .wrap { max-width: 740px; margin: 0 auto; padding: 40px 16px 80px; }
+    .back { display: inline-block; font-size: 13px; color: #6a7099; margin-bottom: 24px; }
+    .back:hover { color: #8fffd3; text-decoration: none; }
+    .article-date { font-size: 12px; color: #6a7099; margin-bottom: 8px; }
+    .article-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 20px; }
+    .tag { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 8px; letter-spacing: 0.05em; text-transform: uppercase; }
+    .tag-security { background: rgba(255,158,199,0.12); color: #ff9ec7; }
+    .tag-research { background: rgba(109,216,255,0.12); color: #6dd8ff; }
+    h1 { font-size: clamp(24px, 5vw, 40px); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 16px; background: linear-gradient(135deg, #8fffd3, #6dd8ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.2; }
+    h2 { font-size: 22px; font-weight: 700; margin: 32px 0 12px; color: #c4d0ff; }
+    h3 { font-size: 17px; font-weight: 700; margin: 24px 0 8px; color: #8fffd3; }
+    p { margin-bottom: 16px; color: #b4b9df; font-size: 15px; }
+    ul, ol { margin: 0 0 16px 20px; color: #b4b9df; font-size: 15px; }
+    li { margin-bottom: 8px; }
+    strong { color: #edf0ff; }
+    .highlight { padding: 20px; border-radius: 12px; background: rgba(143,255,211,0.04); border: 1px solid rgba(143,255,211,0.15); margin: 24px 0; }
+    .highlight p { margin-bottom: 0; }
+    code { background: rgba(123,140,255,0.1); padding: 2px 6px; border-radius: 4px; font-size: 13px; color: #c49cff; }
+    .footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid rgba(123,140,255,0.10); color: #5a5f82; font-size: 12px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer a { color: #5a5f82; }
+    .footer a:hover { color: #8fffd3; }
+    @media (max-width: 768px) { .topbar { flex-direction: column; gap: 8px; } .topbar nav { justify-content: center; font-size: 12px; } }
+  </style>
+</head>
+<body>
+<div class="topbar">
+  <a class="brand" href="/">SCBE-AETHERMOORE</a>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/research/">Research</a>
+    <a href="/articles/">Articles</a>
+    <a href="/product-manual/">Docs</a>
+    <a href="https://github.com/issdandavis/SCBE-AETHERMOORE">GitHub</a>
+  </nav>
+</div>
+<div class="wrap">
+  <a class="back" href="/articles/">&larr; All Articles</a>
+  <div class="article-date">April 6, 2026 &middot; 5 min read &middot; Issac Davis</div>
+  <div class="article-tags">
+    <span class="tag tag-research">Research</span>
+  </div>
+  <h1>Polly Learns to Talk to Herself: Auto-Conversation Training</h1>
+
+  <p>Polly is the site mascot and resident assistant on aethermoore.com. Until this month she only spoke when spoken to. As of this release, Polly has a second mouth and a second ear: while a visitor reads a page, two additional AI instances quietly debate SCBE-AETHERMOORE topics in the background, and every exchange is logged as a supervised fine-tuning (SFT) pair that can be trained against later. <strong>The website is now a training-data factory that runs for free whenever someone visits.</strong></p>
+
+  <h2>The Script</h2>
+  <p>The whole mechanism fits in a single browser-side module: <code>/static/polly-autoconverse.js</code>. It opens two streaming connections through the HuggingFace Inference Providers router, one acting as "Student," the other as "Teacher." The Student asks follow-up questions seeded from the article the visitor is currently reading. The Teacher answers, citing the on-page content and the structured SCBE knowledge base. A third model reviews the exchange for factual drift and either approves it or throws it out.</p>
+
+  <div class="highlight">
+    <p>Every approved pair is written to a local IndexedDB bucket and periodically POSTed to the training-data endpoint. By the time a visitor finishes a 1,000-word article, Polly has usually generated between 8 and 20 usable SFT pairs &mdash; all grounded in the page the visitor was already reading.</p>
+  </div>
+
+  <h2>Who Is Playing Which Role</h2>
+  <p>The three-model setup is deliberate. No single LLM is trusted to generate training data by itself &mdash; that is how hallucinations compound into permanent errors.</p>
+  <ul>
+    <li><strong>Qwen 2.5 72B Instruct</strong> plays Teacher. It has the broadest technical grounding and the most tolerant context window, so it can hold an entire SCBE article plus the chat history without dropping details.</li>
+    <li><strong>Mixtral 8x22B</strong> plays Student. Mixtral asks surprisingly sharp follow-up questions because its mixture-of-experts routing tends to pull it toward underspecified corners of the answer.</li>
+    <li><strong>Llama 3.3 70B</strong> plays Fact-Checker. Llama gets the last word: any exchange where it disagrees with the Teacher on a concrete claim is dropped from the training pool, not patched.</li>
+  </ul>
+
+  <h2>Why This Is Not Just "Self-Play"</h2>
+  <p>Classic self-play generates data by letting a model talk to itself. That is cheap but it drifts: the model reinforces its own biases with every round. Polly's loop is different in two ways. First, every conversation is <em>anchored</em> to a human-written article on the page &mdash; the visitor's scroll position is included in the Student's context, so the conversation stays close to content a human already cared enough to publish. Second, the three models come from three different families, so their failure modes do not overlap cleanly. Mixtral hallucinates one way, Qwen another, Llama a third; a claim has to survive all three to land in the dataset.</p>
+
+  <h2>The Training Data Pack</h2>
+  <p>Approved pairs are batched nightly and published as a free download on the <a href="/datasets.html">datasets page</a>. The format is standard JSONL: <code>{"instruction": ..., "input": ..., "output": ...}</code>, with a provenance field recording which page the pair was generated from and which three models produced it. Current corpus sits at roughly 40,000 pairs, growing by a few hundred per day. All of it is CC-BY.</p>
+
+  <h2>What It Is Training</h2>
+  <p>The main consumer is the HYDRA agent swarm &mdash; six small open-source LLMs fine-tuned via QLoRA 4-bit to specialize in each of the <a href="/articles/sacred-tongues-protocol.html">Sacred Tongues</a>. Polly's auto-generated pairs are how those heads stay current with SCBE&rsquo;s moving vocabulary without me hand-writing examples every time the framework gains a new layer or realm. See the <a href="/articles/hydra-swarm.html">HYDRA article</a> for how the swarm uses this data downstream.</p>
+
+  <h2>The Weird Part</h2>
+  <p>The weird and slightly wonderful consequence of all this is that the website itself behaves like a perpetual-motion training rig. Visitors do not know they are contributing compute &mdash; their browser runs the generation, the HuggingFace router handles the inference, and the site simply harvests the result. Every reader is, unknowingly, a tiny Mechanical Turk for the next version of Polly. The script is open, the dataset is open, and the pipeline is easy to disable: if you open <code>/static/polly-autoconverse.js</code> in DevTools and set <code>window.__POLLY_AUTOCONVERSE__ = false</code>, it simply stops.</p>
+
+  <div class="footer">
+    <div>SCBE-AETHERMOORE &mdash; AI Governance. Mathematical Security.</div>
+    <div style="display:flex; gap:12px;">
+      <a href="/">Home</a>
+      <a href="/research/">Research</a>
+      <a href="/articles/">Articles</a>
+      <a href="https://github.com/issdandavis/SCBE-AETHERMOORE">GitHub</a>
+    </div>
+  </div>
+</div>
+<script>window.__POLLY_BACKEND_HTTP__ = window.__POLLY_BACKEND_HTTP__ || "http://localhost:8001";</script>
+<script src="/static/polly-sidebar.js"></script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DNA Bi-Strand Audit: Top-Down Meets Bottom-Up</title>
+  <meta name="description" content="Two analysis strands run in opposite directions through a codebase. Findings count only where both strands agree. A biology-inspired way to kill false positives.">
+  <meta name="keywords" content="code audit, static analysis, bi-strand audit, false positives, SCBE security, DNA audit">
+  <meta property="og:title" content="DNA Bi-Strand Audit: Top-Down Meets Bottom-Up">
+  <meta property="og:description" content="Strand A checks architecture down to deployment. Strand B checks deps up to system. Base pairs where they meet confirm real issues.">
+  <meta property="og:url" content="https://aethermoore.com/articles/dna-audit.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://aethermoore.com/hero.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://aethermoore.com/hero.png">
+  <link rel="canonical" href="https://aethermoore.com/articles/dna-audit.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "DNA Bi-Strand Audit: Top-Down Meets Bottom-Up",
+    "description": "Two analysis strands run in opposite directions. Base pairs where they meet confirm real issues.",
+    "author": { "@type": "Person", "name": "Issac Davis", "url": "https://aethermoore.com/profile.html" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "SCBE-AETHERMOORE",
+      "url": "https://aethermoore.com/",
+      "logo": { "@type": "ImageObject", "url": "https://aethermoore.com/favicon.svg" }
+    },
+    "datePublished": "2026-04-05",
+    "dateModified": "2026-04-12",
+    "mainEntityOfPage": "https://aethermoore.com/articles/dna-audit.html",
+    "image": "https://aethermoore.com/hero.png"
+  }
+  </script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #070711; color: #edf0ff; line-height: 1.7; }
+    a { color: #8fffd3; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .topbar { position: sticky; top: 0; z-index: 30; display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; background: rgba(7,7,17,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(123,140,255,0.14); }
+    .topbar .brand { font-weight: 800; letter-spacing: 0.08em; font-size: 14px; color: #edf0ff; }
+    .topbar nav { display: flex; gap: 12px; color: #b4b9df; font-size: 13px; }
+    .topbar nav a { color: #b4b9df; }
+    .topbar nav a:hover { color: #fff; text-decoration: none; }
+    .wrap { max-width: 740px; margin: 0 auto; padding: 40px 16px 80px; }
+    .back { display: inline-block; font-size: 13px; color: #6a7099; margin-bottom: 24px; }
+    .back:hover { color: #8fffd3; text-decoration: none; }
+    .article-date { font-size: 12px; color: #6a7099; margin-bottom: 8px; }
+    .article-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 20px; }
+    .tag { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 8px; letter-spacing: 0.05em; text-transform: uppercase; }
+    .tag-security { background: rgba(255,158,199,0.12); color: #ff9ec7; }
+    .tag-research { background: rgba(109,216,255,0.12); color: #6dd8ff; }
+    h1 { font-size: clamp(24px, 5vw, 40px); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 16px; background: linear-gradient(135deg, #8fffd3, #6dd8ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.2; }
+    h2 { font-size: 22px; font-weight: 700; margin: 32px 0 12px; color: #c4d0ff; }
+    h3 { font-size: 17px; font-weight: 700; margin: 24px 0 8px; color: #8fffd3; }
+    p { margin-bottom: 16px; color: #b4b9df; font-size: 15px; }
+    ul, ol { margin: 0 0 16px 20px; color: #b4b9df; font-size: 15px; }
+    li { margin-bottom: 8px; }
+    strong { color: #edf0ff; }
+    .highlight { padding: 20px; border-radius: 12px; background: rgba(143,255,211,0.04); border: 1px solid rgba(143,255,211,0.15); margin: 24px 0; }
+    .highlight p { margin-bottom: 0; }
+    code { background: rgba(123,140,255,0.1); padding: 2px 6px; border-radius: 4px; font-size: 13px; color: #c49cff; }
+    .footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid rgba(123,140,255,0.10); color: #5a5f82; font-size: 12px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer a { color: #5a5f82; }
+    .footer a:hover { color: #8fffd3; }
+    @media (max-width: 768px) { .topbar { flex-direction: column; gap: 8px; } .topbar nav { justify-content: center; font-size: 12px; } }
+  </style>
+</head>
+<body>
+<div class="topbar">
+  <a class="brand" href="/">SCBE-AETHERMOORE</a>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/research/">Research</a>
+    <a href="/articles/">Articles</a>
+    <a href="/product-manual/">Docs</a>
+    <a href="https://github.com/issdandavis/SCBE-AETHERMOORE">GitHub</a>
+  </nav>
+</div>
+<div class="wrap">
+  <a class="back" href="/articles/">&larr; All Articles</a>
+  <div class="article-date">April 5, 2026 &middot; 5 min read &middot; Issac Davis</div>
+  <div class="article-tags">
+    <span class="tag tag-security">Security</span>
+  </div>
+  <h1>DNA Bi-Strand Audit: Top-Down Meets Bottom-Up</h1>
+
+  <p>Every static analysis tool on the market has the same dirty secret: the majority of its output is noise. Linters, SAST tools, dependency scanners &mdash; they all generate issues that are technically correct and practically irrelevant. Teams learn to ignore the output, which defeats the whole point of having a scanner. The DNA bi-strand audit, one of the modules inside the <a href="/articles/cyber-suite-launch.html">Hyperbolic Security Suite</a>, is a structural fix for that problem, and it is borrowed almost directly from biology.</p>
+
+  <h2>The Double Helix Idea</h2>
+  <p>DNA stores information on two complementary strands running in opposite directions. A base on one strand is only meaningful if it pairs cleanly with a base on the other. Mismatches stand out precisely <em>because</em> they are obvious at the pairing sites, not because either strand alone is particularly careful. The audit uses the same trick: two analysis passes run over the codebase in opposite directions, and a finding is only kept if both passes independently report it at the same pairing point.</p>
+
+  <h2>Strand A &mdash; Top-Down</h2>
+  <p>Strand A starts at the top of the project and walks downward through decreasing levels of abstraction.</p>
+  <ol>
+    <li><strong>Architecture.</strong> Read the architecture docs, system diagrams, and high-level READMEs to build a model of what the system is supposed to be.</li>
+    <li><strong>Code.</strong> Walk the source tree module by module, comparing each module's actual structure to the architectural claim.</li>
+    <li><strong>Tests.</strong> Check whether the test suite actually exercises the claimed invariants, or whether it is all happy-path coverage.</li>
+    <li><strong>Deployment.</strong> Inspect CI/CD, containers, and infra-as-code to see if the deployed system matches the code and tests.</li>
+  </ol>
+  <p>This strand is excellent at catching drift, unimplemented specs, and missing test coverage. It is bad at catching low-level bugs because by the time it reaches the bottom, it has already filtered through many layers of abstraction.</p>
+
+  <h2>Strand B &mdash; Bottom-Up</h2>
+  <p>Strand B starts at the lowest level of the project and walks upward.</p>
+  <ol>
+    <li><strong>Dependencies.</strong> Read the lock files and package manifests. Every transitive dep is a suspect until proven innocent.</li>
+    <li><strong>Files.</strong> Look at individual files: imports, dangerous calls, hardcoded secrets, permissions on disk.</li>
+    <li><strong>Integration.</strong> Examine how files glue together &mdash; service boundaries, interface contracts, message schemas.</li>
+    <li><strong>System behavior.</strong> Finally, look at logs, metrics, and traces from the running system to see if the observable behavior matches the integration story.</li>
+  </ol>
+  <p>This strand is excellent at catching low-level bugs, vulnerable dependencies, and concrete misuses. It is bad at catching design-level mistakes because it has no architectural model to compare against.</p>
+
+  <div class="highlight">
+    <p>Strand A and Strand B each have a predictable failure mode: one misses the forest, one misses the trees. Running them independently in opposite directions means the blind spots do not overlap. Every base pair they form is a finding that survived two very different review styles.</p>
+  </div>
+
+  <h2>Base Pairs Are the Signal</h2>
+  <p>After both strands finish, the auditor looks for base pairs: locations where Strand A flagged something and Strand B also flagged the same location (or its pair point in the opposite direction). A Strand A finding like "the architecture document claims all RPC is authenticated, but the <code>payment-service</code> module does not enforce auth on its ingress handlers" only gets kept if Strand B independently reports "the <code>payment-service</code> integration handler accepts unauthenticated POSTs." Either finding alone might be a doc error or a false positive. Together, they are a real vulnerability.</p>
+
+  <p>Findings that only appear on one strand are not silently discarded &mdash; they go into a secondary "single-strand" pile for human review. In practice the single-strand pile is 90% noise, which is exactly the kind of noise traditional tools drown you in. The base-pair pile is almost always actionable.</p>
+
+  <h2>Why It Kills False Positives</h2>
+  <p>False positives in static analysis come from each tool's narrow assumptions. A SAST tool flags SQL concatenation because it <em>could</em> be injection-prone, without knowing the input is an integer three layers up. A dep scanner flags a CVE because your lockfile pins a vulnerable version, without knowing the vulnerable path is never imported. Strand B, on its own, produces all of these. But Strand A &mdash; which has read the architecture and knows the integer contract &mdash; does not. So the false positive never forms a base pair, and it is filtered automatically. No hand-tuning required.</p>
+
+  <h2>How It Runs</h2>
+  <p>The auditor is two independent analyzers that meet at a join step. Strand A is driven by an LLM walking the docs and code hierarchically with a summary cache. Strand B is a rule engine plus a dependency graph walker. Both strands emit findings into a common hyperbolic embedding, and the join step looks for collisions inside the trust tube. The full source lives in the <a href="https://github.com/issdandavis/SCBE-AETHERMOORE">SCBE-AETHERMOORE monorepo</a> under <code>cyber-suite/dna-audit/</code>, and it ties into the broader <a href="/articles/github-ecosystem.html">SCBE GitHub ecosystem</a> as the auditor-of-record for every other repo under the org.</p>
+
+  <div class="footer">
+    <div>SCBE-AETHERMOORE &mdash; AI Governance. Mathematical Security.</div>
+    <div style="display:flex; gap:12px;">
+      <a href="/">Home</a>
+      <a href="/research/">Research</a>
+      <a href="/articles/">Articles</a>
+      <a href="https://github.com/issdandavis/SCBE-AETHERMOORE">GitHub</a>
+    </div>
+  </div>
+</div>
+<script>window.__POLLY_BACKEND_HTTP__ = window.__POLLY_BACKEND_HTTP__ || "http://localhost:8001";</script>
+<script src="/static/polly-sidebar.js"></script>
+</body>
+</html>

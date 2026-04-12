@@ -1,0 +1,27 @@
+{
+  "name": "SCBE-AETHERMOORE",
+  "short_name": "SCBE",
+  "description": "Outcome-driven AI governance: CX Refund Guardrail, ISO 42001 evidence, AI red team. Built on a patent-pending hyperbolic security framework.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#071412",
+  "theme_color": "#8fffd3",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
+    },
+    {
+      "src": "/hero.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["security", "business", "developer", "productivity"],
+  "lang": "en-US",
+  "orientation": "portrait-primary"
+}

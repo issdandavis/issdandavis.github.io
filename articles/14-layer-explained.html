@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The 14-Layer Pipeline: From Complex State to Audio Axis</title>
+  <meta name="description" content="A complete walkthrough of SCBE-AETHERMOORE's 14-layer security pipeline. What each layer does, and why hyperbolic geometry beats Euclidean for security.">
+  <meta name="keywords" content="14-layer pipeline, hyperbolic AI, Poincare embedding, harmonic trust tube, SCBE AETHERMOORE architecture">
+  <meta property="og:title" content="The 14-Layer Pipeline: From Complex State to Audio Axis">
+  <meta property="og:description" content="Walkthrough of SCBE-AETHERMOORE's 14-layer pipeline. Why hyperbolic geometry beats Euclidean for security.">
+  <meta property="og:url" content="https://aethermoore.com/articles/14-layer-explained.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://aethermoore.com/hero.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://aethermoore.com/hero.png">
+  <link rel="canonical" href="https://aethermoore.com/articles/14-layer-explained.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The 14-Layer Pipeline: From Complex State to Audio Axis",
+    "description": "A complete walkthrough of the SCBE-AETHERMOORE security pipeline and why hyperbolic geometry beats Euclidean.",
+    "author": { "@type": "Person", "name": "Issac Davis", "url": "https://aethermoore.com/profile.html" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "SCBE-AETHERMOORE",
+      "url": "https://aethermoore.com/",
+      "logo": { "@type": "ImageObject", "url": "https://aethermoore.com/favicon.svg" }
+    },
+    "datePublished": "2026-04-05",
+    "dateModified": "2026-04-12",
+    "mainEntityOfPage": "https://aethermoore.com/articles/14-layer-explained.html",
+    "image": "https://aethermoore.com/hero.png"
+  }
+  </script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #070711; color: #edf0ff; line-height: 1.7; }
+    a { color: #8fffd3; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .topbar { position: sticky; top: 0; z-index: 30; display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; background: rgba(7,7,17,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(123,140,255,0.14); }
+    .topbar .brand { font-weight: 800; letter-spacing: 0.08em; font-size: 14px; color: #edf0ff; }
+    .topbar nav { display: flex; gap: 12px; color: #b4b9df; font-size: 13px; }
+    .topbar nav a { color: #b4b9df; }
+    .topbar nav a:hover { color: #fff; text-decoration: none; }
+    .wrap { max-width: 740px; margin: 0 auto; padding: 40px 16px 80px; }
+    .back { display: inline-block; font-size: 13px; color: #6a7099; margin-bottom: 24px; }
+    .back:hover { color: #8fffd3; text-decoration: none; }
+    .article-date { font-size: 12px; color: #6a7099; margin-bottom: 8px; }
+    .article-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 20px; }
+    .tag { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 8px; letter-spacing: 0.05em; text-transform: uppercase; }
+    .tag-security { background: rgba(255,158,199,0.12); color: #ff9ec7; }
+    .tag-research { background: rgba(109,216,255,0.12); color: #6dd8ff; }
+    h1 { font-size: clamp(24px, 5vw, 40px); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 16px; background: linear-gradient(135deg, #8fffd3, #6dd8ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.2; }
+    h2 { font-size: 22px; font-weight: 700; margin: 32px 0 12px; color: #c4d0ff; }
+    h3 { font-size: 17px; font-weight: 700; margin: 24px 0 8px; color: #8fffd3; }
+    p { margin-bottom: 16px; color: #b4b9df; font-size: 15px; }
+    ul, ol { margin: 0 0 16px 20px; color: #b4b9df; font-size: 15px; }
+    li { margin-bottom: 8px; }
+    strong { color: #edf0ff; }
+    .highlight { padding: 20px; border-radius: 12px; background: rgba(143,255,211,0.04); border: 1px solid rgba(143,255,211,0.15); margin: 24px 0; }
+    .highlight p { margin-bottom: 0; }
+    code { background: rgba(123,140,255,0.1); padding: 2px 6px; border-radius: 4px; font-size: 13px; color: #c49cff; }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    th { text-align: left; padding: 10px 12px; border-bottom: 2px solid rgba(123,140,255,0.2); color: #8fffd3; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+    td { padding: 10px 12px; border-bottom: 1px solid rgba(123,140,255,0.08); color: #b4b9df; vertical-align: top; }
+    .footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid rgba(123,140,255,0.10); color: #5a5f82; font-size: 12px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer a { color: #5a5f82; }
+    .footer a:hover { color: #8fffd3; }
+    @media (max-width: 768px) { .topbar { flex-direction: column; gap: 8px; } .topbar nav { justify-content: center; font-size: 12px; } }
+  </style>
+</head>
+<body>
+<div class="topbar">
+  <a class="brand" href="/">SCBE-AETHERMOORE</a>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/research/">Research</a>
+    <a href="/articles/">Articles</a>
+    <a href="/product-manual/">Docs</a>
+    <a href="https://github.com/issdandavis/SCBE-AETHERMOORE">GitHub</a>
+  </nav>
+</div>
+<div class="wrap">
+  <a class="back" href="/articles/">&larr; All Articles</a>
+  <div class="article-date">April 5, 2026 &middot; 7 min read &middot; Issac Davis</div>
+  <div class="article-tags">
+    <span class="tag tag-research">Research</span>
+    <span class="tag tag-security">Security</span>
+  </div>
+  <h1>The 14-Layer Pipeline: From Complex State to Audio Axis</h1>
+
+  <p>The heart of SCBE-AETHERMOORE is a 14-layer processing pipeline that takes any input &mdash; a prompt, a network packet, an agent action &mdash; and produces a single bounded risk decision. The same pipeline drives the firewall, the HYDRA swarm, the <a href="/articles/cyber-suite-launch.html">cyber suite</a>, and the AI Arena. Here is what actually happens at each step.</p>
+
+  <h2>The 14 Layers</h2>
+
+  <table>
+    <tr><th>#</th><th>Name</th><th>What it does</th></tr>
+    <tr><td>A1</td><td>Complex State</td><td>The input is lifted into a complex-valued vector so that magnitude and phase can carry independent meaning &mdash; content on the real axis, intent on the imaginary.</td></tr>
+    <tr><td>A2</td><td>Realification</td><td>Complex pairs are split into real basis vectors without losing phase. This is the bridge that lets downstream hyperbolic operators work on ordinary tensors.</td></tr>
+    <tr><td>A3</td><td>Weighted Transform</td><td>Each component is multiplied by its <a href="/articles/sacred-tongues-protocol.html">Sacred Tongue</a> weight &mdash; 1.00 through 11.09 &mdash; so security-heavy domains carry more inertia than control-flow ones.</td></tr>
+    <tr><td>A4</td><td>Poincar&eacute; Embedding</td><td>The weighted vector is projected into a 6D Poincar&eacute; ball. The center is "trusted manifold," the boundary is "infinite risk." Bounded volume, unbounded distance.</td></tr>
+    <tr><td>A5</td><td>Hyperbolic Distance</td><td>The Poincar&eacute; distance from the trusted center is computed. This single scalar, plugged into <code>H(d, R) = R^(d&sup2;)</code>, is how threats get priced.</td></tr>
+    <tr><td>A6</td><td>Breathing Transform</td><td>A slow cyclic warp of the manifold. Legitimate agents "breathe" in sync with the envelope; adversaries drift out of phase and accumulate cost.</td></tr>
+    <tr><td>A7</td><td>Phase Transform</td><td>The imaginary-axis intent signal is rotated against the expected phase for the current operation. Mis-phased intent flags prompt-injection attempts before they execute.</td></tr>
+    <tr><td>A8</td><td>Realm Distance</td><td>Six "realms" (one per Sacred Tongue) each have their own radius R. The layer picks the correct realm and scales distance accordingly &mdash; security realms have larger R, so the same <em>d</em> produces a much bigger <code>H</code>.</td></tr>
+    <tr><td>A9</td><td>Spectral Coherence</td><td>A Fourier pass over the recent history of states. Coherent spectra are normal; spiky or silent spectra indicate replay or injection attacks.</td></tr>
+    <tr><td>A10</td><td>Spin Coherence</td><td>Tracks the rotation of the phase vector across successive operations. Legitimate agents spin smoothly; compromised agents jitter.</td></tr>
+    <tr><td>A11</td><td>Triadic Temporal</td><td>Three-step temporal lookahead. Any sequence whose next three states are not reachable from a trusted manifold is pre-emptively flagged.</td></tr>
+    <tr><td>A12</td><td>Harmonic Scaling</td><td>The Harmonic Trust Tube &mdash; a narrow envelope around the trusted manifold where cost is near zero. Drift out of the tube, cost climbs geometrically.</td></tr>
+    <tr><td>A13</td><td>Risk Decision</td><td>The aggregated cost is compared against per-realm thresholds. The decision is allow, quarantine, or terminate &mdash; no soft "warn" category.</td></tr>
+    <tr><td>A14</td><td>Audio Axis</td><td>The final state is emitted as an audio signature so human operators can literally <em>hear</em> the system state. A healthy pipeline sounds like a drone; an attack sounds like dissonance.</td></tr>
+  </table>
+
+  <h2>Why Hyperbolic Beats Euclidean</h2>
+  <p>Euclidean space is kind to attackers. Volume grows as <code>r&sup3;</code>, so the "space of safe states" and the "space of unsafe states" scale at the same polynomial rate. Doubling your effective security budget in Euclidean space roughly doubles the attacker's cost &mdash; linear gains for linear effort.</p>
+
+  <div class="highlight">
+    <p>Hyperbolic space is hostile to attackers. Volume grows exponentially with radius, so the "far from trusted" region is astronomically larger than the "near trusted" region. Doubling <em>d</em> in <code>H(d, R) = R^(d&sup2;)</code> does not double the cost &mdash; it squares the exponent. An attacker who wants twice the deviation pays a geometric penalty, not a linear one.</p>
+  </div>
+
+  <h2>The Harmonic Trust Tube</h2>
+  <p>Layer A12 is the one that makes agent governance tractable. Rather than testing every single action against a global threshold, the Trust Tube defines a narrow hyperbolic neighborhood around the currently trusted trajectory. Inside the tube, cost is essentially zero &mdash; agents can act freely. Outside it, cost climbs so fast that even a single out-of-tube action typically triggers the A13 risk decision. The tube moves with the agent; legitimate drift is tracked, hostile drift is not.</p>
+
+  <h2>See It Running</h2>
+  <p>Two interactive demos let you feed inputs through the pipeline directly in your browser: the <a href="/demos/governance-gate.html">governance gate</a> shows the full 14-layer evaluation with a scoreboard per layer, and the <a href="/demos/distance-explorer.html">distance explorer</a> lets you drag points around a Poincar&eacute; ball to see how <code>H(d, R)</code> reacts to tiny changes near the boundary.</p>
+
+  <div class="footer">
+    <div>SCBE-AETHERMOORE &mdash; AI Governance. Mathematical Security.</div>
+    <div style="display:flex; gap:12px;">
+      <a href="/">Home</a>
+      <a href="/research/">Research</a>
+      <a href="/articles/">Articles</a>
+      <a href="https://github.com/issdandavis/SCBE-AETHERMOORE">GitHub</a>
+    </div>
+  </div>
+</div>
+<script>window.__POLLY_BACKEND_HTTP__ = window.__POLLY_BACKEND_HTTP__ || "http://localhost:8001";</script>
+<script src="/static/polly-sidebar.js"></script>
+</body>
+</html>

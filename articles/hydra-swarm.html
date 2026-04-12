@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HYDRA: A 6-Agent Security Swarm</title>
+  <meta name="description" content="Six heads, one swarm. Each is a Sacred Tongue specialist fine-tuned via QLoRA on small open models, coordinated through the 14-layer SCBE pipeline.">
+  <meta name="keywords" content="HYDRA swarm, multi-agent, QLoRA, Sacred Tongues, governed agents, SCBE security">
+  <meta property="og:title" content="HYDRA: A 6-Agent Security Swarm">
+  <meta property="og:description" content="KO scouts, AV sees, RU reads policy, CA clicks, UM types securely, DR judges types. Six specialist heads coordinated through the 14-layer pipeline.">
+  <meta property="og:url" content="https://aethermoore.com/articles/hydra-swarm.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://aethermoore.com/hero.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://aethermoore.com/hero.png">
+  <link rel="canonical" href="https://aethermoore.com/articles/hydra-swarm.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "HYDRA: A 6-Agent Security Swarm",
+    "description": "Each head is a Sacred Tongue specialist fine-tuned via QLoRA on small open models, coordinated through the 14-layer SCBE pipeline.",
+    "author": { "@type": "Person", "name": "Issac Davis", "url": "https://aethermoore.com/profile.html" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "SCBE-AETHERMOORE",
+      "url": "https://aethermoore.com/",
+      "logo": { "@type": "ImageObject", "url": "https://aethermoore.com/favicon.svg" }
+    },
+    "datePublished": "2026-04-06",
+    "dateModified": "2026-04-12",
+    "mainEntityOfPage": "https://aethermoore.com/articles/hydra-swarm.html",
+    "image": "https://aethermoore.com/hero.png"
+  }
+  </script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #070711; color: #edf0ff; line-height: 1.7; }
+    a { color: #8fffd3; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .topbar { position: sticky; top: 0; z-index: 30; display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; background: rgba(7,7,17,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(123,140,255,0.14); }
+    .topbar .brand { font-weight: 800; letter-spacing: 0.08em; font-size: 14px; color: #edf0ff; }
+    .topbar nav { display: flex; gap: 12px; color: #b4b9df; font-size: 13px; }
+    .topbar nav a { color: #b4b9df; }
+    .topbar nav a:hover { color: #fff; text-decoration: none; }
+    .wrap { max-width: 740px; margin: 0 auto; padding: 40px 16px 80px; }
+    .back { display: inline-block; font-size: 13px; color: #6a7099; margin-bottom: 24px; }
+    .back:hover { color: #8fffd3; text-decoration: none; }
+    .article-date { font-size: 12px; color: #6a7099; margin-bottom: 8px; }
+    .article-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 20px; }
+    .tag { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 8px; letter-spacing: 0.05em; text-transform: uppercase; }
+    .tag-security { background: rgba(255,158,199,0.12); color: #ff9ec7; }
+    .tag-research { background: rgba(109,216,255,0.12); color: #6dd8ff; }
+    h1 { font-size: clamp(24px, 5vw, 40px); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 16px; background: linear-gradient(135deg, #8fffd3, #6dd8ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.2; }
+    h2 { font-size: 22px; font-weight: 700; margin: 32px 0 12px; color: #c4d0ff; }
+    h3 { font-size: 17px; font-weight: 700; margin: 24px 0 8px; color: #8fffd3; }
+    p { margin-bottom: 16px; color: #b4b9df; font-size: 15px; }
+    ul, ol { margin: 0 0 16px 20px; color: #b4b9df; font-size: 15px; }
+    li { margin-bottom: 8px; }
+    strong { color: #edf0ff; }
+    .highlight { padding: 20px; border-radius: 12px; background: rgba(143,255,211,0.04); border: 1px solid rgba(143,255,211,0.15); margin: 24px 0; }
+    .highlight p { margin-bottom: 0; }
+    code { background: rgba(123,140,255,0.1); padding: 2px 6px; border-radius: 4px; font-size: 13px; color: #c49cff; }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    th { text-align: left; padding: 10px 12px; border-bottom: 2px solid rgba(123,140,255,0.2); color: #8fffd3; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+    td { padding: 10px 12px; border-bottom: 1px solid rgba(123,140,255,0.08); color: #b4b9df; vertical-align: top; }
+    .footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid rgba(123,140,255,0.10); color: #5a5f82; font-size: 12px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer a { color: #5a5f82; }
+    .footer a:hover { color: #8fffd3; }
+    @media (max-width: 768px) { .topbar { flex-direction: column; gap: 8px; } .topbar nav { justify-content: center; font-size: 12px; } }
+  </style>
+</head>
+<body>
+<div class="topbar">
+  <a class="brand" href="/">SCBE-AETHERMOORE</a>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/research/">Research</a>
+    <a href="/articles/">Articles</a>
+    <a href="/product-manual/">Docs</a>
+    <a href="https://github.com/issdandavis/SCBE-AETHERMOORE">GitHub</a>
+  </nav>
+</div>
+<div class="wrap">
+  <a class="back" href="/articles/">&larr; All Articles</a>
+  <div class="article-date">April 6, 2026 &middot; 6 min read &middot; Issac Davis</div>
+  <div class="article-tags">
+    <span class="tag tag-security">Security</span>
+    <span class="tag tag-research">Research</span>
+  </div>
+  <h1>HYDRA: A 6-Agent Security Swarm</h1>
+
+  <p>A single large model is a convenient abstraction, but it is a bad security design. Everything the agent knows, everything it can do, and every failure mode it exhibits is concentrated in one monolith. HYDRA takes the opposite approach: six small specialist agents, each fine-tuned on one of the <a href="/articles/sacred-tongues-protocol.html">Sacred Tongues</a>, coordinating through the <a href="/articles/14-layer-explained.html">14-layer SCBE pipeline</a>. Each head is narrow, cheap to run, and easy to audit. The swarm is the capability.</p>
+
+  <h2>The Six Heads</h2>
+
+  <table>
+    <tr><th>Head</th><th>Tongue</th><th>Role</th><th>Base Model</th></tr>
+    <tr><td><strong>Scout</strong></td><td>KO</td><td>Recon, site map, task planning</td><td>Qwen 2.5 7B</td></tr>
+    <tr><td><strong>Vision</strong></td><td>AV</td><td>Screenshot and DOM interpretation</td><td>Qwen-VL 7B</td></tr>
+    <tr><td><strong>Reader</strong></td><td>RU</td><td>Policy, TOS, constraint parsing</td><td>Llama 3.1 8B</td></tr>
+    <tr><td><strong>Clicker</strong></td><td>CA</td><td>Action selection and execution</td><td>Qwen 2.5 7B</td></tr>
+    <tr><td><strong>Typer</strong></td><td>UM</td><td>Secure input, secrets handling</td><td>Llama 3.1 8B</td></tr>
+    <tr><td><strong>Judge</strong></td><td>DR</td><td>Type / schema verification, final go-no-go</td><td>Mistral 7B</td></tr>
+  </table>
+
+  <p>Every head is a 4-bit QLoRA fine-tune of a small open-source base model. None of them are larger than 8B parameters, and any of them can run on a consumer GPU &mdash; or on HuggingFace Inference Providers when local hardware is not available. Training data comes from the auto-conversation pairs generated by <a href="/articles/polly-autoconverse.html">Polly's self-play loop</a>, filtered through the DNA bi-strand auditor.</p>
+
+  <h2>How the Swarm Coordinates</h2>
+  <p>HYDRA does not route by LLM function calls. It routes by <em>tongue</em>. Every message in the swarm is tagged with a Sacred Tongue, and the 14-layer pipeline determines which head should handle the next step based on which realm the message belongs to. A web-automation task, for example, flows like this:</p>
+
+  <ol>
+    <li><strong>Scout (KO)</strong> receives the user goal and produces a plan. The plan is a list of <code>(action, realm)</code> pairs.</li>
+    <li><strong>Vision (AV)</strong> loads a page and emits an I/O-tongue summary of visible elements.</li>
+    <li><strong>Reader (RU)</strong> checks the page's terms of service, consent banners, and site policies, and annotates which actions are allowed.</li>
+    <li><strong>Clicker (CA)</strong> picks the next action from Scout's plan that Reader has marked allowed.</li>
+    <li><strong>Typer (UM)</strong> handles any text input, especially anything that requires credentials or tokens. Secrets never leave Typer's memory.</li>
+    <li><strong>Judge (DR)</strong> verifies the resulting page state against the expected schema. Anything off-schema fails closed and bounces back to Scout.</li>
+  </ol>
+
+  <div class="highlight">
+    <p>At every handoff, the message passes through the 14-layer pipeline and is priced by <code>H(d, R) = R^(d&sup2;)</code>. A head can only act if its action stays inside the current Harmonic Trust Tube. The governance check is not optional and not tunable &mdash; it is the plumbing.</p>
+  </div>
+
+  <h2>Why QLoRA, Why Small</h2>
+  <p>Fine-tuning a 70B model for each head would be both expensive and wasteful. Each head only needs to be good at one narrow domain, and for narrow domains 4-bit QLoRA on a 7-8B base model is shockingly effective. A full HYDRA retrain takes about 18 hours on a single A100 rental, roughly 20 dollars of compute. That means the swarm can be retrained whenever the Polly corpus grows meaningfully, which in practice is every week or two.</p>
+
+  <p>Small heads also make the swarm easier to reason about. When Judge (DR) rejects something, you can inspect the specific 1B-parameter delta that was added to the base Mistral model and understand what rule it learned. With a monolithic 70B model this kind of audit is essentially impossible.</p>
+
+  <h2>Use Cases</h2>
+
+  <h3>Red-Team Probing</h3>
+  <p>Point HYDRA at a target application with a permissive ruleset and it will systematically explore the attack surface, logging every governance decision. Because every action is priced, the final report includes not just a list of findings but a ranked cost map: the cheapest paths to sensitive state, the most expensive defenses to break, and the actions that were blocked pre-execution.</p>
+
+  <h3>Governed Web Automation</h3>
+  <p>The original motivation. HYDRA can perform multi-step web tasks &mdash; filling forms, navigating flows, handling logins &mdash; with a governance check at every step. If you have ever wanted a browser agent that cannot be prompt-injected into exfiltrating cookies, HYDRA is that agent, because Reader (RU) will refuse to approve actions that violate the site's declared policy, and Typer (UM) physically cannot type credentials into an unapproved form.</p>
+
+  <h3>Multi-Step Task Execution</h3>
+  <p>Generalizes beyond the browser. Anywhere a long-running agent has to cross trust boundaries &mdash; CI pipelines, shell access, API chains &mdash; HYDRA slots in as the governed execution layer.</p>
+
+  <h2>Getting the Templates</h2>
+  <p>The $29 <a href="/product-manual/hydra-agent-templates.html">HYDRA Agent Templates</a> package includes the QLoRA configs, training scripts, head prompts, and a reference orchestrator that wires the six heads through the SCBE pipeline. It is the fastest way to stand up a governed swarm on your own hardware. Commercial deployment and custom head training are available through the <a href="/services.html">services page</a>.</p>
+
+  <div class="footer">
+    <div>SCBE-AETHERMOORE &mdash; AI Governance. Mathematical Security.</div>
+    <div style="display:flex; gap:12px;">
+      <a href="/">Home</a>
+      <a href="/research/">Research</a>
+      <a href="/articles/">Articles</a>
+      <a href="https://github.com/issdandavis/SCBE-AETHERMOORE">GitHub</a>
+    </div>
+  </div>
+</div>
+<script>window.__POLLY_BACKEND_HTTP__ = window.__POLLY_BACKEND_HTTP__ || "http://localhost:8001";</script>
+<script src="/static/polly-sidebar.js"></script>
+</body>
+</html>

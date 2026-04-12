@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Six Sacred Tongues: Fibonacci-Weighted Domains</title>
+  <meta name="description" content="KO through DR. Six domains weighted by the golden ratio create a geometric barrier that prices attackers out exponentially. Here is why 1.0, 1.618, 2.618 are not arbitrary.">
+  <meta name="keywords" content="sacred tongues, golden ratio security, Fibonacci weights, SCBE domains, Kor'aelin, Avali, Runethic, Cassisivadan, Umbroth, Draumric">
+  <meta property="og:title" content="The Six Sacred Tongues: Fibonacci-Weighted Domains">
+  <meta property="og:description" content="Six domains, golden-ratio weights, geometric security barrier. Why 1.0, 1.618, 2.618, 4.236, 6.854, 11.09 are not arbitrary.">
+  <meta property="og:url" content="https://aethermoore.com/articles/sacred-tongues-protocol.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://aethermoore.com/hero.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://aethermoore.com/hero.png">
+  <link rel="canonical" href="https://aethermoore.com/articles/sacred-tongues-protocol.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The Six Sacred Tongues: Fibonacci-Weighted Security Domains",
+    "description": "Six domains weighted by the golden ratio create a geometric barrier that prices attackers out exponentially.",
+    "author": { "@type": "Person", "name": "Issac Davis", "url": "https://aethermoore.com/profile.html" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "SCBE-AETHERMOORE",
+      "url": "https://aethermoore.com/",
+      "logo": { "@type": "ImageObject", "url": "https://aethermoore.com/favicon.svg" }
+    },
+    "datePublished": "2026-04-04",
+    "dateModified": "2026-04-12",
+    "mainEntityOfPage": "https://aethermoore.com/articles/sacred-tongues-protocol.html",
+    "image": "https://aethermoore.com/hero.png"
+  }
+  </script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #070711; color: #edf0ff; line-height: 1.7; }
+    a { color: #8fffd3; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .topbar { position: sticky; top: 0; z-index: 30; display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; background: rgba(7,7,17,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(123,140,255,0.14); }
+    .topbar .brand { font-weight: 800; letter-spacing: 0.08em; font-size: 14px; color: #edf0ff; }
+    .topbar nav { display: flex; gap: 12px; color: #b4b9df; font-size: 13px; }
+    .topbar nav a { color: #b4b9df; }
+    .topbar nav a:hover { color: #fff; text-decoration: none; }
+    .wrap { max-width: 740px; margin: 0 auto; padding: 40px 16px 80px; }
+    .back { display: inline-block; font-size: 13px; color: #6a7099; margin-bottom: 24px; }
+    .back:hover { color: #8fffd3; text-decoration: none; }
+    .article-date { font-size: 12px; color: #6a7099; margin-bottom: 8px; }
+    .article-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 20px; }
+    .tag { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 8px; letter-spacing: 0.05em; text-transform: uppercase; }
+    .tag-security { background: rgba(255,158,199,0.12); color: #ff9ec7; }
+    .tag-research { background: rgba(109,216,255,0.12); color: #6dd8ff; }
+    h1 { font-size: clamp(24px, 5vw, 40px); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 16px; background: linear-gradient(135deg, #8fffd3, #6dd8ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.2; }
+    h2 { font-size: 22px; font-weight: 700; margin: 32px 0 12px; color: #c4d0ff; }
+    h3 { font-size: 17px; font-weight: 700; margin: 24px 0 8px; color: #8fffd3; }
+    p { margin-bottom: 16px; color: #b4b9df; font-size: 15px; }
+    ul, ol { margin: 0 0 16px 20px; color: #b4b9df; font-size: 15px; }
+    li { margin-bottom: 8px; }
+    strong { color: #edf0ff; }
+    .highlight { padding: 20px; border-radius: 12px; background: rgba(143,255,211,0.04); border: 1px solid rgba(143,255,211,0.15); margin: 24px 0; }
+    .highlight p { margin-bottom: 0; }
+    code { background: rgba(123,140,255,0.1); padding: 2px 6px; border-radius: 4px; font-size: 13px; color: #c49cff; }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    th { text-align: left; padding: 10px 12px; border-bottom: 2px solid rgba(123,140,255,0.2); color: #8fffd3; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+    td { padding: 10px 12px; border-bottom: 1px solid rgba(123,140,255,0.08); color: #b4b9df; }
+    .footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid rgba(123,140,255,0.10); color: #5a5f82; font-size: 12px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer a { color: #5a5f82; }
+    .footer a:hover { color: #8fffd3; }
+    @media (max-width: 768px) { .topbar { flex-direction: column; gap: 8px; } .topbar nav { justify-content: center; font-size: 12px; } }
+  </style>
+</head>
+<body>
+<div class="topbar">
+  <a class="brand" href="/">SCBE-AETHERMOORE</a>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/research/">Research</a>
+    <a href="/articles/">Articles</a>
+    <a href="/product-manual/">Docs</a>
+    <a href="https://github.com/issdandavis/SCBE-AETHERMOORE">GitHub</a>
+  </nav>
+</div>
+<div class="wrap">
+  <a class="back" href="/articles/">&larr; All Articles</a>
+  <div class="article-date">April 4, 2026 &middot; 6 min read &middot; Issac Davis</div>
+  <div class="article-tags">
+    <span class="tag tag-research">Research</span>
+    <span class="tag tag-security">Security</span>
+  </div>
+  <h1>The Six Sacred Tongues: Fibonacci-Weighted Security Domains</h1>
+
+  <p>Every well-designed security framework eventually runs into the same problem: how do you compare a typing error in a config file with a kernel-level privilege escalation? They are both "bugs," but treating them equally gives you either constant false alarms or constant misses. SCBE-AETHERMOORE answers this question with the Six Sacred Tongues &mdash; six named domains, each with a fixed numeric weight drawn from the Fibonacci/golden-ratio sequence.</p>
+
+  <h2>The Six</h2>
+
+  <table>
+    <tr><th>Code</th><th>Name</th><th>Domain</th><th>Weight</th></tr>
+    <tr><td><strong>KO</strong></td><td>Kor'aelin</td><td>Control &amp; Orchestration</td><td>1.000</td></tr>
+    <tr><td><strong>AV</strong></td><td>Avali</td><td>I/O &amp; Messaging</td><td>1.618</td></tr>
+    <tr><td><strong>RU</strong></td><td>Runethic</td><td>Policy &amp; Constraints</td><td>2.618</td></tr>
+    <tr><td><strong>CA</strong></td><td>Cassisivadan</td><td>Logic &amp; Computation</td><td>4.236</td></tr>
+    <tr><td><strong>UM</strong></td><td>Umbroth</td><td>Security &amp; Privacy</td><td>6.854</td></tr>
+    <tr><td><strong>DR</strong></td><td>Draumric</td><td>Types &amp; Structures</td><td>11.090</td></tr>
+  </table>
+
+  <h2>Those Weights Are Not Arbitrary</h2>
+  <p>If you stare at the numbers for a second they click into place: <code>&phi;&sup0; = 1.000</code>, <code>&phi;&sup1; = 1.618</code>, <code>&phi;&sup2; = 2.618</code>, <code>&phi;&sup3; = 4.236</code>, <code>&phi;&#8308; = 6.854</code>, <code>&phi;&#8309; = 11.09</code>. Each tongue's weight is the next power of the golden ratio. That choice does three useful things at once.</p>
+
+  <ul>
+    <li><strong>Self-similarity.</strong> <code>&phi;&#8319; + &phi;&#8319;&#8314;&sup1; = &phi;&#8319;&#8314;&sup2;</code>. Any two adjacent tongue costs automatically sum to the next one. When you combine a policy violation (RU) with an I/O violation (AV), you get exactly one "Cassisivadan unit" of cost &mdash; the framework does not need special-case addition rules.</li>
+    <li><strong>Monotone priority.</strong> A single DR-level concern outweighs any finite linear combination of all the lower tongues, because the weight gap grows geometrically. Type-safety violations can never be drowned out by a flood of trivial AV noise.</li>
+    <li><strong>Smooth plugging into <code>H(d, R)</code>.</strong> Each tongue's weight becomes its realm radius R in the <a href="/articles/14-layer-explained.html">14-layer pipeline</a>. Plugging golden-ratio powers into <code>H(d, R) = R^(d&sup2;)</code> gives smooth cost surfaces with no awkward discontinuities between domains.</li>
+  </ul>
+
+  <div class="highlight">
+    <p>Because the weights are <code>&phi;&#8319;</code>, the jump from "low-sensitivity I/O error" (AV, 1.618) to "security invariant violation" (UM, 6.854) is not a 4x bump &mdash; it is a 4.24x bump <em>exactly</em>, and that ratio is preserved no matter what realm you are comparing.</p>
+  </div>
+
+  <h2>What Each Tongue Owns</h2>
+
+  <h3>KO &mdash; Kor'aelin (Control &amp; Orchestration)</h3>
+  <p>The baseline tongue. Scheduling, task routing, agent lifecycle. KO is the reference weight &mdash; everything else is measured relative to it.</p>
+
+  <h3>AV &mdash; Avali (I/O &amp; Messaging)</h3>
+  <p>Anything that crosses a process boundary: file descriptors, sockets, RPC, chat messages, tool calls. AV is slightly heavier than KO because a wrong byte on the wire can cascade in ways a wrong byte in a local variable cannot.</p>
+
+  <h3>RU &mdash; Runethic (Policy &amp; Constraints)</h3>
+  <p>Declarative rules, ACLs, rate limits, consent requirements. RU violations are the first sign that something is acting outside its sanctioned envelope, which is why they cost 2.618 &mdash; enough to dominate AV noise but still well below logic bugs.</p>
+
+  <h3>CA &mdash; Cassisivadan (Logic &amp; Computation)</h3>
+  <p>Pure computation &mdash; state transitions, math, control flow. A bug in CA is usually an incorrect answer, which is worse than a policy drift because it contaminates everything downstream.</p>
+
+  <h3>UM &mdash; Umbroth (Security &amp; Privacy)</h3>
+  <p>Authentication, encryption, secrets handling, sandbox invariants. This is the realm where hostile actors live, and the 6.854 weight guarantees that a UM alert will always outrank stacked KO/AV/RU/CA concerns combined.</p>
+
+  <h3>DR &mdash; Draumric (Types &amp; Structures)</h3>
+  <p>The heaviest tongue. Type systems, schema invariants, serialization contracts. A DR violation means the ground under every other tongue just shifted &mdash; if types are wrong, then the assumptions that UM relied on are wrong, which means UM's security claims are also wrong. DR has to be the largest weight in the stack, and <code>&phi;&#8309;</code> just happens to fit.</p>
+
+  <h2>Playing With It</h2>
+  <p>The <a href="/demos/tongue-encoder.html">Tongue Encoder demo</a> lets you paste code, prose, or a JSON payload and watch SCBE tag each token with its tongue and weight. For the full philosophical treatment &mdash; including why the tongues have those names &mdash; see the <a href="/book.html">Aethermoore book</a>.</p>
+
+  <div class="footer">
+    <div>SCBE-AETHERMOORE &mdash; AI Governance. Mathematical Security.</div>
+    <div style="display:flex; gap:12px;">
+      <a href="/">Home</a>
+      <a href="/research/">Research</a>
+      <a href="/articles/">Articles</a>
+      <a href="https://github.com/issdandavis/SCBE-AETHERMOORE">GitHub</a>
+    </div>
+  </div>
+</div>
+<script>window.__POLLY_BACKEND_HTTP__ = window.__POLLY_BACKEND_HTTP__ || "http://localhost:8001";</script>
+<script src="/static/polly-sidebar.js"></script>
+</body>
+</html>
