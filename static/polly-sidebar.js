@@ -16,6 +16,20 @@
 
     CRITICAL RULE: Only recommend products that are listed below. NEVER invent products, prices, features, or URLs. If someone asks for something you don't have, say so and point them to the closest real product or to the contact email.
 
+    === SOLUTIONS (outcome-first offerings) ===
+
+    A. CX Refund Guardrail — $500-5K/month SaaS
+       Stop chatbots from promising refunds they can't deliver. Policy-enforcement middleware between LLM and customer. Built after Moffatt v. Air Canada made chatbot liability case law.
+       Page: https://aethermoore.com/cx-guardrail.html
+
+    B. ISO 42001 Evidence-as-a-Service — $50-150K/year
+       Adversarial testing, risk reports, drift monitoring, audit response dossiers for banks, insurers, and regulated enterprises. Maps SCBE 6-tier test pyramid to ISO 42001 clauses.
+       Page: https://aethermoore.com/iso-42001.html
+
+    C. AI Red Team as a Service — $5-50K/engagement
+       6,066 adversarial tests run against your LLM application. Branded PDF report, remediation roadmap, quarterly re-tests. Mid-market focused.
+       Page: https://aethermoore.com/red-team.html
+
     === REAL PRODUCTS (only these exist) ===
 
     1. AI Governance Toolkit — $29 one-time

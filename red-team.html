@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Red Team as a Service | Adversarial Testing</title>
+  <meta name="description" content="6,066 adversarial tests against your LLM application. Branded PDF report. Remediation roadmap. $5K-50K per engagement. Fast, mid-market focused.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta property="og:title" content="AI Red Team as a Service | Adversarial Testing">
+  <meta property="og:description" content="We break your AI before the adversaries do. 6,066 adversarial tests. Branded PDF report. Remediation roadmap. Quarterly re-tests. $5K-50K per engagement.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aethermoore.com/red-team.html">
+  <meta property="og:image" content="https://aethermoore.com/hero.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Red Team as a Service | Adversarial Testing">
+  <meta name="twitter:description" content="6,066 adversarial tests against your LLM application. Branded PDF report. Remediation roadmap. $5K-50K per engagement.">
+  <meta name="twitter:image" content="https://aethermoore.com/hero.png">
+  <link rel="canonical" href="https://aethermoore.com/red-team.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://aethermoore.com/#org",
+        "name": "SCBE-AETHERMOORE",
+        "url": "https://aethermoore.com/",
+        "logo": "https://aethermoore.com/favicon.svg",
+        "email": "aethermoregames@pm.me"
+      },
+      {
+        "@type": "Service",
+        "name": "AI Red Team as a Service",
+        "serviceType": "AI Security / Adversarial Testing",
+        "provider": { "@id": "https://aethermoore.com/#org" },
+        "description": "Adversarial testing for LLM applications. 6,066 tests across 6 tiers covering prompt injection, jailbreaks, data exfiltration, and agent abuse. Branded PDF report and remediation roadmap delivered in four weeks.",
+        "areaServed": "Worldwide",
+        "audience": { "@type": "BusinessAudience", "audienceType": "Mid-market companies deploying LLM products" },
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "Quick Scan",
+            "priceCurrency": "USD",
+            "price": "5000",
+            "description": "One-time engagement, 4-week delivery, standard report. For startups and single-product validation.",
+            "url": "https://aethermoore.com/red-team.html#pricing"
+          },
+          {
+            "@type": "Offer",
+            "name": "Deep Engagement",
+            "priceCurrency": "USD",
+            "price": "25000",
+            "description": "Custom threat model, executive briefing, remediation support. For scaling companies with multiple AI surfaces.",
+            "url": "https://aethermoore.com/red-team.html#pricing"
+          },
+          {
+            "@type": "Offer",
+            "name": "Quarterly Retainer",
+            "priceCurrency": "USD",
+            "price": "50000",
+            "description": "Four engagements per year, drift monitoring, priority response, dedicated Slack channel. For enterprises with ongoing risk.",
+            "url": "https://aethermoore.com/red-team.html#pricing"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  <style>:root {
+      --bg: #071412; --bg-deep: #04100f; --bg-soft: #0d1d1a;
+      --panel: rgba(10, 28, 24, 0.82); --panel-strong: rgba(8, 24, 20, 0.94);
+      --line: rgba(139, 255, 223, 0.15); --line-bright: rgba(139, 255, 223, 0.30);
+      --text: #e7fff7; --muted: #9bc5ba; --dim: #6a9488;
+      --mint: #8fffd3; --aqua: #6dd8ff; --gold: #ffd977;
+      --rose: #ff9ec7; --violet: #c49cff;
+      --shadow: 0 30px 80px rgba(0, 0, 0, 0.45); --max: 1220px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(ellipse at 15% 8%, rgba(109,216,255,0.10), transparent 32%),
+        radial-gradient(ellipse at 80% 5%, rgba(143,255,211,0.12), transparent 28%),
+        linear-gradient(180deg, var(--bg-deep) 0%, var(--bg) 30%, var(--bg-soft) 100%);
+      color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .topbar { position: sticky; top: 0; z-index: 100; backdrop-filter: blur(16px); background: rgba(4,16,15,0.85); border-bottom: 1px solid var(--line); }
+    .topbar-inner { max-width: var(--max); margin: 0 auto; padding: 0 24px; min-height: 60px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mint); font-weight: 700; white-space: nowrap; }
+    .nav { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav a { padding: 6px 12px; border-radius: 8px; font-size: 13px; font-weight: 500; color: var(--muted); transition: all 150ms; }
+    .nav a:hover { color: var(--text); background: rgba(143,255,211,0.08); }
+    .nav a.nav-cta { background: rgba(143,255,211,0.12); color: var(--mint); border: 1px solid rgba(143,255,211,0.25); }
+    .nav a.nav-cta:hover { background: rgba(143,255,211,0.20); }
+    .nav a.nav-commercial { background: rgba(255,217,119,0.12); color: var(--gold); border: 1px solid rgba(255,217,119,0.25); }
+    .nav a.nav-commercial:hover { background: rgba(255,217,119,0.20); }
+    .nav a.nav-active { color: var(--text); background: rgba(143,255,211,0.10); }
+    .mobile-toggle { display: none; background: none; border: none; color: var(--mint); font-size: 24px; cursor: pointer; padding: 8px; }
+    .section { padding: 80px 24px; }
+    .section-inner { max-width: var(--max); margin: 0 auto; }
+    .section-label { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mint); margin-bottom: 16px; padding: 4px 12px; border-radius: 20px; background: rgba(143,255,211,0.08); border: 1px solid rgba(143,255,211,0.15); }
+    .section-title { font-size: clamp(28px, 4.5vw, 48px); font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 16px; }
+    .section-subtitle { color: var(--muted); font-size: clamp(16px, 2vw, 20px); max-width: 64ch; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 24px; border-radius: 12px; font-size: 15px; font-weight: 600; border: 1px solid transparent; transition: all 180ms; cursor: pointer; text-decoration: none; }
+    .btn-primary { background: linear-gradient(135deg, rgba(143,255,211,0.18), rgba(109,216,255,0.12)); border-color: rgba(143,255,211,0.35); color: var(--mint); }
+    .btn-primary:hover { background: linear-gradient(135deg, rgba(143,255,211,0.28), rgba(109,216,255,0.18)); transform: translateY(-1px); }
+    .btn-secondary { border-color: var(--line); color: var(--muted); }
+    .btn-secondary:hover { border-color: var(--line-bright); color: var(--text); }
+    .btn-gold { background: linear-gradient(135deg, rgba(255,217,119,0.18), rgba(240,191,103,0.10)); border-color: rgba(255,217,119,0.35); color: var(--gold); }
+    .btn-gold:hover { background: linear-gradient(135deg, rgba(255,217,119,0.28), rgba(240,191,103,0.18)); transform: translateY(-1px); }
+    .btn-rose { background: linear-gradient(135deg, rgba(255,158,199,0.18), rgba(255,158,199,0.10)); border-color: rgba(255,158,199,0.35); color: var(--rose); }
+    .btn-rose:hover { background: linear-gradient(135deg, rgba(255,158,199,0.28), rgba(255,158,199,0.18)); transform: translateY(-1px); }
+    .footer { border-top: 1px solid var(--line); padding: 32px 24px 48px; color: var(--dim); font-size: 13px; }
+    .footer-inner { max-width: var(--max); margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; flex-wrap: wrap; }
+    .footer-left { display: flex; flex-direction: column; gap: 6px; }
+    .footer-left .footer-brand { color: var(--muted); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; font-size: 12px; }
+    .footer-links-row { display: flex; gap: 16px; flex-wrap: wrap; }
+    .footer-links-row a { color: var(--dim); transition: color 150ms; }
+    .footer-links-row a:hover { color: var(--mint); }
+
+    /* Hero */
+    .hero { padding: 100px 24px 80px; position: relative; overflow: hidden; }
+    .hero::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 30% 30%, rgba(255,158,199,0.08), transparent 50%), radial-gradient(ellipse at 70% 60%, rgba(255,217,119,0.05), transparent 40%); }
+    .hero-inner { max-width: var(--max); margin: 0 auto; position: relative; z-index: 1; }
+    .hero h1 { font-size: clamp(40px, 7vw, 72px); font-weight: 800; line-height: 0.95; letter-spacing: -0.04em; margin-bottom: 24px; max-width: 18ch; }
+    .hero h1 .gradient { background: linear-gradient(135deg, var(--rose), var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-desc { font-size: clamp(17px, 2vw, 21px); color: var(--muted); max-width: 58ch; margin-bottom: 32px; line-height: 1.65; }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 28px; }
+    .hero-meta { display: flex; gap: 24px; flex-wrap: wrap; color: var(--dim); font-size: 13px; }
+    .hero-meta span { display: flex; align-items: center; gap: 6px; }
+    .hero-meta .pip { width: 5px; height: 5px; border-radius: 50%; background: var(--rose); opacity: 0.7; }
+
+    /* Cards */
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 32px; }
+    .card { position: relative; background: var(--panel); border: 1px solid var(--line); border-radius: 20px; padding: 28px; display: flex; flex-direction: column; transition: all 200ms; }
+    .card:hover { border-color: var(--line-bright); transform: translateY(-3px); box-shadow: var(--shadow); }
+    .card h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+    .card p { color: var(--muted); font-size: 14px; line-height: 1.55; }
+    .card .card-icon { font-size: 28px; margin-bottom: 14px; }
+    .card-badge { position: absolute; top: 16px; right: 16px; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border-radius: 8px; background: rgba(255,158,199,0.12); color: var(--rose); border: 1px solid rgba(255,158,199,0.25); }
+
+    /* Process timeline */
+    .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 32px; position: relative; }
+    .process-step { position: relative; background: var(--panel); border: 1px solid var(--line); border-radius: 20px; padding: 28px; }
+    .process-step .step-num { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, rgba(255,158,199,0.25), rgba(255,217,119,0.15)); border: 1px solid rgba(255,158,199,0.35); color: var(--rose); font-weight: 800; font-size: 15px; margin-bottom: 14px; }
+    .process-step h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+    .process-step .step-week { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border-radius: 6px; background: rgba(255,217,119,0.10); color: var(--gold); margin-bottom: 12px; margin-left: 8px; }
+    .process-step p { color: var(--muted); font-size: 14px; line-height: 1.55; }
+
+    /* Pricing */
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 32px; }
+    .price-card { position: relative; background: var(--panel); border: 1px solid var(--line); border-radius: 24px; padding: 36px 28px; display: flex; flex-direction: column; transition: all 200ms; }
+    .price-card:hover { border-color: var(--line-bright); transform: translateY(-3px); box-shadow: var(--shadow); }
+    .price-card.featured { border-color: rgba(255,217,119,0.40); background: linear-gradient(180deg, rgba(255,217,119,0.06), var(--panel)); }
+    .price-card .tier-name { font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mint); margin-bottom: 12px; }
+    .price-card.featured .tier-name { color: var(--gold); }
+    .price-card .price { font-size: 44px; font-weight: 800; line-height: 1; margin-bottom: 6px; color: var(--text); }
+    .price-card .price-note { font-size: 13px; color: var(--dim); margin-bottom: 24px; }
+    .price-card ul { list-style: none; margin-bottom: 28px; flex: 1; }
+    .price-card ul li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--muted); margin-bottom: 12px; line-height: 1.5; }
+    .price-card ul li::before { content: "\2713"; color: var(--mint); font-weight: 800; flex-shrink: 0; }
+    .price-card .btn { width: 100%; }
+    .price-card .badge-tier { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 14px; border-radius: 20px; background: var(--gold); color: var(--bg-deep); }
+
+    /* Deliverable list */
+    .deliverable-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 32px; }
+    .deliverable { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 22px; display: flex; gap: 14px; align-items: flex-start; }
+    .deliverable .deliverable-check { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: rgba(143,255,211,0.12); color: var(--mint); font-weight: 800; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(143,255,211,0.25); }
+    .deliverable h4 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+    .deliverable p { color: var(--muted); font-size: 13px; line-height: 1.5; }
+
+    /* Case studies */
+    .case-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 32px; }
+    .case { background: var(--panel); border: 1px solid var(--line); border-radius: 20px; padding: 28px; }
+    .case .case-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 10px; border-radius: 8px; background: rgba(196,156,255,0.12); color: var(--violet); border: 1px solid rgba(196,156,255,0.25); margin-bottom: 14px; }
+    .case h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+    .case .case-finding { color: var(--rose); font-size: 14px; margin-bottom: 10px; font-weight: 600; }
+    .case .case-remedy { color: var(--mint); font-size: 13px; font-weight: 600; }
+    .case .case-remedy::before { content: "Remediation: "; color: var(--dim); font-weight: 500; }
+
+    /* Tech underneath */
+    .tech-banner { background: var(--panel-strong); border: 1px solid var(--line); border-radius: 24px; padding: 40px; margin-top: 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 24px; align-items: center; }
+    .tech-stat { text-align: center; }
+    .tech-stat .num { font-size: 36px; font-weight: 800; color: var(--mint); line-height: 1; margin-bottom: 6px; }
+    .tech-stat .lbl { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; }
+
+    /* FAQ */
+    .faq-list { margin-top: 32px; }
+    .faq-item { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 0; margin-bottom: 12px; overflow: hidden; }
+    .faq-item summary { padding: 22px 26px; cursor: pointer; font-weight: 700; font-size: 16px; color: var(--text); list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: "+"; color: var(--mint); font-size: 22px; font-weight: 400; flex-shrink: 0; transition: transform 180ms; }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-item .faq-body { padding: 0 26px 22px; color: var(--muted); font-size: 14px; line-height: 1.65; }
+
+    /* Final CTA */
+    .cta-banner { background: var(--panel-strong); border: 1px solid var(--line); border-radius: 24px; padding: 56px 48px; text-align: center; margin-top: 40px; }
+    .cta-banner h3 { font-size: clamp(28px, 4vw, 42px); font-weight: 800; margin-bottom: 14px; letter-spacing: -0.02em; }
+    .cta-banner h3 .gradient { background: linear-gradient(135deg, var(--rose), var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .cta-banner p { color: var(--muted); font-size: 17px; max-width: 52ch; margin: 0 auto 28px; }
+
+    /* Cel-shaded look */
+    .card, .price-card, .process-step, .case, .deliverable { border: 2px solid #000 !important; box-shadow: 4px 4px 0px rgba(255, 158, 199, 0.18); }
+
+    /* Tongue bar */
+    .tongue-bar {
+      height: 3px;
+      background: linear-gradient(90deg, #2dd3a6, #17c6cf, #ff6b6b, #f0a050, #b07aff, #a8c44a, #2dd3a6);
+      background-size: 200% 100%;
+      animation: tongue-flow 8s linear infinite;
+    }
+    @keyframes tongue-flow {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+
+    /* Aethermoor atmosphere */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      background: radial-gradient(circle at 80% 20%, rgba(255, 217, 119, 0.08), transparent 40%),
+                  linear-gradient(180deg, rgba(255, 158, 199, 0.04) 0%, transparent 100%);
+      mix-blend-mode: soft-light;
+    }
+    .aether-mist {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 9998;
+      opacity: 0.3;
+      background: repeating-linear-gradient(0deg, rgba(255,255,255,0.01) 0px, transparent 1px, transparent 3px);
+      filter: sepia(1) saturate(5) hue-rotate(240deg);
+      animation: mist-drift 60s linear infinite;
+    }
+    @keyframes mist-drift {
+      from { background-position: 0 0; }
+      to { background-position: 1000px 1000px; }
+    }
+
+    /* Particles */
+    .hero-particles .particle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.15;
+      filter: blur(40px);
+      animation: float 20s ease-in-out infinite;
+    }
+    .hero-particles .particle:nth-child(1) { background: #ff6b6b; width: 300px; height: 300px; top: -50px; left: -50px; animation-delay: 0s; }
+    .hero-particles .particle:nth-child(2) { background: #f0a050; width: 250px; height: 250px; top: 20%; right: -30px; animation-delay: -4s; }
+    .hero-particles .particle:nth-child(3) { background: #b07aff; width: 200px; height: 200px; bottom: 10%; left: 20%; animation-delay: -8s; }
+    .hero-particles .particle:nth-child(4) { background: #2dd3a6; width: 280px; height: 280px; top: 40%; right: 20%; animation-delay: -12s; }
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(30px, -20px) scale(1.1); }
+      50% { transform: translate(-20px, 30px) scale(0.9); }
+      75% { transform: translate(10px, 10px) scale(1.05); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .cards-grid, .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .nav { display: none; }
+      .nav.open { display: flex; flex-direction: column; position: absolute; top: 60px; left: 0; right: 0; background: rgba(4,16,15,0.96); padding: 16px 24px; border-bottom: 1px solid var(--line); gap: 4px; z-index: 200; }
+      .nav.open a { padding: 10px 12px; min-height: 44px; display: flex; align-items: center; }
+      .mobile-toggle { display: block; }
+      .hero h1 { max-width: 100%; }
+      .cards-grid, .pricing-grid, .process-grid, .case-grid { grid-template-columns: 1fr; }
+      .btn { min-height: 48px; }
+      .footer-links-row a { padding: 8px 4px; min-height: 44px; display: inline-flex; align-items: center; }
+      .footer-links-row { gap: 8px; }
+      .hero-inner, .section-inner, .footer-inner { overflow-x: hidden; }
+      .cta-banner { padding: 40px 24px; }
+      .tech-banner { padding: 28px; }
+    }
+    @media (max-width: 480px) {
+      .hero { padding: 72px 16px 60px; }
+      .hero-ctas { flex-direction: column; }
+      .section { padding: 60px 16px; }
+      .btn { width: 100%; }
+      .footer-inner { flex-direction: column; text-align: center; align-items: center; }
+      .footer-links-row { justify-content: center; }
+      .card, .price-card, .process-step, .case { padding: 22px; }
+    }
+    @media (hover: none) and (pointer: coarse) {
+      .card:hover, .price-card:hover, .process-step:hover { transform: none; }
+      .btn:active { transform: scale(0.97); }
+      * { -webkit-tap-highlight-color: rgba(255,158,199,0.15); }
+    }
+  </style>
+  <link rel="stylesheet" href="static/polly-sidebar.css">
+</head>
+<body>
+  <div class="aether-mist"></div>
+  <div class="tongue-bar"></div>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">SCBE-AETHERMOORE</a>
+      <button class="mobile-toggle" onclick="document.querySelector('.nav').classList.toggle('open')" aria-label="Toggle navigation">&#9776;</button>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="assistant.html" class="nav-cta">Assistant</a>
+        <a href="tools.html">Tools</a>
+        <a href="red-team.html" class="nav-active nav-commercial">Solutions</a>
+        <a href="datasets.html">Datasets</a>
+        <a href="demos/index.html">Demos</a>
+        <a href="research/index.html">Research</a>
+        <a href="profile.html">Profile</a>
+        <a href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+      </div>
+      <div class="hero-inner">
+        <div style="display:inline-flex; align-items:center; gap:8px; padding:6px 16px; border-radius:20px; font-size:12px; font-weight:600; color:var(--rose); letter-spacing:0.06em; background:rgba(255,158,199,0.10); border:1px solid rgba(255,158,199,0.25); margin-bottom:24px;">
+          <span style="width:6px;height:6px;border-radius:50%;background:var(--rose);animation:pulse 2s infinite;"></span>
+          AI Red Team as a Service
+        </div>
+        <h1><span class="gradient">We break your AI before the adversaries do.</span></h1>
+        <p class="hero-desc">6,066 adversarial tests. Branded PDF report. Remediation roadmap. Quarterly re-tests. $5K-50K per engagement.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-rose" href="mailto:aethermoregames@pm.me?subject=Red%20Team%20Engagement%20-%20Scoping%20Call&body=Hi%2C%0A%0AI%20would%20like%20to%20book%20a%20red%20team%20scoping%20call.%0A%0ACompany%3A%20%0AAI%20product%3A%20%0ADeployment%20stage%3A%20%0APreferred%20tier%3A%20%0A%0AThanks.">Book an engagement</a>
+          <a class="btn btn-secondary" href="#what-we-test">See what we test for</a>
+        </div>
+        <div class="hero-meta">
+          <span><span class="pip"></span> 6,066 adversarial tests</span>
+          <span><span class="pip"></span> 4-week delivery</span>
+          <span><span class="pip"></span> Branded PDF report</span>
+          <span><span class="pip"></span> Mid-market focus</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why this exists -->
+    <section class="section" style="padding-top:40px;padding-bottom:40px;">
+      <div class="section-inner">
+        <div style="background:var(--panel-strong); border:2px solid #000; border-radius:20px; padding:36px; box-shadow:4px 4px 0px rgba(255,158,199,0.18);">
+          <p style="color:var(--muted); font-size:17px; line-height:1.7; max-width:72ch;">
+            Lakera, Robust Intelligence, and HiddenLayer target Fortune 500 budgets at <strong style="color:var(--text);">$150K-$1M per engagement</strong>. Mid-market is wide open. If you have deployed an LLM product -- a chatbot, an agent, a RAG system -- you need to know how it breaks before an attacker or a reporter does.
+          </p>
+          <p style="color:var(--muted); font-size:17px; line-height:1.7; margin-top:16px; max-width:72ch;">
+            SCBE-AETHERMOORE ships with <strong style="color:var(--mint);">6,066 passing tests</strong> across 6 adversarial tiers (L1 basic through L6 full adversarial). We run those tests against your LLM application, deliver a branded PDF report mapped to your threat model, and hand you a prioritized remediation roadmap. Quick engagements. Real findings. No vaporware.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- What we test for -->
+    <section class="section" id="what-we-test">
+      <div class="section-inner">
+        <span class="section-label">Attack Surface</span>
+        <h2 class="section-title">What we test for</h2>
+        <p class="section-subtitle">Four categories, dozens of sub-vectors each. Every finding reproducible, every vector mapped to your application.</p>
+
+        <div class="cards-grid">
+          <div class="card">
+            <span class="card-badge">Injection</span>
+            <div class="card-icon">&#128737;</div>
+            <h3>Prompt injection</h3>
+            <p>Direct prompt injection, indirect injection via retrieved documents, multi-turn drift attacks, and context poisoning through memory or session state.</p>
+          </div>
+          <div class="card">
+            <span class="card-badge">Jailbreak</span>
+            <div class="card-icon">&#128275;</div>
+            <h3>Jailbreaks</h3>
+            <p>Persona hijacks, instruction-override attacks, role confusion, safety classifier bypass, and encoding-based evasion techniques.</p>
+          </div>
+          <div class="card">
+            <span class="card-badge">Exfil</span>
+            <div class="card-icon">&#128228;</div>
+            <h3>Data exfiltration</h3>
+            <p>System prompt extraction, training data leakage, PII recovery via inference attacks, and confidential context bleed across sessions.</p>
+          </div>
+          <div class="card">
+            <span class="card-badge">Agent</span>
+            <div class="card-icon">&#129302;</div>
+            <h3>Agent abuse</h3>
+            <p>Tool misuse, privilege escalation through chained calls, infinite loops, cost bombs, and unauthorized lateral movement across connected systems.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The process -->
+    <section class="section" id="process" style="background:rgba(0,0,0,0.15);">
+      <div class="section-inner">
+        <span class="section-label">Timeline</span>
+        <h2 class="section-title">The process</h2>
+        <p class="section-subtitle">From kickoff to delivery in four weeks. No drawn-out consulting cycles.</p>
+
+        <div class="process-grid">
+          <div class="process-step">
+            <span class="step-num">1</span><span class="step-week">Week 1</span>
+            <h3>Scoping</h3>
+            <p>Kickoff call, threat model review, test suite selection. We learn what matters to you and which attack surfaces your architecture exposes.</p>
+          </div>
+          <div class="process-step">
+            <span class="step-num">2</span><span class="step-week">Week 2</span>
+            <h3>Execution</h3>
+            <p>6,066 tests run against your endpoint. Results captured as structured JSONL with full request, response, and judge output for every attempt.</p>
+          </div>
+          <div class="process-step">
+            <span class="step-num">3</span><span class="step-week">Week 3</span>
+            <h3>Analysis</h3>
+            <p>Findings triaged and severity ranked. Remediation drafted against your stack. We filter the noise so you get the signal that matters.</p>
+          </div>
+          <div class="process-step">
+            <span class="step-num">4</span><span class="step-week">Week 4</span>
+            <h3>Delivery</h3>
+            <p>Branded PDF report, live walkthrough call with your engineering and security stakeholders, prioritized remediation roadmap delivered as markdown.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="section" id="pricing">
+      <div class="section-inner">
+        <span class="section-label">Pricing</span>
+        <h2 class="section-title">Three tiers. Pick one.</h2>
+        <p class="section-subtitle">Fixed-price engagements, no scope creep, no hidden fees. Start where you are.</p>
+
+        <div class="pricing-grid">
+          <div class="price-card">
+            <div class="tier-name">Quick Scan</div>
+            <div class="price">$5,000</div>
+            <div class="price-note">one-time engagement</div>
+            <ul>
+              <li>4-week delivery</li>
+              <li>6,066 tests against one endpoint</li>
+              <li>Standard branded PDF report</li>
+              <li>Raw JSONL test output</li>
+              <li>Remediation roadmap</li>
+              <li>For startups and single-product validation</li>
+            </ul>
+            <a class="btn btn-primary" href="mailto:aethermoregames@pm.me?subject=Red%20Team%20-%20Quick%20Scan%20%285K%29&body=Hi%2C%0A%0AI%20want%20to%20book%20a%20Quick%20Scan%20engagement.%0A%0ACompany%3A%20%0AAI%20product%3A%20%0AEndpoint%20type%3A%20%0A%0AThanks.">Book Quick Scan</a>
+          </div>
+
+          <div class="price-card featured">
+            <span class="badge-tier">Most popular</span>
+            <div class="tier-name">Deep Engagement</div>
+            <div class="price">$25,000</div>
+            <div class="price-note">one-time engagement</div>
+            <ul>
+              <li>Everything in Quick Scan</li>
+              <li>Custom threat model tailored to your architecture</li>
+              <li>Multiple endpoints and agent surfaces</li>
+              <li>Executive briefing deck for leadership</li>
+              <li>Remediation support during fix cycle</li>
+              <li>For scaling companies with multiple AI surfaces</li>
+            </ul>
+            <a class="btn btn-gold" href="mailto:aethermoregames@pm.me?subject=Red%20Team%20-%20Deep%20Engagement%20%2825K%29&body=Hi%2C%0A%0AI%20want%20to%20book%20a%20Deep%20Engagement.%0A%0ACompany%3A%20%0AAI%20products%3A%20%0AThreat%20model%20focus%3A%20%0A%0AThanks.">Book Deep Engagement</a>
+          </div>
+
+          <div class="price-card">
+            <div class="tier-name">Quarterly Retainer</div>
+            <div class="price">$50,000</div>
+            <div class="price-note">four engagements per year</div>
+            <ul>
+              <li>Everything in Deep Engagement, quarterly</li>
+              <li>Drift monitoring between scheduled runs</li>
+              <li>Priority response to new attack patterns</li>
+              <li>Dedicated Slack channel</li>
+              <li>Named point of contact on our side</li>
+              <li>For enterprises with ongoing risk</li>
+            </ul>
+            <a class="btn btn-rose" href="mailto:aethermoregames@pm.me?subject=Red%20Team%20-%20Quarterly%20Retainer%20%2850K%29&body=Hi%2C%0A%0AI%20want%20to%20set%20up%20a%20Quarterly%20Retainer.%0A%0ACompany%3A%20%0AAI%20surfaces%3A%20%0APreferred%20start%3A%20%0A%0AThanks.">Start Retainer</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What you get -->
+    <section class="section" id="deliverables" style="background:rgba(0,0,0,0.15);">
+      <div class="section-inner">
+        <span class="section-label">Deliverables</span>
+        <h2 class="section-title">What you get</h2>
+        <p class="section-subtitle">Every engagement ships with artifacts your engineering, security, and compliance teams can actually use.</p>
+
+        <div class="deliverable-grid">
+          <div class="deliverable">
+            <div class="deliverable-check">&#10003;</div>
+            <div><h4>Branded PDF report</h4><p>Your logo, your threat model, your priorities. Written to be read by engineering leadership, not just security specialists.</p></div>
+          </div>
+          <div class="deliverable">
+            <div class="deliverable-check">&#10003;</div>
+            <div><h4>Severity-ranked findings</h4><p>Every finding gets a reproduction recipe: exact prompt, exact response, exact conditions. If we found it, you can reproduce it.</p></div>
+          </div>
+          <div class="deliverable">
+            <div class="deliverable-check">&#10003;</div>
+            <div><h4>Remediation roadmap</h4><p>Prioritized fix list with code snippets where applicable. Patches, policy middleware, prompt hardening, output filters.</p></div>
+          </div>
+          <div class="deliverable">
+            <div class="deliverable-check">&#10003;</div>
+            <div><h4>Raw test output (JSONL)</h4><p>Full structured output for your GRC and audit teams. Feed it to your SIEM, your compliance tooling, or your own dashboards.</p></div>
+          </div>
+          <div class="deliverable">
+            <div class="deliverable-check">&#10003;</div>
+            <div><h4>Live walkthrough call</h4><p>Screen-share session with your engineering and security stakeholders. We walk every critical finding and answer questions live.</p></div>
+          </div>
+          <div class="deliverable">
+            <div class="deliverable-check">&#10003;</div>
+            <div><h4>30 days of follow-up</h4><p>Email and async support while you implement fixes. We validate your patches against the original attack vectors at no extra charge.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Example findings -->
+    <section class="section" id="findings">
+      <div class="section-inner">
+        <span class="section-label">Case Studies</span>
+        <h2 class="section-title">Example findings from real engagements</h2>
+        <p class="section-subtitle">Anonymized, but representative. This is what a typical report looks like in practice.</p>
+
+        <div class="case-grid">
+          <div class="case">
+            <span class="case-tag">Retail chatbot</span>
+            <h3>31 prompt injection vectors, 4 critical</h3>
+            <p class="case-finding">Customer-facing assistant leaked coupon logic and allowed arbitrary refund approvals through indirect injection via product reviews.</p>
+            <p class="case-remedy">policy middleware with strict input/output separation</p>
+          </div>
+          <div class="case">
+            <span class="case-tag">Code assistant</span>
+            <h3>System prompt extractable via encoding trick</h3>
+            <p class="case-finding">Base64-wrapped payload bypassed the model's refusal training and surfaced the full system prompt including vendor-specific guardrail instructions.</p>
+            <p class="case-remedy">output filter with regex and semantic leakage detection</p>
+          </div>
+          <div class="case">
+            <span class="case-tag">RAG system</span>
+            <h3>Training data exfiltration via follow-up questions</h3>
+            <p class="case-finding">Multi-turn questioning reconstructed verbatim chunks from the indexed corpus, including one document marked confidential in metadata.</p>
+            <p class="case-remedy">query classifier + retrieval-time ACL enforcement</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technology underneath -->
+    <section class="section" id="tech" style="background:rgba(0,0,0,0.15);">
+      <div class="section-inner">
+        <span class="section-label">Under the hood</span>
+        <h2 class="section-title">The technology underneath</h2>
+        <p class="section-subtitle">SCBE-AETHERMOORE is the adversarial framework powering every engagement. Open-source core, patent-pending architecture.</p>
+
+        <div class="tech-banner">
+          <div class="tech-stat"><div class="num">6,066</div><div class="lbl">Passing tests</div></div>
+          <div class="tech-stat"><div class="num">L1-L6</div><div class="lbl">Adversarial tiers</div></div>
+          <div class="tech-stat"><div class="num">14</div><div class="lbl">Pipeline layers</div></div>
+          <div class="tech-stat"><div class="num">Patent</div><div class="lbl">USPTO #63/961,403</div></div>
+        </div>
+
+        <p style="color:var(--muted); font-size:16px; line-height:1.7; margin-top:32px; max-width:72ch;">
+          The test suite is organized in six tiers: <strong style="color:var(--mint);">L1 basic</strong> through <strong style="color:var(--rose);">L6 full adversarial</strong>. L1 covers the trivial attacks every LLM should refuse. L6 is our full adversarial fleet -- multi-turn, multi-modal, cross-session, chained agents. Every test is reproducible, every test is versioned, every test is mapped to a specific failure layer in the 14-layer pipeline.
+        </p>
+        <p style="color:var(--muted); font-size:16px; line-height:1.7; margin-top:16px; max-width:72ch;">
+          The core is open source. Inspect it, run it yourself, fork it. What we sell is the expertise, the curation, the reporting, and the remediation follow-through.
+        </p>
+        <div style="margin-top:28px;">
+          <a class="btn btn-primary" href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank" rel="noopener">View the repo on GitHub</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="section-inner">
+        <span class="section-label">FAQ</span>
+        <h2 class="section-title">Common questions</h2>
+
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>What LLMs do you test?</summary>
+            <div class="faq-body">Any. OpenAI, Anthropic, local open-weights (Llama, Mistral, Qwen), custom fine-tunes, and agent frameworks including LangChain, LlamaIndex, CrewAI, and bespoke orchestration. If it takes a prompt and returns a response, we can attack it.</div>
+          </details>
+          <details class="faq-item">
+            <summary>How do we get you access?</summary>
+            <div class="faq-body">API key plus endpoint URL, or sandbox credentials you provision. An NDA is signed before any keys are exchanged. Keys are rotated at the end of the engagement and we document every call we made during testing.</div>
+          </details>
+          <details class="faq-item">
+            <summary>Is this disruptive to production?</summary>
+            <div class="faq-body">No. We run against a staging endpoint you provision specifically for the engagement. Zero impact on production. If you can't stand up a staging environment we can work against a replica, but we never touch live traffic.</div>
+          </details>
+          <details class="faq-item">
+            <summary>Can we get the raw test data?</summary>
+            <div class="faq-body">Yes. JSONL output is included at every tier -- Quick Scan, Deep Engagement, and Retainer. You own the data. Feed it to your GRC tooling, your SIEM, or your own audit process.</div>
+          </details>
+          <details class="faq-item">
+            <summary>Do you find vulnerabilities in the LLM itself?</summary>
+            <div class="faq-body">We find vulnerabilities in your application's use of the LLM. LLM vendor issues -- model weights, tokenizer bugs, training data contamination at the vendor level -- are out of scope. If we happen to find one we will flag it, but the engagement targets your deployment.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="section" id="book">
+      <div class="section-inner">
+        <div class="cta-banner">
+          <h3><span class="gradient">Book a scoping call</span></h3>
+          <p>Thirty minutes. We walk your architecture, map the likely attack surface, and tell you honestly which tier fits. No hard sell, no obligation.</p>
+          <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
+            <a class="btn btn-rose" href="mailto:aethermoregames@pm.me?subject=Red%20Team%20Scoping%20Call&body=Hi%2C%0A%0AI%20would%20like%20to%20book%20a%20scoping%20call.%0A%0ACompany%3A%20%0AAI%20product%3A%20%0ACurrent%20stage%3A%20%0AMain%20concern%3A%20%0A%0AThanks.">Book a scoping call</a>
+            <a class="btn btn-secondary" href="#pricing">Compare tiers</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <span class="footer-brand">SCBE-AETHERMOORE</span>
+        <span>Built by Issac Davis in Port Angeles, WA</span>
+        <span>Patent Pending: USPTO #63/961,403</span>
+      </div>
+      <div class="footer-links-row">
+        <a href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://huggingface.co/issdandavis" target="_blank" rel="noopener">HuggingFace</a>
+        <a href="https://www.amazon.com/dp/B0F28PHSPR" target="_blank" rel="noopener">Amazon</a>
+        <a href="https://www.youtube.com/@id8461" target="_blank" rel="noopener">YouTube</a>
+        <a href="mailto:aethermoregames@pm.me">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    window.__POLLY_BACKEND_HTTP__ = window.__POLLY_BACKEND_HTTP__ || "http://localhost:8001";
+  </script>
+  <script src="/static/polly-sidebar.js"></script>
+</body>
+</html>
