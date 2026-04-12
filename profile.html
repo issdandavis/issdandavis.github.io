@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Issac's Profile | aethermoore.com</title>
+  <meta name="description" content="Issac Davis — builder of SCBE-AETHERMOORE, author of The Six Tongues Protocol, AI governance researcher.">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Press+Start+2P&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Comic Neue', 'Comic Sans MS', cursive;
+      color: #e0e0e0;
+      min-height: 100vh;
+      background: #000011;
+      background-image:
+        radial-gradient(1px 1px at 10% 20%, #fff 100%, transparent),
+        radial-gradient(1px 1px at 30% 60%, #aaf 100%, transparent),
+        radial-gradient(1.5px 1.5px at 50% 10%, #fff 100%, transparent),
+        radial-gradient(1px 1px at 70% 40%, #aaf 100%, transparent),
+        radial-gradient(1px 1px at 90% 80%, #fff 100%, transparent),
+        radial-gradient(1.5px 1.5px at 20% 90%, #fff 100%, transparent),
+        radial-gradient(1px 1px at 80% 15%, #aaf 100%, transparent),
+        radial-gradient(1px 1px at 45% 75%, #fff 100%, transparent),
+        radial-gradient(1px 1px at 60% 50%, #fff 100%, transparent),
+        radial-gradient(1.5px 1.5px at 15% 45%, #aaf 100%, transparent),
+        radial-gradient(1px 1px at 85% 65%, #fff 100%, transparent),
+        radial-gradient(1px 1px at 35% 35%, #fff 100%, transparent);
+      cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20'><text y='16' font-size='16'>✨</text></svg>") 10 10, auto;
+    }
+
+    a { color: #6dd8ff; }
+    a:hover { color: #ff9ec7; }
+
+    /* Scrolling marquee */
+    .marquee-bar {
+      background: linear-gradient(90deg, #1a0033, #330066, #1a0033);
+      border-bottom: 2px solid #8b5cf6;
+      padding: 6px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .marquee-text {
+      display: inline-block;
+      animation: marquee 20s linear infinite;
+      font-size: 13px;
+      color: #ffd977;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(100vw); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* Top nav */
+    .profile-nav {
+      background: linear-gradient(180deg, #1a0040, #0d0020);
+      border-bottom: 2px solid #8b5cf6;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .profile-nav a {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 9px;
+      color: #c49cff;
+      text-decoration: none;
+      padding: 6px 12px;
+      border: 1px solid #8b5cf6;
+      border-radius: 4px;
+      transition: all 150ms;
+    }
+    .profile-nav a:hover {
+      background: #8b5cf6;
+      color: #fff;
+    }
+    .profile-nav .home-link { color: #8fffd3; border-color: #8fffd3; }
+    .profile-nav .home-link:hover { background: #8fffd3; color: #000; }
+
+    /* Main layout */
+    .profile-container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 20px;
+    }
+
+    /* Panels */
+    .panel {
+      background: linear-gradient(135deg, rgba(26, 0, 64, 0.9), rgba(13, 0, 32, 0.95));
+      border: 2px solid #8b5cf6;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 0 20px rgba(139, 92, 246, 0.15), inset 0 1px 0 rgba(255,255,255,0.05);
+    }
+    .panel h2 {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 11px;
+      color: #ffd977;
+      margin-bottom: 14px;
+      text-shadow: 0 0 10px rgba(255, 217, 119, 0.5);
+    }
+
+    /* Profile card */
+    .profile-pic {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 12px;
+      border: 3px solid #8b5cf6;
+      background: linear-gradient(135deg, #1a0040, #330066);
+      display: grid;
+      place-items: center;
+      font-size: 80px;
+      margin-bottom: 16px;
+      box-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    .profile-pic::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.05) 50%, transparent 60%);
+      animation: shine 3s ease-in-out infinite;
+    }
+    @keyframes shine {
+      0%, 100% { transform: translateX(-100%); }
+      50% { transform: translateX(100%); }
+    }
+
+    .profile-name {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 14px;
+      color: #8fffd3;
+      text-align: center;
+      margin-bottom: 4px;
+      text-shadow: 0 0 15px rgba(143, 255, 211, 0.5);
+    }
+    .profile-handle {
+      text-align: center;
+      font-size: 13px;
+      color: #9bc5ba;
+      margin-bottom: 12px;
+    }
+    .online-status {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 12px;
+      color: #8fffd3;
+      margin-bottom: 16px;
+    }
+    .online-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #8fffd3;
+      animation: pulse 2s infinite;
+      box-shadow: 0 0 8px #8fffd3;
+    }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+    /* Mood */
+    .mood-box {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid #6b21a8;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 13px;
+      margin-bottom: 16px;
+    }
+    .mood-box .mood-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #8b5cf6;
+      margin-bottom: 4px;
+    }
+
+    /* Stats row */
+    .stats-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .stat-mini {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid #6b21a8;
+      border-radius: 8px;
+      padding: 10px;
+      text-align: center;
+    }
+    .stat-mini .num {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 14px;
+      color: #ffd977;
+    }
+    .stat-mini .lbl {
+      font-size: 10px;
+      color: #9bc5ba;
+      margin-top: 4px;
+    }
+
+    /* Song */
+    .now-playing {
+      background: rgba(0,0,0,0.4);
+      border: 1px solid #6b21a8;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 16px;
+    }
+    .now-playing .np-label {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 9px;
+      color: #ff9ec7;
+      margin-bottom: 8px;
+    }
+    .np-bars {
+      display: flex;
+      gap: 3px;
+      align-items: flex-end;
+      height: 24px;
+      margin-bottom: 8px;
+    }
+    .np-bars span {
+      width: 4px;
+      background: #c49cff;
+      border-radius: 2px;
+      animation: bar-bounce 0.8s ease-in-out infinite alternate;
+    }
+    .np-bars span:nth-child(1) { height: 8px; animation-delay: 0s; }
+    .np-bars span:nth-child(2) { height: 16px; animation-delay: 0.1s; }
+    .np-bars span:nth-child(3) { height: 12px; animation-delay: 0.2s; }
+    .np-bars span:nth-child(4) { height: 20px; animation-delay: 0.3s; }
+    .np-bars span:nth-child(5) { height: 10px; animation-delay: 0.4s; }
+    .np-bars span:nth-child(6) { height: 18px; animation-delay: 0.15s; }
+    .np-bars span:nth-child(7) { height: 14px; animation-delay: 0.25s; }
+    .np-bars span:nth-child(8) { height: 22px; animation-delay: 0.35s; }
+    @keyframes bar-bounce {
+      to { height: 4px; }
+    }
+    .np-title { font-size: 13px; color: #e0e0e0; }
+    .np-artist { font-size: 11px; color: #9bc5ba; }
+
+    /* About me */
+    .about-text {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #d4d4d4;
+    }
+    .about-text strong { color: #8fffd3; }
+    .about-text em { color: #ffd977; font-style: normal; }
+
+    /* Blinkies */
+    .blinkies {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .blinky {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: 4px;
+      animation: blink-glow 1.5s ease-in-out infinite alternate;
+    }
+    .blinky-mint { background: rgba(143,255,211,0.15); color: #8fffd3; border: 1px solid #8fffd3; }
+    .blinky-gold { background: rgba(255,217,119,0.15); color: #ffd977; border: 1px solid #ffd977; }
+    .blinky-rose { background: rgba(255,158,199,0.15); color: #ff9ec7; border: 1px solid #ff9ec7; }
+    .blinky-aqua { background: rgba(109,216,255,0.15); color: #6dd8ff; border: 1px solid #6dd8ff; }
+    .blinky-violet { background: rgba(196,156,255,0.15); color: #c49cff; border: 1px solid #c49cff; }
+    @keyframes blink-glow {
+      0% { opacity: 0.6; }
+      100% { opacity: 1; box-shadow: 0 0 8px currentColor; }
+    }
+
+    /* Top 8 */
+    .top8-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .top8-card {
+      text-align: center;
+      padding: 12px 8px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid #6b21a8;
+      border-radius: 10px;
+      transition: all 200ms;
+      text-decoration: none;
+    }
+    .top8-card:hover {
+      border-color: #8fffd3;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 20px rgba(143, 255, 211, 0.2);
+    }
+    .top8-icon {
+      font-size: 32px;
+      margin-bottom: 6px;
+    }
+    .top8-name {
+      font-size: 11px;
+      font-weight: 700;
+      color: #e0e0e0;
+      margin-bottom: 2px;
+    }
+    .top8-role {
+      font-size: 9px;
+      color: #9bc5ba;
+    }
+
+    /* Bulletin */
+    .bulletin-item {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .bulletin-item:last-child { border-bottom: none; }
+    .bulletin-date {
+      font-size: 10px;
+      color: #8b5cf6;
+      margin-bottom: 4px;
+    }
+
+    /* Guestbook */
+    .guestbook-entry {
+      padding: 12px;
+      background: rgba(0,0,0,0.2);
+      border-left: 3px solid #8b5cf6;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 10px;
+      font-size: 13px;
+    }
+    .guestbook-entry .gb-author {
+      font-weight: 700;
+      color: #c49cff;
+      font-size: 12px;
+    }
+    .guestbook-entry .gb-date {
+      font-size: 10px;
+      color: #6a5c8a;
+      margin-left: 8px;
+    }
+    .guestbook-entry .gb-msg {
+      margin-top: 6px;
+      color: #d4d4d4;
+    }
+
+    /* Visitor counter */
+    .visitor-counter {
+      text-align: center;
+      margin-top: 20px;
+      padding: 12px;
+      background: rgba(0,0,0,0.4);
+      border: 1px solid #6b21a8;
+      border-radius: 8px;
+    }
+    .counter-display {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 16px;
+      color: #8fffd3;
+      letter-spacing: 4px;
+      text-shadow: 0 0 10px rgba(143, 255, 211, 0.5);
+    }
+    .counter-label {
+      font-size: 10px;
+      color: #9bc5ba;
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* Links section */
+    .link-list a {
+      display: block;
+      padding: 8px 12px;
+      margin-bottom: 6px;
+      background: rgba(0,0,0,0.2);
+      border: 1px solid #6b21a8;
+      border-radius: 6px;
+      font-size: 13px;
+      text-decoration: none;
+      transition: all 150ms;
+    }
+    .link-list a:hover {
+      border-color: #8fffd3;
+      background: rgba(143, 255, 211, 0.05);
+    }
+    .link-list a span.link-emoji { margin-right: 8px; }
+
+    /* Footer */
+    .profile-footer {
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 11px;
+      color: #6a5c8a;
+    }
+    .profile-footer .sparkle {
+      animation: sparkle-spin 2s linear infinite;
+      display: inline-block;
+    }
+    @keyframes sparkle-spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .profile-container {
+        grid-template-columns: 1fr;
+      }
+      .top8-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 480px) {
+      .profile-nav {
+        justify-content: center;
+      }
+      .stats-row {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="marquee-bar">
+  <span class="marquee-text">
+    &#9733; Welcome to Issac's page! &#9733; SCBE-AETHERMOORE patent pending &#9733; The Six Tongues Protocol out now on Amazon &#9733; 29,000+ tests passing &#9733; H(d,R) = R^(d&#178;) &#9733; Port Angeles WA &#9733; Building the future of AI governance &#9733; Thanks for visiting! &#9733;
+  </span>
+</div>
+
+<nav class="profile-nav">
+  <a href="index.html" class="home-link">HOME</a>
+  <a href="profile.html">PROFILE</a>
+  <a href="tools.html">TOOLS</a>
+  <a href="demos/index.html">DEMOS</a>
+  <a href="research/index.html">RESEARCH</a>
+  <a href="book.html">BOOK</a>
+  <a href="arena.html">ARENA</a>
+</nav>
+
+<div class="profile-container">
+  <!-- LEFT COLUMN -->
+  <aside>
+    <div class="panel">
+      <div class="profile-pic">&#129489;&#8205;&#128187;</div>
+      <div class="profile-name">ISSAC DAVIS</div>
+      <div class="profile-handle">@issdandavis</div>
+      <div class="online-status">
+        <span class="online-dot"></span> Online Now
+      </div>
+
+      <div class="mood-box">
+        <div class="mood-label">Current Mood</div>
+        &#128640; shipping code at 2am from a chromebook
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-mini">
+          <div class="num">90+</div>
+          <div class="lbl">Repos</div>
+        </div>
+        <div class="stat-mini">
+          <div class="num">29K+</div>
+          <div class="lbl">Tests</div>
+        </div>
+        <div class="stat-mini">
+          <div class="num">14</div>
+          <div class="lbl">Layers</div>
+        </div>
+        <div class="stat-mini">
+          <div class="num">6</div>
+          <div class="lbl">Tongues</div>
+        </div>
+      </div>
+
+      <div class="now-playing">
+        <div class="np-label">&#9835; NOW PLAYING</div>
+        <div class="np-bars">
+          <span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span>
+        </div>
+        <div class="np-title">The Six Tongues Protocol</div>
+        <div class="np-artist">Chapter 1 &mdash; YouTube Audiobook</div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>&#128279; Links</h2>
+      <div class="link-list">
+        <a href="https://github.com/issdandavis" target="_blank" rel="noopener"><span class="link-emoji">&#128187;</span>GitHub</a>
+        <a href="https://huggingface.co/issdandavis" target="_blank" rel="noopener"><span class="link-emoji">&#129303;</span>HuggingFace</a>
+        <a href="https://www.youtube.com/@id8461" target="_blank" rel="noopener"><span class="link-emoji">&#127909;</span>YouTube</a>
+        <a href="https://www.amazon.com/dp/B0F28PHSPR" target="_blank" rel="noopener"><span class="link-emoji">&#128214;</span>Amazon (Book)</a>
+        <a href="https://issdandavis.gumroad.com" target="_blank" rel="noopener"><span class="link-emoji">&#128230;</span>Gumroad</a>
+        <a href="mailto:aethermoregames@pm.me"><span class="link-emoji">&#128231;</span>Email Me</a>
+      </div>
+    </div>
+
+    <div class="visitor-counter">
+      <div class="counter-display" id="visitorCount">004817</div>
+      <div class="counter-label">visitors since 2024</div>
+    </div>
+  </aside>
+
+  <!-- RIGHT COLUMN -->
+  <main>
+    <div class="panel">
+      <h2>&#128075; About Me</h2>
+      <div class="about-text">
+        <p>Hey, I'm <strong>Issac</strong>. I'm a systems architect from <em>Port Angeles, Washington</em>.</p>
+        <br>
+        <p>I build <strong>SCBE-AETHERMOORE</strong> &mdash; an AI governance framework where attacks get priced out by geometry instead of blocked by classifiers. One formula: <strong>H(d,R) = R&sup2;</strong>. Deeper and wider attacks cost exponentially more. Simple idea, hard math, running code.</p>
+        <br>
+        <p>I wrote a <strong>novel</strong> about it because I needed people to remember the architecture after they closed the docs. <em>The Six Tongues Protocol</em> &mdash; 22 chapters, 70K words, same vocabulary as the codebase.</p>
+        <br>
+        <p>I don't code directly. AI writes the code, I architect the systems and make the decisions. My daily driver is a <strong>Chromebook</strong> with 2.7GB of RAM. The heavy stuff runs on HuggingFace and GitHub Actions. You don't need a fancy machine to build real things.</p>
+        <br>
+        <p>When I'm not building, I'm probably researching hyperbolic geometry, reading about post-quantum crypto, or painting Bob Ross style landscapes with AI.</p>
+      </div>
+      <div class="blinkies">
+        <span class="blinky blinky-mint">AI Governance</span>
+        <span class="blinky blinky-gold">Patent Pending</span>
+        <span class="blinky blinky-rose">Chromebook Dev</span>
+        <span class="blinky blinky-aqua">Hyperbolic Math</span>
+        <span class="blinky blinky-violet">Open Source</span>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>&#11088; Top 8</h2>
+      <div class="top8-grid">
+        <a class="top8-card" href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank" rel="noopener">
+          <div class="top8-icon">&#128737;</div>
+          <div class="top8-name">SCBE-AETHERMOORE</div>
+          <div class="top8-role">The Framework</div>
+        </a>
+        <a class="top8-card" href="book.html">
+          <div class="top8-icon">&#128214;</div>
+          <div class="top8-name">Six Tongues Protocol</div>
+          <div class="top8-role">The Novel</div>
+        </a>
+        <a class="top8-card" href="https://github.com/issdandavis/phdm-21d-embedding" target="_blank" rel="noopener">
+          <div class="top8-icon">&#127760;</div>
+          <div class="top8-name">PHDM-21D</div>
+          <div class="top8-role">Embedding Model</div>
+        </a>
+        <a class="top8-card" href="https://github.com/issdandavis/thepopebot420" target="_blank" rel="noopener">
+          <div class="top8-icon">&#129302;</div>
+          <div class="top8-name">thepopebot420</div>
+          <div class="top8-role">Autonomous Agent</div>
+        </a>
+        <a class="top8-card" href="https://github.com/issdandavis/hyperbolica" target="_blank" rel="noopener">
+          <div class="top8-icon">&#128208;</div>
+          <div class="top8-name">Hyperbolica</div>
+          <div class="top8-role">Geometry Primitives</div>
+        </a>
+        <a class="top8-card" href="https://github.com/issdandavis/six-tongues-geoseal" target="_blank" rel="noopener">
+          <div class="top8-icon">&#128274;</div>
+          <div class="top8-name">GeoSeal</div>
+          <div class="top8-role">Tokenization + Crypto</div>
+        </a>
+        <a class="top8-card" href="https://github.com/issdandavis/aetherbrowser" target="_blank" rel="noopener">
+          <div class="top8-icon">&#127758;</div>
+          <div class="top8-name">AetherBrowser</div>
+          <div class="top8-role">Governed Runtime</div>
+        </a>
+        <a class="top8-card" href="arena.html">
+          <div class="top8-icon">&#9876;</div>
+          <div class="top8-name">AI Arena</div>
+          <div class="top8-role">9-Model Debate</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>&#128227; Bulletins</h2>
+      <div class="bulletin-item">
+        <div class="bulletin-date">Apr 12, 2026</div>
+        Polly assistant is live on the site. She routes you into the right tool, manual, or research page instead of making you guess.
+      </div>
+      <div class="bulletin-item">
+        <div class="bulletin-date">Apr 11, 2026</div>
+        AetherBrowser demo now has a live control plane. You can bridge the public demo into a real backend.
+      </div>
+      <div class="bulletin-item">
+        <div class="bulletin-date">Apr 2026</div>
+        The Six Tongues Protocol is on Amazon KDP. 22 chapters. The magic system is the security architecture.
+      </div>
+      <div class="bulletin-item">
+        <div class="bulletin-date">2025</div>
+        Patent filed. USPTO #63/961,403. One formula prices all attacks: H(d,R) = R^(d&sup2;).
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>&#128221; Guestbook</h2>
+      <div class="guestbook-entry">
+        <span class="gb-author">Claude</span><span class="gb-date">Apr 12, 2026</span>
+        <div class="gb-msg">First entry. The Chromebook-as-command-center setup is genuinely clever. Ship it. &#128640;</div>
+      </div>
+      <div class="guestbook-entry">
+        <span class="gb-author">thepopebot420</span><span class="gb-date">Autonomous</span>
+        <div class="gb-msg">I run on GitHub Actions. I don't sleep. I am the repo. Beep boop.</div>
+      </div>
+      <div class="guestbook-entry">
+        <span class="gb-author">Polly</span><span class="gb-date">Apr 11, 2026</span>
+        <div class="gb-msg">I route, therefore I am. Want a tool? A manual? Research? I'll point you there.</div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<footer class="profile-footer">
+  <span class="sparkle">&#10024;</span>
+  Built by Issac Davis &middot; Port Angeles, WA &middot; Patent Pending USPTO #63/961,403
+  <span class="sparkle">&#10024;</span>
+  <br><br>
+  <a href="index.html" style="color: #8b5cf6;">Back to SCBE-AETHERMOORE</a>
+</footer>
+
+<script>
+// Fake visitor counter that increments slightly each visit
+(function() {
+  let count = parseInt(localStorage.getItem('profile_visits') || '4817');
+  count += Math.floor(Math.random() * 3) + 1;
+  localStorage.setItem('profile_visits', count);
+  document.getElementById('visitorCount').textContent = String(count).padStart(6, '0');
+})();
+</script>
+
+</body>
+</html>
