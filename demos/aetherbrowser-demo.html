@@ -89,6 +89,21 @@ label { display: block; font-size: 12px; color: #9bc5ba; margin-bottom: 6px; tex
 /* Footer links */
 .footer-links { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 10px; padding-top: 20px; border-top: 1px solid rgba(139,255,223,0.1); font-size: 14px; }
 
+/* Advanced disclosure */
+.advanced { background: rgba(10,28,24,0.82); border: 1px solid rgba(139,255,223,0.18); border-radius: 14px; margin-bottom: 20px; }
+.advanced summary { cursor: pointer; padding: 16px 20px; font-size: 15px; color: #9bc5ba; font-weight: 600; list-style: none; user-select: none; }
+.advanced summary::-webkit-details-marker { display: none; }
+.advanced summary::before { content: "\25B8 "; color: #8fffd3; margin-right: 6px; display: inline-block; transition: transform 0.2s; }
+.advanced[open] summary::before { content: "\25BE "; }
+.advanced summary:hover { color: #8fffd3; }
+.advanced .adv-body { padding: 0 20px 20px 20px; }
+.advanced-note { background: rgba(241,196,15,0.08); border: 1px solid rgba(241,196,15,0.25); border-radius: 10px; padding: 14px; margin-bottom: 16px; font-size: 13px; color: #f1c40f; line-height: 1.55; }
+
+/* CTA button */
+.cta-row { margin: 24px 0 10px 0; text-align: center; }
+.btn-primary { display: inline-block; background: linear-gradient(135deg, #8fffd3, #6dd8ff); color: #071412; padding: 14px 28px; border-radius: 10px; border: none; cursor: pointer; font-size: 15px; font-weight: 700; text-decoration: none; transition: opacity 0.2s; }
+.btn-primary:hover { opacity: 0.9; text-decoration: none; }
+
 @media (max-width: 600px) {
   .url-bar { flex-direction: column; }
   .url-bar button { width: 100%; }
@@ -108,29 +123,7 @@ label { display: block; font-size: 12px; color: #9bc5ba; margin-bottom: 6px; tex
   </div>
 
   <h1>AetherBrowser Interactive Demo</h1>
-  <p class="subtitle">AetherBrowser concepts plus a live control-plane bridge. Static simulations still work, but you can now point this page at a real AetherBrowser backend for agentic coding and governed site actions.</p>
-
-  <div class="panel">
-    <h2>Live Control Plane</h2>
-    <label>Backend endpoints</label>
-    <div class="url-bar" style="margin-bottom:10px;">
-      <input type="text" id="backendHealth" value="http://localhost:8001/health" spellcheck="false">
-      <button onclick="checkBackend()">Check Health</button>
-    </div>
-    <div class="url-bar">
-      <input type="text" id="backendWs" value="ws://localhost:8001/ws" spellcheck="false">
-      <button onclick="connectBackend()">Connect Socket</button>
-    </div>
-    <div id="backendStatus" class="trust-result yellow" style="display:block; margin-top:14px;">
-      <div class="tier-label">BACKEND STATUS</div>
-      <div style="margin-top:6px;">Disconnected</div>
-      <div style="margin-top:6px;font-size:13px;opacity:0.85;">Use this panel to bridge the public demo into the governed AetherBrowser backend running from SCBE-AETHERMOORE.</div>
-    </div>
-    <div class="chat-input" style="margin-top:12px;">
-      <input type="text" id="agentCommand" placeholder="Research competitors, summarize this page, or plan a site update" onkeydown="if(event.key==='Enter')sendAgentCommand()">
-      <button onclick="sendAgentCommand()">Send Command</button>
-    </div>
-  </div>
+  <p class="subtitle">Explore how an AI-governed browser classifies URLs, activates Sacred Tongues, earns trust, and resists red-team attacks. Drop into the simulations below — no setup needed.</p>
 
   <!-- 1. URL Trust Classification -->
   <div class="panel">
@@ -188,7 +181,41 @@ label { display: block; font-size: 12px; color: #9bc5ba; margin-bottom: 6px; tex
     </div>
   </div>
 
-  <!-- 5. Footer Links -->
+  <!-- 5. Advanced: Live Control Plane (collapsed by default) -->
+  <details class="advanced">
+    <summary>Advanced: Connect your own backend (for developers)</summary>
+    <div class="adv-body">
+      <div class="advanced-note">
+        This demo connects to a backend you run locally. Clone the SCBE-AETHERMOORE repo and start the backend on port 8001 to use this section. Visitors to the public site should explore the static simulations above.
+      </div>
+      <h2>Live Control Plane</h2>
+      <label>Backend endpoints</label>
+      <div class="url-bar" style="margin-bottom:10px;">
+        <input type="text" id="backendHealth" value="http://localhost:8001/health" spellcheck="false">
+        <button onclick="checkBackend()">Check Health</button>
+      </div>
+      <div class="url-bar">
+        <input type="text" id="backendWs" value="ws://localhost:8001/ws" spellcheck="false">
+        <button onclick="connectBackend()">Connect Socket</button>
+      </div>
+      <div id="backendStatus" class="trust-result yellow" style="display:block; margin-top:14px;">
+        <div class="tier-label">BACKEND STATUS</div>
+        <div style="margin-top:6px;">Disconnected</div>
+        <div style="margin-top:6px;font-size:13px;opacity:0.85;">Use this panel to bridge the public demo into the governed AetherBrowser backend running from SCBE-AETHERMOORE.</div>
+      </div>
+      <div class="chat-input" style="margin-top:12px;">
+        <input type="text" id="agentCommand" placeholder="Research competitors, summarize this page, or plan a site update" onkeydown="if(event.key==='Enter')sendAgentCommand()">
+        <button onclick="sendAgentCommand()">Send Command</button>
+      </div>
+    </div>
+  </details>
+
+  <!-- CTA -->
+  <div class="cta-row">
+    <a href="https://github.com/issdandavis/SCBE-AETHERMOORE" class="btn-primary" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+  </div>
+
+  <!-- 6. Footer Links -->
   <div class="footer-links">
     <a href="../index.html">Full Site</a>
     <a href="index.html">All Demos</a>

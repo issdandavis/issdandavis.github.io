@@ -40,6 +40,9 @@ canvas{width:100%;height:100%}
 .compare-box{background:#12122e;border:1px solid #1a1a3e;border-radius:8px;padding:16px;text-align:center}
 .compare-box h4{font-size:12px;color:#888;text-transform:uppercase;margin-bottom:8px}
 .compare-box .val{font-size:24px;font-weight:700;font-family:monospace}
+.btn-primary{display:inline-block;background:#6c5ce7;color:#fff;padding:12px 24px;border-radius:8px;border:none;cursor:pointer;font-size:14px;font-weight:600;text-decoration:none;transition:background 0.2s}
+.btn-primary:hover{background:#5a4bd1}
+.cta-row{margin:16px 0 8px 0}
 </style>
 </head>
 <body>
@@ -52,7 +55,7 @@ canvas{width:100%;height:100%}
   </div>
 
   <h1>L5: Hyperbolic Distance Explorer</h1>
-  <p class="subtitle">Drag the two dots. Feel how distance explodes near the boundary.</p>
+  <p class="subtitle">Drag the two points to feel how hyperbolic distance explodes exponentially near the boundary — this is the math that prices out attackers.</p>
 
   <div class="formula">
     <div class="big">d<sub>H</sub> = arcosh(1 + 2||u-v||<sup>2</sup> / ((1-||u||<sup>2</sup>)(1-||v||<sup>2</sup>)))</div>
@@ -81,6 +84,9 @@ canvas{width:100%;height:100%}
   </div>
 
   <div class="info">
+    <div class="cta-row">
+      <a href="https://github.com/issdandavis/SCBE-AETHERMOORE" class="btn-primary" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+    </div>
     <strong>What you're feeling:</strong> In flat (Euclidean) space, moving 10cm is always 10cm.
     In hyperbolic space, the same physical movement near the edge covers <em>exponentially more</em> distance.
     <br><br>
