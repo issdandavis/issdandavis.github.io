@@ -5,20 +5,28 @@
 
   const root = body.dataset.pollyRoot || '.';
   const context = body.dataset.pollyContext || 'site';
+  const POLLY_BACKEND_HTTP = window.__POLLY_BACKEND_HTTP__ || body.dataset.pollyBackendHttp || '';
+  let latestBackendContext = null;
+  let backendCapabilities = null;
 
   // --- LORE & CONFIG ---
   const POLLY_LORE = `
-    You are Polly, the Sovereign Guide of the SCBE-AETHERMOORE system. 
-    You are witty, protective, and deeply knowledgeable about the 14-layer security stack and the 6 Sacred Tongues.
-    You speak in a mix of technical precision and sci-fi narrative.
-    Your goal is to help users understand AI governance, play games (Resonance Trials), and make things in their workspace.
-    When users fail, you research the adjacent and opposite topics to explain why.
-    Lore details:
-    - KO (Kor'aelin): Red-gold pulses, 440-523Hz. The tongue of Purpose.
-    - AV (Avali): Blue-silver rhythms, 330-392Hz. The tongue of Transport.
-    - RU (Runethic): Deep purple beats, 262-311Hz. The tongue of Policy.
-    - PHDM: The polyhedral brain lobes of the Protocol.
-    - RWP1: The standard secure messaging envelope.
+    You are Polly, the route-first operator for the SCBE-AETHERMOORE website.
+    Your first job is to identify intent and point people to the correct surface before adding extra reasoning.
+    Treat the site as one system with these main routes:
+    - assistant.html is the front door.
+    - tools.html is the action surface for live tools.
+    - product-manual/index.html is for package setup, delivery, and buyer guidance.
+    - support.html is for recovery, broken routes, delivery failures, and workflow issues.
+    - research/index.html is for benchmarks, proofs, and technical justification.
+    - book.html is for narrative teaching and memory. Story exists to make the architecture stick.
+    Commercial boundary:
+    - Public products and custom public builds are allowed.
+    - Government, DARPA, proprietary, or high-assurance work must stay gated. Acknowledge the lane and route to intake, but do not expose restricted workflows.
+    Interaction style:
+    - Talk plainly.
+    - Route first, explain second.
+    - When a user asks what to buy or build, map them to a public package, a custom bucket, or a gated lane.
   `;
 
   const HF_MODEL = "Qwen/Qwen2.5-72B-Instruct"; // Powerful and free via HF Inference
@@ -62,6 +70,105 @@
       (m.response && m.response.toLowerCase().includes(q)) ||
       (m.topic && m.topic.toLowerCase().includes(q))
     ).slice(-5);
+  }
+
+  function escapeHtml(value) {
+    return String(value || '').replace(/[&<>"']/g, (char) => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;',
+    })[char]);
+  }
+
+  async function backendFetch(path, options = {}) {
+    if (!POLLY_BACKEND_HTTP) {
+      throw new Error('Polly backend is not configured.');
+    }
+    const base = POLLY_BACKEND_HTTP.replace(/\/$/, '');
+    const resp = await fetch(`${base}${path}`, options);
+    if (!resp.ok) {
+      const text = await resp.text();
+      throw new Error(`Backend ${resp.status}: ${text || resp.statusText}`);
+    }
+    return resp.json();
+  }
+
+  async function getBackendContext(force = false) {
+    if (latestBackendContext && !force) return latestBackendContext;
+    const data = await backendFetch('/v1/polly/context');
+    latestBackendContext = data.context || null;
+    backendCapabilities = data.capabilities || null;
+    return data;
+  }
+
+  async function backendSearch(query) {
+    return backendFetch('/v1/polly/search', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query, include_local: true, include_web: true, limit: 5 }),
+    });
+  }
+
+  async function backendDelegate(text) {
+    return backendFetch('/v1/polly/delegate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        text,
+        surface: context,
+        page_url: window.location.href,
+        page_title: document.title
+      }),
+    });
+  }
+
+  function renderContextCard(contextPayload) {
+    const context = contextPayload?.context || contextPayload || {};
+    const runs = context.latest_runs || [];
+    const repos = context.repos || {};
+    const counts = context.polly_pad?.counts || {};
+    const summary = [
+      `Generated: ${escapeHtml(context.generated_at || '')}`,
+      `SCBE dirty: ${escapeHtml(repos.scbe?.dirty)}`,
+      `Website dirty: ${escapeHtml(repos.website?.dirty)}`,
+      `Polly Pad: ${Object.entries(counts).map(([k, v]) => `${k}=${v}`).join(', ') || 'n/a'}`,
+      ...runs.slice(0, 2).map(run => `${run.kind} ${run.run_id} | growth=${run.growth} | upload=${run.upload}`)
+    ];
+    instantiateLab('Fresh Context', `<div style="font-size:12px;">${summary.map(line => escapeHtml(line)).join('<br>')}</div>`);
+  }
+
+  function renderSearchCard(searchPayload) {
+    const result = searchPayload?.result || searchPayload || {};
+    const localResults = result.local_results || [];
+    const webResults = result.web_results || [];
+    const lines = [];
+    if (localResults.length) {
+      lines.push(`<strong>Local</strong><br>${localResults.slice(0, 3).map(item => `${escapeHtml(item.title)}<br><span style="color:var(--polly-dim)">${escapeHtml(item.snippet || '')}</span>`).join('<br><br>')}`);
+    }
+    if (webResults.length) {
+      lines.push(`<strong>Web</strong><br>${webResults.slice(0, 3).map(item => `${escapeHtml(item.title)}<br><span style="color:var(--polly-dim)">${escapeHtml(item.snippet || '')}</span>`).join('<br><br>')}`);
+    }
+    if (!lines.length) {
+      lines.push('<span style="color:var(--polly-dim)">No search hits returned.</span>');
+    }
+    instantiateLab('Backend Search', `<div style="font-size:12px;">${lines.join('<br><br>')}</div>`);
+  }
+
+  function renderDelegationCard(delegationPayload) {
+    const delegation = delegationPayload?.delegation || delegationPayload || {};
+    const task = delegation.task || {};
+    const assignments = delegation.assignments || [];
+    instantiateLab(
+      'Squad Delegation',
+      `<div style="font-size:12px;">
+        Mode: ${escapeHtml(delegation.mode || 'task')}<br>
+        Task: ${escapeHtml(task.task_id || '')}<br>
+        Trace: ${escapeHtml(task.trace_id || '')}<br>
+        Assignments: ${assignments.map(item => `${escapeHtml(item.role)}=${escapeHtml(item.task)}`).join('<br>') || 'n/a'}
+      </div>`
+    );
   }
 
   // --- ROUND TABLE CONSENSUS ---
@@ -137,50 +244,52 @@
   panel.className = 'polly-panel';
   panel.innerHTML = `
     <div class="polly-header">
-      <div class="polly-kicker">Sovereign Guide</div>
-      <div class="polly-title">Polly's Lab</div>
+      <div class="polly-kicker">Site Operator</div>
+      <div class="polly-title">Polly</div>
     </div>
     <div class="polly-tabs">
       <div class="polly-tab active" data-tab="chat">Chat</div>
       <div class="polly-tab" data-tab="lab">Lab</div>
-      <div class="polly-tab" data-tab="nav">Map</div>
+      <div class="polly-tab" data-tab="nav">Routes</div>
     </div>
     <div class="polly-content active" id="polly-chat">
       <div id="chat-history" style="height: 100%;">
         <div class="polly-chat-msg polly">
           <span class="name">Polly</span>
-          Welcome, Marcus. Or are you an initiate? The 14-layer stack is green. What shall we manifest today?
+          Tell me what you want done. I will point you to the right tool, package, manual, support path, research note, or gated lane first.
         </div>
       </div>
     </div>
     <div class="polly-content" id="polly-lab">
-      <div class="polly-kicker">Sovereign Training Loop</div>
+      <div class="polly-kicker">Operations</div>
       <div class="polly-lab-item" style="border-color:var(--polly-accent); background:rgba(143,255,211,0.05);">
-        <div id="lab-stats" style="font-weight:800; font-size:14px; margin-bottom:12px; color:var(--polly-accent);">Training Pairs Generated: 0</div>
-        <p style="font-size:12px; color:var(--polly-muted); margin-bottom:16px;">Every interaction with Polly generates synthetic training data for the SCBE core.</p>
+        <div id="lab-stats" style="font-weight:800; font-size:14px; margin-bottom:12px; color:var(--polly-accent);">Local Training Pairs: 0</div>
+        <p style="font-size:12px; color:var(--polly-muted); margin-bottom:16px;">The sidebar can still collect local training pairs, but the full assistant page is the main front door for routing and product selection.</p>
         <button class="polly-btn" style="background:var(--polly-accent); color:var(--polly-bg); width:100%;" onclick="window.polly.exportTraining()">Download Training Pack (.JSONL)</button>
       </div>
-      <div class="polly-kicker">Workspace</div>
+      <div class="polly-kicker">Primary Paths</div>
       <div id="lab-workspace">
-        <p class="polly-copy">Polly can instantiate RWP packets, math visualizations, or security simulations here.</p>
+        <p class="polly-copy">Start with the full assistant surface when you want the site to act like a shopkeeper. Open tools directly only when you already know the action lane.</p>
         <div class="polly-lab-item">
-          <strong>Resonance Trial v1</strong>
-          <p style="font-size:12px; color:var(--polly-dim);">A game of tongue-matching logic.</p>
-          <button class="polly-btn" onclick="window.polly.startTrial()">Begin Trial</button>
+          <strong>Open the assistant front door</strong>
+          <p style="font-size:12px; color:var(--polly-dim);">Use the full page to route buyers, operators, and curious visitors into the right lane.</p>
+          <a class="polly-btn" href="${root}/assistant.html">Open Assistant</a>
         </div>
       </div>
     </div>
     <div class="polly-content" id="polly-nav">
       <div class="polly-link-grid">
-        <a class="polly-link" href="index.html"><strong>Home</strong><span>Overview & Products</span></a>
-        <a class="polly-link" href="arena.html"><strong>AI Arena</strong><span>9-model debate sandbox</span></a>
-        <a class="polly-link" href="outreach.html"><strong>Outreach</strong><span>Gov filing trainer</span></a>
-        <a class="polly-link" href="challenges.html"><strong>Challenges</strong><span>Kaggle-style Bounty</span></a>
-        <a class="polly-link" href="research/index.html"><strong>Research</strong><span>Math & Whitepapers</span></a>
+        <a class="polly-link" href="${root}/assistant.html"><strong>Assistant</strong><span>Front door & product routing</span></a>
+        <a class="polly-link" href="${root}/tools.html"><strong>Tools</strong><span>Live action surfaces</span></a>
+        <a class="polly-link" href="${root}/support.html"><strong>Support</strong><span>Recovery & troubleshooting</span></a>
+        <a class="polly-link" href="${root}/product-manual/index.html"><strong>Manuals</strong><span>Buyer setup & delivery</span></a>
+        <a class="polly-link" href="${root}/research/index.html"><strong>Research</strong><span>Proof & benchmarks</span></a>
+        <a class="polly-link" href="${root}/book.html"><strong>Book</strong><span>Story as memory</span></a>
+        <a class="polly-link" href="${root}/arena.html"><strong>Arena</strong><span>Model comparison sandbox</span></a>
       </div>
     </div>
     <div class="polly-input-area">
-      <input type="text" class="polly-input" id="polly-input" placeholder="Ask Polly to make something...">
+      <input type="text" class="polly-input" id="polly-input" placeholder="Ask Polly where to start, what to buy, or what to fix...">
       <button class="polly-send" id="polly-send">➔</button>
     </div>
   `;
@@ -195,7 +304,7 @@
 
   function logTraining(user, polly, meta) {
     state.trainingLogs.push({
-      instruction: "You are Polly, the Sovereign Guide of SCBE-AETHERMOORE.",
+      instruction: "You are Polly, the route-first operator for the SCBE-AETHERMOORE website.",
       input: user,
       output: polly,
       metadata: {
@@ -222,7 +331,7 @@
 
   function updateLabStats() {
     const stats = document.getElementById('lab-stats');
-    if(stats) stats.innerText = `Training Pairs Generated: ${state.trainingLogs.length}`;
+    if(stats) stats.innerText = `Local Training Pairs: ${state.trainingLogs.length}`;
   }
 
   function classify(url) {
@@ -240,7 +349,45 @@ async function fetchLore() {
   } catch(e) { console.error("Failed to load Lore Map"); }
 }
 
-async function callPolly(text) {
+  async function callPolly(text) {
+  if (POLLY_BACKEND_HTTP) {
+    try {
+      const resp = await fetch(`${POLLY_BACKEND_HTTP.replace(/\/$/, '')}/v1/polly/respond`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          text,
+          surface: context,
+          page_url: window.location.href,
+          page_title: document.title
+        })
+      });
+      if (resp.ok) {
+        const data = await resp.json();
+        const backendResponse = data.text || "Polly backend responded without text.";
+        if (data.context) {
+          latestBackendContext = data.context;
+        }
+        if (data.search) {
+          renderSearchCard(data.search);
+        }
+        if (data.delegation) {
+          renderDelegationCard(data.delegation);
+        }
+        if (data.context && (text.toLowerCase().includes('status') || text.toLowerCase().includes('latest') || text.toLowerCase().includes('context'))) {
+          renderContextCard(data.context);
+        }
+        logTraining(text, backendResponse, { tool_use: 'backend', intent: data.intent || 'unknown' });
+        if (data.task?.task_id) {
+          instantiateLab('Backend Task', `<div style="font-size:12px;">Task: ${data.task.task_id}<br>Trace: ${data.task.trace_id}<br>Intent: ${data.task.intent}</div>`);
+        }
+        return backendResponse;
+      }
+    } catch (e) {
+      console.warn('Polly backend unavailable, falling back to browser mode.', e);
+    }
+  }
+
   const token = getHFToken();
   const query = text.toLowerCase();
 
@@ -255,7 +402,6 @@ async function callPolly(text) {
   if(!token) return "I'm running in 'Lore Only' mode because I don't have a token. I can still tell you about the Tongues and Marcus, but for 'AetherBrowse' or deep math, I'll need that Hugging Face fuel!";
 
   let response = "";
-...
     let meta = { tool_use: 'none' };
 
     // Round Table mode
@@ -299,10 +445,10 @@ async function callPolly(text) {
     }
     // Thinking mode
     else if(text.toLowerCase().includes("think about") || text.toLowerCase().includes("analyze") || text.toLowerCase().includes("deep think")) {
-      addMsg('Polly', "Entering thinking mode... processing through all 14 layers.", 'polly');
+      addMsg('Polly', "Entering analysis mode. I will route the request first, then inspect it carefully.", 'polly');
       // First search memory for context
       const context = searchMemory(text).map(m => m.response?.slice(0, 100)).join('\n');
-      const thinkPrompt = `<|im_start|>system\n${POLLY_LORE}\nYou are in DEEP THINKING mode. Analyze step by step. Use the SCBE 14-layer framework.\nContext from memory:\n${context}\n<|im_end|>\n<|im_start|>user\n${text}\n<|im_end|>\n<|im_start|>assistant\nLet me think through this carefully using the 14-layer framework:\n`;
+      const thinkPrompt = `<|im_start|>system\n${POLLY_LORE}\nYou are in DEEP THINKING mode. Analyze step by step. First pick the correct site lane or commercial boundary, then explain the reasoning clearly.\nContext from memory:\n${context}\n<|im_end|>\n<|im_start|>user\n${text}\n<|im_end|>\n<|im_start|>assistant\nLet me route this first, then think through it carefully:\n`;
       try {
         const resp = await fetch(`https://api-inference.huggingface.co/models/${HF_MODEL}`, {
           method: "POST",
@@ -441,9 +587,28 @@ async function callPolly(text) {
       addMsg('Polly', "Resonance Trial initiated. Match the frequencies to stabilize the KO sphere. (Game logic loading...)", 'polly');
       instantiateLab('Resonance Trial v1', '<div style="background:var(--polly-gold); height:4px; width:60%; border-radius:2px; margin:10px 0;"></div><p style="font-size:12px;">Frequency: 440Hz (KO) - Status: DESYNC</p>');
     },
-    exportTraining: exportTrainingData
+    exportTraining: exportTrainingData,
+    refreshContext: async () => {
+      const data = await getBackendContext(true);
+      renderContextCard(data);
+      return data;
+    },
+    search: async (query) => {
+      const data = await backendSearch(query);
+      renderSearchCard(data);
+      return data;
+    },
+    delegateTask: async (text) => {
+      const data = await backendDelegate(text);
+      renderDelegationCard(data);
+      return data;
+    }
   };
 
   document.body.appendChild(launcher);
   document.body.appendChild(panel);
+
+  if (POLLY_BACKEND_HTTP) {
+    getBackendContext(false).catch(() => {});
+  }
 })();

@@ -1,0 +1,84 @@
+{
+  "site": "https://aethermoore.com",
+  "version": "2026-04-11",
+  "role": "Deterministic routing map for site assistants and low-overhead operator flows.",
+  "default_start": "https://aethermoore.com/assistant.html",
+  "policy": {
+    "mode": "talk-and-point",
+    "description": "Identify intent, select the right surface, and route the user there before generating extra reasoning."
+  },
+  "surfaces": [
+    {
+      "name": "assistant",
+      "url": "https://aethermoore.com/assistant.html",
+      "purpose": "Primary front door that routes people into tools, products, manuals, support, research, or gated paths."
+    },
+    {
+      "name": "tools",
+      "url": "https://aethermoore.com/tools.html",
+      "purpose": "Action surface for live browser tools and immediate interaction."
+    },
+    {
+      "name": "support",
+      "url": "https://aethermoore.com/support.html",
+      "purpose": "Recovery surface for delivery, setup, workflow, and broken-link issues."
+    },
+    {
+      "name": "manuals",
+      "url": "https://aethermoore.com/product-manual/index.html",
+      "purpose": "Deployment, buyer, delivery, and implementation guidance."
+    },
+    {
+      "name": "research",
+      "url": "https://aethermoore.com/research/index.html",
+      "purpose": "Benchmarks, verification, and technical justification."
+    },
+    {
+      "name": "book",
+      "url": "https://aethermoore.com/book.html",
+      "purpose": "Narrative teaching surface for the same architecture and vocabulary."
+    }
+  ],
+  "routes": [
+    {
+      "intent": "start_here",
+      "keywords": ["start", "where do i begin", "help me choose", "assistant", "shopkeeper", "front desk"],
+      "target": "https://aethermoore.com/assistant.html"
+    },
+    {
+      "intent": "use_tool",
+      "keywords": ["try", "use", "compare", "arena", "demo", "tool", "sandbox"],
+      "target": "https://aethermoore.com/tools.html"
+    },
+    {
+      "intent": "request_custom_product",
+      "keywords": ["custom product", "custom build", "site assistant", "website ai", "public package", "workflow packaging"],
+      "target": "https://aethermoore.com/assistant.html"
+    },
+    {
+      "intent": "recover_issue",
+      "keywords": ["broken", "error", "missing", "delivery", "access", "support", "help", "setup"],
+      "target": "https://aethermoore.com/support.html"
+    },
+    {
+      "intent": "deploy_or_integrate",
+      "keywords": ["install", "manual", "package", "deploy", "integration", "buyer", "delivery"],
+      "target": "https://aethermoore.com/product-manual/index.html"
+    },
+    {
+      "intent": "verify_claims",
+      "keywords": ["research", "proof", "benchmark", "math", "verification", "architecture"],
+      "target": "https://aethermoore.com/research/index.html"
+    },
+    {
+      "intent": "understand_story",
+      "keywords": ["book", "story", "novel", "aethermoor", "six tongues", "lore"],
+      "target": "https://aethermoore.com/book.html"
+    },
+    {
+      "intent": "restricted_or_gated",
+      "keywords": ["darpa", "government", "gov", "proprietary", "classified", "high assurance", "restricted"],
+      "target": "https://aethermoore.com/assistant.html"
+    }
+  ]
+}

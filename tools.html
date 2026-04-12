@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Tools | SCBE-AETHERMOORE</title>
-  <meta name="description" content="Free tools from SCBE-AETHERMOORE: AI Arena, Tongue Encoder, Formula Vault, Red Team Sandbox, and more.">
+  <title>SCBE Tools | Operational Surface for Humans and AI</title>
+  <meta name="description" content="Operational surface for SCBE-AETHERMOORE. Start here to use live tools, open manuals, recover from issues, or verify the system through research.">
   <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Free Tools | SCBE-AETHERMOORE">
-  <meta property="og:description" content="Free AI governance tools. No install, no signup required.">
+  <meta property="og:title" content="SCBE Tools | Operational Surface for Humans and AI">
+  <meta property="og:description" content="Start here to use live SCBE tools, open manuals, recover from issues, or inspect the research surface.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://aethermoore.com/tools.html">
   <meta name="keywords" content="AI governance tools, free AI security tools, tongue encoder, governance gate demo, hyperbolic risk calculator, AI red team sandbox, LLM security tools">
@@ -74,6 +74,11 @@
     .page-header { margin-bottom: 48px; }
     .page-header h1 { font-size: clamp(32px, 5vw, 48px); font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 12px; }
     .page-header p { color: var(--muted); font-size: 18px; max-width: 56ch; }
+    .route-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 40px; }
+    .route-card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 22px; }
+    .route-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .route-card p { color: var(--muted); font-size: 14px; margin-bottom: 12px; }
+    .route-card a { color: var(--mint); font-size: 14px; font-weight: 600; }
     .tools-list { display: flex; flex-direction: column; gap: 20px; }
     .tool-item { display: grid; grid-template-columns: 56px 1fr auto; gap: 20px; align-items: center; background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 24px 28px; transition: all 200ms; text-decoration: none; color: inherit; }
     .tool-item:hover { border-color: var(--line-bright); transform: translateY(-2px); box-shadow: var(--shadow); }
@@ -99,22 +104,30 @@
       <button class="mobile-toggle" onclick="document.querySelector('.nav').classList.toggle('open')" aria-label="Toggle navigation">&#9776;</button>
       <nav class="nav" aria-label="Primary">
         <a href="index.html">Home</a>
-        <a href="book.html">Book</a>
+        <a href="assistant.html" class="nav-cta">Assistant</a>
         <a href="tools.html">Tools</a>
         <a href="demos/index.html">Demos</a>
         <a href="research/index.html">Research</a>
-        <a href="arena.html" class="nav-cta">Arena</a>
+        <a href="book.html">Book</a>
+        <a href="arena.html">Arena</a>
         <a href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank" rel="noopener">GitHub</a>
       </nav>
     </div>
   </header>
   <main class="page">
     <div class="page-header">
-      <span class="section-label">Free Tools</span>
-      <h1>Use these right now.</h1>
-      <p>No purchase, no signup, no install. Everything runs in your browser.</p>
+      <span class="section-label">Action Surface</span>
+      <h1>Start with Polly, then open the right tool.</h1>
+      <p>Polly is the front door for the project. This page is the action surface underneath it: live tools, manuals, support, and proof surfaces that the assistant can point at cleanly.</p>
     </div>
-    <div class="tools-list">
+    <div class="route-grid">
+      <div class="route-card"><h3>Start with the assistant</h3><p>Use the front desk when you want the site to choose the right route, package, or support lane before you dive into details.</p><a href="assistant.html">Open Polly &rarr;</a></div>
+      <div class="route-card"><h3>Use a live tool</h3><p>Open browser-based surfaces that let you test, inspect, and interact with the framework immediately.</p><a href="#live-tools">Jump to live tools &rarr;</a></div>
+      <div class="route-card"><h3>Deploy or integrate</h3><p>Go to the buyer and setup manuals when you need package guidance, delivery details, or implementation instructions.</p><a href="product-manual/index.html">Open manuals &rarr;</a></div>
+      <div class="route-card"><h3>Recover from a problem</h3><p>If a route is broken, delivery failed, or an AI workflow went sideways, start with the recovery surface.</p><a href="support.html">Open support &rarr;</a></div>
+      <div class="route-card"><h3>Check the proof</h3><p>Use the research surface when you need benchmarks, architectural rationale, or technical evidence.</p><a href="research/index.html">Open research &rarr;</a></div>
+    </div>
+    <div class="tools-list" id="live-tools">
       <a class="tool-item" href="arena.html"><div class="tool-icon tool-icon-arena">&#9876;</div><div class="tool-info"><h3>AI Arena</h3><p>9 AI models, one command. BYOK round table &mdash; ask a question and watch models debate it in real time. Bring your own API keys.</p></div><span class="tool-status status-live">Live</span></a>
       <a class="tool-item" href="demos/tongue-encoder.html"><div class="tool-icon tool-icon-tongue">&#127793;</div><div class="tool-info"><h3>Tongue Encoder</h3><p>Encode text into the 6 Sacred Tongues (KO, AV, RU, CA, UM, DR) and see the dimensional activation heatmap.</p></div><span class="tool-status status-live">Live</span></a>
       <a class="tool-item" href="demos/formula-vault.html"><div class="tool-icon tool-icon-formula">&#128272;</div><div class="tool-info"><h3>Formula Vault</h3><p>Every mathematical formula in the SCBE pipeline, documented and interactive. Compute harmonic scaling, distances, and more.</p></div><span class="tool-status status-live">Live</span></a>

@@ -1,0 +1,44 @@
+{
+  "packet_version": "2026-04-11",
+  "packet_type": "scbe_operator_handoff",
+  "created_at": "2026-04-11T19:00:00.000Z",
+  "source": {
+    "site": "https://aethermoore.com",
+    "surface": "assistant",
+    "url": "https://aethermoore.com/assistant.html"
+  },
+  "request": {
+    "text": "I need a public-facing assistant for my site that routes buyers, support issues, and product requests.",
+    "lane": "custom",
+    "intent": "request_custom_product",
+    "summary": "Public custom build request for a route-aware website assistant."
+  },
+  "routing": {
+    "target_surface": "assistant",
+    "target_url": "https://aethermoore.com/assistant.html"
+  },
+  "execution": {
+    "visibility": "public",
+    "preferred_operator": ["cursor", "codex"],
+    "repo_targets": [
+      {
+        "name": "website",
+        "repo": "issdandavis.github.io",
+        "reason": "Primary public site surface, routing UI, and user-facing copy."
+      },
+      {
+        "name": "control_plane",
+        "repo": "SCBE-AETHERMOORE",
+        "reason": "Automation, publishing, and supporting workflow logic if needed."
+      }
+    ],
+    "needs_human_review": true
+  },
+  "context": {
+    "routing_map": "https://aethermoore.com/assistant-routing.json",
+    "catalog": "https://aethermoore.com/assistant-catalog.json",
+    "llms": "https://aethermoore.com/llms.txt"
+  },
+  "next_step": "Open the website repo first, preserve the assistant-first model, and implement the public-facing assistant changes before widening scope into control-plane automation."
+}
+

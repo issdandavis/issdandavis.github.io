@@ -102,7 +102,29 @@ label { display: block; font-size: 12px; color: #9bc5ba; margin-bottom: 6px; tex
   </div>
 
   <h1>AetherBrowser Interactive Demo</h1>
-  <p class="subtitle">A standalone showcase of AetherBrowser concepts: trust-tiered browsing, Sacred Tongue activation, Fibonacci trust progression, and red-team resistance. No server required.</p>
+  <p class="subtitle">AetherBrowser concepts plus a live control-plane bridge. Static simulations still work, but you can now point this page at a real AetherBrowser backend for agentic coding and governed site actions.</p>
+
+  <div class="panel">
+    <h2>Live Control Plane</h2>
+    <label>Backend endpoints</label>
+    <div class="url-bar" style="margin-bottom:10px;">
+      <input type="text" id="backendHealth" value="http://localhost:8001/health" spellcheck="false">
+      <button onclick="checkBackend()">Check Health</button>
+    </div>
+    <div class="url-bar">
+      <input type="text" id="backendWs" value="ws://localhost:8001/ws" spellcheck="false">
+      <button onclick="connectBackend()">Connect Socket</button>
+    </div>
+    <div id="backendStatus" class="trust-result yellow" style="display:block; margin-top:14px;">
+      <div class="tier-label">BACKEND STATUS</div>
+      <div style="margin-top:6px;">Disconnected</div>
+      <div style="margin-top:6px;font-size:13px;opacity:0.85;">Use this panel to bridge the public demo into the governed AetherBrowser backend running from SCBE-AETHERMOORE.</div>
+    </div>
+    <div class="chat-input" style="margin-top:12px;">
+      <input type="text" id="agentCommand" placeholder="Research competitors, summarize this page, or plan a site update" onkeydown="if(event.key==='Enter')sendAgentCommand()">
+      <button onclick="sendAgentCommand()">Send Command</button>
+    </div>
+  </div>
 
   <!-- 1. URL Trust Classification -->
   <div class="panel">
@@ -171,6 +193,99 @@ label { display: block; font-size: 12px; color: #9bc5ba; margin-bottom: 6px; tex
 </div>
 
 <script>
+let backendSocket = null;
+
+function setBackendStatus(tier, title, body) {
+  const el = document.getElementById('backendStatus');
+  el.className = 'trust-result ' + tier;
+  el.innerHTML = '<div class="tier-label">' + title + '</div>' +
+    '<div style="margin-top:6px;">' + body + '</div>';
+}
+
+async function checkBackend() {
+  const url = document.getElementById('backendHealth').value.trim();
+  try {
+    const resp = await fetch(url);
+    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+    const data = await resp.json();
+    const count = Array.isArray(data.agents) ? data.agents.length : Object.keys(data.agents || {}).length;
+    setBackendStatus('green', 'BACKEND STATUS', `Healthy. ${count} agents reported at ${url}`);
+    pushSystemMessage(`Backend health OK. ${count} agents online.`);
+    addTrust(2);
+  } catch (err) {
+    setBackendStatus('red', 'BACKEND STATUS', `Health check failed: ${err.message}`);
+    pushSystemMessage(`Backend health failed: ${err.message}`);
+  }
+}
+
+function connectBackend() {
+  const url = document.getElementById('backendWs').value.trim();
+  if (backendSocket && backendSocket.readyState === WebSocket.OPEN) {
+    pushSystemMessage('Backend socket already connected.');
+    return;
+  }
+  backendSocket = new WebSocket(url);
+  backendSocket.onopen = () => {
+    setBackendStatus('green', 'BACKEND STATUS', `WebSocket connected to ${url}`);
+    pushSystemMessage(`Connected to governed backend at ${url}`);
+    addTrust(3);
+  };
+  backendSocket.onclose = () => {
+    setBackendStatus('yellow', 'BACKEND STATUS', 'Socket closed. Static demo remains available.');
+    pushSystemMessage('Backend socket closed.');
+  };
+  backendSocket.onerror = () => {
+    setBackendStatus('red', 'BACKEND STATUS', 'WebSocket error. Check that the AetherBrowser backend is running.');
+    pushSystemMessage('Backend socket error.');
+  };
+  backendSocket.onmessage = (event) => {
+    let msg;
+    try { msg = JSON.parse(event.data); } catch { return; }
+    const agent = msg.agent || 'SYS';
+    if (msg.type === 'chat') {
+      pushSystemMessage(`${agent}: ${msg.payload.text}`);
+    } else if (msg.type === 'agent_status') {
+      pushSystemMessage(`${agent} status: ${msg.payload.state}`);
+      addTrust(1);
+    } else if (msg.type === 'zone_request') {
+      pushSystemMessage(`${agent} approval gate: ${msg.payload.action} ${msg.payload.url}`);
+      setBackendStatus('yellow', 'BACKEND STATUS', `Approval gate raised for ${msg.payload.action} ${msg.payload.url}`);
+    } else if (msg.type === 'error') {
+      pushSystemMessage(`Backend error: ${msg.payload.reason}`);
+      setBackendStatus('red', 'BACKEND STATUS', msg.payload.reason);
+    }
+  };
+}
+
+function sendAgentCommand() {
+  const input = document.getElementById('agentCommand');
+  const text = input.value.trim();
+  if (!text) return;
+  if (!backendSocket || backendSocket.readyState !== WebSocket.OPEN) {
+    pushSystemMessage('Connect the backend socket before sending governed commands.');
+    return;
+  }
+  backendSocket.send(JSON.stringify({
+    type: 'command',
+    agent: 'user',
+    payload: { text }
+  }));
+  pushUserMessage(text);
+  input.value = '';
+}
+
+function pushUserMessage(text) {
+  const box = document.getElementById('chatBox');
+  box.innerHTML += '<div class="msg user">You: ' + escHtml(text) + '</div>';
+  box.scrollTop = box.scrollHeight;
+}
+
+function pushSystemMessage(text) {
+  const box = document.getElementById('chatBox');
+  box.innerHTML += '<div class="msg sys">' + escHtml(text) + '</div>';
+  box.scrollTop = box.scrollHeight;
+}
+
 /* ── Trust DB ── */
 const TRUST_DB = {
   green: {

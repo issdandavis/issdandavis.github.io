@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SCBE Mathematics and Philosophy | Core Formulas, Tongues, and Design Rules</title>
+  <meta name="description" content="Core mathematics and philosophy behind SCBE-AETHERMOORE: the harmonic wall, Davis Security score, Sacred Tongues kernel, phi-phase oscillator, and the design principles that shape the system.">
+  <meta property="og:title" content="SCBE Mathematics and Philosophy">
+  <meta property="og:description" content="A public architecture note covering the main formulas, philosophical rules, and honest gaps in the SCBE-AETHERMOORE system.">
+  <meta property="og:url" content="https://aethermoore.com/research/mathematics-philosophy.html">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://aethermoore.com/research/mathematics-philosophy.html">
+  <meta name="keywords" content="SCBE mathematics, AI governance philosophy, harmonic wall, Davis Security score, Sacred Tongues, phi oscillator, hyperbolic geometry, AI safety">
+  <style>
+    :root {
+      --bg: #081018;
+      --bg-2: #0c1724;
+      --panel: rgba(14, 26, 40, 0.9);
+      --panel-2: rgba(18, 32, 49, 0.95);
+      --line: rgba(126, 164, 255, 0.18);
+      --line-strong: rgba(126, 164, 255, 0.32);
+      --text: #eef3ff;
+      --muted: #a8b7d8;
+      --dim: #8193b8;
+      --gold: #f4cb77;
+      --cyan: #7fd3ff;
+      --mint: #8ff0cd;
+      --rose: #ff9fbe;
+      --danger: #ff9a9a;
+      --max: 1180px;
+      --shadow: 0 24px 64px rgba(0, 0, 0, 0.34);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background:
+        radial-gradient(circle at top left, rgba(127, 211, 255, 0.12), transparent 26%),
+        radial-gradient(circle at top right, rgba(143, 240, 205, 0.08), transparent 22%),
+        linear-gradient(180deg, #060d14 0%, var(--bg) 36%, var(--bg-2) 100%);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+      background: rgba(6, 13, 20, 0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar .brand {
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+    }
+    .topbar nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .topbar nav a:hover {
+      color: var(--text);
+    }
+    .wrap {
+      width: min(var(--max), calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 44px 0 88px;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.35fr 0.9fr;
+      gap: 22px;
+      align-items: end;
+      margin-bottom: 26px;
+    }
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--cyan);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2.4rem, 5vw, 4.8rem);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      max-width: 12ch;
+    }
+    .hero p {
+      margin: 0;
+      max-width: 52ch;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+    .hero-panel,
+    .section-panel,
+    .formula-card,
+    .note-card,
+    .gap-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+    }
+    .hero-panel {
+      padding: 22px;
+    }
+    .hero-panel h2 {
+      margin: 0 0 10px;
+      font-size: 1.1rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .hero-panel ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+    .hero-panel li + li {
+      margin-top: 8px;
+    }
+    .section-panel {
+      padding: 28px;
+      margin-top: 28px;
+    }
+    h2 {
+      margin: 0 0 10px;
+      font-size: 1.9rem;
+      line-height: 1.05;
+    }
+    .section-copy {
+      margin: 0 0 20px;
+      color: var(--muted);
+      max-width: 64ch;
+    }
+    .formula-grid,
+    .philosophy-grid,
+    .gaps-grid,
+    .kernel-grid {
+      display: grid;
+      gap: 18px;
+    }
+    .formula-grid,
+    .kernel-grid {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+    .philosophy-grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    .gaps-grid {
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+    .formula-card,
+    .note-card,
+    .gap-card {
+      padding: 22px;
+    }
+    .formula-card h3,
+    .note-card h3,
+    .gap-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.12rem;
+    }
+    .formula {
+      display: block;
+      margin: 12px 0 14px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(126, 164, 255, 0.14);
+      color: var(--cyan);
+      font-family: "Cascadia Code", Consolas, monospace;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
+    .formula-card p,
+    .note-card p,
+    .gap-card p,
+    .gap-card li {
+      color: var(--muted);
+      margin: 0;
+    }
+    .formula-card p + p,
+    .note-card p + p,
+    .gap-card p + p {
+      margin-top: 10px;
+    }
+    .formula-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .chip {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--dim);
+      font-size: 12px;
+    }
+    .chain {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+    .chain-step {
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: var(--panel-2);
+    }
+    .chain-step strong {
+      color: var(--gold);
+      display: block;
+      margin-bottom: 8px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.86rem;
+    }
+    .kernel-grid .formula-card h4 {
+      margin: 0 0 10px;
+      color: var(--mint);
+      font-size: 0.98rem;
+    }
+    .tongues-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 18px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+    .tongues-table th,
+    .tongues-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      color: var(--muted);
+    }
+    .tongues-table th {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.02);
+    }
+    .resolved {
+      color: var(--mint);
+    }
+    .open {
+      color: var(--danger);
+    }
+    .footer-note {
+      margin-top: 26px;
+      color: var(--dim);
+      font-size: 0.94rem;
+    }
+    @media (max-width: 920px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 680px) {
+      .wrap {
+        width: calc(100vw - 24px);
+        padding: 28px 0 56px;
+      }
+      .topbar {
+        padding: 14px 16px;
+      }
+      .topbar nav {
+        gap: 12px;
+        font-size: 13px;
+      }
+      .section-panel {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand"><a href="../index.html">SCBE RESEARCH</a></div>
+    <nav>
+      <a href="../assistant.html">Assistant</a>
+      <a href="../tools.html">Tools</a>
+      <a href="index.html">Research</a>
+      <a href="../book.html">Book</a>
+      <a href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Architecture note</div>
+        <h1>SCBE mathematics and philosophy in one place</h1>
+        <p>
+          This page compiles the core formulas and design rules that recur across the SCBE-AETHERMOORE system.
+          It is public on purpose: the geometry, the deterrence logic, the Sacred Tongues, and the ethical framing
+          should be legible together instead of scattered across code, forum posts, and architecture notes.
+        </p>
+      </div>
+      <aside class="hero-panel">
+        <h2>What this page is for</h2>
+        <ul>
+          <li>Show the main formulas without flattening the philosophy.</li>
+          <li>Explain why story and technical architecture coexist on the same site.</li>
+          <li>Keep honest gaps visible alongside resolved progress.</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="section-panel">
+      <h2>Part I - The core mathematics</h2>
+      <p class="section-copy">
+        The formulas below are the public backbone: a deterrence geometry, a safety score, a five-stage decision chain,
+        tongue-aware kernels, a storage KDF, a phase gate, and the oscillator work that stabilized the trust ladder.
+      </p>
+      <div class="formula-grid">
+        <article class="formula-card">
+          <h3>The harmonic wall</h3>
+          <div class="formula">H(d, R) = R^(d^2)</div>
+          <p><strong>d</strong> is hyperbolic distance from the safe center in the Poincare ball. <strong>R</strong> is the base radius, set to 1.5 from the perfect fifth ratio 3/2.</p>
+          <p>At the origin, the cost is 1. As drift grows, cost rises as an exponential of a square. In the temporal-intent form the cost becomes <code>H_eff(d, R, x) = R^(d^2 * x)</code>, where <code>x</code> scales with sustained adversarial intent rather than brief noise.</p>
+          <div class="formula-meta">
+            <span class="chip">Deterrence geometry</span>
+            <span class="chip">Not a cryptographic reduction</span>
+          </div>
+        </article>
+
+        <article class="formula-card">
+          <h3>Davis Security score</h3>
+          <div class="formula">DS(x) = 1 - ||x||_P^441</div>
+          <p>The score maps the Poincare radius into a public-facing safety scalar. Near the origin it stays close to 1. Near the boundary it collapses toward 0.</p>
+          <p>Adversarial test batteries confirmed monotonicity, convexity, and oscillation resistance. Known implementation failures include NaN injection, overflow at the boundary, and threshold gaming.</p>
+          <div class="formula-meta">
+            <span class="chip">Safety scalar</span>
+            <span class="chip">Known implementation gaps</span>
+          </div>
+        </article>
+
+        <article class="formula-card">
+          <h3>The phase tunnel gate</h3>
+          <div class="formula">T = cos^2((beta_phase - phi_wall) / 2)</div>
+          <p>The gate models transmission as a fraction between 0 and 1. Above the allow threshold the state passes cleanly. Between thresholds it attenuates. Below collapse it terminates and logs.</p>
+          <p>The threshold values currently published are placeholders and should be treated as uncalibrated until empirical validation is complete.</p>
+          <div class="formula-meta">
+            <span class="chip">Quantum-inspired gate</span>
+            <span class="chip">Thresholds not calibrated</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="chain">
+        <div class="chain-step">
+          <strong>Five-formula chain</strong>
+          <div class="formula">text -> Sacred Tongues tokenizer -> Poincare embedding -> d -> x -> H_eff -> d_tri -> Omega -> decision</div>
+          <p>The pipeline takes text into curved space, measures drift from a safe center, scales cost by sustained intent, watches across three time scales, and multiplies five independent checks into a final gate.</p>
+        </div>
+        <div class="chain-step">
+          <strong>Formula 1 - Hyperbolic distance</strong>
+          <div class="formula">d = acosh(1 + 2 * ||u - v||^2 / ((1 - ||u||^2)(1 - ||v||^2)))</div>
+          <p>Standard Poincare-ball distance. Distances accelerate near the boundary.</p>
+        </div>
+        <div class="chain-step">
+          <strong>Formula 2 - Intent factor</strong>
+          <div class="formula">x = min(3.0, (0.5 + accumulated_intent * 0.25) * (1 + (1 - trust)))</div>
+          <p>Intent begins innocent and grows with sustained problematic behavior. It decays so transient noise does not dominate the score.</p>
+        </div>
+        <div class="chain-step">
+          <strong>Formula 3 - Harmonic wall</strong>
+          <div class="formula">H_eff = R^(d^2 * x)</div>
+          <p>The core cost escalation. Distance and sustained intent multiply before the exponential is applied.</p>
+        </div>
+        <div class="chain-step">
+          <strong>Formula 4 - Triadic risk</strong>
+          <div class="formula">d_tri = (0.3 * I_fast^phi + 0.5 * I_memory^phi + 0.2 * I_governance^phi)^(1/phi)</div>
+          <p>Three clocks watch the same state: immediate behavior, session memory, and governance memory. The golden-ratio exponent prevents one clean timescale from erasing another dirty one.</p>
+        </div>
+        <div class="chain-step">
+          <strong>Formula 5 - Omega gate</strong>
+          <div class="formula">Omega = pqc_valid * harm_score * drift_factor * triadic_stable * spectral_score</div>
+          <p>Five locks on one door. If any component collapses to zero, the whole gate closes.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-panel">
+      <h2>Part II - The tongue kernel and the lattice</h2>
+      <p class="section-copy">
+        The Sacred Tongues are not decorative lore. They are the semantic channel split the rest of the architecture depends on.
+        The fiction and the technical decomposition are the same structure presented in different registers.
+      </p>
+
+      <div class="kernel-grid">
+        <article class="formula-card">
+          <h3>Linear tongue kernel</h3>
+          <div class="formula">k_T^lin(x, z) = Sum_l w_l * &lt;x^(l), z^(l)&gt;</div>
+          <p>Weighted channel inner product. PSD by construction.</p>
+        </article>
+
+        <article class="formula-card">
+          <h3>Synergy tongue kernel</h3>
+          <div class="formula">k_T^syn(x, z) = Sum_l Sum_m w_l * S_lm * &lt;x^(l), z^(m)&gt;</div>
+          <p>The novel kernel. Cross-tongue interactions are encoded in the PSD matrix <code>S</code>, so the system can represent reinforcing channels instead of only parallel ones.</p>
+        </article>
+
+        <article class="formula-card">
+          <h3>Gaussian tongue kernel</h3>
+          <div class="formula">k_T^rbf(x, z) = exp(-gamma * Sum_l w_l * ||x^(l) - z^(l)||^2)</div>
+          <p>PSD by Schoenberg's theorem and useful as the stable smooth kernel in the family.</p>
+        </article>
+
+        <article class="formula-card">
+          <h3>Hyperbolic tongue kernel</h3>
+          <div class="formula">k_T^hyp(x, z) = exp(-gamma * Sum_l w_l * d_H(x^(l), z^(l)))</div>
+          <p>Not guaranteed PSD. This is one of the places where the public page should stay honest: the hyperbolic kernel needs regularization and should not be described as automatically safe by theorem.</p>
+        </article>
+      </div>
+
+      <table class="tongues-table">
+        <thead>
+          <tr>
+            <th>Technical channel</th>
+            <th>Narrative tongue</th>
+            <th>Primary function</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Aethyr</td>
+            <td>Kor'aelin</td>
+            <td>Control flow and axioms</td>
+          </tr>
+          <tr>
+            <td>Solum</td>
+            <td>Avali</td>
+            <td>I/O and communication</td>
+          </tr>
+          <tr>
+            <td>Korith</td>
+            <td>Runethic</td>
+            <td>Scope and context</td>
+          </tr>
+          <tr>
+            <td>Thelvori</td>
+            <td>Cassisivadan</td>
+            <td>Math and logic</td>
+          </tr>
+          <tr>
+            <td>Velith</td>
+            <td>Mal'kythric</td>
+            <td>Security and crypto</td>
+          </tr>
+          <tr>
+            <td>Ixal</td>
+            <td>Nal'kythraelin</td>
+            <td>Transforms and morphisms</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section-panel">
+      <h2>Part III - The stable oscillator work</h2>
+      <p class="section-copy">
+        The phi-phase oscillator was one of the places where the math moved from intuition into proof. It matters because it rescued the trust ladder from runaway growth while preserving the structural shape that made the system useful.
+      </p>
+      <div class="formula-grid">
+        <article class="formula-card">
+          <h3>Phi-phase oscillator</h3>
+          <div class="formula">x_n = phi^cos(theta_n) * x_(n-1) - x_(n-2)</div>
+          <p>The companion-matrix eigenvalues stay complex with magnitude 1 because the coefficient always remains in the interval <code>[1/phi, phi]</code>. That means the system is bounded across all phase settings: it oscillates, but it does not blow up or decay away.</p>
+          <div class="formula-meta">
+            <span class="chip">Bounded by proof</span>
+            <span class="chip">Validated across four scales</span>
+          </div>
+        </article>
+
+        <article class="formula-card">
+          <h3>Golden-angle tongue offsets</h3>
+          <div class="formula">offset = 2 * pi / phi^2 ~= 137.508 degrees</div>
+          <p>Each Sacred Tongue reads the same oscillator from a different angular position, spaced by the golden angle. This spreads attention without forcing total isolation.</p>
+        </article>
+
+        <article class="formula-card">
+          <h3>Phi-discount cost</h3>
+          <div class="formula">cost = base / phi^width</div>
+          <p>This is the soft-Huffman style cost function for the tongue lattice. It stays bounded between the Shannon entropy floor and the base width ceiling.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-panel">
+      <h2>Part IV - The philosophy</h2>
+      <p class="section-copy">
+        The system is not only geometry. It is a posture. These are the rules that keep the mathematics from being used as a dressed-up excuse for domination.
+      </p>
+      <div class="philosophy-grid">
+        <article class="note-card">
+          <h3>Invitation over command</h3>
+          <p>The architecture is designed to collaborate rather than dominate. The harmonic wall does not erase agency. It makes adversarial drift progressively more expensive until bad choices become impractical.</p>
+        </article>
+        <article class="note-card">
+          <h3>Trust is not binary</h3>
+          <p>Trust is continuous, history-sensitive, and recoverable. Coherence moves quickly, base trust moves slowly, and intervention should be graduated instead of absolute.</p>
+        </article>
+        <article class="note-card">
+          <h3>Not all crashes are system crashes</h3>
+          <p>Recovery energy should be proportional to real impact. Small failures do not justify maximum-force responses if the wider obligation network can absorb them.</p>
+        </article>
+        <article class="note-card">
+          <h3>The weird ones are usually the invariant ones</h3>
+          <p>The interesting structure often lives in mismatches, deltas, and overlap failures. The architecture keeps returning to that idea: information is often in the conflict, not only in the consensus.</p>
+        </article>
+        <article class="note-card">
+          <h3>Story is an architectural layer</h3>
+          <p>The book is not off-topic. It is the memory surface for the same technical vocabulary. History, fairy tales, proofs, and governance all teach through durable narrative structure.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-panel">
+      <h2>Part V - Honest gaps</h2>
+      <p class="section-copy">
+        This page is stronger when it keeps the unresolved work in view. These are the main places where the system still needs calibration, proof completion, or implementation hardening.
+      </p>
+      <div class="gaps-grid">
+        <article class="gap-card">
+          <h3>Still open</h3>
+          <ul>
+            <li><span class="open">Open:</span> The harmonic wall is a cost function, not a reduction to a known hard problem.</li>
+            <li><span class="open">Open:</span> The hyperbolic tongue kernel is not PSD by default and needs regularization.</li>
+            <li><span class="open">Open:</span> Gate thresholds remain uncalibrated placeholders.</li>
+            <li><span class="open">Open:</span> NaN injection, exponential overflow, and threshold gaming still need implementation hardening.</li>
+            <li><span class="open">Open:</span> Cross-tongue band closure, race-freedom, and round-trip pipeline axioms still need end-to-end proof and test wiring.</li>
+          </ul>
+        </article>
+
+        <article class="gap-card">
+          <h3>Resolved recently</h3>
+          <ul>
+            <li><span class="resolved">Resolved:</span> The phi trust-ladder blowup was fixed by the phi-flip forms, collapsing runaway values back into bounded territory.</li>
+            <li><span class="resolved">Resolved:</span> All six tongue trit tables now exist, satisfy the A1-A5 axioms, and pass their current test set.</li>
+            <li><span class="resolved">Resolved:</span> The phi-phase oscillator now has an eigenvalue-based boundedness argument and multi-scale validation.</li>
+            <li><span class="resolved">Resolved:</span> Tongue collision semantics were reframed: collisions are not inherently bad, only specific write-write conflicts require arbitration.</li>
+          </ul>
+        </article>
+      </div>
+      <p class="footer-note">
+        Compiled from architecture notes, code paths, and long-running system conversations through April 2026. Public proof should stay specific, bounded, and falsifiable.
+      </p>
+    </section>
+  </main>
+</body>
+</html>

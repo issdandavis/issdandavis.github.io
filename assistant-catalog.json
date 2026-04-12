@@ -1,0 +1,98 @@
+{
+  "site": "https://aethermoore.com",
+  "version": "2026-04-11",
+  "role": "Public sellable buckets and routing limits for the SCBE-AETHERMOORE assistant.",
+  "public_products": [
+    {
+      "id": "governance-toolkit",
+      "name": "AI Governance Toolkit",
+      "type": "package",
+      "description": "Templates, thresholds, decision records, and starter rollout guidance for governed AI work.",
+      "keywords": ["governance", "guardrails", "policy", "checklist", "decision record", "risk model"],
+      "manual_url": "https://aethermoore.com/product-manual/ai-governance-toolkit.html",
+      "buy_url": "https://buy.stripe.com/cNibJ25Ca2TJ9gQ3a6dby06"
+    },
+    {
+      "id": "hydra-agent-templates",
+      "name": "HYDRA Agent Templates",
+      "type": "package",
+      "description": "Ready-made agent roles, packet patterns, and launch structure for small governed swarms.",
+      "keywords": ["agent", "agents", "swarm", "hydra", "template", "packet", "role"],
+      "manual_url": "https://aethermoore.com/product-manual/hydra-agent-templates.html",
+      "buy_url": "https://buy.stripe.com/6oUeVe5Ca2TJdx6262dby08"
+    },
+    {
+      "id": "n8n-workflow-pack",
+      "name": "n8n Workflow Pack",
+      "type": "package",
+      "description": "Governed automation building blocks for teams that need importable workflows and a cleaner delivery path.",
+      "keywords": ["n8n", "workflow", "automation", "pipeline", "import", "orchestration"],
+      "manual_url": "https://aethermoore.com/product-manual/n8n-workflow-pack.html",
+      "buy_url": "https://buy.stripe.com/8x228sc0y3XNeBafWSdby05"
+    },
+    {
+      "id": "content-spin-engine",
+      "name": "Content Spin Engine",
+      "type": "package",
+      "description": "Source-once content operations for adapting, reviewing, and publishing across channels with less drift.",
+      "keywords": ["content", "spin", "publishing", "repurpose", "editorial", "marketing"],
+      "manual_url": "https://aethermoore.com/product-manual/content-spin-engine.html",
+      "buy_url": "https://buy.stripe.com/5kQ5kE5Ca65V78I5iedby07"
+    }
+  ],
+  "custom_buckets": [
+    {
+      "id": "assistant-and-site-setup",
+      "name": "Assistant and site setup",
+      "type": "custom",
+      "description": "Turn a static site into a route-aware assistant surface with tool lanes, manuals, support, and a clear front door.",
+      "keywords": ["assistant", "chatbot", "site assistant", "website ai", "shopkeeper", "route map", "front desk"],
+      "includes": [
+        "assistant landing page",
+        "routing map",
+        "tool and support handoff",
+        "site copy cleanup"
+      ],
+      "contact_url": "mailto:aethermoregames@pm.me?subject=SCBE%20Assistant%20Setup"
+    },
+    {
+      "id": "public-workflow-packaging",
+      "name": "Workflow packaging",
+      "type": "custom",
+      "description": "Package public workflow logic into a buyer-readable manual, delivery path, and operational setup that fits your site.",
+      "keywords": ["workflow pack", "manual", "delivery", "setup", "package", "productize", "bundle"],
+      "includes": [
+        "manual hub",
+        "delivery and access flow",
+        "package-specific setup pages",
+        "support routing"
+      ],
+      "contact_url": "mailto:aethermoregames@pm.me?subject=SCBE%20Workflow%20Packaging"
+    },
+    {
+      "id": "content-operations-surface",
+      "name": "Content operations surface",
+      "type": "custom",
+      "description": "Build a public content system with article, research, support, and assistant surfaces that stay in sync.",
+      "keywords": ["content system", "site polish", "docs", "research page", "article system", "support page"],
+      "includes": [
+        "content IA cleanup",
+        "search-facing landing pages",
+        "assistant-aware support surfaces",
+        "publish workflow alignment"
+      ],
+      "contact_url": "mailto:aethermoregames@pm.me?subject=SCBE%20Content%20Operations"
+    }
+  ],
+  "restricted_buckets": [
+    {
+      "id": "government-or-high-assurance",
+      "name": "Government or high-assurance work",
+      "type": "restricted",
+      "description": "Government, DARPA, proprietary, or high-assurance engagements are not sold through the public assistant and require gated handling.",
+      "keywords": ["darpa", "government", "gov", "classified", "high assurance", "secure enclave", "proprietary", "restricted"],
+      "boundary": "The public assistant can acknowledge the lane and route to intake, but it should not expose protected workflows or internal details.",
+      "contact_url": "mailto:aethermoregames@pm.me?subject=SCBE%20Gated%20Inquiry"
+    }
+  ]
+}

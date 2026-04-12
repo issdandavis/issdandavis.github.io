@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polly | SCBE Assistant and Product Front Desk</title>
+  <meta name="description" content="Route-first assistant for SCBE-AETHERMOORE. Start here to use tools, request public custom builds, open manuals, recover from issues, or stay inside gated boundaries.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta property="og:title" content="Polly | SCBE Assistant and Product Front Desk">
+  <meta property="og:description" content="One front door for tools, public product buckets, manuals, support, research, and gated routes.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aethermoore.com/assistant.html">
+  <meta property="og:image" content="https://aethermoore.com/hero.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Polly | SCBE Assistant and Product Front Desk">
+  <meta name="twitter:description" content="Start here when you need the assistant to route work, point to products, or send you into the right SCBE surface.">
+  <meta name="twitter:image" content="https://aethermoore.com/hero.png">
+  <link rel="canonical" href="https://aethermoore.com/assistant.html">
+  <style>
+    :root {
+      --bg: #061311;
+      --bg-deep: #030d0c;
+      --bg-soft: #0b1b18;
+      --panel: rgba(9, 27, 23, 0.84);
+      --panel-strong: rgba(8, 23, 20, 0.96);
+      --line: rgba(139, 255, 223, 0.15);
+      --line-bright: rgba(139, 255, 223, 0.3);
+      --text: #e7fff7;
+      --muted: #9bc5ba;
+      --dim: #6a9488;
+      --mint: #8fffd3;
+      --aqua: #6dd8ff;
+      --gold: #ffd977;
+      --rose: #ff9ec7;
+      --danger: #ff998d;
+      --shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+      --max: 1260px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background:
+        radial-gradient(circle at 12% 10%, rgba(109, 216, 255, 0.12), transparent 28%),
+        radial-gradient(circle at 85% 18%, rgba(143, 255, 211, 0.12), transparent 30%),
+        linear-gradient(180deg, var(--bg-deep) 0%, var(--bg) 34%, var(--bg-soft) 100%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+    a { color: inherit; text-decoration: none; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      background: rgba(3, 13, 12, 0.84);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      font-size: 14px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--mint);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .nav {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .nav a {
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      transition: all 150ms;
+    }
+    .nav a:hover {
+      color: var(--text);
+      background: rgba(143, 255, 211, 0.08);
+    }
+    .nav a.nav-cta {
+      background: rgba(143, 255, 211, 0.14);
+      color: var(--mint);
+      border: 1px solid rgba(143, 255, 211, 0.25);
+    }
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--mint);
+      font-size: 24px;
+      cursor: pointer;
+      padding: 8px;
+    }
+    .section {
+      padding: 72px 24px;
+    }
+    .section-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+    .hero {
+      padding: 96px 24px 56px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 22% 28%, rgba(143, 255, 211, 0.09), transparent 26%),
+        radial-gradient(circle at 78% 30%, rgba(109, 216, 255, 0.08), transparent 28%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mint);
+      background: rgba(143, 255, 211, 0.08);
+      border: 1px solid rgba(143, 255, 211, 0.16);
+      margin-bottom: 20px;
+    }
+    .eyebrow .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--mint);
+      box-shadow: 0 0 18px rgba(143, 255, 211, 0.6);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+      gap: 28px;
+      align-items: start;
+    }
+    .hero-copy h1 {
+      font-size: clamp(40px, 6.6vw, 74px);
+      font-weight: 800;
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      max-width: 11ch;
+      margin-bottom: 20px;
+    }
+    .hero-copy h1 .gradient {
+      background: linear-gradient(135deg, var(--mint), var(--aqua));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-copy p {
+      color: var(--muted);
+      font-size: clamp(17px, 2vw, 21px);
+      max-width: 58ch;
+      margin-bottom: 22px;
+    }
+    .hero-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 26px;
+    }
+    .hero-points span {
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(143, 255, 211, 0.04);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 22px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      font-size: 15px;
+      font-weight: 700;
+      transition: all 180ms;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, rgba(143, 255, 211, 0.18), rgba(109, 216, 255, 0.14));
+      border-color: rgba(143, 255, 211, 0.3);
+      color: var(--mint);
+    }
+    .btn-secondary {
+      border-color: var(--line);
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.01);
+    }
+    .btn:hover {
+      transform: translateY(-1px);
+      border-color: var(--line-bright);
+    }
+    .hero-panel {
+      background: var(--panel-strong);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+    .hero-panel h2 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+    .hero-panel p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+    .status-card {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px 16px;
+      margin-bottom: 18px;
+      background: rgba(143, 255, 211, 0.04);
+    }
+    .status-card.good { border-color: rgba(143, 255, 211, 0.35); }
+    .status-card.bad { border-color: rgba(255, 153, 141, 0.35); }
+    .status-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--mint);
+      margin-bottom: 4px;
+    }
+    .status-detail {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .quick-actions {
+      display: grid;
+      gap: 10px;
+    }
+    .quick-actions button {
+      text-align: left;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px 16px;
+      color: var(--text);
+      cursor: pointer;
+      transition: all 160ms;
+    }
+    .quick-actions button:hover {
+      border-color: var(--line-bright);
+      background: rgba(143, 255, 211, 0.05);
+    }
+    .quick-actions strong {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+    .quick-actions span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .assistant-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+      gap: 24px;
+      align-items: start;
+    }
+    .assistant-console,
+    .assistant-sidebar,
+    .catalog-section {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+    }
+    .assistant-console {
+      padding: 22px;
+      min-height: 680px;
+      display: flex;
+      flex-direction: column;
+    }
+    .console-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+    .console-header h2 {
+      font-size: 24px;
+      margin-bottom: 6px;
+    }
+    .console-header p {
+      color: var(--muted);
+      max-width: 48ch;
+      font-size: 14px;
+    }
+    .assistant-history {
+      flex: 1;
+      overflow: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding-right: 6px;
+      margin-bottom: 18px;
+    }
+    .assistant-message {
+      border-radius: 18px;
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.02);
+      animation: rise 220ms ease;
+    }
+    .assistant-message.user {
+      background: rgba(109, 216, 255, 0.08);
+      border-color: rgba(109, 216, 255, 0.2);
+    }
+    .assistant-message-label {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mint);
+      margin-bottom: 8px;
+    }
+    .assistant-message-body p + p {
+      margin-top: 10px;
+    }
+    .assistant-form {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+    }
+    .assistant-form textarea {
+      min-height: 104px;
+      resize: vertical;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(3, 13, 12, 0.7);
+      color: var(--text);
+      padding: 16px 18px;
+      font: inherit;
+    }
+    .assistant-form button {
+      align-self: stretch;
+      min-width: 148px;
+    }
+    .assistant-sidebar {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      position: sticky;
+      top: 86px;
+    }
+    .sidebar-block h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+    .sidebar-block p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .recommendation-card {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      background: rgba(143, 255, 211, 0.04);
+    }
+    .recommendation-label {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .recommendation-card h3 {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+    .recommendation-card p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+    .recommendation-link {
+      color: var(--mint);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .packet-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .packet-button,
+    .packet-download {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--muted);
+      font: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 160ms;
+    }
+    .packet-button:hover,
+    .packet-download:hover {
+      border-color: var(--line-bright);
+      color: var(--mint);
+    }
+    .packet-preview {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(3, 13, 12, 0.78);
+      color: var(--muted);
+      padding: 14px 16px;
+      font-size: 12px;
+      line-height: 1.55;
+      white-space: pre-wrap;
+      word-break: break-word;
+      max-height: 320px;
+      overflow: auto;
+    }
+    .lane-grid,
+    .catalog-grid {
+      display: grid;
+      gap: 16px;
+    }
+    .lane-grid {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .catalog-grid {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+    .lane-card,
+    .catalog-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 20px;
+      transition: all 180ms;
+    }
+    .lane-card:hover,
+    .catalog-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--line-bright);
+    }
+    .lane-name,
+    .catalog-type {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mint);
+      margin-bottom: 10px;
+    }
+    .lane-card p,
+    .catalog-card p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+    .lane-card a,
+    .catalog-actions a {
+      color: var(--mint);
+      font-size: 14px;
+      font-weight: 700;
+      margin-right: 14px;
+    }
+    .catalog-card h3 {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+    .catalog-card.restricted {
+      border-color: rgba(255, 153, 141, 0.22);
+      background: rgba(255, 153, 141, 0.03);
+    }
+    .catalog-list {
+      list-style: none;
+      margin: 0 0 14px;
+      display: grid;
+      gap: 8px;
+    }
+    .catalog-list li {
+      color: var(--muted);
+      font-size: 14px;
+      padding-left: 16px;
+      position: relative;
+    }
+    .catalog-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--mint);
+      opacity: 0.8;
+    }
+    .catalog-boundary {
+      color: #ffb1a8;
+    }
+    .catalog-section {
+      padding: 24px;
+    }
+    .catalog-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+    .catalog-header h2 {
+      font-size: clamp(28px, 4vw, 40px);
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 6px;
+    }
+    .catalog-header p {
+      color: var(--muted);
+      max-width: 56ch;
+    }
+    .section-stack {
+      display: grid;
+      gap: 18px;
+    }
+    .section-stack + .section-stack {
+      margin-top: 24px;
+    }
+    .section-stack h3 {
+      font-size: 20px;
+    }
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 32px 24px 48px;
+      color: var(--dim);
+      font-size: 13px;
+    }
+    .footer-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .footer-left {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .footer-left .footer-brand {
+      color: var(--muted);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+    .footer-links-row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-links-row a:hover {
+      color: var(--mint);
+    }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 1024px) {
+      .hero-grid,
+      .assistant-shell {
+        grid-template-columns: 1fr;
+      }
+      .assistant-sidebar {
+        position: static;
+      }
+    }
+    @media (max-width: 768px) {
+      .nav {
+        display: none;
+      }
+      .nav.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: rgba(3, 13, 12, 0.96);
+        padding: 16px 24px;
+        border-bottom: 1px solid var(--line);
+        gap: 4px;
+        z-index: 200;
+      }
+      .nav.open a {
+        padding: 10px 12px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+      }
+      .mobile-toggle {
+        display: block;
+      }
+      .assistant-form {
+        grid-template-columns: 1fr;
+      }
+      .assistant-form button {
+        min-width: 0;
+      }
+    }
+    @media (max-width: 480px) {
+      .hero,
+      .section {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">SCBE-AETHERMOORE</a>
+      <button class="mobile-toggle" onclick="document.querySelector('.nav').classList.toggle('open')" aria-label="Toggle navigation">&#9776;</button>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="assistant.html" class="nav-cta">Assistant</a>
+        <a href="tools.html">Tools</a>
+        <a href="support.html">Support</a>
+        <a href="product-manual/index.html">Manuals</a>
+        <a href="research/index.html">Research</a>
+        <a href="book.html">Book</a>
+        <a href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-inner hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="dot"></span>Assistant Surface</div>
+          <h1><span class="gradient">Polly is the front desk</span> for the system.</h1>
+          <p>This is the first place to start. Polly routes people into tools, public product buckets, manuals, support, research, or the book before the system spends extra effort reasoning.</p>
+          <div class="hero-points">
+            <span>Route first</span>
+            <span>Public work stays public</span>
+            <span>Restricted lanes stay gated</span>
+            <span>One place to start</span>
+          </div>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="#assistant-console">Open the assistant</a>
+            <a class="btn btn-secondary" href="#catalog">Browse public product buckets</a>
+          </div>
+        </div>
+        <aside class="hero-panel">
+          <h2>What Polly is for</h2>
+          <p>Use Polly when you want one sentence turned into the right next route: a live tool, a package, a custom public build, or a support path.</p>
+          <div id="assistant-status" class="status-card">
+            <div class="status-label">Starting</div>
+            <div class="status-detail">Loading the route map and catalog.</div>
+          </div>
+          <div class="quick-actions">
+            <button type="button" data-assistant-prompt="I need a custom assistant for my site that routes users and products.">
+              <strong>Custom assistant build</strong>
+              <span>Route me into a public site-and-assistant setup lane.</span>
+            </button>
+            <button type="button" data-assistant-prompt="I want to compare the public packages and see which one fits my workflow.">
+              <strong>Compare public packages</strong>
+              <span>Point me at the right manual or product bucket.</span>
+            </button>
+            <button type="button" data-assistant-prompt="This is government or proprietary work and I need to know the right boundary.">
+              <strong>Check a gated lane</strong>
+              <span>Keep protected work separate from the public surface.</span>
+            </button>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="assistant-console">
+      <div class="section-inner assistant-shell">
+        <section class="assistant-console">
+          <div class="console-header">
+            <div>
+              <div class="eyebrow">Route-First Chat</div>
+              <h2>Tell Polly what you want to do.</h2>
+              <p>Describe the job, the product, the issue, or the workflow. Polly will point to the right lane first, then use the backend when it is available.</p>
+            </div>
+          </div>
+          <div id="assistant-history" class="assistant-history" aria-live="polite"></div>
+          <form id="assistant-form" class="assistant-form">
+            <textarea id="assistant-input" placeholder="Example: I need a public-facing assistant for my website that can route buyers, support issues, and custom product requests."></textarea>
+            <button class="btn btn-primary" type="submit">Route it</button>
+          </form>
+        </section>
+
+        <aside class="assistant-sidebar">
+          <section class="sidebar-block">
+            <div class="eyebrow">Current Recommendation</div>
+            <div id="assistant-recommendation" class="recommendation-card"></div>
+          </section>
+          <section class="sidebar-block">
+            <h3>Operator handoff</h3>
+            <p>Generate a compact task packet that Cursor or Codex can execute without reconstructing the whole request.</p>
+            <div class="packet-actions">
+              <button type="button" id="assistant-packet-copy" class="packet-button">Copy JSON</button>
+              <a id="assistant-packet-download" class="packet-download" href="#" download="scbe-task-packet.json">Download packet</a>
+            </div>
+            <pre id="assistant-packet" class="packet-preview">{
+  "packet_type": "scbe_operator_handoff",
+  "note": "Submit a request to generate a live handoff packet."
+}</pre>
+          </section>
+          <section class="sidebar-block">
+            <h3>Visible lanes</h3>
+            <p>These are the stable surfaces Polly can point at without inventing new structure on the fly.</p>
+          </section>
+          <div id="assistant-lanes" class="lane-grid"></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="catalog">
+      <div class="section-inner catalog-section">
+        <div class="catalog-header">
+          <div>
+            <div class="eyebrow">Things We Can Sell Bucket</div>
+            <h2>Public packages, public builds, and hard boundaries.</h2>
+            <p>The assistant only sells what belongs on the public site. Anything proprietary, government-linked, or high-assurance stays behind a gate.</p>
+          </div>
+        </div>
+        <div class="section-stack">
+          <div>
+            <h3>Public packages</h3>
+          </div>
+          <div id="public-products" class="catalog-grid"></div>
+        </div>
+        <div class="section-stack">
+          <div>
+            <h3>Custom public builds</h3>
+          </div>
+          <div id="custom-buckets" class="catalog-grid"></div>
+        </div>
+        <div class="section-stack">
+          <div>
+            <h3>Restricted lanes</h3>
+          </div>
+          <div id="restricted-buckets" class="catalog-grid"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <span class="footer-brand">SCBE-AETHERMOORE</span>
+        <span>One front door for tools, products, support, proof, and gated boundaries.</span>
+        <span>Public site first. Protected work stays protected.</span>
+      </div>
+      <div class="footer-links-row">
+        <a href="tools.html">Tools</a>
+        <a href="support.html">Support</a>
+        <a href="product-manual/index.html">Manuals</a>
+        <a href="research/index.html">Research</a>
+        <a href="mailto:aethermoregames@pm.me?subject=SCBE%20Assistant%20Inquiry">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    window.__POLLY_BACKEND_HTTP__ = window.__POLLY_BACKEND_HTTP__ || "http://localhost:8001";
+  </script>
+  <script src="static/polly-assistant.js"></script>
+</body>
+</html>

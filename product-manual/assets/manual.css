@@ -75,10 +75,23 @@ img { max-width: 100%; }
   font-size: 0.95rem;
 }
 
+.nav-links a.nav-cta {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(143, 255, 211, 0.12);
+  border: 1px solid rgba(143, 255, 211, 0.25);
+  color: var(--mint);
+}
+
 .nav-links a:hover,
 .nav-links a.current {
   color: #fff;
   text-decoration: none;
+}
+
+.nav-links a.nav-cta:hover {
+  color: var(--mint);
+  background: rgba(143, 255, 211, 0.18);
 }
 
 .hero {

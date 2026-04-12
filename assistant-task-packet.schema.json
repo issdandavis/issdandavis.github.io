@@ -1,0 +1,149 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aethermoore.com/assistant-task-packet.schema.json",
+  "title": "SCBE Operator Handoff Packet",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "packet_version",
+    "packet_type",
+    "created_at",
+    "source",
+    "request",
+    "routing",
+    "execution",
+    "context",
+    "next_step"
+  ],
+  "properties": {
+    "packet_version": {
+      "type": "string"
+    },
+    "packet_type": {
+      "const": "scbe_operator_handoff"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["site", "surface", "url"],
+      "properties": {
+        "site": {
+          "const": "https://aethermoore.com"
+        },
+        "surface": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "request": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["text", "lane", "intent", "summary"],
+      "properties": {
+        "text": {
+          "type": "string"
+        },
+        "lane": {
+          "type": "string",
+          "enum": ["route", "product", "custom", "restricted"]
+        },
+        "intent": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "string"
+        }
+      }
+    },
+    "routing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["target_surface", "target_url"],
+      "properties": {
+        "target_surface": {
+          "type": ["string", "null"]
+        },
+        "target_url": {
+          "type": ["string", "null"],
+          "format": "uri"
+        }
+      }
+    },
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "visibility",
+        "preferred_operator",
+        "repo_targets",
+        "needs_human_review"
+      ],
+      "properties": {
+        "visibility": {
+          "type": "string",
+          "enum": ["public", "gated"]
+        },
+        "preferred_operator": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "repo_targets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "repo", "reason"],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "repo": {
+                "type": "string"
+              },
+              "reason": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "needs_human_review": {
+          "type": "boolean"
+        }
+      }
+    },
+    "context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["routing_map", "catalog", "llms"],
+      "properties": {
+        "routing_map": {
+          "type": "string",
+          "format": "uri"
+        },
+        "catalog": {
+          "type": "string",
+          "format": "uri"
+        },
+        "llms": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "next_step": {
+      "type": "string"
+    }
+  }
+}
+
