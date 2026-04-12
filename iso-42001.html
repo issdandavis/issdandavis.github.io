@@ -368,7 +368,7 @@
           <a class="btn btn-secondary" href="#deliverables">See the framework</a>
         </div>
         <div class="hero-meta">
-          <span><span class="pip"></span> 6,066 adversarial tests</span>
+          <span><span class="pip"></span> 91 red team prompts &middot; 0 false positives</span>
           <span><span class="pip"></span> ISO 42001 clause-mapped</span>
           <span><span class="pip"></span> SR 11-7 ready</span>
           <span><span class="pip"></span> NDA on day one</span>
@@ -436,13 +436,17 @@
         <span class="section-label">What We Deliver</span>
         <h2 class="section-title">Evidence, not slideware.</h2>
         <p class="section-subtitle">Four deliverables. Every one of them ends up in a binder on your auditor's desk.</p>
+        <div style="margin:-4px 0 28px; padding:14px 18px; border:1px solid var(--line); border-radius:10px; background:rgba(143,255,211,0.05);">
+          <a href="/research/evidence.html#compliance" style="color:var(--mint); font-weight:600;">150/150 compliance tests across 13 frameworks &rarr;</a>
+          <span style="color:var(--muted); margin-left:8px; font-size:14px;">Real, reproducible, hash-signed. See the evidence ledger.</span>
+        </div>
 
         <div class="cards-grid">
           <div class="card">
             <div class="card-badge badge-mint">Deliverable 01</div>
             <div class="card-icon">&#128202;</div>
             <h3>Test evidence package</h3>
-            <p>JSONL output of 6,066 adversarial tests run against your LLM, mapped line-by-line to ISO 42001 clauses.</p>
+            <p>JSONL output of 91 red team prompts (0 false positives) run against your LLM, mapped line-by-line to ISO 42001 clauses, plus the 150/150 compliance test run across 13 frameworks.</p>
             <ul class="card-details">
               <li>Full L1&ndash;L6 test pyramid output</li>
               <li>Clause-tagged pass/fail records</li>
@@ -609,15 +613,16 @@
         <div class="tech-card">
           <h3>SCBE-AETHERMOORE</h3>
           <p>A 14-layer governance pipeline that maps AI inputs into a 6-dimensional hyperbolic space, where adversarial perturbations get priced out by the curvature function <strong style="color:var(--mint);">H(d, R) = R<sup>d&sup2;</sup></strong>. Patent pending (USPTO #63/961,403).</p>
-          <p>The core is open source. The test pyramid runs 6,066 adversarial cases across six tiers, from basic input validation up through full red-team adversarial simulation. Every test run produces hash-signed, timestamped artifacts that drop directly into an evidence binder.</p>
+          <p>The core is open source. The red team benchmark runs 91 prompts that block at 91/91 with 0 false positives, plus 150 compliance tests across 13 frameworks, across six tiers from basic input validation up through full red-team adversarial simulation. Every run produces hash-signed, timestamped artifacts that drop directly into an evidence binder.</p>
           <div class="tech-meta">
-            <span><span class="pip"></span> 6,066 passing tests</span>
+            <span><span class="pip"></span> 99.42% combined AUC &middot; 91/91 red team</span>
             <span><span class="pip"></span> Patent pending USPTO #63/961,403</span>
             <span><span class="pip"></span> Open-source core</span>
             <span><span class="pip"></span> Hash-signed artifacts</span>
           </div>
-          <div style="margin-top:22px;">
+          <div style="margin-top:22px; display:flex; gap:12px; flex-wrap:wrap;">
             <a class="btn btn-primary" href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank" rel="noopener">View the repo on GitHub</a>
+            <a class="btn btn-secondary" href="/research/evidence.html">See the real numbers (honest evidence ledger) &rarr;</a>
           </div>
         </div>
       </div>
