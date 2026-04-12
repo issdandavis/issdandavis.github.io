@@ -66,6 +66,54 @@
     ]
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What LLMs do you test?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Any. OpenAI, Anthropic, local open-weights (Llama, Mistral, Qwen), custom fine-tunes, and agent frameworks including LangChain, LlamaIndex, CrewAI, and bespoke orchestration. If it takes a prompt and returns a response, we can attack it."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do we get you access?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "API key plus endpoint URL, or sandbox credentials you provision. An NDA is signed before any keys are exchanged. Keys are rotated at the end of the engagement and we document every call we made during testing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this disruptive to production?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. We run against a staging endpoint you provision specifically for the engagement. Zero impact on production. If you can't stand up a staging environment we can work against a replica, but we never touch live traffic."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can we get the raw test data?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. JSONL output is included at every tier -- Quick Scan, Deep Engagement, and Retainer. You own the data. Feed it to your GRC tooling, your SIEM, or your own audit process."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you find vulnerabilities in the LLM itself?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We find vulnerabilities in your application's use of the LLM. LLM vendor issues -- model weights, tokenizer bugs, training data contamination at the vendor level -- are out of scope. If we happen to find one we will flag it, but the engagement targets your deployment."
+        }
+      }
+    ]
+  }
+  </script>
   <style>:root {
       --bg: #071412; --bg-deep: #04100f; --bg-soft: #0d1d1a;
       --panel: rgba(10, 28, 24, 0.82); --panel-strong: rgba(8, 24, 20, 0.94);

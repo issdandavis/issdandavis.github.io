@@ -84,6 +84,54 @@
     ]
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does this work with any LLM?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. OpenAI, Anthropic, Google, local models (Llama, Mistral, Qwen), any HTTP API. The Guardrail is model-agnostic -- it evaluates the output, not the weights. If your model can return text, we can check it."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How fast is it?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Less than 100ms added latency per message, measured at the 95th percentile. The policy manifold check runs in parallel with a deterministic refund-ceiling check, and the audit log is written asynchronously."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can we bring our own policies?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Policies are YAML or JSON files, versioned in your repo alongside the rest of your infrastructure. Change control, code review, and rollback are git operations you already know. No policy is ever edited through a hosted dashboard without leaving an audit trail."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens on a policy violation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Configurable per rule: block the message entirely, escalate to a human agent, or rewrite the response using a safe template. You choose the default, and you can override per policy. Every action is logged."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a free trial?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes -- 30 days, up to 1,000 messages, with the full Starter feature set. Email us to get provisioned; no credit card required to start."
+        }
+      }
+    ]
+  }
+  </script>
   <style>:root {
       --bg: #071412; --bg-deep: #04100f; --bg-soft: #0d1d1a;
       --panel: rgba(10, 28, 24, 0.82); --panel-strong: rgba(8, 24, 20, 0.94);
