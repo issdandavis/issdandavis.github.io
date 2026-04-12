@@ -42,11 +42,15 @@
        22 chapters, 70K words. The novel that teaches the SCBE framework through story.
        Buy: https://www.amazon.com/dp/B0F28PHSPR
 
-    6. Training Data (Gumroad):
-       - Lore Verbatim Pack — $99 (12,500+ paragraphs of worldbuilding data)
-       - Technical Core — $299 (50,000+ verified pairs for 14-layer alignment)
-       - Red Team Fortress — $999 (adversarial dataset, labeled by failure layer L1-L14)
-       All at: https://issdandavis.gumroad.com
+    6. Training Data (sold direct on aethermoore.com/datasets.html):
+       - SCBE Governance SFT Pack — $99 (5,188 SFT pairs)
+       - Red Team Fortress — $149 (91 adversarial prompts, labeled by layer L1-L14)
+       - Theory Documents Bundle — $129 (architecture, crypto, attacks, conlang, patent)
+       - Six Tongues Conlang Pack — $79 (tokenization theory + session transcripts)
+       - Spiralverse Session Transcripts — $49 (48 files, RPG/game AI training)
+       - The Full Arsenal — $399 (everything above, save $107)
+       All at: https://aethermoore.com/datasets.html
+       Contact: aethermoregames@pm.me
 
     7. SCBE-AETHERMOORE (Open Source) — FREE, MIT licensed
        The full 14-layer pipeline, Sacred Tongues, and hyperbolic cost engine.

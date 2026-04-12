@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Training Data Marketplace | SCBE-AETHERMOORE</title>
+  <meta name="description" content="Buy curated AI training datasets: governance SFT pairs, red team benchmarks, conlang tokenization packs, and session transcripts. QLoRA-ready JSONL format.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta property="og:title" content="Training Data Marketplace | SCBE-AETHERMOORE">
+  <meta property="og:description" content="High-fidelity training datasets for AI governance, adversarial testing, and creative fine-tuning. From the creators of the 14-layer SCBE pipeline.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aethermoore.com/datasets.html">
+  <meta property="og:image" content="https://aethermoore.com/hero.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Training Data Marketplace | SCBE-AETHERMOORE">
+  <meta name="twitter:description" content="Buy curated AI training datasets for governance, red teaming, conlang research, and creative fine-tuning.">
+  <meta name="twitter:image" content="https://aethermoore.com/hero.png">
+  <link rel="canonical" href="https://aethermoore.com/datasets.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://aethermoore.com/#org",
+        "name": "SCBE-AETHERMOORE",
+        "url": "https://aethermoore.com/",
+        "logo": "https://aethermoore.com/favicon.svg",
+        "email": "aethermoregames@pm.me"
+      },
+      {
+        "@type": "Product",
+        "name": "SCBE Governance SFT Pack",
+        "description": "5,188 supervised fine-tuning pairs covering governance, system-level instructions, and codebase understanding. Includes merged_sft.jsonl, sft_governance.jsonl (1,016 pairs), sft_system.jsonl (3,395 pairs). JSONL, QLoRA-ready.",
+        "brand": { "@type": "Brand", "name": "AetherMoore" },
+        "category": "AI Training Data",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "USD",
+          "price": "99",
+          "availability": "https://schema.org/InStock",
+          "url": "https://aethermoore.com/datasets.html#governance-sft"
+        }
+      },
+      {
+        "@type": "Product",
+        "name": "Red Team Fortress",
+        "description": "91 adversarial attack prompts across 10 categories, labeled by failure layer (L1-L14). Includes compliance evals and attack scenario theory docs. JSONL format.",
+        "brand": { "@type": "Brand", "name": "AetherMoore" },
+        "category": "AI Training Data",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "USD",
+          "price": "149",
+          "availability": "https://schema.org/InStock",
+          "url": "https://aethermoore.com/datasets.html#red-team"
+        }
+      },
+      {
+        "@type": "Product",
+        "name": "Six Tongues Conlang + Tokenization Pack",
+        "description": "Constructed language design docs, tokenization theory, bijective encoding patterns. Includes theory_doc_conlang_intent.jsonl, tongues session transcripts, spiralverse codex SFT. JSONL format.",
+        "brand": { "@type": "Brand", "name": "AetherMoore" },
+        "category": "AI Training Data",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "USD",
+          "price": "79",
+          "availability": "https://schema.org/InStock",
+          "url": "https://aethermoore.com/datasets.html#conlang"
+        }
+      },
+      {
+        "@type": "Product",
+        "name": "Spiralverse Session Transcripts",
+        "description": "48 session transcript files across 11 categories. ~400KB of structured RPG/worldbuilding dialogue. JSONL format.",
+        "brand": { "@type": "Brand", "name": "AetherMoore" },
+        "category": "AI Training Data",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "USD",
+          "price": "49",
+          "availability": "https://schema.org/InStock",
+          "url": "https://aethermoore.com/datasets.html#spiralverse"
+        }
+      },
+      {
+        "@type": "Product",
+        "name": "Theory Documents Bundle",
+        "description": "6 deep-dive theory documents: architecture theory, spiralverse lore, security attacks, geoseal crypto, conlang intent, patent claims. JSONL structured Q&A pairs.",
+        "brand": { "@type": "Brand", "name": "AetherMoore" },
+        "category": "AI Training Data",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "USD",
+          "price": "129",
+          "availability": "https://schema.org/InStock",
+          "url": "https://aethermoore.com/datasets.html#theory"
+        }
+      },
+      {
+        "@type": "Product",
+        "name": "The Full Arsenal",
+        "description": "Everything in one download: 5,188+ SFT pairs, 91 red team prompts, 6 theory docs, 48 session transcripts, conlang pack, context capsules, knowledge base files, and eval suites. ~52MB total.",
+        "brand": { "@type": "Brand", "name": "AetherMoore" },
+        "category": "AI Training Data",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "USD",
+          "price": "399",
+          "availability": "https://schema.org/InStock",
+          "url": "https://aethermoore.com/datasets.html#full-arsenal"
+        }
+      }
+    ]
+  }
+  </script>
+  <style>:root {
+      --bg: #071412; --bg-deep: #04100f; --bg-soft: #0d1d1a;
+      --panel: rgba(10, 28, 24, 0.82); --panel-strong: rgba(8, 24, 20, 0.94);
+      --line: rgba(139, 255, 223, 0.15); --line-bright: rgba(139, 255, 223, 0.30);
+      --text: #e7fff7; --muted: #9bc5ba; --dim: #6a9488;
+      --mint: #8fffd3; --aqua: #6dd8ff; --gold: #ffd977;
+      --rose: #ff9ec7; --violet: #c49cff;
+      --shadow: 0 30px 80px rgba(0, 0, 0, 0.45); --max: 1220px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(ellipse at 15% 8%, rgba(109,216,255,0.10), transparent 32%),
+        radial-gradient(ellipse at 80% 5%, rgba(143,255,211,0.12), transparent 28%),
+        linear-gradient(180deg, var(--bg-deep) 0%, var(--bg) 30%, var(--bg-soft) 100%);
+      color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .topbar { position: sticky; top: 0; z-index: 100; backdrop-filter: blur(16px); background: rgba(4,16,15,0.85); border-bottom: 1px solid var(--line); }
+    .topbar-inner { max-width: var(--max); margin: 0 auto; padding: 0 24px; min-height: 60px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mint); font-weight: 700; white-space: nowrap; }
+    .nav { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav a { padding: 6px 12px; border-radius: 8px; font-size: 13px; font-weight: 500; color: var(--muted); transition: all 150ms; }
+    .nav a:hover { color: var(--text); background: rgba(143,255,211,0.08); }
+    .nav a.nav-cta { background: rgba(143,255,211,0.12); color: var(--mint); border: 1px solid rgba(143,255,211,0.25); }
+    .nav a.nav-cta:hover { background: rgba(143,255,211,0.20); }
+    .nav a.nav-commercial { background: rgba(255,217,119,0.12); color: var(--gold); border: 1px solid rgba(255,217,119,0.25); }
+    .nav a.nav-commercial:hover { background: rgba(255,217,119,0.20); }
+    .nav a.nav-active { color: var(--text); background: rgba(143,255,211,0.10); }
+    .mobile-toggle { display: none; background: none; border: none; color: var(--mint); font-size: 24px; cursor: pointer; padding: 8px; }
+    .section { padding: 80px 24px; }
+    .section-inner { max-width: var(--max); margin: 0 auto; }
+    .section-label { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mint); margin-bottom: 16px; padding: 4px 12px; border-radius: 20px; background: rgba(143,255,211,0.08); border: 1px solid rgba(143,255,211,0.15); }
+    .section-title { font-size: clamp(28px, 4.5vw, 48px); font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 16px; }
+    .section-subtitle { color: var(--muted); font-size: clamp(16px, 2vw, 20px); max-width: 64ch; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 24px; border-radius: 12px; font-size: 15px; font-weight: 600; border: 1px solid transparent; transition: all 180ms; cursor: pointer; text-decoration: none; }
+    .btn-primary { background: linear-gradient(135deg, rgba(143,255,211,0.18), rgba(109,216,255,0.12)); border-color: rgba(143,255,211,0.35); color: var(--mint); }
+    .btn-primary:hover { background: linear-gradient(135deg, rgba(143,255,211,0.28), rgba(109,216,255,0.18)); transform: translateY(-1px); }
+    .btn-secondary { border-color: var(--line); color: var(--muted); }
+    .btn-secondary:hover { border-color: var(--line-bright); color: var(--text); }
+    .btn-gold { background: linear-gradient(135deg, rgba(255,217,119,0.18), rgba(240,191,103,0.10)); border-color: rgba(255,217,119,0.35); color: var(--gold); }
+    .btn-gold:hover { background: linear-gradient(135deg, rgba(255,217,119,0.28), rgba(240,191,103,0.18)); transform: translateY(-1px); }
+    .btn-rose { background: linear-gradient(135deg, rgba(255,158,199,0.18), rgba(255,158,199,0.10)); border-color: rgba(255,158,199,0.35); color: var(--rose); }
+    .btn-rose:hover { background: linear-gradient(135deg, rgba(255,158,199,0.28), rgba(255,158,199,0.18)); transform: translateY(-1px); }
+    .footer { border-top: 1px solid var(--line); padding: 32px 24px 48px; color: var(--dim); font-size: 13px; }
+    .footer-inner { max-width: var(--max); margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; flex-wrap: wrap; }
+    .footer-left { display: flex; flex-direction: column; gap: 6px; }
+    .footer-left .footer-brand { color: var(--muted); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; font-size: 12px; }
+    .footer-links-row { display: flex; gap: 16px; flex-wrap: wrap; }
+    .footer-links-row a { color: var(--dim); transition: color 150ms; }
+    .footer-links-row a:hover { color: var(--mint); }
+
+    /* Hero */
+    .hero { padding: 100px 24px 80px; position: relative; overflow: hidden; }
+    .hero::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 30% 30%, rgba(143,255,211,0.06), transparent 50%), radial-gradient(ellipse at 70% 60%, rgba(109,216,255,0.04), transparent 40%); }
+    .hero-inner { max-width: var(--max); margin: 0 auto; position: relative; z-index: 1; }
+    .hero h1 { font-size: clamp(40px, 7vw, 72px); font-weight: 800; line-height: 0.95; letter-spacing: -0.04em; margin-bottom: 24px; max-width: 18ch; }
+    .hero h1 .gradient { background: linear-gradient(135deg, var(--gold), var(--violet)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-desc { font-size: clamp(17px, 2vw, 21px); color: var(--muted); max-width: 58ch; margin-bottom: 32px; line-height: 1.65; }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 28px; }
+    .hero-meta { display: flex; gap: 24px; flex-wrap: wrap; color: var(--dim); font-size: 13px; }
+    .hero-meta span { display: flex; align-items: center; gap: 6px; }
+    .hero-meta .pip { width: 5px; height: 5px; border-radius: 50%; background: var(--mint); opacity: 0.6; }
+    .hero-inner { filter: drop-shadow(0 0 30px rgba(196, 156, 255, 0.2)); }
+
+    /* Product cards */
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 32px; }
+    .product-card { position: relative; background: var(--panel); border: 1px solid var(--line); border-radius: 20px; padding: 28px; display: flex; flex-direction: column; transition: all 200ms; }
+    .product-card:hover { border-color: var(--line-bright); transform: translateY(-3px); box-shadow: var(--shadow); }
+    .product-badge { position: absolute; top: 16px; right: 16px; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border-radius: 8px; }
+    .badge-live { background: rgba(109,216,255,0.12); color: var(--aqua); border: 1px solid rgba(109,216,255,0.25); }
+    .badge-free { background: rgba(143,255,211,0.12); color: var(--mint); border: 1px solid rgba(143,255,211,0.25); }
+    .badge-bundle { background: rgba(255,217,119,0.15); color: var(--gold); border: 1px solid rgba(255,217,119,0.25); }
+    .badge-enterprise { background: rgba(196,156,255,0.12); color: var(--violet); border: 1px solid rgba(196,156,255,0.25); }
+    .badge-rose { background: rgba(255,158,199,0.12); color: var(--rose); border: 1px solid rgba(255,158,199,0.25); }
+    .product-icon { font-size: 32px; margin-bottom: 16px; }
+    .product-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+    .product-card p { color: var(--muted); font-size: 15px; line-height: 1.55; margin-bottom: 12px; }
+    .product-card .product-link { font-size: 14px; font-weight: 600; color: var(--mint); }
+    .product-card .product-link:hover { text-decoration: underline; }
+    .product-card code { display: inline-block; font-size: 13px; padding: 3px 8px; border-radius: 6px; background: rgba(143,255,211,0.08); color: var(--mint); font-family: "SF Mono", Consolas, monospace; }
+    .product-price { font-weight: 800; font-size: 28px; color: var(--mint); margin-bottom: 8px; }
+    .product-price .was { font-size: 16px; color: var(--dim); text-decoration: line-through; font-weight: 500; margin-left: 8px; }
+    .product-price .save { font-size: 12px; color: var(--gold); font-weight: 700; margin-left: 8px; text-decoration: none; }
+    .product-details { list-style: none; margin-bottom: 16px; flex: 1; }
+    .product-details li { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: var(--muted); margin-bottom: 8px; line-height: 1.45; }
+    .product-details li::before { content: "\2713"; color: var(--mint); font-weight: 800; flex-shrink: 0; }
+    .product-format { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 8px; border-radius: 6px; background: rgba(143,255,211,0.08); color: var(--mint); margin-bottom: 16px; }
+
+    /* Cel-shaded look */
+    .product-card, .model-card, .stat-card {
+      border: 2px solid #000 !important;
+      box-shadow: 4px 4px 0px rgba(196, 156, 255, 0.2);
+    }
+
+    /* Model cards */
+    .models-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin-top: 32px; }
+    .model-card { display: block; padding: 22px; border-radius: 16px; background: var(--panel); border: 1px solid var(--line); transition: all 200ms; }
+    .model-card:hover { border-color: var(--line-bright); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+    .model-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+    .model-card p { color: var(--muted); font-size: 13px; line-height: 1.5; margin-bottom: 10px; }
+    .model-card .model-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border-radius: 6px; background: rgba(196,156,255,0.12); color: var(--violet); margin-right: 6px; }
+    .model-card .model-tag.tag-mint { background: rgba(143,255,211,0.12); color: var(--mint); }
+    .model-card .model-tag.tag-aqua { background: rgba(109,216,255,0.12); color: var(--aqua); }
+    .model-card .model-tag.tag-gold { background: rgba(255,217,119,0.12); color: var(--gold); }
+    .model-card .model-icon { font-size: 24px; margin-bottom: 10px; }
+
+    /* Stats */
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; margin-top: 32px; }
+    .stat-card { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 24px; text-align: center; }
+    .stat-card .stat-number { font-size: 32px; font-weight: 800; line-height: 1; margin-bottom: 6px; }
+    .stat-card .stat-label { color: var(--muted); font-size: 13px; line-height: 1.4; }
+    .stat-mint .stat-number { color: var(--mint); }
+    .stat-aqua .stat-number { color: var(--aqua); }
+    .stat-gold .stat-number { color: var(--gold); }
+    .stat-rose .stat-number { color: var(--rose); }
+    .stat-violet .stat-number { color: var(--violet); }
+
+    /* CTA banner */
+    .cta-banner { background: var(--panel-strong); border: 1px solid var(--line); border-radius: 24px; padding: 48px; text-align: center; margin-top: 40px; }
+    .cta-banner h3 { font-size: clamp(24px, 3.5vw, 36px); font-weight: 700; margin-bottom: 12px; }
+    .cta-banner p { color: var(--muted); font-size: 16px; max-width: 50ch; margin: 0 auto 24px; }
+
+    /* Tongue bar */
+    .tongue-bar {
+      height: 3px;
+      background: linear-gradient(90deg, #2dd3a6, #17c6cf, #ff6b6b, #f0a050, #b07aff, #a8c44a, #2dd3a6);
+      background-size: 200% 100%;
+      animation: tongue-flow 8s linear infinite;
+    }
+    @keyframes tongue-flow {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+
+    /* Aethermoor atmosphere */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      background: radial-gradient(circle at 80% 20%, rgba(255, 217, 119, 0.08), transparent 40%),
+                  linear-gradient(180deg, rgba(196, 156, 255, 0.05) 0%, transparent 100%);
+      mix-blend-mode: soft-light;
+    }
+    .aether-mist {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 9998;
+      opacity: 0.3;
+      background: repeating-linear-gradient(0deg, rgba(255,255,255,0.01) 0px, transparent 1px, transparent 3px);
+      filter: sepia(1) saturate(5) hue-rotate(240deg);
+      animation: mist-drift 60s linear infinite;
+    }
+    @keyframes mist-drift {
+      from { background-position: 0 0; }
+      to { background-position: 1000px 1000px; }
+    }
+
+    /* Particles */
+    .hero-particles .particle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.15;
+      filter: blur(40px);
+      animation: float 20s ease-in-out infinite;
+    }
+    .hero-particles .particle:nth-child(1) { background: #2dd3a6; width: 300px; height: 300px; top: -50px; left: -50px; animation-delay: 0s; }
+    .hero-particles .particle:nth-child(2) { background: #17c6cf; width: 250px; height: 250px; top: 20%; right: -30px; animation-delay: -4s; }
+    .hero-particles .particle:nth-child(3) { background: #ff6b6b; width: 200px; height: 200px; bottom: 10%; left: 20%; animation-delay: -8s; }
+    .hero-particles .particle:nth-child(4) { background: #f0a050; width: 280px; height: 280px; top: 40%; right: 20%; animation-delay: -12s; }
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(30px, -20px) scale(1.1); }
+      50% { transform: translate(-20px, 30px) scale(0.9); }
+      75% { transform: translate(10px, 10px) scale(1.05); }
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .models-grid { grid-template-columns: repeat(2, 1fr); }
+      .stats-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .nav { display: none; }
+      .nav.open { display: flex; flex-direction: column; position: absolute; top: 60px; left: 0; right: 0; background: rgba(4,16,15,0.96); padding: 16px 24px; border-bottom: 1px solid var(--line); gap: 4px; z-index: 200; }
+      .nav.open a { padding: 10px 12px; min-height: 44px; display: flex; align-items: center; }
+      .mobile-toggle { display: block; }
+      .hero h1 { max-width: 100%; }
+      .products-grid { grid-template-columns: 1fr; }
+      .models-grid { grid-template-columns: 1fr 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .btn { min-height: 48px; }
+      .footer-links-row a { padding: 8px 4px; min-height: 44px; display: inline-flex; align-items: center; }
+      .footer-links-row { gap: 8px; }
+      .hero-inner, .section-inner, .footer-inner { overflow-x: hidden; }
+      .cta-banner { padding: 32px 24px; }
+    }
+    @media (max-width: 480px) {
+      .hero { padding: 72px 16px 60px; }
+      .hero-ctas { flex-direction: column; }
+      .section { padding: 60px 16px; }
+      .btn { width: 100%; }
+      .models-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .footer-inner { flex-direction: column; text-align: center; align-items: center; }
+      .footer-links-row { justify-content: center; }
+      .product-card { padding: 20px; }
+      .stat-card { padding: 16px; }
+      .stat-card .stat-number { font-size: 26px; }
+    }
+    @media (hover: none) and (pointer: coarse) {
+      .product-card:hover, .model-card:hover, .stat-card:hover { transform: none; }
+      .btn:active { transform: scale(0.97); }
+      * { -webkit-tap-highlight-color: rgba(143,255,211,0.15); }
+    }
+  </style>
+  <link rel="stylesheet" href="static/polly-sidebar.css">
+</head>
+<body>
+  <div class="aether-mist"></div>
+  <div class="tongue-bar"></div>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">SCBE-AETHERMOORE</a>
+      <button class="mobile-toggle" onclick="document.querySelector('.nav').classList.toggle('open')" aria-label="Toggle navigation">&#9776;</button>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="assistant.html" class="nav-cta">Assistant</a>
+        <a href="tools.html">Tools</a>
+        <a href="demos/index.html">Demos</a>
+        <a href="research/index.html">Research</a>
+        <a href="book.html">Book</a>
+        <a href="datasets.html" class="nav-active nav-commercial">Datasets</a>
+        <a href="arena.html">Arena</a>
+        <a href="profile.html">Profile</a>
+        <a href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+      </div>
+      <div class="hero-inner">
+        <div style="display:inline-flex; align-items:center; gap:8px; padding:6px 16px; border-radius:20px; font-size:12px; font-weight:600; color:var(--gold); letter-spacing:0.06em; background:rgba(255,217,119,0.08); border:1px solid rgba(255,217,119,0.20); margin-bottom:24px;">
+          <span style="width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite;"></span>
+          Training Data Marketplace
+        </div>
+        <h1><span class="gradient">Training data built from a real, running governance system</span></h1>
+        <p class="hero-desc">Every dataset here was generated from SCBE-AETHERMOORE -- a framework with 29,000+ passing tests, a patent-pending architecture, and production-grade security layers. Not synthetic slop. Real governance data.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-gold" href="#individual-packs">Browse Datasets</a>
+          <a class="btn btn-primary" href="#full-arsenal">Get the Full Arsenal</a>
+          <a class="btn btn-secondary" href="#free">Free Resources</a>
+        </div>
+        <div class="hero-meta">
+          <span><span class="pip"></span> 5,188+ SFT pairs</span>
+          <span><span class="pip"></span> 91 red team prompts</span>
+          <span><span class="pip"></span> JSONL / QLoRA-ready</span>
+          <span><span class="pip"></span> Direct purchase</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Stats -->
+    <section class="section" style="padding-top:40px;padding-bottom:40px;background:rgba(0,0,0,0.15);">
+      <div class="section-inner">
+        <div class="stats-grid">
+          <div class="stat-card stat-mint"><div class="stat-number">5,188+</div><div class="stat-label">SFT training pairs</div></div>
+          <div class="stat-card stat-aqua"><div class="stat-number">91</div><div class="stat-label">Red team prompts</div></div>
+          <div class="stat-card stat-gold"><div class="stat-number">48</div><div class="stat-label">Session transcripts</div></div>
+          <div class="stat-card stat-rose"><div class="stat-number">6</div><div class="stat-label">Theory documents</div></div>
+          <div class="stat-card stat-violet"><div class="stat-number">~52MB</div><div class="stat-label">Total dataset size</div></div>
+          <div class="stat-card stat-mint"><div class="stat-number">1,579</div><div class="stat-label">HuggingFace downloads</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tier 1: Individual Packs -->
+    <section class="section" id="individual-packs">
+      <div class="section-inner">
+        <span class="section-label">Tier 1 &mdash; Individual Packs</span>
+        <h2 class="section-title">Targeted datasets for specific use cases.</h2>
+        <p class="section-subtitle">Each pack is self-contained, documented, and ready for QLoRA fine-tuning out of the box.</p>
+
+        <div class="products-grid">
+          <!-- 1. Governance SFT Pack -->
+          <div class="product-card" id="governance-sft">
+            <div class="product-badge badge-live">Governance</div>
+            <div class="product-icon">&#128208;</div>
+            <h3>SCBE Governance SFT Pack</h3>
+            <div class="product-price">$99</div>
+            <p>5,188 supervised fine-tuning pairs covering governance, system-level instructions, and codebase understanding.</p>
+            <ul class="product-details">
+              <li>merged_sft.jsonl -- complete merged dataset</li>
+              <li>sft_governance.jsonl -- 1,016 governance-specific pairs</li>
+              <li>sft_system.jsonl -- 3,395 system instruction pairs</li>
+              <li>Fine-tune any base model to understand AI governance pipelines</li>
+            </ul>
+            <span class="product-format">JSONL &middot; QLoRA-Ready</span>
+            <a class="btn btn-primary" href="mailto:aethermoregames@pm.me?subject=Purchase%3A%20SCBE%20Governance%20SFT%20Pack%20%28%2499%29&body=I%20would%20like%20to%20purchase%20the%20SCBE%20Governance%20SFT%20Pack%20for%20%2499.%0A%0APlease%20send%20me%20payment%20instructions.">Purchase -- $99</a>
+          </div>
+
+          <!-- 2. Red Team Fortress -->
+          <div class="product-card" id="red-team">
+            <div class="product-badge badge-enterprise">Adversarial</div>
+            <div class="product-icon">&#128737;</div>
+            <h3>Red Team Fortress</h3>
+            <div class="product-price">$149</div>
+            <p>91 adversarial attack prompts across 10 categories, labeled by failure layer (L1-L14). Battle-tested against the SCBE pipeline.</p>
+            <ul class="product-details">
+              <li>91 attack prompts across 10 adversarial categories</li>
+              <li>Each prompt labeled by failure layer (L1 through L14)</li>
+              <li>Compliance evals and attack scenario theory docs included</li>
+              <li>Stress-test AI models and build adversarial training sets</li>
+              <li>Also available as a free preview on HuggingFace (95 downloads)</li>
+            </ul>
+            <span class="product-format">JSONL</span>
+            <a class="btn btn-primary" href="mailto:aethermoregames@pm.me?subject=Purchase%3A%20Red%20Team%20Fortress%20%28%24149%29&body=I%20would%20like%20to%20purchase%20the%20Red%20Team%20Fortress%20dataset%20for%20%24149.%0A%0APlease%20send%20me%20payment%20instructions.">Purchase -- $149</a>
+          </div>
+
+          <!-- 3. Six Tongues Conlang Pack -->
+          <div class="product-card" id="conlang">
+            <div class="product-badge badge-rose">Conlang</div>
+            <div class="product-icon">&#127793;</div>
+            <h3>Six Tongues Conlang + Tokenization Pack</h3>
+            <div class="product-price">$79</div>
+            <p>Constructed language design docs, tokenization theory, and bijective encoding patterns from the Six Sacred Tongues system.</p>
+            <ul class="product-details">
+              <li>theory_doc_conlang_intent.jsonl -- language design theory</li>
+              <li>Tongues session transcripts</li>
+              <li>Spiralverse codex SFT pairs</li>
+              <li>Novel tokenization research and conlang AI training</li>
+              <li>Creative AI fine-tuning for unique output patterns</li>
+            </ul>
+            <span class="product-format">JSONL</span>
+            <a class="btn btn-primary" href="mailto:aethermoregames@pm.me?subject=Purchase%3A%20Six%20Tongues%20Conlang%20Pack%20%28%2479%29&body=I%20would%20like%20to%20purchase%20the%20Six%20Tongues%20Conlang%20%2B%20Tokenization%20Pack%20for%20%2479.%0A%0APlease%20send%20me%20payment%20instructions.">Purchase -- $79</a>
+          </div>
+
+          <!-- 4. Spiralverse Session Transcripts -->
+          <div class="product-card" id="spiralverse">
+            <div class="product-badge badge-live">Creative</div>
+            <div class="product-icon">&#127918;</div>
+            <h3>Spiralverse Session Transcripts</h3>
+            <div class="product-price">$49</div>
+            <p>48 session transcript files across 11 categories of structured RPG and worldbuilding dialogue.</p>
+            <ul class="product-details">
+              <li>48 session files: game, NPC roundtable, game design, lore</li>
+              <li>Architecture, tongues, gacha, math, DM, music, space commerce</li>
+              <li>~400KB of structured dialogue data</li>
+              <li>RPG AI training and game NPC dialogue</li>
+              <li>Interactive fiction fine-tuning</li>
+            </ul>
+            <span class="product-format">JSONL</span>
+            <a class="btn btn-primary" href="mailto:aethermoregames@pm.me?subject=Purchase%3A%20Spiralverse%20Session%20Transcripts%20%28%2449%29&body=I%20would%20like%20to%20purchase%20the%20Spiralverse%20Session%20Transcripts%20for%20%2449.%0A%0APlease%20send%20me%20payment%20instructions.">Purchase -- $49</a>
+          </div>
+
+          <!-- 5. Theory Documents Bundle -->
+          <div class="product-card" id="theory">
+            <div class="product-badge badge-enterprise">Research</div>
+            <div class="product-icon">&#128218;</div>
+            <h3>Theory Documents Bundle</h3>
+            <div class="product-price">$129</div>
+            <p>6 deep-dive theory documents covering the full intellectual foundation of the SCBE-AETHERMOORE framework.</p>
+            <ul class="product-details">
+              <li>Architecture theory -- full pipeline design rationale</li>
+              <li>Spiralverse lore -- worldbuilding knowledge injection</li>
+              <li>Security attacks -- adversarial taxonomy and defenses</li>
+              <li>GeoSeal crypto -- bijective encryption theory</li>
+              <li>Conlang intent -- constructed language design principles</li>
+              <li>Patent claims -- USPTO #63/961,403 methodology</li>
+            </ul>
+            <span class="product-format">JSONL &middot; Structured Q&amp;A</span>
+            <a class="btn btn-primary" href="mailto:aethermoregames@pm.me?subject=Purchase%3A%20Theory%20Documents%20Bundle%20%28%24129%29&body=I%20would%20like%20to%20purchase%20the%20Theory%20Documents%20Bundle%20for%20%24129.%0A%0APlease%20send%20me%20payment%20instructions.">Purchase -- $129</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tier 2: The Full Arsenal -->
+    <section class="section" id="full-arsenal" style="background:rgba(0,0,0,0.15);">
+      <div class="section-inner">
+        <span class="section-label">Tier 2 &mdash; Bundle</span>
+        <h2 class="section-title">The Full Arsenal.</h2>
+        <p class="section-subtitle">Everything above in one download. Save $107 versus buying each pack individually.</p>
+
+        <div class="products-grid" style="grid-template-columns:1fr;">
+          <div class="product-card" style="max-width:720px;margin:0 auto;border-color:var(--gold);">
+            <div class="product-badge badge-bundle">Save $107</div>
+            <div class="product-icon" style="font-size:48px;">&#9876;</div>
+            <h3 style="font-size:28px;">The Full Arsenal</h3>
+            <div class="product-price" style="font-size:40px;">$399 <span class="was">$506</span> <span class="save">SAVE $107</span></div>
+            <p>The complete SCBE-AETHERMOORE training data collection. Everything you need to fine-tune a governance-aware AI model from scratch.</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;">
+              <ul class="product-details">
+                <li>5,188+ SFT training pairs</li>
+                <li>91 red team adversarial prompts</li>
+                <li>6 deep-dive theory documents</li>
+                <li>48 session transcripts (11 categories)</li>
+              </ul>
+              <ul class="product-details">
+                <li>Full conlang + tokenization pack</li>
+                <li>Context capsules</li>
+                <li>Knowledge base files</li>
+                <li>Eval suites</li>
+              </ul>
+            </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;">
+              <span class="product-format">JSONL</span>
+              <span class="product-format">~52MB Total</span>
+              <span class="product-format">QLoRA-Ready</span>
+            </div>
+            <a class="btn btn-gold" href="mailto:aethermoregames@pm.me?subject=Purchase%3A%20The%20Full%20Arsenal%20%28%24399%29&body=I%20would%20like%20to%20purchase%20The%20Full%20Arsenal%20bundle%20for%20%24399.%0A%0APlease%20send%20me%20payment%20instructions." style="font-size:17px;padding:16px 32px;">Purchase The Full Arsenal -- $399</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tier 3: Free / Open Source -->
+    <section class="section" id="free">
+      <div class="section-inner">
+        <span class="section-label">Tier 3 &mdash; Free / Open Source</span>
+        <h2 class="section-title">Start here for free.</h2>
+        <p class="section-subtitle">The framework is MIT-licensed. The HuggingFace datasets are free to download. No strings attached.</p>
+
+        <div class="products-grid">
+          <!-- SCBE Open Source -->
+          <div class="product-card" id="open-source">
+            <div class="product-badge badge-free">MIT Licensed</div>
+            <div class="product-icon">&#128737;</div>
+            <h3>SCBE-AETHERMOORE</h3>
+            <div class="product-price" style="color:var(--mint);">FREE</div>
+            <p>The full 14-layer pipeline, Sacred Tongues, and hyperbolic cost engine. Open source and production-ready.</p>
+            <ul class="product-details">
+              <li>Full 14-layer security pipeline</li>
+              <li>Sacred Tongues tokenizers</li>
+              <li>Hyperbolic cost scaling (H(d,R) = R^(d&sup2;))</li>
+              <li>29,000+ passing tests</li>
+            </ul>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;">
+              <code>npm i scbe-aethermoore</code>
+            </div>
+            <a class="btn btn-secondary" href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank" rel="noopener">View on GitHub</a>
+          </div>
+
+          <!-- HuggingFace Datasets -->
+          <div class="product-card" id="huggingface-datasets">
+            <div class="product-badge badge-free">Free Download</div>
+            <div class="product-icon">&#129303;</div>
+            <h3>HuggingFace Datasets</h3>
+            <div class="product-price" style="color:var(--mint);">FREE</div>
+            <p>Community datasets available for immediate download on HuggingFace.</p>
+            <ul class="product-details">
+              <li>scbe-aethermoore-training-data (1,484 downloads)</li>
+              <li>scbe-red-team-benchmarks (95 downloads)</li>
+              <li>polly-training-data</li>
+              <li>polly-chat-seed</li>
+            </ul>
+            <a class="btn btn-secondary" href="https://huggingface.co/issdandavis" target="_blank" rel="noopener">Browse on HuggingFace</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Models Showcase -->
+    <section class="section" id="models" style="background:rgba(0,0,0,0.15);">
+      <div class="section-inner">
+        <span class="section-label">Models</span>
+        <h2 class="section-title">HuggingFace Model Zoo.</h2>
+        <p class="section-subtitle">12 models trained on SCBE data. The Polly family powers our assistant. PHDM-21D is the geometric foundation.</p>
+
+        <div class="models-grid">
+          <a class="model-card" href="https://huggingface.co/issdandavis/polly-base-v1" target="_blank" rel="noopener">
+            <div class="model-icon">&#129302;</div>
+            <h3>polly-base-v1</h3>
+            <p>Base Polly model. General-purpose assistant fine-tuned on SCBE governance data.</p>
+            <span class="model-tag tag-mint">Polly Family</span>
+          </a>
+
+          <a class="model-card" href="https://huggingface.co/issdandavis/polly-base-v2" target="_blank" rel="noopener">
+            <div class="model-icon">&#129302;</div>
+            <h3>polly-base-v2</h3>
+            <p>Second generation Polly. Improved governance alignment and session handling.</p>
+            <span class="model-tag tag-mint">Polly Family</span>
+          </a>
+
+          <a class="model-card" href="https://huggingface.co/issdandavis/polly-base-v3" target="_blank" rel="noopener">
+            <div class="model-icon">&#129302;</div>
+            <h3>polly-base-v3</h3>
+            <p>Latest Polly base. Enhanced with theory doc training and conlang awareness.</p>
+            <span class="model-tag tag-mint">Polly Family</span>
+          </a>
+
+          <a class="model-card" href="https://huggingface.co/issdandavis/polly-chat-v1" target="_blank" rel="noopener">
+            <div class="model-icon">&#128172;</div>
+            <h3>polly-chat-v1</h3>
+            <p>Chat-optimized Polly. Conversational fine-tuning for interactive sessions.</p>
+            <span class="model-tag tag-mint">Polly Family</span>
+          </a>
+
+          <a class="model-card" href="https://huggingface.co/issdandavis/polly-chat-v2" target="_blank" rel="noopener">
+            <div class="model-icon">&#128172;</div>
+            <h3>polly-chat-v2</h3>
+            <p>Improved chat model with better context retention and governance routing.</p>
+            <span class="model-tag tag-mint">Polly Family</span>
+          </a>
+
+          <a class="model-card" href="https://huggingface.co/issdandavis/polly-chat-v3" target="_blank" rel="noopener">
+            <div class="model-icon">&#128172;</div>
+            <h3>polly-chat-v3</h3>
+            <p>Latest chat variant. Session transcripts and red team hardening included.</p>
+            <span class="model-tag tag-mint">Polly Family</span>
+          </a>
+
+          <a class="model-card" href="https://huggingface.co/issdandavis/polly-instruct-v1" target="_blank" rel="noopener">
+            <div class="model-icon">&#128221;</div>
+            <h3>polly-instruct-v1</h3>
+            <p>Instruction-following Polly. Trained on system-level SFT pairs for precise task execution.</p>
+            <span class="model-tag tag-mint">Polly Family</span>
+          </a>
+
+          <a class="model-card" href="https://huggingface.co/issdandavis/polly-instruct-v2" target="_blank" rel="noopener">
+            <div class="model-icon">&#128221;</div>
+            <h3>polly-instruct-v2</h3>
+            <p>Enhanced instruction model. Governance-aware task routing and multi-step reasoning.</p>
+            <span class="model-tag tag-mint">Polly Family</span>
+          </a>
+
+          <a class="model-card" href="https://huggingface.co/issdandavis/polly-instruct-v3" target="_blank" rel="noopener">
+            <div class="model-icon">&#128221;</div>
+            <h3>polly-instruct-v3</h3>
+            <p>Latest instruct variant with full 14-layer pipeline awareness.</p>
+            <span class="model-tag tag-mint">Polly Family</span>
+          </a>
+
+          <a class="model-card" href="https://huggingface.co/issdandavis/phdm-21d-embedding" target="_blank" rel="noopener">
+            <div class="model-icon">&#127760;</div>
+            <h3>PHDM-21D Embedding</h3>
+            <p>21-dimensional Poincare Ball embedding. 6D hyperbolic + 6D phase + 3D flux + 6D audit.</p>
+            <span class="model-tag">Geometric</span><span class="model-tag tag-gold">Foundation</span>
+          </a>
+
+          <a class="model-card" href="https://huggingface.co/issdandavis/geoseed-tokenizer" target="_blank" rel="noopener">
+            <div class="model-icon">&#128274;</div>
+            <h3>GeoSeed Tokenizer</h3>
+            <p>Bijective tokenizer trained on Sacred Tongues vocabulary. Context-aware encoding.</p>
+            <span class="model-tag tag-aqua">Tokenization</span>
+          </a>
+
+          <a class="model-card" href="https://huggingface.co/issdandavis/scbe-semantic-projector" target="_blank" rel="noopener">
+            <div class="model-icon">&#128200;</div>
+            <h3>SCBE Semantic Projector</h3>
+            <p>Semantic projection model. Maps natural language to 14-layer pipeline coordinates. F1: 0.813.</p>
+            <span class="model-tag tag-gold">Projector</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Custom Dataset Requests -->
+    <section class="section" id="custom">
+      <div class="section-inner">
+        <span class="section-label">Custom Work</span>
+        <h2 class="section-title">Need something specific?</h2>
+        <p class="section-subtitle">We build custom training datasets tailored to your model architecture, domain, and compliance requirements.</p>
+
+        <div class="cta-banner">
+          <h3>Custom Dataset Requests</h3>
+          <p>Tell us your model, your domain, and your format requirements. We will package a dataset specifically for your fine-tuning pipeline.</p>
+          <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-bottom:24px;">
+            <div style="display:flex;align-items:center;gap:8px;font-size:14px;color:var(--muted);">
+              <span style="color:var(--mint);font-weight:800;">&#10003;</span> Custom JSONL packaging
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:14px;color:var(--muted);">
+              <span style="color:var(--mint);font-weight:800;">&#10003;</span> Domain-specific extraction
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:14px;color:var(--muted);">
+              <span style="color:var(--mint);font-weight:800;">&#10003;</span> QLoRA / LoRA / full fine-tune
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:14px;color:var(--muted);">
+              <span style="color:var(--mint);font-weight:800;">&#10003;</span> Red team augmentation
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:14px;color:var(--muted);">
+              <span style="color:var(--mint);font-weight:800;">&#10003;</span> Compliance-ready documentation
+            </div>
+          </div>
+          <a class="btn btn-gold" href="mailto:aethermoregames@pm.me?subject=Custom%20Dataset%20Request&body=Hi%2C%0A%0AI%20am%20interested%20in%20a%20custom%20training%20dataset.%0A%0AModel%20architecture%3A%20%0ADomain%3A%20%0AFormat%20requirements%3A%20%0AEstimated%20size%3A%20%0A%0APlease%20send%20me%20a%20quote.">Contact Us -- aethermoregames@pm.me</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <span class="footer-brand">SCBE-AETHERMOORE</span>
+        <span>Built by Issac Davis in Port Angeles, WA</span>
+        <span>Patent Pending: USPTO #63/961,403</span>
+      </div>
+      <div class="footer-links-row">
+        <a href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://huggingface.co/issdandavis" target="_blank" rel="noopener">HuggingFace</a>
+        <a href="https://www.amazon.com/dp/B0F28PHSPR" target="_blank" rel="noopener">Amazon</a>
+        <a href="https://www.youtube.com/@id8461" target="_blank" rel="noopener">YouTube</a>
+        <a href="mailto:aethermoregames@pm.me">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    window.__POLLY_BACKEND_HTTP__ = window.__POLLY_BACKEND_HTTP__ || "http://localhost:8001";
+  </script>
+  <script src="/static/polly-sidebar.js"></script>
+</body>
+</html>
