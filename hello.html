@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Let's get to know each other | SCBE-AETHERMOORE</title>
+  <meta name="description" content="You got an email from Issac. Here's what he's actually building, how much it costs, and the fastest way to see if it's a fit. Or not — no pressure.">
+  <link rel="canonical" href="https://aethermoore.com/hello.html">
+  <meta property="og:title" content="Let's get to know each other | SCBE-AETHERMOORE">
+  <meta property="og:description" content="A low-pressure landing page for cold outreach. Three solutions, real prices, no sales deck.">
+  <meta property="og:url" content="https://aethermoore.com/hello.html">
+  <meta property="og:image" content="https://aethermoore.com/hero.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Let's get to know each other | SCBE-AETHERMOORE">
+  <meta name="twitter:description" content="You got an email from Issac. Here's what he's actually building.">
+  <meta name="twitter:image" content="https://aethermoore.com/hero.png">
+  <meta name="robots" content="index, follow">
+  <style>
+    :root {
+      --bg: #071412; --bg-deep: #04100f;
+      --panel: rgba(10, 28, 24, 0.82); --panel-strong: rgba(8, 24, 20, 0.94);
+      --line: rgba(139, 255, 223, 0.15); --line-bright: rgba(139, 255, 223, 0.30);
+      --text: #e7fff7; --muted: #9bc5ba; --dim: #6a9488;
+      --mint: #8fffd3; --aqua: #6dd8ff; --gold: #ffd977; --rose: #ff9ec7;
+      --max: 780px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(ellipse at 15% 8%, rgba(109,216,255,0.10), transparent 32%),
+        radial-gradient(ellipse at 80% 5%, rgba(143,255,211,0.12), transparent 28%),
+        linear-gradient(180deg, var(--bg-deep) 0%, var(--bg) 30%);
+      color: var(--text); line-height: 1.7; min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--aqua); text-decoration: none; border-bottom: 1px solid rgba(109,216,255,0.2); }
+    a:hover { color: var(--mint); border-bottom-color: var(--mint); }
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: rgba(4,16,15,0.85);
+      backdrop-filter: blur(16px);
+    }
+    .topbar-inner {
+      max-width: var(--max); margin: 0 auto; padding: 16px 24px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .brand {
+      font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--mint); font-weight: 700;
+      border-bottom: none;
+    }
+    .brand:hover { color: var(--mint); }
+    .topnav a {
+      font-size: 12px; color: var(--muted); margin-left: 16px;
+      border-bottom: none;
+    }
+    main {
+      max-width: var(--max); margin: 0 auto; padding: 60px 24px 80px;
+    }
+    .wave {
+      font-size: 48px; display: inline-block;
+      transform-origin: 70% 70%;
+      animation: wave 2.5s ease-in-out infinite;
+    }
+    @keyframes wave {
+      0%, 60%, 100% { transform: rotate(0deg); }
+      10%, 30% { transform: rotate(14deg); }
+      20% { transform: rotate(-8deg); }
+      40% { transform: rotate(14deg); }
+      50% { transform: rotate(-4deg); }
+    }
+    h1 {
+      font-size: clamp(28px, 5vw, 40px);
+      font-weight: 800; letter-spacing: -0.03em; line-height: 1.15;
+      margin: 20px 0 16px;
+    }
+    h1 .gradient {
+      background: linear-gradient(135deg, var(--mint), var(--aqua));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    h2 {
+      font-size: 22px; font-weight: 700; margin: 40px 0 12px;
+      color: var(--text);
+    }
+    h3 {
+      font-size: 17px; font-weight: 700; margin: 20px 0 8px;
+      color: var(--mint);
+    }
+    p { color: var(--muted); margin-bottom: 14px; font-size: 16px; }
+    p.lede { font-size: 18px; color: var(--text); }
+    ul { margin: 12px 0 20px 20px; color: var(--muted); }
+    ul li { margin-bottom: 8px; }
+    .panel {
+      background: var(--panel); border: 1px solid var(--line);
+      border-radius: 14px; padding: 24px; margin: 24px 0;
+    }
+    .panel.accent {
+      border-color: rgba(143,255,211,0.25);
+      background: linear-gradient(135deg, rgba(143,255,211,0.06), rgba(109,216,255,0.04));
+    }
+    .pricing-row {
+      display: flex; gap: 12px; flex-wrap: wrap; margin: 16px 0;
+    }
+    .price-chip {
+      padding: 10px 16px; border-radius: 10px;
+      background: rgba(143,255,211,0.08); border: 1px solid rgba(143,255,211,0.2);
+      font-size: 14px; color: var(--mint); font-weight: 600;
+    }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 14px 22px; border-radius: 12px; font-size: 15px; font-weight: 600;
+      border: 1px solid transparent; transition: all 180ms; text-decoration: none;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, rgba(143,255,211,0.2), rgba(109,216,255,0.14));
+      border-color: rgba(143,255,211,0.4); color: var(--mint);
+    }
+    .btn-primary:hover {
+      background: linear-gradient(135deg, rgba(143,255,211,0.3), rgba(109,216,255,0.2));
+      transform: translateY(-1px);
+    }
+    .btn-secondary {
+      border-color: var(--line); color: var(--muted); background: transparent;
+    }
+    .btn-secondary:hover { border-color: var(--line-bright); color: var(--text); }
+    .cta-row {
+      display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0;
+    }
+    .three-grid {
+      display: grid; grid-template-columns: 1fr; gap: 16px; margin: 24px 0;
+    }
+    @media (min-width: 640px) {
+      .three-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .mini-card {
+      display: block; padding: 20px; border-radius: 14px;
+      background: var(--panel); border: 1px solid var(--line);
+      transition: all 180ms;
+      border-bottom-width: 1px;
+    }
+    .mini-card:hover {
+      border-color: var(--line-bright); transform: translateY(-2px);
+      color: inherit;
+    }
+    .mini-card strong { color: var(--mint); display: block; font-size: 15px; margin-bottom: 4px; }
+    .mini-card span { font-size: 12px; color: var(--dim); display: block; margin-bottom: 8px; }
+    .mini-card p { font-size: 13px; color: var(--muted); margin: 0; line-height: 1.5; }
+    .trust-row {
+      display: flex; gap: 12px; flex-wrap: wrap;
+      padding: 16px 0; margin: 24px 0;
+      border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    }
+    .trust-chip {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--dim); padding: 4px 10px; border: 1px solid var(--line); border-radius: 6px;
+    }
+    .not-interested {
+      margin-top: 60px; padding-top: 32px;
+      border-top: 1px solid var(--line);
+      font-size: 13px; color: var(--dim);
+    }
+    .not-interested a { color: var(--dim); border-bottom-color: transparent; }
+    .not-interested a:hover { color: var(--muted); }
+    footer {
+      border-top: 1px solid var(--line); padding: 24px;
+      color: var(--dim); font-size: 12px; text-align: center;
+    }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">SCBE-AETHERMOORE</a>
+      <nav class="topnav">
+        <a href="index.html">Home</a>
+        <a href="profile.html">About Me</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- DEFAULT variant (no query param or unknown variant) -->
+    <section id="variant-default">
+      <span class="wave">&#128075;</span>
+      <h1>Hey &mdash; you probably got an email from me.</h1>
+      <p class="lede">I'm Issac. I build AI governance tools that let regulated teams ship LLM features without getting sued, fined, or owned. Three products, three real prices, no sales deck.</p>
+      <p>This page exists so you can decide on your own terms. No calendar booking pressure, no gated PDFs, no "request a quote." Here's what's actually available:</p>
+
+      <div class="three-grid">
+        <a class="mini-card" href="cx-guardrail.html">
+          <strong>CX Refund Guardrail</strong>
+          <span>$500&ndash;5,000/month</span>
+          <p>Stop your chatbot from promising refunds it can't deliver. Moffatt v. Air Canada made this case law.</p>
+        </a>
+        <a class="mini-card" href="iso-42001.html">
+          <strong>ISO 42001 Evidence</strong>
+          <span>$50K&ndash;150K/year</span>
+          <p>Audit-ready documentation for banks, insurers, and regulated enterprises facing ISO 42001, SR 11-7, and EU AI Act.</p>
+        </a>
+        <a class="mini-card" href="red-team.html">
+          <strong>AI Red Team</strong>
+          <span>$5K&ndash;50K/engagement</span>
+          <p>6,066 adversarial tests against your LLM. Branded PDF report. Remediation roadmap. 4-week delivery.</p>
+        </a>
+      </div>
+
+      <h2>If you're wondering why you should trust me</h2>
+      <p>I've been building this for a while. The framework underneath all three products is open source (MIT), patent pending, and has 29,000+ tests passing in CI. It's not a deck. It's running code you can clone.</p>
+
+      <div class="trust-row">
+        <span class="trust-chip">USPTO #63/961,403</span>
+        <span class="trust-chip">29,000+ tests</span>
+        <span class="trust-chip">MIT licensed</span>
+        <span class="trust-chip">Solo builder</span>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn btn-primary" href="mailto:aethermoregames@pm.me?subject=Reply%20from%20your%20outreach">Reply to me</a>
+        <a class="btn btn-secondary" href="index.html">See the full site</a>
+      </div>
+    </section>
+
+    <!-- CX variant: ?v=cx -->
+    <section id="variant-cx" hidden>
+      <span class="wave">&#128075;</span>
+      <h1>Hey &mdash; you got an email from me about <span class="gradient">chatbot liability</span>.</h1>
+      <p class="lede">Quick version: after <em>Moffatt v. Air Canada</em>, any company running an AI chatbot is legally on the hook for what it promises. One wrong answer = a binding contract. I built CX Refund Guardrail to prevent that, specifically for mid-market teams who can't afford Decagon or Sierra.</p>
+
+      <h2>What it actually does</h2>
+      <p>It's policy-enforcement middleware that sits between your LLM and your customer. Every outgoing message gets scored against your actual policies before it ships. Anything outside your allowed envelope gets caught, redirected, or escalated to a human.</p>
+      <ul>
+        <li>Works with any LLM (OpenAI, Anthropic, local, custom fine-tunes)</li>
+        <li>Under 100ms added latency per message</li>
+        <li>Policies live in YAML or JSON, versioned in your repo</li>
+        <li>Audit log of every decision, ready for legal/compliance</li>
+        <li>30-day trial, up to 1,000 messages, no credit card</li>
+      </ul>
+
+      <h2>What it costs</h2>
+      <div class="pricing-row">
+        <span class="price-chip">Starter &mdash; $500/mo</span>
+        <span class="price-chip">Growth &mdash; $2,000/mo</span>
+        <span class="price-chip">Enterprise &mdash; $5,000/mo</span>
+      </div>
+      <p style="font-size: 14px;">Full details, included features, and FAQ on the <a href="cx-guardrail.html">CX Guardrail page</a>.</p>
+
+      <div class="panel accent">
+        <h3>If you want to talk</h3>
+        <p style="margin-bottom: 16px;">Reply to the email, or book a 30-minute discovery call. I'll ask about your current chatbot setup, what your policy risks look like, and whether this is actually a fit. If it isn't, I'll tell you and point you somewhere better.</p>
+        <div class="cta-row" style="margin: 0;">
+          <a class="btn btn-primary" href="mailto:aethermoregames@pm.me?subject=CX%20Guardrail%20discovery%20call&body=Hey%20Issac%2C%0A%0AI%27m%20interested%20in%20discussing%20the%20CX%20Refund%20Guardrail.%20Here%27s%20a%20bit%20about%20our%20setup%3A%0A%0A-%20Company%3A%20%0A-%20Current%20chatbot%3A%20%0A-%20Volume%3A%20%0A-%20Main%20concern%3A%20%0A%0AThanks%2C">Book a 30-min call</a>
+          <a class="btn btn-secondary" href="cx-guardrail.html">Read the full page first</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ISO variant: ?v=iso -->
+    <section id="variant-iso" hidden>
+      <span class="wave">&#128075;</span>
+      <h1>Hey &mdash; you got an email from me about <span class="gradient">AI audit readiness</span>.</h1>
+      <p class="lede">Three regulatory frameworks are converging on your AI deployments in 2026: ISO 42001, SR 11-7, and the EU AI Act. Your auditors are going to start asking for documented adversarial testing, risk assessments, and drift monitoring. Most banks and insurers already deployed LLMs and don't have that paper trail. I deliver it.</p>
+
+      <h2>What I actually deliver</h2>
+      <ul>
+        <li><strong>Test evidence package</strong> &mdash; JSONL output of 6,066 adversarial tests run against your LLM, mapped to ISO 42001 clauses</li>
+        <li><strong>Risk assessment report</strong> &mdash; formatted for SR 11-7 review, signed and timestamped</li>
+        <li><strong>Drift monitoring setup</strong> &mdash; ongoing adversarial probe suite with quarterly re-tests</li>
+        <li><strong>Audit response dossier</strong> &mdash; everything your compliance team hands to auditors, pre-formatted</li>
+      </ul>
+      <p>I don't certify you &mdash; certification is a separate process. I deliver the evidence your compliance team presents to auditors. You ingest the output into Vanta, Drata, or whatever GRC platform you already use.</p>
+
+      <h2>What it costs</h2>
+      <div class="pricing-row">
+        <span class="price-chip">Initial Audit &mdash; $50K one-time</span>
+        <span class="price-chip">Annual Program &mdash; $100K/yr</span>
+        <span class="price-chip">Enterprise &mdash; $150K/yr</span>
+      </div>
+      <p style="font-size: 14px;">Full scope, ISO clause mapping, and FAQ on the <a href="iso-42001.html">ISO 42001 Evidence page</a>.</p>
+
+      <div class="panel accent">
+        <h3>If you want to talk</h3>
+        <p style="margin-bottom: 16px;">Reply to the email, or book a 30-minute audit readiness review. I'll ask what LLMs you've deployed, what your auditors have already asked for, and whether a 3-week initial engagement makes sense for you. MNDA available immediately if we get into specifics.</p>
+        <div class="cta-row" style="margin: 0;">
+          <a class="btn btn-primary" href="mailto:aethermoregames@pm.me?subject=ISO%2042001%20Audit%20Readiness%20Call&body=Hey%20Issac%2C%0A%0AI%27d%20like%20to%20discuss%20ISO%2042001%20evidence%20for%20our%20AI%20deployments.%0A%0A-%20Organization%3A%20%0A-%20LLMs%20currently%20deployed%3A%20%0A-%20Regulatory%20pressure%20we%27re%20facing%3A%20%0A-%20Timeline%3A%20%0A%0AThanks%2C">Book a 30-min call</a>
+          <a class="btn btn-secondary" href="iso-42001.html">Read the full page first</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Red Team variant: ?v=rt -->
+    <section id="variant-rt" hidden>
+      <span class="wave">&#128075;</span>
+      <h1>Hey &mdash; you got an email from me about <span class="gradient">stress-testing your LLM</span>.</h1>
+      <p class="lede">If you've shipped an LLM feature &mdash; a chatbot, an agent, a RAG system &mdash; you need to know how it breaks before an attacker or a reporter does. I run 6,066 adversarial tests against your application, deliver a branded PDF report mapped to your threat model, and hand you a prioritized remediation roadmap. Four weeks. Real findings.</p>
+
+      <h2>What we test for</h2>
+      <ul>
+        <li><strong>Prompt injection</strong> &mdash; direct, indirect, multi-turn, context poisoning</li>
+        <li><strong>Jailbreaks</strong> &mdash; persona hijacks, instruction override, safety classifier bypass</li>
+        <li><strong>Data exfiltration</strong> &mdash; system prompt extraction, training data leak, PII recovery</li>
+        <li><strong>Agent abuse</strong> &mdash; tool misuse, privilege escalation, infinite loops, cost bombs</li>
+      </ul>
+
+      <h2>What the engagement looks like</h2>
+      <p>Week 1 scoping call &rarr; Week 2 execution against your staging endpoint &rarr; Week 3 analysis and triage &rarr; Week 4 delivery call with your engineering and security team. Zero impact on production. NDA signed before any API keys change hands.</p>
+
+      <h2>What it costs</h2>
+      <div class="pricing-row">
+        <span class="price-chip">Quick Scan &mdash; $5K</span>
+        <span class="price-chip">Deep Engagement &mdash; $25K</span>
+        <span class="price-chip">Quarterly Retainer &mdash; $50K/yr</span>
+      </div>
+      <p style="font-size: 14px;">Full scope, example findings, and FAQ on the <a href="red-team.html">Red Team page</a>.</p>
+
+      <div class="panel accent">
+        <h3>If you want to talk</h3>
+        <p style="margin-bottom: 16px;">Reply to the email, or book a 30-minute scoping call. I'll ask about your LLM setup, what kind of threats worry you most, and whether a Quick Scan is the right starting point. If your risk surface is bigger than that, we'll scope a Deep Engagement instead.</p>
+        <div class="cta-row" style="margin: 0;">
+          <a class="btn btn-primary" href="mailto:aethermoregames@pm.me?subject=Red%20Team%20Scoping%20Call&body=Hey%20Issac%2C%0A%0AI%27d%20like%20to%20discuss%20a%20red%20team%20engagement%20for%20our%20LLM%20application.%0A%0A-%20Company%3A%20%0A-%20LLM%20use%20case%3A%20%0A-%20Main%20risk%20concern%3A%20%0A-%20Staging%20environment%20available%3F%3A%20%0A%0AThanks%2C">Book a 30-min call</a>
+          <a class="btn btn-secondary" href="red-team.html">Read the full page first</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Shared below-fold content -->
+    <h2>Why a solo builder and not a Fortune 500 vendor?</h2>
+    <p>Because you don't need Fortune 500 pricing. Lakera, Robust Intelligence, and HiddenLayer sell to Fortune 500 at $150K-$1M per engagement. Harvey.ai wants a 20-seat minimum for legal AI. Decagon starts at six figures. If you're mid-market, you're not their customer &mdash; you're their future customer, three years from now.</p>
+    <p>I'm building for the teams in the middle: the Shopify Plus merchant, the regional bank, the 50-person SaaS company, the insurance broker. Real pricing, real delivery, no gated demos.</p>
+    <p>The framework I use is <a href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank" rel="noopener">open source on GitHub</a>. You can clone it, run the tests, read the patent, and decide whether the math checks out before we ever talk. I'd actually prefer you did.</p>
+
+    <div class="panel">
+      <h3>About the name</h3>
+      <p style="margin: 0;">SCBE-AETHERMOORE is the framework, not the company. "SCBE" is Symphonic Cipher Based Encryption &mdash; the hyperbolic geometric model that prices attacks out of affordability. "Aethermoore" is a reference to the world I built around the math, which also became a novel (<a href="book.html">The Six Tongues Protocol</a>). Yes, I'm one of those people.</p>
+    </div>
+
+    <div class="not-interested">
+      <p><strong>Not interested?</strong> No hard feelings. A few options:</p>
+      <ul style="margin: 8px 0 0 20px;">
+        <li>Just ignore the email &mdash; I don't run drip sequences or "just checking in" follow-ups more than twice.</li>
+        <li>Reply with "not a fit" and I'll mark you as such and move on.</li>
+        <li>Forward this page to someone on your team who might care more.</li>
+        <li>If you think the framework is interesting but you're not a buyer, <a href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank" rel="noopener">star the repo</a> &mdash; that genuinely helps more than you'd think.</li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    SCBE-AETHERMOORE &middot; Built by Issac Davis in Port Angeles, WA &middot; Patent pending USPTO #63/961,403
+    <br>
+    <a href="mailto:aethermoregames@pm.me" style="color: var(--dim); border: none;">aethermoregames@pm.me</a>
+  </footer>
+
+  <script>
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const v = (params.get('v') || '').toLowerCase();
+      const validVariants = ['cx', 'iso', 'rt'];
+      if (validVariants.includes(v)) {
+        document.getElementById('variant-default').hidden = true;
+        const target = document.getElementById('variant-' + v);
+        if (target) target.hidden = false;
+      }
+      // Track which variant landed for analytics (stored locally for now)
+      try {
+        const hits = JSON.parse(localStorage.getItem('hello_hits') || '[]');
+        hits.push({ v: v || 'default', ts: Date.now(), ref: document.referrer });
+        localStorage.setItem('hello_hits', JSON.stringify(hits.slice(-50)));
+      } catch(e) {}
+    })();
+  </script>
+</body>
+</html>
