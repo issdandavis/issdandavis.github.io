@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop &amp; Services | Issac Davis &middot; SCBE-AETHERMOORE</title>
+  <meta name="description" content="Everything you can buy or hire me for — AI governance solutions, training data, product packages, custom work, and free open source. I cover my own AI API costs so you don't have to.">
+  <link rel="canonical" href="https://aethermoore.com/services.html">
+  <meta property="og:title" content="Shop &amp; Services | Issac Davis &middot; SCBE-AETHERMOORE">
+  <meta property="og:description" content="AI governance solutions, training data, product packages, custom work, and free open source. One storefront.">
+  <meta property="og:url" content="https://aethermoore.com/services.html">
+  <meta property="og:image" content="https://aethermoore.com/hero.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Shop &amp; Services | Issac Davis &middot; SCBE-AETHERMOORE">
+  <meta name="twitter:description" content="AI governance solutions, training data, custom work, and free open source. One storefront.">
+  <meta name="twitter:image" content="https://aethermoore.com/hero.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "name": "SCBE-AETHERMOORE Shop",
+    "url": "https://aethermoore.com/services.html",
+    "description": "Solo builder storefront: AI governance solutions, training data, consulting, and open source tooling.",
+    "founder": { "@type": "Person", "name": "Issac Davis" },
+    "areaServed": "Worldwide",
+    "currenciesAccepted": "USD"
+  }
+  </script>
+  <style>
+    :root {
+      --bg: #071412; --bg-deep: #04100f; --bg-soft: #0d1d1a;
+      --panel: rgba(10, 28, 24, 0.82); --panel-strong: rgba(8, 24, 20, 0.94);
+      --line: rgba(139, 255, 223, 0.15); --line-bright: rgba(139, 255, 223, 0.30);
+      --text: #e7fff7; --muted: #9bc5ba; --dim: #6a9488;
+      --mint: #8fffd3; --aqua: #6dd8ff; --gold: #ffd977; --rose: #ff9ec7; --violet: #c49cff;
+      --shadow: 0 30px 80px rgba(0, 0, 0, 0.45); --max: 1220px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(ellipse at 15% 8%, rgba(109,216,255,0.10), transparent 32%),
+        radial-gradient(ellipse at 80% 5%, rgba(143,255,211,0.12), transparent 28%),
+        linear-gradient(180deg, var(--bg-deep) 0%, var(--bg) 30%, var(--bg-soft) 100%);
+      color: var(--text); line-height: 1.6; min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    .topbar { position: sticky; top: 0; z-index: 100; backdrop-filter: blur(16px); background: rgba(4,16,15,0.85); border-bottom: 1px solid var(--line); }
+    .topbar-inner { max-width: var(--max); margin: 0 auto; padding: 0 24px; min-height: 60px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mint); font-weight: 700; white-space: nowrap; }
+    .nav { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav a { padding: 6px 12px; border-radius: 8px; font-size: 13px; font-weight: 500; color: var(--muted); transition: all 150ms; }
+    .nav a:hover { color: var(--text); background: rgba(143,255,211,0.08); }
+    .nav a.nav-active { background: rgba(255,217,119,0.12); color: var(--gold); border: 1px solid rgba(255,217,119,0.25); }
+
+    main { max-width: var(--max); margin: 0 auto; padding: 60px 24px 80px; }
+    .hero-label {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);
+      padding: 4px 12px; border-radius: 20px; background: rgba(255,217,119,0.08);
+      border: 1px solid rgba(255,217,119,0.15); margin-bottom: 16px;
+    }
+    h1 {
+      font-size: clamp(32px, 6vw, 56px); font-weight: 800;
+      letter-spacing: -0.03em; line-height: 1.08; margin-bottom: 16px;
+    }
+    h1 .gradient {
+      background: linear-gradient(135deg, var(--gold), var(--mint));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .subtitle { color: var(--muted); font-size: clamp(16px, 2vw, 20px); max-width: 68ch; margin-bottom: 32px; line-height: 1.65; }
+
+    .shop-meta {
+      display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 40px;
+      padding: 20px 24px; border-radius: 14px;
+      background: rgba(255,217,119,0.04); border: 1px solid rgba(255,217,119,0.2);
+    }
+    .shop-meta strong { color: var(--gold); display: block; font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
+    .shop-meta-item { flex: 1; min-width: 180px; font-size: 14px; color: var(--muted); }
+
+    section { margin: 80px 0; }
+    .section-label {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--mint);
+      padding: 4px 12px; border-radius: 20px; background: rgba(143,255,211,0.08);
+      border: 1px solid rgba(143,255,211,0.15); margin-bottom: 16px;
+    }
+    h2 {
+      font-size: clamp(26px, 4vw, 38px); font-weight: 700;
+      letter-spacing: -0.02em; margin-bottom: 8px;
+    }
+    .section-desc { color: var(--muted); font-size: 16px; margin-bottom: 28px; max-width: 64ch; }
+
+    .product-grid {
+      display: grid; gap: 20px;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 720px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .product-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    .product-card {
+      position: relative; padding: 24px;
+      background: var(--panel); border: 1px solid var(--line);
+      border-radius: 16px; display: flex; flex-direction: column;
+      transition: all 200ms;
+    }
+    .product-card:hover {
+      border-color: var(--line-bright); transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+    .product-card.featured {
+      border-color: rgba(255,217,119,0.35);
+      background: linear-gradient(135deg, rgba(255,217,119,0.04), var(--panel));
+    }
+    .product-badge {
+      position: absolute; top: 16px; right: 16px;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; padding: 4px 10px; border-radius: 8px;
+    }
+    .badge-saas { background: rgba(143,255,211,0.12); color: var(--mint); border: 1px solid rgba(143,255,211,0.25); }
+    .badge-service { background: rgba(255,217,119,0.12); color: var(--gold); border: 1px solid rgba(255,217,119,0.25); }
+    .badge-custom { background: rgba(255,158,199,0.12); color: var(--rose); border: 1px solid rgba(255,158,199,0.25); }
+    .badge-package { background: rgba(109,216,255,0.12); color: var(--aqua); border: 1px solid rgba(109,216,255,0.25); }
+    .badge-data { background: rgba(196,156,255,0.12); color: var(--violet); border: 1px solid rgba(196,156,255,0.25); }
+    .badge-free { background: rgba(138, 170, 100, 0.12); color: #b5d97d; border: 1px solid rgba(138, 170, 100, 0.25); }
+
+    .product-card h3 { font-size: 19px; font-weight: 700; margin: 8px 0 6px; padding-right: 80px; }
+    .product-card .price {
+      font-size: 22px; font-weight: 800; color: var(--mint);
+      margin: 8px 0 12px;
+    }
+    .product-card .price .from { font-size: 12px; font-weight: 500; color: var(--dim); margin-right: 4px; }
+    .product-card .price .unit { font-size: 13px; font-weight: 500; color: var(--muted); }
+    .product-card p {
+      color: var(--muted); font-size: 14px; line-height: 1.55;
+      flex: 1; margin-bottom: 16px;
+    }
+    .product-card .btn-row { display: flex; gap: 8px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      padding: 10px 16px; border-radius: 10px; font-size: 13px; font-weight: 600;
+      border: 1px solid transparent; transition: all 180ms; text-decoration: none;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, rgba(143,255,211,0.18), rgba(109,216,255,0.12));
+      border-color: rgba(143,255,211,0.35); color: var(--mint);
+    }
+    .btn-primary:hover { background: linear-gradient(135deg, rgba(143,255,211,0.28), rgba(109,216,255,0.18)); }
+    .btn-gold {
+      background: linear-gradient(135deg, rgba(255,217,119,0.18), rgba(240,191,103,0.10));
+      border-color: rgba(255,217,119,0.35); color: var(--gold);
+    }
+    .btn-gold:hover { background: linear-gradient(135deg, rgba(255,217,119,0.28), rgba(240,191,103,0.18)); }
+    .btn-secondary { border-color: var(--line); color: var(--muted); }
+    .btn-secondary:hover { border-color: var(--line-bright); color: var(--text); }
+
+    /* Hire me section */
+    .hire-panel {
+      padding: 40px; border-radius: 20px;
+      background: linear-gradient(135deg, rgba(255,158,199,0.06), rgba(196,156,255,0.06));
+      border: 1px solid rgba(255,158,199,0.25);
+    }
+    .hire-panel h2 { margin-bottom: 12px; }
+    .hire-panel p { color: var(--muted); margin-bottom: 16px; }
+    .hire-panel ul { margin: 12px 0 16px 20px; color: var(--muted); font-size: 14px; }
+    .hire-panel ul li { margin-bottom: 6px; }
+    .hire-highlight {
+      display: inline-block; padding: 6px 14px; border-radius: 10px;
+      background: rgba(255,217,119,0.12); color: var(--gold); border: 1px solid rgba(255,217,119,0.3);
+      font-weight: 700; font-size: 13px; letter-spacing: 0.03em;
+      margin-bottom: 16px;
+    }
+    .hire-stack {
+      display: grid; gap: 12px; grid-template-columns: 1fr; margin: 16px 0 24px;
+    }
+    @media (min-width: 720px) { .hire-stack { grid-template-columns: 1fr 1fr; } }
+    .hire-stack .stack-item {
+      padding: 14px 18px; border-radius: 10px; background: rgba(0,0,0,0.25);
+      border: 1px solid var(--line); font-size: 13px;
+    }
+    .hire-stack .stack-item strong { color: var(--rose); display: block; margin-bottom: 4px; }
+
+    /* Find me strip */
+    .find-strip {
+      padding: 32px; border-radius: 18px;
+      background: var(--panel); border: 1px solid var(--line);
+    }
+    .find-grid {
+      display: grid; gap: 12px;
+      grid-template-columns: 1fr;
+      margin-top: 18px;
+    }
+    @media (min-width: 600px) { .find-grid { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 960px) { .find-grid { grid-template-columns: repeat(4, 1fr); } }
+    .find-card {
+      display: flex; align-items: center; gap: 12px;
+      padding: 14px 16px; border-radius: 12px;
+      background: rgba(0,0,0,0.25); border: 1px solid var(--line);
+      font-size: 14px; transition: all 150ms;
+    }
+    .find-card:hover { border-color: var(--line-bright); background: rgba(143,255,211,0.04); }
+    .find-card .icon { font-size: 22px; }
+    .find-card strong { display: block; color: var(--text); font-size: 13px; }
+    .find-card span { display: block; color: var(--dim); font-size: 11px; }
+
+    footer {
+      border-top: 1px solid var(--line); padding: 32px 24px 48px;
+      color: var(--dim); font-size: 13px; text-align: center; margin-top: 40px;
+    }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--mint); }
+    .mobile-toggle { display: none; background: none; border: none; color: var(--mint); font-size: 24px; cursor: pointer; padding: 8px; }
+    @media (max-width: 768px) {
+      .nav { display: none; }
+      .nav.open { display: flex; flex-direction: column; position: absolute; top: 60px; left: 0; right: 0; background: rgba(4,16,15,0.96); padding: 16px 24px; border-bottom: 1px solid var(--line); gap: 4px; z-index: 200; }
+      .nav.open a { padding: 10px 12px; }
+      .mobile-toggle { display: block; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">SCBE-AETHERMOORE</a>
+      <button class="mobile-toggle" onclick="document.querySelector('.nav').classList.toggle('open')" aria-label="Toggle navigation">&#9776;</button>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="services.html" class="nav-active">Shop</a>
+        <a href="index.html#solutions">Solutions</a>
+        <a href="datasets.html">Datasets</a>
+        <a href="demos/index.html">Demos</a>
+        <a href="tools.html">Tools</a>
+        <a href="research/index.html">Research</a>
+        <a href="book.html">Book</a>
+        <a href="profile.html">Profile</a>
+        <a href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <span class="hero-label">The Shop</span>
+    <h1><span class="gradient">Everything you can buy</span><br>or hire me for.</h1>
+    <p class="subtitle">One storefront for every product, service, dataset, and custom engagement. No middle-man, no marketplace fees, no Gumroad. Direct from me to you, built on my own infrastructure, with prices you can read without "requesting a quote."</p>
+
+    <div class="shop-meta">
+      <div class="shop-meta-item">
+        <strong>Solo builder</strong>
+        Port Angeles, WA. I write the code, run the ops, and handle the support. No team to route you through.
+      </div>
+      <div class="shop-meta-item">
+        <strong>I cover AI costs</strong>
+        For custom work, I pay my own API bills. You're not also on the hook for OpenAI or Anthropic tokens.
+      </div>
+      <div class="shop-meta-item">
+        <strong>Patent pending</strong>
+        USPTO #63/961,403 &middot; framework is MIT-licensed &middot; 29,000+ tests in CI.
+      </div>
+    </div>
+
+    <!-- HIRE ME / CUSTOM WORK SECTION -->
+    <section>
+      <span class="section-label" style="color:var(--rose); background:rgba(255,158,199,0.08); border-color:rgba(255,158,199,0.25);">Custom Work</span>
+      <h2>Hire me for your project.</h2>
+      <p class="section-desc">I help people ship AI features they can actually trust in production. If your project doesn't fit one of the packaged offerings below, let's talk about a custom build.</p>
+
+      <div class="hire-panel">
+        <div class="hire-highlight">&#128161; I cover my own AI API costs &mdash; you don't pay for OpenAI/Anthropic tokens on top of my rate.</div>
+        <h2 style="font-size:24px;">What I build for clients</h2>
+        <div class="hire-stack">
+          <div class="stack-item">
+            <strong>LLM integrations &amp; agents</strong>
+            Custom chatbots, RAG systems, tool-use agents, multi-model orchestration. I bring the framework and the inference budget.
+          </div>
+          <div class="stack-item">
+            <strong>Governance &amp; policy middleware</strong>
+            Policy enforcement, refund guardrails, audit logging, adversarial hardening. The SCBE stack adapted to your domain.
+          </div>
+          <div class="stack-item">
+            <strong>Training data &amp; fine-tuning</strong>
+            Custom dataset curation, QLoRA fine-tuning, eval harness design. I ship on HuggingFace or your own infra.
+          </div>
+          <div class="stack-item">
+            <strong>Site builds with an assistant front door</strong>
+            Static site + route-aware Polly assistant + your own backend. Same stack I use on aethermoore.com.
+          </div>
+        </div>
+
+        <p><strong style="color:var(--text);">Engagement models:</strong></p>
+        <ul>
+          <li><strong>Fixed-scope project</strong> &mdash; flat price after a 30-minute scoping call. Most projects $2,500&ndash;$15,000.</li>
+          <li><strong>Hourly consulting</strong> &mdash; $150/hour for strategic work, code review, or architecture help.</li>
+          <li><strong>Monthly retainer</strong> &mdash; ~20 hours/month for ongoing work, $2,500/month. Priority response, dedicated Slack.</li>
+          <li><strong>Via Upwork or LinkedIn</strong> &mdash; if you'd rather work through a platform, that's fine too. Links below.</li>
+        </ul>
+
+        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top: 24px;">
+          <a class="btn btn-gold" href="mailto:aethermoregames@pm.me?subject=Custom%20project%20inquiry&body=Hey%20Issac%2C%0A%0AI%27d%20like%20to%20discuss%20a%20custom%20project.%0A%0A-%20What%20I%27m%20building%3A%0A-%20Current%20stack%3A%0A-%20Timeline%3A%0A-%20Budget%20range%3A%0A%0AThanks%2C">Email me about your project</a>
+          <a class="btn btn-secondary" href="profile.html">See my profile</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOLUTIONS / SAAS -->
+    <section>
+      <span class="section-label">Solutions</span>
+      <h2>Productized solutions.</h2>
+      <p class="section-desc">Outcome-first offerings for regulated verticals. Monthly SaaS or annual programs. Pick one, buy one, deploy one.</p>
+      <div class="product-grid">
+        <div class="product-card featured">
+          <div class="product-badge badge-saas">SaaS</div>
+          <h3>CX Refund Guardrail</h3>
+          <div class="price"><span class="from">from</span>$500<span class="unit">/mo</span></div>
+          <p>Stop your chatbot from promising refunds it can't deliver. Policy-enforcement middleware sits between your LLM and your customer. Works with any API.</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="cx-guardrail.html">See the page</a>
+            <a class="btn btn-secondary" href="mailto:aethermoregames@pm.me?subject=CX%20Guardrail%20inquiry">Email me</a>
+          </div>
+        </div>
+        <div class="product-card featured">
+          <div class="product-badge badge-service">Service</div>
+          <h3>ISO 42001 Evidence Service</h3>
+          <div class="price"><span class="from">from</span>$50K<span class="unit">/audit</span></div>
+          <p>Audit-ready documentation for banks, insurers, and regulated enterprises facing ISO 42001, SR 11-7, and EU AI Act pressure.</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="iso-42001.html">See the page</a>
+            <a class="btn btn-secondary" href="mailto:aethermoregames@pm.me?subject=ISO%2042001%20inquiry">Email me</a>
+          </div>
+        </div>
+        <div class="product-card featured">
+          <div class="product-badge badge-service">Service</div>
+          <h3>AI Red Team as a Service</h3>
+          <div class="price"><span class="from">from</span>$5,000<span class="unit">/engagement</span></div>
+          <p>6,066 adversarial tests against your LLM application. Branded PDF report. Remediation roadmap. 4-week delivery.</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="red-team.html">See the page</a>
+            <a class="btn btn-secondary" href="mailto:aethermoregames@pm.me?subject=Red%20Team%20inquiry">Email me</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ONE-TIME PACKAGES -->
+    <section>
+      <span class="section-label">Packages</span>
+      <h2>One-time packages.</h2>
+      <p class="section-desc">Self-serve templates and toolkits. Buy once, use forever. Stripe checkout, instant download.</p>
+      <div class="product-grid">
+        <div class="product-card">
+          <div class="product-badge badge-package">Package</div>
+          <h3>AI Governance Toolkit</h3>
+          <div class="price">$29</div>
+          <p>Templates, thresholds, decision records, and starter rollout guidance for governed AI work.</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="https://buy.stripe.com/cNibJ25Ca2TJ9gQ3a6dby06" target="_blank" rel="noopener">Buy $29</a>
+            <a class="btn btn-secondary" href="product-manual/ai-governance-toolkit.html">Read manual</a>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-badge badge-package">Package</div>
+          <h3>HYDRA Agent Templates</h3>
+          <div class="price">$29</div>
+          <p>Ready-made agent roles, packet patterns, and launch structure for small governed swarms.</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="https://buy.stripe.com/6oUeVe5Ca2TJdx6262dby08" target="_blank" rel="noopener">Buy $29</a>
+            <a class="btn btn-secondary" href="product-manual/hydra-agent-templates.html">Read manual</a>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-badge badge-package">Package</div>
+          <h3>n8n Workflow Pack</h3>
+          <div class="price">$29</div>
+          <p>Governed automation building blocks. Importable workflows and a cleaner delivery path for teams.</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="https://buy.stripe.com/8x228sc0y3XNeBafWSdby05" target="_blank" rel="noopener">Buy $29</a>
+            <a class="btn btn-secondary" href="product-manual/n8n-workflow-pack.html">Read manual</a>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-badge badge-package">Package</div>
+          <h3>Content Spin Engine</h3>
+          <div class="price">$29</div>
+          <p>Source-once content operations for adapting, reviewing, and publishing across channels.</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="https://buy.stripe.com/5kQ5kE5Ca65V78I5iedby07" target="_blank" rel="noopener">Buy $29</a>
+            <a class="btn btn-secondary" href="product-manual/content-spin-engine.html">Read manual</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRAINING DATA -->
+    <section>
+      <span class="section-label">Training Data</span>
+      <h2>Training datasets.</h2>
+      <p class="section-desc">Curated SFT data and adversarial benchmarks for fine-tuning AI governance models. JSONL, QLoRA-ready.</p>
+      <div class="product-grid">
+        <div class="product-card">
+          <div class="product-badge badge-data">Dataset</div>
+          <h3>SCBE Governance SFT Pack</h3>
+          <div class="price">$99</div>
+          <p>5,188 supervised fine-tuning pairs covering governance, system-level instructions, and codebase understanding.</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="datasets.html">See the page</a>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-badge badge-data">Dataset</div>
+          <h3>Red Team Fortress</h3>
+          <div class="price">$149</div>
+          <p>91 adversarial attack prompts across 10 categories, labeled by failure layer (L1-L14).</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="datasets.html">See the page</a>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-badge badge-data">Dataset</div>
+          <h3>Theory Documents Bundle</h3>
+          <div class="price">$129</div>
+          <p>6 deep-dive theory docs: architecture, spiralverse lore, security attacks, geoseal crypto, conlang, patent claims.</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="datasets.html">See the page</a>
+          </div>
+        </div>
+        <div class="product-card featured">
+          <div class="product-badge badge-data">Bundle</div>
+          <h3>The Full Arsenal</h3>
+          <div class="price">$399 <span class="unit">save $107</span></div>
+          <p>Everything: 5,188 SFT pairs, 91 red team prompts, 6 theory docs, 48 session transcripts, conlang pack, context capsules, knowledge base, eval suites.</p>
+          <div class="btn-row">
+            <a class="btn btn-gold" href="datasets.html">See the bundle</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BOOK -->
+    <section>
+      <span class="section-label">Book</span>
+      <h2>The Six Tongues Protocol.</h2>
+      <p class="section-desc">The novel that teaches the framework through story. Same vocabulary as the codebase. 22 chapters, 70K words.</p>
+      <div class="product-grid">
+        <div class="product-card">
+          <div class="product-badge badge-package">Amazon KDP</div>
+          <h3>The Six Tongues Protocol</h3>
+          <div class="price">$9.99</div>
+          <p>Kindle eBook. Also available as narrated audio chapters on YouTube (free, 22 episodes).</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="https://www.amazon.com/dp/B0F28PHSPR" target="_blank" rel="noopener">Buy on Amazon</a>
+            <a class="btn btn-secondary" href="book.html">Read the page</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FREE STUFF -->
+    <section>
+      <span class="section-label">Free</span>
+      <h2>Open source &amp; free.</h2>
+      <p class="section-desc">The framework underneath everything is MIT licensed. The demos are free. The research feed runs for you, not for me.</p>
+      <div class="product-grid">
+        <div class="product-card">
+          <div class="product-badge badge-free">MIT</div>
+          <h3>SCBE-AETHERMOORE Framework</h3>
+          <div class="price">Free</div>
+          <p>14-layer pipeline, Sacred Tongues, hyperbolic cost engine. Install with <code style="color:var(--mint); background:rgba(0,0,0,0.3); padding:2px 6px; border-radius:4px;">npm i scbe-aethermoore</code></p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-badge badge-free">Live</div>
+          <h3>17 Interactive Demos</h3>
+          <div class="price">Free</div>
+          <p>Browser-based visualizations. No install, no API key, no signup. Risk calculator, tongue encoder, governance gate, and more.</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="demos/index.html">Try demos</a>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-badge badge-free">Live</div>
+          <h3>AI Arena</h3>
+          <div class="price">Free (BYOK)</div>
+          <p>9 AI models, one prompt. BYOK round table. Ask a question and watch models debate it live in your browser.</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="arena.html">Open Arena</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHERE TO FIND ME -->
+    <section>
+      <span class="section-label">Contact</span>
+      <h2>Where to find me.</h2>
+      <p class="section-desc">Email is fastest. LinkedIn and Upwork are fine if you prefer working through a platform. GitHub Discussions is public.</p>
+      <div class="find-strip">
+        <div class="find-grid">
+          <a class="find-card" href="mailto:aethermoregames@pm.me">
+            <span class="icon">&#128231;</span>
+            <div><strong>Email</strong><span>aethermoregames@pm.me</span></div>
+          </a>
+          <a class="find-card" href="https://github.com/issdandavis" target="_blank" rel="noopener">
+            <span class="icon">&#128187;</span>
+            <div><strong>GitHub</strong><span>issdandavis</span></div>
+          </a>
+          <a class="find-card" href="https://www.linkedin.com/in/issac-davis-scbe-aether" target="_blank" rel="noopener">
+            <span class="icon">&#128279;</span>
+            <div><strong>LinkedIn</strong><span>issac-davis-scbe-aether</span></div>
+          </a>
+          <a class="find-card" href="mailto:aethermoregames@pm.me?subject=Upwork%20URL%20needed" target="_blank" rel="noopener">
+            <span class="icon">&#128188;</span>
+            <div><strong>Upwork</strong><span>(profile link pending)</span></div>
+          </a>
+          <a class="find-card" href="https://huggingface.co/issdandavis" target="_blank" rel="noopener">
+            <span class="icon">&#129303;</span>
+            <div><strong>HuggingFace</strong><span>issdandavis</span></div>
+          </a>
+          <a class="find-card" href="https://www.kaggle.com/issacizrealdavis" target="_blank" rel="noopener">
+            <span class="icon">&#128202;</span>
+            <div><strong>Kaggle</strong><span>issacizrealdavis</span></div>
+          </a>
+          <a class="find-card" href="https://ollama.com/issdandavis7795" target="_blank" rel="noopener">
+            <span class="icon">&#128017;</span>
+            <div><strong>Ollama</strong><span>issdandavis7795</span></div>
+          </a>
+          <a class="find-card" href="https://github.com/issdandavis/SCBE-AETHERMOORE/discussions" target="_blank" rel="noopener">
+            <span class="icon">&#128172;</span>
+            <div><strong>Discussions</strong><span>GitHub Discussions</span></div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    SCBE-AETHERMOORE &middot; Built by Issac Davis in Port Angeles, WA &middot; Patent pending USPTO #63/961,403
+    <br>
+    <a href="index.html">Home</a> &middot;
+    <a href="services.html">Shop</a> &middot;
+    <a href="profile.html">Profile</a> &middot;
+    <a href="mailto:aethermoregames@pm.me">Email</a>
+  </footer>
+
+  <script>
+    window.__POLLY_BACKEND_HTTP__ = window.__POLLY_BACKEND_HTTP__ || "http://localhost:8001";
+  </script>
+  <script src="/static/polly-sidebar.js"></script>
+</body>
+</html>
