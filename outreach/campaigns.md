@@ -16,16 +16,28 @@ Three parallel campaigns, one per vertical solution. Each targets ~20-50 prospec
 
 ## Campaign 1 — CX Refund Guardrail
 
-**Target:** Shopify Plus merchants running AI chatbots, regional airlines, telcos, mid-market ecommerce with high support volume.
+**Target:** Mid-market SaaS companies running custom LLM-powered support, fintechs/neobanks/insurtechs with chatbots (where Moffatt-style liability is highest), AI startups that sell chatbot/agent products themselves, and enterprise SaaS teams deploying OpenAI API or Anthropic API directly behind their support flow. Not targeting no-code ecommerce platforms — you're selling to teams who write code and make deployment decisions.
 
 **Find them via:**
-- Shopify Plus merchant directory (LinkedIn search: "Shopify Plus" + "Head of CX" or "Director of Customer Experience")
-- Chatbot app reviews on Shopify App Store (look at the merchants leaving reviews — they're already using one)
-- LinkedIn search: `"AI chatbot" OR "conversational AI"` at mid-market ecommerce
-- ProductHunt launches in the retail/ecommerce category
-- Y Combinator S24/W25 batch company directory, filter for commerce/retail
+- LinkedIn search: `"Head of Support" OR "VP Customer Success" OR "Director of CX"` at SaaS companies with 50-500 employees
+- LinkedIn search: `"CTO" OR "Head of Engineering"` at fintech / neobank / insurtech companies
+- Job listings: companies actively hiring for "AI Support Engineer", "Conversational AI", "LLM prompt engineer" — they have live deployments right now and someone owns the risk
+- GitHub: recently starred or forked repos like `anthropics/claude-python`, `openai/openai-python`, `langchain-ai/langchain`, `intercom/fin-widget` — look at who's contributing real code
+- Y Combinator directory W24/S24/W25/S25 batches — filter for B2B SaaS, fintech, insurance, customer service
+- ProductHunt launches tagged "chatbot" or "AI assistant" — contact the maker
+- Hacker News "Show HN" posts mentioning AI support agents or RAG chatbots — contact the poster directly
+- Twitter/X: look at followers of `@simonw`, `@swyx`, `@hwchase17` who engage with LLM deployment content
+- Browse the `/customers` or `/case studies` page of any company selling RAG-as-a-service — their customers are your prospects
 
-**Personalization hook:** Check their public chatbot. Ask it a policy question. If it gives a generic or uncertain answer, that's your opener.
+**Personalization hook:** Find their public LLM deployment. This could be:
+- A support widget on their site (most have "Chat with us" in the corner)
+- A Discord/Slack bot they ship to customers
+- An API their product exposes that has a natural-language input
+- A demo video of their AI feature on YouTube or their landing page
+
+Open it. Ask it a policy-sensitive question specific to their product ("Can I get a refund after 60 days?", "Do you offer a lifetime license?", "What's your SLA if the service is down for 48 hours?"). Screenshot whatever it says. That screenshot is your opener.
+
+If their chatbot is well-guarded and refuses to answer the policy question, that's also an opener — you can say "I noticed your bot correctly deflects policy questions to a human, which is the right call. How are you scaling that triage as your support volume grows? My guardrail automates exactly that deflection logic."
 
 ### Email 1 — Initial cold send
 
@@ -39,13 +51,13 @@ Three parallel campaigns, one per vertical solution. Each targets ~20-50 prospec
 ```
 Hi {{FIRST_NAME}},
 
-I asked {{COMPANY}}'s chatbot {{SPECIFIC_QUESTION}} last week and got {{SPECIFIC_ANSWER_OR_BEHAVIOR}}. That got me thinking about a question I keep asking CX leads at companies like yours:
+I asked {{COMPANY}}'s {{SUPPORT_WIDGET_OR_AI_FEATURE}} {{SPECIFIC_QUESTION}} and got {{SPECIFIC_ANSWER_OR_BEHAVIOR}} — screenshot if you want it. That raised a question I've been asking technical CX and engineering leads at companies shipping LLM features:
 
-After Moffatt v. Air Canada — where a Canadian tribunal ruled the airline was legally bound by its chatbot's promises — how are you thinking about policy enforcement on the chatbot output?
+After Moffatt v. Air Canada (the Canadian tribunal ruled the airline was legally bound by its chatbot's promises) — how are you handling policy enforcement on generated output before it reaches the customer?
 
-I built a middleware product that sits between your LLM and the customer, checks every message against your actual refund/return policies before it ships, and keeps an audit log for legal. $500/month for 10K messages. 30-day free trial.
+I built middleware that sits between your LLM and the customer, checks every response against your actual policies (refund rules, SLAs, pricing, eligibility) before it ships, and keeps an audit log your legal team can actually use. Works with any LLM you're already calling — OpenAI, Anthropic, local, or a custom fine-tune. Under 100ms added latency. $500/month for 10K messages. 30-day free trial, no card.
 
-Not pitching a demo — there's a page here if you want to poke around: https://aethermoore.com/hello.html?v=cx
+Not pitching a demo — there's a page here if you want to poke around on your own terms: https://aethermoore.com/hello.html?v=cx
 
 Worth a 15-minute call, or not a fit? Either answer is fine.
 
@@ -63,9 +75,11 @@ Hi {{FIRST_NAME}},
 
 Sent you a note last week about chatbot policy enforcement. If you're buried, no worries — one more attempt then I'll disappear.
 
-Quick concrete example: a Shopify Plus merchant I talked to had their support chatbot tell a customer "yes, we honor lifetime warranties" — which they don't. Customer screenshotted it and demanded enforcement. The merchant's legal team said to honor it because of the Moffatt precedent. One wrong answer cost them ~$4K.
+Concrete scenario from a SaaS team I talked to: their AI support assistant (OpenAI API, custom RAG over their knowledge base) told a customer "yes, you can cancel anytime and we'll refund the full annual contract pro-rata." Their actual contract had a 30-day refund window, not pro-rata. Customer screenshotted it, legal said to honor it under Moffatt precedent, one wrong answer cost them ~$11K in refunds they didn't have to pay.
 
-My product would have caught that specific response before it shipped. $500/month starter.
+My product would have caught that specific response before it shipped — the policy DSL rejects any refund promise outside your actual refund window, escalates to a human, or rewrites with a safe template. Whatever you configure.
+
+$500/month starter, 10K messages, 30-day free trial.
 
 Page: https://aethermoore.com/hello.html?v=cx
 Or just reply with "not a fit" and I'll mark you as such.
@@ -96,7 +110,7 @@ Issac
 ### LinkedIn DM version (for LinkedIn outreach)
 
 ```
-Hey {{FIRST_NAME}} — saw {{COMPANY}} uses an AI chatbot on support. Quick question: how are you handling Moffatt v. Air Canada-style policy liability? I built a guardrail middleware that sits between the LLM and the customer, catches bad answers before they ship. $500/mo. Page with details: aethermoore.com/hello.html?v=cx — worth a 15-min call? If not, no sweat.
+Hey {{FIRST_NAME}} — poked at {{COMPANY}}'s {{FEATURE}} yesterday. Quick question: how are you handling Moffatt v. Air Canada-style policy liability on the LLM output? I built guardrail middleware that sits between the model and the customer, catches bad refund/SLA/pricing claims before they ship. Works with any LLM API. $500/mo starter. Page with details: aethermoore.com/hello.html?v=cx — worth a 15-min call or not a fit?
 ```
 
 ---
