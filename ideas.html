@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Idea Space | Notebook of Things I Might Build</title>
+  <meta name="description" content="A running list of ideas I'm mulling, prototyping, or chasing. Nothing here is a promise. Some will ship, some will get archived, some will turn into something I didn't expect.">
+  <link rel="canonical" href="https://aethermoore.com/ideas.html">
+  <meta property="og:title" content="Idea Space | Issac's Notebook">
+  <meta property="og:description" content="Running list of ideas, prototypes, and things I'm chasing. Informal, not promises.">
+  <meta property="og:url" content="https://aethermoore.com/ideas.html">
+  <meta property="og:image" content="https://aethermoore.com/hero.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Idea Space | Issac's Notebook">
+  <meta name="twitter:description" content="Running list of ideas, prototypes, and things I'm chasing.">
+  <meta name="twitter:image" content="https://aethermoore.com/hero.png">
+  <style>
+    :root {
+      --bg: #071412; --bg-deep: #04100f;
+      --panel: rgba(10,28,24,0.82); --panel-strong: rgba(8,24,20,0.94);
+      --line: rgba(139,255,223,0.15); --line-bright: rgba(139,255,223,0.3);
+      --text: #e7fff7; --muted: #9bc5ba; --dim: #6a9488;
+      --mint: #8fffd3; --aqua: #6dd8ff; --gold: #ffd977; --rose: #ff9ec7; --violet: #c49cff;
+      --max: 820px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(180deg, var(--bg-deep), var(--bg));
+      color: var(--text); line-height: 1.7; min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--aqua); text-decoration: none; border-bottom: 1px dashed rgba(109,216,255,0.3); }
+    a:hover { color: var(--mint); border-bottom-color: var(--mint); }
+    code {
+      font-family: "SF Mono", Consolas, monospace; font-size: 0.88em;
+      background: rgba(0,0,0,0.35); padding: 2px 6px; border-radius: 4px;
+      color: var(--mint); border-bottom: none;
+    }
+    .topbar { position: sticky; top: 0; z-index: 30; background: rgba(4,16,15,0.9); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+    .topbar-inner { max-width: var(--max); margin: 0 auto; padding: 14px 20px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .brand { font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mint); font-weight: 700; border: none; }
+    .nav { display: flex; gap: 6px; flex-wrap: wrap; }
+    .nav a { padding: 6px 12px; border-radius: 8px; font-size: 12px; color: var(--muted); border: none; }
+    .nav a:hover { color: var(--text); background: rgba(143,255,211,0.08); }
+    main { max-width: var(--max); margin: 0 auto; padding: 56px 24px 80px; }
+
+    .hero-label { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--violet); padding: 4px 12px; border-radius: 20px; background: rgba(196,156,255,0.08); border: 1px solid rgba(196,156,255,0.25); margin-bottom: 14px; }
+    h1 {
+      font-size: clamp(28px, 5vw, 44px); font-weight: 800; letter-spacing: -0.03em;
+      line-height: 1.12; margin-bottom: 14px;
+      background: linear-gradient(135deg, var(--violet), var(--mint));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .subtitle { color: var(--muted); font-size: 17px; max-width: 62ch; margin-bottom: 8px; }
+    .disclaimer { color: var(--dim); font-size: 13px; margin-bottom: 40px; font-style: italic; }
+
+    .status-legend { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; padding: 14px 18px; background: rgba(0,0,0,0.2); border: 1px solid var(--line); border-radius: 10px; font-size: 12px; color: var(--muted); }
+    .status-legend strong { color: var(--text); }
+
+    .idea {
+      background: var(--panel); border: 1px solid var(--line);
+      border-radius: 14px; padding: 28px 30px; margin-bottom: 28px;
+      position: relative;
+    }
+    .idea.hot { border-color: rgba(143,255,211,0.35); box-shadow: 0 0 18px rgba(143,255,211,0.08); }
+    .idea.prototype { border-color: rgba(255,217,119,0.3); }
+    .idea.archived { opacity: 0.55; border-style: dashed; }
+
+    .idea-head { display: flex; justify-content: space-between; gap: 14px; margin-bottom: 8px; flex-wrap: wrap; align-items: baseline; }
+    .idea-head h2 { font-size: 22px; font-weight: 700; letter-spacing: -0.015em; color: var(--text); }
+    .idea-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .tag {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 3px 8px; border-radius: 6px; white-space: nowrap;
+    }
+    .tag-concept { background: rgba(196,156,255,0.12); color: var(--violet); border: 1px solid rgba(196,156,255,0.25); }
+    .tag-sketching { background: rgba(109,216,255,0.12); color: var(--aqua); border: 1px solid rgba(109,216,255,0.25); }
+    .tag-prototype { background: rgba(255,217,119,0.12); color: var(--gold); border: 1px solid rgba(255,217,119,0.25); }
+    .tag-shipping { background: rgba(143,255,211,0.12); color: var(--mint); border: 1px solid rgba(143,255,211,0.25); }
+    .tag-archived { background: rgba(138,144,184,0.1); color: var(--dim); border: 1px solid rgba(138,144,184,0.25); }
+
+    .idea-tagline { color: var(--muted); font-size: 15px; font-style: italic; margin-bottom: 20px; }
+    .idea h3 { font-size: 13px; font-weight: 700; color: var(--mint); text-transform: uppercase; letter-spacing: 0.1em; margin: 20px 0 8px; }
+    .idea p { color: var(--muted); font-size: 15px; margin-bottom: 12px; }
+    .idea ul { margin: 8px 0 14px 22px; color: var(--muted); font-size: 14px; }
+    .idea ul li { margin-bottom: 6px; }
+    .idea ul li strong { color: var(--text); }
+
+    .idea-footer { margin-top: 22px; padding-top: 16px; border-top: 1px solid var(--line); display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--dim); }
+    .idea-footer .when { color: var(--dim); }
+    .idea-footer .link { color: var(--aqua); border: none; }
+
+    .add-hint { margin-top: 40px; padding: 20px 24px; background: rgba(0,0,0,0.25); border: 1px dashed var(--line); border-radius: 12px; color: var(--dim); font-size: 13px; text-align: center; }
+    .add-hint strong { color: var(--muted); }
+    footer { margin-top: 60px; padding: 24px; border-top: 1px solid var(--line); color: var(--dim); font-size: 12px; text-align: center; }
+    footer a { color: var(--muted); border: none; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="/">SCBE-AETHERMOORE</a>
+      <nav class="nav">
+        <a href="/">Home</a>
+        <a href="/services.html">Shop</a>
+        <a href="/pilot.html">Pilot</a>
+        <a href="/ideas.html" style="color:var(--violet);">Ideas</a>
+        <a href="/profile.html">Profile</a>
+        <a href="https://github.com/issdandavis" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <span class="hero-label">Lab Notebook</span>
+    <h1>Idea Space</h1>
+    <p class="subtitle">A running list of things I'm mulling, prototyping, or chasing. Some connect to SCBE-AETHERMOORE, some don't. Some will ship, some will archive, some will surprise me.</p>
+    <p class="disclaimer">Nothing here is a promise or a roadmap. It's a notebook. If one of these catches your eye and you want to collaborate, <a href="mailto:aethermoregames@pm.me">email me</a>.</p>
+
+    <div class="status-legend">
+      <span><strong>Status tags:</strong></span>
+      <span><span class="tag tag-concept">Concept</span> just an idea</span>
+      <span><span class="tag tag-sketching">Sketching</span> thinking through it</span>
+      <span><span class="tag tag-prototype">Prototype</span> building it</span>
+      <span><span class="tag tag-shipping">Shipping</span> in the product</span>
+      <span><span class="tag tag-archived">Archived</span> paused or dead</span>
+    </div>
+
+    <!-- ============================================= -->
+    <article class="idea hot">
+      <div class="idea-head">
+        <h2>Kinetic Attestation Primitive</h2>
+        <div class="idea-tags">
+          <span class="tag tag-sketching">Sketching</span>
+          <span class="tag tag-concept">Anti-deepfake</span>
+        </div>
+      </div>
+      <p class="idea-tagline">A recording device that signs physical effort into the file so the recording is unforgeable by AI after the fact.</p>
+
+      <h3>The insight</h3>
+      <p>Every AI deepfake needs one thing it cannot synthesize: the correlated physical signal of a real human expending real calories at a real moment. A hand-crank voice recorder that captures audio AND the kinetic waveform of the crank, then signs them together with a timestamp, produces a file that says more than "here is audio." It says <strong style="color:var(--text);">a human was present, moving, at this time, producing this sound</strong>. That's a claim you cannot retroactively synthesize no matter how good the voice models get.</p>
+
+      <h3>Why this matters in 2026</h3>
+      <p>Voice cloning is trivial now. Legal, journalism, evidence, and family archival are all trying to figure out how to trust audio recordings. The existing answer is watermarking (easily removed) or cryptographic timestamps (don't prove a human was there). A kinetic signature proves presence and effort in a way that scales with the physical world, not the compute budget of the forger.</p>
+
+      <h3>What v1 looks like</h3>
+      <ul>
+        <li><strong>Hardware:</strong> ESP32-S3 dev board + digital mic + hand-crank generator + supercap + FRAM + small speaker. ~$80-130 BOM.</li>
+        <li><strong>Firmware:</strong> State machine that captures audio and crank voltage waveform simultaneously, stores both in a single sealed envelope on microSD, commits metadata to FRAM on brownout.</li>
+        <li><strong>Signing:</strong> HMAC or PQC signature over <code>audio_bytes || crank_waveform || timestamp</code>. Verification is deterministic and offline.</li>
+        <li><strong>Long-form mode:</strong> Record indefinitely by cranking while recording — segment files get stitched together, brownout is non-fatal.</li>
+      </ul>
+
+      <h3>Where it fits in SCBE</h3>
+      <p>The GeoSeal CLI already has the envelope primitive. A kinetic attestation device is just GeoSeal with a different AAD: instead of <code>lat/lon/tile</code>, the context is <code>crank_fft/effort/duration</code>. Same sealing logic, same tamper detection, same audit trail. It becomes a physical peripheral for the SCBE provenance layer.</p>
+
+      <h3>Also interesting as a side angle</h3>
+      <ul>
+        <li><strong>Space mission fallback:</strong> FRAM is radiation-tolerant, supercap survives eclipse transitions, brownout-aware state machine is what aerospace firmware wants anyway. A totally independent kinetic-powered crew log for loss-of-main-power scenarios is a legitimate cubesat-adjacent niche &mdash; not a product but a reference design you could license.</li>
+        <li><strong>Kinetic AI training:</strong> Crank rate, rhythm, and pause patterns are a novel annotation signal. Effort correlates with cognitive load on the speaker. "This utterance required thinking" becomes a free label. Nobody collects this.</li>
+      </ul>
+
+      <div class="idea-footer">
+        <span class="when">Added 2026-04-12</span>
+        <span>&middot;</span>
+        <span>Origin: old hand-crank voice recorder prototype, revived with provenance framing</span>
+      </div>
+    </article>
+
+    <!-- ============================================= -->
+    <article class="idea">
+      <div class="idea-head">
+        <h2>Live Bit-Signature Visualization in governance-gate Demo</h2>
+        <div class="idea-tags">
+          <span class="tag tag-sketching">Sketching</span>
+        </div>
+      </div>
+      <p class="idea-tagline">Type a prompt, see its Six-Tongues bit signature in real time, watch the classifier score it.</p>
+      <p>Just published the <a href="https://huggingface.co/datasets/issdandavis/prompt-injection-bit-signatures" target="_blank" rel="noopener">prompt-injection bit-signatures dataset</a> and got 92% AUC on 31 features. The <a href="/demos/governance-gate.html">governance-gate demo</a> already has pattern detection but doesn't show the bit signature. Next step: compute the signature in-browser, render the 16-bin bit histogram as a live bar chart, export the gradient boosting model as JSON so the classifier score updates live as the user types.</p>
+      <div class="idea-footer"><span class="when">Added 2026-04-12</span></div>
+    </article>
+
+    <!-- ============================================= -->
+    <article class="idea">
+      <div class="idea-head">
+        <h2>Ensemble: pattern detector + bit-signature classifier</h2>
+        <div class="idea-tags">
+          <span class="tag tag-concept">Concept</span>
+        </div>
+      </div>
+      <p class="idea-tagline">The governance-gate pattern detector catches named attacks with high precision. The bit-signature classifier catches distribution-level weirdness. Combine them and publish the joint AUC.</p>
+      <p>Both are already built and running. The pattern detector is rule-based and precise but misses novel attacks. The bit classifier is statistical and picks up distributional signals the rules miss. Weighted ensemble should beat either alone. Publish as an update to the evidence page.</p>
+      <div class="idea-footer"><span class="when">Added 2026-04-12</span></div>
+    </article>
+
+    <!-- ============================================= -->
+    <article class="idea">
+      <div class="idea-head">
+        <h2>Third-party findings report (GPT-4, Claude, Llama 3)</h2>
+        <div class="idea-tags">
+          <span class="tag tag-concept">Concept</span>
+          <span class="tag tag-concept">High leverage</span>
+        </div>
+      </div>
+      <p class="idea-tagline">Run the SCBE L6 adversarial suite against the frontier models and publish the results.</p>
+      <p>The single highest-leverage asset I could create right now. One afternoon of API calls, one PDF, one honest report. Turns "I have a framework" into "I found vulnerabilities in GPT-4 that have real reproduction steps." Requires API credits (I pay my own) and permission-to-publish on the framing. Models mentioned would not be targeted in any misleading way &mdash; it's a fair comparison, not a takedown.</p>
+      <div class="idea-footer"><span class="when">Added 2026-04-12</span><span>&middot;</span><span>Surfaced by a session review as the biggest conversion unlock.</span></div>
+    </article>
+
+    <!-- ============================================= -->
+    <article class="idea">
+      <div class="idea-head">
+        <h2>Rebrand the pipeline: "Three-Mechanism Combined Defense" instead of "14-Layer"</h2>
+        <div class="idea-tags">
+          <span class="tag tag-concept">Concept</span>
+        </div>
+      </div>
+      <p class="idea-tagline">The real product is the combined detection, not the layer count.</p>
+      <p>The <a href="/research/evidence.html">evidence page</a> already shows the raw 14-layer pipeline scores 0.054 AUC on subtle attacks &mdash; worse than random &mdash; and only the three-mechanism combined defense (phase + tonic + drift) hits 99.42%. The "14-layer" branding is load-bearing and technically misleading. Reframe the marketing copy around the combined defense and demote the 14-layer count to an implementation detail.</p>
+      <div class="idea-footer"><span class="when">Added 2026-04-12</span></div>
+    </article>
+
+    <div class="add-hint">
+      <strong>New ideas drop here first, before they become products.</strong><br>
+      If you want to suggest one, <a href="mailto:aethermoregames@pm.me?subject=Idea%20for%20the%20Idea%20Space">email me</a>.
+    </div>
+  </main>
+
+  <footer>
+    SCBE-AETHERMOORE &middot; <a href="/services.html">Shop</a> &middot; <a href="/research/evidence.html">Evidence</a> &middot; <a href="mailto:aethermoregames@pm.me">Email</a>
+  </footer>
+
+  <link rel="stylesheet" href="/static/galactic-theme.css">
+  <script src="/static/galactic-stars.js" defer></script>
+</body>
+</html>
