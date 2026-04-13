@@ -164,7 +164,203 @@ function tryExample(text){document.getElementById('promptInput').value=text;eval
 async function evaluate(){const text=document.getElementById('promptInput').value.trim();if(!text)return;const btn=document.getElementById('evalBtn');const origText=btn.textContent;btn.disabled=true;btn.innerHTML='<span class="spinner"></span>Processing...';try{let r;if(isLive&&!useCached){r=await evaluateLive(text)}else{r=getCachedResult(text)}if(r)await renderResult(r,text)}catch(e){const c=getCachedResult(text);if(c){updateBadge('cached');await renderResult(c,text)}}finally{btn.disabled=false;btn.textContent=origText||'Evaluate'}}
 async function evaluateLive(text){const h={'Content-Type':'application/json','ngrok-skip-browser-warning':'true'};const dr=await fetch(backendUrl+'/api/dye-inject',{method:'POST',headers:h,body:JSON.stringify({text})});if(!dr.ok)throw new Error(dr.status);const dd=await dr.json();const er=await fetch(backendUrl+'/api/evaluate',{method:'POST',headers:h,body:JSON.stringify({text})});if(!er.ok)throw new Error(er.status);const ed=await er.json();return{decision:dd.scan.governance_decision,cost:dd.scan.harmonic_cost,tongue_coords:Object.fromEntries(TONGUES.map((t,i)=>[t,dd.scan.tongue_coords[i]])),dominant_tongue:dd.scan.hottest_tongue,coldest_tongue:dd.scan.coldest_tongue,spin_magnitude:dd.scan.spin_magnitude,spin_vector:dd.scan.spin_vector,null_space_detected:dd.scan.null_space_detected,pathway_heatmap:dd.scan.pathway_heatmap,signals:ed.signals||dd.signals||[],trust_level:dd.scan.trust_level||ed.trust_level,fibonacci_index:dd.scan.fibonacci_index||ed.fibonacci_index,layer_trace:dd.layer_trace.map(l=>({l:l.layer,d:l.dominant_tongue,e:l.layer_energy,t:l.tongue_activations})),_source:'live'}}
 function getCachedResult(text){if(!PRECOMPUTED)return genFallback(text);if(PRECOMPUTED[text])return{...PRECOMPUTED[text],_source:'cached_exact'};const tl=text.toLowerCase().trim();let bk=null,bs=0;for(const k of Object.keys(PRECOMPUTED)){const kl=k.toLowerCase().trim();const tw=new Set(tl.split(/\s+/)),kw=new Set(kl.split(/\s+/));let ov=0;for(const w of tw){if(kw.has(w))ov++}const sc=ov/Math.max(tw.size,kw.size);const cs=kl.includes(tl)||tl.includes(kl)?0.8:0;const fs=Math.max(sc,cs);if(fs>bs){bs=fs;bk=k}}if(bs>=0.4&&bk)return{...PRECOMPUTED[bk],_source:'cached_fuzzy',_matched:bk};return genFallback(text)}
-function genFallback(text){const PHI=(1+Math.sqrt(5))/2,PI=Math.PI,TW=[1,PHI,PHI**2,PHI**3,PHI**4,PHI**5];const PATS=[/ignore.*previous|override.*prompt|you are now|pretend you/i,/base64|decode.*this/i,/\bDAN\b|bypass.*filter|god mode/i,/password|api.?key|secret.?key|evil/i,/rm\s+-rf|sudo|exec\(|drop\s+table/i,/admin.*access|escalat|override.*polic/i,/<script|alert\(|document\./i];let tc=0;for(const p of PATS){if(p.test(text))tc++}const ws=text.match(/[A-Za-z0-9_']+/g)||[];const wc=ws.length,ch=Math.max(text.length,1),un=new Set(ws.map(w=>w.toLowerCase())).size;const dg=(text.match(/\d/g)||[]).length,up=(text.match(/[A-Z]/g)||[]).length,pu=(text.match(/[.,;:!?\-_\/()\[\]{}@#$%^&*]/g)||[]).length;const tc2={KO:Math.min(1,0.2+0.4*(up/ch)*5),AV:Math.min(1,wc/600),RU:Math.min(1,un/Math.max(wc,1)),CA:Math.min(1,(dg/ch)*10),UM:Math.min(1,(up/ch)*5),DR:Math.min(1,(pu/ch)*8)};const cen=[0.4,0.2,0.5,0.1,0.2,0.3];const co=TONGUES.map(t=>tc2[t]);const dist=Math.sqrt(TW.reduce((s,w,i)=>s+w*(co[i]-cen[i])**2,0));const dS=Math.min(dist,5),cost=Math.pow(PI,PHI*dS);let dec,sigs=[];if(tc>=3){dec='DENY';sigs.push('multi_pattern')}else if(tc>=1&&cost>50){dec='QUARANTINE';sigs.push('pattern+cost')}else if(tc>=1){dec='QUARANTINE';sigs.push('pattern')}else if(cost>500){dec='DENY';sigs.push('extreme_cost')}else if(cost>50){dec='QUARANTINE';sigs.push('elevated')}else{dec='ALLOW';sigs.push('clean')}const ph={};TONGUES.forEach(t=>{ph[t]=+(tc2[t]*0.9).toFixed(4)});const mxT=TONGUES.reduce((a,b)=>(tc2[a]>tc2[b]?a:b)),mnT=TONGUES.reduce((a,b)=>(tc2[a]<tc2[b]?a:b));const sp=TONGUES.map((t,i)=>{const d=co[i]-cen[i];return d>0.05?1:d<-0.05?-1:0});const lt=[];for(let l=1;l<=14;l++){const act={};TONGUES.forEach((t,i)=>{let a=tc2[t];if(l<=2)a*=(1+0.1*TW[i]);else if(l<=4)a*=TW[i]/(1+TW[i]);else if(l===5)a=Math.abs(co[i]-cen[i])*TW[i];else if(l<=7)a*=0.5+0.5*Math.sin(2*PI*i/6+sp[i]*PI/3);else if(l===8)a*=(0.3+0.7*Math.min(1,cost/100));else if(l<=10)a=Math.abs(Math.cos(2*PI*(i+1)/6*tc2[t]))*(0.5+0.5*tc2[t]);else if(l===11)a*=Math.exp(-0.3*Math.abs(i-3));else if(l===12)a=1/(1+tc2[t]*TW[i]+2*Math.max(0,cost/500));else if(l===13)a=Math.abs(sp[i])>0?1:tc2[t]*0.3;else a*=TW[i]/TW[5];act[t]=+Math.min(1,Math.max(0,a)).toFixed(3)});const dm=TONGUES.reduce((a,b)=>(act[a]>act[b]?a:b));const en=+TONGUES.reduce((s,t)=>s+act[t],0).toFixed(3);lt.push({l,d:dm,e:en,t:act})}return{decision:dec,cost:+cost.toFixed(2),tongue_coords:tc2,dominant_tongue:mxT,coldest_tongue:mnT,spin_magnitude:sp.reduce((s,v)=>s+Math.abs(v),0),spin_vector:sp,null_space_detected:false,pathway_heatmap:ph,signals:sigs,trust_level:'PROVISIONAL',fibonacci_index:3,layer_trace:lt,_source:'fallback'}}
+function genFallback(text){
+  // Real math, runs on the actual input text. Not a cache lookup — computes
+  // pattern categories, character stats, tongue activations, hyperbolic
+  // distance, harmonic cost, and a decision from all of that.
+  const PHI=(1+Math.sqrt(5))/2, PI=Math.PI, TW=[1,PHI,PHI**2,PHI**3,PHI**4,PHI**5];
+
+  // Pattern categories, each category hits a different tongue.
+  // Weight per category reflects severity under SCBE's UM (security) dimension.
+  const CATEGORIES = [
+    // Prompt injection / jailbreak (UM + RU)
+    {w:3.0, tongues:['UM','RU'], re:/ignore\s+(\w+\s+){0,3}(previous|prior|above|earlier|prompt|instruction|rule|direction|system)|override\s+(\w+\s+){0,3}(prompt|instruction|rule|system|safety)|forget\s+(\w+\s+){0,3}(everything|prior|previous|instruction|rule)|you\s+are\s+now|pretend\s+(you|to\s+be)|disregard\s+(all|your|previous|prior)|act\s+as\s+(a\s+)?(root|admin|developer|hacker|dan)|dump\s+(the\s+)?(system\s+)?prompt/i},
+    {w:2.5, tongues:['UM','RU'], re:/\bDAN\b|\bSTAN\b|do\s+anything\s+now|developer\s+mode|god\s+mode|jailbreak|bypass\s+(filter|safety|rule)|unrestricted\s+mode/i},
+
+    // PII harvest / social engineering (UM + RU, highest severity)
+    {w:3.5, tongues:['UM','AV'], re:/social\s*security|\bssn\b|\bsin\b|tax\s+id\s+number|national\s+insurance|passport\s+number|driver'?s?\s+licen[cs]e|government\s+id/i},
+    {w:3.2, tongues:['UM','AV'], re:/credit\s*card|cvv|cvc|card\s+verification|card\s+number|cardholder|visa\s+number|mastercard\s+number|expir(y|ation)\s+date|routing\s+number|account\s+number|bank\s+account/i},
+    {w:2.8, tongues:['UM','AV'], re:/mother'?s?\s+maiden|date\s+of\s+birth|\bdob\b|full\s+legal\s+name|maiden\s+name|place\s+of\s+birth|security\s+question|security\s+answer/i},
+    {w:2.5, tongues:['UM','AV'], re:/what'?s?\s+your\s+(name|address|phone|number|email|ssn|password|pin)|give\s+me\s+your\s+(name|address|phone|number|email|password)|tell\s+me\s+your\s+(real\s+)?(name|address|ssn)/i},
+    {w:2.2, tongues:['UM','RU'], re:/fill\s+out\s+(this\s+)?(form|survey)|complete\s+(this\s+)?(form|survey|profile)|confirm\s+your\s+(identity|account|details)|verify\s+your\s+(identity|account|email|ssn|password)/i},
+
+    // Credential theft / secret exfiltration (UM)
+    {w:3.0, tongues:['UM'], re:/password|api[_\s-]*key|secret[_\s-]*key|access[_\s-]*token|bearer[_\s-]*token|private[_\s-]*key|ssh[_\s-]*key|aws[_\s-]*secret|database[_\s-]*password|\.env\b|credentials?\b/i},
+
+    // Command injection / destructive (UM + CA)
+    {w:3.0, tongues:['UM','CA'], re:/rm\s+-rf|rmdir\s+\/|sudo\s+(su|bash|sh)|chmod\s+[0-7]{3,}|curl\s+.*\|\s*(sh|bash)|wget\s+.*\|\s*(sh|bash)|eval\(|exec\(|subprocess\./i},
+
+    // SQL / XSS / injection
+    {w:2.5, tongues:['UM','DR'], re:/drop\s+table|union\s+select|or\s+1\s*=\s*1|';?\s*--|<script[^>]*>|javascript:|document\.(cookie|write)|onerror\s*=|onclick\s*=/i},
+
+    // Encoded / obfuscation
+    {w:2.0, tongues:['AV','DR'], re:/base64[:\s]|decode\s+this|rot13|hex\s+decode|atob\(|fromcharcode/i},
+
+    // Policy / privilege escalation
+    {w:2.2, tongues:['RU','UM'], re:/admin\s+access|root\s+access|escalat(e|ion)|override\s+polic|bypass\s+(auth|permission|gate|approval)/i},
+
+    // Destructive intent / harm
+    {w:2.8, tongues:['UM'], re:/make\s+a\s+(bomb|weapon|poison|virus|malware)|how\s+to\s+(kill|hurt|attack|stalk)|hotwire|break\s+into/i},
+  ];
+
+  const matched = [];
+  const tongueHits = {KO:0,AV:0,RU:0,CA:0,UM:0,DR:0};
+  let threatWeight = 0;
+  for (const cat of CATEGORIES) {
+    if (cat.re.test(text)) {
+      matched.push(cat);
+      threatWeight += cat.w;
+      for (const t of cat.tongues) tongueHits[t] += cat.w;
+    }
+  }
+
+  // Character stats
+  const ws = text.match(/[A-Za-z0-9_']+/g) || [];
+  const wc = ws.length;
+  const ch = Math.max(text.length, 1);
+  const un = new Set(ws.map(w=>w.toLowerCase())).size;
+  const dg = (text.match(/\d/g) || []).length;
+  const up = (text.match(/[A-Z]/g) || []).length;
+  const pu = (text.match(/[.,;:!?\-_\/()\[\]{}@#$%^&*]/g) || []).length;
+  const qm = (text.match(/\?/g) || []).length;
+
+  // Base tongue activations (from character stats, same shape as before)
+  const base = {
+    KO: Math.min(1, 0.15 + 0.3*(qm/Math.max(wc,1)) + 0.2*(up/ch)*3),
+    AV: Math.min(1, 0.15 + wc/400),
+    RU: Math.min(1, un/Math.max(wc,1)),
+    CA: Math.min(1, 0.1 + (dg/ch)*6),
+    UM: Math.min(1, 0.15 + (up/ch)*4),
+    DR: Math.min(1, 0.15 + (pu/ch)*6),
+  };
+
+  // Overlay pattern hits onto the base — threats pump up UM + the specific tongues
+  const tc2 = {};
+  for (const t of ['KO','AV','RU','CA','UM','DR']) {
+    tc2[t] = Math.min(1, base[t] + 0.35*Math.min(1, tongueHits[t]/3));
+  }
+  // If ANY threat hit, boost UM at least to 0.6 — it's the security dimension
+  if (threatWeight > 0) {
+    tc2.UM = Math.max(tc2.UM, Math.min(1, 0.55 + 0.15*threatWeight));
+  }
+
+  // Center of the safe cluster (benign queries) — calibrated so benign = low cost
+  const cen = [0.30, 0.30, 0.45, 0.15, 0.20, 0.25];
+  const co = TONGUES.map(t=>tc2[t]);
+
+  // Weighted hyperbolic-style distance from safe center
+  const dist = Math.sqrt(TW.reduce((s,w,i) => s + w*(co[i]-cen[i])**2, 0));
+  const dS = Math.min(dist, 5);
+
+  // Harmonic cost: H(d, R) = R^(d²) in spirit, but use π^(φ*d) for the demo curve
+  // Threat weight adds a direct cost injection so PII gets flagged even without
+  // large statistical distance.
+  const baseCost = Math.pow(PI, PHI * dS);
+  const threatCost = Math.pow(2.8, threatWeight);
+  const cost = baseCost * (1 + threatCost * 0.6);
+
+  // Decision logic: threat weight + cost + category count
+  const tc = matched.length;
+  let dec, sigs = [];
+  if (threatWeight >= 5 || cost > 800) {
+    dec = 'DENY';
+    sigs.push('extreme_risk');
+  } else if (threatWeight >= 3 || tc >= 2 || cost > 120) {
+    dec = 'DENY';
+    sigs.push('high_risk');
+  } else if (threatWeight >= 1.5 || tc >= 1 || cost > 40) {
+    dec = 'QUARANTINE';
+    sigs.push('elevated_risk');
+  } else if (cost > 15) {
+    dec = 'REVIEW';
+    sigs.push('borderline');
+  } else {
+    dec = 'ALLOW';
+    sigs.push('clean');
+  }
+
+  // Add named category signals so users can see WHAT fired
+  if (matched.length > 0) {
+    const names = [];
+    for (const cat of matched.slice(0, 4)) {
+      const src = cat.re.source;
+      if (/social|ssn|credit|dob|maiden|form|verify/i.test(src)) names.push('pii_harvest');
+      else if (/ignore|override|pretend|DAN|jailbreak|bypass/i.test(src)) names.push('prompt_injection');
+      else if (/password|api|secret|token|credentials/i.test(src)) names.push('cred_exfil');
+      else if (/rm|sudo|eval|exec|chmod/i.test(src)) names.push('destructive_cmd');
+      else if (/drop|union|script|javascript/i.test(src)) names.push('injection_attack');
+      else if (/base64|decode|atob/i.test(src)) names.push('obfuscation');
+      else if (/admin|root|escalat/i.test(src)) names.push('priv_escalation');
+      else if (/bomb|weapon|kill|harm/i.test(src)) names.push('harmful_intent');
+      else names.push('policy_violation');
+    }
+    sigs = [...new Set(names)].concat(sigs);
+  }
+
+  // Pathway heatmap — emphasizes tongues that actually caught the threat
+  const ph = {};
+  TONGUES.forEach(t => {
+    const base = tc2[t] * 0.8;
+    const hit = tongueHits[t] > 0 ? 0.2 + 0.15*Math.min(1, tongueHits[t]) : 0;
+    ph[t] = +(base + hit).toFixed(4);
+  });
+
+  const mxT = TONGUES.reduce((a,b) => (tc2[a]>tc2[b] ? a : b));
+  const mnT = TONGUES.reduce((a,b) => (tc2[a]<tc2[b] ? a : b));
+
+  // Spin vector: which tongues pushed beyond safe center
+  const sp = TONGUES.map((t,i) => {
+    const d = co[i] - cen[i];
+    return d > 0.08 ? 1 : d < -0.08 ? -1 : 0;
+  });
+  const spinMag = sp.reduce((s,v) => s+Math.abs(v), 0);
+
+  // Build the 14-layer trace (unchanged shape, same decorative math)
+  const lt = [];
+  for (let l=1; l<=14; l++) {
+    const act = {};
+    TONGUES.forEach((t,i) => {
+      let a = tc2[t];
+      if (l<=2) a *= (1 + 0.1*TW[i]);
+      else if (l<=4) a *= TW[i]/(1+TW[i]);
+      else if (l===5) a = Math.abs(co[i]-cen[i])*TW[i];
+      else if (l<=7) a *= 0.5 + 0.5*Math.sin(2*PI*i/6 + sp[i]*PI/3);
+      else if (l===8) a *= (0.3 + 0.7*Math.min(1, cost/100));
+      else if (l<=10) a = Math.abs(Math.cos(2*PI*(i+1)/6*tc2[t])) * (0.5 + 0.5*tc2[t]);
+      else if (l===11) a *= Math.exp(-0.3*Math.abs(i-3));
+      else if (l===12) a = 1 / (1 + tc2[t]*TW[i] + 2*Math.max(0, cost/500));
+      else if (l===13) a = Math.abs(sp[i])>0 ? 1 : tc2[t]*0.3;
+      else a *= TW[i]/TW[5];
+      act[t] = +Math.min(1, Math.max(0, a)).toFixed(3);
+    });
+    const dm = TONGUES.reduce((a,b) => (act[a]>act[b] ? a : b));
+    const en = +TONGUES.reduce((s,t) => s+act[t], 0).toFixed(3);
+    lt.push({l, d:dm, e:en, t:act});
+  }
+
+  // Trust level reflects threat weight, not just cost
+  const trust = threatWeight >= 3 ? 'COMPROMISED'
+              : threatWeight >= 1 ? 'ELEVATED'
+              : cost > 15 ? 'PROVISIONAL'
+              : 'VERIFIED';
+
+  return {
+    decision: dec,
+    cost: +Math.min(cost, 99999).toFixed(2),
+    tongue_coords: tc2,
+    dominant_tongue: mxT,
+    coldest_tongue: mnT,
+    spin_magnitude: spinMag,
+    spin_vector: sp,
+    null_space_detected: threatWeight >= 2,
+    pathway_heatmap: ph,
+    signals: sigs,
+    trust_level: trust,
+    fibonacci_index: 3,
+    layer_trace: lt,
+    _source: 'fallback'
+  };
+}
 async function renderResult(r,text){if(r._source==='live')updateBadge('live');else if(r._source&&r._source.startsWith('cached'))updateBadge('cached');else updateBadge('offline');const fn=document.getElementById('fallbackNotice');if(fn){if(r._source==='fallback')fn.classList.add('active');else fn.classList.remove('active')}renderTongueBars(r.tongue_coords,r.pathway_heatmap);await renderPipeline(r,text);renderDecision(r);renderSignals(r.signals||[]);playTone(r.decision)}
 function renderTongueBars(c,h){TONGUES.forEach(t=>{const el=document.getElementById('t'+t);const cv=c[t]||0,hv=h?(h[t]||0):cv;el.style.opacity=Math.max(0.15,Math.min(1,hv));el.style.flex=Math.max(0.3,cv);el.textContent=t+' '+(cv*100).toFixed(0)+'%'})}
 async function renderPipeline(r,text){const p=document.getElementById('pipeline');const tr=r.layer_trace||[];p.innerHTML='';for(let i=1;i<=14;i++){const lt=tr.find(t=>t.l===i);const ta=lt?lt.t:{},dom=lt?lt.d:'RU';const el=document.createElement('div');el.className='layer';el.id='layer'+i;const mb=TONGUES.map(t=>'<span style="background:'+TONGUE_COLORS[t]+';opacity:'+Math.max(0.1,ta[t]||0)+'"></span>').join('');el.innerHTML='<div class="layer-num">L'+i+'</div><div class="layer-info"><div class="layer-name">'+LAYER_NAMES[i]+'</div><div class="layer-axiom">'+LAYER_AXIOMS[i]+' | '+dom+'</div><div class="layer-tongue-mini">'+mb+'</div></div><div class="layer-val">...</div>';p.appendChild(el)}for(let i=1;i<=14;i++){const el=document.getElementById('layer'+i);const lt=tr.find(t=>t.l===i);const en=lt?lt.e:0,dom=lt?lt.d:'';el.classList.add('active');await slp(80);el.classList.remove('active');let st='pass';if(i===13){const d=r.decision;st=d==='ALLOW'?'pass':d==='DENY'?'fail':d==='REROUTE'?'reroute':'warn'}else if(i===12)st=r.cost>100?'fail':r.cost>20?'warn':'pass';else if(i===8)st=r.spin_magnitude>=5?'fail':r.spin_magnitude>=3?'warn':'pass';else if(en>4)st='warn';el.classList.add(st);const v=el.querySelector('.layer-val');if(i===1)v.textContent=(text||'').length+' ch';else if(i===5)v.textContent='E='+en.toFixed(2);else if(i===8)v.textContent='spin='+r.spin_magnitude;else if(i===12)v.textContent='H='+(r.cost>1000?'>1K':r.cost.toFixed(1));else if(i===13)v.textContent=r.decision;else if(i===14)v.textContent=dom;else v.textContent='E='+en.toFixed(2)}}
