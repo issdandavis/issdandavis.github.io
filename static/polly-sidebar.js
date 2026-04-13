@@ -66,10 +66,23 @@
        All at: https://aethermoore.com/datasets.html
        Contact: aethermoregames@pm.me
 
-    7. SCBE-AETHERMOORE (Open Source) — FREE, MIT licensed
-       The full 14-layer pipeline, Sacred Tongues, and hyperbolic cost engine.
-       GitHub: https://github.com/issdandavis/SCBE-AETHERMOORE
-       npm: npm i scbe-aethermoore
+    7. SCBE-AETHERMOORE Ecosystem (Open Source) — FREE, MIT licensed
+       The framework is split across 9 focused repos, not one monolith:
+
+       Core:
+       - SCBE-AETHERMOORE (main framework, npm i scbe-aethermoore): https://github.com/issdandavis/SCBE-AETHERMOORE
+       - hyperbolica (hyperbolic math primitives): https://github.com/issdandavis/hyperbolica
+       - phdm-21d-embedding (21D Poincaré model): https://github.com/issdandavis/phdm-21d-embedding
+
+       Developer tools:
+       - six-tongues-geoseal (tokenizer + sealed envelope CLI with AI explain): https://github.com/issdandavis/six-tongues-geoseal
+       - scbe-tongues-toolchain (Sacred Tongue assembler + VM): https://github.com/issdandavis/scbe-tongues-toolchain
+       - scbe-agents (HYDRA 6-agent swarm + MCP servers): https://github.com/issdandavis/scbe-agents
+
+       Research & evidence:
+       - scbe-experiments (reproducible benchmarks, 99.42% AUC source): https://github.com/issdandavis/scbe-experiments
+       - scbe-training-lab (QLoRA configs, SFT records, eval harness): https://github.com/issdandavis/scbe-training-lab
+       - scbe-docs-archive (claims ledger, architecture, buyer proof): https://github.com/issdandavis/scbe-docs-archive
 
     === CUSTOM WORK (quote via email) ===
     - Assistant and site setup — Turn a static site into a route-aware assistant surface
