@@ -593,20 +593,21 @@
 
           <!-- Prompt Injection Bit Signatures -->
           <div class="product-card" id="injection-bits">
-            <div class="product-badge badge-free">NEW &middot; MIT</div>
+            <div class="product-badge badge-free">LIVE &middot; 92.01% AUC</div>
             <div class="product-icon">&#128200;</div>
             <h3>Prompt Injection &rarr; Bit Signatures</h3>
             <div class="product-price" style="color:var(--mint);">FREE</div>
-            <p>A reproducible pipeline that ingests 4 public prompt-injection datasets and maps each prompt through the Six Sacred Tongues bijective tokenizer to a per-prompt bit signature.</p>
+            <p><strong style="color:var(--text);">24,254 labeled prompts</strong> from 4 public injection datasets, each mapped through the Six Sacred Tongues bijective tokenizer into a lossless bit signature. Published as a HuggingFace dataset with stratified train/val/test splits.</p>
             <ul class="product-details">
-              <li>Sources: neuralchemy, deepset, jackhhao, SPML</li>
-              <li>256 bijective tokens per tongue (1 token per byte)</li>
-              <li>SHA-256 + 8-position bit histogram + Shannon entropy + phi-weighted class sums</li>
-              <li>~15K+ labeled prompts once run across all sources</li>
-              <li>JSONL output, ready for training classifiers</li>
-              <li>Stdlib Python + HF datasets lib only</li>
+              <li>Sources: neuralchemy (6,274), SPML (16,012), jackhhao (1,306), deepset (662)</li>
+              <li>Stratified 70/15/15 splits by source &times; label</li>
+              <li>SHA-256 + bit histogram + Shannon entropy + phi-weighted sums</li>
+              <li><strong>Baseline: 0.9201 AUC on 31 features (no neural net)</strong></li>
+              <li>Apache-2.0 license, immediate download, 44 MB</li>
+              <li>Full pipeline + classifier code in scbe-experiments</li>
             </ul>
-            <a class="btn btn-secondary" href="https://github.com/issdandavis/scbe-experiments/blob/main/injection_to_bits.py" target="_blank" rel="noopener">View the pipeline</a>
+            <a class="btn btn-primary" href="https://huggingface.co/datasets/issdandavis/prompt-injection-bit-signatures" target="_blank" rel="noopener">Browse on HuggingFace</a>
+            <a class="btn btn-secondary" style="margin-left:8px;" href="articles/injection-to-bits.html">Read the article</a>
           </div>
         </div>
       </div>

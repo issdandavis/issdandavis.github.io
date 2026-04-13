@@ -179,14 +179,61 @@
 
     <p>Put differently: this is a way to make the tokenizer <em>earn its keep</em>. It was designed for context-aware sealing and AI-to-AI messaging. This shows it also gives us a useful feature extractor for adversarial classification.</p>
 
-    <h2>What's next</h2>
+    <h2>Results: 0.9201 AUC with 31 features and no neural net</h2>
 
-    <p>Three follow-ups I haven't shipped yet but will:</p>
+    <p>I ran the pipeline against all four sources and trained a gradient boosting classifier on <strong>only the 31 features derived from <code>bit_signature</code></strong> — no text understanding, no embeddings, no language model. The features are: byte length, Shannon entropy, phi-weighted class sum, 16 normalized bit histogram counts, and 12 per-tongue parity counts.</p>
+
+    <p>On 24,254 labeled prompts (16,541 malicious, 7,047 benign, 666 jailbreak), stratified 80/20 train/test split:</p>
+
+    <table>
+      <thead><tr><th>Model</th><th>AUC</th><th>Accuracy</th></tr></thead>
+      <tbody>
+        <tr><td>Logistic Regression</td><td>0.8765</td><td>0.7967</td></tr>
+        <tr><td><strong>Gradient Boosting (depth 4, n=120)</strong></td><td><strong>0.9201</strong></td><td><strong>0.8522</strong></td></tr>
+      </tbody>
+    </table>
+
+    <p>Per-source within-distribution AUC (gradient boosting):</p>
+
+    <table>
+      <thead><tr><th>Source</th><th>AUC</th><th>Test rows</th></tr></thead>
+      <tbody>
+        <tr><td>neuralchemy</td><td>0.9843</td><td>1,296</td></tr>
+        <tr><td>SPML</td><td>0.8853</td><td>3,172</td></tr>
+        <tr><td>jackhhao</td><td>0.8498</td><td>263</td></tr>
+        <tr><td>deepset</td><td>0.8068</td><td>120</td></tr>
+      </tbody>
+    </table>
+
+    <p>Leave-one-source-out (train on 3 datasets, test on the 4th — measures cross-distribution generalization):</p>
+
+    <table>
+      <thead><tr><th>Holdout source</th><th>AUC</th></tr></thead>
+      <tbody>
+        <tr><td>neuralchemy</td><td>0.8755</td></tr>
+        <tr><td>jackhhao</td><td>0.7535</td></tr>
+        <tr><td>deepset</td><td>0.6908</td></tr>
+        <tr><td>SPML</td><td>0.6830</td></tr>
+      </tbody>
+    </table>
+
+    <p>Honest take: within-distribution is strong (85–98% AUC), confirming the bit signature captures real statistical structure. Cross-distribution drops to 68–88% AUC, which means the signature picks up both universal attack patterns AND dataset-specific text-length/entropy fingerprints. Combining sources during training is the right strategy, and this is what you'd expect for any feature-based detector — it's not unique to bijective tokenization.</p>
+
+    <p>But here's the thing that matters: <strong>92% AUC with 31 features and no text understanding.</strong> A DeBERTa-based prompt-injection classifier uses hundreds of millions of parameters to hit 95%. We're within 3 points using a model that fits in a JSON file and runs in the browser.</p>
+
+    <div class="callout">
+      <h3>The dataset is published</h3>
+      <p>All 24,254 bit signatures are live on HuggingFace as <a href="https://huggingface.co/datasets/issdandavis/prompt-injection-bit-signatures" target="_blank" rel="noopener"><code>issdandavis/prompt-injection-bit-signatures</code></a>. Apache-2.0 licensed, immediate download, 44 MB. Includes a 500-row sample with the full 6-tongue token streams for pedagogy.</p>
+      <p style="margin:0;"><code>datasets.load_dataset("issdandavis/prompt-injection-bit-signatures")</code></p>
+    </div>
+
+    <h2>What's still to do</h2>
+
+    <p>Two follow-ups I haven't shipped yet:</p>
 
     <ol>
-      <li><strong>Train a linear classifier</strong> on the bit histograms + phi-weight sums alone, no neural nets. If I can hit &gt;85% AUC on the deepset held-out set with a 16-dim feature vector, that's a compelling bar.</li>
-      <li><strong>Publish the JSONL output as a HuggingFace dataset</strong> called <code>issdandavis/prompt-injection-bit-signatures</code>, so anyone can train against it without rerunning the pipeline.</li>
-      <li><strong>Wire the signature computation into the <a href="/demos/governance-gate.html">governance-gate demo</a></strong> so visitors see the bit histogram of whatever prompt they type, live, in the browser.</li>
+      <li><strong>Ensemble the bit-signature classifier with the governance-gate pattern detector</strong> and publish a combined AUC. The pattern detector catches SSN-style PII with high precision; the bit-signature classifier catches distribution-level weirdness. Together they should outperform either alone.</li>
+      <li><strong>Wire the signature computation into the <a href="/demos/governance-gate.html">governance-gate demo</a></strong> so visitors see the bit histogram of whatever prompt they type, live, in the browser. No classification in-browser (the trained model is 500 KB and I don't want to ship pickle to the web), just the visual signature.</li>
     </ol>
 
     <div class="callout">
