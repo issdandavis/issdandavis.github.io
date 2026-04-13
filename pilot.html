@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>First 100 Free | CX Guardrail + Red Team Pilot Program</title>
+  <meta name="description" content="Free CX Refund Guardrail for the first 100 mid-market teams. Free AI red team engagement for the first 10 companies. Help me validate the product, keep the product if it works.">
+  <link rel="canonical" href="https://aethermoore.com/pilot.html">
+  <meta property="og:title" content="First 100 Free | SCBE-AETHERMOORE Pilot Program">
+  <meta property="og:description" content="100 free CX Guardrail licenses. 10 free AI red team engagements. I need real-world usage, you need a governance layer. Fair trade.">
+  <meta property="og:url" content="https://aethermoore.com/pilot.html">
+  <meta property="og:image" content="https://aethermoore.com/hero.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="First 100 Free | SCBE-AETHERMOORE Pilot">
+  <meta name="twitter:description" content="100 free CX Guardrail licenses, 10 free red team engagements. Help me test, keep the product if it works.">
+  <meta name="twitter:image" content="https://aethermoore.com/hero.png">
+  <style>
+    :root {
+      --bg: #071412; --bg-deep: #04100f;
+      --panel: rgba(10,28,24,0.82); --panel-strong: rgba(8,24,20,0.94);
+      --line: rgba(139,255,223,0.15); --line-bright: rgba(139,255,223,0.3);
+      --text: #e7fff7; --muted: #9bc5ba; --dim: #6a9488;
+      --mint: #8fffd3; --aqua: #6dd8ff; --gold: #ffd977; --rose: #ff9ec7;
+      --max: 860px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(ellipse at 15% 8%, rgba(255,217,119,0.08), transparent 32%),
+        radial-gradient(ellipse at 80% 5%, rgba(143,255,211,0.10), transparent 28%),
+        linear-gradient(180deg, var(--bg-deep), var(--bg));
+      color: var(--text); line-height: 1.65; min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--aqua); text-decoration: none; border-bottom: 1px dashed rgba(109,216,255,0.3); }
+    a:hover { color: var(--mint); border-bottom-color: var(--mint); }
+    .topbar { position: sticky; top: 0; z-index: 30; background: rgba(4,16,15,0.9); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+    .topbar-inner { max-width: var(--max); margin: 0 auto; padding: 14px 20px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .brand { font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mint); font-weight: 700; border: none; }
+    .nav { display: flex; gap: 6px; flex-wrap: wrap; }
+    .nav a { padding: 6px 12px; border-radius: 8px; font-size: 12px; color: var(--muted); border: none; }
+    .nav a:hover { color: var(--text); background: rgba(143,255,211,0.08); }
+    main { max-width: var(--max); margin: 0 auto; padding: 60px 24px 80px; }
+    .hero-label {
+      display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold); padding: 6px 14px; border-radius: 20px;
+      background: rgba(255,217,119,0.10); border: 1px solid rgba(255,217,119,0.3); margin-bottom: 16px;
+    }
+    .hero-label .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); margin-right: 8px; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+    h1 {
+      font-size: clamp(32px,6vw,52px); font-weight: 800; letter-spacing: -0.035em;
+      line-height: 1.1; margin-bottom: 16px;
+    }
+    h1 .gradient {
+      background: linear-gradient(135deg, var(--gold), var(--mint));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .subtitle { color: var(--muted); font-size: 19px; margin-bottom: 32px; max-width: 62ch; }
+
+    .counters {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0;
+    }
+    .counter {
+      padding: 22px 24px; border-radius: 14px;
+      background: linear-gradient(135deg, rgba(255,217,119,0.08), var(--panel));
+      border: 1px solid rgba(255,217,119,0.25);
+    }
+    .counter .num { font-size: 36px; font-weight: 800; color: var(--gold); line-height: 1; }
+    .counter .num .claimed { color: var(--dim); font-size: 20px; }
+    .counter .lbl { font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 8px; }
+    .counter .meter {
+      height: 6px; border-radius: 3px; background: rgba(255,217,119,0.1);
+      margin-top: 14px; overflow: hidden;
+    }
+    .counter .meter-fill {
+      height: 100%; background: linear-gradient(90deg, var(--gold), var(--mint));
+      border-radius: 3px;
+    }
+    @media (max-width: 600px) { .counters { grid-template-columns: 1fr; } }
+
+    h2 { font-size: 26px; font-weight: 700; margin: 56px 0 14px; letter-spacing: -0.02em; }
+    h3 { font-size: 17px; font-weight: 700; margin: 24px 0 8px; color: var(--mint); }
+    p { color: var(--muted); margin-bottom: 12px; font-size: 16px; }
+    ul { margin: 10px 0 18px 22px; color: var(--muted); }
+    ul li { margin-bottom: 8px; }
+    ul li strong { color: var(--text); }
+    .panel {
+      background: var(--panel); border: 1px solid var(--line);
+      border-radius: 14px; padding: 24px; margin: 20px 0;
+    }
+    .panel.accent { border-color: rgba(143,255,211,0.3); background: linear-gradient(135deg, rgba(143,255,211,0.05), var(--panel)); }
+    .panel.gold { border-color: rgba(255,217,119,0.3); background: linear-gradient(135deg, rgba(255,217,119,0.05), var(--panel)); }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 24px; border-radius: 12px; font-weight: 700; font-size: 15px;
+      text-decoration: none; border: 1px solid transparent; transition: all 180ms;
+      margin-right: 10px;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), #f0bf67);
+      color: var(--bg-deep); border: none;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,217,119,0.3); }
+    .btn-secondary { border-color: var(--line); color: var(--muted); }
+    .btn-secondary:hover { border-color: var(--line-bright); color: var(--text); }
+    .fine { font-size: 13px; color: var(--dim); }
+    footer { margin-top: 80px; padding: 24px; border-top: 1px solid var(--line); color: var(--dim); font-size: 12px; text-align: center; }
+    footer a { color: var(--muted); border: none; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="/">SCBE-AETHERMOORE</a>
+      <nav class="nav">
+        <a href="/">Home</a>
+        <a href="/services.html">Shop</a>
+        <a href="/cx-guardrail.html">CX Guardrail</a>
+        <a href="/red-team.html">Red Team</a>
+        <a href="/research/evidence.html">Evidence</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <span class="hero-label"><span class="dot"></span>Pilot Program · Limited Spots</span>
+    <h1><span class="gradient">First 100 free.</span><br>Help me test, keep the product if it works.</h1>
+    <p class="subtitle">Three products. Real numbers on the <a href="/research/evidence.html">evidence page</a>. Zero paying customers so far. I need real-world usage to move from "the math works in simulation" to "production-validated." Fair trade: you get the product free, I get feedback and permission to publish an anonymized case study.</p>
+
+    <div class="counters">
+      <div class="counter">
+        <div class="num"><span id="cx-remaining">100</span><span class="claimed"> / 100</span></div>
+        <div class="lbl">CX Guardrail pilots remaining</div>
+        <div class="meter"><div class="meter-fill" id="cx-bar" style="width: 100%;"></div></div>
+      </div>
+      <div class="counter">
+        <div class="num"><span id="rt-remaining">10</span><span class="claimed"> / 10</span></div>
+        <div class="lbl">Red Team engagements remaining</div>
+        <div class="meter"><div class="meter-fill" id="rt-bar" style="width: 100%;"></div></div>
+      </div>
+    </div>
+
+    <h2>The offer, in plain language</h2>
+
+    <div class="panel gold">
+      <h3>CX Refund Guardrail — free for the first 100 teams</h3>
+      <p>Normally $500/month Starter tier. For the first 100 mid-market teams who ship an LLM-powered support chatbot or agent, <strong style="color:var(--text)">the Starter tier is free for 6 months</strong>, no credit card, no auto-charge at the end.</p>
+      <ul>
+        <li><strong>Full product, not a trial.</strong> Policy enforcement middleware, audit log, custom policy authoring, 10K messages/month.</li>
+        <li><strong>Full support.</strong> Direct email and a dedicated Slack channel if you want one.</li>
+        <li><strong>Works with any LLM.</strong> OpenAI, Anthropic, local, custom fine-tunes. Drop it in behind your existing stack.</li>
+        <li><strong>6 months, then your choice.</strong> Pay $500/month if you want to stay, walk away clean if you don't. No auto-charge, no surprise invoice.</li>
+      </ul>
+
+      <h3 style="color:var(--gold);">What I want back</h3>
+      <ul>
+        <li><strong>Anonymized usage data.</strong> I need to see what policies you write, what gets caught, what gets missed. Your customer data stays yours — this is about the guardrail's metadata only.</li>
+        <li><strong>One 30-minute feedback call</strong> at the 30-day mark and another at 90 days.</li>
+        <li><strong>Permission to publish an anonymized case study</strong> if you get value out of it. You approve the final copy before anything goes public. No logo required if you don't want one.</li>
+      </ul>
+    </div>
+
+    <div class="panel accent">
+      <h3>AI Red Team Quick Scan — free for the first 10 companies</h3>
+      <p>Normally $5,000. For the first 10 companies who have shipped an LLM feature (chatbot, agent, RAG, tool-use), <strong style="color:var(--text)">I'll run a full Quick Scan for free</strong>: 4 weeks scoping through delivery, branded PDF report, remediation roadmap, live walkthrough call.</p>
+      <ul>
+        <li><strong>Real findings, delivered.</strong> Not a demo or a sample report — the actual engagement.</li>
+        <li><strong>NDA signed before any API keys change hands.</strong> Staging endpoint only. Zero production impact.</li>
+        <li><strong>What I want back:</strong> your permission to anonymize and publish the finding categories (not the specific vulnerabilities). Same case study deal as above.</li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3 style="color:var(--mint);">Why ISO 42001 isn't on this list</h3>
+      <p>A $50K audit engagement is too large to give away responsibly. But if you're a compliance officer at a regulated org facing ISO 42001 / SR 11-7 / EU AI Act pressure, I'll do a <strong style="color:var(--text)">free 60-minute audit readiness review</strong> — no commitment, no sales pitch. I'll tell you exactly where your gaps are and what you'd need to do to close them, whether you hire me or not.</p>
+      <a class="btn btn-secondary" href="mailto:aethermoregames@pm.me?subject=Free%20ISO%2042001%20Audit%20Readiness%20Review&body=Hi%20Issac%2C%0A%0AI%27d%20like%20a%20free%2060-minute%20audit%20readiness%20review.%0A%0A-%20Organization%3A%20%0A-%20Role%3A%20%0A-%20Regulatory%20pressure%20we%27re%20facing%20(ISO%2042001%2C%20SR%2011-7%2C%20EU%20AI%20Act%2C%20etc)%3A%20%0A-%20Current%20LLM%20deployments%3A%20%0A%0AThanks%2C">Book the free review &rarr;</a>
+    </div>
+
+    <h2>Who this is for</h2>
+    <p>Be honest with yourself before applying:</p>
+    <ul>
+      <li><strong>You actually ship something with an LLM in it.</strong> Not "we're planning to." Live or near-live.</li>
+      <li><strong>You can commit 2 hours total over 3 months</strong> for onboarding, the 30-day call, and the 90-day call. If that's too much, this isn't for you.</li>
+      <li><strong>You're okay with me publishing an anonymized case study</strong> if we both agree the result is interesting. You approve the copy.</li>
+      <li><strong>You understand I'm a solo builder.</strong> Turnaround is fast, but if you need a 1000-person account team, pick a different vendor.</li>
+    </ul>
+
+    <h2>How to apply</h2>
+    <p>Email me. One short paragraph about what you're shipping, what LLM you're using, and which pilot you want. I'll reply within 48 hours with either "you're in, here's next steps" or "here's why this isn't a fit, here's a better option."</p>
+
+    <div style="margin: 32px 0;">
+      <a class="btn btn-primary" href="mailto:aethermoregames@pm.me?subject=Pilot%20Application%20-%20CX%20Guardrail&body=Hi%20Issac%2C%0A%0AApplying%20for%20the%20free%20CX%20Guardrail%20pilot.%0A%0A-%20Company%3A%20%0A-%20What%20we%27re%20shipping%3A%20%0A-%20LLM%20we%27re%20using%3A%20(OpenAI%2FAnthropic%2Flocal%2Fother)%20%0A-%20Current%20support%20volume%20(messages%2Fmo)%3A%20%0A-%20Biggest%20policy%20risk%20concern%3A%20%0A-%20Can%20commit%20to%20a%2030-day%20and%2090-day%20feedback%20call%3A%20Yes%20%2F%20No%0A-%20OK%20with%20anonymized%20case%20study%3A%20Yes%20%2F%20No%0A%0AThanks%2C">Apply: CX Guardrail pilot</a>
+      <a class="btn btn-primary" href="mailto:aethermoregames@pm.me?subject=Pilot%20Application%20-%20Red%20Team&body=Hi%20Issac%2C%0A%0AApplying%20for%20the%20free%20Red%20Team%20pilot.%0A%0A-%20Company%3A%20%0A-%20Product%20being%20tested%3A%20%0A-%20LLM%20architecture%3A%20(direct%20API%2FRAG%2Fagent%2Fother)%20%0A-%20Staging%20environment%20available%3F%20Yes%20%2F%20No%0A-%20Main%20threat%20concerns%3A%20%0A-%20Can%20sign%20NDA%3F%20Yes%20%2F%20No%0A-%20OK%20with%20anonymized%20findings%20publication%3F%20Yes%20%2F%20No%0A%0AThanks%2C">Apply: Red Team pilot</a>
+    </div>
+
+    <h2>Why I'm doing this</h2>
+    <p>Because AI governance products are impossible to validate without real deployments. The <a href="/research/evidence.html">evidence page</a> shows I have real numbers from simulation: 99.42% combined AUC, 91/91 on the published red team benchmark, 150/150 compliance tests. What I don't have is <strong style="color:var(--text)">"we deployed this at Company X and found Y in production."</strong> That's what this pilot is buying me.</p>
+    <p>The first 100 will shape the product. Later customers pay for the polish those 100 produce. That's the deal I'm making — free product for early adopters, higher confidence for later customers.</p>
+    <p>If you help me validate this, I'll tell everyone who asks how much you helped. If you'd rather stay anonymous, that's fine too — the case study publishing clause is opt-in and you approve the copy.</p>
+
+    <div class="panel">
+      <h3 style="color:var(--mint);">Not a fit? A few alternatives:</h3>
+      <ul>
+        <li>Explore the <a href="https://github.com/issdandavis/SCBE-AETHERMOORE">open source framework</a> — MIT licensed, clone it, run the tests yourself</li>
+        <li>Try the <a href="https://github.com/issdandavis/six-tongues-geoseal">GeoSeal CLI</a> — free dev tool, includes built-in AI navigation</li>
+        <li>Browse the <a href="/research/evidence.html">evidence ledger</a> to see what's actually validated (and what isn't)</li>
+        <li>Buy a <a href="/services.html">$29 one-time package</a> if you just want starter templates</li>
+        <li>Or just <a href="mailto:aethermoregames@pm.me">email me</a> and tell me what you actually need</li>
+      </ul>
+    </div>
+
+    <p class="fine">Pilot spots update when I confirm applications. The counters on this page are maintained manually by me. When a spot is claimed, the number drops. When the number hits zero, the pilot closes and this page turns into a waitlist.</p>
+  </main>
+
+  <footer>
+    SCBE-AETHERMOORE · <a href="/services.html">Shop</a> · <a href="/research/evidence.html">Evidence</a> · <a href="mailto:aethermoregames@pm.me">Email</a>
+  </footer>
+
+  <script>
+    // Counters can be updated by editing a tiny JSON file in the repo
+    // rather than editing this HTML. Falls back to the defaults above.
+    fetch('/pilot-status.json').then(r => r.ok ? r.json() : null).then(d => {
+      if (!d) return;
+      const cx = Math.max(0, Math.min(100, d.cx_remaining ?? 100));
+      const rt = Math.max(0, Math.min(10, d.rt_remaining ?? 10));
+      document.getElementById('cx-remaining').textContent = cx;
+      document.getElementById('rt-remaining').textContent = rt;
+      document.getElementById('cx-bar').style.width = (cx / 100 * 100) + '%';
+      document.getElementById('rt-bar').style.width = (rt / 10 * 100) + '%';
+    }).catch(() => {});
+  </script>
+</body>
+</html>
