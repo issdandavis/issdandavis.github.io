@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-12T20:55:03.896106+00:00",
+  "generated_at": "2026-04-13T07:41:02.542994+00:00",
   "source_keywords": [
     "AI safety",
     "LLM security",
@@ -16,6 +16,33 @@
   "items": [
     {
       "source": "HackerNews",
+      "title": "Ask HN: How are you handling runtime security for your AI agents?",
+      "summary": "2 points, 0 comments",
+      "url": "https://news.ycombinator.com/item?id=47748689",
+      "published": "2026-04-13T07:08:09Z",
+      "authors": "saranshrana",
+      "keyword": "red team"
+    },
+    {
+      "source": "HackerNews",
+      "title": "An Interview with Asana Founder Dustin Moskovitz about AI, SaaS, and Safety",
+      "summary": "1 points, 0 comments",
+      "url": "https://stratechery.com/2025/an-interview-with-asana-founder-dustin-moskovitz-about-ai-saas-and-safety/",
+      "published": "2026-04-13T01:05:47Z",
+      "authors": "theorchid",
+      "keyword": "AI safety"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Ask HN: On autistic spectrum, best way to live?",
+      "summary": "10 points, 3 comments",
+      "url": "https://news.ycombinator.com/item?id=47744790",
+      "published": "2026-04-12T21:35:38Z",
+      "authors": "beaunative",
+      "keyword": "red team"
+    },
+    {
+      "source": "HackerNews",
       "title": "Core views on AI safety (March 2023)",
       "summary": "2 points, 0 comments",
       "url": "https://www.anthropic.com/news/core-views-on-ai-safety",
@@ -26,7 +53,7 @@
     {
       "source": "HackerNews",
       "title": "Claude Opus 4.6 accuracy on BridgeBench hallucination test drops from 83% to 68%",
-      "summary": "6 points, 1 comments",
+      "summary": "58 points, 11 comments",
       "url": "https://twitter.com/bridgemindai/status/2043321284113670594",
       "published": "2026-04-12T18:53:35Z",
       "authors": "bratao",
@@ -34,26 +61,8 @@
     },
     {
       "source": "HackerNews",
-      "title": "Show HN: Revdiff \u2013 TUI diff reviewer with inline annotations for AI agents",
-      "summary": "8 points, 2 comments",
-      "url": "https://github.com/umputun/revdiff",
-      "published": "2026-04-12T17:52:48Z",
-      "authors": "bumpa",
-      "keyword": "red team"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Show HN: Specsight \u2013 Living product specs generated from your codebase",
-      "summary": "1 points, 0 comments",
-      "url": "https://specsight.app",
-      "published": "2026-04-12T17:39:51Z",
-      "authors": "aiola",
-      "keyword": "red team"
-    },
-    {
-      "source": "HackerNews",
       "title": "Show HN: Claudraband \u2013 Claude Code for the Power User",
-      "summary": "56 points, 12 comments",
+      "summary": "104 points, 38 comments",
       "url": "https://github.com/halfwhey/claudraband",
       "published": "2026-04-12T16:55:20Z",
       "authors": "halfwhey",
@@ -141,13 +150,40 @@
       "keyword": "AI compliance"
     },
     {
-      "source": "HackerNews",
-      "title": "PyTorch Foundation Expands AI Stack with Safetensors, ExecuTorch, and Helion",
-      "summary": "2 points, 0 comments",
-      "url": "https://thenewstack.io/pytorch-ai-stack-expand/",
-      "published": "2026-04-10T18:36:42Z",
-      "authors": "Brajeshwar",
-      "keyword": "AI safety"
+      "source": "arXiv",
+      "title": "Large Language Models Generate Harmful Content Using a Distinct, Unified Mechanism",
+      "summary": "Large language models (LLMs) undergo alignment training to avoid harmful behaviors, yet the resulting safeguards remain brittle: jailbreaks routinely bypass them, and fine-tuning on narrow domains can induce ``emergent misalignment'' that generalizes broadly. Whether this brittle",
+      "url": "https://arxiv.org/abs/2604.09544v1",
+      "published": "2026-04-10T17:58:31Z",
+      "authors": "Hadas Orgad, Boyi Wei, Kaden Zheng",
+      "keyword": "jailbreak"
+    },
+    {
+      "source": "arXiv",
+      "title": "EgoTL: Egocentric Think-Aloud Chains for Long-Horizon Tasks",
+      "summary": "Large foundation models have made significant advances in embodied intelligence, enabling synthesis and reasoning over egocentric input for household tasks. However, VLM-based auto-labeling is often noisy because the primary data sources lack accurate human action labels, chain-o",
+      "url": "https://arxiv.org/abs/2604.09535v1",
+      "published": "2026-04-10T17:53:55Z",
+      "authors": "Lulin Liu, Dayou Li, Yiqing Liang",
+      "keyword": "alignment"
+    },
+    {
+      "source": "arXiv",
+      "title": "VL-Calibration: Decoupled Confidence Calibration for Large Vision-Language Models Reasoning",
+      "summary": "Large Vision Language Models (LVLMs) achieve strong multimodal reasoning but frequently exhibit hallucinations and incorrect responses with high certainty, which hinders their usage in high-stakes domains. Existing verbalized confidence calibration methods, largely developed for ",
+      "url": "https://arxiv.org/abs/2604.09529v1",
+      "published": "2026-04-10T17:47:19Z",
+      "authors": "Wenyi Xiao, Xinchi Xu, Leilei Gan",
+      "keyword": "hallucination"
+    },
+    {
+      "source": "arXiv",
+      "title": "Semantic Rate-Distortion for Bounded Multi-Agent Communication: Capacity-Derived Semantic Spaces and the Communication Cost of Alignment",
+      "summary": "When two agents of different computational capacities interact with the same environment, they need not compress a common semantic alphabet differently; they can induce different semantic alphabets altogether. We show that the quotient POMDP $Q_{m,T}(M)$ - the unique coarsest abs",
+      "url": "https://arxiv.org/abs/2604.09521v1",
+      "published": "2026-04-10T17:41:38Z",
+      "authors": "Anthony T. Nixon",
+      "keyword": "alignment"
     },
     {
       "source": "HackerNews",
@@ -159,6 +195,33 @@
       "keyword": "AI compliance"
     },
     {
+      "source": "arXiv",
+      "title": "XFED: Non-Collusive Model Poisoning Attack Against Byzantine-Robust Federated Classifiers",
+      "summary": "Model poisoning attacks pose a significant security threat to Federated Learning (FL). Most existing model poisoning attacks rely on collusion, requiring adversarial clients to coordinate by exchanging local benign models and synchronizing the generation of their poisoned updates",
+      "url": "https://arxiv.org/abs/2604.09489v1",
+      "published": "2026-04-10T16:54:29Z",
+      "authors": "Israt Jahan Mouri, Muhammad Ridowan, Muhammad Abdullah Adnan",
+      "keyword": "adversarial"
+    },
+    {
+      "source": "arXiv",
+      "title": "EGLOCE: Training-Free Energy-Guided Latent Optimization for Concept Erasure",
+      "summary": "As text-to-image diffusion models grow increasingly prevalent, the ability to remove specific concepts-mostly explicit content and many copyrighted characters or styles-has become essential for safety and compliance. Existing unlearning approaches often require costly re-training",
+      "url": "https://arxiv.org/abs/2604.09405v1",
+      "published": "2026-04-10T15:19:02Z",
+      "authors": "Junyeong Ahn, Seojin Yoon, Sungyong Baik",
+      "keyword": "adversarial"
+    },
+    {
+      "source": "arXiv",
+      "title": "BadSkill: Backdoor Attacks on Agent Skills via Model-in-Skill Poisoning",
+      "summary": "Agent ecosystems increasingly rely on installable skills to extend functionality, and some skills bundle learned model artifacts as part of their execution logic. This creates a supply-chain risk that is not captured by prompt injection or ordinary plugin misuse: a third-party sk",
+      "url": "https://arxiv.org/abs/2604.09378v1",
+      "published": "2026-04-10T14:48:29Z",
+      "authors": "Guiyao Tie, Jiawen Shi, Pan Zhou",
+      "keyword": "prompt injection"
+    },
+    {
       "source": "HackerNews",
       "title": "Show HN: Zeroclawed: Secure Agent Gateway",
       "summary": "8 points, 3 comments",
@@ -168,6 +231,24 @@
       "keyword": "adversarial"
     },
     {
+      "source": "arXiv",
+      "title": "Mosaic: Multimodal Jailbreak against Closed-Source VLMs via Multi-View Ensemble Optimization",
+      "summary": "Vision-Language Models (VLMs) are powerful but remain vulnerable to multimodal jailbreak attacks. Existing attacks mainly rely on either explicit visual prompt attacks or gradient-based adversarial optimization. While the former is easier to detect, the latter produces subtle per",
+      "url": "https://arxiv.org/abs/2604.09253v1",
+      "published": "2026-04-10T12:09:06Z",
+      "authors": "Yuqin Lan, Gen Li, Yuanze Hu",
+      "keyword": "jailbreak"
+    },
+    {
+      "source": "arXiv",
+      "title": "GRM: Utility-Aware Jailbreak Attacks on Audio LLMs via Gradient-Ratio Masking",
+      "summary": "Audio large language models (ALLMs) enable rich speech-text interaction, but they also introduce jailbreak vulnerabilities in the audio modality. Existing audio jailbreak methods mainly optimize jailbreak success while overlooking utility preservation, as reflected in transcripti",
+      "url": "https://arxiv.org/abs/2604.09222v1",
+      "published": "2026-04-10T11:27:25Z",
+      "authors": "Yunqiang Wang, Hengyuan Na, Di Wu",
+      "keyword": "jailbreak"
+    },
+    {
       "source": "HackerNews",
       "title": "Show HN: LunarGate \u2013 a self-hosted OpenAI-compatible LLM gateway",
       "summary": "2 points, 0 comments",
@@ -175,6 +256,15 @@
       "published": "2026-04-10T10:47:49Z",
       "authors": "jmartenka",
       "keyword": "LLM security"
+    },
+    {
+      "source": "arXiv",
+      "title": "Facet-Level Tracing of Evidence Uncertainty and Hallucination in RAG",
+      "summary": "Retrieval-Augmented Generation (RAG) aims to reduce hallucination by grounding answers in retrieved evidence, yet hallucinated answers remain common even when relevant documents are available. Existing evaluations focus on answer-level or passage-level accuracy, offering limited ",
+      "url": "https://arxiv.org/abs/2604.09174v1",
+      "published": "2026-04-10T09:59:43Z",
+      "authors": "Passant Elchafei, Monorama Swain, Shahed Masoudian",
+      "keyword": "hallucination"
     },
     {
       "source": "HackerNews",
@@ -196,48 +286,21 @@
     },
     {
       "source": "arXiv",
-      "title": "ETCH-X: Robustify Expressive Body Fitting to Clothed Humans with Composable Datasets",
-      "summary": "Human body fitting, which aligns parametric body models such as SMPL to raw 3D point clouds of clothed humans, serves as a crucial first step for downstream tasks like animation and texturing. An effective fitting method should be both locally expressive-capturing fine details su",
-      "url": "https://arxiv.org/abs/2604.08548v1",
-      "published": "2026-04-09T17:59:59Z",
-      "authors": "Xiaoben Li, Jingyi Wu, Zeyu Cai",
-      "keyword": "alignment"
+      "title": "Leave My Images Alone: Preventing Multi-Modal Large Language Models from Analyzing Images via Visual Prompt Injection",
+      "summary": "Multi-modal large language models (MLLMs) have emerged as powerful tools for analyzing Internet-scale image data, offering significant benefits but also raising critical safety and societal concerns. In particular, open-weight MLLMs may be misused to extract sensitive information",
+      "url": "https://arxiv.org/abs/2604.09024v1",
+      "published": "2026-04-10T06:37:46Z",
+      "authors": "Zedian Shao, Hongbin Liu, Yuepeng Hu",
+      "keyword": "prompt injection"
     },
     {
       "source": "arXiv",
-      "title": "When Numbers Speak: Aligning Textual Numerals and Visual Instances in Text-to-Video Diffusion Models",
-      "summary": "Text-to-video diffusion models have enabled open-ended video synthesis, but often struggle with generating the correct number of objects specified in a prompt. We introduce NUMINA , a training-free identify-then-guide framework for improved numerical alignment. NUMINA identifies ",
-      "url": "https://arxiv.org/abs/2604.08546v1",
-      "published": "2026-04-09T17:59:57Z",
-      "authors": "Zhengyang Sun, Yu Chen, Xin Zhou",
-      "keyword": "alignment"
-    },
-    {
-      "source": "arXiv",
-      "title": "SIM1: Physics-Aligned Simulator as Zero-Shot Data Scaler in Deformable Worlds",
-      "summary": "Robotic manipulation with deformable objects represents a data-intensive regime in embodied learning, where shape, contact, and topology co-evolve in ways that far exceed the variability of rigids. Although simulation promises relief from the cost of real-world data acquisition, ",
-      "url": "https://arxiv.org/abs/2604.08544v1",
-      "published": "2026-04-09T17:59:52Z",
-      "authors": "Yunsong Zhou, Hangxu Liu, Xuekun Jiang",
-      "keyword": "alignment"
-    },
-    {
-      "source": "arXiv",
-      "title": "Cram Less to Fit More: Training Data Pruning Improves Memorization of Facts",
-      "summary": "Large language models (LLMs) can struggle to memorize factual knowledge in their parameters, often leading to hallucinations and poor performance on knowledge-intensive tasks. In this paper, we formalize fact memorization from an information-theoretic perspective and study how tr",
-      "url": "https://arxiv.org/abs/2604.08519v1",
-      "published": "2026-04-09T17:55:50Z",
-      "authors": "Jiayuan Ye, Vitaly Feldman, Kunal Talwar",
-      "keyword": "hallucination"
-    },
-    {
-      "source": "arXiv",
-      "title": "Differentially Private Language Generation and Identification in the Limit",
-      "summary": "We initiate the study of language generation in the limit, a model recently introduced by Kleinberg and Mullainathan [KM24], under the constraint of differential privacy. We consider the continual release model, where a generator must eventually output a stream of valid strings w",
-      "url": "https://arxiv.org/abs/2604.08504v1",
-      "published": "2026-04-09T17:48:46Z",
-      "authors": "Anay Mehrotra, Grigoris Velegkas, Xifan Yu",
-      "keyword": "adversarial"
+      "title": "AudioGuard: Toward Comprehensive Audio Safety Protection Across Diverse Threat Models",
+      "summary": "Audio has rapidly become a primary interface for foundation models, powering real-time voice assistants. Ensuring safety in audio systems is inherently more complex than just \"unsafe text spoken aloud\": real-world risks can hinge on audio-native harmful sound events, speaker attr",
+      "url": "https://arxiv.org/abs/2604.08867v1",
+      "published": "2026-04-10T02:02:12Z",
+      "authors": "Mintong Kang, Chen Fang, Bo Li",
+      "keyword": "red team"
     },
     {
       "source": "arXiv",
@@ -267,24 +330,6 @@
       "keyword": "prompt injection"
     },
     {
-      "source": "arXiv",
-      "title": "Adversarial Label Invariant Graph Data Augmentations for Out-of-Distribution Generalization",
-      "summary": "Out-of-distribution (OoD) generalization occurs when representation learning encounters a distribution shift. This occurs frequently in practice when training and testing data come from different environments. Covariate shift is a type of distribution shift that occurs only in th",
-      "url": "https://arxiv.org/abs/2604.08404v1",
-      "published": "2026-04-09T16:02:07Z",
-      "authors": "Simon Zhang, Ryan P. DeMilt, Kun Jin",
-      "keyword": "adversarial"
-    },
-    {
-      "source": "arXiv",
-      "title": "Verify Before You Commit: Towards Faithful Reasoning in LLM Agents via Self-Auditing",
-      "summary": "In large language model (LLM) agents, reasoning trajectories are treated as reliable internal beliefs for guiding actions and updating memory. However, coherent reasoning can still violate logical or evidential constraints, allowing unsupported beliefs repeatedly stored and propa",
-      "url": "https://arxiv.org/abs/2604.08401v1",
-      "published": "2026-04-09T16:01:03Z",
-      "authors": "Wenhao Yuan, Chenchen Lin, Jian Chen",
-      "keyword": "adversarial"
-    },
-    {
       "source": "HackerNews",
       "title": "AI alignment: the signal is the goal",
       "summary": "2 points, 0 comments",
@@ -292,33 +337,6 @@
       "published": "2026-04-09T15:59:36Z",
       "authors": "atzeus",
       "keyword": "alignment"
-    },
-    {
-      "source": "arXiv",
-      "title": "Security Concerns in Generative AI Coding Assistants: Insights from Online Discussions on GitHub Copilot",
-      "summary": "Generative Artificial Intelligence (GenAI) has become a central component of many development tools (e.g., GitHub Copilot) that support software practitioners across multiple programming tasks, including code completion, documentation, and bug detection. However, current research",
-      "url": "https://arxiv.org/abs/2604.08352v1",
-      "published": "2026-04-09T15:19:10Z",
-      "authors": "Nicol\u00e1s E. D\u00edaz Ferreyra, Monika Swetha Gurupathi, Zadia Codabux",
-      "keyword": "prompt injection"
-    },
-    {
-      "source": "arXiv",
-      "title": "MemCoT: Test-Time Scaling through Memory-Driven Chain-of-Thought",
-      "summary": "Large Language Models (LLMs) still suffer from severe hallucinations and catastrophic forgetting during causal reasoning over massive, fragmented long contexts. Existing memory mechanisms typically treat retrieval as a static, single-step passive matching process, leading to seve",
-      "url": "https://arxiv.org/abs/2604.08216v1",
-      "published": "2026-04-09T13:13:53Z",
-      "authors": "Haodong Lei, Junming Liu, Yirong Chen",
-      "keyword": "hallucination"
-    },
-    {
-      "source": "arXiv",
-      "title": "MedVR: Annotation-Free Medical Visual Reasoning via Agentic Reinforcement Learning",
-      "summary": "Medical Vision-Language Models (VLMs) hold immense promise for complex clinical tasks, but their reasoning capabilities are often constrained by text-only paradigms that fail to ground inferences in visual evidence. This limitation not only curtails performance on tasks requiring",
-      "url": "https://arxiv.org/abs/2604.08203v1",
-      "published": "2026-04-09T13:04:49Z",
-      "authors": "Zheng Jiang, Heng Guo, Chengyu Fang",
-      "keyword": "hallucination"
     },
     {
       "source": "arXiv",
@@ -331,21 +349,12 @@
     },
     {
       "source": "arXiv",
-      "title": "Silencing the Guardrails: Inference-Time Jailbreaking via Dynamic Contextual Representation Ablation",
-      "summary": "While Large Language Models (LLMs) have achieved remarkable performance, they remain vulnerable to jailbreak attacks that circumvent safety constraints. Existing strategies, ranging from heuristic prompt engineering to computationally intensive optimization, often face significan",
-      "url": "https://arxiv.org/abs/2604.07835v1",
-      "published": "2026-04-09T05:35:56Z",
-      "authors": "Wenpeng Xing, Moran Fang, Guangtai Wang",
-      "keyword": "jailbreak"
-    },
-    {
-      "source": "arXiv",
       "title": "Are GUI Agents Focused Enough? Automated Distraction via Semantic-level UI Element Injection",
       "summary": "Existing red-teaming studies on GUI agents have important limitations. Adversarial perturbations typically require white-box access, which is unavailable for commercial systems, while prompt injection is increasingly mitigated by stronger safety alignment. To study robustness und",
       "url": "https://arxiv.org/abs/2604.07831v1",
       "published": "2026-04-09T05:32:34Z",
       "authors": "Wenkui Yang, Chao Jin, Haisu Zhu",
-      "keyword": "prompt injection"
+      "keyword": "red team"
     },
     {
       "source": "arXiv",
@@ -364,15 +373,6 @@
       "published": "2026-04-09T03:59:46Z",
       "authors": "The_resa",
       "keyword": "adversarial"
-    },
-    {
-      "source": "arXiv",
-      "title": "TrajGuard: Streaming Hidden-state Trajectory Detection for Decoding-time Jailbreak Defense",
-      "summary": "Existing jailbreak defense paradigms primarily rely on static detection of prompts, outputs, or internal states, often neglecting the dynamic evolution of risk during decoding. This oversight leaves risk signals embedded in decoding trajectories underutilized, constituting a crit",
-      "url": "https://arxiv.org/abs/2604.07727v1",
-      "published": "2026-04-09T02:22:44Z",
-      "authors": "Cheng Liu, Xiaolei Liu, Xingyu Li",
-      "keyword": "jailbreak"
     }
   ]
 }
