@@ -3,70 +3,200 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thank You | SCBE-AETHERMOORE Training Vault</title>
-<meta name="robots" content="noindex">
+<title>Thank You | SCBE-AETHERMOORE</title>
+<meta name="robots" content="noindex, nofollow">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Georgia,"Times New Roman",serif;background:#071412;color:#e7fff7;min-height:100vh;display:flex;align-items:center;justify-content:center}
-.container{max-width:680px;margin:0 auto;padding:40px 20px;text-align:center}
-h1{font-size:48px;letter-spacing:-0.03em;background:linear-gradient(135deg,#2dd3a6,#17c6cf);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:16px}
-.subtitle{color:#9bc5ba;font-size:18px;margin-bottom:40px}
-.download-card{background:rgba(10,28,24,0.82);border:1px solid rgba(45,211,166,0.25);border-radius:16px;padding:32px;margin-bottom:24px;text-align:left}
-.download-card h3{color:#2dd3a6;font-size:20px;margin-bottom:12px}
-.download-card p{color:#9bc5ba;line-height:1.6;margin-bottom:16px}
-.download-card a{display:inline-block;padding:12px 24px;background:linear-gradient(135deg,#2dd3a6,#17c6cf);color:#071412;font-weight:700;border-radius:10px;text-decoration:none;margin-right:8px;margin-bottom:8px}
-.download-card a:hover{opacity:0.9}
-.quickstart{background:rgba(10,28,24,0.82);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:24px;text-align:left;margin-bottom:24px}
-.quickstart h3{color:#f0bf67;margin-bottom:12px}
-.quickstart pre{background:rgba(0,0,0,0.3);padding:14px;border-radius:8px;overflow-x:auto;color:#8fffd3;font-family:monospace;font-size:14px;line-height:1.5}
-.links{color:#9bc5ba;font-size:14px;margin-top:32px}
-.links a{color:#2dd3a6;text-decoration:none}
-.links a:hover{text-decoration:underline}
-footer{text-align:center;padding:32px;color:#9bc5ba;font-size:13px;margin-top:40px}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#071412;color:#e7fff7;min-height:100vh;line-height:1.6}
+.container{max-width:720px;margin:0 auto;padding:60px 24px 40px}
+.topbar{padding:14px 20px;background:rgba(4,16,15,0.9);backdrop-filter:blur(12px);border-bottom:1px solid rgba(139,255,223,0.15);font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:#8fffd3;font-weight:700}
+.topbar a{color:#8fffd3;text-decoration:none}
+.badge{display:inline-block;padding:4px 12px;border-radius:20px;background:rgba(143,255,211,0.1);border:1px solid rgba(143,255,211,0.3);font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#8fffd3;margin-bottom:14px}
+h1{font-size:clamp(32px,6vw,48px);letter-spacing:-0.03em;background:linear-gradient(135deg,#8fffd3,#6dd8ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:16px;line-height:1.1}
+.subtitle{color:#9bc5ba;font-size:17px;margin-bottom:36px}
+.card{background:rgba(10,28,24,0.82);border:1px solid rgba(139,255,223,0.2);border-radius:14px;padding:28px;margin-bottom:20px}
+.card h3{color:#8fffd3;font-size:18px;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.card p{color:#c8d4d0;margin-bottom:14px}
+.download-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;background:linear-gradient(135deg,rgba(143,255,211,0.2),rgba(109,216,255,0.14));color:#8fffd3;font-weight:700;border:1px solid rgba(143,255,211,0.45);border-radius:12px;text-decoration:none;font-size:15px;margin:8px 8px 8px 0;transition:all 150ms}
+.download-btn:hover{background:linear-gradient(135deg,rgba(143,255,211,0.32),rgba(109,216,255,0.22));transform:translateY(-1px)}
+.secondary-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border:1px solid rgba(155,197,186,0.3);color:#c8d4d0;border-radius:10px;text-decoration:none;font-size:14px;margin:8px 8px 8px 0}
+.secondary-btn:hover{border-color:#8fffd3;color:#8fffd3}
+code{background:rgba(0,0,0,0.4);padding:2px 7px;border-radius:4px;color:#8fffd3;font-family:"SF Mono",Consolas,monospace;font-size:13px;border:1px solid rgba(143,255,211,0.15)}
+pre{background:rgba(0,0,0,0.5);padding:16px;border-radius:10px;overflow-x:auto;color:#c8d4d0;font-family:"SF Mono",Consolas,monospace;font-size:13px;line-height:1.5;border:1px solid rgba(123,140,255,0.14)}
+.unknown{border-color:rgba(255,217,119,0.3);background:rgba(255,217,119,0.04)}
+.unknown h3{color:#ffd977}
+footer{text-align:center;padding:32px;color:#9bc5ba;font-size:12px;border-top:1px solid rgba(139,255,223,0.1);margin-top:40px}
+footer a{color:#c8d4d0;text-decoration:none}
+.nav-link{color:#6dd8ff;text-decoration:none}
+.nav-link:hover{color:#8fffd3}
+.step{counter-increment:step;margin-bottom:14px;padding-left:32px;position:relative}
+.step::before{content:counter(step);position:absolute;left:0;top:0;width:22px;height:22px;border-radius:50%;background:rgba(143,255,211,0.1);border:1px solid rgba(143,255,211,0.35);color:#8fffd3;font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center}
+ol.steps{counter-reset:step;list-style:none;padding-left:0}
 </style>
-  <link rel="stylesheet" href="/static/galactic-theme.css">
-  <script src="/static/galactic-stars.js" defer></script>
+<link rel="stylesheet" href="/static/galactic-theme.css">
+<script src="/static/galactic-stars.js" defer></script>
 </head>
 <body>
+<header class="topbar">
+  <a href="/">SCBE-AETHERMOORE</a>
+</header>
+
 <div class="container">
-  <h1>You're in.</h1>
-  <p class="subtitle">Thank you for purchasing the SCBE AI Security Training Vault.</p>
+  <span class="badge">Order Confirmed</span>
+  <h1 id="pageTitle">Thank you for your purchase.</h1>
+  <p class="subtitle" id="pageSubtitle">Your download is ready below. Bookmark this page — you can return to it anytime.</p>
 
-  <div class="download-card">
-    <h3>Your Downloads</h3>
-    <p>Everything you need to train your own AI security model:</p>
-    <a href="https://huggingface.co/datasets/issdandavis/scbe-aethermoore-training-data" target="_blank">Training Data (HuggingFace)</a>
-    <a href="https://github.com/issdandavis/SCBE-AETHERMOORE/tree/main/artifacts/projectors" target="_blank">Projector Weights</a>
-    <a href="https://github.com/issdandavis/SCBE-AETHERMOORE/tree/main/benchmarks" target="_blank">Benchmark Suite</a>
+  <div id="productArea">
+    <!-- Populated by JS based on ?product= query param -->
   </div>
 
-  <div class="quickstart">
-    <h3>Quickstart</h3>
-    <pre>pip install scbe-aethermoore sentence-transformers
-
-# Load the semantic projector
-from src.governance.runtime_gate import RuntimeGate
-gate = RuntimeGate(coords_backend="semantic")
-
-# Evaluate any text
-result = gate.evaluate("your input here")
-print(result.decision, result.cost)</pre>
+  <div class="card">
+    <h3>📥 How to use what you just bought</h3>
+    <ol class="steps">
+      <li class="step"><strong>Download the ZIP</strong> using the button above. The file contains the complete package — templates, checklists, and the README with setup instructions.</li>
+      <li class="step"><strong>Extract and open the README.md first.</strong> Every package starts there. It walks you through what's included and how the pieces fit together.</li>
+      <li class="step"><strong>Adapt the templates to your context.</strong> These are governance scaffolds, not rigid prescriptions. Edit them to match your team's vocabulary and thresholds.</li>
+      <li class="step"><strong>Need help?</strong> Reply to your Stripe receipt email, or email <a class="nav-link" href="mailto:aethermoregames@pm.me">aethermoregames@pm.me</a> directly. Turnaround is usually within 24 hours.</li>
+    </ol>
   </div>
 
-  <div class="download-card">
-    <h3>Colab Notebook</h3>
-    <p>Fine-tune your own model on Google Colab (free T4 GPU):</p>
-    <a href="https://github.com/issdandavis/SCBE-AETHERMOORE/tree/main/notebooks" target="_blank">Open Colab Notebook</a>
+  <div class="card">
+    <h3>💬 Support &amp; questions</h3>
+    <p>If the download doesn't work, if you need help adapting the templates, or if something doesn't match what was advertised, email me directly:</p>
+    <a class="download-btn" href="mailto:aethermoregames@pm.me?subject=Question%20about%20my%20SCBE%20purchase">Email support</a>
+    <p style="margin-top:16px;font-size:13px;color:#9bc5ba;">Refund policy: not satisfied within 14 days? Email me and I'll refund you in full, no questions. Keep the files.</p>
   </div>
 
-  <div class="links">
-    <p>Need help? Email <a href="mailto:ai@aethermoore.com">ai@aethermoore.com</a></p>
-    <p style="margin-top:8px"><a href="index.html">Back to home</a> · <a href="demos/index.html">Try the demos</a> · <a href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank">GitHub</a></p>
+  <div class="card">
+    <h3>⚡ What's next</h3>
+    <p>The open source framework that everything here integrates with is on GitHub. Clone it, run the tests, read the architecture docs.</p>
+    <a class="secondary-btn" href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank" rel="noopener">View on GitHub</a>
+    <a class="secondary-btn" href="/research/evidence.html">See the evidence ledger</a>
+    <a class="secondary-btn" href="/services.html">Browse other products</a>
   </div>
 </div>
 
 <footer>
-  SCBE-AETHERMOORE | Patent Pending: USPTO #63/961,403 | Built by Issac Davis
+  SCBE-AETHERMOORE · Built by Issac Davis in Port Angeles, WA · Patent Pending USPTO #63/961,403<br>
+  <a href="/">Home</a> · <a href="/services.html">Shop</a> · <a href="mailto:aethermoregames@pm.me">Email</a>
 </footer>
+
+<script>
+(function(){
+  const PRODUCTS = {
+    'ai-governance-toolkit': {
+      title: 'AI Governance Toolkit',
+      price: '$29',
+      subtitle: 'Templates, thresholds, decision records, and starter rollout guidance.',
+      zip: '/deliverables/ai-governance-toolkit.zip',
+      includes: [
+        'README.md — the starting point',
+        'decision-record-template.md — record governance decisions with clear audit trail',
+        'threshold-worksheet.md — set your risk thresholds explicitly',
+        'pilot-checklist.md — launch your first governed AI workflow',
+        'review-notes-template.md — structured review sessions',
+        'LICENSE.txt — single-buyer use license',
+      ],
+      manual: '/product-manual/ai-governance-toolkit.html',
+    },
+    'hydra-agent-templates': {
+      title: 'HYDRA Agent Templates',
+      price: '$29',
+      subtitle: 'Ready-made agent roles, packet patterns, and launch structure for small governed swarms.',
+      zip: '/deliverables/hydra-agent-templates.zip',
+      includes: [
+        'README.md — the HYDRA swarm overview',
+        'role-templates.md — the 6 Sacred Tongue specialist roles (KO/AV/RU/CA/UM/DR)',
+        'packet-example.md — a real cross-agent packet with fields explained',
+        'launch-checklist.md — pre-flight checklist before running agents',
+        'review-checklist.md — post-run evaluation structure',
+        'LICENSE.txt',
+      ],
+      manual: '/product-manual/hydra-agent-templates.html',
+    },
+    'n8n-workflow-pack': {
+      title: 'n8n Workflow Pack',
+      price: '$29',
+      subtitle: 'Governed automation building blocks. Importable workflows and delivery path.',
+      zip: '/deliverables/n8n-workflow-pack.zip',
+      includes: [
+        'README.md — import and setup instructions',
+        'workflows/SCBE_X_Merch_Autopilot.workflow.json — importable n8n workflow',
+        'workflows/connectors.n8n.json — connector definitions',
+        'environment-variable-map.md — what to set, why, where',
+        'connector-notes.md — per-connector gotchas',
+        'validation-checklist.md — verify before going live',
+        'LICENSE.txt',
+      ],
+      manual: '/product-manual/n8n-workflow-pack.html',
+    },
+    'content-spin-engine': {
+      title: 'Content Spin Engine',
+      price: '$29',
+      subtitle: 'Source-once content operations. Adapt, review, publish across channels without drift.',
+      zip: '/deliverables/content-spin-engine.zip',
+      includes: [
+        'README.md — content ops framing',
+        'source-to-channel-matrix.md — which source maps to which output',
+        'transformation-patterns.md — common rewrites with examples',
+        'review-checklist.md — pre-publish review gate',
+        'output-tracker.csv — track published variants',
+        'LICENSE.txt',
+      ],
+      manual: '/product-manual/content-spin-engine.html',
+    },
+  };
+
+  const params = new URLSearchParams(window.location.search);
+  const key = (params.get('product') || '').trim().toLowerCase();
+  const area = document.getElementById('productArea');
+  const titleEl = document.getElementById('pageTitle');
+  const subtitleEl = document.getElementById('pageSubtitle');
+
+  const product = PRODUCTS[key];
+
+  if (product) {
+    titleEl.textContent = 'Your ' + product.title + ' is ready.';
+    subtitleEl.textContent = 'Thank you for your purchase. Download below, or come back to this URL anytime.';
+
+    const includesList = product.includes.map(i => '<li style="margin-bottom:6px;color:#c8d4d0;font-size:14px;">' + i + '</li>').join('');
+
+    area.innerHTML = `
+      <div class="card">
+        <h3>📦 ${product.title} — ${product.price}</h3>
+        <p>${product.subtitle}</p>
+        <a class="download-btn" href="${product.zip}" download>⬇ Download ZIP</a>
+        <a class="secondary-btn" href="${product.manual}">Read the full manual</a>
+        <h4 style="color:#8fffd3;font-size:14px;font-weight:700;margin:20px 0 10px;letter-spacing:0.04em;">What's inside</h4>
+        <ul style="list-style:none;padding-left:0">${includesList}</ul>
+      </div>
+    `;
+  } else {
+    titleEl.textContent = 'Thank you for your purchase.';
+    subtitleEl.textContent = 'To receive your download, please forward your Stripe receipt to aethermoregames@pm.me and I\\'ll send the file within 24 hours.';
+
+    area.innerHTML = `
+      <div class="card unknown">
+        <h3>⚠️ We couldn't identify your product from the URL</h3>
+        <p>This usually means your Stripe checkout didn't pass a product ID back to our thank-you page. It's fixable on our end but your delivery is not blocked.</p>
+        <p><strong>To get your download:</strong></p>
+        <ol class="steps">
+          <li class="step">Find your Stripe email receipt (subject starts with "Receipt from...")</li>
+          <li class="step">Forward it to <a class="nav-link" href="mailto:aethermoregames@pm.me?subject=Stripe%20receipt%20forwarded%20-%20need%20download">aethermoregames@pm.me</a></li>
+          <li class="step">You'll get a direct reply with the download link within 24 hours</li>
+        </ol>
+        <p style="font-size:13px;color:#9bc5ba;margin-top:16px;">If you want to try the URL directly, known products are:</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px">
+          <a class="secondary-btn" style="font-size:12px;padding:8px 14px" href="?product=ai-governance-toolkit">Governance Toolkit</a>
+          <a class="secondary-btn" style="font-size:12px;padding:8px 14px" href="?product=hydra-agent-templates">HYDRA Templates</a>
+          <a class="secondary-btn" style="font-size:12px;padding:8px 14px" href="?product=n8n-workflow-pack">n8n Pack</a>
+          <a class="secondary-btn" style="font-size:12px;padding:8px 14px" href="?product=content-spin-engine">Content Spin</a>
+        </div>
+      </div>
+    `;
+  }
+})();
+</script>
+
 </body>
 </html>

@@ -3,182 +3,84 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Attestation Generator | SCBE-AETHERMOORE</title>
-  <meta name="description" content="Generate a mathematically signed RWP1 receipt for any data or software license delivery. Sovereign attestation, Draumric-sealed, issued in seconds.">
-  <link rel="canonical" href="https://aethermoore.com/receipt.html">
-  <meta property="og:image" content="https://aethermoore.com/hero.png">
-  <meta property="og:type" content="website">
-  <meta property="og:description" content="Generate a mathematically signed RWP1 receipt for any data or software license delivery. Sovereign attestation, Draumric-sealed, issued in seconds.">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Attestation Generator | SCBE-AETHERMOORE">
-  <meta name="twitter:description" content="Generate a mathematically signed RWP1 receipt for any data or software license delivery. Sovereign attestation, Draumric-sealed, issued in seconds.">
-  <meta name="twitter:image" content="https://aethermoore.com/hero.png">
+  <title>Order Receipt Lookup | SCBE-AETHERMOORE</title>
+  <meta name="description" content="Your Stripe email receipt is the authoritative proof of purchase. This page explains how to find it and what to do if you need help.">
+  <meta name="robots" content="noindex, nofollow">
   <style>
-    :root {
-      --bg: #071412; --bg-deep: #04100f;
-      --panel: rgba(10, 28, 24, 0.82); --panel-strong: rgba(8, 24, 20, 0.94);
-      --line: rgba(139, 255, 223, 0.15); --line-bright: rgba(139, 255, 223, 0.30);
-      --text: #e7fff7; --muted: #9bc5ba; --dim: #6a9488;
-      --mint: #8fffd3; --aqua: #6dd8ff; --gold: #ffd977;
-      --rose: #ff9ec7; --violet: #c49cff;
-      --shadow: 0 30px 80px rgba(0, 0, 0, 0.45); --max: 1220px;
-    }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: var(--bg-deep); color: var(--text); line-height: 1.6; min-height: 100vh;
-      display: flex; flex-direction: column;
+      background: #071412; color: #e7fff7; line-height: 1.65;
+      min-height: 100vh;
     }
-    header { border-bottom: 1px solid var(--line); padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; background: rgba(4,16,15,0.8); backdrop-filter: blur(10px); }
-    .brand { font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mint); font-weight: 700; text-decoration: none; }
-    
-    .container { max-width: 900px; margin: 0 auto; padding: 60px 24px; width: 100%; }
-    .generator-card { background: var(--panel-strong); border: 2px solid #000; border-radius: 24px; padding: 40px; box-shadow: 8px 8px 0px rgba(196, 156, 255, 0.1); }
-    
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px; }
-    .field-group label { display: block; font-size: 11px; font-weight: 800; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.1em; }
-    input, select { width: 100%; background: rgba(0,0,0,0.3); border: 1px solid var(--line); padding: 12px; border-radius: 8px; color: var(--text); outline: none; }
-    input:focus { border-color: var(--mint); }
-
-    .btn-generate { background: linear-gradient(135deg, var(--gold), var(--violet)); color: var(--bg-deep); border: none; padding: 16px; border-radius: 12px; font-weight: 800; width: 100%; cursor: pointer; transition: transform 150ms; font-size: 16px; }
-    .btn-generate:hover { transform: translateY(-2px); filter: brightness(1.1); }
-
-    /* Certificate Styling */
-    #certificate-wrap { display: none; margin-top: 60px; }
-    .certificate {
-      background: #0a1c18; border: 4px double var(--gold); border-radius: 0; padding: 60px;
-      position: relative; overflow: hidden; color: var(--text);
-      box-shadow: 0 0 100px rgba(255, 217, 119, 0.1);
-    }
-    .cert-seal { position: absolute; bottom: 40px; right: 40px; width: 120px; height: 120px; border: 2px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; transform: rotate(-15deg); opacity: 0.6; }
-    .cert-title { font-size: 32px; font-weight: 800; text-align: center; color: var(--gold); text-transform: uppercase; margin-bottom: 40px; border-bottom: 1px solid var(--gold); padding-bottom: 20px; }
-    .cert-body { font-size: 18px; text-align: center; margin-bottom: 40px; }
-    .cert-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 20px; }
-    
-    .rwp-block { background: #000; padding: 20px; border-radius: 12px; font-family: monospace; font-size: 12px; color: var(--aqua); border: 1px solid var(--line-bright); margin-top: 32px; overflow-x: auto; }
-
-    @media print {
-      body * { visibility: hidden; }
-      #certificate-wrap, #certificate-wrap * { visibility: visible; }
-      #certificate-wrap { position: absolute; left: 0; top: 0; width: 100%; }
-      .generator-card { display: none; }
-    }
+    .topbar { border-bottom: 1px solid rgba(139,255,223,0.15); padding: 16px 24px; background: rgba(4,16,15,0.9); }
+    .brand { font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; color: #8fffd3; font-weight: 700; text-decoration: none; }
+    main { max-width: 680px; margin: 0 auto; padding: 56px 24px 80px; }
+    h1 { font-size: clamp(26px, 5vw, 40px); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 14px; line-height: 1.12;
+         background: linear-gradient(135deg, #8fffd3, #6dd8ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .subtitle { color: #9bc5ba; font-size: 17px; margin-bottom: 36px; }
+    .card { background: rgba(10,28,24,0.82); border: 1px solid rgba(139,255,223,0.2); border-radius: 14px; padding: 24px 28px; margin-bottom: 20px; }
+    .card h2 { font-size: 18px; color: #8fffd3; margin-bottom: 12px; }
+    .card p { color: #c8d4d0; margin-bottom: 12px; }
+    .card ol, .card ul { margin: 12px 0 12px 22px; color: #c8d4d0; }
+    .card li { margin-bottom: 8px; }
+    a { color: #6dd8ff; text-decoration: none; border-bottom: 1px dashed rgba(109,216,255,0.3); }
+    a:hover { color: #8fffd3; border-bottom-color: #8fffd3; }
+    .btn { display: inline-block; padding: 12px 22px; background: linear-gradient(135deg, rgba(143,255,211,0.2), rgba(109,216,255,0.14)); color: #8fffd3; border: 1px solid rgba(143,255,211,0.45); border-radius: 10px; text-decoration: none; font-weight: 600; margin-top: 8px; }
+    .btn:hover { background: linear-gradient(135deg, rgba(143,255,211,0.3), rgba(109,216,255,0.2)); }
+    .note { font-size: 13px; color: #9bc5ba; font-style: italic; margin-top: 14px; }
+    footer { margin-top: 60px; padding: 20px 24px; border-top: 1px solid rgba(139,255,223,0.1); color: #6a9488; font-size: 12px; text-align: center; }
+    footer a { color: #9bc5ba; border: none; }
   </style>
   <link rel="stylesheet" href="/static/galactic-theme.css">
   <script src="/static/galactic-stars.js" defer></script>
 </head>
 <body>
-  <header>
-    <a href="index.html" class="brand">SCBE-AETHERMOORE</a>
-    <div style="font-size: 10px; font-weight: 800; color: var(--gold);">ATTESTATION ENGINE v1.0</div>
+  <header class="topbar">
+    <a href="/" class="brand">SCBE-AETHERMOORE</a>
   </header>
 
-  <main class="container">
-    <div class="generator-card">
-      <h2 style="margin-bottom: 24px;">Issue Sovereign Attestation</h2>
-      <p style="color: var(--muted); font-size: 14px; margin-bottom: 32px;">Generate a mathematically signed RWP1 receipt for a data or software license delivery.</p>
-      
-      <div class="form-grid">
-        <div class="field-group">
-          <label>Licensee Name</label>
-          <input type="text" id="custName" placeholder="Client or Organization Name">
-        </div>
-        <div class="field-group">
-          <label>Product Pack</label>
-          <select id="prodPack">
-            <option value="Lore Verbatim Pack">Lore Verbatim Pack ($99)</option>
-            <option value="Technical Core Pack">Technical Core Pack ($299)</option>
-            <option value="Red Team Fortress">Red Team Fortress ($999)</option>
-            <option value="Standard SDK License">Standard SDK License ($49/mo)</option>
-            <option value="Enterprise License">Enterprise License ($499/mo)</option>
-          </select>
-        </div>
-        <div class="field-group">
-          <label>Order ID</label>
-          <input type="text" id="orderId" placeholder="e.g. SCBE-8472-X">
-        </div>
-        <div class="field-group">
-          <label>Integrity Tier</label>
-          <select id="integrityTier">
-            <option value="Standard">Standard (L1-L14)</option>
-            <option value="Quantum">Quantum (PQC-Hardened)</option>
-            <option value="Sovereign">Sovereign (Full Mesh)</option>
-          </select>
-        </div>
-      </div>
-      
-      <button class="btn-generate" onclick="generateAttestation()">Manifest & Sign Attestation</button>
+  <main>
+    <h1>Your order receipt</h1>
+    <p class="subtitle">Your authoritative proof of purchase is the <strong style="color:#e7fff7;">email receipt sent by Stripe</strong> immediately after checkout. Not this page &mdash; the email.</p>
+
+    <div class="card">
+      <h2>Where to find your receipt</h2>
+      <ol>
+        <li>Check the inbox of the email address you used at checkout</li>
+        <li>Subject line starts with <strong>"Receipt from Issac Davis / SCBE-AETHERMOORE"</strong> (or similar Stripe format)</li>
+        <li>If it's not there, check your spam/junk folder &mdash; Stripe receipts sometimes land there</li>
+        <li>The email contains your order ID, payment amount, payment method, and a link to your Stripe-hosted receipt PDF</li>
+      </ol>
     </div>
 
-    <div id="certificate-wrap">
-      <div class="certificate" id="cert">
-        <div class="cert-seal">SCBE SEAL</div>
-        <div class="cert-title">Certificate of Attestation</div>
-        <div class="cert-body">
-          This document verifies that <strong id="out-name" style="color:var(--mint);">[Name]</strong> has been granted a <strong id="out-prod" style="color:var(--aqua);">[Product]</strong>.
-          <br><br>
-          The contents have been validated across 14 layers of semantic intent and are verified as **Mathematically Stable** according to the SCBE-AETHERMOORE Protocol.
-        </div>
-        <div class="cert-meta">
-          <div>ORDER ID: <span id="out-id"></span></div>
-          <div>TIMESTAMP: <span id="out-date"></span></div>
-          <div>TIER: <span id="out-tier"></span></div>
-          <div>VERDICT: <span style="color:var(--mint); font-weight:800;">VERIFIED BY PHDM</span></div>
-        </div>
-        
-        <div class="rwp-block" id="out-rwp"></div>
-      </div>
-      
-      <div style="margin-top: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-        <button class="btn-generate" onclick="window.print()" style="grid-column: span 2;">Print/Save as PDF</button>
-        <button class="btn-generate" onclick="sendEmail()" style="background: var(--aqua); color: var(--bg-deep);">Send via Email</button>
-        <button class="btn-generate" onclick="sendSMS()" style="background: var(--gold); color: var(--bg-deep);">Send via Text</button>
-        <button class="btn-generate" onclick="location.reload()" style="grid-column: span 2; background: var(--panel);">New Attestation</button>
-      </div>
+    <div class="card">
+      <h2>How to get your downloads</h2>
+      <p>If you bought one of the <strong>$29 packages</strong> (AI Governance Toolkit, HYDRA Agent Templates, n8n Workflow Pack, or Content Spin Engine), you should have been redirected to the <a href="thank-you.html">thank-you page</a> after checkout. If that didn't happen:</p>
+      <ol>
+        <li>Forward your Stripe receipt email to <a href="mailto:aethermoregames@pm.me?subject=Need%20my%20download%20-%20forwarded%20Stripe%20receipt">aethermoregames@pm.me</a></li>
+        <li>I'll reply with the direct download link within 24 hours (usually faster)</li>
+        <li>Keep the reply &mdash; it contains the download link you can use anytime</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h2>Refund policy</h2>
+      <p>Not happy with what you got? Email me within 14 days of purchase and I'll refund you in full, no questions. You keep the files. I'd rather have a clean record and an honest relationship than a disputed chargeback.</p>
+      <a class="btn" href="mailto:aethermoregames@pm.me?subject=Refund%20request">Request a refund</a>
+    </div>
+
+    <div class="card">
+      <h2>Questions about your purchase</h2>
+      <p>If something's broken, unclear, or doesn't match what was advertised, email me directly. I answer within 24 hours:</p>
+      <a class="btn" href="mailto:aethermoregames@pm.me?subject=Question%20about%20my%20SCBE%20purchase">Email support</a>
+      <p class="note">Note: for technical questions about the open source framework (not a purchase), the <a href="https://github.com/issdandavis/SCBE-AETHERMOORE/discussions">GitHub Discussions</a> are faster.</p>
     </div>
   </main>
 
-  <script>
-    function sendEmail() {
-      const name = document.getElementById('out-name').textContent;
-      const prod = document.getElementById('out-prod').textContent;
-      const rwp = document.getElementById('out-rwp').textContent;
-      const subject = encodeURIComponent(`SCBE Attestation: ${prod} for ${name}`);
-      const body = encodeURIComponent(`Hello ${name},\n\nYour SCBE-AETHERMOORE Attestation is verified.\n\nProduct: ${prod}\nSignature:\n${rwp}\n\nMaintain your sovereignty.`);
-      window.location.href = `mailto:?subject=${subject}&body=${body}`;
-    }
-
-    function sendSMS() {
-      const name = document.getElementById('out-name').textContent;
-      const rwp = document.getElementById('out-rwp').textContent;
-      const body = encodeURIComponent(`SCBE Verified: ${name}. Sig: ${rwp.substring(0,100)}...`);
-      window.location.href = `sms:?body=${body}`;
-    }
-
-    function generateAttestation() {
-      const name = document.getElementById('custName').value;
-      const prod = document.getElementById('prodPack').value;
-      const oid = document.getElementById('orderId').value || 'SCBE-' + Math.random().toString(16).slice(2,10).toUpperCase();
-      const tier = document.getElementById('integrityTier').value;
-      const date = new Date().toISOString();
-
-      if(!name) { alert("Please enter a Licensee name."); return; }
-
-      document.getElementById('out-name').textContent = name;
-      document.getElementById('out-prod').textContent = prod;
-      document.getElementById('out-id').textContent = oid;
-      document.getElementById('out-tier').textContent = tier;
-      document.getElementById('out-date').textContent = date;
-
-      // Build RWP1 Envelope
-      const payload = `ATTEST<type>license</type><id>${oid}</id><user>${btoa(name)}</user><prod>${prod}</prod>`;
-      const sig = `dr:hatch'${Math.random().toString(16).slice(2,8)}'vara'esh`;
-      const rwp = `RWP1|tongue=DR|codec=spelltext|aad=receipt;id=${oid}\npayload=${payload}\nsig_DR=${sig}\nsig_RU=ru:auth'${Math.random().toString(16).slice(2,8)}'phi'convergence`;
-
-      document.getElementById('out-rwp').textContent = rwp;
-      document.getElementById('certificate-wrap').style.display = 'block';
-      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-    }
-  </script>
+  <footer>
+    SCBE-AETHERMOORE &middot; Built by Issac Davis in Port Angeles, WA &middot; Patent Pending USPTO #63/961,403<br>
+    <a href="/">Home</a> &middot; <a href="/services.html">Shop</a> &middot; <a href="thank-you.html">Thank-you page</a>
+  </footer>
 </body>
 </html>
