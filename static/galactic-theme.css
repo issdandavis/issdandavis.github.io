@@ -1,0 +1,284 @@
+/*
+ * Galactic theme — the SCBE-AETHERMOORE visual system, April 2026.
+ * Palette: deep purple + void black, with neon green as primary and
+ * neon red as danger. Gold retained for premium moments.
+ *
+ * Load AFTER the page's own inline <style> block so these rules win,
+ * or drop :root variables to reuse in custom overrides.
+ */
+
+:root {
+  /* Backgrounds — void black to deep purple */
+  --bg: #000000;
+  --bg-void: #000000;
+  --bg-deep: #0a0015;
+  --bg-soft: #14002a;
+  --bg-panel: #1a0033;
+
+  /* Panels and surfaces */
+  --panel: rgba(26, 0, 51, 0.74);
+  --panel-strong: rgba(13, 0, 26, 0.92);
+  --panel-glow: rgba(139, 92, 246, 0.06);
+
+  /* Lines and borders */
+  --line: rgba(139, 92, 246, 0.22);
+  --line-bright: rgba(139, 92, 246, 0.48);
+  --line-neon: rgba(57, 255, 20, 0.35);
+
+  /* Text */
+  --text: #f4f0ff;
+  --muted: #b8a8d8;
+  --dim: #7a6a9a;
+
+  /* Brand — purple galaxy core */
+  --brand: #8b5cf6;
+  --brand-bright: #a855f7;
+  --brand-deep: #6d28d9;
+  --violet: #c084fc;
+
+  /* Primary — neon green Asteroids vector glow */
+  --primary: #39ff14;
+  --primary-bright: #7aff4d;
+  --primary-dim: #2bcc10;
+  --mint: #39ff14;
+  --aqua: #00ffc8;
+
+  /* Danger — neon red vector-game alert */
+  --danger: #ff073a;
+  --danger-bright: #ff4b6b;
+  --danger-dim: #cc0428;
+  --rose: #ff073a;
+
+  /* Premium — gold for patents and hero moments */
+  --gold: #ffd700;
+  --gold-bright: #ffe44d;
+
+  /* Shadows and glows */
+  --shadow: 0 30px 80px rgba(0, 0, 0, 0.75);
+  --glow-neon: 0 0 12px rgba(57, 255, 20, 0.5), 0 0 28px rgba(57, 255, 20, 0.25);
+  --glow-purple: 0 0 18px rgba(139, 92, 246, 0.45), 0 0 40px rgba(139, 92, 246, 0.22);
+  --glow-red: 0 0 12px rgba(255, 7, 58, 0.5), 0 0 26px rgba(255, 7, 58, 0.25);
+  --max: 1220px;
+}
+
+html, body {
+  background: transparent !important;
+  background-color: var(--bg-void) !important;
+  color: var(--text);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse at 15% 10%, rgba(139, 92, 246, 0.10), transparent 38%),
+    radial-gradient(ellipse at 85% 90%, rgba(255, 7, 58, 0.05), transparent 42%),
+    radial-gradient(ellipse at 50% 50%, rgba(57, 255, 20, 0.03), transparent 60%);
+}
+
+.gradient,
+h1 .gradient,
+h2 .gradient {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--brand-bright) 50%, var(--danger-bright) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.btn-primary,
+.btn.btn-primary {
+  background: linear-gradient(135deg, rgba(57, 255, 20, 0.18), rgba(139, 92, 246, 0.14));
+  border: 1px solid rgba(57, 255, 20, 0.45);
+  color: var(--primary);
+  text-shadow: 0 0 12px rgba(57, 255, 20, 0.3);
+  box-shadow: var(--glow-neon);
+}
+.btn-primary:hover,
+.btn.btn-primary:hover {
+  background: linear-gradient(135deg, rgba(57, 255, 20, 0.28), rgba(139, 92, 246, 0.22));
+  border-color: rgba(57, 255, 20, 0.65);
+  transform: translateY(-1px);
+  box-shadow: 0 0 18px rgba(57, 255, 20, 0.6), 0 0 36px rgba(57, 255, 20, 0.3);
+}
+
+.btn-gold,
+.btn.btn-gold {
+  background: linear-gradient(135deg, var(--gold), #d4a800);
+  border: 1px solid var(--gold-bright);
+  color: #1a0033;
+  font-weight: 800;
+  text-shadow: none;
+  box-shadow: 0 0 18px rgba(255, 215, 0, 0.4), 0 4px 14px rgba(0, 0, 0, 0.6);
+}
+.btn-gold:hover,
+.btn.btn-gold:hover {
+  background: linear-gradient(135deg, var(--gold-bright), var(--gold));
+  transform: translateY(-2px);
+  box-shadow: 0 0 26px rgba(255, 215, 0, 0.6), 0 8px 22px rgba(0, 0, 0, 0.7);
+}
+
+.btn-secondary,
+.btn.btn-secondary {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+.btn-secondary:hover,
+.btn.btn-secondary:hover {
+  border-color: var(--brand-bright);
+  color: var(--text);
+  box-shadow: var(--glow-purple);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, rgba(255, 7, 58, 0.18), rgba(139, 92, 246, 0.14));
+  border: 1px solid rgba(255, 7, 58, 0.45);
+  color: var(--danger-bright);
+  box-shadow: var(--glow-red);
+}
+
+.section-label,
+.hero-label {
+  background: rgba(57, 255, 20, 0.08);
+  border: 1px solid rgba(57, 255, 20, 0.25);
+  color: var(--primary);
+  text-shadow: 0 0 8px rgba(57, 255, 20, 0.35);
+}
+
+.product-card,
+.demo-card,
+.link-card,
+.panel,
+.stat-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(6px);
+}
+.product-card:hover,
+.demo-card:hover,
+.link-card:hover {
+  border-color: var(--line-bright);
+  box-shadow: var(--glow-purple);
+  transform: translateY(-3px);
+}
+
+.product-card.popular,
+.product-card.featured {
+  border-color: rgba(57, 255, 20, 0.38);
+  background: linear-gradient(135deg, rgba(57, 255, 20, 0.05), var(--panel));
+  box-shadow: var(--glow-neon);
+}
+
+.topbar {
+  background: rgba(10, 0, 21, 0.75) !important;
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(16px);
+}
+.brand,
+.topbar .brand {
+  color: var(--primary) !important;
+  text-shadow: 0 0 10px rgba(57, 255, 20, 0.4);
+}
+.nav a {
+  color: var(--muted);
+  transition: color 150ms, background 150ms, text-shadow 150ms;
+}
+.nav a:hover {
+  color: var(--primary);
+  background: rgba(57, 255, 20, 0.08);
+  text-shadow: 0 0 8px rgba(57, 255, 20, 0.5);
+}
+.nav a.nav-cta {
+  background: rgba(57, 255, 20, 0.14) !important;
+  border: 1px solid rgba(57, 255, 20, 0.38) !important;
+  color: var(--primary) !important;
+  text-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
+}
+.nav a.nav-cta:hover {
+  background: rgba(57, 255, 20, 0.24) !important;
+  box-shadow: var(--glow-neon);
+}
+.nav a.nav-commercial {
+  background: rgba(255, 215, 0, 0.12) !important;
+  border: 1px solid rgba(255, 215, 0, 0.3) !important;
+  color: var(--gold) !important;
+}
+
+.footer,
+footer {
+  border-top: 1px solid var(--line);
+  background: rgba(10, 0, 21, 0.4);
+  color: var(--dim);
+}
+.footer a,
+footer a {
+  color: var(--muted);
+}
+.footer a:hover,
+footer a:hover {
+  color: var(--primary);
+  text-shadow: 0 0 8px rgba(57, 255, 20, 0.4);
+}
+
+.hero,
+.hero-inner {
+  background: transparent;
+}
+
+.hero h1 {
+  text-shadow: 0 0 22px rgba(139, 92, 246, 0.3);
+}
+
+/* Neon divider */
+.hr-neon {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  box-shadow: 0 0 12px rgba(57, 255, 20, 0.5);
+  margin: 40px 0;
+}
+
+/* Neon text accents */
+a.neon {
+  color: var(--primary);
+  text-shadow: 0 0 8px rgba(57, 255, 20, 0.35);
+}
+a.danger-link {
+  color: var(--danger-bright);
+  text-shadow: 0 0 8px rgba(255, 7, 58, 0.35);
+}
+
+/* Scrollbar (webkit) */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--brand), var(--brand-deep));
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--brand-bright); }
+
+/* Selection */
+::selection {
+  background: rgba(57, 255, 20, 0.3);
+  color: var(--bg-void);
+  text-shadow: 0 0 8px rgba(57, 255, 20, 0.6);
+}
+
+/* Inline code */
+code, pre code {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(57, 255, 20, 0.2);
+  color: var(--primary);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: "SF Mono", "Menlo", Consolas, monospace;
+}
+
+/* Mask the old mist / particle overlays */
+.aether-mist,
+.tongue-bar {
+  display: none !important;
+}
