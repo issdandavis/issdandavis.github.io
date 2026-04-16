@@ -1,0 +1,131 @@
+{
+  "patrol": {
+    "drill": "patrol",
+    "timestamp": "2026-04-16T06:33:48.001397+00:00",
+    "pages_checked": 79,
+    "links_ok": 77,
+    "links_broken": [
+      {
+        "url": "https://aethermoore.com/pricing.html",
+        "status": 404,
+        "found_on": "https://aethermoore.com/benchmark-kit.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/demos/benchmarks.html",
+        "status": 404,
+        "found_on": "https://aethermoore.com/benchmark-kit.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/enterprise.html",
+        "status": 404,
+        "found_on": "https://aethermoore.com/newsletter.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/blog.html",
+        "status": 404,
+        "found_on": "https://aethermoore.com/newsletter.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/contact.html",
+        "status": 404,
+        "found_on": "https://aethermoore.com/newsletter.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/compliance.html",
+        "status": 404,
+        "found_on": "https://aethermoore.com/test-suite.html",
+        "type": "internal_link"
+      }
+    ],
+    "missing_meta": [
+      "https://aethermoore.com/demos/audio-composition.html",
+      "https://aethermoore.com/demos/energy-landscape.html"
+    ],
+    "missing_og": [
+      "https://aethermoore.com/benchmark-kit.html",
+      "https://aethermoore.com/challenges.html",
+      "https://aethermoore.com/demos/audio-composition.html",
+      "https://aethermoore.com/demos/energy-landscape.html",
+      "https://aethermoore.com/outreach.html",
+      "https://aethermoore.com/profile.html"
+    ],
+    "missing_canonical": [
+      "https://aethermoore.com/benchmark-kit.html",
+      "https://aethermoore.com/demos/audio-composition.html",
+      "https://aethermoore.com/demos/energy-landscape.html"
+    ],
+    "sitemap_pages": 79,
+    "actual_pages": 79
+  },
+  "security": {
+    "drill": "security",
+    "timestamp": "2026-04-16T06:33:48.001397+00:00",
+    "headers": {
+      "HSTS": {
+        "present": true,
+        "value": "max-age=31556952"
+      },
+      "X-Content-Type-Options": {
+        "present": false,
+        "value": null
+      },
+      "X-Frame-Options": {
+        "present": false,
+        "value": null
+      },
+      "CSP": {
+        "present": false,
+        "value": null
+      },
+      "Referrer-Policy": {
+        "present": false,
+        "value": null
+      },
+      "Permissions-Policy": {
+        "present": false,
+        "value": null
+      }
+    },
+    "tls": {
+      "valid": true,
+      "issuer": {
+        "countryName": "US",
+        "organizationName": "Let's Encrypt",
+        "commonName": "R12"
+      },
+      "expires": "Jul  6 01:04:42 2026 GMT",
+      "subject": {
+        "commonName": "aethermoore.com"
+      }
+    },
+    "secrets_found": [],
+    "score": 3,
+    "max_score": 8
+  },
+  "review": {
+    "drill": "review",
+    "timestamp": "2026-04-16T06:33:48.001397+00:00",
+    "site_test_count": null,
+    "articles_count": 17,
+    "research_pages": 13,
+    "demo_pages": 17,
+    "tongue_coverage": {
+      "KO": 0,
+      "AV": 224,
+      "RU": 12,
+      "CA": 182,
+      "UM": 35,
+      "DR": 6
+    },
+    "freshness": {
+      "newest": "2026-04-13",
+      "oldest": "2026-04-13",
+      "total_urls": 79
+    }
+  }
+}
