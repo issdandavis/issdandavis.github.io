@@ -118,55 +118,27 @@
     } catch(e) { return ''; }
   };
 
-  // --- OLLAMA LOCAL BACKEND ---
-  // Priority: Ollama (local, private, no key) → HF Inference → fallback
-  const OLLAMA_URL = 'http://localhost:11434';
-  const OLLAMA_PREFS_KEY = 'polly_ollama_model';
+  // --- POLLY BACKEND CHAT (primary path — we supply the AI) ---
+  // All conversations route through our backend. The backend handles:
+  //   1. LLM response generation (Ollama server-side or any configured model)
+  //   2. Sacred Tongues tokenization of the exchange
+  //   3. Sacred Egg creation (GeoSealed interaction record)
+  //   4. Egg bundling into training protein when a clutch is full
+  // HF Inference is a last-resort fallback only when the backend is unreachable.
 
-  let _ollamaModels = null; // null = not checked, [] = checked but none, [...] = available
-
-  async function detectOllama() {
-    if (_ollamaModels !== null) return _ollamaModels;
+  async function callPollyBackendChat(userText) {
+    if (!POLLY_BACKEND_HTTP) return null;
+    const base = POLLY_BACKEND_HTTP.replace(/\/$/, '');
     try {
-      const resp = await fetch(`${OLLAMA_URL}/api/tags`, { signal: AbortSignal.timeout(800) });
-      if (!resp.ok) { _ollamaModels = []; return []; }
-      const data = await resp.json();
-      _ollamaModels = (data.models || []).map(m => m.name).filter(Boolean);
-      return _ollamaModels;
-    } catch {
-      _ollamaModels = [];
-      return [];
-    }
-  }
-
-  function getOllamaModel() {
-    try { return localStorage.getItem(OLLAMA_PREFS_KEY) || ''; } catch { return ''; }
-  }
-  function setOllamaModel(name) {
-    try { localStorage.setItem(OLLAMA_PREFS_KEY, name); } catch {}
-  }
-
-  async function callOllama(userText, systemPrompt) {
-    const models = await detectOllama();
-    if (!models.length) return null;
-    const model = getOllamaModel() || models[0];
-    try {
-      const resp = await fetch(`${OLLAMA_URL}/api/chat`, {
+      const resp = await fetch(`${base}/v1/polly/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          model,
-          stream: false,
-          messages: [
-            { role: 'system', content: systemPrompt },
-            { role: 'user', content: userText }
-          ]
-        }),
+        body: JSON.stringify({ message: userText, context: 'site' }),
         signal: AbortSignal.timeout(30000)
       });
       if (!resp.ok) return null;
       const data = await resp.json();
-      return data?.message?.content || null;
+      return data?.response || null;
     } catch {
       return null;
     }
@@ -425,10 +397,6 @@
       <input type="text" class="polly-input" id="polly-input" placeholder="Ask Polly where to start, what to buy, or what to fix...">
       <button class="polly-send" id="polly-send">➔</button>
     </div>
-    <div id="polly-ollama-bar" style="display:none; padding:4px 12px 6px; font-size:11px; color:var(--polly-muted); background:rgba(143,255,211,0.06); border-top:1px solid rgba(143,255,211,0.1);">
-      <span id="polly-ollama-status">⬤ Checking for local Ollama…</span>
-      <select id="polly-ollama-model" style="display:none; margin-left:8px; background:var(--polly-bg); color:var(--polly-fg); border:1px solid rgba(143,255,211,0.3); border-radius:4px; font-size:11px; padding:1px 4px;"></select>
-    </div>
   `;
 
   // --- LOGIC ---
@@ -585,13 +553,12 @@ async function fetchLore() {
       addMsg('Polly', "Entering analysis mode. I will route the request first, then inspect it carefully.", 'polly');
       // First search memory for context
       const context = searchMemory(text).map(m => m.response?.slice(0, 100)).join('\n');
-      const thinkSystemPrompt = `${POLLY_LORE}\nYou are in DEEP THINKING mode. Analyze step by step. First pick the correct site lane or commercial boundary, then explain the reasoning clearly.\nContext from memory:\n${context}`;
-      const thinkInput = `<|im_start|>system\n${thinkSystemPrompt}\n<|im_end|>\n<|im_start|>user\n${text}\n<|im_end|>\n<|im_start|>assistant\nLet me route this first, then think through it carefully:\n`;
+      const thinkInput = `<|im_start|>system\n${POLLY_LORE}\nYou are in DEEP THINKING mode. Analyze step by step. First pick the correct site lane or commercial boundary, then explain the reasoning clearly.\nContext from memory:\n${context}\n<|im_end|>\n<|im_start|>user\n${text}\n<|im_end|>\n<|im_start|>assistant\nLet me route this first, then think through it carefully:\n`;
       try {
-        // Try Ollama first (local, private, no key required)
-        const ollamaResp = await callOllama(text, thinkSystemPrompt);
-        if (ollamaResp) {
-          response = ollamaResp;
+        // Route through our backend first (we supply the AI + egg the interaction)
+        const backendResp = await callPollyBackendChat(`[DEEP THINK] ${text}`);
+        if (backendResp) {
+          response = backendResp;
         } else {
           const resp = await fetch(`https://api-inference.huggingface.co/models/${HF_MODEL}`, {
             method: "POST",
@@ -631,11 +598,12 @@ async function fetchLore() {
     }
     else {
       try {
-        // Try Ollama first (local, private, no key required)
-        const ollamaResp = await callOllama(text, POLLY_LORE);
-        if (ollamaResp) {
-          response = ollamaResp;
+        // Route through our backend first (we supply the AI + egg the interaction)
+        const backendResp = await callPollyBackendChat(text);
+        if (backendResp) {
+          response = backendResp;
         } else {
+          // Fallback: HF Inference when backend unreachable
           const resp = await fetch(`https://api-inference.huggingface.co/models/${HF_MODEL}`, {
             method: "POST",
             headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
@@ -762,39 +730,5 @@ async function fetchLore() {
     getBackendContext(false).catch(() => {});
   }
 
-  // --- OLLAMA STATUS BAR ---
-  async function initOllamaBar() {
-    const bar = panel.querySelector('#polly-ollama-bar');
-    const statusEl = panel.querySelector('#polly-ollama-status');
-    const modelSel = panel.querySelector('#polly-ollama-model');
-    if (!bar || !statusEl || !modelSel) return;
-
-    bar.style.display = 'block';
-    const models = await detectOllama();
-
-    if (models.length === 0) {
-      statusEl.textContent = '○ No local Ollama — using HF Inference';
-      statusEl.style.color = 'var(--polly-muted)';
-    } else {
-      statusEl.textContent = `⬤ Ollama (${models.length} model${models.length > 1 ? 's' : ''})`;
-      statusEl.style.color = '#8fffd3';
-      modelSel.style.display = 'inline-block';
-      const saved = getOllamaModel();
-      models.forEach(m => {
-        const opt = document.createElement('option');
-        opt.value = m;
-        opt.textContent = m;
-        if (m === saved) opt.selected = true;
-        modelSel.appendChild(opt);
-      });
-      if (!saved) setOllamaModel(models[0]);
-      modelSel.addEventListener('change', () => setOllamaModel(modelSel.value));
-    }
-  }
-
-  // Run Ollama detection once on first open
-  let _ollamaBarInit = false;
-  launcher.addEventListener('click', () => {
-    if (!_ollamaBarInit) { _ollamaBarInit = true; initOllamaBar(); }
-  });
+  launcher.addEventListener('click', () => {});
 })();

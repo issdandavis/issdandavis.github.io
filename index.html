@@ -339,6 +339,7 @@
       75% { transform: translate(10px, 10px) scale(1.05); }
     }</style>
   <link rel="stylesheet" href="static/polly-sidebar.css">
+  <link rel="stylesheet" href="static/ticker.css">
   <link rel="stylesheet" href="/static/galactic-theme.css">
   <script src="/static/galactic-stars.js" defer></script>
 </head>
@@ -364,6 +365,27 @@
       </nav>
     </div>
   </header>
+
+  <!-- ═══ AETHER NEWS TICKER ═══════════════════════════════════════════════
+       Live AI governance news + market ticker.
+       News: pulled from GNews RSS (free, CORS-friendly via rss2json.com free tier).
+       Markets: pulled from Finnhub free public quote endpoint (no key needed for ETFs).
+       Updates every 90 seconds. No trackers. No iframes. No third-party scripts.
+  ══════════════════════════════════════════════════════════════════════════ -->
+  <div id="aether-ticker-bar" class="aether-ticker-bar" aria-label="Live news and market feed">
+    <div class="ticker-section ticker-markets" aria-label="Markets">
+      <span class="ticker-label">MARKETS</span>
+      <span id="ticker-markets-inner" class="ticker-markets-inner">loading…</span>
+    </div>
+    <div class="ticker-section ticker-news" aria-label="AI News">
+      <span class="ticker-label">AI GOV</span>
+      <div class="ticker-track-outer">
+        <div id="ticker-news-track" class="ticker-track">Loading AI governance news…</div>
+      </div>
+    </div>
+  </div>
+  <script src="static/ticker.js" defer></script>
+
   <main>
     <section class="hero">
       <div class="hero-particles">
