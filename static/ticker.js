@@ -1,23 +1,22 @@
 /**
- * aether-ticker.js — live AI governance news + market quotes
+ * aether-ticker.js — live news + market feed
  *
- * NEWS: GNews API free tier (100 req/day) filtered to AI governance topics.
- *       Falls back to curated static headlines if API unreachable.
- * MARKETS: Finnhub free public /quote endpoint (no API key for basic use).
- *          Symbols: SPY (S&P 500 ETF), QQQ (Nasdaq ETF), NVDA, MSFT, GOOGL.
- *          Falls back to static snapshot if API unreachable.
+ * NEWS: /research-feed.json — our own pipeline (HackerNews, arXiv, Reddit,
+ *       DARPA, gov, X, web agent). Auto-updated by the repo's daily workflow.
+ *       No third-party API. No key. No rate limit.
  *
- * Refreshes every 90 seconds. No trackers. No cookies. No iframes.
+ * MARKETS: Finnhub free public /quote endpoint (no key for basic ETF quotes).
+ *          Falls back to static snapshot if unreachable.
+ *
+ * Refreshes every 5 minutes (feed is daily so no point hammering it).
  */
 
 (function () {
   'use strict';
 
-  const REFRESH_MS = 90_000;
-  const GNEWS_KEY  = window.__GNEWS_API_KEY__ || ''; // set via data-gnews-key on <body> or window var
-  const GNEWS_URL  = `https://gnews.io/api/v4/search?q=%22AI+governance%22+OR+%22AI+safety%22+OR+%22LLM+security%22&lang=en&max=10&token=${GNEWS_KEY}`;
+  const FEED_URL    = '/research-feed.json';
+  const REFRESH_MS  = 5 * 60 * 1000; // 5 min — feed is daily, no need to spam
 
-  // Finnhub free — no key required for basic quote on US symbols
   const FINNHUB_SYMBOLS = [
     { sym: 'SPY',  label: 'S&P' },
     { sym: 'QQQ',  label: 'QQQ' },
@@ -25,43 +24,27 @@
     { sym: 'MSFT', label: 'MSFT' },
   ];
 
-  // ── Fallback static content (shown when APIs unreachable) ────────────────
-  const FALLBACK_NEWS = [
-    { title: 'EU AI Act enforcement begins — compliance deadlines approaching for regulated AI operators', url: 'https://aethermoore.com/' },
-    { title: 'NIST AI RMF 1.0 adopted by 3 major federal agencies for AI risk management', url: 'https://aethermoore.com/' },
-    { title: 'DARPA CLARA program targets agentic AI governance — SCBE architecture submitted', url: 'https://aethermoore.com/' },
-    { title: 'Hyperbolic geometry proves exponential adversarial cost — 99.42% AUC on red team benchmark', url: 'https://aethermoore.com/' },
-    { title: 'NEW: 24,254 labeled prompt-injection samples released on Hugging Face', url: 'https://huggingface.co/datasets/issdandavis/prompt-injection-bit-signatures' },
-    { title: 'Polly 7B model live — Sacred Tongues governance fine-tune on Qwen2.5-7B', url: 'https://huggingface.co/issdandavis/polly-scbe-7b-v2' },
-    { title: 'SCBE red team benchmark dataset: 110+ downloads — L1-L14 labeled adversarial samples', url: 'https://huggingface.co/datasets/issdandavis/scbe-red-team-benchmarks' },
-    { title: '17 fine-tuned models · 23 datasets · 2.9K+ downloads on Hugging Face @issdandavis', url: 'https://huggingface.co/issdandavis' },
-    { title: 'Sacred Tongues tokenizer v3 — Kor\'aelin · Avali · Runethic · Cassisivadan · Umbroth · Draumric', url: 'https://aethermoore.com/' },
-    { title: 'Kaggle: SCBE notebooks and benchmark datasets — issacizrealdavis', url: 'https://www.kaggle.com/issacizrealdavis' },
-  ];
+  // Source badge colors
+  const SOURCE_COLORS = {
+    HackerNews: '#ff6600',
+    arXiv:      '#b31b1b',
+    Reddit:     '#ff4500',
+    DARPA:      '#0033a0',
+    default:    '#8fffd3',
+  };
 
-  // ── Helpers ───────────────────────────────────────────────────────────────
-  function sign(n) {
-    if (n > 0.001) return 'up';
-    if (n < -0.001) return 'down';
-    return 'flat';
-  }
-
-  function fmt(n, decimals) {
-    return Number(n).toFixed(decimals);
-  }
-
-  // ── Market quotes ─────────────────────────────────────────────────────────
+  // ── Market quotes (Finnhub free — no key for basic public quotes) ──────────
   async function fetchQuote(sym) {
     try {
-      const r = await fetch(`https://finnhub.io/api/v1/quote?symbol=${sym}&token=`, { signal: AbortSignal.timeout(6000) });
+      const r = await fetch(
+        `https://finnhub.io/api/v1/quote?symbol=${sym}&token=`,
+        { signal: AbortSignal.timeout(6000) }
+      );
       if (!r.ok) return null;
       const d = await r.json();
-      // d.c = current price, d.dp = % change
-      if (typeof d.c !== 'number') return null;
+      if (typeof d.c !== 'number' || d.c === 0) return null;
       return { sym, price: d.c, pct: d.dp ?? 0 };
-    } catch {
-      return null;
-    }
+    } catch { return null; }
   }
 
   async function updateMarkets() {
@@ -72,64 +55,65 @@
     const hits = results.filter(Boolean);
 
     if (hits.length === 0) {
-      inner.textContent = 'markets unavailable';
+      // Static fallback — show something rather than nothing
+      inner.innerHTML = '<span class="ticker-quote"><span class="q-sym">SPY</span><span class="q-price">···</span></span>';
       return;
     }
 
     inner.innerHTML = '';
     hits.forEach(({ sym, price, pct }) => {
-      const dir = sign(pct);
+      const dir = pct > 0.001 ? 'up' : pct < -0.001 ? 'down' : 'flat';
       const arrow = dir === 'up' ? '▲' : dir === 'down' ? '▼' : '–';
       const span = document.createElement('span');
       span.className = 'ticker-quote';
-      span.innerHTML = `<span class="q-sym">${sym}</span><span class="q-price">$${fmt(price, 2)}</span><span class="q-chg ${dir}">${arrow}${fmt(Math.abs(pct), 2)}%</span>`;
+      span.innerHTML =
+        `<span class="q-sym">${sym}</span>` +
+        `<span class="q-price">$${price.toFixed(2)}</span>` +
+        `<span class="q-chg ${dir}">${arrow}${Math.abs(pct).toFixed(2)}%</span>`;
       inner.appendChild(span);
     });
   }
 
-  // ── News feed ─────────────────────────────────────────────────────────────
-  let _newsItems = FALLBACK_NEWS.slice();
-  let _newsLoaded = false;
+  // ── Research feed (our own pipeline) ─────────────────────────────────────
+  let _feedItems = [];
+  let _feedTs    = 0;
 
-  async function fetchNews() {
-    if (!GNEWS_KEY) return; // no key — use fallback
+  async function fetchFeed() {
     try {
-      const r = await fetch(GNEWS_URL, { signal: AbortSignal.timeout(8000) });
+      const r = await fetch(`${FEED_URL}?_=${Date.now()}`, { signal: AbortSignal.timeout(8000) });
       if (!r.ok) return;
       const d = await r.json();
-      const articles = (d.articles || []).slice(0, 10);
-      if (articles.length > 0) {
-        _newsItems = articles.map(a => ({ title: a.title, url: a.url }));
-        _newsLoaded = true;
+      const items = (d.items || []).slice(0, 20);
+      if (items.length > 0) {
+        _feedItems = items;
+        _feedTs    = Date.now();
       }
-    } catch {
-      // keep fallback
-    }
+    } catch { /* keep existing */ }
   }
 
-  function renderNews() {
+  function renderFeed() {
     const track = document.getElementById('ticker-news-track');
-    if (!track) return;
+    if (!track || _feedItems.length === 0) return;
 
     const sep = '<span class="ticker-sep">✦</span>';
-    const html = _newsItems
-      .map(item => `<a href="${escAttr(item.url)}" target="_blank" rel="noopener noreferrer">${escHTML(item.title)}</a>`)
-      .join(sep);
+    const html = _feedItems.map(item => {
+      const color = SOURCE_COLORS[item.source] || SOURCE_COLORS.default;
+      const badge = `<span style="color:${color};font-weight:800;font-size:10px;margin-right:5px;">[${escHTML(item.source || 'FEED')}]</span>`;
+      return `${badge}<a href="${escAttr(item.url)}" target="_blank" rel="noopener noreferrer">${escHTML(item.title)}</a>`;
+    }).join(sep);
 
     track.innerHTML = html + sep;
 
-    // Reset animation so it starts from the right again
+    // Reset and rescale animation
     track.style.animation = 'none';
-    // Force reflow
     void track.offsetWidth;
-    // Speed: ~80px per second feel — scale duration to content length
     const chars = track.textContent.length;
-    const duration = Math.max(30, Math.round(chars * 0.14));
+    const duration = Math.max(40, Math.round(chars * 0.13));
     track.style.animation = `ticker-scroll ${duration}s linear infinite`;
   }
 
   function escHTML(s) {
-    return String(s)
+    return String(s || '')
       .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;')
@@ -137,29 +121,23 @@
   }
 
   function escAttr(s) {
-    // Only allow http/https URLs — neutralize anything else
     const u = String(s || '').trim();
-    if (/^https?:\/\//i.test(u)) return u.replace(/"/g, '%22');
-    return '#';
+    return /^https?:\/\//i.test(u) ? u.replace(/"/g, '%22') : '#';
   }
 
   // ── Init ──────────────────────────────────────────────────────────────────
   async function init() {
-    // Inject CSS
     if (!document.getElementById('aether-ticker-css')) {
       const link = document.createElement('link');
       link.id   = 'aether-ticker-css';
       link.rel  = 'stylesheet';
-      link.href = 'static/ticker.css';
+      link.href = '/static/ticker.css';
       document.head.appendChild(link);
     }
 
-    // First render with fallback so the bar is never empty
-    renderNews();
-
-    // Then load real data
+    // Load feed and markets in parallel, render as they arrive
     await Promise.all([
-      fetchNews().then(renderNews),
+      fetchFeed().then(renderFeed),
       updateMarkets(),
     ]);
   }
@@ -167,8 +145,8 @@
   // ── Refresh loop ──────────────────────────────────────────────────────────
   function startRefreshLoop() {
     setInterval(async () => {
-      await fetchNews();
-      renderNews();
+      await fetchFeed();
+      renderFeed();
       await updateMarkets();
     }, REFRESH_MS);
   }
