@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-16T07:39:52.278950+00:00",
+  "generated_at": "2026-04-17T07:39:59.926778+00:00",
   "source_keywords": [
     "AI safety",
     "LLM security",
@@ -16,12 +16,183 @@
   "items": [
     {
       "source": "HackerNews",
+      "title": "Prism License Framework (a modular license generator)",
+      "summary": "1 points, 0 comments",
+      "url": "https://news.ycombinator.com/item?id=47803256",
+      "published": "2026-04-17T07:07:24Z",
+      "authors": "Scientific_AJ",
+      "keyword": "red team"
+    },
+    {
+      "source": "HackerNews",
+      "title": "The scientific case for being nice to your chatbot",
+      "summary": "2 points, 0 comments",
+      "url": "https://www.platformer.news/chatbot-emotion-research-anthropic-alignment-interpretability/",
+      "published": "2026-04-17T01:04:54Z",
+      "authors": "herbertl",
+      "keyword": "alignment"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: Runtime security for AI agents(injection,tool abuse, data exfiltration)",
+      "summary": "1 points, 0 comments",
+      "url": "https://news.ycombinator.com/item?id=47799856",
+      "published": "2026-04-16T21:39:58Z",
+      "authors": "dshapi",
+      "keyword": "LLM security"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: Honeymux, a TUI wrapper for tmux that simplifies agent-driven workflows",
+      "summary": "2 points, 0 comments",
+      "url": "https://hmx.dev",
+      "published": "2026-04-16T21:34:51Z",
+      "authors": "aarcamp",
+      "keyword": "red team"
+    },
+    {
+      "source": "arXiv",
+      "title": "Bidirectional Cross-Modal Prompting for Event-Frame Asymmetric Stereo",
+      "summary": "Conventional frame-based cameras capture rich contextual information but suffer from limited temporal resolution and motion blur in dynamic scenes. Event cameras offer an alternative visual representation with higher dynamic range free from such limitations. The complementary cha",
+      "url": "https://arxiv.org/abs/2604.15312v1",
+      "published": "2026-04-16T17:59:58Z",
+      "authors": "Ninghui Xu, Fabio Tosi, Lihui Wang",
+      "keyword": "alignment"
+    },
+    {
+      "source": "arXiv",
+      "title": "LeapAlign: Post-Training Flow Matching Models at Any Generation Step by Building Two-Step Trajectories",
+      "summary": "This paper focuses on the alignment of flow matching models with human preferences. A promising way is fine-tuning by directly backpropagating reward gradients through the differentiable generation process of flow matching. However, backpropagating through long trajectories resul",
+      "url": "https://arxiv.org/abs/2604.15311v1",
+      "published": "2026-04-16T17:59:56Z",
+      "authors": "Zhanhao Liang, Tao Yang, Jie Wu",
+      "keyword": "alignment"
+    },
+    {
+      "source": "arXiv",
+      "title": "AnimationBench: Are Video Models Good at Character-Centric Animation?",
+      "summary": "Video generation has advanced rapidly, with recent methods producing increasingly convincing animated results. However, existing benchmarks-largely designed for realistic videos-struggle to evaluate animation-style generation with its stylized appearance, exaggerated motion, and ",
+      "url": "https://arxiv.org/abs/2604.15299v1",
+      "published": "2026-04-16T17:57:08Z",
+      "authors": "Leyi Wu, Pengjun Fang, Kai Sun",
+      "keyword": "alignment"
+    },
+    {
+      "source": "arXiv",
+      "title": "How Do LLMs and VLMs Understand Viewpoint Rotation Without Vision? An Interpretability Study",
+      "summary": "Over the past year, spatial intelligence has drawn increasing attention. Many prior works study it from the perspective of visual-spatial intelligence, where models have access to visuospatial information from visual inputs. However, in the absence of visual information, whether ",
+      "url": "https://arxiv.org/abs/2604.15294v1",
+      "published": "2026-04-16T17:55:19Z",
+      "authors": "Zhen Yang, Ping Jian, Zhongbin Guo",
+      "keyword": "hallucination"
+    },
+    {
+      "source": "arXiv",
+      "title": "Enhancing Large Language Models with Retrieval Augmented Generation for Software Testing and Inspection Automation",
+      "summary": "In this paper, we focus on automating two of the widely used Verification and Validation (V&V) activities in the Software Development Lifecycle (SDLC): Software testing and software inspection (also known as review). Concerning the former, we concentrate on automated test case ge",
+      "url": "https://arxiv.org/abs/2604.15270v1",
+      "published": "2026-04-16T17:41:49Z",
+      "authors": "Zoe Fingleton, Nazanin Siavash, Armin Moin",
+      "keyword": "hallucination"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: Stage \u2013 Putting humans back in control of code review",
+      "summary": "9 points, 7 comments",
+      "url": "https://stagereview.app/",
+      "published": "2026-04-16T17:36:29Z",
+      "authors": "cpan22",
+      "keyword": "red team"
+    },
+    {
+      "source": "arXiv",
+      "title": "RadAgent: A tool-using AI agent for stepwise interpretation of chest computed tomography",
+      "summary": "Vision-language models (VLM) have markedly advanced AI-driven interpretation and reporting of complex medical imaging, such as computed tomography (CT). Yet, existing methods largely relegate clinicians to passive observers of final outputs, offering no interpretable reasoning tr",
+      "url": "https://arxiv.org/abs/2604.15231v1",
+      "published": "2026-04-16T17:09:30Z",
+      "authors": "M\u00e9lanie Roschewitz, Kenneth Styppa, Yitian Tao",
+      "keyword": "adversarial"
+    },
+    {
+      "source": "arXiv",
+      "title": "DPC: Training-Free Text-to-SQL Candidate Selection via Dual-Paradigm Consistency",
+      "summary": "While Large Language Models (LLMs) demonstrate impressive proficiency in generating SQL queries, they fundamentally lack the capability to self-evaluate correctness without an execution oracle. This limitation creates a stark Generation-Selection Gap, where high potential accurac",
+      "url": "https://arxiv.org/abs/2604.15163v1",
+      "published": "2026-04-16T15:44:13Z",
+      "authors": "Boyan Li, Ou Ocean Kun Hei, Yue Yu",
+      "keyword": "adversarial"
+    },
+    {
+      "source": "arXiv",
+      "title": "Emulation-based System-on-Chip Security Verification: Challenges and Opportunities",
+      "summary": "Increasing system-on-chip (SoC) heterogeneity, deep hardware/software integration, and the proliferation of third-party intellectual property (IP) have brought security validation to the forefront of semiconductor design. While simulation and formal verification remain indispensa",
+      "url": "https://arxiv.org/abs/2604.15073v1",
+      "published": "2026-04-16T14:38:02Z",
+      "authors": "Tanvir Rahman, Shuvagata Saha, Ahmed Y. Alhurubi",
+      "keyword": "adversarial"
+    },
+    {
+      "source": "HackerNews",
+      "title": "OpenAI, Cursor, Clay, and Vercel handle enterprise AI credit governance",
+      "summary": "2 points, 0 comments",
+      "url": "https://thefinancialengineer.substack.com/p/four-models-for-credit-governance",
+      "published": "2026-04-16T13:50:27Z",
+      "authors": "gemanor",
+      "keyword": "AI governance"
+    },
+    {
+      "source": "arXiv",
+      "title": "Agentic Explainability at Scale: Between Corporate Fears and XAI Needs",
+      "summary": "As companies enter the race for agentic AI adoption, fears surface around agentic autonomy and its subsequent risks. These fears compound as companies scale their agentic AI adoption with low-code applications, without a comparable scaling in their governance processes and expert",
+      "url": "https://arxiv.org/abs/2604.14984v1",
+      "published": "2026-04-16T13:15:54Z",
+      "authors": "Yomna Elsayed, Cecily Jones",
+      "keyword": "AI governance"
+    },
+    {
+      "source": "arXiv",
+      "title": "Segment-Level Coherence for Robust Harmful Intent Probing in LLMs",
+      "summary": "Large Language Models (LLMs) are increasingly exposed to adaptive jailbreaking, particularly in high-stakes Chemical, Biological, Radiological, and Nuclear (CBRN) domains. Although streaming probes enable real-time monitoring, they still make systematic errors. We identify a core",
+      "url": "https://arxiv.org/abs/2604.14865v1",
+      "published": "2026-04-16T10:56:40Z",
+      "authors": "Xuanli He, Bilgehan Sel, Faizan Ali",
+      "keyword": "jailbreak"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Limits of AI in PDF Remediation for Accessibility",
+      "summary": "4 points, 1 comments",
+      "url": "https://www.apexcovantage.com/resources/blog/limits-of-ai-pdf-remediation-for-ada-compliance",
+      "published": "2026-04-16T09:53:13Z",
+      "authors": "nihalacv",
+      "keyword": "AI compliance"
+    },
+    {
+      "source": "HackerNews",
       "title": "AI Data Residency: When Cloud APIs Don't Meet Your Compliance Requirements",
       "summary": "1 points, 0 comments",
       "url": "https://substack.com/home/post/p-194377303",
       "published": "2026-04-16T06:24:21Z",
       "authors": "morleymedia",
       "keyword": "AI compliance"
+    },
+    {
+      "source": "arXiv",
+      "title": "Hijacking Large Audio-Language Models via Context-Agnostic and Imperceptible Auditory Prompt Injection",
+      "summary": "Modern Large audio-language models (LALMs) power intelligent voice interactions by tightly integrating audio and text. This integration, however, expands the attack surface beyond text and introduces vulnerabilities in the continuous, high-dimensional audio channel. While prior w",
+      "url": "https://arxiv.org/abs/2604.14604v1",
+      "published": "2026-04-16T04:22:11Z",
+      "authors": "Meng Chen, Kun Wang, Li Lu",
+      "keyword": "prompt injection"
+    },
+    {
+      "source": "arXiv",
+      "title": "Mechanistic Decoding of Cognitive Constructs in LLMs",
+      "summary": "While Large Language Models (LLMs) demonstrate increasingly sophisticated affective capabilities, the internal mechanisms by which they process complex emotions remain unclear. Existing interpretability approaches often treat models as black boxes or focus on coarse-grained basic",
+      "url": "https://arxiv.org/abs/2604.14593v1",
+      "published": "2026-04-16T03:54:03Z",
+      "authors": "Yitong Shou, Manhao Guan",
+      "keyword": "AI safety"
     },
     {
       "source": "HackerNews",
@@ -34,30 +205,12 @@
     },
     {
       "source": "HackerNews",
-      "title": "Show HN: Jeeves \u2013 TUI for browsing and resuming AI agent sessions",
-      "summary": "10 points, 3 comments",
-      "url": "https://github.com/robinovitch61/jeeves",
-      "published": "2026-04-15T19:31:33Z",
-      "authors": "lrobinovitch",
-      "keyword": "red team"
-    },
-    {
-      "source": "HackerNews",
       "title": "Show HN: I built a browser idle game about training AI models",
       "summary": "1 points, 0 comments",
       "url": "https://ai-lab-azure-pi.vercel.app",
       "published": "2026-04-15T19:21:57Z",
       "authors": "mmilovanovic87",
       "keyword": "AI safety"
-    },
-    {
-      "source": "arXiv",
-      "title": "From $P(y|x)$ to $P(y)$: Investigating Reinforcement Learning in Pre-train Space",
-      "summary": "While reinforcement learning with verifiable rewards (RLVR) significantly enhances LLM reasoning by optimizing the conditional distribution P(y|x), its potential is fundamentally bounded by the base model's existing output distribution. Optimizing the marginal distribution P(y) i",
-      "url": "https://arxiv.org/abs/2604.14142v1",
-      "published": "2026-04-15T17:59:01Z",
-      "authors": "Yuqiao Tan, Minzheng Wang, Bo Liu",
-      "keyword": "alignment"
     },
     {
       "source": "HackerNews",
@@ -70,66 +223,12 @@
     },
     {
       "source": "arXiv",
-      "title": "The Radial and Vertical Structure of Molecular Gas in the Edge-On Galaxy NGC 4565",
-      "summary": "We present high-resolution (0.94\" $\\approx$ 55 pc) ALMA CO(2-1) and 13CO(2-1) observations of the highly inclined (i~87.5 deg) galaxy NGC 4565 covering out to galactocentric radius Rgal > $\\pm$ 17 kpc. The combination of sensitivity and resolution enables the detection of CO emis",
-      "url": "https://arxiv.org/abs/2604.14136v1",
-      "published": "2026-04-15T17:56:30Z",
-      "authors": "Grace Krahm, Adam K. Leroy, Jiayi Sun",
-      "keyword": "alignment"
-    },
-    {
-      "source": "arXiv",
-      "title": "Temporary Power Adjusting Withholding Attack",
-      "summary": "We consider the block withholding attacks on pools, more specifically the state-of-the-art Power Adjusting Withholding (PAW) attack. We propose a generalization called Temporary PAW (T-PAW) where the adversary withholds a fPoW from pool mining at most $T$-time even when no other ",
-      "url": "https://arxiv.org/abs/2604.14135v1",
-      "published": "2026-04-15T17:55:56Z",
-      "authors": "Mustafa Doger, Sennur Ulukus",
-      "keyword": "adversarial"
-    },
-    {
-      "source": "arXiv",
-      "title": "Don't Let the Video Speak: Audio-Contrastive Preference Optimization for Audio-Visual Language Models",
-      "summary": "While Audio-Visual Language Models (AVLMs) have achieved remarkable progress over recent years, their reliability is bottlenecked by cross-modal hallucination. A particularly pervasive manifestation is video-driven audio hallucination: models routinely exploit visual shortcuts to",
-      "url": "https://arxiv.org/abs/2604.14129v1",
-      "published": "2026-04-15T17:51:28Z",
-      "authors": "Ami Baid, Zihui Xue, Kristen Grauman",
-      "keyword": "hallucination"
-    },
-    {
-      "source": "arXiv",
-      "title": "Correct Prediction, Wrong Steps? Consensus Reasoning Knowledge Graph for Robust Chain-of-Thought Synthesis",
-      "summary": "LLM reasoning traces suffer from complex flaws -- *Step Internal Flaws* (logical errors, hallucinations, etc.) and *Step-wise Flaws* (overthinking, underthinking), which vary by sample. A natural approach would be to provide ground-truth labels to guide LLMs' reasoning. Contrary ",
-      "url": "https://arxiv.org/abs/2604.14121v1",
-      "published": "2026-04-15T17:43:10Z",
-      "authors": "Zipeng Ling, Shuliang Liu, Shenghong Fu",
-      "keyword": "hallucination"
-    },
-    {
-      "source": "arXiv",
-      "title": "Complex Interpolation of Matrices with an application to Multi-Manifold Learning",
-      "summary": "Given two symmetric positive-definite matrices $A, B \\in \\mathbb{R}^{n \\times n}$, we study the spectral properties of the interpolation $A^{1-x} B^x$ for $0 \\leq x \\leq 1$. The presence of `common structures' in $A$ and $B$, eigenvectors pointing in a similar direction, can be i",
-      "url": "https://arxiv.org/abs/2604.14118v1",
-      "published": "2026-04-15T17:40:37Z",
-      "authors": "Adi Arbel, Stefan Steinerberger, Ronen Talmon",
-      "keyword": "alignment"
-    },
-    {
-      "source": "arXiv",
       "title": "The Epidemiology of Artificial Intelligence",
       "summary": "Artificial intelligence (AI) systems increasingly shape how people access health information, make medical decisions, and receive care -- yet epidemiology lacks frameworks for measuring AI exposure or studying its health effects at the population level. Here we argue that AI now ",
       "url": "https://arxiv.org/abs/2604.14086v1",
       "published": "2026-04-15T16:59:10Z",
       "authors": "Harsh Parikh, Tyler McCormick, Emily Johnson",
       "keyword": "AI governance"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Veevo Health: building preventive CT heart scans (progress and challenges)",
-      "summary": "2 points, 2 comments",
-      "url": "https://news.ycombinator.com/item?id=47781835",
-      "published": "2026-04-15T16:55:15Z",
-      "authors": "arvindsr33",
-      "keyword": "red team"
     },
     {
       "source": "arXiv",
@@ -139,15 +238,6 @@
       "published": "2026-04-15T16:39:28Z",
       "authors": "Tony Rost",
       "keyword": "AI governance"
-    },
-    {
-      "source": "HackerNews",
-      "title": "SmokedMeat: A Red Team Tool to Hack Your Pipelines First",
-      "summary": "2 points, 0 comments",
-      "url": "https://labs.boostsecurity.io/articles/introducing-smokedmeat/",
-      "published": "2026-04-15T16:37:26Z",
-      "authors": "gpi",
-      "keyword": "red team"
     },
     {
       "source": "arXiv",
@@ -161,7 +251,7 @@
     {
       "source": "HackerNews",
       "title": "Why I Am Doing This: Origin Story of Project-AI (Constitutional AI Governance)",
-      "summary": "1 points, 0 comments",
+      "summary": "1 points, 1 comments",
       "url": "https://zenodo.org/records/19592336",
       "published": "2026-04-15T15:33:47Z",
       "authors": "IAmSoThirsty",
@@ -184,24 +274,6 @@
       "published": "2026-04-15T12:38:51Z",
       "authors": "Arya Shah, Vaibhav Tripathi, Mayank Singh",
       "keyword": "AI safety"
-    },
-    {
-      "source": "arXiv",
-      "title": "Making AI Compliance Evidence Machine-Readable",
-      "summary": "AI Assurance -- producing the machine-readable evidence required to demonstrate compliance with AI governance frameworks -- has mature policy scaffolding but lacks the infrastructure to operationalize it. Organizations building high-risk AI systems under the EU AI Act face a gap:",
-      "url": "https://arxiv.org/abs/2604.13767v1",
-      "published": "2026-04-15T11:51:54Z",
-      "authors": "Rodrigo Cilla Ugarte, Miguel \u00c1ngel Patricio Guisado, Antonio Berlanga de Jes\u00fas",
-      "keyword": "AI governance"
-    },
-    {
-      "source": "arXiv",
-      "title": "Beyond Arrow's Impossibility: Fairness as an Emergent Property of Multi-Agent Collaboration",
-      "summary": "Fairness in language models is typically studied as a property of a single, centrally optimized model. As large language models become increasingly agentic, we propose that fairness emerges through interaction and exchange. We study this via a controlled hospital triage framework",
-      "url": "https://arxiv.org/abs/2604.13705v1",
-      "published": "2026-04-15T10:34:35Z",
-      "authors": "Sayan Kumar Chaki, Antoine Gourru, Julien Velcin",
-      "keyword": "adversarial"
     },
     {
       "source": "HackerNews",
@@ -241,15 +313,6 @@
     },
     {
       "source": "HackerNews",
-      "title": "Show HN: BSCS Bench \u2013 College CS Curriculum AI Benchmark",
-      "summary": "1 points, 0 comments",
-      "url": "https://www.bscsbench.com/",
-      "published": "2026-04-15T03:51:34Z",
-      "authors": "charlielockyer",
-      "keyword": "alignment"
-    },
-    {
-      "source": "HackerNews",
       "title": "Show HN: Free website accessibility scanner \u2013 EAA/Ada compliance check",
       "summary": "1 points, 0 comments",
       "url": "https://compliscan.ai",
@@ -276,24 +339,6 @@
       "keyword": "AI governance"
     },
     {
-      "source": "arXiv",
-      "title": "Understanding and Improving Continuous Adversarial Training for LLMs via In-context Learning Theory",
-      "summary": "Adversarial training (AT) is an effective defense for large language models (LLMs) against jailbreak attacks, but performing AT on LLMs is costly. To improve the efficiency of AT for LLMs, recent studies propose continuous AT (CAT) that searches for adversarial inputs within the ",
-      "url": "https://arxiv.org/abs/2604.12817v1",
-      "published": "2026-04-14T14:43:55Z",
-      "authors": "Shaopeng Fu, Di Wang",
-      "keyword": "jailbreak"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Free EU AI Act risk assessment \u2013 find your compliance tier in 2 minutes",
-      "summary": "2 points, 0 comments",
-      "url": "https://navario.tech/quiz",
-      "published": "2026-04-14T14:21:02Z",
-      "authors": "rishi_gogi",
-      "keyword": "AI compliance"
-    },
-    {
       "source": "HackerNews",
       "title": "Show HN: OpenParallax: OS-level privilege separation for AI agent execution",
       "summary": "2 points, 0 comments",
@@ -301,15 +346,6 @@
       "published": "2026-04-14T14:07:47Z",
       "authors": "stackframe",
       "keyword": "LLM security"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Policy enforcement in AI systems: turning governance into runtime control",
-      "summary": "2 points, 0 comments",
-      "url": "https://heavythoughtcloud.com/knowledge/policy-enforcement-in-ai-systems",
-      "published": "2026-04-14T14:01:09Z",
-      "authors": "ryan-s",
-      "keyword": "AI governance"
     },
     {
       "source": "arXiv",
@@ -337,42 +373,6 @@
       "published": "2026-04-14T13:05:32Z",
       "authors": "mickdarling",
       "keyword": "LLM security"
-    },
-    {
-      "source": "arXiv",
-      "title": "Every Picture Tells a Dangerous Story: Memory-Augmented Multi-Agent Jailbreak Attacks on VLMs",
-      "summary": "The rapid evolution of Vision-Language Models (VLMs) has catalyzed unprecedented capabilities in artificial intelligence; however, this continuous modal expansion has inadvertently exposed a vastly broadened and unconstrained adversarial attack surface. Current multimodal jailbre",
-      "url": "https://arxiv.org/abs/2604.12616v1",
-      "published": "2026-04-14T11:44:59Z",
-      "authors": "Jianhao Chen, Haoyang Chen, Hanjie Zhao",
-      "keyword": "jailbreak"
-    },
-    {
-      "source": "HackerNews",
-      "title": "AdVersa: Adversarially-Robust and Practical Ad and Tracker Blocking in the Wild",
-      "summary": "1 points, 1 comments",
-      "url": "https://github.com/SKKU-SecLab/AdVersa",
-      "published": "2026-04-14T10:49:39Z",
-      "authors": "grac3",
-      "keyword": "adversarial"
-    },
-    {
-      "source": "arXiv",
-      "title": "DeepSeek Robustness Against Semantic-Character Dual-Space Mutated Prompt Injection",
-      "summary": "Prompt injection has emerged as a critical security threat to large language models (LLMs), yet existing studies predominantly focus on single-dimensional attack strategies, such as semantic rewriting or character-level obfuscation, which fail to capture the combined effects of m",
-      "url": "https://arxiv.org/abs/2604.12548v1",
-      "published": "2026-04-14T10:20:15Z",
-      "authors": "Junyu Ren, Xingjian Pan, Wensheng Gan",
-      "keyword": "prompt injection"
-    },
-    {
-      "source": "arXiv",
-      "title": "Reading Between the Pixels: Linking Text-Image Embedding Alignment to Typographic Attack Success on Vision-Language Models",
-      "summary": "We study typographic prompt injection attacks on vision-language models (VLMs), where adversarial text is rendered as images to bypass safety mechanisms, posing a growing threat as VLMs serve as the perceptual backbone of autonomous agents, from browser automation and computer-us",
-      "url": "https://arxiv.org/abs/2604.12371v2",
-      "published": "2026-04-14T06:59:27Z",
-      "authors": "Ravikumar Balakrishnan, Sanket Mendapara, Ankit Garg",
-      "keyword": "prompt injection"
     }
   ]
 }
