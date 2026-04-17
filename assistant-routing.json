@@ -37,6 +37,21 @@
       "name": "book",
       "url": "https://aethermoore.com/book.html",
       "purpose": "Narrative teaching surface for the same architecture and vocabulary."
+    },
+    {
+      "name": "red-team",
+      "url": "https://aethermoore.com/red-team.html",
+      "purpose": "Adversarial testing service — 91 prompts, branded reports, remediation roadmaps."
+    },
+    {
+      "name": "services",
+      "url": "https://aethermoore.com/services.html",
+      "purpose": "Shop and services storefront — custom work, productized solutions, packages."
+    },
+    {
+      "name": "datasets",
+      "url": "https://aethermoore.com/datasets.html",
+      "purpose": "Training data marketplace — SFT packs, red team prompts, session transcripts."
     }
   ],
   "routes": [
@@ -74,6 +89,21 @@
       "intent": "understand_story",
       "keywords": ["book", "story", "novel", "aethermoor", "six tongues", "lore"],
       "target": "https://aethermoore.com/book.html"
+    },
+    {
+      "intent": "adversarial_testing",
+      "keywords": ["red team", "adversarial", "pentest", "jailbreak", "prompt injection", "attack my", "break my"],
+      "target": "https://aethermoore.com/red-team.html"
+    },
+    {
+      "intent": "buy_or_hire",
+      "keywords": ["hire", "pricing", "services", "consulting", "engagement", "retainer", "buy"],
+      "target": "https://aethermoore.com/services.html"
+    },
+    {
+      "intent": "training_data",
+      "keywords": ["dataset", "training data", "sft", "fine-tuning", "qlora", "download data"],
+      "target": "https://aethermoore.com/datasets.html"
     },
     {
       "intent": "restricted_or_gated",

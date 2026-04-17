@@ -38,6 +38,33 @@
       "keywords": ["content", "spin", "publishing", "repurpose", "editorial", "marketing"],
       "manual_url": "https://aethermoore.com/product-manual/content-spin-engine.html",
       "buy_url": "https://buy.stripe.com/5kQ5kE5Ca65V78I5iedby07"
+    },
+    {
+      "id": "red-team-service",
+      "name": "AI Red Team as a Service",
+      "type": "service",
+      "description": "Adversarial testing for your AI system. 91 red team prompts, branded PDF report, remediation roadmap, quarterly re-tests.",
+      "keywords": ["red team", "adversarial", "pentest", "attack", "jailbreak", "prompt injection", "security test", "break my ai"],
+      "manual_url": "https://aethermoore.com/red-team.html",
+      "buy_url": "mailto:aethermoregames@pm.me?subject=SCBE%20Red%20Team%20Engagement"
+    },
+    {
+      "id": "cx-refund-guardrail",
+      "name": "CX Refund Guardrail",
+      "type": "saas",
+      "description": "Policy-enforcement middleware between your LLM and your customer. Stops your chatbot from promising refunds it cannot deliver.",
+      "keywords": ["refund", "cx guardrail", "customer service ai", "refund policy", "chatbot guardrail"],
+      "manual_url": "https://aethermoore.com/cx-guardrail.html",
+      "buy_url": "mailto:aethermoregames@pm.me?subject=SCBE%20CX%20Guardrail"
+    },
+    {
+      "id": "iso-42001-evidence",
+      "name": "ISO 42001 Evidence Service",
+      "type": "service",
+      "description": "Audit-ready documentation for banks, insurers, and regulated enterprises facing ISO 42001, SR 11-7, and EU AI Act pressure.",
+      "keywords": ["iso 42001", "compliance", "audit", "sr 11-7", "eu ai act", "regulation", "evidence"],
+      "manual_url": "https://aethermoore.com/iso-42001.html",
+      "buy_url": "mailto:aethermoregames@pm.me?subject=SCBE%20ISO%2042001%20Evidence"
     }
   ],
   "custom_buckets": [
@@ -46,7 +73,7 @@
       "name": "Assistant and site setup",
       "type": "custom",
       "description": "Turn a static site into a route-aware assistant surface with tool lanes, manuals, support, and a clear front door.",
-      "keywords": ["assistant", "chatbot", "site assistant", "website ai", "shopkeeper", "route map", "front desk"],
+      "keywords": ["assistant setup", "build chatbot", "site assistant", "website ai", "shopkeeper", "route map", "front desk"],
       "includes": [
         "assistant landing page",
         "routing map",
