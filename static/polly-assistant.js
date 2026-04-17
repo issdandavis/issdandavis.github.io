@@ -375,6 +375,7 @@
       return `
         <p>This request falls into a gated lane.</p>
         <p>The public assistant can point to the intake path, but it should not expose protected workflows, proprietary material, or high-assurance details here.</p>
+        <p><a href="${escapeHtml(result.item.contact_url)}">Request gated review &rarr;</a></p>
       `;
     }
 
@@ -382,15 +383,23 @@
       return `
         <p>I would route this into <strong>${escapeHtml(result.item.name)}</strong>.</p>
         <p>${escapeHtml(result.item.description)}</p>
-        <p>Use the contact path on the right to turn it into a scoped public-facing build.</p>
+        <p><a href="${escapeHtml(result.item.contact_url)}">Start this conversation &rarr;</a></p>
       `;
     }
 
     if (result.kind === 'product') {
+      const links = [];
+      if (result.item.manual_url) {
+        links.push(`<a href="${escapeHtml(result.item.manual_url)}">Open the manual &rarr;</a>`);
+      }
+      if (result.item.buy_url) {
+        links.push(`<a href="${escapeHtml(result.item.buy_url)}" target="_blank" rel="noopener">Get started &rarr;</a>`);
+      }
       return `
         <p>The closest public package is <strong>${escapeHtml(result.item.name)}</strong>.</p>
         <p>${escapeHtml(result.item.description)}</p>
         <p>Open the manual first, then decide whether the package already covers the need or whether it should become a custom build.</p>
+        <div class="reply-links">${links.join(' ')}</div>
       `;
     }
 
@@ -398,6 +407,7 @@
       return `
         <p>The shortest route is <strong>${escapeHtml(result.surface.name)}</strong>.</p>
         <p>${escapeHtml(result.surface.purpose)}</p>
+        <p><a href="${escapeHtml(result.surface.url)}">Open ${escapeHtml(result.surface.name)} &rarr;</a></p>
       `;
     }
 

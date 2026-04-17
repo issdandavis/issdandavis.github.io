@@ -8,7 +8,7 @@
       "name": "AI Governance Toolkit",
       "type": "package",
       "description": "Templates, thresholds, decision records, and starter rollout guidance for governed AI work.",
-      "keywords": ["governance", "guardrails", "policy", "checklist", "decision record", "risk model"],
+      "keywords": ["governance", "guardrails", "policy", "checklist", "decision record", "risk model", "governance toolkit", "ai policy", "risk framework", "safety policy"],
       "manual_url": "https://aethermoore.com/product-manual/ai-governance-toolkit.html",
       "buy_url": "https://buy.stripe.com/cNibJ25Ca2TJ9gQ3a6dby06"
     },
@@ -17,7 +17,7 @@
       "name": "HYDRA Agent Templates",
       "type": "package",
       "description": "Ready-made agent roles, packet patterns, and launch structure for small governed swarms.",
-      "keywords": ["agent", "agents", "swarm", "hydra", "template", "packet", "role"],
+      "keywords": ["agent", "agents", "swarm", "hydra", "template", "packet", "role", "multi-agent", "agent template", "agent framework", "orchestration"],
       "manual_url": "https://aethermoore.com/product-manual/hydra-agent-templates.html",
       "buy_url": "https://buy.stripe.com/6oUeVe5Ca2TJdx6262dby08"
     },
@@ -26,7 +26,7 @@
       "name": "n8n Workflow Pack",
       "type": "package",
       "description": "Governed automation building blocks for teams that need importable workflows and a cleaner delivery path.",
-      "keywords": ["n8n", "workflow", "automation", "pipeline", "import", "orchestration"],
+      "keywords": ["n8n", "workflow", "automation", "pipeline", "import", "automate", "workflow automation", "no-code", "low-code"],
       "manual_url": "https://aethermoore.com/product-manual/n8n-workflow-pack.html",
       "buy_url": "https://buy.stripe.com/8x228sc0y3XNeBafWSdby05"
     },
@@ -35,7 +35,7 @@
       "name": "Content Spin Engine",
       "type": "package",
       "description": "Source-once content operations for adapting, reviewing, and publishing across channels with less drift.",
-      "keywords": ["content", "spin", "publishing", "repurpose", "editorial", "marketing"],
+      "keywords": ["content", "spin", "publishing", "repurpose", "editorial", "marketing", "content engine", "blog", "social media content", "content pipeline", "cross-post"],
       "manual_url": "https://aethermoore.com/product-manual/content-spin-engine.html",
       "buy_url": "https://buy.stripe.com/5kQ5kE5Ca65V78I5iedby07"
     },
@@ -44,7 +44,7 @@
       "name": "AI Red Team as a Service",
       "type": "service",
       "description": "Adversarial testing for your AI system. 91 red team prompts, branded PDF report, remediation roadmap, quarterly re-tests.",
-      "keywords": ["red team", "adversarial", "pentest", "attack", "jailbreak", "prompt injection", "security test", "break my ai"],
+      "keywords": ["red team", "adversarial", "pentest", "attack", "jailbreak", "prompt injection", "security test", "break my ai", "test my ai", "hack my", "vulnerability", "adversarial testing", "pen test", "safety test"],
       "manual_url": "https://aethermoore.com/red-team.html",
       "buy_url": "mailto:aethermoregames@pm.me?subject=SCBE%20Red%20Team%20Engagement"
     },
@@ -53,7 +53,7 @@
       "name": "CX Refund Guardrail",
       "type": "saas",
       "description": "Policy-enforcement middleware between your LLM and your customer. Stops your chatbot from promising refunds it cannot deliver.",
-      "keywords": ["refund", "cx guardrail", "customer service ai", "refund policy", "chatbot guardrail"],
+      "keywords": ["refund", "cx guardrail", "customer service ai", "refund policy", "chatbot guardrail", "chatbot refund", "support bot", "customer support ai", "cx ai", "chatbot safety", "ai customer service"],
       "manual_url": "https://aethermoore.com/cx-guardrail.html",
       "buy_url": "mailto:aethermoregames@pm.me?subject=SCBE%20CX%20Guardrail"
     },
@@ -62,7 +62,7 @@
       "name": "ISO 42001 Evidence Service",
       "type": "service",
       "description": "Audit-ready documentation for banks, insurers, and regulated enterprises facing ISO 42001, SR 11-7, and EU AI Act pressure.",
-      "keywords": ["iso 42001", "compliance", "audit", "sr 11-7", "eu ai act", "regulation", "evidence"],
+      "keywords": ["iso 42001", "compliance", "audit", "sr 11-7", "eu ai act", "regulation", "evidence", "regulatory", "audit-ready", "ai act", "model risk", "compliance evidence", "certification"],
       "manual_url": "https://aethermoore.com/iso-42001.html",
       "buy_url": "mailto:aethermoregames@pm.me?subject=SCBE%20ISO%2042001%20Evidence"
     }
@@ -73,7 +73,7 @@
       "name": "Assistant and site setup",
       "type": "custom",
       "description": "Turn a static site into a route-aware assistant surface with tool lanes, manuals, support, and a clear front door.",
-      "keywords": ["assistant setup", "build chatbot", "site assistant", "website ai", "shopkeeper", "route map", "front desk"],
+      "keywords": ["assistant setup", "build chatbot", "build assistant", "site assistant", "website ai", "shopkeeper", "route map", "front desk", "build me a chatbot", "ai for my website", "add ai to my site", "website chatbot"],
       "includes": [
         "assistant landing page",
         "routing map",
@@ -87,7 +87,7 @@
       "name": "Workflow packaging",
       "type": "custom",
       "description": "Package public workflow logic into a buyer-readable manual, delivery path, and operational setup that fits your site.",
-      "keywords": ["workflow pack", "manual", "delivery", "setup", "package", "productize", "bundle"],
+      "keywords": ["workflow pack", "workflow packaging", "delivery", "productize", "bundle", "package my workflow", "ship a product", "product packaging"],
       "includes": [
         "manual hub",
         "delivery and access flow",
@@ -101,7 +101,7 @@
       "name": "Content operations surface",
       "type": "custom",
       "description": "Build a public content system with article, research, support, and assistant surfaces that stay in sync.",
-      "keywords": ["content system", "site polish", "docs", "research page", "article system", "support page"],
+      "keywords": ["content system", "site polish", "docs system", "research page", "article system", "support page", "content ops", "documentation system", "knowledge base"],
       "includes": [
         "content IA cleanup",
         "search-facing landing pages",
