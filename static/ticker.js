@@ -27,12 +27,16 @@
 
   // ── Fallback static content (shown when APIs unreachable) ────────────────
   const FALLBACK_NEWS = [
-    { title: 'EU AI Act enforcement begins — compliance deadlines approaching', url: 'https://aethermoore.com/' },
-    { title: 'NIST AI RMF 1.0 adopted by 3 major federal agencies', url: 'https://aethermoore.com/' },
-    { title: 'DARPA CLARA program selects agentic governance frameworks', url: 'https://aethermoore.com/' },
-    { title: 'Hyperbolic geometry proves exponential cost for adversarial AI drift', url: 'https://aethermoore.com/' },
-    { title: 'SCBE 14-layer pipeline achieves 99.42% AUC on red team benchmark', url: 'https://aethermoore.com/' },
-    { title: 'Sacred Tongues tokenizer v3 now available — six-language governance encoding', url: 'https://aethermoore.com/' },
+    { title: 'EU AI Act enforcement begins — compliance deadlines approaching for regulated AI operators', url: 'https://aethermoore.com/' },
+    { title: 'NIST AI RMF 1.0 adopted by 3 major federal agencies for AI risk management', url: 'https://aethermoore.com/' },
+    { title: 'DARPA CLARA program targets agentic AI governance — SCBE architecture submitted', url: 'https://aethermoore.com/' },
+    { title: 'Hyperbolic geometry proves exponential adversarial cost — 99.42% AUC on red team benchmark', url: 'https://aethermoore.com/' },
+    { title: 'NEW: 24,254 labeled prompt-injection samples released on Hugging Face', url: 'https://huggingface.co/datasets/issdandavis/prompt-injection-bit-signatures' },
+    { title: 'Polly 7B model live — Sacred Tongues governance fine-tune on Qwen2.5-7B', url: 'https://huggingface.co/issdandavis/polly-scbe-7b-v2' },
+    { title: 'SCBE red team benchmark dataset: 110+ downloads — L1-L14 labeled adversarial samples', url: 'https://huggingface.co/datasets/issdandavis/scbe-red-team-benchmarks' },
+    { title: '17 fine-tuned models · 23 datasets · 2.9K+ downloads on Hugging Face @issdandavis', url: 'https://huggingface.co/issdandavis' },
+    { title: 'Sacred Tongues tokenizer v3 — Kor\'aelin · Avali · Runethic · Cassisivadan · Umbroth · Draumric', url: 'https://aethermoore.com/' },
+    { title: 'Kaggle: SCBE notebooks and benchmark datasets — issacizrealdavis', url: 'https://www.kaggle.com/issacizrealdavis' },
   ];
 
   // ── Helpers ───────────────────────────────────────────────────────────────

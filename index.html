@@ -337,7 +337,25 @@
       25% { transform: translate(30px, -20px) scale(1.1); }
       50% { transform: translate(-20px, 30px) scale(0.9); }
       75% { transform: translate(10px, 10px) scale(1.05); }
-    }</style>
+    }
+
+    /* ── AI Lab section ── */
+    .lab-model-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 8px; }
+    .lab-model-card { display: flex; flex-direction: column; gap: 4px; padding: 16px; background: rgba(143,255,211,0.04); border: 1px solid rgba(143,255,211,0.18); border-radius: 10px; text-decoration: none; transition: border-color 0.2s, background 0.2s; }
+    .lab-model-card:hover { border-color: rgba(143,255,211,0.5); background: rgba(143,255,211,0.08); }
+    .lab-model-size { font-size: 24px; font-weight: 900; color: var(--mint); line-height: 1; }
+    .lab-model-name { font-size: 13px; font-weight: 700; color: #fff; }
+    .lab-model-base { font-size: 11px; color: var(--muted); }
+    .lab-model-tag { display: inline-block; margin-top: 6px; font-size: 9px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); background: rgba(255,217,119,0.1); border: 1px solid rgba(255,217,119,0.25); border-radius: 3px; padding: 2px 7px; align-self: flex-start; }
+
+    .lab-dataset-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .lab-dataset-card { display: flex; flex-direction: column; gap: 6px; padding: 14px 16px; background: rgba(109,216,255,0.04); border: 1px solid rgba(109,216,255,0.15); border-radius: 10px; text-decoration: none; transition: border-color 0.2s, background 0.2s; }
+    .lab-dataset-card:hover { border-color: rgba(109,216,255,0.4); background: rgba(109,216,255,0.07); }
+    .lab-ds-name { font-size: 13px; font-weight: 700; color: var(--aqua); font-family: 'JetBrains Mono', monospace; }
+    .lab-ds-meta { font-size: 12px; color: var(--muted); }
+
+    @media (max-width: 900px) { .lab-model-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .lab-model-grid, .lab-dataset-grid { grid-template-columns: 1fr; } }</style>
   <link rel="stylesheet" href="static/polly-sidebar.css">
   <link rel="stylesheet" href="static/ticker.css">
   <link rel="stylesheet" href="/static/galactic-theme.css">
@@ -355,6 +373,7 @@
         <a href="pilot.html" class="nav-cta">&#127881; Free Pilot</a>
         <a href="services.html" class="nav-commercial">Shop</a>
         <a href="#solutions">Solutions</a>
+        <a href="#lab">Lab</a>
         <a href="datasets.html">Datasets</a>
         <a href="demos/index.html">Demos</a>
         <a href="research/index.html">Research</a>
@@ -579,6 +598,10 @@
           <div class="stat-card stat-rose"><div class="stat-number" data-target="6">0</div><div class="stat-label">Sacred Tongues</div></div>
           <div class="stat-card stat-aqua"><div class="stat-number" data-target="58">0</div><div class="stat-label">GitHub repos</div></div>
           <div class="stat-card stat-violet"><div class="stat-number" style="font-size:18px;padding-top:6px;">USPTO<br>#63/961,403</div><div class="stat-label">Patent pending</div></div>
+          <div class="stat-card stat-gold"><div class="stat-number" data-target="17">0</div><div class="stat-label">Models on Hugging Face</div></div>
+          <div class="stat-card stat-mint"><div class="stat-number" data-target="23">0</div><div class="stat-label">Datasets published</div></div>
+          <div class="stat-card stat-aqua"><div class="stat-number" data-target="24254">0</div><div class="stat-label">Labeled prompt-injection samples</div></div>
+          <div class="stat-card stat-rose"><div class="stat-number" data-target="110">0</div><div class="stat-label">Red team benchmark downloads</div></div>
         </div>
       </div>
     </section>
@@ -616,6 +639,76 @@
             <div style="font-weight:800; font-size:24px; color:var(--mint); margin-bottom:16px;">$999</div>
             <a href="datasets.html" class="btn btn-gold">View Training Data</a>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ AI LAB ═══════════════════════════════════════════════════════════ -->
+    <section class="section" id="lab" style="background:rgba(0,0,0,0.18);">
+      <div class="section-inner">
+        <span class="section-label">AI Lab</span>
+        <h2 class="section-title">Live models. Real training runs.</h2>
+        <p class="section-subtitle">17 fine-tuned models and 23 datasets published on Hugging Face. Every visitor interaction feeds the next training round through our Sacred Egg flywheel.</p>
+
+        <!-- Model lineup -->
+        <div style="margin-bottom:40px;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">Polly Model Fleet</div>
+          <div class="lab-model-grid">
+            <a class="lab-model-card" href="https://huggingface.co/issdandavis/polly-scbe-7b-v2" target="_blank" rel="noopener">
+              <span class="lab-model-size">7B</span>
+              <span class="lab-model-name">polly-scbe-7b-v2</span>
+              <span class="lab-model-base">Qwen2.5-7B · LoRA · SFT</span>
+              <span class="lab-model-tag">Flagship</span>
+            </a>
+            <a class="lab-model-card" href="https://huggingface.co/issdandavis/scbe-1.5b-multi_lang_forge-lora" target="_blank" rel="noopener">
+              <span class="lab-model-size">1.5B</span>
+              <span class="lab-model-name">multi-lang-forge</span>
+              <span class="lab-model-base">Qwen2.5-Coder-1.5B · LoRA</span>
+              <span class="lab-model-tag">Coder</span>
+            </a>
+            <a class="lab-model-card" href="https://huggingface.co/issdandavis/polly-covenantal-qwen-0.5b" target="_blank" rel="noopener">
+              <span class="lab-model-size">0.5B</span>
+              <span class="lab-model-name">polly-covenantal</span>
+              <span class="lab-model-base">Qwen2.5-0.5B · LoRA · 48 DL</span>
+              <span class="lab-model-tag">Governance</span>
+            </a>
+            <a class="lab-model-card" href="https://huggingface.co/issdandavis/phdm-21d-embedding" target="_blank" rel="noopener">
+              <span class="lab-model-size">21D</span>
+              <span class="lab-model-name">phdm-embedding</span>
+              <span class="lab-model-base">sentence-transformers · Poincaré</span>
+              <span class="lab-model-tag">Geometry</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Key datasets -->
+        <div style="margin-bottom:40px;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--mint);margin-bottom:16px;">Flagship Datasets</div>
+          <div class="lab-dataset-grid">
+            <a class="lab-dataset-card" href="https://huggingface.co/datasets/issdandavis/scbe-aethermoore-training-data" target="_blank" rel="noopener">
+              <div class="lab-ds-name">scbe-aethermoore-training-data</div>
+              <div class="lab-ds-meta">1.9K downloads · 2 &#9829; · Self-referential SFT</div>
+            </a>
+            <a class="lab-dataset-card" href="https://huggingface.co/datasets/issdandavis/prompt-injection-bit-signatures" target="_blank" rel="noopener">
+              <div class="lab-ds-name">prompt-injection-bit-signatures</div>
+              <div class="lab-ds-meta">24,254 labeled samples · Sacred Tongues bijective tokenization</div>
+            </a>
+            <a class="lab-dataset-card" href="https://huggingface.co/datasets/issdandavis/scbe-red-team-benchmarks" target="_blank" rel="noopener">
+              <div class="lab-ds-name">scbe-red-team-benchmarks</div>
+              <div class="lab-ds-meta">110 downloads · Patent: USPTO #63/961,403 · L1-L14 labeled</div>
+            </a>
+            <a class="lab-dataset-card" href="https://huggingface.co/datasets/issdandavis/code-flow-pretraining" target="_blank" rel="noopener">
+              <div class="lab-ds-name">code-flow-pretraining</div>
+              <div class="lab-ds-meta">57 downloads · Multi-language coder forge pairs</div>
+            </a>
+          </div>
+        </div>
+
+        <!-- External lab links -->
+        <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+          <a class="btn btn-secondary" href="https://huggingface.co/issdandavis" target="_blank" rel="noopener">&#129303; All models on Hugging Face</a>
+          <a class="btn btn-secondary" href="https://www.kaggle.com/issacizrealdavis" target="_blank" rel="noopener">&#128202; Kaggle notebooks &amp; datasets</a>
+          <a class="btn btn-secondary" href="datasets.html">Browse training data</a>
         </div>
       </div>
     </section>
