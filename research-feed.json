@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-17T07:39:59.926778+00:00",
+  "generated_at": "2026-04-18T07:31:31.627341+00:00",
   "source_keywords": [
     "AI safety",
     "LLM security",
@@ -16,11 +16,65 @@
   "items": [
     {
       "source": "HackerNews",
-      "title": "Prism License Framework (a modular license generator)",
+      "title": "Adversarial distillation",
+      "summary": "3 points, 0 comments",
+      "url": "https://www.frontiermodelforum.org/issue-briefs/issue-brief-adversarial-distillation/",
+      "published": "2026-04-17T22:34:31Z",
+      "authors": "hhs",
+      "keyword": "adversarial"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Chinese groups call for global AI governance framework \u2013 Chinadaily.com.cn",
+      "summary": "7 points, 4 comments",
+      "url": "https://www.chinadaily.com.cn/a/202604/14/WS69de4411a310d6866eb43650.html",
+      "published": "2026-04-17T21:29:40Z",
+      "authors": "rbanffy",
+      "keyword": "AI governance"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Fulu bounty for Ring Camera jailbreak reaches $23k",
+      "summary": "16 points, 1 comments",
+      "url": "https://bounties.fulu.org/bounties/ring-video-doorbells",
+      "published": "2026-04-17T20:48:04Z",
+      "authors": "SomaticPirate",
+      "keyword": "jailbreak"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Stalwart-Sentinel \u2013 A physics-based logic gate to stop AI hallucinations",
+      "summary": "2 points, 0 comments",
+      "url": "https://github.com/taxischramm347-pixel/Stalwart-Sentinel-MVP-/tree/main",
+      "published": "2026-04-17T20:12:50Z",
+      "authors": "taxi347",
+      "keyword": "hallucination"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: Dark Mode for Hacker News",
+      "summary": "4 points, 2 comments",
+      "url": "https://hckrnight.com/",
+      "published": "2026-04-17T15:51:56Z",
+      "authors": "omer_k",
+      "keyword": "red team"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: recroomgrads.com \u2013 Celebrating Rec Room's Talented Team",
       "summary": "1 points, 0 comments",
-      "url": "https://news.ycombinator.com/item?id=47803256",
-      "published": "2026-04-17T07:07:24Z",
-      "authors": "Scientific_AJ",
+      "url": "https://www.recroomgrads.com",
+      "published": "2026-04-17T14:34:49Z",
+      "authors": "tyleo",
+      "keyword": "red team"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Indonesia Threatens to Block Wikipedia and Wikimedia Commons Access",
+      "summary": "4 points, 5 comments",
+      "url": "https://en.tempo.co/read/2098753/indonesia-threatens-to-block-wikipedia-and-wikimedia-commons-access",
+      "published": "2026-04-17T09:49:33Z",
+      "authors": "exploraz",
       "keyword": "red team"
     },
     {
@@ -40,15 +94,6 @@
       "published": "2026-04-16T21:39:58Z",
       "authors": "dshapi",
       "keyword": "LLM security"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Show HN: Honeymux, a TUI wrapper for tmux that simplifies agent-driven workflows",
-      "summary": "2 points, 0 comments",
-      "url": "https://hmx.dev",
-      "published": "2026-04-16T21:34:51Z",
-      "authors": "aarcamp",
-      "keyword": "red team"
     },
     {
       "source": "arXiv",
@@ -94,15 +139,6 @@
       "published": "2026-04-16T17:41:49Z",
       "authors": "Zoe Fingleton, Nazanin Siavash, Armin Moin",
       "keyword": "hallucination"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Show HN: Stage \u2013 Putting humans back in control of code review",
-      "summary": "9 points, 7 comments",
-      "url": "https://stagereview.app/",
-      "published": "2026-04-16T17:36:29Z",
-      "authors": "cpan22",
-      "keyword": "red team"
     },
     {
       "source": "arXiv",
@@ -331,47 +367,11 @@
     },
     {
       "source": "HackerNews",
-      "title": "Broodlink \u2013 Multi-agent AI orchestration built for governance, in Rust",
-      "summary": "2 points, 0 comments",
-      "url": "https://broodlink.ai",
-      "published": "2026-04-14T15:00:50Z",
-      "authors": "yotta25",
-      "keyword": "AI governance"
-    },
-    {
-      "source": "HackerNews",
       "title": "Show HN: OpenParallax: OS-level privilege separation for AI agent execution",
       "summary": "2 points, 0 comments",
       "url": "https://news.ycombinator.com/item?id=47765871",
       "published": "2026-04-14T14:07:47Z",
       "authors": "stackframe",
-      "keyword": "LLM security"
-    },
-    {
-      "source": "arXiv",
-      "title": "Evaluating Differential Privacy Against Membership Inference in Federated Learning: Insights from the NIST Genomics Red Team Challenge",
-      "summary": "While Federated Learning (FL) mitigates direct data exposure, the resulting trained models remain susceptible to membership inference attacks (MIAs). This paper presents an empirical evaluation of Differential Privacy (DP) as a defense mechanism against MIAs in FL, leveraging the",
-      "url": "https://arxiv.org/abs/2604.12737v2",
-      "published": "2026-04-14T13:51:02Z",
-      "authors": "Gustavo de Carvalho Bertoli",
-      "keyword": "red team"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Show HN: Cyber Pulse. AI pipeline for triage and alerting on cyber news/intel",
-      "summary": "2 points, 0 comments",
-      "url": "https://play.google.com/store/apps/details?id=com.cyberpulse.cyber_pulse&hl=en_US",
-      "published": "2026-04-14T13:30:02Z",
-      "authors": "kozi93",
-      "keyword": "hallucination"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Show HN: DollhouseMCP 2.0, open-source MCP composable AI building blocks",
-      "summary": "3 points, 0 comments",
-      "url": "https://dollhousemcp.com/",
-      "published": "2026-04-14T13:05:32Z",
-      "authors": "mickdarling",
       "keyword": "LLM security"
     }
   ]
