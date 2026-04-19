@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-18T07:31:31.627341+00:00",
+  "generated_at": "2026-04-19T07:36:05.832680+00:00",
   "source_keywords": [
     "AI safety",
     "LLM security",
@@ -14,6 +14,42 @@
   ],
   "item_count": 40,
   "items": [
+    {
+      "source": "HackerNews",
+      "title": "Show HN: AgentKey \u2013 Access governance for AI agents",
+      "summary": "2 points, 2 comments",
+      "url": "https://agentkey.dev",
+      "published": "2026-04-19T05:40:29Z",
+      "authors": "cracadumi",
+      "keyword": "AI governance"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: 5-translation RAG matrix fixing LLM religious hallucinations",
+      "summary": "2 points, 0 comments",
+      "url": "https://github.com/salaamalykum/quran-semantic-search",
+      "published": "2026-04-19T02:07:34Z",
+      "authors": "uk9854321",
+      "keyword": "hallucination"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: How Are You-elderly fall detection app I built solo with AI in 6 months",
+      "summary": "2 points, 10 comments",
+      "url": "https://news.ycombinator.com/item?id=47819553",
+      "published": "2026-04-18T21:11:18Z",
+      "authors": "sminchev",
+      "keyword": "AI safety"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: I can't write Python. It works anyway",
+      "summary": "7 points, 4 comments",
+      "url": "https://github.com/Wewoc/Garmin_Local_Archive",
+      "published": "2026-04-18T08:25:29Z",
+      "authors": "Wewoc",
+      "keyword": "red team"
+    },
     {
       "source": "HackerNews",
       "title": "Adversarial distillation",
@@ -35,7 +71,7 @@
     {
       "source": "HackerNews",
       "title": "Fulu bounty for Ring Camera jailbreak reaches $23k",
-      "summary": "16 points, 1 comments",
+      "summary": "33 points, 2 comments",
       "url": "https://bounties.fulu.org/bounties/ring-video-doorbells",
       "published": "2026-04-17T20:48:04Z",
       "authors": "SomaticPirate",
@@ -44,38 +80,11 @@
     {
       "source": "HackerNews",
       "title": "Stalwart-Sentinel \u2013 A physics-based logic gate to stop AI hallucinations",
-      "summary": "2 points, 0 comments",
+      "summary": "2 points, 1 comments",
       "url": "https://github.com/taxischramm347-pixel/Stalwart-Sentinel-MVP-/tree/main",
       "published": "2026-04-17T20:12:50Z",
       "authors": "taxi347",
       "keyword": "hallucination"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Show HN: Dark Mode for Hacker News",
-      "summary": "4 points, 2 comments",
-      "url": "https://hckrnight.com/",
-      "published": "2026-04-17T15:51:56Z",
-      "authors": "omer_k",
-      "keyword": "red team"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Show HN: recroomgrads.com \u2013 Celebrating Rec Room's Talented Team",
-      "summary": "1 points, 0 comments",
-      "url": "https://www.recroomgrads.com",
-      "published": "2026-04-17T14:34:49Z",
-      "authors": "tyleo",
-      "keyword": "red team"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Indonesia Threatens to Block Wikipedia and Wikimedia Commons Access",
-      "summary": "4 points, 5 comments",
-      "url": "https://en.tempo.co/read/2098753/indonesia-threatens-to-block-wikipedia-and-wikimedia-commons-access",
-      "published": "2026-04-17T09:49:33Z",
-      "authors": "exploraz",
-      "keyword": "red team"
     },
     {
       "source": "HackerNews",
@@ -139,6 +148,15 @@
       "published": "2026-04-16T17:41:49Z",
       "authors": "Zoe Fingleton, Nazanin Siavash, Armin Moin",
       "keyword": "hallucination"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: Stage \u2013 Putting humans back in control of code review",
+      "summary": "121 points, 106 comments",
+      "url": "https://stagereview.app/",
+      "published": "2026-04-16T17:36:29Z",
+      "authors": "cpan22",
+      "keyword": "red team"
     },
     {
       "source": "arXiv",
@@ -276,6 +294,15 @@
       "keyword": "AI governance"
     },
     {
+      "source": "HackerNews",
+      "title": "SmokedMeat: A Red Team Tool to Hack Your Pipelines First",
+      "summary": "2 points, 0 comments",
+      "url": "https://labs.boostsecurity.io/articles/introducing-smokedmeat/",
+      "published": "2026-04-15T16:37:26Z",
+      "authors": "gpi",
+      "keyword": "red team"
+    },
+    {
       "source": "arXiv",
       "title": "From Where Words Come: Efficient Regularization of Code Tokenizers Through Source Attribution",
       "summary": "Efficiency and safety of Large Language Models (LLMs), among other factors, rely on the quality of tokenization. A good tokenizer not only improves inference speed and language understanding but also provides extra defense against jailbreak attacks and lowers the risk of hallucin",
@@ -283,15 +310,6 @@
       "published": "2026-04-15T16:32:06Z",
       "authors": "Pavel Chizhov, Egor Bogomolov, Ivan P. Yamshchikov",
       "keyword": "jailbreak"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Why I Am Doing This: Origin Story of Project-AI (Constitutional AI Governance)",
-      "summary": "1 points, 1 comments",
-      "url": "https://zenodo.org/records/19592336",
-      "published": "2026-04-15T15:33:47Z",
-      "authors": "IAmSoThirsty",
-      "keyword": "AI governance"
     },
     {
       "source": "HackerNews",
@@ -340,15 +358,6 @@
     },
     {
       "source": "HackerNews",
-      "title": "Constitutional Security: What Enterprise Infra Taught Me About AI Agent Safety",
-      "summary": "2 points, 0 comments",
-      "url": "https://blog.ekelhaft.tools/constitutional-security-what-enterprise-infrastructure-taught-me-about-ai-agent-safety",
-      "published": "2026-04-15T05:24:54Z",
-      "authors": "ttyyzz",
-      "keyword": "AI safety"
-    },
-    {
-      "source": "HackerNews",
       "title": "Show HN: Free website accessibility scanner \u2013 EAA/Ada compliance check",
       "summary": "1 points, 0 comments",
       "url": "https://compliscan.ai",
@@ -364,15 +373,6 @@
       "published": "2026-04-14T15:26:03Z",
       "authors": "Abiodun A. Solanke",
       "keyword": "AI safety"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Show HN: OpenParallax: OS-level privilege separation for AI agent execution",
-      "summary": "2 points, 0 comments",
-      "url": "https://news.ycombinator.com/item?id=47765871",
-      "published": "2026-04-14T14:07:47Z",
-      "authors": "stackframe",
-      "keyword": "LLM security"
     }
   ]
 }
