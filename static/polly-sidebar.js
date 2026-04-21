@@ -64,7 +64,7 @@
        - Spiralverse Session Transcripts — $49 (48 files, RPG/game AI training)
        - The Full Arsenal — $399 (everything above, save $107)
        All at: https://aethermoore.com/datasets.html
-       Contact: aethermoregames@pm.me
+       Contact: issac@aethermoorgames.com
 
     7. SCBE-AETHERMOORE Ecosystem (Open Source) — FREE, MIT licensed
        The framework is split across 9 focused repos, not one monolith:
@@ -88,7 +88,7 @@
     - Assistant and site setup — Turn a static site into a route-aware assistant surface
     - Workflow packaging — Package workflow logic into buyer-readable manuals and delivery
     - Content operations surface — Build article, research, support, and assistant surfaces
-    Contact: aethermoregames@pm.me
+    Contact: issac@aethermoorgames.com
 
     === SITE ROUTES ===
     - tools.html — Live action surfaces and browser tools
@@ -101,7 +101,7 @@
     - profile.html — About the creator
 
     === BOUNDARIES ===
-    - Government, DARPA, proprietary, or high-assurance work stays gated. Acknowledge the lane and route to aethermoregames@pm.me.
+    - Government, DARPA, proprietary, or high-assurance work stays gated. Acknowledge the lane and route to issac@aethermoorgames.com.
     - Do NOT make up products, bundles, tiers, or pricing that aren't listed above.
     - If unsure, say "I don't have that" and offer the closest real option.
 

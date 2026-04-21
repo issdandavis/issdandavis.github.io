@@ -1,6 +1,6 @@
 # Cold outreach campaigns
 
-Three parallel campaigns, one per vertical solution. Each targets ~20-50 prospects to start, sent from `aethermoregames@pm.me` (or personal Gmail, your call — Gmail has better deliverability).
+Three parallel campaigns, one per vertical solution. Each targets ~20-50 prospects to start, sent from `issac@aethermoorgames.com` (or personal Gmail, your call — Gmail has better deliverability).
 
 **Rules of engagement:**
 - Keep it under 120 words.
@@ -293,7 +293,7 @@ Issac
 
 ## Deliverability notes
 
-- **Send from Gmail, not ProtonMail.** Gmail has better B2B deliverability. Use `issdandavis7795@gmail.com` for cold outreach, keep `aethermoregames@pm.me` for replies and relationship management.
+- **Send from Gmail, not ProtonMail.** Gmail has better B2B deliverability. Use `issdandavis7795@gmail.com` for cold outreach, keep `issac@aethermoorgames.com` for replies and relationship management.
 - **Warm up the sending domain first.** If you haven't been sending business email from Gmail recently, send 5-10 normal emails (replies, personal) in the week before starting the campaign.
 - **Never use BCC to multiple prospects.** Send individually. Yes, it's slower. It's also the difference between landing in inbox and landing in spam.
 - **Include a physical address in the signature.** CAN-SPAM requires it. "Port Angeles, WA" is enough.
