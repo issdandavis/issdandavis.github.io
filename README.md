@@ -1,6 +1,6 @@
-# aethermoorgames.com — Landing Page
+# aethermoore.com — Landing Page
 
-> Source for the [aethermoorgames.com](https://aethermoorgames.com) marketing site, deployed via GitHub Pages.
+> Source for the [aethermoore.com](https://aethermoore.com) marketing site, deployed via GitHub Pages.
 
 ## What this is
 
@@ -27,11 +27,11 @@ ML-KEM-768 + ML-DSA-65 post-quantum crypto
 ## Tech
 
 - Pure HTML/CSS/JS — no build step, deploys instantly via GitHub Pages
-- CNAME → `aethermoorgames.com`
+- CNAME → `aethermoore.com`
 
 ## Links
 
-- **Live site:** https://aethermoorgames.com
+- **Live site:** https://aethermoore.com
 - **npm:** `npm install scbe-aethermoore`
 - **PyPI:** `pip install scbe-aethermoore`
 - **GitHub Sponsors:** https://github.com/sponsors/issdandavis
