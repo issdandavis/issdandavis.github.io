@@ -144,7 +144,7 @@
 </main>
 
 <script>
-  window.__POLLY_BACKEND_HTTP__ = window.__POLLY_BACKEND_HTTP__ || "http://localhost:8001";
+  window.__POLLY_BACKEND_HTTP__ = "https://api.aethermoore.com";
 </script>
 <script src="static/polly-sidebar.js"></script>
 <script src="/static/polly-autoconverse.js"></script>
@@ -154,8 +154,7 @@
   const status = document.getElementById('cStatus');
   const submitBtn = document.getElementById('cSubmit');
   const backend = window.__POLLY_BACKEND_HTTP__ || '';
-  // Fallback: if backend is localhost, the form won't work for external visitors.
-  // In production, set window.__POLLY_BACKEND_HTTP__ to your tunnel URL.
+  // Production backend: https://api.aethermoore.com
 
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
