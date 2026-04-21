@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Members | SCBE-AETHERMOORE</title>
+<meta name="description" content="Exclusive research notes, early datasets, and member-only tools for SCBE-AETHERMOORE insiders. Join the email list for access.">
+<link rel="canonical" href="https://aethermoore.com/members/">
+<meta property="og:title" content="Members | SCBE-AETHERMOORE">
+<meta property="og:description" content="Exclusive research, early access datasets, and member-only tools.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aethermoore.com/members/">
+<meta property="og:image" content="https://aethermoore.com/hero.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Members | SCBE-AETHERMOORE">
+<meta name="twitter:description" content="Insider access to research notes and exclusive tools.">
+<meta name="twitter:image" content="https://aethermoore.com/hero.png">
+<link rel="stylesheet" href="/static/shared.css">
+  <link rel="stylesheet" href="/static/galactic-theme.css">
+  <script src="/static/galactic-stars.js" defer></script>
+<style>
+.gate-box {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 36px;
+  max-width: 480px;
+  margin: 0 auto;
+  text-align: center;
+}
+.gate-box h2 { margin-bottom: 8px; }
+.gate-box p { color: var(--muted); margin-bottom: 20px; }
+.gate-input {
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: rgba(0,0,0,0.3);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 15px;
+  margin-bottom: 12px;
+  outline: none;
+}
+.gate-input:focus { border-color: var(--accent); }
+.gate-error { color: var(--rose); font-size: 13px; margin-top: 8px; display: none; }
+.gate-error.show { display: block; }
+
+.perks { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 24px 0; }
+.perk {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+  text-align: left;
+}
+.perk h4 { margin-bottom: 6px; font-size: 15px; }
+.perk p { color: var(--muted); font-size: 13px; margin: 0; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="/">SCBE AETHERMOORE</a>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/enterprise.html">Enterprise</a>
+      <a href="/pricing.html">Pricing</a>
+      <a href="/demos/index.html">Demos</a>
+      <a href="/research/index.html">Research</a>
+      <a href="/members/" class="nav-active">Members</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section style="padding-top: 72px; text-align: center;">
+    <div class="eyebrow">Insider Access</div>
+    <h1>The members layer.</h1>
+    <p class="section-copy" style="margin: 0 auto;">Raw research notes, early datasets, and tools before they hit the public site. No fluff. No marketing. Just the work.</p>
+  </section>
+
+  <section style="margin-top: 40px;">
+    <div class="perks">
+      <div class="perk">
+        <h4>📓 Research Notes</h4>
+        <p>Unpolished findings, failed experiments, and raw benchmark data from the lab.</p>
+      </div>
+      <div class="perk">
+        <h4>📊 Early Datasets</h4>
+        <p>Training corpora, adversarial prompt packs, and evaluation harnesses before public release.</p>
+      </div>
+      <div class="perk">
+        <h4>🔧 Member Tools</h4>
+        <p>Browser scripts, calculator sheets, and workflow templates for practitioners.</p>
+      </div>
+      <div class="perk">
+        <h4>📧 Direct Line</h4>
+        <p>Reply to any newsletter and it reaches me directly. No ticket system.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="margin-top: 48px;">
+    <div class="gate-box">
+      <h2>Enter the gate</h2>
+      <p>Join the SCBE Weekly email list and use the password from your welcome email. Or if you already have it:</p>
+
+      <div id="gateForm">
+        <input type="email" id="mEmail" class="gate-input" placeholder="Your email address" required>
+        <input type="password" id="mPassword" class="gate-input" placeholder="Member password" required>
+        <button type="button" class="btn btn-primary" id="mSubmit" style="width: 100%;">Unlock Access</button>
+        <p class="gate-error" id="mError">Incorrect password. Check your welcome email or <a href="/contact.html" style="color: var(--aqua);">contact support</a>.</p>
+      </div>
+
+      <div id="gateSuccess" style="display: none;">
+        <p style="color: var(--mint); font-weight: 600; margin-bottom: 12px;">✓ Access granted.</p>
+        <a href="/members/research-notes.html" class="btn btn-gold" style="display: inline-block; margin-bottom: 8px;">Research Notes</a>
+        <br><a href="/members/exclusive-datasets.html" class="btn btn-secondary" style="display: inline-block;">Exclusive Datasets</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--line);">
+    <h2>Not a member yet?</h2>
+    <p class="section-copy" style="margin: 0 auto 16px;">Subscribe to SCBE Weekly and get the member password in your first issue. Free, no spam, unsubscribe anytime.</p>
+    <a href="/newsletter.html" class="btn btn-primary" style="display: inline-block;">Join SCBE Weekly</a>
+  </section>
+
+  <div class="footer">
+    <p>SCBE-AETHERMOORE &middot; Patent Pending USPTO #63/961,403</p>
+    <p>
+      <a href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://huggingface.co/issdandavis" target="_blank" rel="noopener">HuggingFace</a>
+      <a href="mailto:issac@aethermoorgames.com">Email</a>
+    </p>
+  </div>
+</main>
+
+<script src="auth.js"></script>
+<script>
+(function() {
+  const form = document.getElementById('gateForm');
+  const success = document.getElementById('gateSuccess');
+  const error = document.getElementById('mError');
+  const btn = document.getElementById('mSubmit');
+
+  // If already authorized, show success immediately
+  if (window.scbeMembers && window.scbeMembers.isAuthorized()) {
+    form.style.display = 'none';
+    success.style.display = 'block';
+  }
+
+  btn.addEventListener('click', function() {
+    const email = document.getElementById('mEmail').value.trim();
+    const password = document.getElementById('mPassword').value.trim();
+
+    if (!email || !password) {
+      error.textContent = 'Please enter your email and password.';
+      error.classList.add('show');
+      return;
+    }
+
+    // Optional: log the email signup via contact API
+    if (password && window.scbeMembers.authorize(password)) {
+      error.classList.remove('show');
+      form.style.display = 'none';
+      success.style.display = 'block';
+
+      // Optional: notify that a member logged in
+      try {
+        fetch('https://api.aethermoore.com/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: 'Member Gate',
+            email: email,
+            subject: 'Member Access Granted',
+            message: 'A user unlocked the members section.',
+            page: 'members/index.html'
+          })
+        });
+      } catch(e) {}
+    } else {
+      error.textContent = 'Incorrect password. Check your welcome email or contact support.';
+      error.classList.add('show');
+    }
+  });
+})();
+</script>
+</body>
+</html>

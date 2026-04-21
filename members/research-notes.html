@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Notes | Members — SCBE-AETHERMOORE</title>
+<meta name="description" content="Exclusive research notes for SCBE members. Raw findings, benchmark drafts, and experimental results.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://aethermoore.com/members/research-notes.html">
+<link rel="stylesheet" href="/static/shared.css">
+  <link rel="stylesheet" href="/static/galactic-theme.css">
+  <script src="/static/galactic-stars.js" defer></script>
+<style>
+.note { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; margin: 16px 0; }
+.note h3 { margin-bottom: 8px; font-size: 17px; }
+.note .meta { font-size: 12px; color: var(--dim); margin-bottom: 12px; }
+.note p { color: var(--muted); font-size: 14px; margin-bottom: 8px; }
+.tag { display: inline-block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; padding: 3px 10px; border-radius: 20px; background: rgba(133,144,255,0.10); color: var(--accent); margin-right: 6px; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="/">SCBE AETHERMOORE</a>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/enterprise.html">Enterprise</a>
+      <a href="/pricing.html">Pricing</a>
+      <a href="/demos/index.html">Demos</a>
+      <a href="/research/index.html">Research</a>
+      <a href="/members/" class="nav-active">Members</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section style="padding-top: 72px;">
+    <div class="eyebrow">Members Only</div>
+    <h1>Research Notes</h1>
+    <p class="section-copy">Raw findings, failed experiments, and work-in-progress benchmarks. This is the unpolished layer behind the public research page.</p>
+  </section>
+
+  <section style="margin-top: 32px;">
+    <div class="note">
+      <div class="meta">April 2026 &middot; <span class="tag">Benchmark</span> <span class="tag">Draft</span></div>
+      <h3>Hyperbolic Risk Scaling: 3-Mechanism AUC Replication</h3>
+      <p>Attempting to replicate the 99.42% AUC result from the sacred-tongues crossmodal pipeline on a reduced corpus (1,000 vs 10,000 samples). Preliminary finding: AUC drops to 97.8% at n=1,000 but stabilizes above 99% at n=4,000. Suggests the harmonic scaling law requires minimum corpus depth to activate.</p>
+      <p><strong>Next step:</strong> Run ablation on corpus depth vs tongue weight distribution.</p>
+    </div>
+
+    <div class="note">
+      <div class="meta">March 2026 &middot; <span class="tag">Security</span> <span class="tag">Adversarial</span></div>
+      <h3>Prompt Injection via Unicode Directionality Overrides</h3>
+      <p>Discovered that RLO (Right-to-Left Override) and LRE (Left-to-Right Embedding) characters can bypass naive input sanitization in 3 of 6 tested chatbot frameworks. SCBE's UM tongue catches these at L9-L11 when directional entropy is included in the feature vector.</p>
+      <p><strong>Status:</strong> Drafting disclosure timeline. Target: public release after vendor patches.</p>
+    </div>
+
+    <div class="note">
+      <div class="meta">February 2026 &middot; <span class="tag">Crypto</span> <span class="tag">PQC</span></div>
+      <h3>ML-DSA-65 Signature Size vs Batch Verification Speed</h3>
+      <p>ML-DSA-65 signatures are 3,293 bytes each. Batch verification of 100 signatures averages 14ms on Celeron N4020 (this machine). For comparison, Ed25519 batch verification of 100 signatures averages 3ms on the same hardware. The 4.7x overhead is acceptable for governance artifacts where post-quantum security is required.</p>
+      <p><strong>Open question:</strong> Can we amortize verification cost across a Merkle tree without losing non-repudiation?</p>
+    </div>
+
+    <div class="note">
+      <div class="meta">January 2026 &middot; <span class="tag">Governance</span> <span class="tag">ISO 42001</span></div>
+      <h3>Mapping SCBE's 14-Layer Pipeline to ISO 42001 Annex A</h3>
+      <p>Preliminary mapping completed. Layers L1-L3 map to A.5 (Risk Management), L4-L7 to A.8 (Technical Documentation), L8-L11 to A.9 (Quality Management), and L12-L14 to A.10 (Monitoring and Logging). The Six Sacred Tongues framework provides the cross-reference matrix between technical tests and management system requirements.</p>
+      <p><strong>Deliverable:</strong> Full mapping spreadsheet for enterprise clients. ETA: May 2026.</p>
+    </div>
+  </section>
+
+  <section style="margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--line);">
+    <p style="color: var(--dim); font-size: 13px;">These notes are rough, unreviewed, and subject to change. Do not cite as established fact. For peer-reviewed material, see <a href="/research/evidence.html" style="color: var(--aqua);">research/evidence.html</a>.</p>
+  </section>
+
+  <div class="footer">
+    <p>SCBE-AETHERMOORE Members &middot; <a href="/members/" style="color: var(--muted);">Member Home</a></p>
+  </div>
+</main>
+
+<script src="auth.js"></script>
+<script>
+  if (window.scbeMembers) window.scbeMembers.guard();
+</script>
+</body>
+</html>

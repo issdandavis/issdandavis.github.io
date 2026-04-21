@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exclusive Datasets | Members — SCBE-AETHERMOORE</title>
+<meta name="description" content="Early-access datasets for SCBE members. Training corpora, adversarial packs, and evaluation harnesses before public release.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://aethermoore.com/members/exclusive-datasets.html">
+<link rel="stylesheet" href="/static/shared.css">
+  <link rel="stylesheet" href="/static/galactic-theme.css">
+  <script src="/static/galactic-stars.js" defer></script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="/">SCBE AETHERMOORE</a>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/enterprise.html">Enterprise</a>
+      <a href="/pricing.html">Pricing</a>
+      <a href="/demos/index.html">Demos</a>
+      <a href="/research/index.html">Research</a>
+      <a href="/members/" class="nav-active">Members</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section style="padding-top: 72px;">
+    <div class="eyebrow">Members Only</div>
+    <h1>Exclusive Datasets</h1>
+    <p class="section-copy">Early access to training corpora, adversarial prompt packs, and evaluation harnesses. These drop here before they hit the public shop.</p>
+  </section>
+
+  <section style="margin-top: 32px;">
+    <div class="card-grid">
+      <div class="card">
+        <span class="badge badge-dataset">Early Access</span>
+        <h3>Governance SFT Pack v2 (Draft)</h3>
+        <div class="price">$0 <span class="per">for members</span></div>
+        <p>12,400 supervised fine-tuning pairs covering the full 14-layer pipeline. Includes negative examples and boundary cases not in v1.</p>
+        <ul>
+          <li>JSONL format</li>
+          <li>Sacred Tongue labels included</li>
+          <li>Compatible with QLoRA / Axolotl</li>
+        </ul>
+        <a class="btn btn-primary" href="mailto:issac@aethermoorgames.com?subject=Request%3A%20SFT%20Pack%20v2%20(Draft)" style="margin-top:12px;display:inline-block;">Request download</a>
+      </div>
+
+      <div class="card">
+        <span class="badge badge-dataset">Beta</span>
+        <h3>Adversarial Prompt Pack: Directional Overrides</h3>
+        <div class="price">$0 <span class="per">for members</span></div>
+        <p>340 adversarial prompts using Unicode directionality overrides, homoglyphs, and zero-width joiners. Tested against 6 frameworks.</p>
+        <ul>
+          <li>Labeled by bypass technique</li>
+          <li>Framework-specific variants</li>
+          <li>Responsible disclosure timeline included</li>
+        </ul>
+        <a class="btn btn-primary" href="mailto:issac@aethermoorgames.com?subject=Request%3A%20Directional%20Override%20Pack" style="margin-top:12px;display:inline-block;">Request download</a>
+      </div>
+
+      <div class="card">
+        <span class="badge badge-dataset">Beta</span>
+        <h3>ISO 42001 Mapping Corpus</h3>
+        <div class="price">$0 <span class="per">for members</span></div>
+        <p>Structured JSON mapping SCBE pipeline layers to ISO 42001 clauses, with audit-ready evidence templates.</p>
+        <ul>
+          <li>Clause-by-clause alignment</li>
+          <li>Evidence checklist per control</li>
+          <li>Exportable to DOCX and PDF</li>
+        </ul>
+        <a class="btn btn-primary" href="mailto:issac@aethermoorgames.com?subject=Request%3A%20ISO%2042001%20Mapping%20Corpus" style="margin-top:12px;display:inline-block;">Request download</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line);">
+    <p style="color: var(--dim); font-size: 13px;">These datasets are pre-release and may contain errors. Do not use in production without validation. Public release versions will be available on <a href="/datasets.html" style="color: var(--aqua);">datasets.html</a> once finalized.</p>
+  </section>
+
+  <div class="footer">
+    <p>SCBE-AETHERMOORE Members &middot; <a href="/members/" style="color: var(--muted);">Member Home</a></p>
+  </div>
+</main>
+
+<script src="auth.js"></script>
+<script>
+  if (window.scbeMembers) window.scbeMembers.guard();
+</script>
+</body>
+</html>
