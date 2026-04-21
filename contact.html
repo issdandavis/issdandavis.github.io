@@ -60,13 +60,18 @@
 
   <section style="margin-top: 48px;">
     <div class="card-grid">
-      <div class="card">
-        <h3>Email</h3>
-        <p style="font-size: 18px; margin: 12px 0;">
-          <a href="mailto:issac@aethermoorgames.com" style="color: var(--aqua);">issac@aethermoorgames.com</a>
-        </p>
-        <p>For sales, support, partnerships, or press. If it's urgent, say so in the subject.</p>
-        <a class="btn btn-primary" href="mailto:issac@aethermoorgames.com" style="margin-top: 8px; display: inline-block;">Send email</a>
+      <div class="card" style="grid-column: 1 / -1;">
+        <h3>Send a message</h3>
+        <form id="contactForm" style="margin-top: 16px;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+            <input type="text" id="cName" placeholder="Name" required style="padding: 12px; border-radius: 8px; border: 1px solid var(--line); background: rgba(0,0,0,0.3); color: var(--text); font-family: inherit; font-size: 14px;">
+            <input type="email" id="cEmail" placeholder="Email" required style="padding: 12px; border-radius: 8px; border: 1px solid var(--line); background: rgba(0,0,0,0.3); color: var(--text); font-family: inherit; font-size: 14px;">
+          </div>
+          <input type="text" id="cSubject" placeholder="Subject" required style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--line); background: rgba(0,0,0,0.3); color: var(--text); font-family: inherit; font-size: 14px; margin-bottom: 12px;">
+          <textarea id="cMessage" placeholder="Message" required rows="5" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--line); background: rgba(0,0,0,0.3); color: var(--text); font-family: inherit; font-size: 14px; margin-bottom: 12px; resize: vertical;"></textarea>
+          <button type="submit" class="btn btn-primary" id="cSubmit">Send message</button>
+          <p id="cStatus" style="margin-top: 12px; font-size: 14px; color: var(--muted);"></p>
+        </form>
       </div>
 
       <div class="card">
@@ -143,5 +148,66 @@
 </script>
 <script src="static/polly-sidebar.js"></script>
 <script src="/static/polly-autoconverse.js"></script>
+<script>
+(function() {
+  const form = document.getElementById('contactForm');
+  const status = document.getElementById('cStatus');
+  const submitBtn = document.getElementById('cSubmit');
+  const backend = window.__POLLY_BACKEND_HTTP__ || '';
+  // Fallback: if backend is localhost, the form won't work for external visitors.
+  // In production, set window.__POLLY_BACKEND_HTTP__ to your tunnel URL.
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    status.textContent = 'Sending...';
+    status.style.color = 'var(--muted)';
+    submitBtn.disabled = true;
+
+    const payload = {
+      name: document.getElementById('cName').value.trim(),
+      email: document.getElementById('cEmail').value.trim(),
+      subject: document.getElementById('cSubject').value.trim(),
+      message: document.getElementById('cMessage').value.trim(),
+      page: 'contact.html'
+    };
+
+    // If no backend configured, fall back to mailto
+    if (!backend || backend.includes('localhost')) {
+      const mailto = 'mailto:issac@aethermoorgames.com?subject=' + encodeURIComponent(payload.subject) +
+        '&body=' + encodeURIComponent('From: ' + payload.name + ' (' + payload.email + ')\n\n' + payload.message);
+      window.location.href = mailto;
+      status.textContent = 'Opening your email client...';
+      submitBtn.disabled = false;
+      return;
+    }
+
+    try {
+      const resp = await fetch(backend.replace(/\/$/, '') + '/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const data = await resp.json();
+      if (data.ok) {
+        status.textContent = data.message;
+        status.style.color = 'var(--mint)';
+        form.reset();
+      } else {
+        status.textContent = 'Error: ' + (data.error || 'Failed to send');
+        status.style.color = 'var(--rose)';
+      }
+    } catch (err) {
+      status.textContent = 'Network error. Falling back to email client...';
+      status.style.color = 'var(--rose)';
+      setTimeout(() => {
+        const mailto = 'mailto:issac@aethermoorgames.com?subject=' + encodeURIComponent(payload.subject) +
+          '&body=' + encodeURIComponent('From: ' + payload.name + ' (' + payload.email + ')\n\n' + payload.message);
+        window.location.href = mailto;
+      }, 1500);
+    }
+    submitBtn.disabled = false;
+  });
+})();
+</script>
 </body>
 </html>
