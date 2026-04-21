@@ -45,6 +45,7 @@
 .gate-input:focus { border-color: var(--accent); }
 .gate-error { color: var(--rose); font-size: 13px; margin-top: 8px; display: none; }
 .gate-error.show { display: block; }
+.gate-hint { color: var(--dim); font-size: 12px; margin-top: 4px; }
 
 .perks { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 24px 0; }
 .perk {
@@ -56,6 +57,9 @@
 }
 .perk h4 { margin-bottom: 6px; font-size: 15px; }
 .perk p { color: var(--muted); font-size: 13px; margin: 0; }
+
+.step { display: none; }
+.step.active { display: block; }
 </style>
 </head>
 <body>
@@ -105,27 +109,60 @@
 
   <section style="margin-top: 48px;">
     <div class="gate-box">
-      <h2>Enter the gate</h2>
-      <p>Join the SCBE Weekly email list and use the password from your welcome email. Or if you already have it:</p>
 
-      <div id="gateForm">
-        <input type="email" id="mEmail" class="gate-input" placeholder="Your email address" required>
-        <input type="password" id="mPassword" class="gate-input" placeholder="Member password" required>
-        <button type="button" class="btn btn-primary" id="mSubmit" style="width: 100%;">Unlock Access</button>
-        <p class="gate-error" id="mError">Incorrect password. Check your welcome email or <a href="/contact.html" style="color: var(--aqua);">contact support</a>.</p>
+      <!-- STEP 1: Enter email -->
+      <div id="step-email" class="step active">
+        <h2>Enter your email</h2>
+        <p>Use the same email you subscribed with.</p>
+        <input type="email" id="gEmail" class="gate-input" placeholder="you@example.com" required>
+        <button type="button" class="btn btn-primary" id="btn-email" style="width: 100%;">Continue</button>
+        <p class="gate-error" id="err-email"></p>
       </div>
 
-      <div id="gateSuccess" style="display: none;">
-        <p style="color: var(--mint); font-weight: 600; margin-bottom: 12px;">✓ Access granted.</p>
+      <!-- STEP 2: Enter PIN (new members) -->
+      <div id="step-pin" class="step">
+        <h2>Enter your PIN</h2>
+        <p>Check your welcome email for the 7-digit PIN.</p>
+        <input type="text" id="gPin" class="gate-input" placeholder="7-digit PIN" inputmode="numeric" pattern="\d{7}" maxlength="7" required>
+        <p class="gate-hint">Example: 7392841</p>
+        <button type="button" class="btn btn-primary" id="btn-pin" style="width: 100%;">Verify PIN</button>
+        <p class="gate-error" id="err-pin"></p>
+        <p style="margin-top: 12px;"><a href="#" id="back-pin" style="color: var(--dim); font-size: 13px;">← Use different email</a></p>
+      </div>
+
+      <!-- STEP 3: Set custom password -->
+      <div id="step-password" class="step">
+        <h2>Set your password</h2>
+        <p>Choose a password (7+ characters). You'll use this for future visits.</p>
+        <input type="password" id="gPass" class="gate-input" placeholder="Password (min 7 chars)" minlength="7" required>
+        <input type="password" id="gPassConfirm" class="gate-input" placeholder="Confirm password" minlength="7" required>
+        <button type="button" class="btn btn-primary" id="btn-pass" style="width: 100%;">Create Account</button>
+        <p class="gate-error" id="err-pass"></p>
+      </div>
+
+      <!-- STEP 4: Login (returning members) -->
+      <div id="step-login" class="step">
+        <h2>Welcome back</h2>
+        <p>Enter your password to access the members area.</p>
+        <input type="password" id="gLoginPass" class="gate-input" placeholder="Your password" required>
+        <button type="button" class="btn btn-primary" id="btn-login" style="width: 100%;">Unlock</button>
+        <p class="gate-error" id="err-login"></p>
+        <p style="margin-top: 12px;"><a href="#" id="forgot-login" style="color: var(--dim); font-size: 13px;">Forgot password? Use PIN again</a></p>
+      </div>
+
+      <!-- STEP 5: Success -->
+      <div id="step-success" class="step">
+        <p style="color: var(--mint); font-weight: 600; margin-bottom: 16px; font-size: 18px;">✓ Access granted.</p>
         <a href="/members/research-notes.html" class="btn btn-gold" style="display: inline-block; margin-bottom: 8px;">Research Notes</a>
         <br><a href="/members/exclusive-datasets.html" class="btn btn-secondary" style="display: inline-block;">Exclusive Datasets</a>
       </div>
+
     </div>
   </section>
 
   <section style="margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--line);">
     <h2>Not a member yet?</h2>
-    <p class="section-copy" style="margin: 0 auto 16px;">Subscribe to SCBE Weekly and get the member password in your first issue. Free, no spam, unsubscribe anytime.</p>
+    <p class="section-copy" style="margin: 0 auto 16px;">Subscribe to SCBE Weekly and get the 7-digit PIN in your first welcome email. Free, no spam, unsubscribe anytime.</p>
     <a href="/newsletter.html" class="btn btn-primary" style="display: inline-block;">Join SCBE Weekly</a>
   </section>
 
@@ -142,52 +179,128 @@
 <script src="auth.js"></script>
 <script>
 (function() {
-  const form = document.getElementById('gateForm');
-  const success = document.getElementById('gateSuccess');
-  const error = document.getElementById('mError');
-  const btn = document.getElementById('mSubmit');
+  const steps = {
+    email: document.getElementById('step-email'),
+    pin: document.getElementById('step-pin'),
+    password: document.getElementById('step-password'),
+    login: document.getElementById('step-login'),
+    success: document.getElementById('step-success')
+  };
 
-  // If already authorized, show success immediately
-  if (window.scbeMembers && window.scbeMembers.isAuthorized()) {
-    form.style.display = 'none';
-    success.style.display = 'block';
+  let currentEmail = '';
+
+  function show(stepName) {
+    Object.values(steps).forEach(s => s.classList.remove('active'));
+    steps[stepName].classList.add('active');
   }
 
-  btn.addEventListener('click', function() {
-    const email = document.getElementById('mEmail').value.trim();
-    const password = document.getElementById('mPassword').value.trim();
+  function showError(id, msg) {
+    const el = document.getElementById(id);
+    el.textContent = msg;
+    el.classList.add('show');
+  }
 
-    if (!email || !password) {
-      error.textContent = 'Please enter your email and password.';
-      error.classList.add('show');
+  function hideErrors() {
+    document.querySelectorAll('.gate-error').forEach(el => el.classList.remove('show'));
+  }
+
+  // Step 1: Email
+  document.getElementById('btn-email').addEventListener('click', function() {
+    hideErrors();
+    currentEmail = document.getElementById('gEmail').value.trim();
+    if (!currentEmail || !currentEmail.includes('@')) {
+      showError('err-email', 'Please enter a valid email address.');
       return;
     }
-
-    // Optional: log the email signup via contact API
-    if (password && window.scbeMembers.authorize(password)) {
-      error.classList.remove('show');
-      form.style.display = 'none';
-      success.style.display = 'block';
-
-      // Optional: notify that a member logged in
-      try {
-        fetch('https://api.aethermoore.com/api/contact', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            name: 'Member Gate',
-            email: email,
-            subject: 'Member Access Granted',
-            message: 'A user unlocked the members section.',
-            page: 'members/index.html'
-          })
-        });
-      } catch(e) {}
+    if (window.scbeMembers.hasCustomPassword(currentEmail)) {
+      show('login');
     } else {
-      error.textContent = 'Incorrect password. Check your welcome email or contact support.';
-      error.classList.add('show');
+      show('pin');
     }
   });
+
+  // Step 2: PIN
+  document.getElementById('btn-pin').addEventListener('click', function() {
+    hideErrors();
+    const pin = document.getElementById('gPin').value.trim();
+    if (pin.length !== 7 || !/^\d{7}$/.test(pin)) {
+      showError('err-pin', 'PIN must be exactly 7 digits.');
+      return;
+    }
+    if (!window.scbeMembers.validatePin(pin)) {
+      showError('err-pin', 'Invalid PIN. Check your welcome email or contact support.');
+      return;
+    }
+    show('password');
+  });
+
+  document.getElementById('back-pin').addEventListener('click', function(e) {
+    e.preventDefault();
+    hideErrors();
+    show('email');
+  });
+
+  // Step 3: Set Password
+  document.getElementById('btn-pass').addEventListener('click', function() {
+    hideErrors();
+    const pass = document.getElementById('gPass').value;
+    const confirm = document.getElementById('gPassConfirm').value;
+    if (pass.length < 7) {
+      showError('err-pass', 'Password must be at least 7 characters.');
+      return;
+    }
+    if (pass !== confirm) {
+      showError('err-pass', 'Passwords do not match.');
+      return;
+    }
+    const result = window.scbeMembers.setPassword(currentEmail, pass);
+    if (!result.ok) {
+      showError('err-pass', result.error);
+      return;
+    }
+    // Auto-login after setting password
+    window.scbeMembers.login(currentEmail, pass);
+    show('success');
+
+    // Notify via API
+    try {
+      fetch('https://api.aethermoore.com/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: 'Member Gate',
+          email: currentEmail,
+          subject: 'New Member Access Granted',
+          message: 'A user unlocked the members section with PIN and set a custom password.',
+          page: 'members/index.html'
+        })
+      });
+    } catch(e) {}
+  });
+
+  // Step 4: Login
+  document.getElementById('btn-login').addEventListener('click', function() {
+    hideErrors();
+    const pass = document.getElementById('gLoginPass').value;
+    const result = window.scbeMembers.login(currentEmail, pass);
+    if (!result.ok) {
+      showError('err-login', result.error);
+      return;
+    }
+    show('success');
+  });
+
+  document.getElementById('forgot-login').addEventListener('click', function(e) {
+    e.preventDefault();
+    hideErrors();
+    window.scbeMembers.logout();
+    show('pin');
+  });
+
+  // Check if already logged in
+  if (window.scbeMembers.isAuthorized()) {
+    show('success');
+  }
 })();
 </script>
 </body>
