@@ -108,23 +108,39 @@
     Interaction style: Talk plainly. Route first, explain second.
   `;
 
-  const HF_MODEL = "Qwen/Qwen2.5-72B-Instruct"; // Powerful and free via HF Inference
-  const HF_SEARCH_MODEL = "Qwen/Qwen2.5-7B-Instruct"; // Lighter model for search summarization
-
-  const getHFToken = () => {
-    try {
-      const keys = JSON.parse(localStorage.getItem('arena_keys') || '{}');
-      return keys['huggingface'] || '';
-    } catch(e) { return ''; }
-  };
-
   // --- POLLY BACKEND CHAT (primary path — we supply the AI) ---
   // All conversations route through our backend. The backend handles:
-  //   1. LLM response generation (Ollama server-side or any configured model)
-  //   2. Sacred Tongues tokenization of the exchange
-  //   3. Sacred Egg creation (GeoSealed interaction record)
-  //   4. Egg bundling into training protein when a clutch is full
-  // HF Inference is a last-resort fallback only when the backend is unreachable.
+  //   1. LLM response generation (deterministic routing + optional Gemini)
+  //   2. Intent classification and page routing
+  //   3. Context and search delegation
+  // Client-side keyword fallback activates when backend is unreachable.
+
+  // --- LOCAL INTENT FALLBACK (no API needed) ---
+  const LOCAL_INTENTS = [
+    { keys: ['hi','hello','hey','howdy'], response: "Hey. I'm Polly, the route-first operator for SCBE-AETHERMOORE. Tell me what you're looking for — pricing, products, research, support, or something else — and I'll point you to the right page." },
+    { keys: ['price','cost','how much','pricing','monthly','subscription','fee'], response: "Our solutions range from $29 one-time products to $150K/year enterprise services. See the full pricing grid at https://aethermoore.com/pricing.html" },
+    { keys: ['refund','guardrail','cx','policy enforcement','moffatt'], response: "The CX Refund Guardrail stops chatbots from promising refunds they can't deliver. $500-5K/month. https://aethermoore.com/cx-guardrail.html" },
+    { keys: ['iso 42001','audit','compliance','regulatory','eu ai act','governance framework'], response: "ISO 42001 Evidence-as-a-Service provides adversarial testing, risk reports, drift monitoring, and audit response dossiers. $50-150K/year. https://aethermoore.com/iso-42001.html" },
+    { keys: ['red team','penetration','adversarial','attack','security test','vulnerability','threat'], response: "AI Red Team as a Service runs 6,000+ adversarial tests against your LLM application. $5-50K/engagement. https://aethermoore.com/red-team.html" },
+    { keys: ['dataset','training data','sft','corpus','prompt pack'], response: "We sell training datasets including the Governance SFT Pack ($99), Red Team Fortress ($149), and The Full Arsenal bundle ($399). https://aethermoore.com/datasets.html" },
+    { keys: ['contact','email','reach out','talk to','schedule','get in touch'], response: "Email me directly at issac@aethermoorgames.com or use the contact form at https://aethermoore.com/contact.html. I usually reply within 24 hours." },
+    { keys: ['help','support','broken','missing','delivery','issue','problem'], response: "For support with purchases, delivery, or broken links, visit https://aethermoore.com/support.html or email issac@aethermoorgames.com." },
+    { keys: ['tool','calculator','demo','interactive','visualization'], response: "Our live browser tools and interactive demos are at https://aethermoore.com/demos/index.html. No install needed." },
+    { keys: ['research','benchmark','evidence','paper','study','proof','technical'], response: "Benchmarks, proofs, and technical justification are at https://aethermoore.com/research/index.html. Member-only raw notes are at https://aethermoore.com/members/research-notes.html" },
+    { keys: ['member','exclusive','insider','gated','early access'], response: "Members get raw research notes, early datasets, and member-only tools. Join SCBE Weekly to get the access PIN. https://aethermoore.com/members/" },
+    { keys: ['github','open source','repo','code','npm','pypi','install'], response: "The framework is MIT-licensed and split across 9 repos. Main repo: github.com/issdandavis/SCBE-AETHERMOORE. npm install scbe-aethermoore" },
+    { keys: ['book','novel','story','six tongues','fiction','read'], response: "The Six Tongues Protocol is a 70K-word novel that teaches the SCBE framework through story. Available on Amazon KDP." },
+  ];
+
+  function localIntentResponse(text) {
+    const q = text.toLowerCase();
+    for (const intent of LOCAL_INTENTS) {
+      for (const key of intent.keys) {
+        if (q.includes(key.toLowerCase())) return intent.response;
+      }
+    }
+    return null;
+  }
 
   async function callPollyBackendChat(userText) {
     if (!POLLY_BACKEND_HTTP) return null;
@@ -277,43 +293,7 @@
     );
   }
 
-  // --- ROUND TABLE CONSENSUS ---
-  const ROUND_TABLE_MODELS = [
-    "Qwen/Qwen2.5-72B-Instruct",
-    "mistralai/Mixtral-8x7B-Instruct-v0.1",
-    "meta-llama/Meta-Llama-3.1-8B-Instruct",
-  ];
-
-  async function roundTableConsensus(question, token) {
-    const votes = [];
-    const prompt = `Answer concisely (max 100 words). Question: ${question}`;
-
-    for (const model of ROUND_TABLE_MODELS) {
-      try {
-        const resp = await fetch(`https://api-inference.huggingface.co/models/${model}`, {
-          method: "POST",
-          headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
-          body: JSON.stringify({
-            inputs: prompt,
-            parameters: { max_new_tokens: 200, temperature: 0.3 }
-          })
-        });
-        const data = await resp.json();
-        const text = data[0]?.generated_text || data?.error || "No response";
-        votes.push({ model: model.split('/')[1], response: text.includes(question) ? text.split(question).pop().trim() : text });
-      } catch(e) {
-        votes.push({ model: model.split('/')[1], response: `[Error: ${e.message}]` });
-      }
-    }
-
-    // Synthesize consensus
-    const synthesis = `Round Table (${votes.length}/${ROUND_TABLE_MODELS.length} responded):\n\n` +
-      votes.map((v, i) => `Council ${i+1} (${v.model}):\n${v.response.slice(0, 150)}`).join('\n\n');
-
-    return synthesis;
-  }
-
-  // --- WEB SEARCH (via HF search or DuckDuckGo lite) ---
+  // --- WEB SEARCH (DuckDuckGo lite) ---
   async function webSearch(query) {
     // Check cache first
     const cached = getSearchCache().find(c => c.query.toLowerCase() === query.toLowerCase());
@@ -496,136 +476,114 @@ async function fetchLore() {
     }
   }
 
-  const token = getHFToken();
-  const query = text.toLowerCase();
-
-  // Lazy-Mode Lore Lookup
-  await fetchLore();
-  if(LORE_MAP) {
-    for(const [k, v] of Object.entries(LORE_MAP.tongues)) { if(query.includes(k.toLowerCase())) return `[STATIC LORE] ${v}`; }
-    for(const [k, v] of Object.entries(LORE_MAP.concepts)) { if(query.includes(k.toLowerCase())) return `[STATIC LORE] ${v}`; }
-    for(const [k, v] of Object.entries(LORE_MAP.characters)) { if(query.includes(k.toLowerCase())) return `[STATIC LORE] ${v}`; }
-  }
-
-  if(!token) return "I'm running in 'Lore Only' mode because I don't have a token. I can still tell you about the Tongues and Marcus, but for 'AetherBrowse' or deep math, I'll need that Hugging Face fuel!";
+  // --- CLIENT-SIDE FALLBACK PATH ---
+  // If backend is unreachable, use local keyword matching + web search + memory.
+  // No external LLM APIs needed for basic routing.
 
   let response = "";
-    let meta = { tool_use: 'none' };
+  let meta = { tool_use: 'none' };
+  const query = text.toLowerCase();
 
-    // Round Table mode
-    if(text.toLowerCase().includes("round table") || text.toLowerCase().includes("consensus") || text.toLowerCase().includes("council")) {
-      addMsg('Polly', "Convening the Round Table... querying 3 AI council members.", 'polly');
-      response = await roundTableConsensus(text.replace(/round table|consensus|council/gi, '').trim(), token);
-      meta.tool_use = 'round_table';
-      saveMemory({ type: 'round_table', query: text, response, topic: 'consensus' });
-    }
-    // Web Search detection
-    else if(text.toLowerCase().includes("search") || text.toLowerCase().includes("browse") || text.toLowerCase().includes("look up") || text.toLowerCase().includes("find info")) {
-      addMsg('Polly', "Searching... classifying results through 14-layer trust.", 'polly');
-      const searchQuery = text.replace(/search|browse|look up|find info/gi, '').trim();
-      const { results, fromCache } = await webSearch(searchQuery);
+  // Web Search detection
+  if(text.toLowerCase().includes("search") || text.toLowerCase().includes("browse") || text.toLowerCase().includes("look up") || text.toLowerCase().includes("find info")) {
+    addMsg('Polly', "Searching... classifying results through 14-layer trust.", 'polly');
+    const searchQuery = text.replace(/search|browse|look up|find info/gi, '').trim();
+    const { results, fromCache } = await webSearch(searchQuery);
 
-      if (results.length > 0) {
-        response = (fromCache ? "[Cached] " : "") + "Search results:\n\n";
-        results.forEach(r => {
-          const trust = classify(r.url || '');
-          const icon = trust === 'GREEN' ? '✅' : trust === 'YELLOW' ? '⚠️' : '🚫';
-          response += `${icon} [${trust}] ${r.title}\n  ${r.snippet?.slice(0, 120) || ''}\n  ${r.url}\n\n`;
-        });
-        instantiateLab('Web Search', `<div style="font-size:12px;">Query: "${searchQuery}"<br>Results: ${results.length}<br>${fromCache ? 'From cache' : 'Fresh search'}</div>`);
-      } else {
-        response = "No results found. Try a different query.";
-      }
-      meta.tool_use = 'web_search';
-      saveMemory({ type: 'search', query: searchQuery, response, topic: searchQuery.split(' ')[0] });
-    }
-    // Memory recall
-    else if(text.toLowerCase().includes("remember") || text.toLowerCase().includes("recall") || text.toLowerCase().includes("what did")) {
-      const memories = searchMemory(text.replace(/remember|recall|what did/gi, '').trim());
-      if (memories.length > 0) {
-        response = "From my memory:\n\n" + memories.map(m =>
-          `[${m.timestamp?.slice(0, 10)}] ${m.type}: ${(m.query || m.topic || '').slice(0, 50)}\n  ${(m.response || '').slice(0, 100)}`
-        ).join('\n\n');
-      } else {
-        response = "I don't have memories matching that. Talk to me more and I'll remember!";
-      }
-      meta.tool_use = 'memory_recall';
-    }
-    // Thinking mode
-    else if(text.toLowerCase().includes("think about") || text.toLowerCase().includes("analyze") || text.toLowerCase().includes("deep think")) {
-      addMsg('Polly', "Entering analysis mode. I will route the request first, then inspect it carefully.", 'polly');
-      // First search memory for context
-      const context = searchMemory(text).map(m => m.response?.slice(0, 100)).join('\n');
-      const thinkInput = `<|im_start|>system\n${POLLY_LORE}\nYou are in DEEP THINKING mode. Analyze step by step. First pick the correct site lane or commercial boundary, then explain the reasoning clearly.\nContext from memory:\n${context}\n<|im_end|>\n<|im_start|>user\n${text}\n<|im_end|>\n<|im_start|>assistant\nLet me route this first, then think through it carefully:\n`;
-      try {
-        // Route through our backend first (we supply the AI + egg the interaction)
-        const backendResp = await callPollyBackendChat(`[DEEP THINK] ${text}`);
-        if (backendResp) {
-          response = backendResp;
-        } else {
-          const resp = await fetch(`https://api-inference.huggingface.co/models/${HF_MODEL}`, {
-            method: "POST",
-            headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
-            body: JSON.stringify({ inputs: thinkInput, parameters: { max_new_tokens: 1024, temperature: 0.4 } })
-          });
-          const data = await resp.json();
-          response = data[0]?.generated_text || "Thinking failed.";
-          if(response.includes("assistant\n")) response = response.split("assistant\n").pop();
-        }
-      } catch(e) { response = `Thinking error: ${e.message}`; }
-      meta.tool_use = 'thinking';
-      saveMemory({ type: 'thinking', query: text, response: response.slice(0, 200), topic: 'analysis' });
-    }
-    // Training data generation from conversation
-    else if(text.toLowerCase().includes("train") || text.toLowerCase().includes("learn this")) {
-      const mem = getMemory();
-      const searchCache = getSearchCache();
-      const trainingData = [
-        ...mem.map(m => ({ instruction: "You are Polly.", input: m.query || '', output: m.response || '' })),
-        ...searchCache.map(s => ({ instruction: "Search and classify results.", input: s.query, output: JSON.stringify(s.results?.slice(0, 3)) }))
-      ];
-      response = `Training data ready: ${trainingData.length} pairs from memory + ${searchCache.length} search results.\n\n` +
-        `Compatible formats:\n- SFT JSONL (download via Lab tab)\n- SCBE kernel pipeline (upload to issdandavis/polly-training-data on HF)\n- QLoRA config: ~/SCBE-AETHERMOORE/training/hydra_multi_model_config.yaml\n\n` +
-        `Use the Lab tab to export, or say "export training" to download now.`;
-      // Add search cache to training logs
-      searchCache.forEach(s => {
-        state.trainingLogs.push({
-          instruction: "You are Polly. Search the web and classify results using SCBE trust tiers.",
-          input: s.query,
-          output: JSON.stringify(s.results?.slice(0, 3)),
-          metadata: { timestamp: s.timestamp, trust_tier: 1, tool_use: 'search_to_training' }
-        });
+    if (results.length > 0) {
+      response = (fromCache ? "[Cached] " : "") + "Search results:\n\n";
+      results.forEach(r => {
+        const trust = classify(r.url || '');
+        const icon = trust === 'GREEN' ? '✅' : trust === 'YELLOW' ? '⚠️' : '🚫';
+        response += `${icon} [${trust}] ${r.title}\n  ${r.snippet?.slice(0, 120) || ''}\n  ${r.url}\n\n`;
       });
-      updateLabStats();
-      meta.tool_use = 'training_prep';
+      instantiateLab('Web Search', `<div style="font-size:12px;">Query: "${searchQuery}"<br>Results: ${results.length}<br>${fromCache ? 'From cache' : 'Fresh search'}</div>`);
+    } else {
+      response = "No results found. Try a different query.";
     }
-    else {
-      try {
-        // Route through our backend first (we supply the AI + egg the interaction)
-        const backendResp = await callPollyBackendChat(text);
-        if (backendResp) {
-          response = backendResp;
-        } else {
-          // Fallback: HF Inference when backend unreachable
-          const resp = await fetch(`https://api-inference.huggingface.co/models/${HF_MODEL}`, {
-            method: "POST",
-            headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
-            body: JSON.stringify({
-              inputs: `<|im_start|>system\n${POLLY_LORE}\n<|im_end|>\n<|im_start|>user\n${text}\n<|im_end|>\n<|im_start|>assistant\n`,
-              parameters: { max_new_tokens: 512, temperature: 0.7 }
-            })
-          });
-          const data = await resp.json();
-          response = data[0]?.generated_text || "My spectral coherence is wavering. Try again?";
-          if(response.includes("assistant\n")) response = response.split("assistant\n")[1];
-        }
-      } catch(e) {
-        response = `[ERROR] My RU layer blocked that request: ${e.message}`;
+    meta.tool_use = 'web_search';
+    saveMemory({ type: 'search', query: searchQuery, response, topic: searchQuery.split(' ')[0] });
+  }
+  // Memory recall
+  else if(text.toLowerCase().includes("remember") || text.toLowerCase().includes("recall") || text.toLowerCase().includes("what did")) {
+    const memories = searchMemory(text.replace(/remember|recall|what did/gi, '').trim());
+    if (memories.length > 0) {
+      response = "From my memory:\n\n" + memories.map(m =>
+        `[${m.timestamp?.slice(0, 10)}] ${m.type}: ${(m.query || m.topic || '').slice(0, 50)}\n  ${(m.response || '').slice(0, 100)}`
+      ).join('\n\n');
+    } else {
+      response = "I don't have memories matching that. Talk to me more and I'll remember!";
+    }
+    meta.tool_use = 'memory_recall';
+  }
+  // Thinking mode
+  else if(text.toLowerCase().includes("think about") || text.toLowerCase().includes("analyze") || text.toLowerCase().includes("deep think")) {
+    addMsg('Polly', "Entering analysis mode. Routing first, then inspecting carefully.", 'polly');
+    try {
+      const backendResp = await callPollyBackendChat(`[DEEP THINK] ${text}`);
+      if (backendResp) {
+        response = backendResp;
+      } else {
+        const local = localIntentResponse(text);
+        response = local || "I couldn't reach the backend for deep analysis. Try a more specific question, or email issac@aethermoorgames.com.";
       }
+    } catch(e) { response = `Thinking error: ${e.message}`; }
+    meta.tool_use = 'thinking';
+    saveMemory({ type: 'thinking', query: text, response: response.slice(0, 200), topic: 'analysis' });
+  }
+  // Training data generation from conversation
+  else if(text.toLowerCase().includes("train") || text.toLowerCase().includes("learn this")) {
+    const mem = getMemory();
+    const searchCache = getSearchCache();
+    const trainingData = [
+      ...mem.map(m => ({ instruction: "You are Polly.", input: m.query || '', output: m.response || '' })),
+      ...searchCache.map(s => ({ instruction: "Search and classify results.", input: s.query, output: JSON.stringify(s.results?.slice(0, 3)) }))
+    ];
+    response = `Training data ready: ${trainingData.length} pairs from memory + ${searchCache.length} search results.\n\n` +
+      `Compatible formats:\n- SFT JSONL (download via Lab tab)\n- SCBE kernel pipeline (upload to issdandavis/polly-training-data on HF)\n- QLoRA config: ~/SCBE-AETHERMOORE/training/hydra_multi_model_config.yaml\n\n` +
+      `Use the Lab tab to export, or say "export training" to download now.`;
+    searchCache.forEach(s => {
+      state.trainingLogs.push({
+        instruction: "You are Polly. Search the web and classify results using SCBE trust tiers.",
+        input: s.query,
+        output: JSON.stringify(s.results?.slice(0, 3)),
+        metadata: { timestamp: s.timestamp, trust_tier: 1, tool_use: 'search_to_training' }
+      });
+    });
+    updateLabStats();
+    meta.tool_use = 'training_prep';
+  }
+  else {
+    try {
+      // Primary: backend chat
+      const backendResp = await callPollyBackendChat(text);
+      if (backendResp) {
+        response = backendResp;
+      } else {
+        // Fallback: local keyword matching (no API needed)
+        const local = localIntentResponse(text);
+        if (local) {
+          response = local;
+        } else {
+          // Last resort: lore map lookup
+          await fetchLore();
+          if(LORE_MAP) {
+            for(const [k, v] of Object.entries(LORE_MAP.tongues || {})) { if(query.includes(k.toLowerCase())) { response = v; break; } }
+            if(!response) for(const [k, v] of Object.entries(LORE_MAP.concepts || {})) { if(query.includes(k.toLowerCase())) { response = v; break; } }
+            if(!response) for(const [k, v] of Object.entries(LORE_MAP.characters || {})) { if(query.includes(k.toLowerCase())) { response = v; break; } }
+          }
+          if(!response) {
+            response = "I'm not sure I understood. I can help with pricing, products, support, research, or point you to the right page. What are you looking for?";
+          }
+        }
+      }
+    } catch(e) {
+      response = `[ERROR] My RU layer blocked that request: ${e.message}`;
     }
+  }
 
-    logTraining(text, response, meta);
-    return response;
+  logTraining(text, response, meta);
+  return response;
   }
 
   async function performSovereignSearch(query) {
