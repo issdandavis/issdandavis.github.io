@@ -138,7 +138,8 @@
       });
       if (!resp.ok) return null;
       const data = await resp.json();
-      return data?.response || null;
+      // Handle both nested (new API) and flat (legacy) response formats
+      return data?.data?.response ?? data?.response ?? null;
     } catch {
       return null;
     }
@@ -468,7 +469,9 @@ async function fetchLore() {
         })
       });
       if (resp.ok) {
-        const data = await resp.json();
+        const respData = await resp.json();
+        // Handle both nested (new API: {ok, data: {...}}) and flat (legacy) formats
+        const data = respData?.data ?? respData;
         const backendResponse = data.text || "Polly backend responded without text.";
         if (data.context) {
           latestBackendContext = data.context;
