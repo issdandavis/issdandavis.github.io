@@ -88,6 +88,17 @@
         <p>Fixed-scope projects, hourly consulting ($150/hr), or monthly retainers ($2,500/mo). Most projects: $2,500–$15,000.</p>
         <a class="btn btn-gold" href="mailto:issac@aethermoorgames.com?subject=Custom%20project%20inquiry&body=Hey%20Issac%2C%0A%0AI%27d%20like%20to%20discuss%20a%20custom%20project.%0A%0A-%20What%20I%27m%20building%3A%0A-%20Current%20stack%3A%0A-%20Timeline%3A%0A-%20Budget%20range%3A%0A%0AThanks%2C" style="margin-top: 8px; display: inline-block;">Start a project inquiry</a>
       </div>
+
+      <div class="card">
+        <h3>&#128222; Request a call</h3>
+        <p>Enter your number and we'll connect you. US/Canada numbers only.</p>
+        <form id="callForm" style="margin-top: 12px;">
+          <input type="text" id="callName" placeholder="Your name" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--line); background: rgba(0,0,0,0.3); color: var(--text); font-family: inherit; font-size: 14px; margin-bottom: 8px;">
+          <input type="tel" id="callPhone" placeholder="+1 (555) 123-4567" required style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--line); background: rgba(0,0,0,0.3); color: var(--text); font-family: inherit; font-size: 14px; margin-bottom: 8px;">
+          <button type="submit" class="btn btn-primary" id="callSubmit" style="width: 100%;">Call me</button>
+          <p id="callStatus" style="margin-top: 8px; font-size: 13px; color: var(--muted);"></p>
+        </form>
+      </div>
     </div>
   </section>
 
@@ -158,6 +169,47 @@
   const submitBtn = document.getElementById('cSubmit');
   const backend = window.__POLLY_BACKEND_HTTP__ || '';
   // Production backend: https://api.aethermoore.com
+
+  // Phone call form
+  (function() {
+    const callForm = document.getElementById('callForm');
+    const callStatus = document.getElementById('callStatus');
+    const callSubmit = document.getElementById('callSubmit');
+    if (!callForm) return;
+
+    callForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      callStatus.textContent = 'Placing call...';
+      callStatus.style.color = 'var(--muted)';
+      callSubmit.disabled = true;
+
+      const payload = {
+        phone: document.getElementById('callPhone').value.trim(),
+        name: document.getElementById('callName').value.trim()
+      };
+
+      try {
+        const resp = await fetch(backend.replace(/\/$/, '') + '/v1/polly/call', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await resp.json();
+        if (data.ok) {
+          callStatus.textContent = 'Call initiated! You should receive a call shortly.';
+          callStatus.style.color = 'var(--mint)';
+          callForm.reset();
+        } else {
+          callStatus.textContent = data.error || 'Could not place call. Try email instead.';
+          callStatus.style.color = 'var(--rose)';
+        }
+      } catch (err) {
+        callStatus.textContent = 'Network error. Please email instead.';
+        callStatus.style.color = 'var(--rose)';
+      }
+      callSubmit.disabled = false;
+    });
+  })();
 
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
