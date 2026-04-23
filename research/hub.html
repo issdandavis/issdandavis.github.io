@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SCBE Research Hub | Wave-Based Research Progression Tracker</title>
   <meta name="description" content="Track the progression of SCBE-AETHERMOORE research from hypothesis to established science. 15 active research tracks across hyperbolic geometry, AI safety, post-quantum cryptography, and sacred tongue tokenization.">
@@ -381,5 +383,6 @@
     buildTapperBar();
     function filterWave(wave){document.querySelectorAll('.wave-chip').forEach(function(c){c.classList.toggle('active',c.dataset.wave===wave);});if(wave==='all'){document.querySelectorAll('.card').forEach(function(c){c.classList.remove('hidden');});document.querySelectorAll('.wave-group').forEach(function(g){g.classList.remove('hidden');});}else{document.querySelectorAll('.card').forEach(function(c){c.classList.toggle('hidden',c.dataset.wave!==wave);});document.querySelectorAll('.wave-group').forEach(function(g){g.classList.toggle('hidden',g.dataset.waveGroup!==wave);});}}
   </script>
+  <script src="/static/cookie-consent.js" defer></script>
 </body>
 </html>
