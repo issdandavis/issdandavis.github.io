@@ -115,6 +115,20 @@
   //   3. Context and search delegation
   // Client-side keyword fallback activates when backend is unreachable.
 
+  // --- SERVICE STATUS ---
+  let serviceStatus = { gemini: false, tavily: false, slack: false, email: false };
+  async function refreshServiceStatus() {
+    if (!POLLY_BACKEND_HTTP) return;
+    try {
+      const resp = await fetch(`${POLLY_BACKEND_HTTP.replace(/\/$/, '')}/v1/polly/context`);
+      if (resp.ok) {
+        const data = await resp.json();
+        const ctx = data?.data ?? data;
+        serviceStatus = ctx.services || serviceStatus;
+      }
+    } catch {}
+  }
+
   // --- LOCAL INTENT FALLBACK (no API needed) ---
   const LOCAL_INTENTS = [
     { keys: ['hi','hello','hey','howdy'], response: "Hey. I'm Polly, the route-first operator for SCBE-AETHERMOORE. Tell me what you're looking for — pricing, products, research, support, or something else — and I'll point you to the right page." },
@@ -142,20 +156,76 @@
     return null;
   }
 
-  async function callPollyBackendChat(userText) {
+  let thinkingMode = false;
+
+  async function callPollyBackendChat(userText, opts = {}) {
     if (!POLLY_BACKEND_HTTP) return null;
     const base = POLLY_BACKEND_HTTP.replace(/\/$/, '');
     try {
       const resp = await fetch(`${base}/v1/polly/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: userText, context: 'site' }),
+        body: JSON.stringify({ message: userText, context: 'site', thinking: opts.thinking || thinkingMode }),
         signal: AbortSignal.timeout(30000)
       });
       if (!resp.ok) return null;
       const data = await resp.json();
       // Handle both nested (new API) and flat (legacy) response formats
       return data?.data?.response ?? data?.response ?? null;
+    } catch {
+      return null;
+    }
+  }
+
+  async function callPollyBackendSearch(query) {
+    if (!POLLY_BACKEND_HTTP) return null;
+    const base = POLLY_BACKEND_HTTP.replace(/\/$/, '');
+    try {
+      const resp = await fetch(`${base}/v1/polly/search`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ query }),
+        signal: AbortSignal.timeout(15000)
+      });
+      if (!resp.ok) return null;
+      const data = await resp.json();
+      return data?.data ?? data;
+    } catch {
+      return null;
+    }
+  }
+
+  async function callPollyBackendEmail(to, subject, body) {
+    if (!POLLY_BACKEND_HTTP) return null;
+    const base = POLLY_BACKEND_HTTP.replace(/\/$/, '');
+    try {
+      const resp = await fetch(`${base}/v1/polly/email`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ to, subject, body }),
+        signal: AbortSignal.timeout(15000)
+      });
+      if (!resp.ok) return null;
+      const data = await resp.json();
+      return data?.data ?? data;
+    } catch {
+      return null;
+    }
+  }
+
+  async function callPollyBackendSlack(message) {
+    if (!POLLY_BACKEND_HTTP) return null;
+    const base = POLLY_BACKEND_HTTP.replace(/\/$/, '');
+    try {
+      const resp = await fetch(`${base}/v1/polly/slack`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message }),
+        signal: AbortSignal.timeout(10000)
+      });
+      if (!resp.ok) return null;
+      const data = await resp.json();
+      return data?.data ?? data;
     } catch {
       return null;
     }
@@ -374,14 +444,28 @@
         <a class="polly-link" href="${root}/arena.html"><strong>Arena</strong><span>Model comparison sandbox</span></a>
       </div>
     </div>
+    <div class="polly-service-bar" style="display:flex; gap:6px; padding:6px 12px; font-size:11px; color:var(--polly-dim); border-bottom:1px solid rgba(143,255,211,0.1);">
+      <span id="svc-gemini" title="Gemini LLM">🧠</span>
+      <span id="svc-tavily" title="Web Search">🔍</span>
+      <span id="svc-email" title="Email">✉️</span>
+      <span id="svc-slack" title="Slack">💬</span>
+      <span style="flex:1"></span>
+      <label style="cursor:pointer; display:flex; align-items:center; gap:4px;">
+        <input type="checkbox" id="polly-thinking" style="accent-color:var(--polly-accent);">
+        <span>Think</span>
+      </label>
+    </div>
     <div class="polly-input-area">
-      <input type="text" class="polly-input" id="polly-input" placeholder="Ask Polly where to start, what to buy, or what to fix...">
+      <input type="text" class="polly-input" id="polly-input" placeholder="Ask, search, or say 'email...', 'slack...', 'think about...'">
       <button class="polly-send" id="polly-send">➔</button>
     </div>
   `;
 
   // --- LOGIC ---
   const state = { history: [], currentTab: 'chat', trustLevel: 1, trainingLogs: [] };
+
+  // Check backend capabilities on load
+  refreshServiceStatus();
 
   const TRUST_DB = {
     green: ['github.com','arxiv.org','wikipedia.org','huggingface.co','notion.so'],
@@ -619,11 +703,58 @@ async function fetchLore() {
     const input = document.getElementById('polly-input');
     const text = input.value.trim();
     if(!text) return;
-    
+
+    thinkingMode = document.getElementById('polly-thinking')?.checked || false;
     input.value = '';
     addMsg('You', text, 'user');
-    
-    const response = await callPolly(text);
+
+    // Command detection
+    const lower = text.toLowerCase();
+    let response = '';
+
+    if (lower.startsWith('search ')) {
+      const query = text.slice(7).trim();
+      addMsg('Polly', `Searching for "${escapeHtml(query)}"...`, 'polly');
+      const result = await callPollyBackendSearch(query);
+      if (result && result.results && result.results.length > 0) {
+        response = `**Search results for "${escapeHtml(query)}"**\n\n`;
+        result.results.forEach((r, i) => {
+          response += `${i+1}. [${escapeHtml(r.title || 'Link')}](${escapeHtml(r.url || '')})\n${escapeHtml(r.snippet || '').slice(0, 120)}...\n\n`;
+        });
+        if (result.answer) {
+          response += `**Answer:** ${escapeHtml(result.answer)}\n\n`;
+        }
+        response += `_Source: ${result.source || 'web'}_`;
+      } else {
+        response = `No results found for "${escapeHtml(query)}". Try a different query or check the site directly.`;
+      }
+    }
+    else if (lower.startsWith('email ')) {
+      // email someone@example.com subject: Hello body: Message here
+      const match = text.match(/email\s+(\S+)\s+subject:\s*(.+?)\s+body:\s*(.+)/i);
+      if (match) {
+        const [, to, subject, body] = match;
+        addMsg('Polly', `Sending email to ${escapeHtml(to)}...`, 'polly');
+        const result = await callPollyBackendEmail(to, subject, body);
+        response = result?.ok
+          ? `✅ Email sent to ${escapeHtml(to)}.`
+          : `❌ Failed to send email: ${escapeHtml(result?.error || 'Unknown error')}`;
+      } else {
+        response = 'To send email, use: `email someone@example.com subject: Your subject body: Your message here`';
+      }
+    }
+    else if (lower.startsWith('slack ')) {
+      const message = text.slice(6).trim();
+      addMsg('Polly', `Sending Slack notification...`, 'polly');
+      const result = await callPollyBackendSlack(message);
+      response = result?.ok
+        ? `✅ Slack notification sent.`
+        : `❌ Failed to send Slack: ${escapeHtml(result?.error || 'Not configured')}`;
+    }
+    else {
+      response = await callPolly(text);
+    }
+
     addMsg('Polly', response, 'polly');
 
     // Simple Tool Call detection
@@ -660,6 +791,17 @@ async function fetchLore() {
     if(e.key === 'Enter') handleSend();
   });
 
+  function renderServiceStatus() {
+    const svc = (id, on) => {
+      const el = document.getElementById(id);
+      if (el) el.style.opacity = on ? '1' : '0.3';
+    };
+    svc('svc-gemini', serviceStatus.gemini);
+    svc('svc-tavily', serviceStatus.tavily);
+    svc('svc-email', serviceStatus.email);
+    svc('svc-slack', serviceStatus.slack);
+  }
+
   // Export for tools
   window.polly = {
     startTrial: () => {
@@ -673,7 +815,7 @@ async function fetchLore() {
       return data;
     },
     search: async (query) => {
-      const data = await backendSearch(query);
+      const data = await callPollyBackendSearch(query);
       renderSearchCard(data);
       return data;
     },
@@ -681,8 +823,16 @@ async function fetchLore() {
       const data = await backendDelegate(text);
       renderDelegationCard(data);
       return data;
-    }
+    },
+    sendEmail: callPollyBackendEmail,
+    notifySlack: callPollyBackendSlack,
+    toggleThinking: (on) => { thinkingMode = on; },
+    getServiceStatus: () => serviceStatus,
   };
+
+  // Refresh service status periodically
+  setInterval(renderServiceStatus, 2000);
+  refreshServiceStatus().then(renderServiceStatus);
 
   document.body.appendChild(launcher);
   document.body.appendChild(panel);
