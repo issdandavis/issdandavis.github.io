@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-21T07:41:21.165968+00:00",
+  "generated_at": "2026-04-22T07:40:00.786835+00:00",
   "source_keywords": [
     "AI safety",
     "LLM security",
@@ -12,8 +12,89 @@
     "hallucination",
     "AI compliance"
   ],
-  "item_count": 28,
+  "item_count": 29,
   "items": [
+    {
+      "source": "HackerNews",
+      "title": "Show HN: Gemini Plugin for Claude Code",
+      "summary": "2 points, 0 comments",
+      "url": "https://github.com/m-ghalib/gemini-plugin-cc",
+      "published": "2026-04-22T04:41:09Z",
+      "authors": "morawr",
+      "keyword": "adversarial"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Attention Is All You Need",
+      "summary": "6 points, 0 comments",
+      "url": "https://news.ycombinator.com/item?id=47854096",
+      "published": "2026-04-21T20:25:36Z",
+      "authors": "raunaksingwi",
+      "keyword": "red team"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Elite law firm Sullivan and Cromwell admits to AI 'hallucinations'",
+      "summary": "2 points, 2 comments",
+      "url": "https://www.ft.com/content/657d86df-5e0d-4d03-bf0c-cb768a58e758",
+      "published": "2026-04-21T19:44:47Z",
+      "authors": "petethomas",
+      "keyword": "hallucination"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: Hydra \u2013 Never stop coding when your AI CLI hits a rate limit",
+      "summary": "4 points, 0 comments",
+      "url": "https://github.com/saadnvd1/hydra",
+      "published": "2026-04-21T17:39:18Z",
+      "authors": "saadn92",
+      "keyword": "red team"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: TogetherLetters \u2013 Group newsletters with no app, no feed, no login",
+      "summary": "3 points, 2 comments",
+      "url": "https://www.togetherletters.com",
+      "published": "2026-04-21T16:13:54Z",
+      "authors": "sanjayparekh",
+      "keyword": "prompt injection"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: LLMSecure \u2013 prompt injection detection, no signup",
+      "summary": "2 points, 1 comments",
+      "url": "https://llmsecure.io/",
+      "published": "2026-04-21T16:07:36Z",
+      "authors": "eliadmualem",
+      "keyword": "prompt injection"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: ProtoWall \u2013 NDA wall and reverse proxy for sharing prototypes",
+      "summary": "3 points, 2 comments",
+      "url": "https://protowall.app",
+      "published": "2026-04-21T14:12:35Z",
+      "authors": "hiribarne",
+      "keyword": "red team"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: Transient \u2013 CLI Governance layer for AI agents",
+      "summary": "2 points, 0 comments",
+      "url": "https://github.com/james-transient/transient",
+      "published": "2026-04-21T13:37:21Z",
+      "authors": "jamestransient",
+      "keyword": "AI governance"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: Flight Risk: Can you break an AI agent?",
+      "summary": "3 points, 0 comments",
+      "url": "https://ctf.demo.lorikeetcx.ai/",
+      "published": "2026-04-21T12:28:56Z",
+      "authors": "tetrakai",
+      "keyword": "prompt injection"
+    },
     {
       "source": "HackerNews",
       "title": "Show HN: Explain The Law \u2013 Simplified legislation and executive orders using AI",
@@ -62,7 +143,7 @@
     {
       "source": "HackerNews",
       "title": "Show HN: AI Coding Agent Guardrails enforced at runtime",
-      "summary": "4 points, 0 comments",
+      "summary": "5 points, 0 comments",
       "url": "https://sigmashake.com",
       "published": "2026-04-20T17:25:08Z",
       "authors": "cavalrytactics",
@@ -70,17 +151,8 @@
     },
     {
       "source": "HackerNews",
-      "title": "Show HN: Pwneye \u2013 discovering and accessing IP cameras (ONVIF/RTSP)",
-      "summary": "3 points, 0 comments",
-      "url": "https://github.com/Hackerest/pwneye",
-      "published": "2026-04-20T17:24:56Z",
-      "authors": "mcisternino",
-      "keyword": "red team"
-    },
-    {
-      "source": "HackerNews",
       "title": "Show HN: Gyrus :Open-Source AI Agents for Snowflake, SQL and Postgres",
-      "summary": "1 points, 0 comments",
+      "summary": "2 points, 1 comments",
       "url": "https://github.com/orgs/Gyrus-Dev/repositories",
       "published": "2026-04-20T15:56:53Z",
       "authors": "MalviyaPriyank",
@@ -98,7 +170,7 @@
     {
       "source": "HackerNews",
       "title": "Two Paradoxes Blocking Bitcoin",
-      "summary": "4 points, 1 comments",
+      "summary": "4 points, 4 comments",
       "url": "https://alignmenteconomy.org",
       "published": "2026-04-20T14:13:46Z",
       "authors": "moeman245",
@@ -112,24 +184,6 @@
       "published": "2026-04-20T13:22:39Z",
       "authors": "JasonGravy",
       "keyword": "hallucination"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Show HN: Libredesk \u2013 self-hosted, single binary Intercom/Zendesk alternative",
-      "summary": "6 points, 4 comments",
-      "url": "https://libredesk.io",
-      "published": "2026-04-20T13:16:58Z",
-      "authors": "avr5500",
-      "keyword": "red team"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Is anyone else bothered that AI agents can basically do what they want?",
-      "summary": "1 points, 3 comments",
-      "url": "https://news.ycombinator.com/item?id=47833278",
-      "published": "2026-04-20T12:25:53Z",
-      "authors": "aegisproxy",
-      "keyword": "prompt injection"
     },
     {
       "source": "HackerNews",
@@ -148,24 +202,6 @@
       "published": "2026-04-20T08:23:50Z",
       "authors": "signa11",
       "keyword": "AI safety"
-    },
-    {
-      "source": "HackerNews",
-      "title": "The 800 page book that made me a web dev",
-      "summary": "4 points, 1 comments",
-      "url": "https://news.ycombinator.com/item?id=47831362",
-      "published": "2026-04-20T07:36:35Z",
-      "authors": "wuhhh",
-      "keyword": "red team"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Just like phishing for gullible humans, prompt injecting AIs is here to stay",
-      "summary": "2 points, 0 comments",
-      "url": "https://www.theregister.com/2026/04/19/just_like_phishing_for_gullible/",
-      "published": "2026-04-20T07:04:46Z",
-      "authors": "beardyw",
-      "keyword": "prompt injection"
     },
     {
       "source": "HackerNews",
@@ -192,7 +228,7 @@
       "url": "https://fabraix.com",
       "published": "2026-04-19T21:32:44Z",
       "authors": "zachdotai",
-      "keyword": "prompt injection"
+      "keyword": "jailbreak"
     },
     {
       "source": "HackerNews",
@@ -202,24 +238,6 @@
       "published": "2026-04-19T12:54:58Z",
       "authors": "Archit3ch",
       "keyword": "LLM security"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Show HN: AgentKey \u2013 Access governance for AI agents",
-      "summary": "3 points, 2 comments",
-      "url": "https://agentkey.dev",
-      "published": "2026-04-19T05:40:29Z",
-      "authors": "cracadumi",
-      "keyword": "AI governance"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Show HN: 5-translation RAG matrix fixing LLM religious hallucinations",
-      "summary": "3 points, 0 comments",
-      "url": "https://github.com/salaamalykum/quran-semantic-search",
-      "published": "2026-04-19T02:07:34Z",
-      "authors": "uk9854321",
-      "keyword": "hallucination"
     },
     {
       "source": "HackerNews",
@@ -233,7 +251,7 @@
     {
       "source": "HackerNews",
       "title": "Fulu bounty for Ring Camera jailbreak reaches $23k",
-      "summary": "37 points, 2 comments",
+      "summary": "38 points, 2 comments",
       "url": "https://bounties.fulu.org/bounties/ring-video-doorbells",
       "published": "2026-04-17T20:48:04Z",
       "authors": "SomaticPirate",
@@ -247,15 +265,6 @@
       "published": "2026-04-16T21:39:58Z",
       "authors": "dshapi",
       "keyword": "LLM security"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Show HN: OpenParallax: OS-level privilege separation for AI agent execution",
-      "summary": "2 points, 0 comments",
-      "url": "https://news.ycombinator.com/item?id=47765871",
-      "published": "2026-04-14T14:07:47Z",
-      "authors": "stackframe",
-      "keyword": "adversarial"
     },
     {
       "source": "HackerNews",
