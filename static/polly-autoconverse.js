@@ -55,35 +55,24 @@
     totalPairs: parseInt(localStorage.getItem('polly_auto_total') || '0'),
   };
 
-  // --- HF API call ---
-  async function callModel(model, system, prompt) {
-    const token = getAutoToken();
-    if (!token) return null;
+  // --- Backend API call (replaces broken HF Inference) ---
+  const POLLY_BACKEND_HTTP = window.__POLLY_BACKEND_HTTP__ || '';
+
+  async function callModel(role, system, prompt) {
+    if (!POLLY_BACKEND_HTTP) return `[Error: backend not configured]`;
 
     try {
-      const resp = await fetch(`https://api-inference.huggingface.co/models/${model}`, {
+      const resp = await fetch(`${POLLY_BACKEND_HTTP.replace(/\/$/, '')}/v1/polly/chat`, {
         method: "POST",
-        headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
-        body: JSON.stringify({
-          inputs: `<|im_start|>system\n${system}\n<|im_end|>\n<|im_start|>user\n${prompt}\n<|im_end|>\n<|im_start|>assistant\n`,
-          parameters: { max_new_tokens: 400, temperature: 0.7, return_full_text: false }
-        })
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: `[${role}] ${system}\n\n${prompt}`, context: 'site' })
       });
       if (!resp.ok) return `[Error ${resp.status}]`;
       const data = await resp.json();
-      let text = data[0]?.generated_text || data?.error || '';
-      if (text.includes('assistant\n')) text = text.split('assistant\n').pop();
-      return text.trim();
+      return data?.data?.response ?? data?.response ?? `[Error: no response]`;
     } catch(e) {
       return `[Error: ${e.message}]`;
     }
-  }
-
-  function getAutoToken() {
-    try {
-      const keys = JSON.parse(localStorage.getItem('arena_keys') || '{}');
-      return keys['huggingface'] || '';
-    } catch { return ''; }
   }
 
   // --- Run one conversation round ---
@@ -94,7 +83,7 @@
     updateFeed(`Starting topic ${state.currentTopic}: ${topic.slice(0, 60)}...`);
 
     // Polly-A answers the topic
-    const responseA = await callModel(MODELS.polly_a, SYSTEM_POLLY_A, topic);
+    const responseA = await callModel('Polly-A', SYSTEM_POLLY_A, topic);
     if (!responseA || responseA.startsWith('[Error')) {
       updateFeed(`Polly-A error: ${responseA}`);
       return;
@@ -105,7 +94,7 @@
     updateFeed(`Polly-A: ${responseA.slice(0, 80)}...`);
 
     // Polly-B asks a follow-up
-    const followUp = await callModel(MODELS.polly_b, SYSTEM_POLLY_B,
+    const followUp = await callModel('Polly-B', SYSTEM_POLLY_B,
       `Based on this explanation:\n"${responseA.slice(0, 300)}"\n\nAsk a probing follow-up question that deepens understanding.`);
     if (!followUp || followUp.startsWith('[Error')) return;
 
@@ -113,7 +102,7 @@
     updateFeed(`Polly-B: ${followUp.slice(0, 80)}...`);
 
     // Polly-A responds to follow-up
-    const deepResponse = await callModel(MODELS.polly_a, SYSTEM_POLLY_A,
+    const deepResponse = await callModel('Polly-A', SYSTEM_POLLY_A,
       `Original question: ${topic}\nYour previous answer: ${responseA.slice(0, 200)}\nFollow-up question: ${followUp}\n\nProvide a deeper, more detailed answer.`);
     if (!deepResponse || deepResponse.startsWith('[Error')) return;
 
@@ -122,7 +111,7 @@
 
     // Optional: Polly-C fact-checks (Round Table style)
     if (state.roundCount % 3 === 0) {
-      const factCheck = await callModel(MODELS.polly_c, 
+      const factCheck = await callModel('Polly-C', 
         `You are a fact-checker. Verify this claim about AI security and note any inaccuracies. Be brief.`,
         deepResponse.slice(0, 300));
       if (factCheck && !factCheck.startsWith('[Error')) {
@@ -143,8 +132,8 @@
       metadata: {
         type,
         timestamp: new Date().toISOString(),
-        model_a: MODELS.polly_a.split('/')[1],
-        model_b: MODELS.polly_b.split('/')[1],
+        model_a: 'backend',
+        model_b: 'backend',
         round: state.roundCount,
         topic_idx: state.currentTopic,
         source: 'auto_conversation'
@@ -219,11 +208,11 @@
       feedToggle.textContent = `Auto-Train: OFF (${state.totalPairs} pairs)`;
       feed.style.display = 'none';
     } else {
-      if (!getAutoToken()) {
-        alert('Set your HuggingFace token first.\n\nOpen browser console and run:\nlocalStorage.setItem("arena_keys", JSON.stringify({huggingface: "hf_YOUR_TOKEN"}))');
+      if (!POLLY_BACKEND_HTTP) {
+        alert('Polly backend is not configured. The page needs __POLLY_BACKEND_HTTP__ set to https://api.aethermoore.com');
         return;
       }
-      if (!confirm('Start Polly Auto-Training?\n\nThis will use your HuggingFace API token to run AI conversations in the background (1 round every 30s).\n\nTraining data is stored locally and can be exported as JSONL.\n\nContinue?')) return;
+      if (!confirm('Start Polly Auto-Training?\n\nThis will run AI conversations via the backend API in the background (1 round every 30s).\n\nTraining data is stored locally and can be exported as JSONL.\n\nContinue?')) return;
       state.running = true;
       feedToggle.textContent = 'Auto-Train: ON';
       feed.style.display = 'block';
