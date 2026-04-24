@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-23T07:40:35.090931+00:00",
+  "generated_at": "2026-04-24T07:42:18.236168+00:00",
   "source_keywords": [
     "AI safety",
     "LLM security",
@@ -16,8 +16,242 @@
   "items": [
     {
       "source": "HackerNews",
+      "title": "Is possible a language easy as py, fast as C, more secure than Rust?",
+      "summary": "1 points, 3 comments",
+      "url": "https://news.ycombinator.com/item?id=47885142",
+      "published": "2026-04-24T03:27:41Z",
+      "authors": "jerryzhang66",
+      "keyword": "AI safety"
+    },
+    {
+      "source": "HackerNews",
+      "title": "AI threats in the wild: The current state of prompt injections on the web",
+      "summary": "4 points, 0 comments",
+      "url": "https://security.googleblog.com/2026/04/ai-threats-in-wild-current-state-of.html",
+      "published": "2026-04-23T23:05:31Z",
+      "authors": "ahoog42",
+      "keyword": "prompt injection"
+    },
+    {
+      "source": "HackerNews",
+      "title": "I scanned 10 open-source AI apps for EU AI Act compliance \u2013 here's what I found",
+      "summary": "1 points, 0 comments",
+      "url": "https://getregula.com/blog/blog-scanning-10-ai-apps.html",
+      "published": "2026-04-23T22:26:47Z",
+      "authors": "kuzivaai",
+      "keyword": "AI compliance"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Teaching Machines to Read \u2013 Early Exploration",
+      "summary": "5 points, 0 comments",
+      "url": "https://www.daggerobelus.com/projects/teaching-machines-to-read/early-exploration/",
+      "published": "2026-04-23T20:59:15Z",
+      "authors": "jlukic",
+      "keyword": "red team"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: TeamFuse \u2013 Dev team built on distributed Claude Code agents",
+      "summary": "1 points, 0 comments",
+      "url": "https://github.com/agentdmai/teamfuse",
+      "published": "2026-04-23T19:12:48Z",
+      "authors": "alxstn",
+      "keyword": "red team"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Whitehouse memo on Adversarial Distillation [pdf]",
+      "summary": "2 points, 0 comments",
+      "url": "https://www.whitehouse.gov/wp-content/uploads/2026/04/NSTM-4.pdf",
+      "published": "2026-04-23T18:45:50Z",
+      "authors": "vibe42",
+      "keyword": "adversarial"
+    },
+    {
+      "source": "arXiv",
+      "title": "MathDuels: Evaluating LLMs as Problem Posers and Solvers",
+      "summary": "As frontier language models attain near-ceiling performance on static mathematical benchmarks, existing evaluations are increasingly unable to differentiate model capabilities, largely because they cast models solely as solvers of fixed problem sets. We introduce MathDuels, a sel",
+      "url": "https://arxiv.org/abs/2604.21916v1",
+      "published": "2026-04-23T17:57:46Z",
+      "authors": "Zhiqiu Xu, Shibo Jin, Shreya Arya",
+      "keyword": "adversarial"
+    },
+    {
+      "source": "arXiv",
+      "title": "When Prompts Override Vision: Prompt-Induced Hallucinations in LVLMs",
+      "summary": "Despite impressive progress in capabilities of large vision-language models (LVLMs), these systems remain vulnerable to hallucinations, i.e., outputs that are not grounded in the visual input. Prior work has attributed hallucinations in LVLMs to factors such as limitations of the",
+      "url": "https://arxiv.org/abs/2604.21911v1",
+      "published": "2026-04-23T17:54:36Z",
+      "authors": "Pegah Khayatan, Jayneel Parekh, Arnaud Dapogny",
+      "keyword": "hallucination"
+    },
+    {
+      "source": "arXiv",
+      "title": "UniGenDet: A Unified Generative-Discriminative Framework for Co-Evolutionary Image Generation and Generated Image Detection",
+      "summary": "In recent years, significant progress has been made in both image generation and generated image detection. Despite their rapid, yet largely independent, development, these two fields have evolved distinct architectural paradigms: the former predominantly relies on generative net",
+      "url": "https://arxiv.org/abs/2604.21904v1",
+      "published": "2026-04-23T17:49:25Z",
+      "authors": "Yanran Zhang, Wenzhao Zheng, Yifei Li",
+      "keyword": "adversarial"
+    },
+    {
+      "source": "HackerNews",
+      "title": "GitHub Ace - an Experimental Collaboraite Agentic Coding Environment",
+      "summary": "4 points, 0 comments",
+      "url": "https://maggieappleton.com/zero-alignment",
+      "published": "2026-04-23T17:47:10Z",
+      "authors": "jryio",
+      "keyword": "alignment"
+    },
+    {
+      "source": "arXiv",
+      "title": "Mapping the Political Discourse in the Brazilian Chamber of Deputies: A Multi-Faceted Computational Approach",
+      "summary": "Analyses of legislative behavior often rely on voting records, overlooking the rich semantic and rhetorical content of political speech. In this paper, we ask three complementary questions about parliamentary discourse: how things are said, what is being said, and who is speaking",
+      "url": "https://arxiv.org/abs/2604.21897v1",
+      "published": "2026-04-23T17:46:33Z",
+      "authors": "Fl\u00e1vio Soriano, Victoria F. Mello, Pedro B. Rigueira",
+      "keyword": "alignment"
+    },
+    {
+      "source": "arXiv",
+      "title": "Addressing Image Authenticity When Cameras Use Generative AI",
+      "summary": "The ability of generative AI (GenAI) methods to photorealistically alter camera images has raised awareness about the authenticity of images shared online. Interestingly, images captured directly by our cameras are considered authentic and faithful. However, with the increasing i",
+      "url": "https://arxiv.org/abs/2604.21879v1",
+      "published": "2026-04-23T17:22:51Z",
+      "authors": "Umar Masud, Abhijith Punnappurath, Luxi Zhao",
+      "keyword": "hallucination"
+    },
+    {
+      "source": "arXiv",
+      "title": "Gradual Voluntary Participation: A Framework for Participatory AI Governance in Journalism",
+      "summary": "The integration of AI into journalism challenges participatory design (PD), particularly with respect to stakeholder influence, workplace perceptions, and organizational dynamics. Traditional PD assumes that users can shape technologies, yet AI systems resist influence due to opa",
+      "url": "https://arxiv.org/abs/2604.21878v1",
+      "published": "2026-04-23T17:21:50Z",
+      "authors": "Matilde Barbini, Stefano Sorrentino, Daniel Gatica-Perez",
+      "keyword": "AI governance"
+    },
+    {
+      "source": "arXiv",
+      "title": "Machine Behavior in Relational Moral Dilemmas: Moral Rightness, Predicted Human Behavior, and Model Decisions",
+      "summary": "Human moral judgment is context-dependent and modulated by interpersonal relationships. As large language models (LLMs) increasingly function as decision-support systems, determining whether they encode these social nuances is critical. We characterize machine behavior using the ",
+      "url": "https://arxiv.org/abs/2604.21871v1",
+      "published": "2026-04-23T17:14:18Z",
+      "authors": "Jiseon Kim, Jea Kwon, Luiz Felipe Vecchietti",
+      "keyword": "alignment"
+    },
+    {
+      "source": "arXiv",
+      "title": "Transient Turn Injection: Exposing Stateless Multi-Turn Vulnerabilities in Large Language Models",
+      "summary": "Large language models (LLMs) are increasingly integrated into sensitive workflows, raising the stakes for adversarial robustness and safety. This paper introduces Transient Turn Injection(TTI), a new multi-turn attack technique that systematically exploits stateless moderation by",
+      "url": "https://arxiv.org/abs/2604.21860v1",
+      "published": "2026-04-23T16:56:14Z",
+      "authors": "Naheed Rayhan, Sohely Jahan",
+      "keyword": "adversarial"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: Interactive knowledge graph for the AAuth (Agent Auth) protocol",
+      "summary": "3 points, 0 comments",
+      "url": "https://mcp-shark.github.io/aauth-explorer/",
+      "published": "2026-04-23T15:53:50Z",
+      "authors": "0xchamin",
+      "keyword": "AI governance"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: Core \u2013 open-source AI butler that clears your backlog without you",
+      "summary": "3 points, 0 comments",
+      "url": "https://www.getcore.me/",
+      "published": "2026-04-23T15:14:25Z",
+      "authors": "Manik_agg",
+      "keyword": "red team"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Researchers Simulated a Delusional User to Test Chatbot Safety",
+      "summary": "2 points, 0 comments",
+      "url": "https://www.404media.co/delusion-using-chatgpt-gemini-claude-grok-safety-ai-psychosis-study/",
+      "published": "2026-04-23T15:06:25Z",
+      "authors": "pkilgore",
+      "keyword": "AI safety"
+    },
+    {
+      "source": "HackerNews",
+      "title": "User-side software, and adversarial marketplaces",
+      "summary": "2 points, 0 comments",
+      "url": "https://faingezicht.com/articles/2026/04/22/adversarial-marketplaces/",
+      "published": "2026-04-23T14:58:00Z",
+      "authors": "speckx",
+      "keyword": "adversarial"
+    },
+    {
+      "source": "HackerNews",
+      "title": "How we fixed prompt injection for all models on Fireworks",
+      "summary": "4 points, 1 comments",
+      "url": "https://fireworks.ai/blog/safe-tokenization-preventing-prompt-injection-on-fireworks",
+      "published": "2026-04-23T14:26:20Z",
+      "authors": "smurda",
+      "keyword": "prompt injection"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Anthropic: Using large language models to scale scalable oversight",
+      "summary": "1 points, 0 comments",
+      "url": "https://www.anthropic.com/research/automated-alignment-researchers",
+      "published": "2026-04-23T14:19:47Z",
+      "authors": "theorchid",
+      "keyword": "alignment"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: Lilith-zero update: fast Rust security for agents",
+      "summary": "2 points, 0 comments",
+      "url": "https://github.com/BadC-mpany/lilith-zero",
+      "published": "2026-04-23T14:07:52Z",
+      "authors": "gregojaca",
+      "keyword": "LLM security"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: Command line tool for viewing files in color",
+      "summary": "1 points, 0 comments",
+      "url": "https://soegaard.github.io/peek/",
+      "published": "2026-04-23T14:00:08Z",
+      "authors": "soegaard",
+      "keyword": "alignment"
+    },
+    {
+      "source": "arXiv",
+      "title": "A Sociotechnical, Practitioner-Centered Approach to Technology Adoption in Cybersecurity Operations: An LLM Case",
+      "summary": "Technology for security operations centers (SOCs) has a storied history of slow adoption due to concerns about trust and reliability. These concerns are amplified with artificial intelligence, particularly large language models (LLMs), which exhibit issues such as hallucinations ",
+      "url": "https://arxiv.org/abs/2604.21679v1",
+      "published": "2026-04-23T13:43:28Z",
+      "authors": "Francis Hahn, Mohd Mamoon, Alexandru G. Bardas",
+      "keyword": "hallucination"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Can a geometric manifold solve AI hallucinations better than probability?",
+      "summary": "1 points, 0 comments",
+      "url": "https://news.ycombinator.com/item?id=47875026",
+      "published": "2026-04-23T12:37:26Z",
+      "authors": "enitylabsindia",
+      "keyword": "hallucination"
+    },
+    {
+      "source": "arXiv",
+      "title": "Engaged AI Governance: Addressing the Last Mile Challenge Through Internal Expert Collaboration",
+      "summary": "Under the EU AI Act, translating AI governance requirements into software development practice remains challenging. While AI governance frameworks exist at industry and organizational levels, empirical evidence of team-level implementation is scarce. We address this \"Last Mile\" C",
+      "url": "https://arxiv.org/abs/2604.21554v1",
+      "published": "2026-04-23T11:27:36Z",
+      "authors": "Simon Jarvers, Orestis Papakyriakopoulos",
+      "keyword": "AI governance"
+    },
+    {
+      "source": "HackerNews",
       "title": "House lawmakers get a chilling demo of 'jailbroken' AI",
-      "summary": "2 points, 1 comments",
+      "summary": "3 points, 1 comments",
       "url": "https://www.politico.com/news/2026/04/22/ai-chatbots-jailbreak-safety-00887869",
       "published": "2026-04-23T04:46:04Z",
       "authors": "0in",
@@ -30,16 +264,43 @@
       "url": "https://news.ycombinator.com/item?id=47871778",
       "published": "2026-04-23T02:45:32Z",
       "authors": "ISJLA",
-      "keyword": "AI safety"
+      "keyword": "AI compliance"
     },
     {
       "source": "HackerNews",
       "title": "Show HN: MemReader: From Passive to Active Extraction for Long-Term Agent Memory",
-      "summary": "3 points, 0 comments",
+      "summary": "4 points, 0 comments",
       "url": "https://arxiv.org/abs/2604.07877",
       "published": "2026-04-23T02:35:17Z",
       "authors": "MemTensor",
       "keyword": "hallucination"
+    },
+    {
+      "source": "arXiv",
+      "title": "Adaptive Instruction Composition for Automated LLM Red-Teaming",
+      "summary": "Many approaches to LLM red-teaming leverage an attacker LLM to discover jailbreaks against a target. Several of them task the attacker with identifying effective strategies through trial and error, resulting in a semantically limited range of successes. Another approach discovers",
+      "url": "https://arxiv.org/abs/2604.21159v1",
+      "published": "2026-04-22T23:55:32Z",
+      "authors": "Jesse Zymet, Andy Luo, Swapnil Shinde",
+      "keyword": "red team"
+    },
+    {
+      "source": "arXiv",
+      "title": "Dialect vs Demographics: Quantifying LLM Bias from Implicit Linguistic Signals vs. Explicit User Profiles",
+      "summary": "As state-of-the-art Large Language Models (LLMs) have become ubiquitous, ensuring equitable performance across diverse demographics is critical. However, it remains unclear whether these disparities arise from the explicitly stated identity itself or from the way identity is sign",
+      "url": "https://arxiv.org/abs/2604.21152v1",
+      "published": "2026-04-22T23:33:18Z",
+      "authors": "Irti Haq, Bel\u00e9n Sald\u00edas",
+      "keyword": "jailbreak"
+    },
+    {
+      "source": "arXiv",
+      "title": "Structural Quality Gaps in Practitioner AI Governance Prompts: An Empirical Study Using a Five-Principle Evaluation Framework",
+      "summary": "AI governance programmes increasingly rely on natural language prompts to constrain and direct AI agent behaviour. These prompts function as executable specifications: they define the agent's mandate, scope, and quality criteria. Despite this role, no systematic framework exists ",
+      "url": "https://arxiv.org/abs/2604.21090v1",
+      "published": "2026-04-22T21:18:28Z",
+      "authors": "Christo Zietsman",
+      "keyword": "AI governance"
     },
     {
       "source": "HackerNews",
@@ -52,75 +313,12 @@
     },
     {
       "source": "arXiv",
-      "title": "SpeechParaling-Bench: A Comprehensive Benchmark for Paralinguistic-Aware Speech Generation",
-      "summary": "Paralinguistic cues are essential for natural human-computer interaction, yet their evaluation in Large Audio-Language Models (LALMs) remains limited by coarse feature coverage and the inherent subjectivity of assessment. To address these challenges, we introduce SpeechParaling-B",
-      "url": "https://arxiv.org/abs/2604.20842v1",
-      "published": "2026-04-22T17:59:58Z",
-      "authors": "Ruohan Liu, Shukang Yin, Tao Wang",
-      "keyword": "alignment"
-    },
-    {
-      "source": "arXiv",
-      "title": "Dynamic Construction of the Lov\u00e1sz Local Lemma",
-      "summary": "This paper proves that a wide class of local search algorithms extend as is to the fully dynamic setting with an adaptive adversary, achieving an amortized $\\tilde{O}(1)$ number of local-search steps per update. A breakthrough by Moser (2009) introduced the witness-tree and entro",
-      "url": "https://arxiv.org/abs/2604.20836v1",
-      "published": "2026-04-22T17:58:40Z",
-      "authors": "Bernhard Haeupler, Slobodan Mitrovi\u0107, Srikkanth Ramachandran",
-      "keyword": "adversarial"
-    },
-    {
-      "source": "arXiv",
-      "title": "PokeVLA: Empowering Pocket-Sized Vision-Language-Action Model with Comprehensive World Knowledge Guidance",
-      "summary": "Recent advances in Vision-Language-Action (VLA) models have opened new avenues for robot manipulation, yet existing methods exhibit limited efficiency and a lack of high-level knowledge and spatial awareness. To address these challenges, we propose PokeVLA, a lightweight yet powe",
-      "url": "https://arxiv.org/abs/2604.20834v1",
-      "published": "2026-04-22T17:58:19Z",
-      "authors": "Yupeng Zheng, Xiang Li, Songen Gu",
-      "keyword": "alignment"
-    },
-    {
-      "source": "arXiv",
-      "title": "AVISE: Framework for Evaluating the Security of AI Systems",
-      "summary": "As artificial intelligence (AI) systems are increasingly deployed across critical domains, their security vulnerabilities pose growing risks of high-profile exploits and consequential system failures. Yet systematic approaches to evaluating AI security remain underdeveloped. In t",
-      "url": "https://arxiv.org/abs/2604.20833v1",
-      "published": "2026-04-22T17:58:17Z",
-      "authors": "Mikko Lempinen, Joni Kemppainen, Niklas Raesalmi",
-      "keyword": "adversarial"
-    },
-    {
-      "source": "arXiv",
-      "title": "From Meme to Method: Rethinking Animal Adoption Platforms through the Cat Distribution System",
-      "summary": "The internet folklore of the Cat Distribution System (CDS) humorously suggests that cats are \"assigned\" to people rather than intentionally sought. Beyond its playful origins, CDS reflects a culturally resonant way people perceive and engage in adoption, and this user context can",
-      "url": "https://arxiv.org/abs/2604.20823v1",
-      "published": "2026-04-22T17:47:53Z",
-      "authors": "Carl Angelo Angcana, Jamlech Iram Gojo Cruz",
-      "keyword": "alignment"
-    },
-    {
-      "source": "arXiv",
-      "title": "GeoRect4D: Geometry-Compatible Generative Rectification for Dynamic Sparse-View 3D Reconstruction",
-      "summary": "Reconstructing dynamic 3D scenes from sparse multi-view videos is highly ill-posed, often leading to geometric collapse, trajectory drift, and floating artifacts. Recent attempts introduce generative priors to hallucinate missing content, yet naive integration frequently causes s",
-      "url": "https://arxiv.org/abs/2604.20784v1",
-      "published": "2026-04-22T17:12:02Z",
-      "authors": "Zhenlong Wu, Zihan Zheng, Xuanxuan Wang",
-      "keyword": "hallucination"
-    },
-    {
-      "source": "HackerNews",
-      "title": "AI agent skills pass every scanner. 87% still degrade agent safety",
-      "summary": "7 points, 1 comments",
-      "url": "https://faberlens.ai/blog/skill-safety-problem",
-      "published": "2026-04-22T17:06:13Z",
-      "authors": "shadab_nazar",
-      "keyword": "AI safety"
-    },
-    {
-      "source": "arXiv",
-      "title": "V-tableR1: Process-Supervised Multimodal Table Reasoning with Critic-Guided Policy Optimization",
-      "summary": "We introduce V-tableR1, a process-supervised reinforcement learning framework that elicits rigorous, verifiable reasoning from multimodal large language models (MLLMs). Current MLLMs trained solely on final outcomes often treat visual reasoning as a black box, relying on superfic",
-      "url": "https://arxiv.org/abs/2604.20755v1",
-      "published": "2026-04-22T16:44:33Z",
-      "authors": "Yubo Jiang, Yitong An, Xin Yang",
-      "keyword": "hallucination"
+      "title": "Breaking MCP with Function Hijacking Attacks: Novel Threats for Function Calling and Agentic Models",
+      "summary": "The growth of agentic AI has drawn significant attention to function calling Large Language Models (LLMs), which are designed to extend the capabilities of AI-powered system by invoking external functions. Injection and jailbreaking attacks have been extensively explored to showc",
+      "url": "https://arxiv.org/abs/2604.20994v1",
+      "published": "2026-04-22T18:32:38Z",
+      "authors": "Yannis Belkhiter, Giulio Zizzo, Sergio Maffeis",
+      "keyword": "LLM security"
     },
     {
       "source": "arXiv",
@@ -133,35 +331,8 @@
     },
     {
       "source": "HackerNews",
-      "title": "Show HN: Broccoli, one shot coding agent on the cloud",
-      "summary": "58 points, 39 comments",
-      "url": "https://github.com/besimple-oss/broccoli",
-      "published": "2026-04-22T16:09:56Z",
-      "authors": "yzhong94",
-      "keyword": "red team"
-    },
-    {
-      "source": "arXiv",
-      "title": "ONOTE: Benchmarking Omnimodal Notation Processing for Expert-level Music Intelligence",
-      "summary": "Omnimodal Notation Processing (ONP) represents a unique frontier for omnimodal AI due to the rigorous, multi-dimensional alignment required across auditory, visual, and symbolic domains. Current research remains fragmented, focusing on isolated transcription tasks that fail to br",
-      "url": "https://arxiv.org/abs/2604.20719v1",
-      "published": "2026-04-22T16:06:48Z",
-      "authors": "Menghe Ma, Siqing Wei, Yuecheng Xing",
-      "keyword": "hallucination"
-    },
-    {
-      "source": "arXiv",
-      "title": "Auto-ART: Structured Literature Synthesis and Automated Adversarial Robustness Testing",
-      "summary": "Adversarial robustness evaluation underpins every claim of trustworthy ML deployment, yet the field suffers from fragmented protocols and undetected gradient masking. We make two contributions. (1) Structured synthesis. We analyze nine peer-reviewed corpus sources (2020--2026) th",
-      "url": "https://arxiv.org/abs/2604.20704v1",
-      "published": "2026-04-22T15:46:11Z",
-      "authors": "Abhijit Talluri",
-      "keyword": "adversarial"
-    },
-    {
-      "source": "HackerNews",
       "title": "Show HN: We built a <60ms, open-source alternative to E2B using RustVMM and KVM",
-      "summary": "6 points, 1 comments",
+      "summary": "7 points, 2 comments",
       "url": "https://github.com/TencentCloud/CubeSandbox",
       "published": "2026-04-22T13:36:32Z",
       "authors": "yukunqiu",
@@ -179,7 +350,7 @@
     {
       "source": "HackerNews",
       "title": "Kernel code removals driven by LLM-created security reports",
-      "summary": "112 points, 96 comments",
+      "summary": "120 points, 116 comments",
       "url": "https://lwn.net/Articles/1068928/",
       "published": "2026-04-22T11:48:07Z",
       "authors": "edward",
@@ -196,183 +367,12 @@
     },
     {
       "source": "HackerNews",
-      "title": "Top Law Firm Apologizes to Bankruptcy Judge for AI Hallucination",
-      "summary": "4 points, 1 comments",
-      "url": "https://www.bloomberg.com/news/articles/2026-04-21/top-law-firm-apologizes-to-bankruptcy-judge-for-ai-hallucination",
-      "published": "2026-04-22T07:47:44Z",
-      "authors": "1vuio0pswjnm7",
-      "keyword": "hallucination"
-    },
-    {
-      "source": "HackerNews",
       "title": "Show HN: Gemini Plugin for Claude Code",
-      "summary": "10 points, 6 comments",
+      "summary": "11 points, 7 comments",
       "url": "https://github.com/m-ghalib/gemini-plugin-cc",
       "published": "2026-04-22T04:41:09Z",
       "authors": "morawr",
       "keyword": "adversarial"
-    },
-    {
-      "source": "arXiv",
-      "title": "An AI Agent Execution Environment to Safeguard User Data",
-      "summary": "AI agents promise to serve as general-purpose personal assistants for their users, which requires them to have access to private user data (e.g., personal and financial information). This poses a serious risk to security and privacy. Adversaries may attack the AI model (e.g., via",
-      "url": "https://arxiv.org/abs/2604.19657v1",
-      "published": "2026-04-21T16:45:30Z",
-      "authors": "Robert Stanley, Avi Verma, Lillian Tsai",
-      "keyword": "prompt injection"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Show HN: LLMSecure \u2013 prompt injection detection, no signup",
-      "summary": "2 points, 1 comments",
-      "url": "https://llmsecure.io/",
-      "published": "2026-04-21T16:07:36Z",
-      "authors": "eliadmualem",
-      "keyword": "prompt injection"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Show HN: Transient \u2013 CLI Governance layer for AI agents",
-      "summary": "2 points, 0 comments",
-      "url": "https://github.com/james-transient/transient",
-      "published": "2026-04-21T13:37:21Z",
-      "authors": "jamestransient",
-      "keyword": "AI governance"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Show HN: Flight Risk: Can you break an AI agent?",
-      "summary": "3 points, 0 comments",
-      "url": "https://ctf.demo.lorikeetcx.ai/",
-      "published": "2026-04-21T12:28:56Z",
-      "authors": "tetrakai",
-      "keyword": "prompt injection"
-    },
-    {
-      "source": "arXiv",
-      "title": "If you're waiting for a sign... that might not be it! Mitigating Trust Boundary Confusion from Visual Injections on Vision-Language Agentic Systems",
-      "summary": "Recent advances in embodied Vision-Language Agentic Systems (VLAS), powered by large vision-language models (LVLMs), enable AI systems to perceive and reason over real-world scenes. Within this context, environmental signals such as traffic lights are essential in-band signals th",
-      "url": "https://arxiv.org/abs/2604.19844v1",
-      "published": "2026-04-21T11:27:30Z",
-      "authors": "Jiamin Chang, Minhui Xue, Ruoxi Sun",
-      "keyword": "prompt injection"
-    },
-    {
-      "source": "arXiv",
-      "title": "Beyond Semantic Similarity: A Component-Wise Evaluation Framework for Medical Question Answering Systems with Health Equity Implications",
-      "summary": "The use of Large Language Models (LLMs) to support patients in addressing medical questions is becoming increasingly prevalent. However, most of the measures currently used to evaluate the performance of these models in this context only measure how closely a model's answers matc",
-      "url": "https://arxiv.org/abs/2604.19281v1",
-      "published": "2026-04-21T09:50:08Z",
-      "authors": "Abu Noman Md Sakib, Md. Main Oddin Chisty, Zijie Zhang",
-      "keyword": "AI safety"
-    },
-    {
-      "source": "arXiv",
-      "title": "HarDBench: A Benchmark for Draft-Based Co-Authoring Jailbreak Attacks for Safe Human-LLM Collaborative Writing",
-      "summary": "Large language models (LLMs) are increasingly used as co-authors in collaborative writing, where users begin with rough drafts and rely on LLMs to complete, revise, and refine their content. However, this capability poses a serious safety risk: malicious users could jailbreak the",
-      "url": "https://arxiv.org/abs/2604.19274v1",
-      "published": "2026-04-21T09:41:20Z",
-      "authors": "Euntae Kim, Soomin Han, Buru Chang",
-      "keyword": "jailbreak"
-    },
-    {
-      "source": "arXiv",
-      "title": "STAR-Teaming: A Strategy-Response Multiplex Network Approach to Automated LLM Red Teaming",
-      "summary": "While Large Language Models (LLMs) are widely used, they remain susceptible to jailbreak prompts that can elicit harmful or inappropriate responses. This paper introduces STAR-Teaming, a novel black-box framework for automated red teaming that effectively generates such prompts. ",
-      "url": "https://arxiv.org/abs/2604.18976v1",
-      "published": "2026-04-21T01:58:09Z",
-      "authors": "MinJae Jung, YongTaek Lim, Chaeyun Kim",
-      "keyword": "red team"
-    },
-    {
-      "source": "arXiv",
-      "title": "Relationships Between Trust, Compliance, and Performance for Novice Programmers Using AI Code Generation",
-      "summary": "Objective. To explore how novice programmers' trust in Artificial Intelligence-driven Development Environments (AIDEs) relates to their coding performance and AI compliance while programming under time pressure. Background. Computer programming has undergone rapid upheaval due to",
-      "url": "https://arxiv.org/abs/2604.18948v1",
-      "published": "2026-04-21T00:52:29Z",
-      "authors": "Nicholas Gardella, Matthew L. Bolton, Sara L. Riggs",
-      "keyword": "AI compliance"
-    },
-    {
-      "source": "arXiv",
-      "title": "ARES: Adaptive Red-Teaming and End-to-End Repair of Policy-Reward System",
-      "summary": "Reinforcement Learning from Human Feedback (RLHF) is central to aligning Large Language Models (LLMs), yet it introduces a critical vulnerability: an imperfect Reward Model (RM) can become a single point of failure when it fails to penalize unsafe behaviors. While existing red-te",
-      "url": "https://arxiv.org/abs/2604.18789v1",
-      "published": "2026-04-20T19:54:47Z",
-      "authors": "Jiacheng Liang, Yao Ma, Tharindu Kumarage",
-      "keyword": "red team"
-    },
-    {
-      "source": "HackerNews",
-      "title": "AI Alignment Is Impossible",
-      "summary": "3 points, 0 comments",
-      "url": "https://www.persuasion.community/p/ai-alignment-is-impossible",
-      "published": "2026-04-20T19:05:40Z",
-      "authors": "cdrnsf",
-      "keyword": "alignment"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Alignment by Default?",
-      "summary": "2 points, 0 comments",
-      "url": "https://blog.cosmos-institute.org/p/alignment-by-default",
-      "published": "2026-04-20T18:27:13Z",
-      "authors": "paulpauper",
-      "keyword": "alignment"
-    },
-    {
-      "source": "HackerNews",
-      "title": "GitHub Copilot's new policy for AI training is a governance wake-up call",
-      "summary": "2 points, 2 comments",
-      "url": "https://about.gitlab.com/blog/github-copilots-new-policy-for-ai-training-is-a-governance-wake-up-call/",
-      "published": "2026-04-20T17:34:54Z",
-      "authors": "kevthecoder",
-      "keyword": "AI governance"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Show HN: Pwneye \u2013 discovering and accessing IP cameras (ONVIF/RTSP)",
-      "summary": "4 points, 0 comments",
-      "url": "https://github.com/Hackerest/pwneye",
-      "published": "2026-04-20T17:24:56Z",
-      "authors": "mcisternino",
-      "keyword": "red team"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Show HN: Made a highly organised email client with prompt-free AI within",
-      "summary": "1 points, 2 comments",
-      "url": "https://news.ycombinator.com/item?id=47835218",
-      "published": "2026-04-20T14:48:50Z",
-      "authors": "neerajnathany",
-      "keyword": "AI compliance"
-    },
-    {
-      "source": "HackerNews",
-      "title": "I Built a 22k-Line App with Zero Coding Experience. Or, how to control agents",
-      "summary": "2 points, 2 comments",
-      "url": "https://news.ycombinator.com/item?id=47833955",
-      "published": "2026-04-20T13:22:39Z",
-      "authors": "JasonGravy",
-      "keyword": "AI compliance"
-    },
-    {
-      "source": "HackerNews",
-      "title": "SoK: Security of Autonomous LLM Agents in Agentic Commerce",
-      "summary": "3 points, 0 comments",
-      "url": "https://arxiv.org/abs/2604.15367",
-      "published": "2026-04-20T04:11:17Z",
-      "authors": "omer_k",
-      "keyword": "LLM security"
-    },
-    {
-      "source": "arXiv",
-      "title": "Prompt Optimization Enables Stable Algorithmic Collusion in LLM Agents",
-      "summary": "LLM agents in markets present algorithmic collusion risks. While prior work shows LLM agents reach supracompetitive prices through tacit coordination, existing research focuses on hand-crafted prompts. The emerging paradigm of prompt optimization necessitates new methodologies fo",
-      "url": "https://arxiv.org/abs/2604.17774v1",
-      "published": "2026-04-20T03:53:08Z",
-      "authors": "Yingtao Tian",
-      "keyword": "AI safety"
     }
   ]
 }
