@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-24T07:42:18.236168+00:00",
+  "generated_at": "2026-04-25T07:35:22.327773+00:00",
   "source_keywords": [
     "AI safety",
     "LLM security",
@@ -16,8 +16,107 @@
   "items": [
     {
       "source": "HackerNews",
+      "title": "Google Patches WithPersona PII Leak, Then Claims It Was 'Not Reproducible'",
+      "summary": "1 points, 0 comments",
+      "url": "https://news.ycombinator.com/item?id=47899036",
+      "published": "2026-04-25T05:52:35Z",
+      "authors": "bbounty_robbed",
+      "keyword": "prompt injection"
+    },
+    {
+      "source": "HackerNews",
+      "title": "White House Memo on Adversarial Distillation of American AI Models [pdf]",
+      "summary": "6 points, 1 comments",
+      "url": "https://whitehouse.gov/wp-content/uploads/2026/04/NSTM-4.pdf",
+      "published": "2026-04-25T00:53:13Z",
+      "authors": "lebovic",
+      "keyword": "adversarial"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: RoboAPI \u2013 A unified REST API for robots, like Stripe but for hardware",
+      "summary": "2 points, 2 comments",
+      "url": "https://github.com/amitb-quantum/roboapi",
+      "published": "2026-04-24T23:16:22Z",
+      "authors": "xmas123",
+      "keyword": "red team"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: Lilo \u2013 a self-hosted, open-source intelligent personal OS",
+      "summary": "3 points, 2 comments",
+      "url": "https://github.com/abi/lilo",
+      "published": "2026-04-24T19:46:30Z",
+      "authors": "abi",
+      "keyword": "LLM security"
+    },
+    {
+      "source": "HackerNews",
+      "title": "The Alignment Problem in Your Government",
+      "summary": "2 points, 0 comments",
+      "url": "https://kunnas.com/articles/alignment-problem-in-your-government",
+      "published": "2026-04-24T19:31:33Z",
+      "authors": "ekns",
+      "keyword": "alignment"
+    },
+    {
+      "source": "HackerNews",
+      "title": "TIPSv2: Advancing Vision-Language Pretraining with Enhanced Patch-Text Alignment",
+      "summary": "21 points, 1 comments",
+      "url": "https://gdm-tipsv2.github.io/",
+      "published": "2026-04-24T19:28:32Z",
+      "authors": "gmays",
+      "keyword": "alignment"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: I'm 15 and built a cryptographic accountability layer for AI agents",
+      "summary": "4 points, 1 comments",
+      "url": "https://github.com/arian-gogani/nobulex",
+      "published": "2026-04-24T18:56:43Z",
+      "authors": "arian_",
+      "keyword": "AI governance"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Two AIs, One PR: Adversarial Code Review with LLMs",
+      "summary": "2 points, 0 comments",
+      "url": "https://p.agnihotry.com/post/two-ais-one-pr-adversarial-code-review-loop/",
+      "published": "2026-04-24T15:14:02Z",
+      "authors": "pagnihotry",
+      "keyword": "adversarial"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Researchers Simulated a Delusional User to Test Chatbot Safety",
+      "summary": "20 points, 3 comments",
+      "url": "https://www.404media.co/delusion-using-chatgpt-gemini-claude-grok-safety-ai-psychosis-study/",
+      "published": "2026-04-24T14:55:34Z",
+      "authors": "Brajeshwar",
+      "keyword": "AI safety"
+    },
+    {
+      "source": "HackerNews",
+      "title": "OpenAI has the governance structure of a unicorn \u2013 it does not exist",
+      "summary": "2 points, 0 comments",
+      "url": "https://readuncut.com/open-ai-has-little-effective-governance/",
+      "published": "2026-04-24T10:04:58Z",
+      "authors": "dnsb",
+      "keyword": "AI governance"
+    },
+    {
+      "source": "HackerNews",
+      "title": "QuickSWMS \u2013 AI generator for Australian construction safety docs ($100 startup)",
+      "summary": "1 points, 0 comments",
+      "url": "https://quickswms.co",
+      "published": "2026-04-24T07:44:51Z",
+      "authors": "EzraDe",
+      "keyword": "AI safety"
+    },
+    {
+      "source": "HackerNews",
       "title": "Is possible a language easy as py, fast as C, more secure than Rust?",
-      "summary": "1 points, 3 comments",
+      "summary": "6 points, 9 comments",
       "url": "https://news.ycombinator.com/item?id=47885142",
       "published": "2026-04-24T03:27:41Z",
       "authors": "jerryzhang66",
@@ -40,24 +139,6 @@
       "published": "2026-04-23T22:26:47Z",
       "authors": "kuzivaai",
       "keyword": "AI compliance"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Teaching Machines to Read \u2013 Early Exploration",
-      "summary": "5 points, 0 comments",
-      "url": "https://www.daggerobelus.com/projects/teaching-machines-to-read/early-exploration/",
-      "published": "2026-04-23T20:59:15Z",
-      "authors": "jlukic",
-      "keyword": "red team"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Show HN: TeamFuse \u2013 Dev team built on distributed Claude Code agents",
-      "summary": "1 points, 0 comments",
-      "url": "https://github.com/agentdmai/teamfuse",
-      "published": "2026-04-23T19:12:48Z",
-      "authors": "alxstn",
-      "keyword": "red team"
     },
     {
       "source": "HackerNews",
@@ -98,7 +179,7 @@
     {
       "source": "HackerNews",
       "title": "GitHub Ace - an Experimental Collaboraite Agentic Coding Environment",
-      "summary": "4 points, 0 comments",
+      "summary": "6 points, 0 comments",
       "url": "https://maggieappleton.com/zero-alignment",
       "published": "2026-04-23T17:47:10Z",
       "authors": "jryio",
@@ -160,33 +241,6 @@
     },
     {
       "source": "HackerNews",
-      "title": "Show HN: Core \u2013 open-source AI butler that clears your backlog without you",
-      "summary": "3 points, 0 comments",
-      "url": "https://www.getcore.me/",
-      "published": "2026-04-23T15:14:25Z",
-      "authors": "Manik_agg",
-      "keyword": "red team"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Researchers Simulated a Delusional User to Test Chatbot Safety",
-      "summary": "2 points, 0 comments",
-      "url": "https://www.404media.co/delusion-using-chatgpt-gemini-claude-grok-safety-ai-psychosis-study/",
-      "published": "2026-04-23T15:06:25Z",
-      "authors": "pkilgore",
-      "keyword": "AI safety"
-    },
-    {
-      "source": "HackerNews",
-      "title": "User-side software, and adversarial marketplaces",
-      "summary": "2 points, 0 comments",
-      "url": "https://faingezicht.com/articles/2026/04/22/adversarial-marketplaces/",
-      "published": "2026-04-23T14:58:00Z",
-      "authors": "speckx",
-      "keyword": "adversarial"
-    },
-    {
-      "source": "HackerNews",
       "title": "How we fixed prompt injection for all models on Fireworks",
       "summary": "4 points, 1 comments",
       "url": "https://fireworks.ai/blog/safe-tokenization-preventing-prompt-injection-on-fireworks",
@@ -196,30 +250,12 @@
     },
     {
       "source": "HackerNews",
-      "title": "Anthropic: Using large language models to scale scalable oversight",
-      "summary": "1 points, 0 comments",
-      "url": "https://www.anthropic.com/research/automated-alignment-researchers",
-      "published": "2026-04-23T14:19:47Z",
-      "authors": "theorchid",
-      "keyword": "alignment"
-    },
-    {
-      "source": "HackerNews",
       "title": "Show HN: Lilith-zero update: fast Rust security for agents",
       "summary": "2 points, 0 comments",
       "url": "https://github.com/BadC-mpany/lilith-zero",
       "published": "2026-04-23T14:07:52Z",
       "authors": "gregojaca",
       "keyword": "LLM security"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Show HN: Command line tool for viewing files in color",
-      "summary": "1 points, 0 comments",
-      "url": "https://soegaard.github.io/peek/",
-      "published": "2026-04-23T14:00:08Z",
-      "authors": "soegaard",
-      "keyword": "alignment"
     },
     {
       "source": "arXiv",
@@ -255,7 +291,7 @@
       "url": "https://www.politico.com/news/2026/04/22/ai-chatbots-jailbreak-safety-00887869",
       "published": "2026-04-23T04:46:04Z",
       "authors": "0in",
-      "keyword": "AI safety"
+      "keyword": "jailbreak"
     },
     {
       "source": "HackerNews",
@@ -303,15 +339,6 @@
       "keyword": "AI governance"
     },
     {
-      "source": "HackerNews",
-      "title": "Show HN: SkillGuard \u2013 scan agent skills for prompt injection payloads",
-      "summary": "2 points, 1 comments",
-      "url": "https://github.com/obielin/skillguard",
-      "published": "2026-04-22T19:36:23Z",
-      "authors": "arabking",
-      "keyword": "prompt injection"
-    },
-    {
       "source": "arXiv",
       "title": "Breaking MCP with Function Hijacking Attacks: Novel Threats for Function Calling and Agentic Models",
       "summary": "The growth of agentic AI has drawn significant attention to function calling Large Language Models (LLMs), which are designed to extend the capabilities of AI-powered system by invoking external functions. Injection and jailbreaking attacks have been extensively explored to showc",
@@ -319,6 +346,15 @@
       "published": "2026-04-22T18:32:38Z",
       "authors": "Yannis Belkhiter, Giulio Zizzo, Sergio Maffeis",
       "keyword": "LLM security"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: Agent Vault \u2013 Open-source credential proxy and vault for agents",
+      "summary": "135 points, 52 comments",
+      "url": "https://github.com/Infisical/agent-vault",
+      "published": "2026-04-22T16:25:28Z",
+      "authors": "dangtony98",
+      "keyword": "red team"
     },
     {
       "source": "arXiv",
@@ -337,42 +373,6 @@
       "published": "2026-04-22T13:36:32Z",
       "authors": "yukunqiu",
       "keyword": "LLM security"
-    },
-    {
-      "source": "HackerNews",
-      "title": "S&C law firm apologizes for AI 'hallucinations' in court filing",
-      "summary": "2 points, 1 comments",
-      "url": "https://www.reuters.com/legal/litigation/sullivan-cromwell-law-firm-apologizes-ai-hallucinations-court-filing-2026-04-21/",
-      "published": "2026-04-22T13:00:21Z",
-      "authors": "aferber",
-      "keyword": "hallucination"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Kernel code removals driven by LLM-created security reports",
-      "summary": "120 points, 116 comments",
-      "url": "https://lwn.net/Articles/1068928/",
-      "published": "2026-04-22T11:48:07Z",
-      "authors": "edward",
-      "keyword": "LLM security"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Show HN: We open-sourced a 6-library governance stack for AI agents (Python)",
-      "summary": "2 points, 0 comments",
-      "url": "https://news.ycombinator.com/item?id=47860859",
-      "published": "2026-04-22T08:47:25Z",
-      "authors": "tegs",
-      "keyword": "AI governance"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Show HN: Gemini Plugin for Claude Code",
-      "summary": "11 points, 7 comments",
-      "url": "https://github.com/m-ghalib/gemini-plugin-cc",
-      "published": "2026-04-22T04:41:09Z",
-      "authors": "morawr",
-      "keyword": "adversarial"
     }
   ]
 }
