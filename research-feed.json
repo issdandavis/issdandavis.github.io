@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-25T07:35:22.327773+00:00",
+  "generated_at": "2026-04-26T07:37:26.647628+00:00",
   "source_keywords": [
     "AI safety",
     "LLM security",
@@ -16,8 +16,80 @@
   "items": [
     {
       "source": "HackerNews",
-      "title": "Google Patches WithPersona PII Leak, Then Claims It Was 'Not Reproducible'",
+      "title": "MCP Spine \u2013 Middleware proxy for LLM tool calls with security and token control",
+      "summary": "2 points, 0 comments",
+      "url": "https://github.com/Donnyb369/mcp-spine",
+      "published": "2026-04-25T21:38:56Z",
+      "authors": "Mxwell369",
+      "keyword": "LLM security"
+    },
+    {
+      "source": "HackerNews",
+      "title": "One Developer, Two Dozen Agents, Zero Alignment",
+      "summary": "1 points, 1 comments",
+      "url": "https://maggieappleton.com/zero-alignment",
+      "published": "2026-04-25T21:28:06Z",
+      "authors": "herbertl",
+      "keyword": "alignment"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Self-Hosted AI Red Team Tools",
+      "summary": "2 points, 0 comments",
+      "url": "https://aetherverseintel.gumroad.com/l/vpzqnk",
+      "published": "2026-04-25T19:43:33Z",
+      "authors": "valuria",
+      "keyword": "red team"
+    },
+    {
+      "source": "HackerNews",
+      "title": "What led to the mess at Franklin Templeton India (2020)",
+      "summary": "2 points, 0 comments",
+      "url": "https://www.moneycontrol.com/europe/?url=https://www.moneycontrol.com/news/business/personal-finance/the-inside-story-of-what-led-to-the-mess-at-franklin-templeton-5192431.html",
+      "published": "2026-04-25T16:14:34Z",
+      "authors": "oumua_don17",
+      "keyword": "red team"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Jailbreaking a robot vacuum to run Tailscale and Valetudo",
+      "summary": "15 points, 0 comments",
+      "url": "https://tailscale.com/blog/tailscale-sucks",
+      "published": "2026-04-25T12:55:12Z",
+      "authors": "theorchid",
+      "keyword": "jailbreak"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: A Karpathy-style LLM wiki your agents maintain (Markdown and Git)",
+      "summary": "230 points, 108 comments",
+      "url": "https://github.com/nex-crm/wuphf",
+      "published": "2026-04-25T08:53:53Z",
+      "authors": "najmuzzaman",
+      "keyword": "red team"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Fixing hallucination in LLM prediction with only one 48gib GPU",
       "summary": "1 points, 0 comments",
+      "url": "https://zenodo.org/records/19703218",
+      "published": "2026-04-25T08:19:23Z",
+      "authors": "genji970",
+      "keyword": "hallucination"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: Werner \u2013 A native Markdown editor for macOS with four view modes",
+      "summary": "3 points, 2 comments",
+      "url": "https://apps.apple.com/ua/app/werner/id6758157982?mt=12",
+      "published": "2026-04-25T08:08:46Z",
+      "authors": "artem2471",
+      "keyword": "alignment"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Google Patches WithPersona PII Leak, Then Claims It Was 'Not Reproducible'",
+      "summary": "2 points, 0 comments",
       "url": "https://news.ycombinator.com/item?id=47899036",
       "published": "2026-04-25T05:52:35Z",
       "authors": "bbounty_robbed",
@@ -26,7 +98,7 @@
     {
       "source": "HackerNews",
       "title": "White House Memo on Adversarial Distillation of American AI Models [pdf]",
-      "summary": "6 points, 1 comments",
+      "summary": "7 points, 2 comments",
       "url": "https://whitehouse.gov/wp-content/uploads/2026/04/NSTM-4.pdf",
       "published": "2026-04-25T00:53:13Z",
       "authors": "lebovic",
@@ -34,17 +106,8 @@
     },
     {
       "source": "HackerNews",
-      "title": "Show HN: RoboAPI \u2013 A unified REST API for robots, like Stripe but for hardware",
-      "summary": "2 points, 2 comments",
-      "url": "https://github.com/amitb-quantum/roboapi",
-      "published": "2026-04-24T23:16:22Z",
-      "authors": "xmas123",
-      "keyword": "red team"
-    },
-    {
-      "source": "HackerNews",
       "title": "Show HN: Lilo \u2013 a self-hosted, open-source intelligent personal OS",
-      "summary": "3 points, 2 comments",
+      "summary": "7 points, 4 comments",
       "url": "https://github.com/abi/lilo",
       "published": "2026-04-24T19:46:30Z",
       "authors": "abi",
@@ -61,17 +124,8 @@
     },
     {
       "source": "HackerNews",
-      "title": "TIPSv2: Advancing Vision-Language Pretraining with Enhanced Patch-Text Alignment",
-      "summary": "21 points, 1 comments",
-      "url": "https://gdm-tipsv2.github.io/",
-      "published": "2026-04-24T19:28:32Z",
-      "authors": "gmays",
-      "keyword": "alignment"
-    },
-    {
-      "source": "HackerNews",
       "title": "Show HN: I'm 15 and built a cryptographic accountability layer for AI agents",
-      "summary": "4 points, 1 comments",
+      "summary": "4 points, 2 comments",
       "url": "https://github.com/arian-gogani/nobulex",
       "published": "2026-04-24T18:56:43Z",
       "authors": "arian_",
@@ -89,7 +143,7 @@
     {
       "source": "HackerNews",
       "title": "Researchers Simulated a Delusional User to Test Chatbot Safety",
-      "summary": "20 points, 3 comments",
+      "summary": "20 points, 4 comments",
       "url": "https://www.404media.co/delusion-using-chatgpt-gemini-claude-grok-safety-ai-psychosis-study/",
       "published": "2026-04-24T14:55:34Z",
       "authors": "Brajeshwar",
@@ -116,7 +170,7 @@
     {
       "source": "HackerNews",
       "title": "Is possible a language easy as py, fast as C, more secure than Rust?",
-      "summary": "6 points, 9 comments",
+      "summary": "10 points, 10 comments",
       "url": "https://news.ycombinator.com/item?id=47885142",
       "published": "2026-04-24T03:27:41Z",
       "authors": "jerryzhang66",
@@ -175,15 +229,6 @@
       "published": "2026-04-23T17:49:25Z",
       "authors": "Yanran Zhang, Wenzhao Zheng, Yifei Li",
       "keyword": "adversarial"
-    },
-    {
-      "source": "HackerNews",
-      "title": "GitHub Ace - an Experimental Collaboraite Agentic Coding Environment",
-      "summary": "6 points, 0 comments",
-      "url": "https://maggieappleton.com/zero-alignment",
-      "published": "2026-04-23T17:47:10Z",
-      "authors": "jryio",
-      "keyword": "alignment"
     },
     {
       "source": "arXiv",
@@ -328,51 +373,6 @@
       "published": "2026-04-22T23:33:18Z",
       "authors": "Irti Haq, Bel\u00e9n Sald\u00edas",
       "keyword": "jailbreak"
-    },
-    {
-      "source": "arXiv",
-      "title": "Structural Quality Gaps in Practitioner AI Governance Prompts: An Empirical Study Using a Five-Principle Evaluation Framework",
-      "summary": "AI governance programmes increasingly rely on natural language prompts to constrain and direct AI agent behaviour. These prompts function as executable specifications: they define the agent's mandate, scope, and quality criteria. Despite this role, no systematic framework exists ",
-      "url": "https://arxiv.org/abs/2604.21090v1",
-      "published": "2026-04-22T21:18:28Z",
-      "authors": "Christo Zietsman",
-      "keyword": "AI governance"
-    },
-    {
-      "source": "arXiv",
-      "title": "Breaking MCP with Function Hijacking Attacks: Novel Threats for Function Calling and Agentic Models",
-      "summary": "The growth of agentic AI has drawn significant attention to function calling Large Language Models (LLMs), which are designed to extend the capabilities of AI-powered system by invoking external functions. Injection and jailbreaking attacks have been extensively explored to showc",
-      "url": "https://arxiv.org/abs/2604.20994v1",
-      "published": "2026-04-22T18:32:38Z",
-      "authors": "Yannis Belkhiter, Giulio Zizzo, Sergio Maffeis",
-      "keyword": "LLM security"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Show HN: Agent Vault \u2013 Open-source credential proxy and vault for agents",
-      "summary": "135 points, 52 comments",
-      "url": "https://github.com/Infisical/agent-vault",
-      "published": "2026-04-22T16:25:28Z",
-      "authors": "dangtony98",
-      "keyword": "red team"
-    },
-    {
-      "source": "arXiv",
-      "title": "Anchor-and-Resume Concession Under Dynamic Pricing for LLM-Augmented Freight Negotiation",
-      "summary": "Freight brokerages negotiate thousands of carrier rates daily under dynamic pricing conditions where models frequently revise targets mid-conversation. Classical time-dependent concession frameworks use a fixed shape parameter $\u03b2$ that cannot adapt to these updates. Deriving $\u03b2$ ",
-      "url": "https://arxiv.org/abs/2604.20732v1",
-      "published": "2026-04-22T16:17:07Z",
-      "authors": "Hoang Nguyen, Lu Wang, Marta Gaia Bras",
-      "keyword": "prompt injection"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Show HN: We built a <60ms, open-source alternative to E2B using RustVMM and KVM",
-      "summary": "7 points, 2 comments",
-      "url": "https://github.com/TencentCloud/CubeSandbox",
-      "published": "2026-04-22T13:36:32Z",
-      "authors": "yukunqiu",
-      "keyword": "LLM security"
     }
   ]
 }
