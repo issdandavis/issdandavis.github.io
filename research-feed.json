@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-01T07:49:17.973071+00:00",
+  "generated_at": "2026-05-02T07:37:55.843397+00:00",
   "source_keywords": [
     "AI safety",
     "LLM security",
@@ -16,8 +16,80 @@
   "items": [
     {
       "source": "HackerNews",
+      "title": "A contribution to solving the existential anxiety problem of AI hallucinations",
+      "summary": "1 points, 0 comments",
+      "url": "https://zenodo.org/records/19608960",
+      "published": "2026-05-02T03:47:57Z",
+      "authors": "M_Samir333",
+      "keyword": "hallucination"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Oregon's Non-Affiliated Surge and the Socialist Realignment Nobody Talks About",
+      "summary": "5 points, 0 comments",
+      "url": "https://fullstack.ing/posts/the-flight-from-party-oregons-non-affiliated-surge-and-the-socialist-realignment-nobody-talks-about",
+      "published": "2026-05-01T23:36:44Z",
+      "authors": "fullstacking",
+      "keyword": "alignment"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: An Agent First Slack CLI",
+      "summary": "1 points, 0 comments",
+      "url": "https://github.com/tilework-tech/nori-slack-cli",
+      "published": "2026-05-01T19:05:21Z",
+      "authors": "theahura",
+      "keyword": "red team"
+    },
+    {
+      "source": "HackerNews",
+      "title": "The gay jailbreak technique (2025)",
+      "summary": "490 points, 201 comments",
+      "url": "https://github.com/Exocija/ZetaLib/blob/main/The%20Gay%20Jailbreak/The%20Gay%20Jailbreak.md",
+      "published": "2026-05-01T16:59:35Z",
+      "authors": "bobsmooth",
+      "keyword": "jailbreak"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Tell HN: Claude account suspension after flagging duplicate billing",
+      "summary": "5 points, 0 comments",
+      "url": "https://news.ycombinator.com/item?id=47976682",
+      "published": "2026-05-01T16:30:53Z",
+      "authors": "areoform",
+      "keyword": "red team"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: IP Tools (Ipaddress.to)",
+      "summary": "2 points, 0 comments",
+      "url": "https://news.ycombinator.com/item?id=47976113",
+      "published": "2026-05-01T15:44:50Z",
+      "authors": "TemporaryMail",
+      "keyword": "red team"
+    },
+    {
+      "source": "HackerNews",
+      "title": "The AI Jailbreakers",
+      "summary": "1 points, 0 comments",
+      "url": "https://www.theguardian.com/technology/2026/apr/29/meet-the-ai-jailbreakers-i-see-the-worst-things-humanity-has-produced",
+      "published": "2026-05-01T10:43:31Z",
+      "authors": "saikatsg",
+      "keyword": "jailbreak"
+    },
+    {
+      "source": "HackerNews",
+      "title": "One Developer, Two Dozen Agents, Zero Alignment",
+      "summary": "1 points, 0 comments",
+      "url": "https://maggieappleton.com/zero-alignment",
+      "published": "2026-05-01T10:01:38Z",
+      "authors": "maxua",
+      "keyword": "alignment"
+    },
+    {
+      "source": "HackerNews",
       "title": "We scanned 100 Smithery MCP servers, 22 flagged, here's what we found",
-      "summary": "4 points, 3 comments",
+      "summary": "4 points, 5 comments",
       "url": "https://news.ycombinator.com/item?id=47969781",
       "published": "2026-04-30T23:44:18Z",
       "authors": "chaksaray",
@@ -98,7 +170,7 @@
     {
       "source": "HackerNews",
       "title": "What do you want to see in a next-generation GitHub in the age of AI?",
-      "summary": "3 points, 6 comments",
+      "summary": "4 points, 7 comments",
       "url": "https://news.ycombinator.com/item?id=47965469",
       "published": "2026-04-30T17:11:12Z",
       "authors": "skeedle",
@@ -125,7 +197,7 @@
     {
       "source": "HackerNews",
       "title": "AI Hallucinations Put South Africa on the Spot",
-      "summary": "2 points, 0 comments",
+      "summary": "2 points, 1 comments",
       "url": "https://www.bloomberg.com/news/articles/2026-04-30/ai-hallucinations-put-two-south-african-ministers-on-the-spot",
       "published": "2026-04-30T15:20:54Z",
       "authors": "1vuio0pswjnm7",
@@ -168,15 +240,6 @@
       "keyword": "AI governance"
     },
     {
-      "source": "HackerNews",
-      "title": "Show HN: Nimbalyst open-source visual workspace for ClaudeCode, Codex, OpenCode",
-      "summary": "6 points, 4 comments",
-      "url": "https://github.com/Nimbalyst/nimbalyst",
-      "published": "2026-04-30T13:36:06Z",
-      "authors": "ghinkle",
-      "keyword": "red team"
-    },
-    {
       "source": "arXiv",
       "title": "MASCing: Configurable Mixture-of-Experts Behavior via Activation Steering Masks",
       "summary": "Mixture-of-Experts (MoE) architectures in Large Language Models (LLMs) have significantly reduced inference costs through sparse activation. However, this sparse activation paradigm also introduces new safety challenges. Since only a subset of experts is engaged for each input, m",
@@ -188,19 +251,10 @@
     {
       "source": "HackerNews",
       "title": "AI's: 100 days to irreversible systemic system collapse?",
-      "summary": "1 points, 5 comments",
+      "summary": "1 points, 9 comments",
       "url": "https://news.ycombinator.com/item?id=47961721",
       "published": "2026-04-30T12:57:46Z",
       "authors": "buxy123",
-      "keyword": "alignment"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Show HN: Browser-based timelapse generator with pose-based photo alignment",
-      "summary": "1 points, 1 comments",
-      "url": "https://bbelk.github.io/ImageToTimelapse/",
-      "published": "2026-04-30T12:38:22Z",
-      "authors": "bb-dev",
       "keyword": "alignment"
     },
     {
@@ -231,15 +285,6 @@
       "keyword": "hallucination"
     },
     {
-      "source": "HackerNews",
-      "title": "Show HN: Pg_column_Tetris \u2013 a pg extension for optimal column alignment",
-      "summary": "2 points, 0 comments",
-      "url": "https://github.com/rogerwelin/pg_column_tetris",
-      "published": "2026-04-30T07:43:31Z",
-      "authors": "rogerw",
-      "keyword": "alignment"
-    },
-    {
       "source": "arXiv",
       "title": "The Two Boundaries: Why Behavioral AI Governance Fails Structurally",
       "summary": "Every system that performs effects has two boundaries: what it can do (expressiveness) and what governance covers (governance). In nearly all deployed AI systems, these boundaries are defined independently, creating three regions: governed capabilities (the only useful region), u",
@@ -259,30 +304,12 @@
     },
     {
       "source": "HackerNews",
-      "title": "Probes trace an emergent jailbreak in OLMo 2 to mislabeled training data",
-      "summary": "2 points, 0 comments",
-      "url": "https://www.lesswrong.com/posts/rg2LhYNYNbxR84ag3/probe-based-data-attribution-surfacing-and-mitigating-2",
-      "published": "2026-04-29T19:46:49Z",
-      "authors": "aranguri",
-      "keyword": "jailbreak"
-    },
-    {
-      "source": "HackerNews",
       "title": "Show HN: AgentPort \u2013 Open-source Security Gateway For Agents",
       "summary": "6 points, 3 comments",
       "url": "https://agentport.sh/",
       "published": "2026-04-29T16:33:38Z",
       "authors": "yakkomajuri",
       "keyword": "prompt injection"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Show HN: A new benchmark for testing LLMs for deterministic outputs",
-      "summary": "58 points, 24 comments",
-      "url": "https://interfaze.ai/blog/introducing-structured-output-benchmark",
-      "published": "2026-04-29T16:01:51Z",
-      "authors": "khurdula",
-      "keyword": "hallucination"
     },
     {
       "source": "arXiv",
@@ -340,39 +367,12 @@
     },
     {
       "source": "HackerNews",
-      "title": "Show HN: SuperVoiceMode universal voice layer for AI-assisted development",
-      "summary": "1 points, 0 comments",
-      "url": "https://voicemode.io/",
-      "published": "2026-04-28T15:32:56Z",
-      "authors": "mikezx",
-      "keyword": "red team"
-    },
-    {
-      "source": "HackerNews",
       "title": "Show HN: Rocky \u2013 Rust SQL engine with branches, replay, column lineage",
       "summary": "119 points, 48 comments",
       "url": "https://github.com/rocky-data/rocky",
       "published": "2026-04-28T14:35:59Z",
       "authors": "hugocorreia90",
       "keyword": "AI governance"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Show HN: Integrations gateway for agents with 2FA for destructive ops (OSS)",
-      "summary": "3 points, 2 comments",
-      "url": "https://github.com/yakkomajuri/agentport",
-      "published": "2026-04-28T14:24:48Z",
-      "authors": "yakkomajuri",
-      "keyword": "prompt injection"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Self-hosted red team workspace",
-      "summary": "1 points, 0 comments",
-      "url": "https://github.com/Buthis404/RootNotes",
-      "published": "2026-04-28T12:28:58Z",
-      "authors": "hulupupu",
-      "keyword": "red team"
     }
   ]
 }
