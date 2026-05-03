@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-02T07:37:55.843397+00:00",
+  "generated_at": "2026-05-03T07:40:05.622808+00:00",
   "source_keywords": [
     "AI safety",
     "LLM security",
@@ -16,6 +16,15 @@
   "items": [
     {
       "source": "HackerNews",
+      "title": "Show HN: TurnZero \u2013 Persistent Expert for LLMs",
+      "summary": "2 points, 0 comments",
+      "url": "https://news.ycombinator.com/item?id=47984343",
+      "published": "2026-05-02T07:51:45Z",
+      "authors": "dmilicev2",
+      "keyword": "prompt injection"
+    },
+    {
+      "source": "HackerNews",
       "title": "A contribution to solving the existential anxiety problem of AI hallucinations",
       "summary": "1 points, 0 comments",
       "url": "https://zenodo.org/records/19608960",
@@ -25,48 +34,12 @@
     },
     {
       "source": "HackerNews",
-      "title": "Oregon's Non-Affiliated Surge and the Socialist Realignment Nobody Talks About",
-      "summary": "5 points, 0 comments",
-      "url": "https://fullstack.ing/posts/the-flight-from-party-oregons-non-affiliated-surge-and-the-socialist-realignment-nobody-talks-about",
-      "published": "2026-05-01T23:36:44Z",
-      "authors": "fullstacking",
-      "keyword": "alignment"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Show HN: An Agent First Slack CLI",
-      "summary": "1 points, 0 comments",
-      "url": "https://github.com/tilework-tech/nori-slack-cli",
-      "published": "2026-05-01T19:05:21Z",
-      "authors": "theahura",
-      "keyword": "red team"
-    },
-    {
-      "source": "HackerNews",
       "title": "The gay jailbreak technique (2025)",
-      "summary": "490 points, 201 comments",
+      "summary": "635 points, 250 comments",
       "url": "https://github.com/Exocija/ZetaLib/blob/main/The%20Gay%20Jailbreak/The%20Gay%20Jailbreak.md",
       "published": "2026-05-01T16:59:35Z",
       "authors": "bobsmooth",
       "keyword": "jailbreak"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Tell HN: Claude account suspension after flagging duplicate billing",
-      "summary": "5 points, 0 comments",
-      "url": "https://news.ycombinator.com/item?id=47976682",
-      "published": "2026-05-01T16:30:53Z",
-      "authors": "areoform",
-      "keyword": "red team"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Show HN: IP Tools (Ipaddress.to)",
-      "summary": "2 points, 0 comments",
-      "url": "https://news.ycombinator.com/item?id=47976113",
-      "published": "2026-05-01T15:44:50Z",
-      "authors": "TemporaryMail",
-      "keyword": "red team"
     },
     {
       "source": "HackerNews",
@@ -94,15 +67,6 @@
       "published": "2026-04-30T23:44:18Z",
       "authors": "chaksaray",
       "keyword": "AI safety"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Managing dependencies in non-manifest languages",
-      "summary": "2 points, 1 comments",
-      "url": "https://news.ycombinator.com/item?id=47968391",
-      "published": "2026-04-30T21:22:48Z",
-      "authors": "riteshnoronha16",
-      "keyword": "AI compliance"
     },
     {
       "source": "arXiv",
@@ -168,15 +132,6 @@
       "keyword": "prompt injection"
     },
     {
-      "source": "HackerNews",
-      "title": "What do you want to see in a next-generation GitHub in the age of AI?",
-      "summary": "4 points, 7 comments",
-      "url": "https://news.ycombinator.com/item?id=47965469",
-      "published": "2026-04-30T17:11:12Z",
-      "authors": "skeedle",
-      "keyword": "AI safety"
-    },
-    {
       "source": "arXiv",
       "title": "Hallucination, Abstention, and Recursive Inseparability",
       "summary": "The impossibility of eliminating hallucination, understood here as incorrect definite answers, in sufficiently expressive yes-or-no formal domains is an immediate consequence of classical undecidability theorems. This note does not revisit that forced-answer obstruction as its ma",
@@ -206,7 +161,7 @@
     {
       "source": "HackerNews",
       "title": "Restraining AI development for the sake of safety",
-      "summary": "1 points, 0 comments",
+      "summary": "2 points, 0 comments",
       "url": "https://joecarlsmith.com/2026/03/19/on-restraining-ai-development-for-the-sake-of-safety/",
       "published": "2026-04-30T14:26:26Z",
       "authors": "speckx",
@@ -240,6 +195,15 @@
       "keyword": "AI governance"
     },
     {
+      "source": "HackerNews",
+      "title": "Show HN: Nimbalyst open-source visual workspace for ClaudeCode, Codex, OpenCode",
+      "summary": "8 points, 4 comments",
+      "url": "https://github.com/Nimbalyst/nimbalyst",
+      "published": "2026-04-30T13:36:06Z",
+      "authors": "ghinkle",
+      "keyword": "red team"
+    },
+    {
       "source": "arXiv",
       "title": "MASCing: Configurable Mixture-of-Experts Behavior via Activation Steering Masks",
       "summary": "Mixture-of-Experts (MoE) architectures in Large Language Models (LLMs) have significantly reduced inference costs through sparse activation. However, this sparse activation paradigm also introduces new safety challenges. Since only a subset of experts is engaged for each input, m",
@@ -251,10 +215,19 @@
     {
       "source": "HackerNews",
       "title": "AI's: 100 days to irreversible systemic system collapse?",
-      "summary": "1 points, 9 comments",
+      "summary": "1 points, 10 comments",
       "url": "https://news.ycombinator.com/item?id=47961721",
       "published": "2026-04-30T12:57:46Z",
       "authors": "buxy123",
+      "keyword": "alignment"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: Browser-based timelapse generator with pose-based photo alignment",
+      "summary": "1 points, 1 comments",
+      "url": "https://bbelk.github.io/ImageToTimelapse/",
+      "published": "2026-04-30T12:38:22Z",
+      "authors": "bb-dev",
       "keyword": "alignment"
     },
     {
@@ -283,6 +256,15 @@
       "published": "2026-04-30T08:50:03Z",
       "authors": "Xihang Wang, Zihan Wang, Chengkai Huang",
       "keyword": "hallucination"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Musk casts himself as AI's good guy in testimony vs. OpenAI",
+      "summary": "5 points, 1 comments",
+      "url": "https://www.axios.com/2026/04/30/musk-openai-safety-grok",
+      "published": "2026-04-30T02:07:59Z",
+      "authors": "1vuio0pswjnm7",
+      "keyword": "AI safety"
     },
     {
       "source": "arXiv",
@@ -367,12 +349,30 @@
     },
     {
       "source": "HackerNews",
+      "title": "Show HN: SuperVoiceMode universal voice layer for AI-assisted development",
+      "summary": "1 points, 0 comments",
+      "url": "https://voicemode.io/",
+      "published": "2026-04-28T15:32:56Z",
+      "authors": "mikezx",
+      "keyword": "red team"
+    },
+    {
+      "source": "HackerNews",
       "title": "Show HN: Rocky \u2013 Rust SQL engine with branches, replay, column lineage",
-      "summary": "119 points, 48 comments",
+      "summary": "120 points, 48 comments",
       "url": "https://github.com/rocky-data/rocky",
       "published": "2026-04-28T14:35:59Z",
       "authors": "hugocorreia90",
       "keyword": "AI governance"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Self-hosted red team workspace",
+      "summary": "1 points, 0 comments",
+      "url": "https://github.com/Buthis404/RootNotes",
+      "published": "2026-04-28T12:28:58Z",
+      "authors": "hulupupu",
+      "keyword": "red team"
     }
   ]
 }
