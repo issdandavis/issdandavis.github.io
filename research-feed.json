@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-06T07:52:46.449733+00:00",
+  "generated_at": "2026-05-07T07:58:30.249576+00:00",
   "source_keywords": [
     "AI safety",
     "LLM security",
@@ -16,6 +16,195 @@
   "items": [
     {
       "source": "HackerNews",
+      "title": "Unmonitored Agents and a Local AI",
+      "summary": "2 points, 0 comments",
+      "url": "https://news.ycombinator.com/item?id=48042961",
+      "published": "2026-05-06T22:53:22Z",
+      "authors": "jay_kyburz",
+      "keyword": "jailbreak"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Model Spec Midtraining: Improving How Alignment Training Generalizes",
+      "summary": "2 points, 0 comments",
+      "url": "https://alignment.anthropic.com/2026/msm/",
+      "published": "2026-05-06T20:17:55Z",
+      "authors": "bearseascape",
+      "keyword": "alignment"
+    },
+    {
+      "source": "HackerNews",
+      "title": "ArcKit \u2013 The Agentic AI Architecture Governance for Governments",
+      "summary": "1 points, 0 comments",
+      "url": "https://arckit.org/",
+      "published": "2026-05-06T18:18:18Z",
+      "authors": "TractorJuice",
+      "keyword": "AI governance"
+    },
+    {
+      "source": "arXiv",
+      "title": "LongSeeker: Elastic Context Orchestration for Long-Horizon Search Agents",
+      "summary": "Long-horizon search agents must manage a rapidly growing working context as they reason, call tools, and observe information. Naively accumulating all intermediate content can overwhelm the agent, increasing costs and the risk of errors. We propose that effective context manageme",
+      "url": "https://arxiv.org/abs/2605.05191v1",
+      "published": "2026-05-06T17:54:16Z",
+      "authors": "Yijun Lu, Rui Ye, Yuwen Du",
+      "keyword": "hallucination"
+    },
+    {
+      "source": "arXiv",
+      "title": "LoViF 2026 The First Challenge on Holistic Quality Assessment for 4D World Model (PhyScore)",
+      "summary": "This paper reports on the LoViF 2026 PhyScore challenge, a competition on holistic quality assessment of world-model-generated videos across both 2D and 4D generation settings. The challenge is motivated by a central gap in current evaluation practice: perceptual quality alone is",
+      "url": "https://arxiv.org/abs/2605.05187v1",
+      "published": "2026-05-06T17:52:39Z",
+      "authors": "Wei Luo, Yiting Lu, Xin Li",
+      "keyword": "alignment"
+    },
+    {
+      "source": "arXiv",
+      "title": "The First Token Knows: Single-Decode Confidence for Hallucination Detection",
+      "summary": "Self-consistency detects hallucinations by generating multiple sampled answers to a question and measuring agreement, but this requires repeated decoding and can be sensitive to lexical variation. Semantic self-consistency improves this by clustering sampled answers by meaning us",
+      "url": "https://arxiv.org/abs/2605.05166v1",
+      "published": "2026-05-06T17:34:00Z",
+      "authors": "Mina Gabriel",
+      "keyword": "hallucination"
+    },
+    {
+      "source": "arXiv",
+      "title": "Interests Burn-down Diffusion Process for Personalized Collaborative Filtering",
+      "summary": "Generative methods have gained widespread attention in Collaborative Filtering (CF) tasks for their ability to produce high-quality personalized samples aligned with users' interests. Among them, diffusion generative models have raised increasing attention in recommendation field",
+      "url": "https://arxiv.org/abs/2605.05165v1",
+      "published": "2026-05-06T17:33:54Z",
+      "authors": "Yifang Qin, Zhaobin Li, Arisa Watanabe",
+      "keyword": "alignment"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Red-teaming your own products without Mythos",
+      "summary": "3 points, 1 comments",
+      "url": "https://github.com/cloudstreet-dev/AI-Red-Teaming",
+      "published": "2026-05-06T17:31:53Z",
+      "authors": "DavidCanHelp",
+      "keyword": "red team"
+    },
+    {
+      "source": "arXiv",
+      "title": "Low-Cost Black-Box Detection of LLM Hallucinations via Dynamical System Prediction",
+      "summary": "Large Language Models (LLMs) frequently generate plausible but non-factual content, a phenomenon known as hallucination. While existing detection methods typically rely on computationally expensive sampling-based consistency checks or external knowledge retrieval, we propose a ne",
+      "url": "https://arxiv.org/abs/2605.05134v1",
+      "published": "2026-05-06T17:07:29Z",
+      "authors": "Dan Wilson, Mohamed Akrout",
+      "keyword": "hallucination"
+    },
+    {
+      "source": "HackerNews",
+      "title": "We ran OWASP attacks on 8 LLMs. Optimized small models beat frontier defaults",
+      "summary": "4 points, 0 comments",
+      "url": "https://www.megacode.ai/blog/prompt-security-benchmark",
+      "published": "2026-05-06T17:00:17Z",
+      "authors": "ChanwooSong",
+      "keyword": "LLM security"
+    },
+    {
+      "source": "arXiv",
+      "title": "ConsisVLA-4D: Advancing Spatiotemporal Consistency in Efficient 3D-Perception and 4D-Reasoning for Robotic Manipulation",
+      "summary": "Current Vision-Language-Action (VLA) models primarily focus on mapping 2D observations to actions, but exhibit notable limitations in spatiotemporal perception and reasoning: 1) spatial representations often rely on additional sensors, introducing substantial computational overhe",
+      "url": "https://arxiv.org/abs/2605.05126v1",
+      "published": "2026-05-06T16:55:44Z",
+      "authors": "Wei Li, Jizhihui Liu, Li Yixing",
+      "keyword": "alignment"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Anthropic has a Red Team page",
+      "summary": "3 points, 0 comments",
+      "url": "https://red.anthropic.com/",
+      "published": "2026-05-06T16:50:53Z",
+      "authors": "DavidCanHelp",
+      "keyword": "red team"
+    },
+    {
+      "source": "arXiv",
+      "title": "On the Hardness of Junking LLMs",
+      "summary": "Large language models (LLMs) are known to be vulnerable to jailbreak attacks, which typically rely on carefully designed prompts containing explicit semantic structure. These attacks generally operate by fixing an adversarial instruction and optimizing small adversarial component",
+      "url": "https://arxiv.org/abs/2605.05116v1",
+      "published": "2026-05-06T16:47:07Z",
+      "authors": "Marco Rando, Samuel Vaiter",
+      "keyword": "adversarial"
+    },
+    {
+      "source": "arXiv",
+      "title": "SoK: Robustness in Large Language Models against Jailbreak Attacks",
+      "summary": "Large Language Models (LLMs) have achieved remarkable success but remain highly susceptible to jailbreak attacks, in which adversarial prompts coerce models into generating harmful, unethical, or policy-violating outputs. Such attacks pose real-world risks, eroding safety, trust,",
+      "url": "https://arxiv.org/abs/2605.05058v1",
+      "published": "2026-05-06T15:53:17Z",
+      "authors": "Feiyue Xu, Hongsheng Hu, Chaoxiang He",
+      "keyword": "LLM security"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: Costanza \u2013 an autonomous AI agent that can't be turned off",
+      "summary": "5 points, 3 comments",
+      "url": "https://ahrussell.com/writing/costanza/",
+      "published": "2026-05-06T15:50:59Z",
+      "authors": "aruss",
+      "keyword": "prompt injection"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Rumors of my death are slightly exaggerated",
+      "summary": "29 points, 4 comments",
+      "url": "https://news.ycombinator.com/item?id=48037336",
+      "published": "2026-05-06T15:24:51Z",
+      "authors": "CliffStoll",
+      "keyword": "hallucination"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: Recursant \u2013 service mesh for governing AI agents",
+      "summary": "2 points, 0 comments",
+      "url": "https://www.recursant.ai/",
+      "published": "2026-05-06T13:57:24Z",
+      "authors": "hestefisk",
+      "keyword": "AI compliance"
+    },
+    {
+      "source": "arXiv",
+      "title": "On the (In-)Security of the Shuffling Defense in the Transformer Secure Inference",
+      "summary": "For Transformer models, cryptographically secure inference ensures that the client learns only the final output, while the server learns nothing about the client's input. However, securely computing nonlinear layers remains a major efficiency bottleneck due to the substantial com",
+      "url": "https://arxiv.org/abs/2605.04901v1",
+      "published": "2026-05-06T13:31:15Z",
+      "authors": "Zhengyi Li, Yakai Wang, Kang Yang",
+      "keyword": "adversarial"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: Arden \u2013 Runtime policy enforcement and governance for AI agents",
+      "summary": "5 points, 5 comments",
+      "url": "https://www.arden.sh/",
+      "published": "2026-05-06T13:10:09Z",
+      "authors": "rishabtandon",
+      "keyword": "AI governance"
+    },
+    {
+      "source": "arXiv",
+      "title": "DecodingTrust-Agent Platform (DTap): A Controllable and Interactive Red-Teaming Platform for AI Agents",
+      "summary": "AI agents are increasingly deployed across diverse domains to automate complex workflows through long-horizon and high-stakes action executions. Due to their high capability and flexibility, such agents raise significant security and safety concerns. A growing number of real-worl",
+      "url": "https://arxiv.org/abs/2605.04808v1",
+      "published": "2026-05-06T11:59:48Z",
+      "authors": "Zhaorun Chen, Xun Liu, Haibo Tong",
+      "keyword": "red team"
+    },
+    {
+      "source": "arXiv",
+      "title": "Sparse Tokens Suffice: Jailbreaking Audio Language Models via Token-Aware Gradient Optimization",
+      "summary": "Jailbreak attacks on audio language models (ALMs) optimize audio perturbations to elicit unsafe generations, and they typically update the entire waveform densely throughout optimization. In this work, we investigate the necessity of such dense optimization by analyzing the struc",
+      "url": "https://arxiv.org/abs/2605.04700v1",
+      "published": "2026-05-06T09:52:29Z",
+      "authors": "Zheng Fang, Xiaosen Wang, Shenyi Zhang",
+      "keyword": "jailbreak"
+    },
+    {
+      "source": "HackerNews",
       "title": "Folie \u00e0 Deux: The most dangerous hallucination is one you're inclined to believe",
       "summary": "4 points, 0 comments",
       "url": "https://thebookofluke.com/p/folie-a-deux",
@@ -26,7 +215,7 @@
     {
       "source": "HackerNews",
       "title": "Show HN: Keyterm Filtering for Voice AI",
-      "summary": "2 points, 0 comments",
+      "summary": "3 points, 0 comments",
       "url": "https://aditu.tech/keyterm-filtering",
       "published": "2026-05-05T21:36:27Z",
       "authors": "mayowa_osibodu",
@@ -35,20 +224,20 @@
     {
       "source": "HackerNews",
       "title": "Show HN: Rival AI \u2013 AI compliance agents and regulatory corpus",
-      "summary": "1 points, 0 comments",
+      "summary": "2 points, 0 comments",
       "url": "https://tryrival.ai",
       "published": "2026-05-05T21:11:15Z",
       "authors": "estradanicolas",
       "keyword": "AI compliance"
     },
     {
-      "source": "HackerNews",
-      "title": "GPT-5.5 Instant: Benchmarking the 52% Hallucination Reduction",
-      "summary": "1 points, 0 comments",
-      "url": "https://the-decoder.com/chatgpt-update-rolls-out-gpt-5-5-instant-with-fewer-hallucinations-and-more-personalized-answers/",
-      "published": "2026-05-05T20:13:35Z",
-      "authors": "mohit17mor",
-      "keyword": "hallucination"
+      "source": "arXiv",
+      "title": "Laundering AI Authority with Adversarial Examples",
+      "summary": "Vision-language models (VLMs) are increasingly deployed as trusted authorities -- fact-checking images on social media, comparing products, and moderating content. Users implicitly trust that these systems perceive the same visual content as they do. We show that adversarial exam",
+      "url": "https://arxiv.org/abs/2605.04261v1",
+      "published": "2026-05-05T19:55:28Z",
+      "authors": "Jie Zhang, Pura Peetathawatchai, Florian Tram\u00e8r",
+      "keyword": "prompt injection"
     },
     {
       "source": "HackerNews",
@@ -57,6 +246,15 @@
       "url": "https://www.bbc.com/news/articles/cgjp2we2j8go",
       "published": "2026-05-05T19:41:39Z",
       "authors": "devonnull",
+      "keyword": "AI safety"
+    },
+    {
+      "source": "arXiv",
+      "title": "Anatomy of a failure: When, how, and why deep vision fails in scientific domains",
+      "summary": "Mirroring its ubiquity in popular media and all human activities, the use of deep learning (DL) is rapidly growing in scientific imaging modalities. However, unlike everyday RGB pictures, pixels encode precise physicochemical properties in scientific imaging across potentially th",
+      "url": "https://arxiv.org/abs/2605.04231v1",
+      "published": "2026-05-05T19:17:00Z",
+      "authors": "Ji-Hun Oh, Dou Hoon Kwark, Kianoush Falahkheirkhah",
       "keyword": "AI safety"
     },
     {
@@ -87,24 +285,6 @@
       "keyword": "AI safety"
     },
     {
-      "source": "arXiv",
-      "title": "Audio-Visual Intelligence in Large Foundation Models",
-      "summary": "Audio-Visual Intelligence (AVI) has emerged as a central frontier in artificial intelligence, bridging auditory and visual modalities to enable machines that can perceive, generate, and interact in the multimodal real world. In the era of large foundation models, joint modeling o",
-      "url": "https://arxiv.org/abs/2605.04045v1",
-      "published": "2026-05-05T17:59:16Z",
-      "authors": "You Qin, Kai Liu, Shengqiong Wu",
-      "keyword": "alignment"
-    },
-    {
-      "source": "arXiv",
-      "title": "Large Language Models are Universal Reasoners for Visual Generation",
-      "summary": "Text-to-image generation has advanced rapidly with diffusion models, progressing from CLIP and T5 conditioning to unified systems where a single LLM backbone handles both visual understanding and generation. Despite the architectural unification, these systems frequently fail to ",
-      "url": "https://arxiv.org/abs/2605.04040v1",
-      "published": "2026-05-05T17:57:36Z",
-      "authors": "Sucheng Ren, Chen Chen, Zhenbang Wang",
-      "keyword": "alignment"
-    },
-    {
       "source": "HackerNews",
       "title": "U.S. ramps up frontier AI testing as White House pivots toward safety",
       "summary": "3 points, 2 comments",
@@ -115,66 +295,21 @@
     },
     {
       "source": "arXiv",
-      "title": "Stayin' Aligned Over Time: Towards Longitudinal Human-LLM Alignment via Contextual Reflection and Privacy-Preserving Behavioral Data",
-      "summary": "Current human-AI alignment and evaluation methods for large language models (LLMs) often rely on preference signals collected immediately after an interaction. This practice implicitly treats preference as static, even though many LLM-mediated decisions unfold over time and may b",
-      "url": "https://arxiv.org/abs/2605.04029v1",
-      "published": "2026-05-05T17:51:41Z",
-      "authors": "Simret Araya Gebreegziabher, Allison E Sproul, Yinuo Yang",
-      "keyword": "alignment"
-    },
-    {
-      "source": "arXiv",
       "title": "Redefining AI Red Teaming in the Agentic Era: From Weeks to Hours",
       "summary": "AI systems are entering critical domains like healthcare, finance, and defense, yet remain vulnerable to adversarial attacks. While AI red teaming is a primary defense, current approaches force operators into manual, library-specific workflows. Operators spend weeks hand-crafting",
       "url": "https://arxiv.org/abs/2605.04019v1",
       "published": "2026-05-05T17:43:52Z",
       "authors": "Raja Sekhar Rao Dheekonda, Will Pearce, Nick Landers",
-      "keyword": "adversarial"
+      "keyword": "red team"
     },
     {
       "source": "HackerNews",
       "title": "Flattery jailbreaks Claude into giving bomb-making instructions",
-      "summary": "2 points, 0 comments",
+      "summary": "3 points, 0 comments",
       "url": "https://www.theverge.com/ai-artificial-intelligence/923961/security-researchers-mindgard-gaslit-claude-forbidden-information",
       "published": "2026-05-05T17:26:32Z",
       "authors": "AgentNews",
       "keyword": "jailbreak"
-    },
-    {
-      "source": "arXiv",
-      "title": "Logical Consistency as a Bridge: Improving LLM Hallucination Detection via Label Constraint Modeling between Responses and Self-Judgments",
-      "summary": "Large Language Models (LLMs) are prone to factual hallucinations, risking their reliability in real-world applications. Existing hallucination detectors mainly extract micro-level intrinsic patterns for uncertainty quantification or elicit macro-level self-judgments through verba",
-      "url": "https://arxiv.org/abs/2605.03971v1",
-      "published": "2026-05-05T16:53:20Z",
-      "authors": "Hao Mi, Qiang Sheng, Shaofei Wang",
-      "keyword": "hallucination"
-    },
-    {
-      "source": "arXiv",
-      "title": "MOSAIC-Bench: Measuring Compositional Vulnerability Induction in Coding Agents",
-      "summary": "Coding agents often pass per-prompt safety review yet ship exploitable code when their tasks are decomposed into routine engineering tickets. The challenge is structural: existing safety alignment evaluates overt requests in isolation, leaving models blind to malicious end-states",
-      "url": "https://arxiv.org/abs/2605.03952v1",
-      "published": "2026-05-05T16:38:23Z",
-      "authors": "Jonathan Steinberg, Oren Gal",
-      "keyword": "adversarial"
-    },
-    {
-      "source": "arXiv",
-      "title": "Computing Planar Convex Hulls with a Promise",
-      "summary": "Computing the convex hull of a planar $n$-point set $P$ is one of the most fundamental problems in computational geometry. It has an $\u03a9(n \\log n)$ lower bound in the algebraic computation tree model, and many convex hull algorithms match this bound. Classical results show that, u",
-      "url": "https://arxiv.org/abs/2605.03904v1",
-      "published": "2026-05-05T15:56:28Z",
-      "authors": "Sepideh Aghamolaei, Kevin Buchin, Timothy M. Chan",
-      "keyword": "adversarial"
-    },
-    {
-      "source": "arXiv",
-      "title": "TriBench-Ko: Evaluating LLM Risks in Judicial Workflows",
-      "summary": "Large language models (LLMs) are increasingly integrated into legal workflows. However, existing benchmarks primarily address proxy tasks, such as bar examination performance or classification, which fail to capture the performance and risks inherent in day-to-day judicial proces",
-      "url": "https://arxiv.org/abs/2605.03792v1",
-      "published": "2026-05-05T14:20:28Z",
-      "authors": "Haesung Lee, Gyubin Choi, Eun-Ju Lee",
-      "keyword": "hallucination"
     },
     {
       "source": "HackerNews",
@@ -223,15 +358,6 @@
     },
     {
       "source": "arXiv",
-      "title": "Self-Mined Hardness for Safety Fine-Tuning",
-      "summary": "Safety fine-tuning of language models typically requires a curated adversarial dataset. We take a different approach: score each candidate prompt's difficulty by how often the target model's own rollouts are judged harmful, then fine-tune on the hardest prompts paired with the mo",
-      "url": "https://arxiv.org/abs/2605.03226v1",
-      "published": "2026-05-04T23:30:29Z",
-      "authors": "Prakhar Gupta, Garv Shah, Donghua Zhang",
-      "keyword": "jailbreak"
-    },
-    {
-      "source": "arXiv",
       "title": "When Agents Handle Secrets: A Survey of Confidential Computing for Agentic AI",
       "summary": "Agentic AI systems, specifically LLM-driven agents that plan, invoke tools, maintain persistent memory, and delegate tasks to peer agents via protocols such as MCP and A2A, introduce a threat surface that differs materially from standalone model inference. Agents accumulate sensi",
       "url": "https://arxiv.org/abs/2605.03213v1",
@@ -247,132 +373,6 @@
       "published": "2026-05-04T22:56:13Z",
       "authors": "Erin McGurk, David Khachaturov",
       "keyword": "AI governance"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Show HN: ByAllo \u2013 the online bookstore that runs itself",
-      "summary": "4 points, 0 comments",
-      "url": "https://byallo.com/",
-      "published": "2026-05-04T21:01:14Z",
-      "authors": "averyintel",
-      "keyword": "red team"
-    },
-    {
-      "source": "arXiv",
-      "title": "PIIGuard: Mitigating PII Harvesting under Adversarial Sanitization",
-      "summary": "Browsing-enabled LLM assistants can fetch webpages and answer contact-seeking queries, creating a practical channel for scraping contact-style personally identifiable information (PII) from public pages. Many prior defenses are deployed at the model, service, or agent layer rathe",
-      "url": "https://arxiv.org/abs/2605.03129v1",
-      "published": "2026-05-04T20:13:22Z",
-      "authors": "Mingshuo Liu, Yiwei Zha, Min Chen",
-      "keyword": "prompt injection"
-    },
-    {
-      "source": "HackerNews",
-      "title": "SQL access to crypto market data, not just JSON",
-      "summary": "5 points, 0 comments",
-      "url": "https://news.ycombinator.com/item?id=48014124",
-      "published": "2026-05-04T19:58:17Z",
-      "authors": "knazim",
-      "keyword": "AI governance"
-    },
-    {
-      "source": "arXiv",
-      "title": "Revisiting JBShield: Breaking and Rebuilding Representation-Level Jailbreak Defenses",
-      "summary": "Defending large language models (LLMs) against jailbreak attacks, such as Greedy Coordinate Gradient (GCG), remains a challenge, particularly under adaptive threat models where an attacker directly targets the defense mechanism. JBShield, a recent jailbreak defense with a 0% atta",
-      "url": "https://arxiv.org/abs/2605.03095v1",
-      "published": "2026-05-04T19:17:50Z",
-      "authors": "Kemal Derya, Berk Sunar",
-      "keyword": "jailbreak"
-    },
-    {
-      "source": "arXiv",
-      "title": "ContextualJailbreak: Evolutionary Red-Teaming via Simulated Conversational Priming",
-      "summary": "Large language models (LLMs) remain vulnerable to jailbreak attacks that bypass safety alignment and elicit harmful responses. A growing body of work shows that contextual priming, where earlier turns covertly bias later replies, constitutes a powerful attack surface, with hand-c",
-      "url": "https://arxiv.org/abs/2605.02647v1",
-      "published": "2026-05-04T14:32:40Z",
-      "authors": "Mario Rodr\u00edguez B\u00e9jar, Francisco J. Cort\u00e9s-Delgado, S. Braghin",
-      "keyword": "red team"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Perfectly Aligning AI's Values with Humanity's Is Impossible",
-      "summary": "2 points, 1 comments",
-      "url": "https://spectrum.ieee.org/ai-alignment",
-      "published": "2026-05-04T14:17:38Z",
-      "authors": "oldnetguy",
-      "keyword": "alignment"
-    },
-    {
-      "source": "HackerNews",
-      "title": "The AI Governance Gap",
-      "summary": "1 points, 2 comments",
-      "url": "https://news.ycombinator.com/item?id=48008604",
-      "published": "2026-05-04T13:37:11Z",
-      "authors": "Qoris_AI2026",
-      "keyword": "AI governance"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Google Says Prompt Injection Moving from Theory into Real Abuse",
-      "summary": "3 points, 0 comments",
-      "url": "https://www.searchengineworld.com/google-says-prompt-injection-moving-from-theory-into-real-abuse",
-      "published": "2026-05-04T08:29:49Z",
-      "authors": "cromulent",
-      "keyword": "prompt injection"
-    },
-    {
-      "source": "HackerNews",
-      "title": "The Algebra of Hallucination",
-      "summary": "3 points, 0 comments",
-      "url": "https://news.ycombinator.com/item?id=48002886",
-      "published": "2026-05-03T23:52:29Z",
-      "authors": "invariantjason",
-      "keyword": "AI governance"
-    },
-    {
-      "source": "HackerNews",
-      "title": "Show HN: Optical Design and Simulation in Matlab",
-      "summary": "2 points, 0 comments",
-      "url": "https://www.mathworks.com/help/images/optical-system-design-and-analysis.html",
-      "published": "2026-05-03T23:01:15Z",
-      "authors": "ashishuthama",
-      "keyword": "red team"
-    },
-    {
-      "source": "HackerNews",
-      "title": "My favorite adversarial review prompt",
-      "summary": "3 points, 0 comments",
-      "url": "https://blog.fsck.com/2026/05/01/adversarial-review/",
-      "published": "2026-05-03T19:48:14Z",
-      "authors": "tie-in",
-      "keyword": "adversarial"
-    },
-    {
-      "source": "HackerNews",
-      "title": "The Sour Cat Jailbreak: just be open of what you want",
-      "summary": "3 points, 1 comments",
-      "url": "https://claude.ai/share/71cd0982-fa52-4b65-844d-68560cc43b36",
-      "published": "2026-05-03T15:48:28Z",
-      "authors": "pshirshov",
-      "keyword": "jailbreak"
-    },
-    {
-      "source": "HackerNews",
-      "title": "OpenAI: Auto-review of agent actions without synchronous human oversight",
-      "summary": "2 points, 0 comments",
-      "url": "https://alignment.openai.com/auto-review/",
-      "published": "2026-05-03T08:52:18Z",
-      "authors": "tosh",
-      "keyword": "alignment"
-    },
-    {
-      "source": "arXiv",
-      "title": "AI Safety as Control of Irreversibility: A Systems Framework for Decision-Energy and Sovereignty Boundaries",
-      "summary": "Recent AI systems compress the distance between capability growth and capability deployment. Earlier high-risk technologies were slowed by capital intensity, physical bottlenecks, organizational inertia, and specialized supply chains. By contrast, AI capabilities can be copied, i",
-      "url": "https://arxiv.org/abs/2605.01415v1",
-      "published": "2026-05-02T12:26:22Z",
-      "authors": "Wesley Shu, Peng Wei",
-      "keyword": "AI safety"
     }
   ]
 }
