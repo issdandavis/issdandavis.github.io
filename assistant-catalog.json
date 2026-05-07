@@ -1,6 +1,6 @@
 {
   "site": "https://aethermoore.com",
-  "version": "2026-04-11",
+  "version": "2026-05-07",
   "role": "Public sellable buckets and routing limits for the SCBE-AETHERMOORE assistant.",
   "public_products": [
     {
@@ -38,6 +38,24 @@
       "keywords": ["content", "spin", "publishing", "repurpose", "editorial", "marketing", "content engine", "blog", "social media content", "content pipeline", "cross-post"],
       "manual_url": "https://aethermoore.com/product-manual/content-spin-engine.html",
       "buy_url": "https://buy.stripe.com/5kQ5kE5Ca65V78I5iedby07"
+    },
+    {
+      "id": "training-bus-proof",
+      "name": "SCBE Training Bus Proof",
+      "type": "proof",
+      "description": "Latest public proof surface for the Operator Agent Bus, constrained-decoding gate checks, and receipt-backed training artifacts.",
+      "keywords": ["training bus", "operator bus", "agent bus", "gate proof", "25/25", "constrained decoding", "training proof", "latest training"],
+      "manual_url": "https://aethermoore.com/SCBE-AETHERMOORE/training-hub.html",
+      "buy_url": "https://aethermoore.com/SCBE-AETHERMOORE/training-hub.html"
+    },
+    {
+      "id": "buyer-delivery-proof",
+      "name": "Buyer Delivery Proof",
+      "type": "proof",
+      "description": "Public delivery readiness surface for paid packet rebuilds, buyer-only download URLs, support recovery, and non-open-source delivery separation.",
+      "keywords": ["delivery proof", "non open source", "paid packet", "buyer packet", "download url", "private delivery", "stripe delivery", "offer delivery"],
+      "manual_url": "https://aethermoore.com/product-manual/delivery-and-access.html",
+      "buy_url": "https://aethermoore.com/SCBE-AETHERMOORE/offers/index.html"
     },
     {
       "id": "red-team-service",

@@ -1,6 +1,6 @@
 {
   "site": "https://aethermoore.com",
-  "version": "2026-04-11",
+  "version": "2026-05-07",
   "role": "Deterministic routing map for site assistants and low-overhead operator flows.",
   "default_start": "https://aethermoore.com/assistant.html",
   "policy": {
@@ -52,6 +52,16 @@
       "name": "datasets",
       "url": "https://aethermoore.com/datasets.html",
       "purpose": "Training data marketplace — SFT packs, red team prompts, session transcripts."
+    },
+    {
+      "name": "training-bus",
+      "url": "https://aethermoore.com/SCBE-AETHERMOORE/training-hub.html",
+      "purpose": "Latest SCBE training proof surface — Operator Agent Bus, constrained-decoding gate results, and receipt-backed training artifacts."
+    },
+    {
+      "name": "delivery-proof",
+      "url": "https://aethermoore.com/SCBE-AETHERMOORE/offers/index.html",
+      "purpose": "Offer and buyer-delivery proof surface for paid packets, non-open download handling, and delivery readiness."
     }
   ],
   "routes": [
@@ -104,6 +114,16 @@
       "intent": "training_data",
       "keywords": ["dataset", "training data", "sft", "fine-tuning", "qlora", "download data"],
       "target": "https://aethermoore.com/datasets.html"
+    },
+    {
+      "intent": "training_bus_or_gate_proof",
+      "keywords": ["training bus", "operator bus", "agent bus", "gate proof", "25/25", "constrained decoding", "training proof", "latest training"],
+      "target": "https://aethermoore.com/SCBE-AETHERMOORE/training-hub.html"
+    },
+    {
+      "intent": "paid_delivery_proof",
+      "keywords": ["delivery proof", "non open source", "paid packet", "buyer packet", "download url", "private delivery", "stripe delivery", "offer delivery"],
+      "target": "https://aethermoore.com/SCBE-AETHERMOORE/offers/index.html"
     },
     {
       "intent": "restricted_or_gated",

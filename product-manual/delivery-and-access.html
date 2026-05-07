@@ -91,6 +91,25 @@
             <p>If a package is file-only, do not pretend it needs a key. If a package uses private or hosted access, do not bury the key in a generic message. State it directly in the delivery note.</p>
           </section>
 
+          <section class="callout success">
+            <h3>Non-open-source delivery check</h3>
+            <p>Public source stays on GitHub. Paid delivery packets stay outside the public site repo and should be sent through buyer-only links. Current package builds are generated locally from <code>python scripts/package_products.py</code> in the SCBE-AETHERMOORE repo, and Stripe fulfillment can point buyers at private URLs through <code>SCBE_TOOLKIT_DOWNLOAD_URL</code> and <code>SCBE_TRAINING_VAULT_DOWNLOAD_URL</code>.</p>
+          </section>
+
+          <section class="table-wrap">
+            <h3>Current customer delivery surfaces</h3>
+            <table>
+              <thead>
+                <tr><th>Surface</th><th>Customer purpose</th><th>Public link</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Training Bus proof</td><td>Shows the Operator Agent Bus and latest constrained-decoding gate result.</td><td><a href="/SCBE-AETHERMOORE/training-hub.html">Open proof</a></td></tr>
+                <tr><td>Offer delivery proof</td><td>Shows the package delivery readiness checks and buyer-packet path.</td><td><a href="/SCBE-AETHERMOORE/offers/index.html">Open offers</a></td></tr>
+                <tr><td>SCBE project manual</td><td>Documents buyer-only download URL configuration and recovery handling.</td><td><a href="/SCBE-AETHERMOORE/product-manual/delivery-and-access.html">Open SCBE manual</a></td></tr>
+              </tbody>
+            </table>
+          </section>
+
           <section>
             <h3>Universal buyer checklist</h3>
             <ol class="step-list">

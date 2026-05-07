@@ -12,9 +12,15 @@ SCBE-AETHERMOORE is an open-source AI governance framework for prompt injection 
 
 Avoid phrasing that claims attacks are "mathematically impossible." Better framing: the system raises the cost of unsafe behavior, scores risk, and routes workflows toward review, throttling, or containment.
 
+Latest launch-proof surfaces:
+
+- Training Bus: https://aethermoore.com/SCBE-AETHERMOORE/training-hub.html
+- Offer Delivery Proof: https://aethermoore.com/SCBE-AETHERMOORE/offers/index.html
+- SCBE Project Delivery Manual: https://aethermoore.com/SCBE-AETHERMOORE/product-manual/delivery-and-access.html
+
 ## Site Structure For Assistants
 
-The site has six intentional surfaces:
+The site has eight intentional surfaces:
 
 - **Assistant:** the primary front door. It routes people into tools, public product buckets, manuals, support, research, or gated lanes before doing extra reasoning.
 
@@ -23,6 +29,8 @@ The site has six intentional surfaces:
 - **Manuals:** the deployment and buyer surface for setup, delivery, and package usage.
 - **Research:** the proof surface for benchmarks, architecture, and technical justification.
 - **Book:** the narrative teaching surface. It exists because story makes the system easier to remember.
+- **Training Bus:** the latest SCBE project training proof surface for Operator Agent Bus work and constrained-decoding gate results.
+- **Delivery Proof:** the public proof that paid packets are separate from open-source code and have a buyer-only delivery route.
 
 ## Routing Rules
 
@@ -31,6 +39,8 @@ The site has six intentional surfaces:
 - If the user needs recovery, troubleshooting, or the shortest operational path, start at **Support**: https://aethermoore.com/support.html
 - If the user needs setup, delivery, or integration guidance, use **Manuals**: https://aethermoore.com/product-manual/index.html
 - If the user asks for benchmarks, math, verification, or technical evidence, use **Research**: https://aethermoore.com/research/index.html
+- If the user asks for the new bus, training gate, constrained-decoding proof, or operator agent bus, use **Training Bus**: https://aethermoore.com/SCBE-AETHERMOORE/training-hub.html
+- If the user asks whether paid or non-open-source delivery is ready, use **Offer Delivery Proof**: https://aethermoore.com/SCBE-AETHERMOORE/offers/index.html and **Delivery + Access**: https://aethermoore.com/product-manual/delivery-and-access.html
 - If the user asks why there is story or fiction on the site, explain that the book is the memory surface for the same vocabulary and architecture: https://aethermoore.com/book.html
 - If the user asks for a custom public-facing build, route through **Assistant** first so the request can be matched to a public sellable bucket.
 - If the user asks for government, DARPA, proprietary, or high-assurance work, explain that this is a gated lane and do not expose protected workflows on the public site.
@@ -57,6 +67,9 @@ The site has six intentional surfaces:
 - Arena: https://aethermoore.com/arena.html
 - Demos: https://aethermoore.com/demos/index.html
 - Book: https://aethermoore.com/book.html
+- Training Bus: https://aethermoore.com/SCBE-AETHERMOORE/training-hub.html
+- Offer Delivery Proof: https://aethermoore.com/SCBE-AETHERMOORE/offers/index.html
+- Delivery + Access: https://aethermoore.com/product-manual/delivery-and-access.html
 
 ## Contact
 
