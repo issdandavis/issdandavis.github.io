@@ -55,12 +55,12 @@
     },
     {
       "name": "training-bus",
-      "url": "https://aethermoore.com/SCBE-AETHERMOORE/training-hub.html",
+      "url": "https://aethermoore.com/training-bus.html",
       "purpose": "Latest SCBE training proof surface — Operator Agent Bus, constrained-decoding gate results, and receipt-backed training artifacts."
     },
     {
       "name": "delivery-proof",
-      "url": "https://aethermoore.com/SCBE-AETHERMOORE/offers/index.html",
+      "url": "https://aethermoore.com/delivery-proof.html",
       "purpose": "Offer and buyer-delivery proof surface for paid packets, non-open download handling, and delivery readiness."
     }
   ],
@@ -118,12 +118,12 @@
     {
       "intent": "training_bus_or_gate_proof",
       "keywords": ["training bus", "operator bus", "agent bus", "gate proof", "25/25", "constrained decoding", "training proof", "latest training"],
-      "target": "https://aethermoore.com/SCBE-AETHERMOORE/training-hub.html"
+      "target": "https://aethermoore.com/training-bus.html"
     },
     {
       "intent": "paid_delivery_proof",
       "keywords": ["delivery proof", "non open source", "paid packet", "buyer packet", "download url", "private delivery", "stripe delivery", "offer delivery"],
-      "target": "https://aethermoore.com/SCBE-AETHERMOORE/offers/index.html"
+      "target": "https://aethermoore.com/delivery-proof.html"
     },
     {
       "intent": "restricted_or_gated",
