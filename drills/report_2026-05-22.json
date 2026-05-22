@@ -1,0 +1,679 @@
+{
+  "patrol": {
+    "drill": "patrol",
+    "timestamp": "2026-05-22T07:07:08.288922+00:00",
+    "pages_checked": 94,
+    "links_ok": 97,
+    "links_broken": [
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#244d57574547644541504c4156494b4b5643454941570a474b49",
+        "status": 404,
+        "found_on": "https://aethermoore.com/arena.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#e8819b9b898ba8898d9c808d9a8587879a8f89858d9bc68b8785d79b9d8a828d8b9cd5bbabaaadcddad8a99b9b819b9c89869ccddad8a186999d819a91",
+        "status": 404,
+        "found_on": "https://aethermoore.com/assistant.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection",
+        "status": 404,
+        "found_on": "https://aethermoore.com/benchmark-kit.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#ee879d9d8f8dae8f8b9a868b9c8381819c898f838b9dc08d8183",
+        "status": 404,
+        "found_on": "https://aethermoore.com/blog.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#deb7adadbfbd9ebfbbaab6bbacb3b1b1acb9bfb3bbadf0bdb1b3",
+        "status": 404,
+        "found_on": "https://aethermoore.com/book.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#c8a1bbbba9ab88a9adbca0adbaa5a7a7baafa9a5adbbe6aba7a5f7bbbdaaa2adabbcf58bbdbbbca7a5edfaf8aba7a5b8a4a1a9a6abadedfaf8aebaa9a5adbfa7baa3",
+        "status": 404,
+        "found_on": "https://aethermoore.com/compliance.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#cea7bdbdafad8eafabbaa6abbca3a1a1bca9afa3abbde0ada1a3f1bdbbaca4abadbaf38da1a3bea2a7afa0adabebfcfebdada1bea7a0a9ebfcfeadafa2a2",
+        "status": 404,
+        "found_on": "https://aethermoore.com/compliance.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#167f65657775567773627e73647b79796471777b73653875797b",
+        "status": 404,
+        "found_on": "https://aethermoore.com/compliance.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#e48d97978587a48581908c8196898b8b968385898197ca878b89db9791868e818790d9a79197908b89c1d6d494968b8e818790c1d6d48d8a95918d969dc2868b809dd9ac819dc1d6d4ad97978587c1d6a7c1d4a5c1d4a5adc1d6d380c1d6d4888d8f81c1d6d4908bc1d6d4808d9787919797c1d6d485c1d6d4879197908b89c1d6d494968b8e818790cac1d4a5c1d4a5c9c1d6d4b38c8590c1d6d4adc1d6d389c1d6d486918d88808d8a83c1d7a5c1d4a5c9c1d6d4a7919696818a90c1d6d4979085878fc1d7a5c1d4a5c9c1d6d4b08d8981888d8a81c1d7a5c1d4a5c9c1d6d4a69180838190c1d6d496858a8381c1d7a5c1d4a5c1d4a5b08c858a8f97c1d6a7",
+        "status": 404,
+        "found_on": "https://aethermoore.com/contact.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#0d647e7e6c6e4d6c687965687f6062627f6a6c60687e236e6260",
+        "status": 404,
+        "found_on": "https://aethermoore.com/contact.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#016872726062416064756964736c6e6e7366606c64722f626e6c3e7274636b6462753c425924333146746073657360686d2433312c24333150746e756424333153647074647275",
+        "status": 404,
+        "found_on": "https://aethermoore.com/cx-guardrail.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#49203a3a282a09282c3d212c3b2426263b2e28242c3a672a2624763a3c2b232c2a3d740a116c7b790e3c283b2d3b2820256c7b79646c7b791a3d283b3d2c3b",
+        "status": 404,
+        "found_on": "https://aethermoore.com/cx-guardrail.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#016872726062416064756964736c6e6e7366606c64722f626e6c3e7274636b6462753c425924333146746073657360686d2433312c24333146736e767569",
+        "status": 404,
+        "found_on": "https://aethermoore.com/cx-guardrail.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#0c657f7f6d6f4c6d697864697e6163637e6b6d61697f226f6361337f796e66696f78314f54293e3c4b796d7e687e6d6560293e3c21293e3c496278697e7c7e657f69",
+        "status": 404,
+        "found_on": "https://aethermoore.com/cx-guardrail.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#f79e84849694b79692839f92859a98988590969a9284d994989ac88482959d929483cab4afd2c5c7b08296859385969e9bd2c5c7dad2c5c7b39e8494988192858ed2c5c7b4969b9bd19598938ecabf9ed2c5c7dadad2c5c7bed093d2c5c79b9e9c92d2c5c78398d2c5c79598989cd2c5c796d2c5c7c4c7da9a9e99828392d2c5c7939e8494988192858ed2c5c794969b9bd2c5c79695988283d2c5c7839f92d2c5c7b4afd2c5c7a59291829993d2c5c7b08296859385969e9bd9d2c7b6d2c7b6b88285d2c5c7b4afd2c5c781989b829a92d2c4b6d2c5c7d2c7b6b88285d2c5c794828585929983d2c5c7bbbbbad2c4b6d2c5c7d2c7b6a09f9683d2c5c78092d08592d2c5c7809885859e9293d2c5c79695988283d2c4b6d2c5c7d2c7b6d2c7b6a39f96999c84d9",
+        "status": 404,
+        "found_on": "https://aethermoore.com/cx-guardrail.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#92fbe1e1f3f1d2f3f7e6faf7e0fffdfde0f5f3fff7e1bcf1fdffade1e7f0f8f7f1e6afd1cab7a0a2d5e7f3e0f6e0f3fbfeb7a0a2bfb7a0a2d4e0f7f7b7a0a2c6e0fbf3fe",
+        "status": 404,
+        "found_on": "https://aethermoore.com/cx-guardrail.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#630a10100200230206170b06110e0c0c1104020e06104d000c0e",
+        "status": 404,
+        "found_on": "https://aethermoore.com/cx-guardrail.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#9ef7ededfffddefffbeaf6fbecf3f1f1ecf9fff3fbedb0fdf1f3a1edebfcf4fbfdeaa3ceebecfdf6ffedfbbbaddfbbacaecddddcdbbbacaed9f1e8fbecf0fff0fdfbbbacaecdd8cabbacaecefffdf5bbacaebbaca6bbacaaa7a7bbaca7b8fcf1fae7a3d7bbacaee9f1ebf2fabbacaef2f7f5fbbbacaeeaf1bbacaeeeebecfdf6ffedfbbbacaeeaf6fbbbacaecddddcdbbbacaed9f1e8fbecf0fff0fdfbbbacaecdd8cabbacaecefffdf5bbacaef8f1ecbbacaebbacaaa7a7b0bbaedfbbaedfcef2fbffedfbbbacaeedfbf0fabbacaef3fbbbacaeeeffe7f3fbf0eabbacaef7f0edeaecebfdeaf7f1f0edb0",
+        "status": 404,
+        "found_on": "https://aethermoore.com/datasets.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#523b21213331123337263a37203f3d3d2035333f37217c313d3f6d212730383731266f022720313a3321377761137760620037367760620637333f776062143d20262037212177606277606a77606663666b77606b74303d362b6f1b776062253d273e367760623e3b3937776062263d776062222720313a332137776062263a377760620037367760620637333f776062143d20262037212177606236332633213726776062343d2077606277606663666b7c776213776213023e3733213777606221373c367760623f3777606222332b3f373c267760623b3c2126202731263b3d3c217c",
+        "status": 404,
+        "found_on": "https://aethermoore.com/datasets.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#a2cbd1d1c3c1e2c3c7d6cac7d0cfcdcdd0c5c3cfc7d18cc1cdcf9dd1d7c0c8c7c1d69ff2d7d0c1cac3d1c78791e3879092f1cbda879092f6cdccc5d7c7d1879092e1cdcccec3ccc5879092f2c3c1c987909287909a879096959b87909b84c0cdc6db9feb879092d5cdd7cec6879092cecbc9c7879092d6cd879092d2d7d0c1cac3d1c7879092d6cac7879092f1cbda879092f6cdccc5d7c7d1879092e1cdcccec3ccc58790928790e0879092f6cdc9c7cccbd8c3d6cbcdcc879092f2c3c1c9879092c4cdd0879092879096959b8c8792e38792e3f2cec7c3d1c7879092d1c7ccc6879092cfc7879092d2c3dbcfc7ccd6879092cbccd1d6d0d7c1d6cbcdccd18c",
+        "status": 404,
+        "found_on": "https://aethermoore.com/datasets.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#5a3329293b391a3b3f2e323f28373535283d3b373f297439353765292f38303f392e670a2f2839323b293f7f691b7f686a092a33283b362c3f28293f7f686a093f29293335347f686a0e283b34293928332a2e297f686a7f68627f686e6e637f68637c38353e2367137f686a2d352f363e7f686a3633313f7f686a2e357f686a2a2f2839323b293f7f686a2e323f7f686a092a33283b362c3f28293f7f686a093f29293335347f686a0e283b34293928332a2e297f686a3c35287f686a7f686e6e63747f6a1b7f6a1b0a363f3b293f7f686a293f343e7f686a373f7f686a2a3b23373f342e7f686a3334292e282f392e3335342974",
+        "status": 404,
+        "found_on": "https://aethermoore.com/datasets.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#d6bfa5a5b7b596b7b3a2beb3a4bbb9b9a4b1b7bbb3a5f8b5b9bbe9a5a3b4bcb3b5a2eb86a3a4b5beb7a5b3f3e597f3e4e682beb3b9a4aff3e4e692b9b5a3bbb3b8a2a5f3e4e694a3b8b2bab3f3e4e6f3e4eef3e4e2e7e4eff3e4eff0b4b9b2afeb9ff3e4e6a1b9a3bab2f3e4e6babfbdb3f3e4e6a2b9f3e4e6a6a3a4b5beb7a5b3f3e4e6a2beb3f3e4e682beb3b9a4aff3e4e692b9b5a3bbb3b8a2a5f3e4e694a3b8b2bab3f3e4e6b0b9a4f3e4e6f3e4e2e7e4eff8f3e697f3e69786bab3b7a5b3f3e4e6a5b3b8b2f3e4e6bbb3f3e4e6a6b7afbbb3b8a2f3e4e6bfb8a5a2a4a3b5a2bfb9b8a5f8",
+        "status": 404,
+        "found_on": "https://aethermoore.com/datasets.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#7a1309091b193a1b1f0e121f08171515081d1b171f095419151745090f18101f190e472a0f0819121b091f5f493b5f484a2e121f5f484a3c0f16165f484a3b08091f141b165f484a5f48425f484e4943435f48435c18151e0347335f484a0d150f161e5f484a1613111f5f484a0e155f484a0a0f0819121b091f5f484a2e121f5f484a3c0f16165f484a3b08091f141b165f484a180f141e161f5f484a1c15085f484a5f484e494343545f4a3b5f4a3b2a161f1b091f5f484a091f141e5f484a171f5f484a0a1b03171f140e5f484a1314090e080f190e1315140954",
+        "status": 404,
+        "found_on": "https://aethermoore.com/datasets.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#0d647e7e6c6e4d6c687965687f6062627f6a6c60687e236e6260327e786f67686e79304e787e796260283f3d496c796c7e6879283f3d5f687c78687e792b6f626974304564283f4e283d4c283d4c44283f3d6c60283f3d646379687f687e796869283f3d6463283f3d6c283f3d6e787e796260283f3d797f6c646364636a283f3d696c796c7e687923283d4c283d4c4062696861283f3d6c7f6e656479686e79787f68283e4c283f3d283d4c4962606c6463283e4c283f3d283d4c4b627f606c79283f3d7f687c78647f68606863797e283e4c283f3d283d4c487e7964606c796869283f3d7e647768283e4c283f3d283d4c283d4c5d61686c7e68283f3d7e686369283f3d6068283f3d6c283f3d7c7862796823",
+        "status": 404,
+        "found_on": "https://aethermoore.com/datasets.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#8fe6fcfceeeccfeeeafbe7eafde2e0e0fde8eee2eafca1ece0e2",
+        "status": 404,
+        "found_on": "https://aethermoore.com/datasets.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#1a7369697b795a7b7f6e727f68777575687d7b777f693479757725696f78707f796e275f746e7f686a6873697f3f282a6979756a73747d3f282a797b76763c78757e632752733f28593f2a5b3f2a5b533f282d7e3f282a7673717f3f282a6e753f282a6979727f7e6f767f3f282a7b3f282a292a377773746f6e7f3f282a6979756a73747d3f282a797b76763f282a7c75683f282a7b743f282a7f746e7f686a6873697f3f282a7f747d7b7d7f777f746e343f2a5b3f2a5b5975776a7b74633f295b3f282a3f2a5b57757e7f76693f282a73743f282a6a68757e6f796e7375743f295b3f282a3f2a5b487f7d6f767b6e7568633f282a7c687b777f6d7568713f2822693f28233f295b3f282a3f2a5b4e73777f7673747f3f295b3f282a3f2a5b3f2a5b4e727b74716934",
+        "status": 404,
+        "found_on": "https://aethermoore.com/enterprise.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#e48d97978587a48581908c8196898b8b968385898197ca878b89",
+        "status": 404,
+        "found_on": "https://aethermoore.com/enterprise.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#95fce6e6f4f6d5f4f0e1fdf0e7f8fafae7f2f4f8f0e6bbf6faf8aae6e0f7fff0f6e1a8c7f0e5f9ecb0a7a5f3e7faf8b0a7a5ecfae0e7b0a7a5fae0e1e7f0f4f6fd",
+        "status": 404,
+        "found_on": "https://aethermoore.com/hello.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#aac3d9d9cbc9eacbcfdec2cfd8c7c5c5d8cdcbc7cfd984c9c5c795d9dfc8c0cfc9de97e9f28f989aeddfcbd8ced8cbc3c68f989acec3d9c9c5dccfd8d38f989ac9cbc6c68cc8c5ced397e2cfd38f989ae3d9d9cbc98f98e98f9aeb8f9aebe38f989dc78f989ac3c4decfd8cfd9decfce8f989ac3c48f989acec3d9c9dfd9d9c3c4cd8f989adec2cf8f989ae9f28f989af8cfccdfc4ce8f989aeddfcbd8ced8cbc3c6848f989ae2cfd8cf8f989dd98f989acb8f989ac8c3de8f989acbc8c5dfde8f989ac5dfd88f989ad9cfdedfda8f99eb8f9aeb8f9aeb878f989ae9c5c7dacbc4d38f99eb8f989a8f9aeb878f989ae9dfd8d8cfc4de8f989ac9c2cbdec8c5de8f99eb8f989a8f9aeb878f989afcc5c6dfc7cf8f99eb8f989a8f9aeb878f989ae7cbc3c48f989ac9c5c4c9cfd8c48f99eb8f989a8f9aeb8f9aebfec2cbc4c1d98f98e9",
+        "status": 404,
+        "found_on": "https://aethermoore.com/hello.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#bcd5cfcfdddffcddd9c8d4d9ced1d3d3cedbddd1d9cf92dfd3d183cfc9ded6d9dfc881f5eff3998e8c888e8c8c8d998e8cfdc9d8d5c8998e8ceed9ddd8d5d2d9cfcf998e8cffddd0d09aded3d8c581f4d9c5998e8cf5cfcfdddf998eff998cfd998cfdf5998e8bd8998e8cd0d5d7d9998e8cc8d3998e8cd8d5cfdfc9cfcf998e8cf5eff3998e8c888e8c8c8d998e8cd9cad5d8d9d2dfd9998e8cdad3ce998e8cd3c9ce998e8cfdf5998e8cd8d9ccd0d3c5d1d9d2c8cf92998cfd998cfd91998e8cf3cedbddd2d5c6ddc8d5d3d2998ffd998e8c998cfd91998e8cf0f0f1cf998e8cdfc9ceced9d2c8d0c5998e8cd8d9ccd0d3c5d9d8998ffd998e8c998cfd91998e8ceed9dbc9d0ddc8d3cec5998e8cccced9cfcfc9ced9998e8ccbd9998e8bced9998e8cdadddfd5d2db998ffd998e8c998cfd91998e8ce8d5d1d9d0d5d2d9998ffd998e8c998cfd998cfde8d4ddd2d7cf998eff",
+        "status": 404,
+        "found_on": "https://aethermoore.com/hello.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#7c150f0f1d1f3c1d190814190e1113130e1b1d11190f521f1311430f091e16191f08412e1918594e4c28191d11594e4c2f1f130c15121b594e4c3f1d10105a1e13180541341905594e4c350f0f1d1f594e3f594c3d594c3d35594e4b18594e4c10151719594e4c0813594e4c18150f1f090f0f594e4c1d594e4c0e1918594e4c08191d11594e4c19121b1d1b1911191208594e4c1a130e594e4c13090e594e4c303031594e4c1d0c0c10151f1d0815131252594c3d594c3d51594e4c3f13110c1d1205594f3d594e4c594c3d51594e4c303031594e4c090f19594e4c1f1d0f19594f3d594e4c594c3d51594e4c311d1512594e4c0e150f17594e4c1f13121f190e12594f3d594e4c594c3d51594e4c2f081d1b15121b594e4c19120a150e131211191208594e4c1d0a1d15101d1e1019594f3a594f3d594e4c594c3d594c3d28141d12170f594e3f",
+        "status": 404,
+        "found_on": "https://aethermoore.com/hello.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#741d07071517341511001c1106191b1b0613151911075a171b19",
+        "status": 404,
+        "found_on": "https://aethermoore.com/hello.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#08617b7b696b48696d7c606d7a6567677a6f69656d7b266b6765",
+        "status": 404,
+        "found_on": "https://aethermoore.com/ideas.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#2c455f5f4d4f6c4d495844495e4143435e4b4d41495f024f4341135f594e46494f58116548494d091e1c4a435e091e1c584449091e1c6548494d091e1c7f5c4d4f49",
+        "status": 404,
+        "found_on": "https://aethermoore.com/ideas.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#95fce6e6f4f6d5f4f0e1fdf0e7f8fafae7f2f4f8f0e6bbf6faf8",
+        "status": 404,
+        "found_on": "https://aethermoore.com/ideas.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#39504a4a585a79585c4d515c4b5456564b5e58545c4a175a5654064a4c5b535c5a4d047a4c4a4d56541c0b096a56554c4d5056571c0b097057484c504b40",
+        "status": 404,
+        "found_on": "https://aethermoore.com/",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#7d140e0e1c1e3d1c180915180f1012120f1a1c10180e531e1210",
+        "status": 404,
+        "found_on": "https://aethermoore.com/",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#90f9e3e3f1f3d0f1f5e4f8f5e2fdffffe2f7f1fdf5e3bef3fffd",
+        "status": 404,
+        "found_on": "https://aethermoore.com/",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#5d342e2e3c3e1d3c382935382f3032322f3a3c30382e733e3230622e283f37383e29601c28393429786f6d0f383c393433382e2e786f6d0f382b34382a786f6d0f382c28382e297b3f323924601534786f1e786d1c786d1c14786f6a39786f6d31343638786f6d2932786f6d2e3e353839283138786f6d3c33786f6d3c28393429786f6d2f383c393433382e2e786f6d2f382b34382a786f6d3b322f786f6d32282f786f6d1c14786f6d39382d3132243038332973786d1c786d1c1e32302d3c3324786e1c786f6d786d1c10323938312e786f6d3433786f6d2d2f3239283e29343233786e1c786f6d786d1c0f383a28313c29322f24786f6d3b2f3c30382a322f36786f652e786f64786e1c786f6d786d1c0934303831343338786e1c786f6d786d1c786d1c09353c33362e73",
+        "status": 404,
+        "found_on": "https://aethermoore.com/iso-42001.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#bbd2c8c8dad8fbdadecfd3dec9d6d4d4c9dcdad6dec895d8d4d684c8ced9d1ded8cf86f2d5d2cfd2dad79e898bfacedfd2cf9e898b9e89839e898f8e8bf09e89829e898bf2d5caced2c9c29dd9d4dfc286f3d29e89f89e8bfa9e8bfaf29e898cd69e898bd2d5cfdec9dec8cfdedf9e898bd2d59e898bcfd3de9e898bf2d5d2cfd2dad79e898bfacedfd2cf9e898bded5dcdadcded6ded5cf9e898b9e89839e898f8e8b9e89f88b8b8b9e898bd4d5de96cfd2d6de9e8982959e8bfa9e8bfaf8d4d6cbdad5c29e88fa9e898b9e8bfaf6d4dfded79e8983c89e89829e88fa9e898b9e8bfaefdac9dcdecf9e898bddc9dad6deccd4c9d09e88fa9e898b9e8bfaefd2d6ded7d2d5de9e88fa9e898b9e8bfa9e8bfaebd7dedac8de9e898bc8ded5df9e898bd5dec3cf9e898bc8cfdecbc895",
+        "status": 404,
+        "found_on": "https://aethermoore.com/iso-42001.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#1a7369697b795a7b7f6e727f68777575687d7b777f693479757725696f78707f796e275b74746f7b763f282a4a68757d687b773f282a3f28223f282e2b2a2a513f285c63683f28233f282a53746b6f7368633c78757e632752733f28593f2a5b3f2a5b533f282d773f282a73746e7f687f696e7f7e3f282a73743f282a6e727f3f282a5b74746f7b763f282a4a68757d687b773f282a7f747d7b7d7f777f746e3f282a3f28223f282e2b2a2a3f28592a2a2a3f285c637f7b683f2823343f2a5b3f2a5b5975776a7b74633f295b3f282a3f2a5b57757e7f763f2822693f28233f295b3f282a3f2a5b4e7b687d7f6e3f282a7c687b777f6d7568713f295b3f282a3f2a5b4e73777f7673747f3f295b3f282a3f2a5b3f2a5b4a767f7b697f3f282a697f747e3f282a747f626e3f282a696e7f6a6934",
+        "status": 404,
+        "found_on": "https://aethermoore.com/iso-42001.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#0a6379796b694a6b6f7e626f78676565786d6b676f792469656735797f68606f697e374f647e6f787a7863796f2f383a4f646d6b6d6f676f647e2f383a2f38322f383e3b3f3a412f384c73782f38332f383a43647b7f6378732c68656e733742632f38492f3a4b2f3a4b432f383d672f383a63647e6f786f797e6f6e2f383a63642f383a7e626f2f383a4f647e6f787a7863796f2f383a6f646d6b6d6f676f647e2f383a2f38322f383e3b3f3a2f38493a3a3a2f384c736f6b782f3833242f3a4b2f3a4b4965677a6b64732f394b2f383a2f3a4b47656e6f662f3832792f38332f394b2f383a2f3a4b5e6b786d6f7e2f383a6c786b676f7d6578612f394b2f383a2f3a4b5e63676f6663646f2f394b2f383a2f3a4b2f3a4b5a666f6b796f2f383a796f646e2f383a646f727e2f383a797e6f7a7924",
+        "status": 404,
+        "found_on": "https://aethermoore.com/iso-42001.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#711802021012311014051914031c1e1e0316101c14025f121e1c4e0204131b1412054c42415c3c181f040514544341300415180554434123141015181f14020254434132101d1d57131e15084c391854433254413054413038544346155443411d181a14544341051e5443410212191415041d145443411054434142415c1c181f040514544341100415180554434103141015181f14020254434112101d1d5f544130544130321e1c01101f08544230544341544130231e1d145442305443415441303c1e15141d02544341181f54434101031e15041205181e1f544230544341544130231416041d10051e03085443411703101c14061e031a54434902544348544341181f54434102121e011454423054434154413021031417140303141554434105181c14025442305443415441305441302519101f1a025f",
+        "status": 404,
+        "found_on": "https://aethermoore.com/iso-42001.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#48213b3b292b08292d3c202d3a2527273a2f29252d3b662b2725",
+        "status": 404,
+        "found_on": "https://aethermoore.com/iso-42001.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#3a5349495b597a5b5f4e525f48575555485d5b575f491459555705494f58505f594e07685f4b4f5f494e1f097b1f080a697c6e1f080a6a5b59511f080a4c081f080a127e485b5c4e13",
+        "status": 404,
+        "found_on": "https://aethermoore.com/members/exclusive-datasets.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#513822223032113034253934233c3e3e2336303c34227f323e3c6e2224333b3432256c03342024342225746210746361153823343225383e3f303d7463611e273423233835347463610130323a",
+        "status": 404,
+        "found_on": "https://aethermoore.com/members/exclusive-datasets.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#d6bfa5a5b7b596b7b3a2beb3a4bbb9b9a4b1b7bbb3a5f8b5b9bbe9a5a3b4bcb3b5a2eb84b3a7a3b3a5a2f3e597f3e4e69f8599f3e4e6e2e4e6e6e7f3e4e69bb7a6a6bfb8b1f3e4e695b9a4a6a3a5",
+        "status": 404,
+        "found_on": "https://aethermoore.com/members/exclusive-datasets.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#91f8e2e2f0f2d1f0f4e5f9f4e3fcfefee3f6f0fcf4e2bff2fefc",
+        "status": 404,
+        "found_on": "https://aethermoore.com/members/index.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#9cf5efeffdffdcfdf9e8f4f9eef1f3f3eefbfdf1f9efb2fff3f1",
+        "status": 404,
+        "found_on": "https://aethermoore.com/miracle.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#513822223032113034253934233c3e3e2336303c34227f323e3c6e2224333b3432256c1723343474636118021e7463616563616160746361102435382574636103343035383f34222274636103342738342677333e35286c1938746361182222303274631274611074611018746366357463613d383a34746361307463613723343474636167617c3c383f242534746361302435382574636123343035383f3422227463612334273834267f7461107461107c7463611e2336303f382b3025383e3f7462107463617461107c746361033e3d347462107463617461107c746361033436243d30253e2328746361212334222224233474636126347463662334746361373032383f367463617918021e7463616563616160746312746361020374636160607c6674631274636114047463611018746361103225746312746361342532787462107463617461107c74636112242323343f257463611d1d1c7463613534213d3e283c343f25227462107463617461107461100539303f3a22746312",
+        "status": 404,
+        "found_on": "https://aethermoore.com/pilot.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#bdd4cecedcdefddcd8c9d5d8cfd0d2d2cfdadcd0d8ce93ded2d082cec8dfd7d8dec980edd4d1d2c9988f8dfccdcdd1d4dedcc9d4d2d3988f8d90988f8dfee5988f8dfac8dccfd9cfdcd4d19bdfd2d9c480f5d4988f8df4cecedcde988ffe988dfc988dfcfccdcdd1c4d4d3da988f8ddbd2cf988f8dc9d5d8988f8ddbcfd8d8988f8dfee5988f8dfac8dccfd9cfdcd4d1988f8dcdd4d1d2c993988dfc988dfc90988f8dfed2d0cddcd3c4988efc988f8d988dfc90988f8dead5dcc9988f8dcad8988f8acfd8988f8dced5d4cdcdd4d3da988efc988f8d988dfc90988f8df1f1f0988f8dcad8988f8acfd8988f8dc8ced4d3da988efc988f8d95f2cdd8d3fcf4988ffbfcd3c9d5cfd2cdd4de988ffbd1d2dedcd1988ffbd2c9d5d8cf94988f8d988dfc90988f8dfec8cfcfd8d3c9988f8dcec8cdcdd2cfc9988f8dcbd2d1c8d0d8988f8d95d0d8cecedcdad8ce988ffbd0d294988efc988f8d988dfc90988f8dffd4dadad8cec9988f8dcdd2d1d4dec4988f8dcfd4ced6988f8dded2d3ded8cfd3988efc988f8d988dfc90988f8dfedcd3988f8dded2d0d0d4c9988f8dc9d2988f8ddc988f8d8e8d90d9dcc4988f8ddcd3d9988f8d848d90d9dcc4988f8ddbd8d8d9dfdcded6988f8ddedcd1d1988efc988f8de4d8ce988f8d988ffb988f8df3d2988dfc90988f8df2f6988f8dcad4c9d5988f8ddcd3d2d3c4d0d4c7d8d9988f8ddedcced8988f8dcec9c8d9c4988efc988f8de4d8ce988f8d988ffb988f8df3d2988dfc988dfce9d5dcd3d6ce988ffe",
+        "status": 404,
+        "found_on": "https://aethermoore.com/pilot.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#711802021012311014051914031c1e1e0316101c14025f121e1c4e0204131b1412054c21181d1e055443413001011d18121005181e1f5443415c5443412314155443412514101c57131e15084c391854434138020210125443325441305441303001011d08181f16544341171e03544341051914544341170314145443412314155443412514101c54434101181d1e055f5441305441305c544341321e1c01101f085442305443415441305c54434121031e150412055443411314181f165443410514020514155442305443415441305c5443413d3d3c544341100312191805141205040314544230544341591518031412055443413021385443372330365443371016141f055443371e05191403585443415441305c54434122051016181f16544341141f0718031e1f1c141f05544341100710181d10131d145442375443412814025443415443375443413f1e5441305c5443413c10181f544341051903141005544341121e1f1214031f025442305443415441305c54434132101f5443410218161f5443413f35305442375443412814025443415443375443413f1e5441305c5443413e3a54434106180519544341101f1e1f081c180b141554434117181f15181f16025443410104131d18121005181e1f5442375443412814025443415443375443413f1e5441305441302519101f1a02544332",
+        "status": 404,
+        "found_on": "https://aethermoore.com/pilot.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#2f465c5c4e4c6f4e4a5b474a5d4240405d484e424a5c014c4042",
+        "status": 404,
+        "found_on": "https://aethermoore.com/pilot.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#84edf7f7e5e7c4e5e1f0ece1f6e9ebebf6e3e5e9e1f7aae7ebe9",
+        "status": 404,
+        "found_on": "https://aethermoore.com/pilot.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#e78e94948684a78682938f82958a88889580868a8294c984888ad89492858d828493daa4929493888ac2d5d79795888d828493c2d5d78e8996928e959e",
+        "status": 404,
+        "found_on": "https://aethermoore.com/pricing.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#c4adb7b7a5a784a5a1b0aca1b6a9ababb6a3a5a9a1b7eaa7aba9",
+        "status": 404,
+        "found_on": "https://aethermoore.com/pricing.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#ceafa78eafabbaa6abbca3a1a1bcabe0ada1a3f1bdbbaca4abadbaf39d8d8c8bebfcfe9eafada5afa9abebfcfe9dbbbebea1bcba",
+        "status": 404,
+        "found_on": "https://aethermoore.com/product-manual/ai-governance-toolkit.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#c3a2aa83a2a6b7aba6b1aeacacb1a6eda0acaefcb0b6a1a9a6a0b7fe90808186e6f1f393a2a0a8a2a4a6e6f1f390b6b3b3acb1b7",
+        "status": 404,
+        "found_on": "https://aethermoore.com/product-manual/content-spin-engine.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#a3c2cae3c2c6d7cbc6d1ceccccd1c68dc0ccce9cd0d6c1c9c6c0d79ef0e0e1e6869193e7c6cfcad5c6d1da869193f0d6d3d3ccd1d7",
+        "status": 404,
+        "found_on": "https://aethermoore.com/product-manual/delivery-and-access.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#54353d143531203c3126393b3b26317a373b396b2721363e31372069071716117166641031383d2231262d7166641d27272131",
+        "status": 404,
+        "found_on": "https://aethermoore.com/product-manual/delivery-and-access.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#c0a1a980a1a5b4a8a5b2adafafb2a5eea3afadffb3b5a2aaa5a3b4fd93838285e5f2f081a3a3a5b3b3e5f2f08ba5b9e5f2f088a5acb0",
+        "status": 404,
+        "found_on": "https://aethermoore.com/product-manual/delivery-and-access.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#26474f664743524e43544b494954430845494b195553444c4345521b756564630314167647454d47414303141675535656495452",
+        "status": 404,
+        "found_on": "https://aethermoore.com/product-manual/delivery-and-access.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#701119301115041815021d1f1f02155e131f1d4f0305121a1513044d2333323555424020021f14051304554240230500001f0204",
+        "status": 404,
+        "found_on": "https://aethermoore.com/product-manual/delivery-and-access.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#e5848ca58480918d8097888a8a9780cb868a88da9690878f808691d8b6a6a7a0c0d7d5b584868e848280c0d7d5b69095958a9791",
+        "status": 404,
+        "found_on": "https://aethermoore.com/product-manual/hydra-agent-templates.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#f4959db49591809c9186999b9b8691da979b99cb8781969e919780c9a7b7b6b1d1c6c4a495979f959391d1c6c4a78184849b8680",
+        "status": 404,
+        "found_on": "https://aethermoore.com/product-manual/index.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#67060e270602130f02150a080815024904080a581412050d0204135a3424252242555723020b0e1102151e4255572e14141202",
+        "status": 404,
+        "found_on": "https://aethermoore.com/product-manual/index.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#711018311014051914031c1e1e03145f121e1c4e0204131b1412054c2232333454434121031e15041205544341220401011e0305",
+        "status": 404,
+        "found_on": "https://aethermoore.com/product-manual/index.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#1d7c745d7c786975786f7072726f78337e7270226e687f77787e69204e5e5f58382f2d4d7c7e767c7a78382f2d4e686d6d726f69",
+        "status": 404,
+        "found_on": "https://aethermoore.com/product-manual/n8n-workflow-pack.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#305159705155445855425d5f5f42551e535f5d0f4345525a5553440d63737275150200644251595e595e571502006651455c44150200634540405f4244",
+        "status": 404,
+        "found_on": "https://aethermoore.com/product-manual/training-vault.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#24454d644541504c4156494b4b56410a474b491b5751464e41475019776766610116146041484d5241565d0116146d57575141",
+        "status": 404,
+        "found_on": "https://aethermoore.com/product-manual/user-guide.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#cfaea68faeaabba7aabda2a0a0bdaae1aca0a2f0bcbaada5aaacbbf29c8c8d8aeafdff9faeaca4aea8aaeafdff9cbabfbfa0bdbb",
+        "status": 404,
+        "found_on": "https://aethermoore.com/product-manual/user-guide.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#3a5b537a5b5f4e525f48575555485f1459555705494f58505f594e076979787f1f080a6a48555e4f594e1f080a694f4a4a55484e",
+        "status": 404,
+        "found_on": "https://aethermoore.com/product-manual/user-guide.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#325b41415351725357465a57405f5d5d4055535f57411c515d5f",
+        "status": 404,
+        "found_on": "https://aethermoore.com/profile.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#5a3329293b391a3b3f2e323f28373535283d3b373f297439353765292f38303f392e67083f3e7f686a0e3f3b377f686a1f343d3b3d3f373f342e7f686a777f686a0939352a33343d7f686a193b36367c38353e236712337f68197f6a1b7f6a1b137f686a2d352f363e7f686a3633313f7f686a2e357f686a383535317f686a3b7f686a283f3e7f686a2e3f3b377f686a2939352a33343d7f686a393b3636747f6a1b7f6a1b1935372a3b34237f691b7f686a7f6a1b1b137f686a2a28353e2f392e7f691b7f686a7f6a1b1e3f2a363523373f342e7f686a292e3b3d3f7f691b7f686a7f6a1b0a283f3c3f28283f3e7f686a2e333f287f691b7f686a7f6a1b7f6a1b0e323b34312974",
+        "status": 404,
+        "found_on": "https://aethermoore.com/red-team.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#355c46465456755450415d5047585a5a4752545850461b565a580a4640575f50564108675051100705615054581007051810070564405c565e1007056656545b10070510070d007e10070c13575a514c087d5c1007761005741005747c10070542545b41100705415a100705575a5a5e1007055410070564405c565e1007056656545b100705505b5254525058505b411b100574100574765a5845545b4c100674100705100574747c10070545475a51405641100674100705100574705b51455a5c5b41100705414c4550100674100705100574100574615d545b5e461b",
+        "status": 404,
+        "found_on": "https://aethermoore.com/red-team.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#e58c96968486a58480918d8097888a8a978284888096cb868a88da9690878f808691d8b78081c0d7d5b1808488c0d7d5c8c0d7d5a1808095c0d7d5a08b8284828088808b91c0d7d5c0d7ddd7d0aec0d7dcc3878a819cd8ad8cc0d7a6c0d5a4c0d5a4acc0d7d592848b91c0d7d5918ac0d7d5878a8a8ec0d7d584c0d7d5a1808095c0d7d5a08b8284828088808b91cbc0d5a4c0d5a4a68a8895848b9cc0d6a4c0d7d5c0d5a4a4acc0d7d595978a8190869196c0d6a4c0d7d5c0d5a4b18d97808491c0d7d5888a818089c0d7d5838a869096c0d6a4c0d7d5c0d5a4c0d5a4b18d848b8e96cb",
+        "status": 404,
+        "found_on": "https://aethermoore.com/red-team.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#d3baa0a0b2b093b2b6a7bbb6a1bebcbca1b4b2beb6a0fdb0bcbeeca0a6b1b9b6b0a7ee81b6b7f6e1e387b6b2bef6e1e3fef6e1e382a6b2a1a7b6a1bfaaf6e1e381b6a7b2babdb6a1f6e1e3f6e1ebe6e398f6e1eaf5b1bcb7aaee9bbaf6e190f6e392f6e3929af6e1e3a4b2bda7f6e1e3a7bcf6e1e3a0b6a7f6e1e3a6a3f6e1e3b2f6e1e382a6b2a1a7b6a1bfaaf6e1e381b6a7b2babdb6a1fdf6e392f6e39290bcbea3b2bdaaf6e092f6e1e3f6e392929af6e1e3a0a6a1b5b2b0b6a0f6e092f6e1e3f6e39283a1b6b5b6a1a1b6b7f6e1e3a0a7b2a1a7f6e092f6e1e3f6e392f6e39287bbb2bdb8a0fd",
+        "status": 404,
+        "found_on": "https://aethermoore.com/red-team.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#a5ccd6d6c4c6e5c4c0d1cdc0d7c8cacad7c2c4c8c0d68bc6cac89ad6d0c7cfc0c6d198f7c0c1809795f1c0c4c8809795f6c6cad5cccbc2809795e6c4c9c983c7cac1dc98edcc8097e68095e48095e4ec809795d2cad0c9c1809795c9cccec0809795d1ca809795c7cacace809795c4809795d6c6cad5cccbc2809795c6c4c9c98b8095e48095e4e6cac8d5c4cbdc8096e48097958095e4e4ec809795d5d7cac1d0c6d18096e48097958095e4e6d0d7d7c0cbd1809795d6d1c4c2c08096e48097958095e4e8c4cccb809795c6cacbc6c0d7cb8096e48097958095e48095e4f1cdc4cbced68b",
+        "status": 404,
+        "found_on": "https://aethermoore.com/red-team.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#d1b8a2a2b0b291b0b4a5b9b4a3bcbebea3b6b0bcb4a2ffb2bebc",
+        "status": 404,
+        "found_on": "https://aethermoore.com/red-team.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#dbb2a8a8bab89bbabeafb3bea9b6b4b4a9bcbab6bea8f5b8b4b6e4a8aeb9b1beb8afe689bebffee9eb8fbebab6fee9eb88bea8a8b2b4b5fee9eb89beaaaebea8af",
+        "status": 404,
+        "found_on": "https://aethermoore.com/redteam.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#19706a6a787a59787c6d717c6b7476766b7e78747c6a377a7674",
+        "status": 404,
+        "found_on": "https://aethermoore.com/research/evidence.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#82ebf1f1e3e1c2e3e7f6eae7f0efededf0e5e3efe7f1ace1edefbdf1f7e0e8e7e1f6bfc1f7f1f6edefa7b0b2f2f0ede8e7e1f6a7b0b2ebecf3f7ebf0fba4e0ede6fbbfcae7fba7b0b2cbf1f1e3e1a7b0c1a7b2c3a7b2c3cba7b0b5e6a7b0b2eeebe9e7a7b0b2f6eda7b0b2e6ebf1e1f7f1f1a7b0b2e3a7b0b2e1f7f1f6edefa7b0b2f2f0ede8e7e1f6aca7b2c3a7b2c3afa7b0b2d5eae3f6a7b0b2cba7b0b5efa7b0b2e0f7ebeee6ebece5a7b1c3a7b2c3afa7b0b2c1f7f0f0e7ecf6a7b0b2f1f6e3e1e9a7b1c3a7b2c3afa7b0b2d6ebefe7eeebece7a7b1c3a7b2c3afa7b0b2c0f7e6e5e7f6a7b0b2f0e3ece5e7a7b1c3a7b2c3a7b2c3d6eae3ece9f1a7b0c1",
+        "status": 404,
+        "found_on": "https://aethermoore.com/services.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#4d243e3e2c2e0d2c283925283f2022223f2a2c20283e632e2220723e382f27282e39700e15687f7d0a382c3f293f2c2421687f7d24233c38243f34",
+        "status": 404,
+        "found_on": "https://aethermoore.com/services.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#244d57574547644541504c4156494b4b5643454941570a474b491b5751464e414750196d776b01161410161414150116144d4a55514d565d",
+        "status": 404,
+        "found_on": "https://aethermoore.com/services.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#8ce5ffffedefccede9f8e4e9fee1e3e3feebede1e9ffa2efe3e1b3fff9eee6e9eff8b1dee9e8a9bebcd8e9ede1a9bebce5e2fdf9e5fef5",
+        "status": 404,
+        "found_on": "https://aethermoore.com/services.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#375e44445654775652435f52455a58584550565a52441954585a",
+        "status": 404,
+        "found_on": "https://aethermoore.com/services.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#e18892928082a18084958984938c8e8e9386808c8492cf828e8c",
+        "status": 404,
+        "found_on": "https://aethermoore.com/services.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#63020a230206170b06110e0c0c11064d000c0e5c101601090600175e30202126465153301613130c11174651532b060f13",
+        "status": 404,
+        "found_on": "https://aethermoore.com/support.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#8dece4cdece8f9e5e8ffe0e2e2ffe8a3eee2e0b2fef8efe7e8eef9b0dececfc8a8bfbdc9e8e1e4fbe8fff4a8bfbdc4fefef8e8",
+        "status": 404,
+        "found_on": "https://aethermoore.com/support.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#305159705155445855425d5f5f42551e535f5d0f4345525a5553440d63737275150200717915020064425f45525c5543585f5f44595e57",
+        "status": 404,
+        "found_on": "https://aethermoore.com/support.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#b7d6def7d6d2c3dfd2c5dad8d8c5d299d4d8da88c4c2d5ddd2d4c38ae4f4f5f2928587f5c5d8dcd2d9928587fbded9dc",
+        "status": 404,
+        "found_on": "https://aethermoore.com/support.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#5e3f371e3f3b2a363b2c3331312c3b703d3133612d2b3c343b3d2a630d1d1c1b7b6c6e0d2b2e2e312c2a7b6c6e163b322e",
+        "status": 404,
+        "found_on": "https://aethermoore.com/support.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#4e2f270e2f2b3a262b3c2321213c2b602d2123713d3b2c242b2d3a731d0d0c0b6b7c7e0a2b2227382b3c376b7c7e073d3d3b2b",
+        "status": 404,
+        "found_on": "https://aethermoore.com/support.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#402129002125342825322d2f2f32256e232f2d7f3335222a2523347d13030205657270010965727014322f35222c2533282f2f34292e27",
+        "status": 404,
+        "found_on": "https://aethermoore.com/support.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#2b4a426b4a4e5f434e59464444594e0548444614585e49414e485f167868696e0e191b695944404e450e191b67424540",
+        "status": 404,
+        "found_on": "https://aethermoore.com/support.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#3a5b537a5b5f4e525f48575555485f1459555705494f58505f594e076979787f1f080a694f4a4a55484e1f080a725f564a",
+        "status": 404,
+        "found_on": "https://aethermoore.com/support.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/cdn-cgi/l/email-protection#85ecf6f6e4e6c5e4e0f1ede0f7e8eaeaf7e2e4e8e0f6abe6eae8",
+        "status": 404,
+        "found_on": "https://aethermoore.com/tools.html",
+        "type": "internal_link"
+      }
+    ],
+    "missing_meta": [
+      "https://aethermoore.com/demos/audio-composition.html",
+      "https://aethermoore.com/demos/energy-landscape.html"
+    ],
+    "missing_og": [
+      "https://aethermoore.com/delivery-proof.html",
+      "https://aethermoore.com/demos/audio-composition.html",
+      "https://aethermoore.com/demos/energy-landscape.html",
+      "https://aethermoore.com/hire/index.html",
+      "https://aethermoore.com/hire.html",
+      "https://aethermoore.com/offers/index.html",
+      "https://aethermoore.com/product-manual/training-vault.html",
+      "https://aethermoore.com/training-bus.html"
+    ],
+    "missing_canonical": [
+      "https://aethermoore.com/benchmark-kit.html",
+      "https://aethermoore.com/demos/audio-composition.html",
+      "https://aethermoore.com/demos/energy-landscape.html"
+    ],
+    "sitemap_pages": 94,
+    "actual_pages": 94
+  },
+  "security": {
+    "drill": "security",
+    "timestamp": "2026-05-22T07:07:08.288922+00:00",
+    "headers": {
+      "HSTS": {
+        "present": true,
+        "value": "max-age=31556952"
+      },
+      "X-Content-Type-Options": {
+        "present": false,
+        "value": null
+      },
+      "X-Frame-Options": {
+        "present": false,
+        "value": null
+      },
+      "CSP": {
+        "present": false,
+        "value": null
+      },
+      "Referrer-Policy": {
+        "present": false,
+        "value": null
+      },
+      "Permissions-Policy": {
+        "present": false,
+        "value": null
+      }
+    },
+    "tls": {
+      "valid": true,
+      "issuer": {
+        "countryName": "US",
+        "organizationName": "Let's Encrypt",
+        "commonName": "E8"
+      },
+      "expires": "Jul 20 06:44:36 2026 GMT",
+      "subject": {
+        "commonName": "aethermoore.com"
+      }
+    },
+    "secrets_found": [],
+    "score": 3,
+    "max_score": 8
+  },
+  "review": {
+    "drill": "review",
+    "timestamp": "2026-05-22T07:07:08.288922+00:00",
+    "site_test_count": null,
+    "articles_count": 17,
+    "research_pages": 13,
+    "demo_pages": 17,
+    "tongue_coverage": {
+      "KO": 0,
+      "AV": 225,
+      "RU": 12,
+      "CA": 182,
+      "UM": 35,
+      "DR": 6
+    },
+    "freshness": {
+      "newest": "2026-05-19",
+      "oldest": "2026-05-19",
+      "total_urls": 94
+    }
+  }
+}
