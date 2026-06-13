@@ -67,7 +67,7 @@
        Contact: issac@aethermoorgames.com
 
     7. SCBE-AETHERMOORE Ecosystem (Open Source) — FREE, MIT licensed
-       The framework is split across 9 focused repos, not one monolith:
+       The framework lives in one auditable monorepo (SCBE-AETHERMOORE), with a few pieces also published as standalone packages:
 
        Core:
        - SCBE-AETHERMOORE (main framework, npm i scbe-aethermoore): https://github.com/issdandavis/SCBE-AETHERMOORE
@@ -76,13 +76,13 @@
 
        Developer tools:
        - six-tongues-geoseal (tokenizer + sealed envelope CLI with AI explain): https://github.com/issdandavis/six-tongues-geoseal
-       - scbe-tongues-toolchain (Sacred Tongue assembler + VM): https://github.com/issdandavis/scbe-tongues-toolchain
-       - scbe-agents (HYDRA 6-agent swarm + MCP servers): https://github.com/issdandavis/scbe-agents
+       - Sacred Tongue assembler + VM (in monorepo): https://github.com/issdandavis/SCBE-AETHERMOORE/tree/main/tools
+       - HYDRA 6-agent swarm + MCP servers (in monorepo): https://github.com/issdandavis/SCBE-AETHERMOORE/tree/main/agents
 
        Research & evidence:
-       - scbe-experiments (reproducible benchmarks, 99.42% AUC source): https://github.com/issdandavis/scbe-experiments
-       - scbe-training-lab (QLoRA configs, SFT records, eval harness): https://github.com/issdandavis/scbe-training-lab
-       - scbe-docs-archive (claims ledger, architecture, buyer proof): https://github.com/issdandavis/scbe-docs-archive
+       - Reproducible benchmarks, 99.42% AUC source (in monorepo): https://github.com/issdandavis/SCBE-AETHERMOORE/tree/main/experiments
+       - QLoRA configs, SFT records, eval harness (in monorepo): https://github.com/issdandavis/SCBE-AETHERMOORE/tree/main/training
+       - Claims ledger, architecture, buyer proof (in monorepo): https://github.com/issdandavis/SCBE-AETHERMOORE/tree/main/docs
 
     === CUSTOM WORK (quote via email) ===
     - Assistant and site setup — Turn a static site into a route-aware assistant surface
@@ -142,7 +142,7 @@
     { keys: ['tool','calculator','demo','interactive','visualization'], response: "Our live browser tools and interactive demos are at https://aethermoore.com/demos/index.html. No install needed." },
     { keys: ['research','benchmark','evidence','paper','study','proof','technical'], response: "Benchmarks, proofs, and technical justification are at https://aethermoore.com/research/index.html. Member-only raw notes are at https://aethermoore.com/members/research-notes.html" },
     { keys: ['member','exclusive','insider','gated','early access'], response: "Members get raw research notes, early datasets, and member-only tools. Join SCBE Weekly to get the access PIN. https://aethermoore.com/members/" },
-    { keys: ['github','open source','repo','code','npm','pypi','install'], response: "The framework is MIT-licensed and split across 9 repos. Main repo: github.com/issdandavis/SCBE-AETHERMOORE. npm install scbe-aethermoore" },
+    { keys: ['github','open source','repo','code','npm','pypi','install'], response: "The framework is MIT-licensed and lives in one auditable monorepo. Main repo: github.com/issdandavis/SCBE-AETHERMOORE. npm install scbe-aethermoore" },
     { keys: ['book','novel','story','six tongues','fiction','read'], response: "The Six Tongues Protocol is a 70K-word novel that teaches the SCBE framework through story. Available on Amazon KDP." },
   ];
 
