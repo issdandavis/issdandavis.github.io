@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Training Lab | SCBE-AETHERMOORE</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #c8d1f0; line-height: 1.6; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+    header { text-align: center; padding: 3rem 1rem; border-bottom: 1px solid #1a2040; }
+    header h1 { font-size: 2.5rem; color: #fff; margin-bottom: 0.5rem; }
+    header p { color: #7d84b8; font-size: 1.1rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+    .card { background: #11163a; border: 1px solid #1a2040; border-radius: 12px; padding: 1.5rem; transition: border-color 0.2s; }
+    .card:hover { border-color: #4a5fcf; }
+    .card h2 { color: #fff; font-size: 1.2rem; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+    .card p { color: #7d84b8; font-size: 0.9rem; margin-bottom: 1rem; }
+    .badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600; margin-right: 0.5rem; }
+    .badge-orange { background: #331a00; color: #ff9f43; }
+    .badge-blue { background: #001a33; color: #4dabf7; }
+    .badge-green { background: #002200; color: #51cf66; }
+    .badge-purple { background: #1a0033; color: #cc5de8; }
+    .btn { display: inline-block; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-size: 0.85rem; font-weight: 600; margin-top: 0.5rem; margin-right: 0.5rem; border: none; cursor: pointer; }
+    .btn-primary { background: #4a5fcf; color: #fff; }
+    .btn-primary:hover { background: #5a6fdf; }
+    .btn-secondary { background: #1a2040; color: #c8d1f0; border: 1px solid #2a3060; }
+    .btn-secondary:hover { background: #2a3060; }
+    .status { display: flex; align-items: center; gap: 0.5rem; margin-top: 1rem; padding: 0.75rem; background: #0d1229; border-radius: 8px; font-size: 0.85rem; }
+    .status-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .status-ok { background: #51cf66; }
+    .status-warn { background: #ff9f43; }
+    .status-off { background: #ff6b6b; }
+    .resource-list { list-style: none; margin-top: 0.75rem; }
+    .resource-list li { padding: 0.4rem 0; border-bottom: 1px solid #1a2040; font-size: 0.9rem; }
+    .resource-list li:last-child { border-bottom: none; }
+    .resource-list a { color: #4dabf7; text-decoration: none; }
+    .resource-list a:hover { text-decoration: underline; }
+    footer { text-align: center; padding: 3rem 1rem; color: #5a6090; font-size: 0.85rem; border-top: 1px solid #1a2040; margin-top: 3rem; }
+    .api-status { font-family: monospace; font-size: 0.8rem; color: #7d84b8; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🧬 Training Lab</h1>
+      <p>Local control center for Kaggle, Colab, and HuggingFace training runs</p>
+    </header>
+
+    <div class="grid">
+      <!-- Local Backend -->
+      <div class="card">
+        <h2>🖥️ Local Backend</h2>
+        <p>SCBE-AETHERMOORE API running on this machine</p>
+        <div class="status" id="backendStatus">
+          <div class="status-dot status-warn"></div>
+          <span>Checking...</span>
+        </div>
+        <a class="btn btn-secondary" href="http://localhost:8080/docs" target="_blank">API Docs</a>
+        <a class="btn btn-secondary" href="http://localhost:8080/v1/health" target="_blank">Health Check</a>
+      </div>
+
+      <!-- HuggingFace -->
+      <div class="card">
+        <h2>🤗 HuggingFace</h2>
+        <p>Published models and datasets from the SCBE ecosystem</p>
+        <span class="badge badge-orange">Models</span>
+        <span class="badge badge-blue">Datasets</span>
+        <ul class="resource-list">
+          <li><a href="https://huggingface.co/issdandavis/polly-chat-qwen-0.5b" target="_blank">polly-chat-qwen-0.5b</a></li>
+          <li><a href="https://huggingface.co/issdandavis/scbe-pivot-qwen-0.5b" target="_blank">scbe-pivot-qwen-0.5b</a></li>
+          <li><a href="https://huggingface.co/issdandavis/phdm-21d-embedding" target="_blank">phdm-21d-embedding</a></li>
+          <li><a href="https://huggingface.co/datasets/issdandavis/scbe-aethermoore-datasets" target="_blank">scbe-aethermoore-datasets</a> (15K rows)</li>
+          <li><a href="https://huggingface.co/datasets/issdandavis/polly-training-data" target="_blank">polly-training-data</a></li>
+        </ul>
+        <a class="btn btn-primary" href="https://huggingface.co/issdandavis" target="_blank">Open Profile</a>
+      </div>
+
+      <!-- Google Colab -->
+      <div class="card">
+        <h2>📓 Google Colab</h2>
+        <p>Launch training notebooks directly in Colab (free T4 GPU)</p>
+        <span class="badge badge-green">Notebooks</span>
+        <ul class="resource-list">
+          <li><a href="https://colab.research.google.com/github/issdandavis/SCBE-AETHERMOORE/blob/main/scripts/train_lora_colab.ipynb" target="_blank">FLUX Art LoRA Training</a></li>
+          <li><a href="https://colab.research.google.com/github/issdandavis/SCBE-AETHERMOORE/blob/main/scripts/train_smollm2_kaggle.py" target="_blank">SmolLM2 SFT (via script)</a></li>
+        </ul>
+        <a class="btn btn-primary" href="https://colab.research.google.com/github/issdandavis/scbe-training-lab" target="_blank">Open Training Lab</a>
+      </div>
+
+      <!-- Kaggle -->
+      <div class="card">
+        <h2>🏆 Kaggle</h2>
+        <p>Free T4 GPU notebooks and datasets</p>
+        <span class="badge badge-purple">GPU</span>
+        <ul class="resource-list">
+          <li><a href="https://www.kaggle.com/datasets" target="_blank">Upload SCBE training data</a></li>
+          <li><a href="https://www.kaggle.com/code" target="_blank">Create notebook from train_smollm2_kaggle.py</a></li>
+        </ul>
+        <a class="btn btn-primary" href="https://www.kaggle.com" target="_blank">Open Kaggle</a>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="card">
+        <h2>⚡ Quick Actions</h2>
+        <p>Common training workflow shortcuts</p>
+        <a class="btn btn-primary" href="datasets.html">Buy Training Data</a>
+        <a class="btn btn-secondary" href="models.html">Browse Models</a>
+        <a class="btn btn-secondary" href="chat.html">Try Polly Chat</a>
+        <a class="btn btn-secondary" href="benchmark-kit.html">Run Benchmarks</a>
+      </div>
+
+      <!-- Training Scripts -->
+      <div class="card">
+        <h2>📂 Local Scripts</h2>
+        <p>Training scripts available on this machine</p>
+        <ul class="resource-list">
+          <li><code>~/SCBE-AETHERMOORE/scripts/train_smollm2_kaggle.py</code></li>
+          <li><code>~/SCBE-AETHERMOORE/scripts/hf_training_loop.py</code></li>
+          <li><code>~/SCBE-AETHERMOORE/scripts/unified_training_pipeline.py</code></li>
+          <li><code>~/scbe-training-lab/</code> (dedicated lab repo)</li>
+        </ul>
+      </div>
+    </div>
+
+    <footer>
+      <p>SCBE-AETHERMOORE Training Lab &mdash; Local dev instance</p>
+      <p class="api-status" id="apiDetail"></p>
+    </footer>
+  </div>
+
+  <script>
+    // Check local backend health
+    fetch('http://localhost:8080/v1/health')
+      .then(r => r.json())
+      .then(data => {
+        const status = document.getElementById('backendStatus');
+        status.innerHTML = '<div class="status-dot status-ok"></div><span>Backend healthy &mdash; ' + data.version + '</span>';
+        document.getElementById('apiDetail').textContent = 'Last check: ' + new Date().toLocaleTimeString();
+      })
+      .catch(() => {
+        const status = document.getElementById('backendStatus');
+        status.innerHTML = '<div class="status-dot status-off"></div><span>Backend offline &mdash; run ~/restart-backend.ps1</span>';
+      });
+  </script>
+</body>
+</html>

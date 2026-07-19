@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Try Polly | SCBE-AETHERMOORE</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #c8d1f0; line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
+    .container { max-width: 800px; margin: 0 auto; padding: 2rem; width: 100%; flex: 1; display: flex; flex-direction: column; }
+    header { text-align: center; padding: 2rem 1rem; }
+    header h1 { font-size: 2rem; color: #fff; margin-bottom: 0.5rem; }
+    header p { color: #7d84b8; font-size: 0.95rem; }
+    .model-selector { display: flex; gap: 8px; justify-content: center; margin-bottom: 1rem; flex-wrap: wrap; }
+    .model-btn { padding: 6px 14px; border-radius: 20px; border: 1px solid #1a2040; background: #11163a; color: #7d84b8; cursor: pointer; font-size: 0.8rem; }
+    .model-btn.active { border-color: #4a5fcf; color: #fff; background: #1a2060; }
+    .chat-box { flex: 1; background: #11163a; border: 1px solid #1a2040; border-radius: 16px; padding: 1.5rem; overflow-y: auto; min-height: 300px; margin-bottom: 1rem; }
+    .message { margin-bottom: 1rem; max-width: 85%; }
+    .message.user { margin-left: auto; }
+    .message.bot { margin-right: auto; }
+    .bubble { padding: 12px 16px; border-radius: 16px; font-size: 0.95rem; word-wrap: break-word; }
+    .message.user .bubble { background: #4a5fcf; color: #fff; border-bottom-right-radius: 4px; }
+    .message.bot .bubble { background: #1a2040; color: #c8d1f0; border-bottom-left-radius: 4px; }
+    .message-meta { font-size: 0.7rem; color: #5a6090; margin-top: 4px; }
+    .input-area { display: flex; gap: 8px; }
+    .input-area input { flex: 1; padding: 12px 16px; border-radius: 12px; border: 1px solid #1a2040; background: #0d1229; color: #c8d1f0; font-size: 1rem; outline: none; }
+    .input-area input:focus { border-color: #4a5fcf; }
+    .input-area button { padding: 12px 24px; border-radius: 12px; border: none; background: #4a5fcf; color: #fff; font-weight: 600; cursor: pointer; }
+    .input-area button:hover { background: #5a6fdf; }
+    .input-area button:disabled { background: #2a3060; cursor: not-allowed; }
+    .status { text-align: center; font-size: 0.8rem; color: #5a6090; margin-top: 0.5rem; }
+    .typing { display: flex; gap: 4px; padding: 12px 16px; }
+    .typing span { width: 8px; height: 8px; background: #7d84b8; border-radius: 50%; animation: bounce 1s infinite; }
+    .typing span:nth-child(2) { animation-delay: 0.2s; }
+    .typing span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+    footer { text-align: center; padding: 1.5rem; color: #5a6090; font-size: 0.8rem; border-top: 1px solid #1a2040; }
+    .slow-warning { background: #1a1030; border: 1px solid #331a55; color: #cc5de8; padding: 10px 16px; border-radius: 10px; font-size: 0.85rem; margin-bottom: 1rem; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>💬 Try Polly</h1>
+      <p>Chat with your locally-running SCBE assistant</p>
+    </header>
+
+    <div class="slow-warning">⚡ CPU inference — responses take ~20-30 seconds on this machine</div>
+
+    <div class="model-selector">
+      <button class="model-btn active" data-model="polly">polly-chat-qwen-0.5b</button>
+      <button class="model-btn" data-model="pivot">scbe-pivot-qwen-0.5b</button>
+    </div>
+
+    <div class="chat-box" id="chatBox">
+      <div class="message bot">
+        <div class="bubble">Hello! I am Polly, an SCBE-aware assistant trained on Sacred Tongues and governance pipelines. Ask me anything.</div>
+        <div class="message-meta">Polly</div>
+      </div>
+    </div>
+
+    <div class="input-area">
+      <input type="text" id="userInput" placeholder="Ask Polly something..." autocomplete="off">
+      <button id="sendBtn" onclick="sendMessage()">Send</button>
+    </div>
+    <div class="status" id="status">Ready</div>
+  </div>
+
+  <footer>
+    Running locally via <code>test-model-local.py</code> — no data leaves this machine
+  </footer>
+
+  <script>
+    let currentModel = 'polly';
+    const chatBox = document.getElementById('chatBox');
+    const userInput = document.getElementById('userInput');
+    const sendBtn = document.getElementById('sendBtn');
+    const status = document.getElementById('status');
+
+    document.querySelectorAll('.model-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.model-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentModel = btn.dataset.model;
+      });
+    });
+
+    userInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
+
+    async function sendMessage() {
+      const text = userInput.value.trim();
+      if (!text) return;
+
+      addMessage(text, 'user');
+      userInput.value = '';
+      sendBtn.disabled = true;
+      status.textContent = 'Thinking... (this takes ~20-30s on CPU)';
+      showTyping();
+
+      try {
+        const res = await fetch('http://localhost:8081/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ model: currentModel, prompt: text, max_tokens: 100 })
+        });
+        const data = await res.json();
+        removeTyping();
+        addMessage(data.response || 'No response', 'bot', data.time);
+      } catch (err) {
+        removeTyping();
+        addMessage('Error: Could not reach local chat server. Make sure chat-server.py is running on port 8081.', 'bot');
+      }
+      sendBtn.disabled = false;
+      status.textContent = 'Ready';
+    }
+
+    function addMessage(text, sender, time) {
+      const div = document.createElement('div');
+      div.className = 'message ' + sender;
+      let meta = sender === 'bot' ? 'Polly' : 'You';
+      if (time) meta += ' · ' + time;
+      div.innerHTML = `<div class="bubble">${escapeHtml(text)}</div><div class="message-meta">${meta}</div>`;
+      chatBox.appendChild(div);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function showTyping() {
+      const div = document.createElement('div');
+      div.className = 'message bot typing-msg';
+      div.innerHTML = `<div class="bubble typing"><span></span><span></span><span></span></div>`;
+      chatBox.appendChild(div);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function removeTyping() {
+      document.querySelectorAll('.typing-msg').forEach(el => el.remove());
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+  </script>
+</body>
+</html>

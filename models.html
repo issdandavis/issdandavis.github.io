@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Models | SCBE-AETHERMOORE</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #c8d1f0; line-height: 1.6; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 2rem; }
+    header { text-align: center; padding: 3rem 1rem; border-bottom: 1px solid #1a2040; }
+    header h1 { font-size: 2.5rem; color: #fff; margin-bottom: 0.5rem; }
+    header p { color: #7d84b8; font-size: 1.1rem; }
+    .stats { display: flex; justify-content: center; gap: 2rem; margin-top: 1.5rem; flex-wrap: wrap; }
+    .stat { text-align: center; }
+    .stat-num { font-size: 2rem; font-weight: 800; color: #4a5fcf; }
+    .stat-label { font-size: 0.8rem; color: #5a6090; }
+    .section { margin-top: 3rem; }
+    .section h2 { color: #fff; font-size: 1.4rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #1a2040; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+    .card { background: #11163a; border: 1px solid #1a2040; border-radius: 12px; padding: 1.25rem; transition: border-color 0.2s; }
+    .card:hover { border-color: #4a5fcf; }
+    .card h3 { font-size: 1rem; color: #fff; margin-bottom: 0.4rem; }
+    .card p { color: #7d84b8; font-size: 0.85rem; margin-bottom: 0.75rem; }
+    .meta { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
+    .tag { font-size: 0.7rem; padding: 2px 8px; border-radius: 4px; background: #1a2040; color: #7d84b8; }
+    .tag.popular { background: #331a00; color: #ff9f43; }
+    .tag.best { background: #002200; color: #51cf66; }
+    .dl { font-size: 0.8rem; color: #5a6090; }
+    .btn { display: inline-block; padding: 6px 14px; border-radius: 6px; text-decoration: none; font-size: 0.8rem; font-weight: 600; margin-right: 0.5rem; }
+    .btn-primary { background: #4a5fcf; color: #fff; }
+    .btn-secondary { background: #1a2040; color: #c8d1f0; border: 1px solid #2a3060; }
+    footer { text-align: center; padding: 3rem 1rem; color: #5a6090; font-size: 0.85rem; border-top: 1px solid #1a2040; margin-top: 3rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🧠 Model Zoo</h1>
+      <p>All SCBE-AETHERMOORE models published on HuggingFace</p>
+      <div class="stats">
+        <div class="stat"><div class="stat-num">30</div><div class="stat-label">Models</div></div>
+        <div class="stat"><div class="stat-num">18</div><div class="stat-label">Datasets</div></div>
+        <div class="stat"><div class="stat-num">1.5K+</div><div class="stat-label">Dataset DLs</div></div>
+      </div>
+    </header>
+
+    <div class="section">
+      <h2>⭐ Polly Chat Models</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>polly-scbe-7b-v2-merged</h3>
+          <p>Your best model. 7B parameters, merged adapter. Use this for production.</p>
+          <div class="meta">
+            <span class="tag best">BEST</span>
+            <span class="tag popular">373 DLs</span>
+            <span class="tag">7B</span>
+          </div>
+          <a class="btn btn-primary" href="https://huggingface.co/issdandavis/polly-scbe-7b-v2-merged" target="_blank">Open on HF</a>
+          <a class="btn btn-secondary" href="chat.html">Try Locally</a>
+        </div>
+        <div class="card">
+          <h3>polly-chat-qwen-0.5b</h3>
+          <p>Main 0.5B chat model. Lightweight, runs on CPU.</p>
+          <div class="meta">
+            <span class="tag popular">60 DLs</span>
+            <span class="tag">0.5B</span>
+          </div>
+          <a class="btn btn-primary" href="https://huggingface.co/issdandavis/polly-chat-qwen-0.5b" target="_blank">Open on HF</a>
+          <a class="btn btn-secondary" href="chat.html">Try Locally</a>
+        </div>
+        <div class="card">
+          <h3>polly-covenantal-qwen-0.5b</h3>
+          <p>Covenantal variant for ethical/religious queries.</p>
+          <div class="meta">
+            <span class="tag popular">49 DLs</span>
+            <span class="tag">0.5B</span>
+          </div>
+          <a class="btn btn-primary" href="https://huggingface.co/issdandavis/polly-covenantal-qwen-0.5b" target="_blank">Open on HF</a>
+        </div>
+        <div class="card">
+          <h3>scbe-pivot-qwen-0.5b</h3>
+          <p>Pivot/governance-focused variant.</p>
+          <div class="meta">
+            <span class="tag">16 DLs</span>
+            <span class="tag">0.5B</span>
+          </div>
+          <a class="btn btn-primary" href="https://huggingface.co/issdandavis/scbe-pivot-qwen-0.5b" target="_blank">Open on HF</a>
+        </div>
+        <div class="card">
+          <h3>polly-1</h3>
+          <p>Early version. Stable and well-tested.</p>
+          <div class="meta">
+            <span class="tag popular">111 DLs</span>
+            <span class="tag">0.5B</span>
+          </div>
+          <a class="btn btn-primary" href="https://huggingface.co/issdandavis/polly-1" target="_blank">Open on HF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>🎨 Art & Style Models</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>six-tongues-art-style</h3>
+          <p>25 images for FLUX LoRA training. Dark fantasy + manhwa style.</p>
+          <div class="meta">
+            <span class="tag">3 DLs</span>
+            <span class="tag">Dataset</span>
+          </div>
+          <a class="btn btn-primary" href="https://huggingface.co/datasets/issdandavis/six-tongues-art-style" target="_blank">Open on HF</a>
+        </div>
+        <div class="card">
+          <h3>six-tongues-webtoon-panels</h3>
+          <p>Webtoon panel dataset for training.</p>
+          <div class="meta">
+            <span class="tag">2 DLs</span>
+            <span class="tag">Dataset</span>
+          </div>
+          <a class="btn btn-primary" href="https://huggingface.co/datasets/issdandavis/six-tongues-webtoon-panels" target="_blank">Open on HF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>🛡️ Infrastructure & Embeddings</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>phdm-21d-embedding</h3>
+          <p>21D hyperbolic embedding model for semantic search and RAG.</p>
+          <div class="meta">
+            <span class="tag">Embedding</span>
+            <span class="tag">Sentence-Transformers</span>
+          </div>
+          <a class="btn btn-primary" href="https://huggingface.co/issdandavis/phdm-21d-embedding" target="_blank">Open on HF</a>
+        </div>
+        <div class="card">
+          <h3>spiralverse-ai-federated-v1</h3>
+          <p>Federated learning swarm coordinator.</p>
+          <div class="meta">
+            <span class="tag">Federated</span>
+            <span class="tag">Swarm</span>
+          </div>
+          <a class="btn btn-primary" href="https://huggingface.co/issdandavis/spiralverse-ai-federated-v1" target="_blank">Open on HF</a>
+        </div>
+        <div class="card">
+          <h3>geoseed-network</h3>
+          <p>GeoSeed positioning network for spatial AI.</p>
+          <div class="meta">
+            <span class="tag">GeoSeed</span>
+            <span class="tag">Hyperbolic</span>
+          </div>
+          <a class="btn btn-primary" href="https://huggingface.co/issdandavis/geoseed-network" target="_blank">Open on HF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📊 Top Datasets</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>scbe-aethermoore-training-data</h3>
+          <p>Main training corpus. 1,538+ downloads. Your goldmine.</p>
+          <div class="meta">
+            <span class="tag best">1,538 DLs</span>
+            <span class="tag">SFT</span>
+          </div>
+          <a class="btn btn-primary" href="https://huggingface.co/datasets/issdandavis/scbe-aethermoore-training-data" target="_blank">Open on HF</a>
+        </div>
+        <div class="card">
+          <h3>UltraData-Math</h3>
+          <p>Math training data. 558 downloads.</p>
+          <div class="meta">
+            <span class="tag popular">558 DLs</span>
+            <span class="tag">Math</span>
+          </div>
+          <a class="btn btn-primary" href="https://huggingface.co/datasets/issdandavis/UltraData-Math" target="_blank">Open on HF</a>
+        </div>
+        <div class="card">
+          <h3>prompt-injection-bit-signatures</h3>
+          <p>24K labeled prompts mapped to bit signatures. 92% AUC baseline.</p>
+          <div class="meta">
+            <span class="tag popular">78 DLs</span>
+            <span class="tag">Security</span>
+          </div>
+          <a class="btn btn-primary" href="https://huggingface.co/datasets/issdandavis/prompt-injection-bit-signatures" target="_blank">Open on HF</a>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>All models MIT licensed unless noted. <a href="https://huggingface.co/issdandavis" target="_blank" style="color:#4dabf7;">View full profile on HuggingFace →</a></p>
+    </footer>
+  </div>
+</body>
+</html>
