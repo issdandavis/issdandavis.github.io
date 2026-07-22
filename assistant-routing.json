@@ -62,6 +62,11 @@
       "name": "delivery-proof",
       "url": "https://aethermoore.com/delivery-proof.html",
       "purpose": "Offer and buyer-delivery proof surface for paid packets, non-open download handling, and delivery readiness."
+    },
+    {
+      "name": "github-page-map",
+      "url": "https://aethermoore.com/github-map.html",
+      "purpose": "Complete public inventory mapping every SCBE-AETHERMOORE HTML page to its versioned GitHub source."
     }
   ],
   "routes": [
@@ -124,6 +129,11 @@
       "intent": "paid_delivery_proof",
       "keywords": ["delivery proof", "non open source", "paid packet", "buyer packet", "download url", "private delivery", "stripe delivery", "offer delivery"],
       "target": "https://aethermoore.com/delivery-proof.html"
+    },
+    {
+      "intent": "inspect_public_source",
+      "keywords": ["github map", "page source", "source inventory", "site map", "public source"],
+      "target": "https://aethermoore.com/github-map.html"
     },
     {
       "intent": "restricted_or_gated",
