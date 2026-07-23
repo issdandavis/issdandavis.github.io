@@ -1,0 +1,46 @@
+{
+  "patrol": {
+    "drill": "patrol",
+    "timestamp": "2026-07-23T08:10:28.156290+00:00",
+    "pages_checked": 0,
+    "links_ok": 0,
+    "links_broken": [],
+    "missing_meta": [],
+    "missing_og": [],
+    "missing_canonical": [],
+    "sitemap_pages": 0,
+    "actual_pages": 0,
+    "sitemap_error": "HTTPSConnectionPool(host='aethermoore.com', port=443): Max retries exceeded with url: /sitemap.xml (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1016)')))"
+  },
+  "security": {
+    "drill": "security",
+    "timestamp": "2026-07-23T08:10:28.156290+00:00",
+    "headers": {},
+    "tls": {
+      "valid": false,
+      "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1016)"
+    },
+    "secrets_found": [],
+    "score": 1,
+    "max_score": 2,
+    "header_error": "HTTPSConnectionPool(host='aethermoore.com', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1016)')))"
+  },
+  "review": {
+    "drill": "review",
+    "timestamp": "2026-07-23T08:10:28.156290+00:00",
+    "site_test_count": null,
+    "articles_count": 0,
+    "research_pages": 0,
+    "demo_pages": 0,
+    "tongue_coverage": {
+      "KO": 0,
+      "AV": 0,
+      "RU": 0,
+      "CA": 0,
+      "UM": 0,
+      "DR": 0
+    },
+    "freshness": {},
+    "site_error": "HTTPSConnectionPool(host='aethermoore.com', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1016)')))"
+  }
+}
