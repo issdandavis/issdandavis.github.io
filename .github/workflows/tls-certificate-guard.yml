@@ -1,0 +1,36 @@
+name: TLS Certificate Guard
+
+on:
+  schedule:
+    # Let's Encrypt recommends checking renewal information at least twice daily.
+    # The first run is also allowed to request one diagnostic Pages rebuild.
+    - cron: '17 7 * * *'
+    - cron: '47 19 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+  pages: write
+
+concurrency:
+  group: tls-certificate-guard
+  cancel-in-progress: false
+
+jobs:
+  certificate-health:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Inspect certificate and advance Pages recovery
+        uses: actions/github-script@v9
+        env:
+          TLS_DOMAIN: aethermoore.com
+          TLS_REPAIR_SCHEDULE: '17 7 * * *'
+        with:
+          script: |
+            const guard = require('./.github/scripts/tls-certificate-guard.js');
+            await guard({ github, context, core });
