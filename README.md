@@ -1,33 +1,56 @@
-# aethermoore.com — Landing Page
+# aethermoore.com — Assistant-First Public Site
 
-> Source for the [aethermoore.com](https://aethermoore.com) marketing site, deployed via GitHub Pages.
+> Source for [aethermoore.com](https://aethermoore.com), deployed through GitHub Pages.
 
 ## What this is
 
-This repo contains the static landing page for **SCBE-AETHERMOORE**, an AI governance API built on hyperbolic geometry and post-quantum cryptography.
+This repository contains the static, route-aware public site for
+**SCBE-AETHERMOORE**. The primary front door is
+[`assistant.html`](https://aethermoore.com/assistant.html), which routes people
+to tools, products, manuals, support, research, or gated work before extra
+reasoning is generated.
 
 The site covers:
-- Product overview and feature summary
-- 14-layer pipeline architecture diagram
-- Six Sacred Tongues trust-weight table
-- Pricing tiers ($49 / $149 / $499 per month)
-- Links to npm, PyPI, GitHub, Ko-fi, and GitHub Sponsors
+
+- Deterministic assistant routing and public product buckets
+- Live tools, manuals, support, and delivery guidance
+- Research, benchmark, and verification surfaces
+- Publication-safe Kaggle, product, npm, GitHub, and capability evidence
+- Links to public packages, source repositories, datasets, and contact routes
 
 ## The product itself
 
 **[→ SCBE-AETHERMOORE (main repo)](https://github.com/issdandavis/SCBE-AETHERMOORE)**
 
-Bounded AI in governed loops. Every agent action passes through a mathematically-proven 14-layer pipeline. Rogue behavior costs exponentially more to execute. The framework produces signed, auditable compliance artifacts — built for the EU AI Act enforcement deadline (August 2026).
+Bounded AI in governed loops. The framework evaluates workflow actions through
+a layered control pipeline, scores risk, and routes behavior toward execution,
+review, throttling, or containment. It produces audit-oriented receipts while
+keeping speculative and verified capability claims separate.
 
-```
-95.3% adversarial detection · <8ms latency · 950+ tests passing
-ML-KEM-768 + ML-DSA-65 post-quantum crypto
-```
+See the [SCBE evidence ledger](https://aethermoore.com/research/evidence.html)
+and [Operations Evidence](https://aethermoore.com/research/operations.html)
+before relying on a benchmark claim.
 
 ## Tech
 
 - Pure HTML/CSS/JS — no build step, deploys instantly via GitHub Pages
 - CNAME → `aethermoore.com`
+
+## Refresh operations evidence
+
+The public evidence page is generated from the publication-safe Kaggle
+Operations Hub export. The sync refuses local paths, credentials, private
+repository names, non-public repositories, and competition links outside
+Kaggle.
+
+```powershell
+.\scripts\sync-kaggle-operations-evidence.ps1 -Source <path-to-website_benchmarks.json>
+.\scripts\test-operations-evidence.ps1
+```
+
+The copied JSON and its hash receipt live under `research/data/`. CI reruns the
+same validation whenever the page, renderer, routing files, or evidence data
+changes.
 
 ## Links
 

@@ -39,6 +39,11 @@
       "purpose": "Benchmarks, verification, and technical justification."
     },
     {
+      "name": "operations-evidence",
+      "url": "https://aethermoore.com/research/operations.html",
+      "purpose": "Publication-safe Kaggle results, controlled experiments, product benchmarks, capability boundaries, npm packages, and owned public repositories."
+    },
+    {
       "name": "book",
       "url": "https://aethermoore.com/book.html",
       "purpose": "Narrative teaching surface for the same architecture and vocabulary."
@@ -104,6 +109,11 @@
       "intent": "deploy_or_integrate",
       "keywords": ["install", "manual", "package", "deploy", "integration", "buyer", "delivery"],
       "target": "https://aethermoore.com/product-manual/index.html"
+    },
+    {
+      "intent": "portfolio_evidence",
+      "keywords": ["kaggle", "competition result", "public score", "experiment ledger", "product benchmark", "capability matrix", "clay capability", "npm package", "owned repository", "operations evidence"],
+      "target": "https://aethermoore.com/research/operations.html"
     },
     {
       "intent": "verify_claims",

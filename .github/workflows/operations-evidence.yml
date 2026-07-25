@@ -1,0 +1,41 @@
+name: Operations evidence
+
+on:
+  pull_request:
+    paths:
+      - "research/operations.html"
+      - "research/data/operations_evidence.json"
+      - "research/data/operations_evidence.receipt.json"
+      - "static/operations-evidence.js"
+      - "scripts/sync-kaggle-operations-evidence.ps1"
+      - "scripts/test-operations-evidence.ps1"
+      - "assistant-routing.json"
+      - "assistant-catalog.json"
+      - "llms.txt"
+      - "sitemap.xml"
+  push:
+    branches:
+      - main
+    paths:
+      - "research/operations.html"
+      - "research/data/operations_evidence.json"
+      - "research/data/operations_evidence.receipt.json"
+      - "static/operations-evidence.js"
+      - "scripts/sync-kaggle-operations-evidence.ps1"
+      - "scripts/test-operations-evidence.ps1"
+      - "assistant-routing.json"
+      - "assistant-catalog.json"
+      - "llms.txt"
+      - "sitemap.xml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate publication-safe operations evidence
+        shell: pwsh
+        run: .\scripts\test-operations-evidence.ps1

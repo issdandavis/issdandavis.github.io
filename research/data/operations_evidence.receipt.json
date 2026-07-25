@@ -1,0 +1,23 @@
+{
+    "schema_version":  1,
+    "source_label":  "Kaggle Operations Hub publication-safe export",
+    "observed_at_utc":  "2026-07-25T03:57:13+00:00",
+    "source_sha256":  "8947245ff198e01941f0cb6b713786778dab3293317d09fac463bdaf700bd2f6",
+    "copied_sha256":  "8947245ff198e01941f0cb6b713786778dab3293317d09fac463bdaf700bd2f6",
+    "validation":  "pass",
+    "counts":  {
+                   "competitions":  9,
+                   "experiments":  6,
+                   "products":  8,
+                   "benchmarks":  10,
+                   "capabilities":  27,
+                   "npm_packages":  4,
+                   "public_active_original_repositories":  15
+               },
+    "boundaries":  [
+                       "No local paths, credentials, private repository names, or attack payloads.",
+                       "Public leaderboard scores remain adaptive evidence.",
+                       "Platform, deterministic-system, and model records remain separate.",
+                       "Artifact presence is not treated as demonstrated capability."
+                   ]
+}

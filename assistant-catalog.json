@@ -1,6 +1,6 @@
 {
   "site": "https://aethermoore.com",
-  "version": "2026-05-07",
+  "version": "2026-07-25",
   "role": "Public sellable buckets and routing limits for the SCBE-AETHERMOORE assistant.",
   "public_products": [
     {
@@ -56,6 +56,15 @@
       "keywords": ["delivery proof", "non open source", "paid packet", "buyer packet", "download url", "private delivery", "stripe delivery", "offer delivery"],
       "manual_url": "https://aethermoore.com/product-manual/delivery-and-access.html",
       "buy_url": "https://aethermoore.com/delivery-proof.html"
+    },
+    {
+      "id": "operations-evidence",
+      "name": "Operations Evidence",
+      "type": "proof",
+      "description": "Publication-safe Kaggle results, experiments, product benchmarks, capability boundaries, npm packages, and owned public repositories.",
+      "keywords": ["kaggle", "competition result", "public score", "experiment ledger", "product benchmark", "capability matrix", "clay capability", "npm package", "owned repository", "operations evidence"],
+      "manual_url": "https://aethermoore.com/research/operations.html",
+      "buy_url": "https://aethermoore.com/research/operations.html"
     },
     {
       "id": "red-team-service",

@@ -1,0 +1,146 @@
+#requires -Version 5.1
+[CmdletBinding()]
+param()
+
+$ErrorActionPreference = "Stop"
+$repoRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot ".."))
+
+function Assert-Condition {
+    param(
+        [bool]$Condition,
+        [string]$Message
+    )
+
+    if (-not $Condition) {
+        throw $Message
+    }
+}
+
+function Read-RepoText {
+    param([string]$RelativePath)
+
+    $path = Join-Path $repoRoot $RelativePath
+    Assert-Condition (Test-Path -LiteralPath $path) "Missing $RelativePath."
+    return [IO.File]::ReadAllText($path)
+}
+
+$dataPath = Join-Path $repoRoot "research\data\operations_evidence.json"
+$receiptPath = Join-Path $repoRoot "research\data\operations_evidence.receipt.json"
+$dataRaw = Read-RepoText "research\data\operations_evidence.json"
+$receiptRaw = Read-RepoText "research\data\operations_evidence.receipt.json"
+$payload = $dataRaw | ConvertFrom-Json
+$receipt = $receiptRaw | ConvertFrom-Json
+
+Assert-Condition ($payload.schema_version -eq 1) "Unexpected evidence schema."
+Assert-Condition ($receipt.validation -eq "pass") "Evidence receipt did not pass."
+
+$dataHash = (Get-FileHash -LiteralPath $dataPath -Algorithm SHA256).Hash.ToLowerInvariant()
+Assert-Condition ($dataHash -eq $receipt.copied_sha256) "Receipt hash mismatch."
+Assert-Condition ($receipt.source_sha256 -eq $receipt.copied_sha256) "Source/copy hash mismatch."
+
+$countMap = [ordered]@{
+    competitions = @($payload.competitions).Count
+    experiments = @($payload.experiments).Count
+    products = @($payload.products).Count
+    benchmarks = @($payload.platform_benchmarks).Count
+    capabilities = @($payload.capabilities).Count
+    npm_packages = @($payload.npm_packages).Count
+    public_active_original_repositories = @(
+        $payload.public_active_original_repositories
+    ).Count
+}
+
+foreach ($property in $countMap.GetEnumerator()) {
+    Assert-Condition `
+        ($property.Value -eq $receipt.counts.($property.Key)) `
+        "Receipt count mismatch for '$($property.Key)'."
+}
+
+Assert-Condition ($countMap.competitions -ge 1) "No competition evidence was published."
+Assert-Condition ($countMap.experiments -ge 1) "No experiment evidence was published."
+Assert-Condition ($countMap.products -ge 1) "No product evidence was published."
+Assert-Condition ($countMap.benchmarks -ge 1) "No benchmark evidence was published."
+Assert-Condition ($countMap.capabilities -ge 1) "No capability evidence was published."
+Assert-Condition ($countMap.npm_packages -ge 1) "No npm evidence was published."
+
+$forbiddenPatterns = @(
+    "(?i)[a-z]:\\",
+    "(?i)(?:^|[\s""'])[a-z]:/",
+    "(?i)proton_recipients",
+    "(?i)bridge_pass",
+    "(?i)issdandavis/aetherdesk",
+    "(?i)issdandavis/clay",
+    '(?i)"api_key"\s*:',
+    '(?i)"password"\s*:',
+    '(?i)"secret"\s*:'
+)
+
+foreach ($pattern in $forbiddenPatterns) {
+    Assert-Condition `
+        (-not [regex]::IsMatch($dataRaw, $pattern)) `
+        "Published evidence contains forbidden pattern '$pattern'."
+}
+
+Assert-Condition `
+    (@($payload.competitions | Where-Object { $null -eq $_.score.value }).Count -ge 1) `
+    "Missing competition scores must remain null rather than zero."
+Assert-Condition `
+    (@($payload.capabilities | Where-Object {
+        $_.implementation_class -eq "external_model"
+    }).Count -ge 1) `
+    "External-model capability attribution disappeared."
+Assert-Condition `
+    (@($payload.platform_benchmarks | Where-Object {
+        $_.agent_class -eq "deterministic_system"
+    }).Count -ge 1) `
+    "Deterministic-system benchmark attribution disappeared."
+
+$page = Read-RepoText "research\operations.html"
+$script = Read-RepoText "static\operations-evidence.js"
+$routingRaw = Read-RepoText "assistant-routing.json"
+$routing = $routingRaw | ConvertFrom-Json
+$catalogRaw = Read-RepoText "assistant-catalog.json"
+$catalog = $catalogRaw | ConvertFrom-Json
+$llms = Read-RepoText "llms.txt"
+$sitemap = Read-RepoText "sitemap.xml"
+$researchIndex = Read-RepoText "research\index.html"
+$evidencePage = Read-RepoText "research\evidence.html"
+
+Assert-Condition `
+    ($page.Contains("./data/operations_evidence.json")) `
+    "Operations page does not declare its governed data source."
+Assert-Condition `
+    ($page.Contains("/static/operations-evidence.js")) `
+    "Operations page does not load its renderer."
+Assert-Condition `
+    ($script.Contains("textContent")) `
+    "Renderer must create public records with textContent."
+Assert-Condition `
+    (-not $script.Contains("innerHTML")) `
+    "Renderer must not inject evidence through innerHTML."
+
+$surface = @($routing.surfaces | Where-Object { $_.name -eq "operations-evidence" })
+$route = @($routing.routes | Where-Object { $_.intent -eq "portfolio_evidence" })
+$catalogItem = @($catalog.public_products | Where-Object { $_.id -eq "operations-evidence" })
+Assert-Condition ($surface.Count -eq 1) "Assistant surface route is missing or duplicated."
+Assert-Condition ($route.Count -eq 1) "Assistant intent route is missing or duplicated."
+Assert-Condition ($catalogItem.Count -eq 1) "Assistant catalog proof item is missing or duplicated."
+Assert-Condition `
+    ($surface[0].url -eq "https://aethermoore.com/research/operations.html") `
+    "Assistant surface points to the wrong page."
+Assert-Condition `
+    ($route[0].target -eq "https://aethermoore.com/research/operations.html") `
+    "Assistant intent points to the wrong page."
+
+foreach ($text in @($llms, $sitemap, $researchIndex, $evidencePage)) {
+    Assert-Condition `
+        ($text.Contains("research/operations.html") -or $text.Contains("./operations.html")) `
+        "A required public route does not reference operations evidence."
+}
+
+[pscustomobject]@{
+    validation = "pass"
+    sha256 = $dataHash
+    counts = $countMap
+    routing_surface = $surface[0].url
+} | ConvertTo-Json -Depth 5
