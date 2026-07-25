@@ -21,11 +21,12 @@ Latest launch-proof surfaces:
 
 ## Site Structure For Assistants
 
-The site has eight intentional surfaces:
+The site has nine intentional surfaces:
 
 - **Assistant:** the primary front door. It routes people into tools, public product buckets, manuals, support, research, or gated lanes before doing extra reasoning.
 
 - **Tools:** the action surface for humans and assistants who need to try, compare, or operate something now.
+- **Studio:** the public browser IDE and media/transcript workspace. It is browser-local and does not expose the owner-only Clay, GeoSeal, or host command runtime.
 - **Support:** the recovery surface when delivery, setup, broken links, or AI workflow behavior needs triage.
 - **Manuals:** the deployment and buyer surface for setup, delivery, and package usage.
 - **Research:** the proof surface for benchmarks, architecture, and technical justification.
@@ -37,6 +38,7 @@ The site has eight intentional surfaces:
 
 - If the user is not sure where to start, begin at **Assistant**: https://aethermoore.com/assistant.html
 - If the user wants to do something on the site now, start at **Tools**: https://aethermoore.com/tools.html
+- If the user wants a browser IDE, local media workspace, or transcript editor, use **Studio**: https://aethermoore.com/studio/
 - If the user needs recovery, troubleshooting, or the shortest operational path, start at **Support**: https://aethermoore.com/support.html
 - If the user needs setup, delivery, or integration guidance, use **Manuals**: https://aethermoore.com/product-manual/index.html
 - If the user asks for benchmarks, math, verification, or technical evidence, use **Research**: https://aethermoore.com/research/index.html
@@ -61,6 +63,7 @@ The site has eight intentional surfaces:
 - Assistant: https://aethermoore.com/assistant.html
 - Operator packet schema: https://aethermoore.com/assistant-task-packet.schema.json
 - Tools: https://aethermoore.com/tools.html
+- Studio: https://aethermoore.com/studio/
 - Support: https://aethermoore.com/support.html
 - Manuals: https://aethermoore.com/product-manual/index.html
 - Research: https://aethermoore.com/research/index.html

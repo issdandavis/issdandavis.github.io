@@ -1,0 +1,32 @@
+﻿{
+    "schema":  "clay.studio-public-build.v1",
+    "mode":  "public-static",
+    "source":  "vscode_wrapper_kimi/parallel_task_lab/static",
+    "owner_capabilities":  false,
+    "files":  [
+                  {
+                      "file":  "index.html",
+                      "sha256":  "2077674aff1195b8e502b687ad42cb877f3a4f393ed41c689c4a134bbf2c1f1f"
+                  },
+                  {
+                      "file":  "caption_utils.js",
+                      "sha256":  "cd7340c3a42b787e563e8c084c17e908aea2fda3981874c9cbaebc9dc8557fdc"
+                  },
+                  {
+                      "file":  "parallel_task_lab.css",
+                      "sha256":  "0f319b6e7c7e4b30a0a0bc17d06fb90c8921ab41181c58ed2072b2099ed0277c"
+                  },
+                  {
+                      "file":  "parallel_task_lab.js",
+                      "sha256":  "431b690eb665e37b17077ab8268082693592d517951c9b50d914af690daaa3cf"
+                  },
+                  {
+                      "file":  "studio_shell.css",
+                      "sha256":  "808bedec7607e15a7b5c33e893cf829bca5c28a98718f7c4859422014a22ed1a"
+                  },
+                  {
+                      "file":  "studio_shell.js",
+                      "sha256":  "b8436287fbbb1ae999052595dbbed27f41427bfe85681d4a8f1038d5b77039e4"
+                  }
+              ]
+}

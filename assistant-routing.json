@@ -1,6 +1,6 @@
 {
   "site": "https://aethermoore.com",
-  "version": "2026-05-07",
+  "version": "2026-07-24",
   "role": "Deterministic routing map for site assistants and low-overhead operator flows.",
   "default_start": "https://aethermoore.com/assistant.html",
   "policy": {
@@ -17,6 +17,11 @@
       "name": "tools",
       "url": "https://aethermoore.com/tools.html",
       "purpose": "Action surface for live browser tools and immediate interaction."
+    },
+    {
+      "name": "studio",
+      "url": "https://aethermoore.com/studio/",
+      "purpose": "Public browser IDE, local media and transcript workspace, and bounded task staging. Local Clay, GeoSeal, and host tools remain owner-only."
     },
     {
       "name": "support",
@@ -79,6 +84,11 @@
       "intent": "use_tool",
       "keywords": ["try", "use", "compare", "arena", "demo", "tool", "sandbox"],
       "target": "https://aethermoore.com/tools.html"
+    },
+    {
+      "intent": "browser_ide_or_media",
+      "keywords": ["studio", "browser ide", "web ide", "edit transcript", "youtube transcript", "media workspace", "code in browser"],
+      "target": "https://aethermoore.com/studio/"
     },
     {
       "intent": "request_custom_product",
