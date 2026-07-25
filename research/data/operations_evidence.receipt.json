@@ -1,11 +1,12 @@
 {
     "schema_version":  1,
     "source_label":  "Kaggle Operations Hub publication-safe export",
-    "observed_at_utc":  "2026-07-25T03:57:13+00:00",
-    "source_sha256":  "8947245ff198e01941f0cb6b713786778dab3293317d09fac463bdaf700bd2f6",
-    "copied_sha256":  "8947245ff198e01941f0cb6b713786778dab3293317d09fac463bdaf700bd2f6",
+    "observed_at_utc":  "2026-07-25T05:49:09+00:00",
+    "source_sha256":  "df3c4fefb89b9dd2eab88214b33c69313a141480f9427d9b9c272078879436a7",
+    "copied_sha256":  "df3c4fefb89b9dd2eab88214b33c69313a141480f9427d9b9c272078879436a7",
     "validation":  "pass",
     "counts":  {
+                   "gold_roadmap":  11,
                    "competitions":  9,
                    "experiments":  6,
                    "products":  8,
@@ -17,6 +18,7 @@
     "boundaries":  [
                        "No local paths, credentials, private repository names, or attack payloads.",
                        "Public leaderboard scores remain adaptive evidence.",
+                       "Top-1% score targets are planning proxies, not official medal cutoffs.",
                        "Platform, deterministic-system, and model records remain separate.",
                        "Artifact presence is not treated as demonstrated capability."
                    ]

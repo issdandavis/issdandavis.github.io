@@ -32,9 +32,11 @@ Assert-Condition `
 $raw = [IO.File]::ReadAllText($sourcePath)
 $payload = $raw | ConvertFrom-Json
 
-Assert-Condition ($payload.schema_version -eq 1) "Unsupported public export schema."
+Assert-Condition ($payload.schema_version -eq 2) "Unsupported public export schema."
 
 $requiredCollections = @(
+    "gold_roadmap",
+    "gold_roadmap_methodology",
     "competitions",
     "experiments",
     "products",
@@ -82,6 +84,34 @@ foreach ($competition in $payload.competitions) {
     }
 }
 
+foreach ($roadmapRow in $payload.gold_roadmap) {
+    Assert-Condition `
+        (-not [string]::IsNullOrWhiteSpace($roadmapRow.competition_slug)) `
+        "Gold roadmap row is missing a competition slug."
+    Assert-Condition `
+        ($roadmapRow.target_boundary -match "not an official medal cutoff") `
+        "Gold roadmap row lost its medal-cutoff boundary."
+
+    if ($roadmapRow.target_policy -eq "top_one_percent_public_proxy") {
+        Assert-Condition `
+            ($roadmapRow.proxy_rank -gt 0) `
+            "Ranked roadmap row is missing its top-1% proxy rank."
+    }
+
+    foreach ($propertyName in @(
+        "rules_url",
+        "evaluation_url",
+        "discussion_url",
+        "leaderboard_url"
+    )) {
+        $uri = [Uri]$roadmapRow.$propertyName
+        Assert-Condition ($uri.Scheme -eq "https") "Roadmap links must use HTTPS."
+        Assert-Condition `
+            ($uri.Host -eq "www.kaggle.com") `
+            "Roadmap links must remain on www.kaggle.com."
+    }
+}
+
 foreach ($product in $payload.products) {
     if ($product.github_visibility -eq "private") {
         Assert-Condition `
@@ -116,6 +146,7 @@ $receipt = [ordered]@{
     copied_sha256 = $copiedHash
     validation = "pass"
     counts = [ordered]@{
+        gold_roadmap = @($payload.gold_roadmap).Count
         competitions = @($payload.competitions).Count
         experiments = @($payload.experiments).Count
         products = @($payload.products).Count
@@ -129,6 +160,7 @@ $receipt = [ordered]@{
     boundaries = @(
         "No local paths, credentials, private repository names, or attack payloads.",
         "Public leaderboard scores remain adaptive evidence.",
+        "Top-1% score targets are planning proxies, not official medal cutoffs.",
         "Platform, deterministic-system, and model records remain separate.",
         "Artifact presence is not treated as demonstrated capability."
     )
@@ -142,6 +174,7 @@ $receiptJson = $receipt | ConvertTo-Json -Depth 8
     destination = $destinationPath
     receipt = $receiptPath
     sha256 = $copiedHash
+    gold_roadmap = $receipt.counts.gold_roadmap
     competitions = $receipt.counts.competitions
     experiments = $receipt.counts.experiments
     products = $receipt.counts.products

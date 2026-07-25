@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Operations Evidence | Kaggle, Products, and Capability Boundaries</title>
-  <meta name="description" content="A publication-safe ledger of Kaggle results, experiments, products, benchmarks, capabilities, npm packages, and owned public repositories.">
+  <meta name="description" content="A publication-safe Kaggle gold roadmap and ledger of results, experiments, products, benchmarks, capabilities, npm packages, and owned public repositories.">
   <link rel="canonical" href="https://aethermoore.com/research/operations.html">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta property="og:title" content="Operations Evidence | Aethermoore">
@@ -141,7 +141,7 @@
 
     .stats {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
       gap: 12px;
       margin: 0 0 24px;
     }
@@ -411,9 +411,9 @@
     <span class="hero-label">Operations Evidence</span>
     <h1><span>Measured results.</span><br>Boundaries included.</h1>
     <p class="subtitle">
-      A publication-safe view of Kaggle results, controlled experiments, owned
+      A publication-safe Kaggle gold roadmap with controlled experiments, owned
       products, npm packages, public repositories, and Clay capability evidence.
-      Every record keeps its evidence class and the proof still missing.
+      Every target keeps its evidence class and the proof still required.
     </p>
     <div class="hero-links">
       <a class="hero-link" href="/research/evidence.html">SCBE experiment ledger</a>
@@ -422,6 +422,7 @@
     </div>
 
     <section class="stats" id="summary-stats" aria-label="Evidence summary">
+      <div class="stat"><strong>—</strong><span>Active roadmap lanes</span></div>
       <div class="stat"><strong>—</strong><span>Published competition records</span></div>
       <div class="stat"><strong>—</strong><span>Verified public npm packages</span></div>
       <div class="stat"><strong>—</strong><span>Public repositories</span></div>
@@ -430,8 +431,8 @@
 
     <p class="scope-note">
       <strong>Reading rule:</strong> a public leaderboard score is adaptive
-      evidence, a platform test is not a model-intelligence score, and the
-      presence of a checkpoint is not proof that the capability works.
+      evidence, a top-1% score is a planning proxy rather than an official medal
+      cutoff, and the presence of a checkpoint is not proof that a capability works.
     </p>
 
     <section class="explorer" aria-labelledby="explorer-heading">
@@ -440,7 +441,8 @@
         <p>Choose a lane, search it, then open a row for links, limitations, and required proof.</p>
       </div>
       <div class="view-switcher" role="tablist" aria-label="Evidence lane">
-        <button type="button" role="tab" data-view="competitions" aria-selected="true">Competitions</button>
+        <button type="button" role="tab" data-view="roadmap" aria-selected="true">Gold roadmap</button>
+        <button type="button" role="tab" data-view="competitions" aria-selected="false">Competitions</button>
         <button type="button" role="tab" data-view="experiments" aria-selected="false">Experiments</button>
         <button type="button" role="tab" data-view="benchmarks" aria-selected="false">Benchmarks</button>
         <button type="button" role="tab" data-view="capabilities" aria-selected="false">Capabilities</button>

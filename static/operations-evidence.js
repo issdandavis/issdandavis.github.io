@@ -12,6 +12,7 @@
   const observedAt = document.getElementById("observed-at");
 
   const allowedViews = new Set([
+    "roadmap",
     "competitions",
     "experiments",
     "benchmarks",
@@ -23,7 +24,7 @@
   const requestedView = params.get("view");
   const state = {
     payload: null,
-    view: allowedViews.has(requestedView) ? requestedView : "competitions",
+    view: allowedViews.has(requestedView) ? requestedView : "roadmap",
     query: params.get("q") || "",
   };
 
@@ -141,6 +142,46 @@
       ],
       boundary: score.limitation,
       links,
+    });
+  };
+
+  const roadmapRecord = (item) => {
+    const gap = number(item.score_gap_to_proxy);
+    const proxy = number(item.proxy_score);
+    let measure = "Evidence packet";
+    if (proxy !== null) {
+      measure = gap === null ? "Score missing" : `${formatScore(gap)} gap`;
+    } else if (item.proxy_state === "closed") {
+      measure = "Closed";
+    }
+    return record({
+      title: `${text(item.focus_order)}. ${text(item.competition)}`,
+      measure,
+      chips: [
+        item.lane,
+        item.horizon,
+        item.priority,
+        item.proxy_state,
+        item.medal_claim_state,
+      ],
+      facts: [
+        ["Current score", formatScore(item.current_score)],
+        ["Current rank", item.current_rank],
+        ["Rank evidence", item.rank_evidence],
+        ["Top-1% proxy rank", item.proxy_rank],
+        ["Top-1% proxy score", proxy === null ? null : formatScore(proxy)],
+        ["Target policy", item.target_policy],
+        ["Next controlled milestone", item.next_milestone],
+        ["Review cadence", item.review_cadence],
+        ["Why this lane", item.why_now],
+      ],
+      boundary: item.target_boundary,
+      links: [
+        ["Rules", item.rules_url],
+        ["Evaluation", item.evaluation_url],
+        ["Forum", item.discussion_url],
+        ["Leaderboard", item.leaderboard_url],
+      ],
     });
   };
 
@@ -275,6 +316,9 @@
 
   const getRows = () => {
     const payload = state.payload;
+    if (state.view === "roadmap") {
+      return [payload.gold_roadmap || [], roadmapRecord];
+    }
     if (state.view === "competitions") {
       return [payload.competitions, competitionRecord];
     }
@@ -333,6 +377,7 @@
     const ownership = payload.ownership || {};
     const github = ownership.github_counts || {};
     const values = [
+      (payload.gold_roadmap || []).length,
       payload.competitions.length,
       ownership.verified_public_npm_packages,
       github.public,
@@ -358,6 +403,18 @@
     tab.addEventListener("click", () => {
       state.view = tab.dataset.view;
       render();
+    });
+    tab.addEventListener("keydown", (event) => {
+      if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+      event.preventDefault();
+      const current = tabs.indexOf(tab);
+      let next = current;
+      if (event.key === "ArrowLeft") next = (current - 1 + tabs.length) % tabs.length;
+      if (event.key === "ArrowRight") next = (current + 1) % tabs.length;
+      if (event.key === "Home") next = 0;
+      if (event.key === "End") next = tabs.length - 1;
+      tabs[next].focus();
+      tabs[next].click();
     });
   });
 

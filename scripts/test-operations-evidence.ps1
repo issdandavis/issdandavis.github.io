@@ -31,7 +31,7 @@ $receiptRaw = Read-RepoText "research\data\operations_evidence.receipt.json"
 $payload = $dataRaw | ConvertFrom-Json
 $receipt = $receiptRaw | ConvertFrom-Json
 
-Assert-Condition ($payload.schema_version -eq 1) "Unexpected evidence schema."
+Assert-Condition ($payload.schema_version -eq 2) "Unexpected evidence schema."
 Assert-Condition ($receipt.validation -eq "pass") "Evidence receipt did not pass."
 
 $dataHash = (Get-FileHash -LiteralPath $dataPath -Algorithm SHA256).Hash.ToLowerInvariant()
@@ -39,6 +39,7 @@ Assert-Condition ($dataHash -eq $receipt.copied_sha256) "Receipt hash mismatch."
 Assert-Condition ($receipt.source_sha256 -eq $receipt.copied_sha256) "Source/copy hash mismatch."
 
 $countMap = [ordered]@{
+    gold_roadmap = @($payload.gold_roadmap).Count
     competitions = @($payload.competitions).Count
     experiments = @($payload.experiments).Count
     products = @($payload.products).Count
@@ -56,6 +57,7 @@ foreach ($property in $countMap.GetEnumerator()) {
         "Receipt count mismatch for '$($property.Key)'."
 }
 
+Assert-Condition ($countMap.gold_roadmap -ge 1) "No gold roadmap rows were published."
 Assert-Condition ($countMap.competitions -ge 1) "No competition evidence was published."
 Assert-Condition ($countMap.experiments -ge 1) "No experiment evidence was published."
 Assert-Condition ($countMap.products -ge 1) "No product evidence was published."
@@ -85,6 +87,31 @@ Assert-Condition `
     (@($payload.competitions | Where-Object { $null -eq $_.score.value }).Count -ge 1) `
     "Missing competition scores must remain null rather than zero."
 Assert-Condition `
+    (@($payload.gold_roadmap | Where-Object {
+        $_.competition_slug -eq "biohub-cell-tracking-during-development" -and
+        $_.focus_order -eq 1 -and
+        $_.target_policy -eq "top_one_percent_public_proxy"
+    }).Count -eq 1) `
+    "Primary Biohub roadmap lane is missing or malformed."
+Assert-Condition `
+    (@($payload.gold_roadmap | Where-Object {
+        $_.competition_slug -eq "pokemon-tcg-ai-battle" -and
+        $null -ne $_.proxy_score
+    }).Count -eq 1) `
+    "Pokemon simulation roadmap target is missing."
+Assert-Condition `
+    (@($payload.gold_roadmap | Where-Object {
+        $_.competition_slug -eq "arc-prize-2026-paper-track" -and
+        $_.target_policy -eq "judged_finalist_evidence_packet" -and
+        $null -eq $_.proxy_score
+    }).Count -eq 1) `
+    "ARC paper roadmap must remain a judged, non-numeric target."
+Assert-Condition `
+    (@($payload.gold_roadmap | Where-Object {
+        $_.target_boundary -notmatch "not an official medal cutoff"
+    }).Count -eq 0) `
+    "A roadmap row lost its planning-proxy boundary."
+Assert-Condition `
     (@($payload.capabilities | Where-Object {
         $_.implementation_class -eq "external_model"
     }).Count -ge 1) `
@@ -113,8 +140,14 @@ Assert-Condition `
     ($page.Contains("/static/operations-evidence.js")) `
     "Operations page does not load its renderer."
 Assert-Condition `
+    ($page.Contains('data-view="roadmap"')) `
+    "Operations page does not expose the gold roadmap lane."
+Assert-Condition `
     ($script.Contains("textContent")) `
     "Renderer must create public records with textContent."
+Assert-Condition `
+    ($script.Contains("roadmapRecord")) `
+    "Renderer does not define the gold roadmap record surface."
 Assert-Condition `
     (-not $script.Contains("innerHTML")) `
     "Renderer must not inject evidence through innerHTML."
