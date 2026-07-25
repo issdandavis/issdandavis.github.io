@@ -115,12 +115,26 @@ Assert-Condition `
     "A roadmap row lost its planning-proxy boundary."
 Assert-Condition `
     (@($payload.research_watch | Where-Object {
-        $_.rules_state -ne "current" -or
-        $_.evaluation_state -ne "current" -or
-        $_.forum_state -ne "current_metadata_only" -or
-        $_.pre_submit_research_gate -ne "BLOCK_REVIEW_REQUIRED"
+        $_.competition_slug -eq "biohub-cell-tracking-during-development" -and
+        $_.rules_state -eq "current" -and
+        $_.evaluation_state -eq "current" -and
+        $_.forum_state -eq "current_full_review" -and
+        $_.pre_submit_research_gate -eq "PASS_RESEARCH_FRESHNESS_ONLY" -and
+        $_.selected_topic_count -eq 8 -and
+        $_.complete_topic_trees -eq 8 -and
+        $_.reviewed_message_count -eq 46
+    }).Count -eq 1) `
+    "Biohub full-post Research Watch receipt is missing or malformed."
+Assert-Condition `
+    (@($payload.research_watch | Where-Object {
+        $_.competition_slug -ne "biohub-cell-tracking-during-development" -and (
+            $_.rules_state -ne "current" -or
+            $_.evaluation_state -ne "current" -or
+            $_.forum_state -ne "current_metadata_only" -or
+            $_.pre_submit_research_gate -ne "BLOCK_REVIEW_REQUIRED"
+        )
     }).Count -eq 0) `
-    "Research Watch must keep metadata-only forum reviews blocked."
+    "Metadata-only Research Watch rows must remain blocked."
 Assert-Condition `
     (@($payload.research_watch | Where-Object {
         $_.gate_boundary -notmatch "never authorizes"
@@ -181,6 +195,9 @@ Assert-Condition `
 Assert-Condition `
     ($script.Contains("researchRecord")) `
     "Renderer does not define the Research Watch record surface."
+Assert-Condition `
+    ($script.Contains("Reviewed messages")) `
+    "Renderer does not expose full-post review receipt counts."
 Assert-Condition `
     (-not $script.Contains("innerHTML")) `
     "Renderer must not inject evidence through innerHTML."

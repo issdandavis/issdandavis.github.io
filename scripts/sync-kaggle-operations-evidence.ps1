@@ -135,6 +135,15 @@ foreach ($researchRow in $payload.research_watch) {
     if ($researchRow.pre_submit_research_gate -eq "PASS_RESEARCH_FRESHNESS_ONLY") {
         Assert-Condition $researchReady `
             "A Research Watch row passed without all three reviews current."
+        Assert-Condition `
+            ($researchRow.selected_topic_count -gt 0) `
+            "A Research Watch row passed without selected critical topics."
+        Assert-Condition `
+            ($researchRow.complete_topic_trees -eq $researchRow.selected_topic_count) `
+            "A Research Watch row passed with an incomplete topic tree."
+        Assert-Condition `
+            ($researchRow.reviewed_message_count -ge $researchRow.selected_topic_count) `
+            "A Research Watch row passed without a complete message receipt."
     } else {
         Assert-Condition `
             ($researchRow.pre_submit_research_gate -eq "BLOCK_REVIEW_REQUIRED") `
@@ -157,6 +166,13 @@ foreach ($researchRow in $payload.research_watch) {
             "Critical-topic links must use HTTPS."
         Assert-Condition ($uri.Host -eq "www.kaggle.com") `
             "Critical-topic links must remain on www.kaggle.com."
+        if ($researchRow.pre_submit_research_gate -eq "PASS_RESEARCH_FRESHNESS_ONLY") {
+            Assert-Condition ($topic.message_tree_complete -eq $true) `
+                "A passing Research Watch topic has an incomplete message tree."
+            Assert-Condition `
+                ($topic.messages_sha256 -match "^[0-9a-f]{64}$") `
+                "A passing Research Watch topic has no message-tree hash."
+        }
     }
 }
 
