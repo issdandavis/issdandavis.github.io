@@ -32,11 +32,12 @@ Assert-Condition `
 $raw = [IO.File]::ReadAllText($sourcePath)
 $payload = $raw | ConvertFrom-Json
 
-Assert-Condition ($payload.schema_version -eq 2) "Unsupported public export schema."
+Assert-Condition ($payload.schema_version -eq 3) "Unsupported public export schema."
 
 $requiredCollections = @(
     "gold_roadmap",
     "gold_roadmap_methodology",
+    "research_watch",
     "competitions",
     "experiments",
     "products",
@@ -112,6 +113,53 @@ foreach ($roadmapRow in $payload.gold_roadmap) {
     }
 }
 
+foreach ($researchRow in $payload.research_watch) {
+    Assert-Condition `
+        (-not [string]::IsNullOrWhiteSpace($researchRow.competition_slug)) `
+        "Research Watch row is missing a competition slug."
+    Assert-Condition `
+        ($researchRow.gate_boundary -match "never authorizes") `
+        "Research Watch row lost its no-authorization boundary."
+    Assert-Condition `
+        ($researchRow.rules_sha256 -match "^[0-9a-f]{64}$") `
+        "Research Watch row has no valid rules receipt."
+    Assert-Condition `
+        ($researchRow.evaluation_sha256 -match "^[0-9a-f]{64}$") `
+        "Research Watch row has no valid evaluation receipt."
+
+    $researchReady = (
+        $researchRow.rules_state -eq "current" -and
+        $researchRow.evaluation_state -eq "current" -and
+        $researchRow.forum_state -eq "current_full_review"
+    )
+    if ($researchRow.pre_submit_research_gate -eq "PASS_RESEARCH_FRESHNESS_ONLY") {
+        Assert-Condition $researchReady `
+            "A Research Watch row passed without all three reviews current."
+    } else {
+        Assert-Condition `
+            ($researchRow.pre_submit_research_gate -eq "BLOCK_REVIEW_REQUIRED") `
+            "An active Research Watch row has an unsupported gate state."
+        Assert-Condition (-not $researchReady) `
+            "A fully current Research Watch row is still marked blocked."
+    }
+
+    foreach ($propertyName in @("rules_url", "evaluation_url", "forum_url")) {
+        $uri = [Uri]$researchRow.$propertyName
+        Assert-Condition ($uri.Scheme -eq "https") `
+            "Research Watch links must use HTTPS."
+        Assert-Condition ($uri.Host -eq "www.kaggle.com") `
+            "Research Watch links must remain on www.kaggle.com."
+    }
+
+    foreach ($topic in $researchRow.critical_topics) {
+        $uri = [Uri]$topic.topic_url
+        Assert-Condition ($uri.Scheme -eq "https") `
+            "Critical-topic links must use HTTPS."
+        Assert-Condition ($uri.Host -eq "www.kaggle.com") `
+            "Critical-topic links must remain on www.kaggle.com."
+    }
+}
+
 foreach ($product in $payload.products) {
     if ($product.github_visibility -eq "private") {
         Assert-Condition `
@@ -147,6 +195,7 @@ $receipt = [ordered]@{
     validation = "pass"
     counts = [ordered]@{
         gold_roadmap = @($payload.gold_roadmap).Count
+        research_watch = @($payload.research_watch).Count
         competitions = @($payload.competitions).Count
         experiments = @($payload.experiments).Count
         products = @($payload.products).Count
@@ -163,6 +212,8 @@ $receipt = [ordered]@{
         "Top-1% score targets are planning proxies, not official medal cutoffs.",
         "Platform, deterministic-system, and model records remain separate.",
         "Artifact presence is not treated as demonstrated capability."
+        "Rules and forum bodies are represented by hashes and review receipts."
+        "Research freshness never authorizes a Kaggle submission."
     )
 }
 
@@ -175,6 +226,7 @@ $receiptJson = $receipt | ConvertTo-Json -Depth 8
     receipt = $receiptPath
     sha256 = $copiedHash
     gold_roadmap = $receipt.counts.gold_roadmap
+    research_watch = $receipt.counts.research_watch
     competitions = $receipt.counts.competitions
     experiments = $receipt.counts.experiments
     products = $receipt.counts.products

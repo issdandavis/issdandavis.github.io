@@ -39,9 +39,10 @@ before relying on a benchmark claim.
 ## Refresh operations evidence
 
 The public evidence page is generated from the publication-safe Kaggle
-Operations Hub export. The sync refuses local paths, credentials, private
-repository names, non-public repositories, and competition links outside
-Kaggle.
+Operations Hub export. It includes a hash-locked rules/evaluation Research
+Watch and keeps metadata-only forum review blocked before submission review.
+The sync refuses local paths, credentials, private repository names,
+non-public repositories, and competition links outside Kaggle.
 
 ```powershell
 .\scripts\sync-kaggle-operations-evidence.ps1 -Source <path-to-website_benchmarks.json>

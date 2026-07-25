@@ -13,6 +13,7 @@
 
   const allowedViews = new Set([
     "roadmap",
+    "research",
     "competitions",
     "experiments",
     "benchmarks",
@@ -163,6 +164,8 @@
         item.priority,
         item.proxy_state,
         item.medal_claim_state,
+        item.research_gate,
+        item.forum_state,
       ],
       facts: [
         ["Current score", formatScore(item.current_score)],
@@ -181,6 +184,49 @@
         ["Evaluation", item.evaluation_url],
         ["Forum", item.discussion_url],
         ["Leaderboard", item.leaderboard_url],
+      ],
+    });
+  };
+
+  const researchRecord = (item) => {
+    const topicLinks = (item.critical_topics || []).map((topic) => [
+      topic.title,
+      topic.topic_url,
+    ]);
+    const gate = text(item.pre_submit_research_gate);
+    const measure = gate.startsWith("BLOCK")
+      ? "Review blocked"
+      : gate.startsWith("PASS")
+        ? "Freshness pass"
+        : "Not applicable";
+    return record({
+      title: `${text(item.focus_order)}. ${text(item.competition)}`,
+      measure,
+      chips: [
+        item.rules_state,
+        item.evaluation_state,
+        item.forum_state,
+        item.pre_submit_research_gate,
+        item.evidence_label,
+      ],
+      facts: [
+        ["Rules review", item.rules_state],
+        ["Evaluation review", item.evaluation_state],
+        ["Forum review", item.forum_state],
+        ["Review mode", item.forum_review_mode],
+        ["Reviewed UTC", item.reviewed_at_utc],
+        ["Review TTL", `${text(item.review_ttl_hours)} hours`],
+        ["Latest selected-topic activity", item.latest_topic_activity_utc],
+        ["Critical topics", item.selected_topic_count],
+        ["Finding", item.finding_summary],
+        ["Action impact", item.action_impact],
+      ],
+      boundary: item.gate_boundary,
+      links: [
+        ["Rules", item.rules_url],
+        ["Evaluation", item.evaluation_url],
+        ["Forum", item.forum_url],
+        ...topicLinks,
       ],
     });
   };
@@ -319,6 +365,9 @@
     if (state.view === "roadmap") {
       return [payload.gold_roadmap || [], roadmapRecord];
     }
+    if (state.view === "research") {
+      return [payload.research_watch || [], researchRecord];
+    }
     if (state.view === "competitions") {
       return [payload.competitions, competitionRecord];
     }
@@ -378,6 +427,9 @@
     const github = ownership.github_counts || {};
     const values = [
       (payload.gold_roadmap || []).length,
+      (payload.research_watch || []).filter(
+        (item) => item.pre_submit_research_gate === "BLOCK_REVIEW_REQUIRED",
+      ).length,
       payload.competitions.length,
       ownership.verified_public_npm_packages,
       github.public,

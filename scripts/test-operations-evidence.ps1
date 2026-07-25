@@ -31,7 +31,7 @@ $receiptRaw = Read-RepoText "research\data\operations_evidence.receipt.json"
 $payload = $dataRaw | ConvertFrom-Json
 $receipt = $receiptRaw | ConvertFrom-Json
 
-Assert-Condition ($payload.schema_version -eq 2) "Unexpected evidence schema."
+Assert-Condition ($payload.schema_version -eq 3) "Unexpected evidence schema."
 Assert-Condition ($receipt.validation -eq "pass") "Evidence receipt did not pass."
 
 $dataHash = (Get-FileHash -LiteralPath $dataPath -Algorithm SHA256).Hash.ToLowerInvariant()
@@ -40,6 +40,7 @@ Assert-Condition ($receipt.source_sha256 -eq $receipt.copied_sha256) "Source/cop
 
 $countMap = [ordered]@{
     gold_roadmap = @($payload.gold_roadmap).Count
+    research_watch = @($payload.research_watch).Count
     competitions = @($payload.competitions).Count
     experiments = @($payload.experiments).Count
     products = @($payload.products).Count
@@ -58,6 +59,7 @@ foreach ($property in $countMap.GetEnumerator()) {
 }
 
 Assert-Condition ($countMap.gold_roadmap -ge 1) "No gold roadmap rows were published."
+Assert-Condition ($countMap.research_watch -ge 1) "No Research Watch rows were published."
 Assert-Condition ($countMap.competitions -ge 1) "No competition evidence was published."
 Assert-Condition ($countMap.experiments -ge 1) "No experiment evidence was published."
 Assert-Condition ($countMap.products -ge 1) "No product evidence was published."
@@ -112,6 +114,31 @@ Assert-Condition `
     }).Count -eq 0) `
     "A roadmap row lost its planning-proxy boundary."
 Assert-Condition `
+    (@($payload.research_watch | Where-Object {
+        $_.rules_state -ne "current" -or
+        $_.evaluation_state -ne "current" -or
+        $_.forum_state -ne "current_metadata_only" -or
+        $_.pre_submit_research_gate -ne "BLOCK_REVIEW_REQUIRED"
+    }).Count -eq 0) `
+    "Research Watch must keep metadata-only forum reviews blocked."
+Assert-Condition `
+    (@($payload.research_watch | Where-Object {
+        $_.gate_boundary -notmatch "never authorizes"
+    }).Count -eq 0) `
+    "A Research Watch row lost its no-authorization boundary."
+Assert-Condition `
+    (@($payload.research_watch | Where-Object {
+        $_.rules_sha256 -notmatch "^[0-9a-f]{64}$" -or
+        $_.evaluation_sha256 -notmatch "^[0-9a-f]{64}$"
+    }).Count -eq 0) `
+    "A Research Watch page receipt is missing or malformed."
+Assert-Condition `
+    (@($payload.research_watch | Where-Object {
+        $_.competition_slug -eq "biohub-cell-tracking-during-development" -and
+        @($_.critical_topics | Where-Object { $_.topic_id -eq 727154 }).Count -eq 1
+    }).Count -eq 1) `
+    "Biohub metric-patch discussion is missing from Research Watch."
+Assert-Condition `
     (@($payload.capabilities | Where-Object {
         $_.implementation_class -eq "external_model"
     }).Count -ge 1) `
@@ -143,11 +170,17 @@ Assert-Condition `
     ($page.Contains('data-view="roadmap"')) `
     "Operations page does not expose the gold roadmap lane."
 Assert-Condition `
+    ($page.Contains('data-view="research"')) `
+    "Operations page does not expose the Research Watch lane."
+Assert-Condition `
     ($script.Contains("textContent")) `
     "Renderer must create public records with textContent."
 Assert-Condition `
     ($script.Contains("roadmapRecord")) `
     "Renderer does not define the gold roadmap record surface."
+Assert-Condition `
+    ($script.Contains("researchRecord")) `
+    "Renderer does not define the Research Watch record surface."
 Assert-Condition `
     (-not $script.Contains("innerHTML")) `
     "Renderer must not inject evidence through innerHTML."
