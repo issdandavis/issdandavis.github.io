@@ -35,7 +35,7 @@ jobs:
   validate:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Validate publication-safe operations evidence
         shell: pwsh
         run: .\scripts\test-operations-evidence.ps1
