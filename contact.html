@@ -6,7 +6,7 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact | SCBE-AETHERMOORE</title>
-<meta name="description" content="Contact Issac Davis for AI governance consulting, product support, custom work, or partnership inquiries. Based in Port Angeles, WA.">
+<meta name="description" content="Contact AetherMoore via Proton email. No public cellphone. Discord invite by request.">
 <link rel="canonical" href="https://aethermoore.com/contact.html">
 <meta property="og:title" content="Contact | SCBE-AETHERMOORE">
 <meta property="og:description" content="Direct contact for AI governance solutions, support, and custom engagements. No forms, no gates.">
@@ -26,7 +26,7 @@
   "mainEntity": {
     "@type": "Organization",
     "name": "SCBE-AETHERMOORE",
-    "email": "issac@aethermoorgames.com",
+    "email": "aethermoregames@pm.me",
     "url": "https://aethermoore.com",
     "founder": { "@type": "Person", "name": "Issac Davis" }
   }
@@ -57,8 +57,8 @@
 <main>
   <section style="padding-top: 72px;">
     <div class="eyebrow">Contact</div>
-    <h1>Direct line. No forms.</h1>
-    <p class="section-copy">I read every email. For product support, custom work, or just to say hello — send it. I usually reply within 24 hours.</p>
+    <h1>Proton email. No public cell.</h1>
+    <p class="section-copy">Reach me at <a href="mailto:aethermoregames@pm.me">aethermoregames@pm.me</a> (Proton). Personal phone numbers are not listed. Prefer email or Discord (invite on request).</p>
   </section>
 
   <section style="margin-top: 48px;">
@@ -86,18 +86,14 @@
       <div class="card">
         <h3>Custom work</h3>
         <p>Fixed-scope projects, hourly consulting ($150/hr), or monthly retainers ($2,500/mo). Most projects: $2,500–$15,000.</p>
-        <a class="btn btn-gold" href="mailto:issac@aethermoorgames.com?subject=Custom%20project%20inquiry&body=Hey%20Issac%2C%0A%0AI%27d%20like%20to%20discuss%20a%20custom%20project.%0A%0A-%20What%20I%27m%20building%3A%0A-%20Current%20stack%3A%0A-%20Timeline%3A%0A-%20Budget%20range%3A%0A%0AThanks%2C" style="margin-top: 8px; display: inline-block;">Start a project inquiry</a>
+        <a class="btn btn-gold" href="mailto:aethermoregames@pm.me?subject=Custom%20project%20inquiry&body=Hey%20Issac%2C%0A%0AI%27d%20like%20to%20discuss%20a%20custom%20project.%0A%0A-%20What%20I%27m%20building%3A%0A-%20Current%20stack%3A%0A-%20Timeline%3A%0A-%20Budget%20range%3A%0A%0AThanks%2C" style="margin-top: 8px; display: inline-block;">Start a project inquiry</a>
       </div>
 
       <div class="card">
-        <h3>&#128222; Request a call</h3>
-        <p>Enter your number and we'll connect you. US/Canada numbers only.</p>
-        <form id="callForm" style="margin-top: 12px;">
-          <input type="text" id="callName" placeholder="Your name" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--line); background: rgba(0,0,0,0.3); color: var(--text); font-family: inherit; font-size: 14px; margin-bottom: 8px;">
-          <input type="tel" id="callPhone" placeholder="+1 (555) 123-4567" required style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--line); background: rgba(0,0,0,0.3); color: var(--text); font-family: inherit; font-size: 14px; margin-bottom: 8px;">
-          <button type="submit" class="btn btn-primary" id="callSubmit" style="width: 100%;">Call me</button>
-          <p id="callStatus" style="margin-top: 8px; font-size: 13px; color: var(--muted);"></p>
-        </form>
+        <h3>Chat (no phone)</h3>
+        <p>Cell numbers are not published. Prefer Proton email, or Discord for quick chat. Twilio/voice can be arranged later without listing a personal line.</p>
+        <a class="btn btn-secondary" href="mailto:aethermoregames@pm.me?subject=Discord%20invite%20request" style="margin-top: 8px; display: inline-block;">Email for Discord invite</a>
+        <a class="btn btn-primary" href="mailto:aethermoregames@pm.me?subject=AetherMoore%20contact" style="margin-top: 8px; display: inline-block;">Proton email</a>
       </div>
     </div>
   </section>
@@ -152,7 +148,7 @@
       <a href="https://huggingface.co/issdandavis" target="_blank" rel="noopener">HuggingFace</a>
       <a href="https://www.amazon.com/dp/B0F28PHSPR" target="_blank" rel="noopener">Amazon</a>
       <a href="https://www.youtube.com/@id8461" target="_blank" rel="noopener">YouTube</a>
-      <a href="mailto:issac@aethermoorgames.com">Email</a>
+      <a href="mailto:aethermoregames@pm.me">Email</a>
     </p>
   </div>
 </main>
@@ -170,46 +166,7 @@
   const backend = window.__POLLY_BACKEND_HTTP__ || '';
   // Production backend: https://api.aethermoore.com
 
-  // Phone call form
-  (function() {
-    const callForm = document.getElementById('callForm');
-    const callStatus = document.getElementById('callStatus');
-    const callSubmit = document.getElementById('callSubmit');
-    if (!callForm) return;
-
-    callForm.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      callStatus.textContent = 'Placing call...';
-      callStatus.style.color = 'var(--muted)';
-      callSubmit.disabled = true;
-
-      const payload = {
-        phone: document.getElementById('callPhone').value.trim(),
-        name: document.getElementById('callName').value.trim()
-      };
-
-      try {
-        const resp = await fetch(backend.replace(/\/$/, '') + '/v1/polly/call', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-        const data = await resp.json();
-        if (data.ok) {
-          callStatus.textContent = 'Call initiated! You should receive a call shortly.';
-          callStatus.style.color = 'var(--mint)';
-          callForm.reset();
-        } else {
-          callStatus.textContent = data.error || 'Could not place call. Try email instead.';
-          callStatus.style.color = 'var(--rose)';
-        }
-      } catch (err) {
-        callStatus.textContent = 'Network error. Please email instead.';
-        callStatus.style.color = 'var(--rose)';
-      }
-      callSubmit.disabled = false;
-    });
-  })();
+  // Phone / Twilio click-to-call removed from public site (no personal cell published).
 
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
@@ -227,7 +184,7 @@
 
     // If no backend configured, fall back to mailto
     if (!backend || backend.includes('localhost')) {
-      const mailto = 'mailto:issac@aethermoorgames.com?subject=' + encodeURIComponent(payload.subject) +
+      const mailto = 'mailto:aethermoregames@pm.me?subject=' + encodeURIComponent(payload.subject) +
         '&body=' + encodeURIComponent('From: ' + payload.name + ' (' + payload.email + ')\n\n' + payload.message);
       window.location.href = mailto;
       status.textContent = 'Opening your email client...';
@@ -254,7 +211,7 @@
       status.textContent = 'Network error. Falling back to email client...';
       status.style.color = 'var(--rose)';
       setTimeout(() => {
-        const mailto = 'mailto:issac@aethermoorgames.com?subject=' + encodeURIComponent(payload.subject) +
+        const mailto = 'mailto:aethermoregames@pm.me?subject=' + encodeURIComponent(payload.subject) +
           '&body=' + encodeURIComponent('From: ' + payload.name + ' (' + payload.email + ')\n\n' + payload.message);
         window.location.href = mailto;
       }, 1500);

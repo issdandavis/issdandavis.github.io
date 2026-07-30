@@ -64,7 +64,7 @@
        - Spiralverse Session Transcripts — $49 (48 files, RPG/game AI training)
        - The Full Arsenal — $399 (everything above, save $107)
        All at: https://aethermoore.com/datasets.html
-       Contact: issac@aethermoorgames.com
+       Contact: aethermoregames@pm.me
 
     7. SCBE-AETHERMOORE Ecosystem (Open Source) — FREE, MIT licensed
        The framework lives in one auditable monorepo (SCBE-AETHERMOORE), with a few pieces also published as standalone packages:
@@ -88,7 +88,7 @@
     - Assistant and site setup — Turn a static site into a route-aware assistant surface
     - Workflow packaging — Package workflow logic into buyer-readable manuals and delivery
     - Content operations surface — Build article, research, support, and assistant surfaces
-    Contact: issac@aethermoorgames.com
+    Contact: aethermoregames@pm.me
 
     === SITE ROUTES ===
     - tools.html — Live action surfaces and browser tools
@@ -101,7 +101,7 @@
     - profile.html — About the creator
 
     === BOUNDARIES ===
-    - Government, DARPA, proprietary, or high-assurance work stays gated. Acknowledge the lane and route to issac@aethermoorgames.com.
+    - Government, DARPA, proprietary, or high-assurance work stays gated. Acknowledge the lane and route to aethermoregames@pm.me.
     - Do NOT make up products, bundles, tiers, or pricing that aren't listed above.
     - If unsure, say "I don't have that" and offer the closest real option.
 
@@ -137,8 +137,8 @@
     { keys: ['iso 42001','audit','compliance','regulatory','eu ai act','governance framework'], response: "ISO 42001 Evidence-as-a-Service provides adversarial testing, risk reports, drift monitoring, and audit response dossiers. $50-150K/year. https://aethermoore.com/iso-42001.html" },
     { keys: ['red team','penetration','adversarial','attack','security test','vulnerability','threat'], response: "AI Red Team as a Service runs 6,000+ adversarial tests against your LLM application. $5-50K/engagement. https://aethermoore.com/red-team.html" },
     { keys: ['dataset','training data','sft','corpus','prompt pack'], response: "We sell training datasets including the Governance SFT Pack ($99), Red Team Fortress ($149), and The Full Arsenal bundle ($399). https://aethermoore.com/datasets.html" },
-    { keys: ['contact','email','reach out','talk to','schedule','get in touch'], response: "Email me directly at issac@aethermoorgames.com or use the contact form at https://aethermoore.com/contact.html. I usually reply within 24 hours." },
-    { keys: ['help','support','broken','missing','delivery','issue','problem'], response: "For support with purchases, delivery, or broken links, visit https://aethermoore.com/support.html or email issac@aethermoorgames.com." },
+    { keys: ['contact','email','reach out','talk to','schedule','get in touch'], response: "Email me directly at aethermoregames@pm.me or use the contact form at https://aethermoore.com/contact.html. I usually reply within 24 hours." },
+    { keys: ['help','support','broken','missing','delivery','issue','problem'], response: "For support with purchases, delivery, or broken links, visit https://aethermoore.com/support.html or email aethermoregames@pm.me." },
     { keys: ['tool','calculator','demo','interactive','visualization'], response: "Our live browser tools and interactive demos are at https://aethermoore.com/demos/index.html. No install needed." },
     { keys: ['research','benchmark','evidence','paper','study','proof','technical'], response: "Benchmarks, proofs, and technical justification are at https://aethermoore.com/research/index.html. Member-only raw notes are at https://aethermoore.com/members/research-notes.html" },
     { keys: ['member','exclusive','insider','gated','early access'], response: "Members get raw research notes, early datasets, and member-only tools. Join SCBE Weekly to get the access PIN. https://aethermoore.com/members/" },
@@ -609,7 +609,7 @@ async function fetchLore() {
         response = backendResp;
       } else {
         const local = localIntentResponse(text);
-        response = local || "I couldn't reach the backend for deep analysis. Try a more specific question, or email issac@aethermoorgames.com.";
+        response = local || "I couldn't reach the backend for deep analysis. Try a more specific question, or email aethermoregames@pm.me.";
       }
     } catch(e) { response = `Thinking error: ${e.message}`; }
     meta.tool_use = 'thinking';

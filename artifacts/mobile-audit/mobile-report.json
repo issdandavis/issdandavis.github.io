@@ -1,0 +1,356 @@
+{
+  "viewport": {
+    "width": 390,
+    "height": 664
+  },
+  "device": "iPhone 13",
+  "pages": [
+    {
+      "id": "home",
+      "url": "https://aethermoore.com/",
+      "ok": true,
+      "status": 200,
+      "title": "AetherMoore | Books, tools, and governed AI by Issac Daniel Davis",
+      "errors": [
+        "pageerror: Cannot read properties of null (reading 'addEventListener')",
+        "console: Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+        "console: Failed to load resource: the server responded with a status of 401 ()",
+        "console: Failed to load resource: the server responded with a status of 401 ()",
+        "console: Failed to load resource: the server responded with a status of 401 ()",
+        "console: Failed to load resource: the server responded with a status of 401 ()"
+      ],
+      "overflow": {
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "overflowX": false
+      },
+      "ctaTexts": {
+        "nav": [
+          "AetherMoore",
+          "Home",
+          "Shop",
+          "Math Ledger",
+          "Books",
+          "About",
+          "Hire",
+          "Assistant",
+          "Services",
+          "Research",
+          "GitHub"
+        ],
+        "buttons": [
+          "Open the shop",
+          "Toolkit $29",
+          "Books on Amazon",
+          "Free Math Ledger",
+          "Hire",
+          "About & trust",
+          "Browse books →",
+          "Open shop packs →",
+          "Open Math Ledger →",
+          "Hire page →",
+          "Open training proof →",
+          "Verify offer delivery →",
+          "Read buyer instructions →",
+          "See the solution →",
+          "See the solution →",
+          "See the solution →",
+          "View whitepaper →",
+          "Explore demos →",
+          "View on GitHub →",
+          "View on GitHub →",
+          "View on GitHub →",
+          "View on GitHub →",
+          "View on GitHub →",
+          "View on GitHub →",
+          "View on GitHub →",
+          "View on GitHub →",
+          "View on GitHub →",
+          "Buy on Amazon →",
+          "Open the Arena →",
+          "Browse the feed →"
+        ]
+      },
+      "smallTaps": [
+        {
+          "text": "AetherMoore",
+          "w": 135,
+          "h": 22
+        },
+        {
+          "text": "Show HN: When the LLM Accidentally",
+          "w": 245,
+          "h": 14
+        },
+        {
+          "text": "Show HN: NyaayWatch – Observability laye",
+          "w": 475,
+          "h": 14
+        },
+        {
+          "text": "Hard SiFi Author'Search for Readers",
+          "w": 252,
+          "h": 14
+        },
+        {
+          "text": "Show HN: An OTel exporter that posts the",
+          "w": 511,
+          "h": 14
+        },
+        {
+          "text": "Anthropic donates Petri open-source alig",
+          "w": 360,
+          "h": 14
+        },
+        {
+          "text": "Two Home Affairs officials suspended aft",
+          "w": 490,
+          "h": 14
+        },
+        {
+          "text": "Show HN: Airlock – self-upgrading compil",
+          "w": 374,
+          "h": 14
+        },
+        {
+          "text": "Giga Launches Realtime Hallucination Cor",
+          "w": 338,
+          "h": 14
+        },
+        {
+          "text": "LLM-driven security reports disrupt coor",
+          "w": 418,
+          "h": 14
+        },
+        {
+          "text": "I got prompt-injected asking Claude on i",
+          "w": 540,
+          "h": 14
+        },
+        {
+          "text": "Unmonitored Agents and a Local AI",
+          "w": 238,
+          "h": 14
+        },
+        {
+          "text": "Model Spec Midtraining: Improving How Al",
+          "w": 490,
+          "h": 14
+        },
+        {
+          "text": "ArcKit – The Agentic AI Architecture Gov",
+          "w": 454,
+          "h": 14
+        },
+        {
+          "text": "We ran OWASP attacks on 8 LLMs. Optimize",
+          "w": 555,
+          "h": 14
+        },
+        {
+          "text": "Show HN: Costanza – an autonomous AI age",
+          "w": 482,
+          "h": 14
+        },
+        {
+          "text": "Show HN: Recursant – service mesh for go",
+          "w": 410,
+          "h": 14
+        },
+        {
+          "text": "Show HN: Arden – Runtime policy enforcem",
+          "w": 518,
+          "h": 14
+        },
+        {
+          "text": "Show HN: Rival AI – AI compliance agents",
+          "w": 446,
+          "h": 14
+        },
+        {
+          "text": "US to safety test new AI models from Goo",
+          "w": 425,
+          "h": 14
+        }
+      ],
+      "screenshot": "C:\\Users\\issda\\issdandavis.github.io\\artifacts\\mobile-audit\\home-mobile.png",
+      "fold": "C:\\Users\\issda\\issdandavis.github.io\\artifacts\\mobile-audit\\home-fold.png"
+    },
+    {
+      "id": "shop",
+      "url": "https://aethermoore.com/shop.html",
+      "ok": true,
+      "status": 200,
+      "title": "Shop | Books, packs, hire | AetherMoore",
+      "errors": [],
+      "overflow": {
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "overflowX": false
+      },
+      "ctaTexts": {
+        "nav": [
+          "AetherMoore",
+          "Home",
+          "Shop",
+          "Math Ledger",
+          "About",
+          "Books",
+          "Hire"
+        ],
+        "buttons": [
+          "Buy on Amazon",
+          "Author page",
+          "Buy on Amazon",
+          "Buy Toolkit",
+          "Buy Training Vault",
+          "Buy Templates",
+          "Open Math Ledger",
+          "Hire page",
+          "Email to start"
+        ]
+      },
+      "smallTaps": [
+        {
+          "text": "AetherMoore",
+          "w": 110,
+          "h": 19
+        },
+        {
+          "text": "Home",
+          "w": 52,
+          "h": 33
+        },
+        {
+          "text": "Shop",
+          "w": 49,
+          "h": 33
+        },
+        {
+          "text": "Math Ledger",
+          "w": 88,
+          "h": 33
+        },
+        {
+          "text": "About",
+          "w": 53,
+          "h": 33
+        },
+        {
+          "text": "Books",
+          "w": 52,
+          "h": 33
+        },
+        {
+          "text": "Hire",
+          "w": 42,
+          "h": 31
+        }
+      ],
+      "screenshot": "C:\\Users\\issda\\issdandavis.github.io\\artifacts\\mobile-audit\\shop-mobile.png",
+      "fold": "C:\\Users\\issda\\issdandavis.github.io\\artifacts\\mobile-audit\\shop-fold.png"
+    },
+    {
+      "id": "about",
+      "url": "https://aethermoore.com/about.html",
+      "ok": true,
+      "status": 200,
+      "title": "About & trust | Issac Daniel Davis · AetherMoore",
+      "errors": [],
+      "overflow": {
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "overflowX": false
+      },
+      "ctaTexts": {
+        "nav": [
+          "AetherMoore",
+          "Home",
+          "Shop",
+          "Math Ledger",
+          "About",
+          "Books",
+          "GitHub"
+        ],
+        "buttons": [
+          "Open shop",
+          "Email Issac"
+        ]
+      },
+      "smallTaps": [
+        {
+          "text": "AetherMoore",
+          "w": 110,
+          "h": 20
+        },
+        {
+          "text": "@issdandavis",
+          "w": 77,
+          "h": 17
+        },
+        {
+          "text": "aethermoore.com",
+          "w": 102,
+          "h": 17
+        },
+        {
+          "text": "ai@aethermoore.com",
+          "w": 153,
+          "h": 21
+        },
+        {
+          "text": "issac@aethermoorgames.com",
+          "w": 212,
+          "h": 21
+        },
+        {
+          "text": "hire.html",
+          "w": 62,
+          "h": 21
+        },
+        {
+          "text": "backroom",
+          "w": 71,
+          "h": 21
+        },
+        {
+          "text": "architecture",
+          "w": 84,
+          "h": 21
+        }
+      ],
+      "screenshot": "C:\\Users\\issda\\issdandavis.github.io\\artifacts\\mobile-audit\\about-mobile.png",
+      "fold": "C:\\Users\\issda\\issdandavis.github.io\\artifacts\\mobile-audit\\about-fold.png"
+    },
+    {
+      "id": "math-ledger",
+      "url": "https://aethermoore.com/math-ledger.html",
+      "ok": true,
+      "status": 200,
+      "title": "Ever-Lesson Math Ledger v0 | Adult practice · AetherMoore",
+      "errors": [],
+      "overflow": {
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "overflowX": false
+      },
+      "ctaTexts": {
+        "nav": [
+          "AetherMoore",
+          "Shop",
+          "About",
+          "Books",
+          "Ledger"
+        ],
+        "buttons": [
+          "Print / Save PDF",
+          "Back to shop",
+          "Send feedback"
+        ]
+      },
+      "smallTaps": [],
+      "screenshot": "C:\\Users\\issda\\issdandavis.github.io\\artifacts\\mobile-audit\\math-ledger-mobile.png",
+      "fold": "C:\\Users\\issda\\issdandavis.github.io\\artifacts\\mobile-audit\\math-ledger-fold.png"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "schema": "aethermoore_public_contact_v1",
+  "updated": "2026-07-30",
+  "policy": {
+    "no_public_cellphone": true,
+    "no_click_to_call_personal": true,
+    "preferred": ["proton_email", "discord_invite_via_email"]
+  },
+  "email": {
+    "public": "aethermoregames@pm.me",
+    "label": "Proton Mail (pm.me)",
+    "note": "Read via Proton Bridge locally. Do not publish personal cell numbers."
+  },
+  "product_support": {
+    "public": "aethermoregames@pm.me",
+    "legacy_domain": "ai@aethermoore.com",
+    "note": "Product manuals may still mention ai@ until MX fully consolidates; prefer Proton for new copy."
+  },
+  "discord": {
+    "public_invite_url": null,
+    "howto": "Visitors email aethermoregames@pm.me with subject Discord invite request"
+  },
+  "twilio": {
+    "public_number": null,
+    "status": "not_published",
+    "note": "Optional future business line — never list personal cellphone on the site"
+  },
+  "removed": [
+    "issac@aethermoorgames.com",
+    "public phone / click-to-call form on contact.html"
+  ]
+}
