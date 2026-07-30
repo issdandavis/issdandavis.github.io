@@ -1,0 +1,78 @@
+{
+  "schema": "aethermoore_langues_fields_v1",
+  "source": "SCBE-AETHERMOORE/notes/System Library/Tokenizer Vault/Langues and Related Fields.md",
+  "also": "static/lore_map.json tongues",
+  "updated": "2026-07-30",
+  "title": "Langues and Related Fields",
+  "role": "Vault bridge between tokenizer stack and field meanings on each tongue.",
+  "tongues": [
+    {
+      "code": "KO",
+      "name": "Kor'aelin",
+      "field": "authority / control / flow start",
+      "domain": "intent and high-level commands",
+      "phi_weight": 1.0,
+      "phi_power": 0,
+      "color": "#f0bf67"
+    },
+    {
+      "code": "AV",
+      "name": "Avali",
+      "field": "transport / messaging / context carriage",
+      "domain": "initialization, movement, data flow",
+      "phi_weight": 1.618,
+      "phi_power": 1,
+      "color": "#6dd8ff"
+    },
+    {
+      "code": "RU",
+      "name": "Runethic",
+      "field": "policy / constraints / binding",
+      "domain": "access control, permissions, contracts",
+      "phi_weight": 2.618,
+      "phi_power": 2,
+      "color": "#c49cff"
+    },
+    {
+      "code": "CA",
+      "name": "Cassisivadan",
+      "field": "compute / transform / ciphertext",
+      "domain": "encryption, transformation, heavy math",
+      "phi_weight": 4.236,
+      "phi_power": 3,
+      "color": "#e7fff7"
+    },
+    {
+      "code": "UM",
+      "name": "Umbroth",
+      "field": "security / secrets / sensitive pressure",
+      "domain": "privacy, secrecy, undetectability",
+      "phi_weight": 6.854,
+      "phi_power": 4,
+      "color": "#8a9bb0"
+    },
+    {
+      "code": "DR",
+      "name": "Draumric",
+      "field": "schema / integrity / authentication",
+      "domain": "structure, authentication, data integrity",
+      "phi_weight": 11.09,
+      "phi_power": 5,
+      "color": "#c4a574"
+    }
+  ],
+  "weight_profiles": {
+    "phdm-golden": "w_l = phi^l for l=0..5 (governance / harmonic cost)",
+    "lws-linear": "just-intonation style bases (tokenizer / base ops) — do not mix without conversion"
+  },
+  "browser_fields": {
+    "source": "notes/System Library/Plugins Vault/Browser System Fields and Surfaces.md",
+    "operational": ["Perceive", "Plan", "Govern", "Execute"],
+    "surfaces": ["Browse", "Chat", "Rooms", "Vault", "Ops"]
+  },
+  "core_sources": [
+    "docs/LANGUES_WEIGHTING_SYSTEM.md",
+    "packages/kernel/src/languesMetric.ts",
+    "docs/specs/TOKENIZER_ATOMIC_STACK_FULL.md"
+  ]
+}

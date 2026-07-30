@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Architecture | Civilization-in-a-Box | AetherMoore</title>
+  <meta name="description" content="AetherMoore system architecture with depth: peer into a micro-box of edge, tunnels, stations, and Langues fields. Backend visuals for architecture, schema, builders, and monitors.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://aethermoore.com/architecture.html">
+  <meta property="og:title" content="Architecture | AetherMoore">
+  <meta property="og:description" content="Universe-in-a-box depth view of the AetherMoore stack and Langues fields.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aethermoore.com/architecture.html">
+  <meta property="og:image" content="https://aethermoore.com/hero.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <style>
+    :root {
+      --bg: #071412; --bg-deep: #04100f; --bg-soft: #0d1d1a;
+      --panel: rgba(10, 28, 24, 0.88); --line: rgba(139, 255, 223, 0.15);
+      --text: #e7fff7; --muted: #9bc5ba; --dim: #6a9488;
+      --mint: #8fffd3; --aqua: #6dd8ff; --gold: #ffd977; --violet: #c49cff;
+      --depth: 280px; --max: 1100px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background:
+        radial-gradient(ellipse at 20% 0%, rgba(109,216,255,0.12), transparent 40%),
+        radial-gradient(ellipse at 80% 10%, rgba(255,217,119,0.08), transparent 35%),
+        linear-gradient(180deg, var(--bg-deep), var(--bg) 40%, var(--bg-soft));
+      color: var(--text); line-height: 1.55; min-height: 100vh;
+    }
+    a { color: var(--aqua); text-decoration: none; }
+    a:hover { color: var(--mint); }
+    .topbar {
+      position: sticky; top: 0; z-index: 50; backdrop-filter: blur(14px);
+      background: rgba(4,16,15,0.9); border-bottom: 1px solid var(--line);
+    }
+    .topbar-inner {
+      max-width: var(--max); margin: 0 auto; padding: 14px 20px;
+      display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: center;
+    }
+    .brand { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mint); font-weight: 700; }
+    .nav { display: flex; gap: 6px; flex-wrap: wrap; }
+    .nav a { padding: 6px 10px; border-radius: 8px; font-size: 12px; color: var(--muted); }
+    .nav a:hover { background: rgba(143,255,211,0.08); color: var(--text); }
+    .nav a.on { color: var(--gold); border: 1px solid rgba(255,217,119,0.3); }
+
+    main { max-width: var(--max); margin: 0 auto; padding: 36px 20px 80px; }
+    .kicker {
+      display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gold); padding: 5px 12px; border-radius: 999px;
+      border: 1px solid rgba(255,217,119,0.28); background: rgba(255,217,119,0.08); margin-bottom: 14px;
+    }
+    h1 { font-size: clamp(28px, 5vw, 44px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 12px; }
+    h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--gold), var(--mint));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .lede { color: var(--muted); font-size: 17px; max-width: 62ch; margin-bottom: 28px; }
+
+    /* ===== Civilization-in-a-box (Futurama diorama depth) ===== */
+    .box-window {
+      width: 100%;
+      max-width: 720px;
+      height: min(52vh, 420px);
+      margin: 0 auto 36px;
+      border: 12px solid #1a2a26;
+      border-radius: 6px;
+      box-shadow:
+        0 0 0 1px rgba(143,255,211,0.2),
+        0 40px 100px rgba(0,0,0,0.55),
+        inset 0 0 60px rgba(0,0,0,0.45);
+      background: #020806;
+      overflow: hidden;
+      perspective: 900px;
+      touch-action: none;
+      position: relative;
+    }
+    .box-window::after {
+      content: "peer into the stack · move mouse";
+      position: absolute; bottom: 8px; left: 0; right: 0; text-align: center;
+      font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+      color: rgba(155,197,186,0.55); z-index: 5; pointer-events: none;
+    }
+    .cube-environment {
+      width: 100%; height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transform: rotateX(-8deg) rotateY(12deg);
+      transition: transform 0.08s ease-out;
+    }
+    .face { position: absolute; box-sizing: border-box; }
+    .wall-back {
+      width: 100%; height: 100%;
+      background:
+        radial-gradient(circle at 50% 40%, rgba(143,255,211,0.08), transparent 50%),
+        linear-gradient(180deg, #0a1a22 0%, #071412 55%, #04100f 100%);
+      border: 1px solid rgba(109,216,255,0.25);
+      transform: translateZ(calc(var(--depth) * -1));
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 8px; padding: 16px;
+    }
+    .wall-left, .wall-right {
+      width: var(--depth); height: 100%; top: 0;
+      background: linear-gradient(90deg, #0c1f1c, #102a43);
+      border: 1px solid rgba(51,78,104,0.6);
+    }
+    .wall-left {
+      left: 0; transform-origin: left center;
+      transform: rotateY(90deg);
+      background: linear-gradient(90deg, #061412, #0c2430);
+    }
+    .wall-right {
+      right: 0; transform-origin: right center;
+      transform: rotateY(-90deg);
+      background: linear-gradient(270deg, #061412, #0c2430);
+    }
+    .wall-top, .wall-bottom {
+      width: 100%; height: var(--depth); left: 0;
+      background: #0b1d33; border: 1px solid rgba(51,78,104,0.5);
+    }
+    .wall-top {
+      top: 0; transform-origin: center top;
+      transform: rotateX(-90deg);
+      background: linear-gradient(180deg, #12283a, #0b1d28);
+    }
+    .wall-bottom {
+      bottom: 0; transform-origin: center bottom;
+      transform: rotateX(90deg);
+      background:
+        linear-gradient(0deg, #041018, #0a1c28),
+        repeating-linear-gradient(90deg, transparent, transparent 24px, rgba(143,255,211,0.04) 24px, rgba(143,255,211,0.04) 25px);
+    }
+
+    /* Floating flats inside the box (midstage civilization) */
+    .civ-layer {
+      position: absolute; left: 50%; top: 50%;
+      transform-style: preserve-3d;
+      pointer-events: none;
+    }
+    .flat {
+      position: absolute; padding: 8px 12px; border-radius: 8px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.04em;
+      border: 1px solid rgba(143,255,211,0.3);
+      background: rgba(8,24,20,0.85);
+      color: var(--text);
+      white-space: nowrap;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.45), 0 0 20px rgba(143,255,211,0.08);
+      transform: translate(-50%, -50%);
+    }
+    .flat small { display: block; font-weight: 500; font-size: 9px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; }
+    .flat.edge { border-color: rgba(109,216,255,0.5); color: var(--aqua); }
+    .flat.tunnel { border-color: rgba(255,217,119,0.5); color: var(--gold); }
+    .flat.station { border-color: rgba(143,255,211,0.55); color: var(--mint); }
+    .flat.data { border-color: rgba(196,156,255,0.5); color: var(--violet); }
+    .flat.tongue { font-size: 12px; min-width: 48px; text-align: center; }
+
+    .wall-back h2 {
+      font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(143,255,211,0.7); font-weight: 700;
+    }
+    .wall-back p { font-size: 11px; color: rgba(155,197,186,0.7); text-align: center; max-width: 28ch; }
+
+    /* Category cards */
+    .cats {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px;
+      margin: 28px 0;
+    }
+    .cat {
+      padding: 18px; border-radius: 14px; border: 1px solid var(--line);
+      background: var(--panel);
+    }
+    .cat .n { font-size: 11px; color: var(--gold); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 6px; }
+    .cat h3 { font-size: 16px; margin-bottom: 8px; }
+    .cat p { font-size: 13px; color: var(--muted); }
+    .cat ul { margin-top: 10px; padding-left: 16px; color: var(--dim); font-size: 12px; }
+    .cat li { margin: 4px 0; }
+
+    section.block { margin: 36px 0; }
+    section.block h2 {
+      font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--mint); margin-bottom: 12px;
+    }
+    .fields-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px;
+    }
+    .field-card {
+      border-radius: 12px; padding: 14px; border: 1px solid var(--line);
+      background: rgba(4,16,15,0.7); min-height: 120px;
+    }
+    .field-card .code {
+      font-size: 20px; font-weight: 800; font-family: ui-monospace, monospace;
+      margin-bottom: 4px;
+    }
+    .field-card .name { font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+    .field-card .field { font-size: 12px; color: var(--text); line-height: 1.4; }
+    .field-card .w { margin-top: 10px; font-size: 11px; color: var(--dim); font-family: ui-monospace, monospace; }
+
+    .browser-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px;
+    }
+    @media (max-width: 640px) { .browser-row { grid-template-columns: 1fr; } }
+    .chip-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .chip {
+      font-size: 11px; padding: 4px 10px; border-radius: 999px;
+      border: 1px solid var(--line); color: var(--muted);
+    }
+
+    .links {
+      display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px;
+    }
+    .btn {
+      display: inline-flex; padding: 10px 16px; border-radius: 10px; font-size: 13px; font-weight: 600;
+      border: 1px solid rgba(143,255,211,0.3); background: rgba(143,255,211,0.1); color: var(--mint);
+    }
+    .btn.gold { border-color: rgba(255,217,119,0.35); background: rgba(255,217,119,0.1); color: var(--gold); }
+
+    .src-note {
+      margin-top: 28px; padding: 14px 16px; border-radius: 12px; border: 1px dashed var(--line);
+      font-size: 12px; color: var(--dim);
+    }
+    .src-note code { color: var(--muted); }
+
+    footer {
+      border-top: 1px solid var(--line); padding: 24px 20px 40px; color: var(--dim); font-size: 12px;
+      max-width: var(--max); margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main" style="position:absolute;left:-9999px">Skip to main content</a>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="/">AetherMoore</a>
+      <nav class="nav">
+        <a href="assistant.html">Assistant</a>
+        <a href="backroom.html">Backroom</a>
+        <a class="on" href="architecture.html">Architecture</a>
+        <a href="tools.html">Tools</a>
+        <a href="research/index.html">Research</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="kicker">System architecture · depth viewport</div>
+    <h1>A <em>civilization in a box</em> — the stack you peer into</h1>
+    <p class="lede">
+      Front of site is the glass. Behind it: edge Workers, tunnels, AetherDesk stations,
+      GeoSeal receipts, and the six Langues fields. Move your pointer over the frame to peer
+      around corners — same idea as a micro-world recessed into the page.
+    </p>
+
+    <!-- Depth diorama -->
+    <div class="box-window" id="box-window" aria-label="3D architecture diorama of the AetherMoore stack">
+      <div class="cube-environment" id="cube-environment">
+        <div class="face wall-back">
+          <h2>AetherMoore micro-stack</h2>
+          <p>Public edge · tunnels · operator stations · sealed data</p>
+        </div>
+        <div class="face wall-left"></div>
+        <div class="face wall-right"></div>
+        <div class="face wall-top"></div>
+        <div class="face wall-bottom"></div>
+
+        <!-- Layered flats along Z (depth) -->
+        <div class="civ-layer" style="transform: translate(-50%,-50%) translateZ(-240px)">
+          <div class="flat data" style="left:0;top:-40px">D1 · Ledgers<small>data plane</small></div>
+          <div class="flat data" style="left:90px;top:30px">Receipts<small>GeoSeal</small></div>
+        </div>
+        <div class="civ-layer" style="transform: translate(-50%,-50%) translateZ(-160px)">
+          <div class="flat station" style="left:-100px;top:10px">AetherDesk<small>:5717</small></div>
+          <div class="flat station" style="left:20px;top:-50px">GeoSeal<small>govern</small></div>
+          <div class="flat station" style="left:110px;top:20px">AetherWeb<small>browse</small></div>
+        </div>
+        <div class="civ-layer" style="transform: translate(-50%,-50%) translateZ(-90px)">
+          <div class="flat tunnel" style="left:-80px;top:-20px">scbe-mcp<small>tunnel</small></div>
+          <div class="flat tunnel" style="left:70px;top:25px">scbe-billing<small>tunnel</small></div>
+        </div>
+        <div class="civ-layer" style="transform: translate(-50%,-50%) translateZ(-30px)">
+          <div class="flat edge" style="left:-40px;top:-35px">scbe-shim<small>workers.dev</small></div>
+          <div class="flat edge" style="left:80px;top:15px">Pages<small>aethermoore.com</small></div>
+        </div>
+        <div class="civ-layer" style="transform: translate(-50%,-50%) translateZ(20px)">
+          <div class="flat tongue" style="left:-120px;top:0;border-color:#f0bf67;color:#f0bf67" title="KO">KO</div>
+          <div class="flat tongue" style="left:-60px;top:-25px;border-color:#6dd8ff;color:#6dd8ff" title="AV">AV</div>
+          <div class="flat tongue" style="left:0;top:15px;border-color:#c49cff;color:#c49cff" title="RU">RU</div>
+          <div class="flat tongue" style="left:60px;top:-20px;border-color:#e7fff7;color:#e7fff7" title="CA">CA</div>
+          <div class="flat tongue" style="left:110px;top:10px;border-color:#8a9bb0;color:#8a9bb0" title="UM">UM</div>
+          <div class="flat tongue" style="left:160px;top:-15px;border-color:#c4a574;color:#c4a574" title="DR">DR</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Four backend visual categories -->
+    <div class="cats">
+      <div class="cat">
+        <div class="n">1 · Architecture</div>
+        <h3>System layouts &amp; flow</h3>
+        <p>Client → edge gateway → tunnel → home runner → receipts.</p>
+        <ul>
+          <li>Pages + Workers edge</li>
+          <li>cloudflared outbound only</li>
+          <li>AetherDesk control plane</li>
+        </ul>
+      </div>
+      <div class="cat">
+        <div class="n">2 · Schemas</div>
+        <h3>Fields &amp; relations</h3>
+        <p>Langues fields, browser ops fields, audit entities — not one SQL warehouse.</p>
+        <ul>
+          <li>Six tongue fields (below)</li>
+          <li>Session / Receipt / DesktopState</li>
+          <li>Perceive→Plan→Govern→Execute</li>
+        </ul>
+      </div>
+      <div class="cat">
+        <div class="n">3 · Visual builders</div>
+        <h3>Stations &amp; routes</h3>
+        <p>Ops floor tiles and assistant routing maps instead of raw infra sprawl.</p>
+        <ul>
+          <li><a href="backroom.html">Backroom stations</a></li>
+          <li><a href="assistant-routing.json">assistant-routing.json</a></li>
+          <li>Control Bridge surfaces</li>
+        </ul>
+      </div>
+      <div class="cat">
+        <div class="n">4 · Monitors</div>
+        <h3>Admin live probes</h3>
+        <p>Edge health, scorecard, local desk/MCP when on operator machine.</p>
+        <ul>
+          <li><a href="backroom.html#monitor">Backroom monitors</a></li>
+          <li><a href="https://scbe-shim.issdandavis7795.workers.dev/v1/health">scbe-shim health</a></li>
+          <li>Context Ledger events</li>
+        </ul>
+      </div>
+    </div>
+
+    <section class="block">
+      <h2>Langues and Related Fields</h2>
+      <p style="color:var(--muted);font-size:14px;margin-bottom:14px;max-width:60ch">
+        Source vault note: <code>Tokenizer Vault / Langues and Related Fields</code>.
+        Each tongue is a field of authority — weighted by φ-powers on the PHDM / governance path.
+      </p>
+      <div class="fields-grid" id="fields-grid">
+        <!-- filled by JS from langues-fields.json; static fallback below -->
+        <div class="field-card"><div class="code" style="color:#f0bf67">KO</div><div class="name">Kor'aelin</div><div class="field">authority / control / flow start</div><div class="w">φ⁰ = 1.00</div></div>
+        <div class="field-card"><div class="code" style="color:#6dd8ff">AV</div><div class="name">Avali</div><div class="field">transport / messaging / context</div><div class="w">φ¹ ≈ 1.62</div></div>
+        <div class="field-card"><div class="code" style="color:#c49cff">RU</div><div class="name">Runethic</div><div class="field">policy / constraints / binding</div><div class="w">φ² ≈ 2.62</div></div>
+        <div class="field-card"><div class="code" style="color:#e7fff7">CA</div><div class="name">Cassisivadan</div><div class="field">compute / transform / cipher</div><div class="w">φ³ ≈ 4.24</div></div>
+        <div class="field-card"><div class="code" style="color:#8a9bb0">UM</div><div class="name">Umbroth</div><div class="field">security / secrets / pressure</div><div class="w">φ⁴ ≈ 6.85</div></div>
+        <div class="field-card"><div class="code" style="color:#c4a574">DR</div><div class="name">Draumric</div><div class="field">schema / integrity / auth</div><div class="w">φ⁵ ≈ 11.09</div></div>
+      </div>
+
+      <div class="browser-row">
+        <div class="cat">
+          <div class="n">Browser operational fields</div>
+          <h3>Perceive · Plan · Govern · Execute</h3>
+          <p>Control fields of the governed browser loop (AetherBrowse / AetherWeb).</p>
+          <div class="chip-row" id="ops-chips"></div>
+        </div>
+        <div class="cat">
+          <div class="n">Browser surfaces</div>
+          <h3>Browse · Chat · Rooms · Vault · Ops</h3>
+          <p>User-facing surfaces from <em>Browser System Fields and Surfaces</em>.</p>
+          <div class="chip-row" id="surf-chips"></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="links">
+      <a class="btn gold" href="backroom.html">Open backroom ops floor</a>
+      <a class="btn" href="static/langues-fields.json">langues-fields.json</a>
+      <a class="btn" href="static/backroom-map.json">backroom-map.json</a>
+      <a class="btn" href="static/lore_map.json">lore_map.json</a>
+      <a class="btn" href="book.html">Book (memory surface)</a>
+    </div>
+
+    <div class="src-note">
+      <strong>Sources found:</strong>
+      <code>SCBE-AETHERMOORE/notes/System Library/Tokenizer Vault/Langues and Related Fields.md</code>
+      and
+      <code>…/Plugins Vault/Browser System Fields and Surfaces.md</code>
+      (also under Documents/Avalon Files). Published for the site as
+      <code>/static/langues-fields.json</code>. Weight profiles: do not mix
+      <code>phdm-golden</code> with <code>lws-linear</code> without conversion
+      (<code>docs/LANGUES_WEIGHTING_SYSTEM.md</code>).
+    </div>
+  </main>
+
+  <footer>
+    AetherMoore architecture · depth diorama · Langues fields · not a product CMS
+  </footer>
+
+  <script>
+    (function () {
+      const win = document.getElementById("box-window");
+      const env = document.getElementById("cube-environment");
+      if (win && env) {
+        const maxTilt = 22;
+        win.addEventListener("mousemove", (e) => {
+          const r = win.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width - 0.5;
+          const y = (e.clientY - r.top) / r.height - 0.5;
+          env.style.transform =
+            "rotateY(" + (x * maxTilt) + "deg) rotateX(" + (-y * maxTilt) + "deg)";
+        });
+        win.addEventListener("mouseleave", () => {
+          env.style.transform = "rotateX(-8deg) rotateY(12deg)";
+        });
+        // light touch support
+        win.addEventListener("touchmove", (e) => {
+          if (!e.touches[0]) return;
+          const t = e.touches[0];
+          const r = win.getBoundingClientRect();
+          const x = (t.clientX - r.left) / r.width - 0.5;
+          const y = (t.clientY - r.top) / r.height - 0.5;
+          env.style.transform =
+            "rotateY(" + (x * maxTilt) + "deg) rotateX(" + (-y * maxTilt) + "deg)";
+        }, { passive: true });
+      }
+
+      fetch("/static/langues-fields.json", { cache: "no-store" })
+        .then((r) => r.json())
+        .then((data) => {
+          const grid = document.getElementById("fields-grid");
+          if (grid && data.tongues && data.tongues.length) {
+            grid.innerHTML = "";
+            data.tongues.forEach((t) => {
+              const card = document.createElement("div");
+              card.className = "field-card";
+              card.innerHTML =
+                '<div class="code" style="color:' + t.color + '">' + t.code + "</div>" +
+                '<div class="name">' + t.name + "</div>" +
+                '<div class="field">' + t.field + "</div>" +
+                '<div class="w">φ' +
+                (t.phi_power === 0 ? "⁰" : t.phi_power === 1 ? "¹" : t.phi_power === 2 ? "²" : t.phi_power === 3 ? "³" : t.phi_power === 4 ? "⁴" : "⁵") +
+                " ≈ " + Number(t.phi_weight).toFixed(2) + "</div>";
+              grid.appendChild(card);
+            });
+          }
+          const ops = document.getElementById("ops-chips");
+          const surf = document.getElementById("surf-chips");
+          if (ops && data.browser_fields) {
+            (data.browser_fields.operational || []).forEach((x) => {
+              const c = document.createElement("span");
+              c.className = "chip";
+              c.textContent = x;
+              ops.appendChild(c);
+            });
+          }
+          if (surf && data.browser_fields) {
+            (data.browser_fields.surfaces || []).forEach((x) => {
+              const c = document.createElement("span");
+              c.className = "chip";
+              c.textContent = x;
+              surf.appendChild(c);
+            });
+          }
+        })
+        .catch(() => {
+          /* static fallback already in HTML */
+        });
+    })();
+  </script>
+</body>
+</html>

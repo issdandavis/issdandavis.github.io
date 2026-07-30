@@ -82,6 +82,11 @@
       "name": "backroom",
       "url": "https://aethermoore.com/backroom.html",
       "purpose": "Behind-the-counter ops floor: architecture diagram, data schema, AetherDesk/GeoSeal/AetherWeb stations, and live edge monitors. Operator kitchen, not the public shop floor."
+    },
+    {
+      "name": "architecture",
+      "url": "https://aethermoore.com/architecture.html",
+      "purpose": "Depth diorama of the stack plus Langues and Related Fields (KO–DR tongue fields) and browser operational fields. Civilization-in-a-box architecture view."
     }
   ],
   "routes": [
@@ -166,7 +171,6 @@
         "backroom",
         "behind the counter",
         "ops floor",
-        "architecture diagram",
         "backend visual",
         "admin dashboard",
         "aetherdesk map",
@@ -179,6 +183,24 @@
         "how the stack runs"
       ],
       "target": "https://aethermoore.com/backroom.html"
+    },
+    {
+      "intent": "architecture_depth",
+      "keywords": [
+        "architecture",
+        "architecture diagram",
+        "langues",
+        "fields",
+        "tongues",
+        "sacred tongues",
+        "depth box",
+        "civilization in a box",
+        "diorama",
+        "system layout",
+        "phi weights",
+        "KO AV RU CA UM DR"
+      ],
+      "target": "https://aethermoore.com/architecture.html"
     },
     {
       "intent": "restricted_or_gated",

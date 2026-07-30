@@ -9,6 +9,7 @@ The primary front door is `assistant.html`. The assistant is expected to route p
 - `assistant.html`: front desk, shopkeeper, and routing layer
 - `tools.html`: live action surface
 - `backroom.html`: behind-the-counter ops floor (architecture, schema, stations, monitors); data in `static/backroom-map.json`
+- `architecture.html`: depth diorama + Langues/Related Fields; data in `static/langues-fields.json`
 - `support.html`: recovery and troubleshooting surface
 - `product-manual/`: delivery, buyer, and deployment guidance
 - `research/`: proof, benchmarks, and technical justification
