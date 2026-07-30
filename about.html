@@ -24,10 +24,11 @@
     .topbar{position:sticky;top:0;z-index:20;backdrop-filter:blur(12px);background:rgba(4,16,15,.92);border-bottom:1px solid var(--line)}
     .topbar-inner{max-width:var(--max);margin:0 auto;padding:14px 20px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}
     .brand{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--mint);font-weight:700}
-    .nav{display:flex;gap:6px;flex-wrap:wrap}
-    .nav a{padding:6px 10px;border-radius:8px;font-size:12px;color:var(--muted)}
+    .nav{display:flex;gap:6px;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
+    .nav a{padding:10px 12px;min-height:44px;display:inline-flex;align-items:center;border-radius:8px;font-size:12px;color:var(--muted);white-space:nowrap;flex-shrink:0}
     .nav a:hover{background:rgba(143,255,211,.08);color:var(--text)}
     .nav a.on{color:var(--gold);border:1px solid rgba(255,217,119,.3)}
+    @media(max-width:480px){main{padding:28px 16px 72px}.trust{grid-template-columns:1fr}}
     main{max-width:var(--max);margin:0 auto;padding:40px 20px 80px}
     h1{font-size:clamp(28px,5vw,40px);font-weight:800;letter-spacing:-.03em;margin:12px 0 14px;line-height:1.15}
     h2{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--mint);margin:32px 0 12px}
