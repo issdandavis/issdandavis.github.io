@@ -102,6 +102,11 @@
       "name": "math-ledger",
       "url": "https://aethermoore.com/math-ledger.html",
       "purpose": "Ever-Lesson Math Ledger v0 — adult practice lessons + permanent ledger, print-ready."
+    },
+    {
+      "name": "videos",
+      "url": "https://aethermoore.com/videos.html",
+      "purpose": "YouTube embeds: Miracle audiobook/illustrated chapters, Six Tongues series, Everweave talk. Channel @id8461."
     }
   ],
   "routes": [
@@ -231,6 +236,11 @@
       "intent": "math_ledger_practice",
       "keywords": ["math", "workbook", "ledger", "practice", "adult math", "ged math", "ever-lesson"],
       "target": "https://aethermoore.com/math-ledger.html"
+    },
+    {
+      "intent": "youtube_videos",
+      "keywords": ["youtube", "video", "videos", "audiobook", "watch", "listen", "id8461", "miracle chapter", "six tongues video"],
+      "target": "https://aethermoore.com/videos.html"
     },
     {
       "intent": "restricted_or_gated",

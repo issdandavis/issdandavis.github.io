@@ -1,0 +1,87 @@
+{
+  "schema": "aethermoore_youtube_v1",
+  "updated": "2026-07-30",
+  "channel": {
+    "handle": "@id8461",
+    "url": "https://www.youtube.com/@id8461",
+    "title": "Issac “Izreal” Davis"
+  },
+  "playlists": [
+    {
+      "id": "PL4NrJc8z1YGBSCOM4wYBQw3PJWnJKM7XG",
+      "title": "The Six Tongues Protocol — story series",
+      "url": "https://www.youtube.com/playlist?list=PL4NrJc8z1YGBSCOM4wYBQw3PJWnJKM7XG",
+      "embed": "https://www.youtube.com/embed/videoseries?list=PL4NrJc8z1YGBSCOM4wYBQw3PJWnJKM7XG"
+    },
+    {
+      "id": "PL4NrJc8z1YGB19mIkcVRCiUW_9rNIrGtZ",
+      "title": "The Miracle Was The Memory — Audiobook Chapters",
+      "url": "https://www.youtube.com/playlist?list=PL4NrJc8z1YGB19mIkcVRCiUW_9rNIrGtZ",
+      "embed": "https://www.youtube.com/embed/videoseries?list=PL4NrJc8z1YGB19mIkcVRCiUW_9rNIrGtZ"
+    },
+    {
+      "id": "PLE8emau_1eyw",
+      "title": "MATH",
+      "url": "https://www.youtube.com/playlist?list=PLE8emau_1eyw",
+      "embed": "https://www.youtube.com/embed/videoseries?list=PLE8emau_1eyw"
+    }
+  ],
+  "featured": [
+    {
+      "id": "HhGA0aXpTAg",
+      "title": "The Everweave Protocol: How a DnD Campaign Became an AI Safety Framework",
+      "kind": "talk",
+      "note": "SCBE origin story"
+    },
+    {
+      "id": "PTT5R9TEhds",
+      "title": "He Fell Through Reality Into a World of Code | Ch.1",
+      "kind": "six-tongues",
+      "note": "Six Tongues series open"
+    },
+    {
+      "id": "JMDyvza6c4w",
+      "title": "What If Magic Was Just Cryptography? | Ch.2",
+      "kind": "six-tongues"
+    },
+    {
+      "id": "EEBhGdWTEuk",
+      "title": "The Miracle Was The Memory — Chapter 0: Author's Note (audiobook)",
+      "kind": "miracle-audio"
+    },
+    {
+      "id": "qbusE76OM7o",
+      "title": "The Miracle Was The Memory - Chapter 1: Prologue (illustrated)",
+      "kind": "miracle-illustrated"
+    },
+    {
+      "id": "ly0j3-2YH-s",
+      "title": "The Miracle Was The Memory — Chapter 1: Prologue (audiobook)",
+      "kind": "miracle-audio"
+    },
+    {
+      "id": "Ry5yDARTUYc",
+      "title": "A Million AI Agents Watch His Every Move | Ch.4",
+      "kind": "six-tongues"
+    },
+    {
+      "id": "ROYbRIY90Pc",
+      "title": "Commanding a Drone Swarm With One Word | Ch.7",
+      "kind": "six-tongues"
+    }
+  ],
+  "quality_notes": {
+    "cli_available": ["yt-dlp"],
+    "cannot_do_on_youtube_without_reupload": [
+      "Raise source bitrate after upload",
+      "Fix muffled mic on existing encodes",
+      "Replace video stream in place via public API without re-upload"
+    ],
+    "can_do_locally": [
+      "yt-dlp download masters if kept",
+      "ffmpeg loudnorm + highpass for voice",
+      "denoise (afftdn / arnndn) then re-export 1080p",
+      "re-upload as new videos or unlisted replacements"
+    ]
+  }
+}
