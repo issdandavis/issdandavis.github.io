@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Backroom Ops Floor | Behind the Counter | AetherMoore</title>
+  <meta name="description" content="Operator backroom for AetherMoore: architecture map, data schema, AetherDesk / GeoSeal / AetherWeb stations, and live edge monitors. Front counter is public; this is behind the counter.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://aethermoore.com/backroom.html">
+  <meta property="og:title" content="Backroom Ops Floor | AetherMoore">
+  <meta property="og:description" content="Game-like backend visual: architecture, schemas, stations, and live monitors for AetherDesk, GeoSeal, AetherWeb, tunnels, and Workers.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aethermoore.com/backroom.html">
+  <meta property="og:image" content="https://aethermoore.com/hero.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Backroom Ops Floor | AetherMoore">
+  <meta name="twitter:description" content="Behind-the-counter map of the AetherMoore stack.">
+  <meta name="twitter:image" content="https://aethermoore.com/hero.webp">
+  <style>
+    :root {
+      --bg: #071412; --bg-deep: #04100f; --bg-soft: #0d1d1a;
+      --panel: rgba(10, 28, 24, 0.82); --panel-strong: rgba(8, 24, 20, 0.94);
+      --line: rgba(139, 255, 223, 0.15); --line-bright: rgba(139, 255, 223, 0.30);
+      --text: #e7fff7; --muted: #9bc5ba; --dim: #6a9488;
+      --mint: #8fffd3; --aqua: #6dd8ff; --gold: #ffd977;
+      --rose: #ff9ec7; --violet: #c49cff;
+      --shadow: 0 30px 80px rgba(0, 0, 0, 0.45); --max: 1280px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background:
+        radial-gradient(ellipse at 12% 6%, rgba(109,216,255,0.10), transparent 30%),
+        radial-gradient(ellipse at 88% 4%, rgba(255,217,119,0.08), transparent 26%),
+        radial-gradient(ellipse at 50% 100%, rgba(143,255,211,0.06), transparent 40%),
+        linear-gradient(180deg, var(--bg-deep) 0%, var(--bg) 28%, var(--bg-soft) 100%);
+      color: var(--text); line-height: 1.55; min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--aqua); text-decoration: none; }
+    a:hover { color: var(--mint); }
+
+    .topbar {
+      position: sticky; top: 0; z-index: 100;
+      backdrop-filter: blur(16px); background: rgba(4,16,15,0.88);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar-inner {
+      max-width: var(--max); margin: 0 auto; padding: 0 20px;
+      min-height: 58px; display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    }
+    .brand {
+      font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); font-weight: 700; white-space: nowrap;
+    }
+    .nav { display: flex; gap: 4px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav a {
+      padding: 6px 10px; border-radius: 8px; font-size: 12px; font-weight: 500;
+      color: var(--muted); transition: all 150ms;
+    }
+    .nav a:hover { color: var(--text); background: rgba(143,255,211,0.08); }
+    .nav a.nav-cta {
+      background: rgba(255,217,119,0.12); color: var(--gold);
+      border: 1px solid rgba(255,217,119,0.28);
+    }
+
+    .hero {
+      max-width: var(--max); margin: 0 auto; padding: 40px 20px 12px;
+    }
+    .kicker {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); padding: 5px 12px; border-radius: 999px;
+      background: rgba(255,217,119,0.08); border: 1px solid rgba(255,217,119,0.22);
+      margin-bottom: 14px;
+    }
+    .kicker .dot {
+      width: 8px; height: 8px; border-radius: 50%; background: var(--gold);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+    h1 {
+      font-size: clamp(28px, 4.5vw, 46px); font-weight: 800;
+      letter-spacing: -0.03em; line-height: 1.08; margin-bottom: 12px;
+    }
+    h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--gold), var(--mint));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .lede { color: var(--muted); font-size: 17px; max-width: 68ch; margin-bottom: 18px; }
+
+    .metaphor {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 18px 0 8px;
+    }
+    @media (max-width: 720px) { .metaphor { grid-template-columns: 1fr; } }
+    .met-card {
+      padding: 16px 18px; border-radius: 14px; border: 1px solid var(--line);
+      background: var(--panel);
+    }
+    .met-card.front { border-color: rgba(143,255,211,0.22); }
+    .met-card.back { border-color: rgba(255,217,119,0.28); background: linear-gradient(135deg, rgba(255,217,119,0.06), var(--panel)); }
+    .met-card h2 { font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 6px; }
+    .met-card.front h2 { color: var(--mint); }
+    .met-card.back h2 { color: var(--gold); }
+    .met-card p { color: var(--muted); font-size: 14px; }
+
+    .monitor-strip {
+      max-width: var(--max); margin: 8px auto 0; padding: 0 20px;
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px;
+    }
+    @media (max-width: 900px) { .monitor-strip { grid-template-columns: repeat(2, 1fr); } }
+    .mon {
+      padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line);
+      background: var(--panel-strong);
+    }
+    .mon .lbl { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); }
+    .mon .val { font-size: 20px; font-weight: 700; color: var(--mint); margin-top: 4px; font-variant-numeric: tabular-nums; }
+
+    .shell {
+      max-width: var(--max); margin: 0 auto; padding: 20px 20px 80px;
+      display: grid; grid-template-columns: 1fr 320px; gap: 16px; align-items: start;
+    }
+    @media (max-width: 980px) { .shell { grid-template-columns: 1fr; } }
+
+    .main-col { min-width: 0; }
+    .side-col {
+      position: sticky; top: 72px;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    @media (max-width: 980px) { .side-col { position: static; } }
+
+    .tabs {
+      display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px;
+    }
+    .tabs button {
+      appearance: none; border: 1px solid var(--line); background: rgba(8,24,20,0.7);
+      color: var(--muted); padding: 8px 12px; border-radius: 999px; font-size: 12px;
+      font-weight: 600; cursor: pointer; letter-spacing: 0.04em;
+    }
+    .tabs button.is-active {
+      color: var(--bg-deep); background: linear-gradient(135deg, var(--mint), var(--aqua));
+      border-color: transparent;
+    }
+    .tabs button:hover:not(.is-active) { border-color: var(--line-bright); color: var(--text); }
+
+    .panel {
+      display: none;
+      background: var(--panel); border: 1px solid var(--line); border-radius: 18px;
+      padding: 18px; box-shadow: var(--shadow);
+    }
+    .panel.is-active { display: block; }
+    .panel h2 {
+      font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--mint); margin-bottom: 6px;
+    }
+    .panel .sub { color: var(--muted); font-size: 13px; margin-bottom: 14px; max-width: 72ch; }
+
+    #arch-canvas { width: 100%; overflow-x: auto; }
+    .arch-svg { width: 100%; height: auto; min-height: 280px; display: block; }
+    .arch-node-box {
+      fill: rgba(8, 24, 20, 0.95);
+      stroke: rgba(139, 255, 223, 0.28);
+      stroke-width: 1.2;
+    }
+    .arch-node.vis-public .arch-node-box { stroke: rgba(109,216,255,0.55); }
+    .arch-node.vis-mixed .arch-node-box { stroke: rgba(196,156,255,0.55); }
+    .arch-node.vis-operator .arch-node-box { stroke: rgba(255,217,119,0.5); }
+    .arch-node.is-selected .arch-node-box {
+      fill: rgba(143,255,211,0.12);
+      stroke: var(--mint);
+      stroke-width: 2;
+    }
+    .arch-node-label {
+      fill: #e7fff7; font-size: 10px; font-family: ui-sans-serif, system-ui, sans-serif;
+    }
+    .flow-pulse { animation: dash 12s linear infinite; }
+    @keyframes dash { to { stroke-dashoffset: -120; } }
+
+    .station-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px;
+    }
+    .station-card {
+      text-align: left; display: grid; grid-template-columns: 44px 1fr; gap: 10px;
+      padding: 14px; border-radius: 14px; border: 1px solid var(--line);
+      background: rgba(4,16,15,0.55); color: inherit; cursor: pointer;
+      transition: border-color 150ms, transform 150ms, background 150ms;
+    }
+    .station-card:hover { border-color: var(--line-bright); transform: translateY(-1px); }
+    .station-card.is-selected {
+      border-color: rgba(143,255,211,0.55);
+      background: rgba(143,255,211,0.08);
+    }
+    .station-icon {
+      width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center;
+      font-size: 20px; background: rgba(143,255,211,0.08); border: 1px solid var(--line);
+    }
+    .station-layer { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); }
+    .station-body h3 { font-size: 14px; margin: 2px 0 4px; }
+    .station-body p { font-size: 12px; color: var(--muted); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .station-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+    .tag {
+      font-size: 10px; padding: 2px 7px; border-radius: 999px; border: 1px solid var(--line);
+      color: var(--dim); text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    .tag.vis-public { color: var(--aqua); border-color: rgba(109,216,255,0.35); }
+    .tag.vis-mixed { color: var(--violet); border-color: rgba(196,156,255,0.35); }
+    .tag.vis-operator { color: var(--gold); border-color: rgba(255,217,119,0.35); }
+
+    .schema-board {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px;
+      margin-bottom: 14px;
+    }
+    .schema-card {
+      border: 1px solid var(--line); border-radius: 12px; padding: 12px;
+      background: rgba(4,16,15,0.6);
+    }
+    .schema-card h4 { font-size: 13px; color: var(--mint); margin-bottom: 8px; font-family: ui-monospace, monospace; }
+    .schema-card ul { list-style: none; font-size: 12px; color: var(--muted); }
+    .schema-card li { padding: 2px 0; border-bottom: 1px dashed rgba(139,255,223,0.08); }
+    .schema-store { margin-top: 8px; font-size: 11px; color: var(--gold); }
+    .rel-list { display: flex; flex-direction: column; gap: 6px; }
+    .rel-row {
+      font-family: ui-monospace, monospace; font-size: 12px; color: var(--muted);
+      padding: 8px 10px; border-radius: 8px; background: rgba(0,0,0,0.2); border: 1px solid var(--line);
+    }
+
+    .flow-row { margin-bottom: 12px; }
+    .flow-label { font-size: 12px; color: var(--gold); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
+    .flow-steps { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+    .flow-step {
+      font-size: 12px; padding: 5px 10px; border-radius: 8px;
+      background: rgba(143,255,211,0.08); border: 1px solid var(--line); color: var(--text);
+    }
+    .flow-arrow { color: var(--dim); font-size: 12px; }
+
+    .side-card {
+      border: 1px solid var(--line); border-radius: 16px; background: var(--panel-strong);
+      padding: 14px 16px;
+    }
+    .side-card h3 { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mint); margin-bottom: 10px; }
+    #detail-panel .detail-kicker {
+      font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px;
+    }
+    #detail-panel h3 { font-size: 18px; margin-bottom: 6px; letter-spacing: normal; text-transform: none; color: var(--text); }
+    .detail-role { color: var(--muted); font-size: 13px; margin-bottom: 12px; }
+    .detail-meta { display: grid; grid-template-columns: 72px 1fr; gap: 6px 10px; font-size: 12px; }
+    .detail-meta dt { color: var(--dim); }
+    .detail-meta dd { color: var(--text); word-break: break-word; }
+    .detail-meta a { word-break: break-all; }
+
+    .probe-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+    .btn {
+      appearance: none; border: 1px solid var(--line); background: rgba(143,255,211,0.08);
+      color: var(--mint); padding: 8px 12px; border-radius: 10px; font-size: 12px;
+      font-weight: 600; cursor: pointer;
+    }
+    .btn:hover { border-color: var(--line-bright); background: rgba(143,255,211,0.14); }
+    .probe-row {
+      display: grid; grid-template-columns: 16px 1fr; gap: 2px 8px;
+      padding: 8px 0; border-bottom: 1px solid rgba(139,255,223,0.08); font-size: 12px;
+    }
+    .probe-dot { grid-row: span 2; color: var(--dim); }
+    .probe-ok .probe-dot { color: var(--mint); }
+    .probe-bad .probe-dot { color: var(--rose); }
+    .probe-label { font-weight: 600; }
+    .probe-status { color: var(--muted); grid-column: 2; }
+    .probe-snip { grid-column: 2; color: var(--dim); font-family: ui-monospace, monospace; font-size: 11px; }
+    .probe-loading { color: var(--muted); font-size: 12px; }
+    #probe-local-note { color: var(--dim); font-size: 11px; margin-bottom: 8px; line-height: 1.4; }
+    #map-load-error { color: var(--rose); font-size: 13px; margin-top: 8px; }
+    .map-ver { color: var(--dim); font-size: 11px; font-family: ui-monospace, monospace; }
+
+    .legend {
+      display: flex; gap: 12px; flex-wrap: wrap; margin-top: 10px; font-size: 11px; color: var(--dim);
+    }
+    .legend span::before {
+      content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 2px;
+      margin-right: 6px; vertical-align: middle;
+    }
+    .legend .lg-public::before { background: var(--aqua); }
+    .legend .lg-operator::before { background: var(--gold); }
+    .legend .lg-mixed::before { background: var(--violet); }
+
+    .footer {
+      border-top: 1px solid var(--line); padding: 28px 20px 48px; color: var(--dim); font-size: 13px;
+    }
+    .footer-inner {
+      max-width: var(--max); margin: 0 auto;
+      display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+    }
+    .footer a { color: var(--dim); }
+    .footer a:hover { color: var(--mint); }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="/">AetherMoore · Backroom</a>
+      <nav class="nav" aria-label="Primary">
+        <a href="assistant.html">Assistant</a>
+        <a href="tools.html">Tools</a>
+        <a href="studio/">Studio</a>
+        <a href="research/operations.html">Ops evidence</a>
+        <a class="nav-cta" href="backroom.html">Backroom</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="kicker"><span class="dot"></span> Behind the counter · map v<span class="map-ver" id="map-version">…</span></div>
+    <h1>Ops floor: the <em>backroom</em> of the lemonade stand</h1>
+    <p class="lede">
+      Front counter sells and greets. This page is the kitchen, pipes, and receipt drawer —
+      AetherDesk, GeoSeal, AetherWeb, tunnels, Workers, and ledgers drawn as a playable backend map.
+      Not a CMS for strangers: a visual model of how the stack actually runs.
+    </p>
+    <div class="metaphor">
+      <div class="met-card front">
+        <h2>Front counter</h2>
+        <p>Public site, assistant, tools, manuals, Stripe. Anyone can walk up. Powered by GitHub Pages + static assets.</p>
+      </div>
+      <div class="met-card back">
+        <h2>Behind the counter</h2>
+        <p>Operator stations, sealed receipts, MCP, tunnels, local models. Outbound-only to the world. You (and agents you trust) work here.</p>
+      </div>
+    </div>
+    <p id="map-load-error"></p>
+  </section>
+
+  <div class="monitor-strip" id="monitor-strip" aria-label="Live monitor strip">
+    <div class="mon"><div class="lbl">Public probes OK</div><div class="val" id="mon-edge-count">—</div></div>
+    <div class="mon"><div class="lbl">Avg edge latency</div><div class="val" id="mon-edge-latency">—</div></div>
+    <div class="mon"><div class="lbl">Map layers</div><div class="val" id="mon-layers">—</div></div>
+    <div class="mon"><div class="lbl">Stations / nodes</div><div class="val" id="mon-nodes">—</div></div>
+    <div class="mon"><div class="lbl">Last probe</div><div class="val" id="mon-updated" style="font-size:14px">—</div></div>
+  </div>
+
+  <div class="shell">
+    <div class="main-col">
+      <div class="tabs" role="tablist" aria-label="Backroom views">
+        <button type="button" class="is-active" data-tab="arch" role="tab">1 · Architecture</button>
+        <button type="button" data-tab="schema" role="tab">2 · Data schema</button>
+        <button type="button" data-tab="stations" role="tab">3 · Stations / builders</button>
+        <button type="button" data-tab="flows" role="tab">Flows</button>
+        <button type="button" data-tab="monitor" role="tab">4 · Admin monitors</button>
+      </div>
+
+      <div class="panel is-active" data-panel="arch" role="tabpanel">
+        <h2>Architecture diagram</h2>
+        <p class="sub">Macro layout: public edge → Cloudflare tunnels → operator stations → data / receipts. Click a node for detail.</p>
+        <div id="arch-canvas"></div>
+        <div class="legend">
+          <span class="lg-public">Public edge</span>
+          <span class="lg-operator">Operator-only</span>
+          <span class="lg-mixed">Mixed / open source</span>
+        </div>
+      </div>
+
+      <div class="panel" data-panel="schema" role="tabpanel">
+        <h2>Database &amp; receipt schema</h2>
+        <p class="sub">How permanent and audit data is modeled across the desk, ledger, D1 bridge, and governed chat — not one SQL warehouse, a hub of stores.</p>
+        <div class="schema-board" id="schema-board"></div>
+        <h2 style="margin-top:12px">Relations</h2>
+        <div class="rel-list" id="schema-relations"></div>
+      </div>
+
+      <div class="panel" data-panel="stations" role="tabpanel">
+        <h2>Visual stations (workspace panels)</h2>
+        <p class="sub">Each tile is a behind-the-counter station: routing, auth boundary, and hosting posture. Select one to inspect stack and APIs.</p>
+        <div class="station-grid" id="station-grid"></div>
+      </div>
+
+      <div class="panel" data-panel="flows" role="tabpanel">
+        <h2>Request / data flows</h2>
+        <p class="sub">Logic blocks as readable pipelines — visitor shop, governed chat, operator desk, MCP agents, browser audit.</p>
+        <div id="flow-list"></div>
+      </div>
+
+      <div class="panel" data-panel="monitor" role="tabpanel">
+        <h2>Admin &amp; monitoring</h2>
+        <p class="sub">Live HTTP probes for public edge surfaces. Local station probes only succeed when you open this page on the operator PC (or use AetherDesk’s own control bridge).</p>
+        <div class="probe-actions">
+          <button type="button" class="btn" id="btn-probe-public">Refresh public probes</button>
+          <button type="button" class="btn" id="btn-probe-local">Try local stations</button>
+        </div>
+        <h2 style="margin-top:8px">Public edge</h2>
+        <div id="probe-public"></div>
+        <h2 style="margin-top:16px">Local stations</h2>
+        <p id="probe-local-note"></p>
+        <div id="probe-local"></div>
+      </div>
+    </div>
+
+    <aside class="side-col">
+      <div class="side-card" id="detail-panel">
+        <h3>Station detail</h3>
+        <p class="detail-role">Select a node or station.</p>
+      </div>
+      <div class="side-card">
+        <h3>Quick links</h3>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:8px">Front counter</p>
+        <p style="font-size:13px;line-height:1.8">
+          <a href="assistant.html">Assistant</a><br>
+          <a href="tools.html">Tools</a><br>
+          <a href="studio/">Studio</a><br>
+          <a href="https://scbe-shim.issdandavis7795.workers.dev/v1/health" target="_blank" rel="noopener">scbe-shim health</a>
+        </p>
+        <p style="font-size:13px;color:var(--muted);margin:12px 0 8px">Operator (local)</p>
+        <p style="font-size:12px;color:var(--dim);line-height:1.7;font-family:ui-monospace,monospace">
+          AetherDesk :5717<br>
+          SCBE MCP :8765<br>
+          Ollama :11434
+        </p>
+      </div>
+      <div class="side-card">
+        <h3>Map source</h3>
+        <p style="font-size:12px;color:var(--muted);line-height:1.5">
+          Editable inventory: <a href="/static/backroom-map.json"><code>static/backroom-map.json</code></a>.
+          Add a station by appending a node under the right layer — the floor redraws itself.
+        </p>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <div style="color:var(--muted);font-weight:600;letter-spacing:0.1em;text-transform:uppercase;font-size:11px;margin-bottom:6px">AetherMoore backroom</div>
+        Architecture · schema · stations · monitors — the kitchen behind the public stand.
+      </div>
+      <div style="display:flex;gap:14px;flex-wrap:wrap">
+        <a href="assistant.html">Assistant</a>
+        <a href="support.html">Support</a>
+        <a href="github-map.html">GitHub map</a>
+        <a href="research/operations.html">Ops evidence</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/static/backroom.js" defer></script>
+</body>
+</html>

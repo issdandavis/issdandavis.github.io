@@ -1,0 +1,277 @@
+{
+  "schema": "aethermoore_backroom_map_v1",
+  "version": "2026-07-30",
+  "metaphor": "Lemonade stand front counter vs behind-the-counter ops floor",
+  "front": {
+    "label": "Front counter (public)",
+    "url": "https://aethermoore.com/",
+    "surfaces": [
+      "assistant.html",
+      "tools.html",
+      "studio/",
+      "research/",
+      "product-manual/"
+    ]
+  },
+  "layers": [
+    {
+      "id": "edge",
+      "label": "Edge control plane",
+      "role": "Public gateway, governance proxy, Workers",
+      "nodes": [
+        {
+          "id": "scbe-shim",
+          "name": "scbe-shim Worker",
+          "kind": "worker",
+          "visibility": "public",
+          "url": "https://scbe-shim.issdandavis7795.workers.dev/v1/health",
+          "probe": "https://scbe-shim.issdandavis7795.workers.dev/v1/health",
+          "stack": ["Cloudflare Workers", "Wrangler", "OpenAI-compatible API"],
+          "role": "Governed chat proxy + scorecard at the edge"
+        },
+        {
+          "id": "snowy-cake",
+          "name": "snowy-cake-28ef",
+          "kind": "worker",
+          "visibility": "public",
+          "url": "https://snowy-cake-28ef.issdandavis7795.workers.dev",
+          "role": "Existing workers.dev surface"
+        },
+        {
+          "id": "github-pages",
+          "name": "GitHub Pages site",
+          "kind": "hosting",
+          "visibility": "public",
+          "url": "https://aethermoore.com/",
+          "stack": ["GitHub Pages", "static HTML/JS"],
+          "role": "Public storefront + docs + assistant"
+        }
+      ]
+    },
+    {
+      "id": "tunnels",
+      "label": "Outbound tunnels",
+      "role": "No inbound ports; home runners stay private",
+      "nodes": [
+        {
+          "id": "scbe-mcp",
+          "name": "scbe-mcp",
+          "kind": "tunnel",
+          "visibility": "operator",
+          "hostname": "mcp.aethermoore.com",
+          "origin": "http://127.0.0.1:8765",
+          "stack": ["cloudflared", "SCBE verify MCP"],
+          "role": "SSE MCP tools for agents (compile/run — keep gated)"
+        },
+        {
+          "id": "scbe-billing",
+          "name": "scbe-billing",
+          "kind": "tunnel",
+          "visibility": "operator",
+          "hostname": "billing.aethermoore.com",
+          "origin": "http://127.0.0.1:8000",
+          "stack": ["cloudflared"],
+          "role": "Billing / bridge origin (origin may be offline)"
+        },
+        {
+          "id": "scbe-aetherbrowser",
+          "name": "scbe-aetherbrowser",
+          "kind": "tunnel",
+          "visibility": "operator",
+          "stack": ["cloudflared", "remote Linux connector"],
+          "role": "AetherBrowser remote connector (healthy peer)"
+        }
+      ]
+    },
+    {
+      "id": "stations",
+      "label": "Behind-counter stations",
+      "role": "Local operator products on the desk",
+      "nodes": [
+        {
+          "id": "aetherdesk",
+          "name": "AetherDesk",
+          "kind": "desktop",
+          "visibility": "operator",
+          "local": "http://127.0.0.1:5717",
+          "probe_local": "http://127.0.0.1:5717/health.json",
+          "stack": ["Node", "Electron-capable desktop", "connector HTTP", "Control Bridge"],
+          "apis": [
+            "/api/control/surfaces",
+            "/api/control/snapshot",
+            "/api/desktop/state",
+            "/api/desktop/action"
+          ],
+          "role": "Command center desktop: apps, shell profiles, revenue meter, AI desktop face"
+        },
+        {
+          "id": "aetherweb",
+          "name": "AetherWeb / AetherBrowser",
+          "kind": "browser",
+          "visibility": "operator",
+          "stack": ["Playwright", "headless controller", "web audit"],
+          "role": "Repeatable browser lane inside the desk; audits public pages without host shell"
+        },
+        {
+          "id": "geoseal",
+          "name": "GeoSeal",
+          "kind": "governance",
+          "visibility": "operator",
+          "stack": ["SCBE GeoSeal CLI", "receipts", "skill-tools", "immune system"],
+          "role": "Seal / verify / encode routes; receipt pane for every governed action"
+        },
+        {
+          "id": "scbe-core",
+          "name": "SCBE-AETHERMOORE core",
+          "kind": "framework",
+          "visibility": "mixed",
+          "url": "https://github.com/issdandavis/SCBE-AETHERMOORE",
+          "stack": ["TypeScript", "Python", "Rust scbe_core", "14-layer pipeline"],
+          "role": "Patent-aligned governance engine powering shim + desk + seals"
+        },
+        {
+          "id": "ollama-runner",
+          "name": "Local model runner",
+          "kind": "runtime",
+          "visibility": "operator",
+          "local": "http://127.0.0.1:11434",
+          "stack": ["Ollama", "homegrown models", "GPU"],
+          "role": "Home-grown AI behind the counter; edge Worker routes when wired"
+        }
+      ]
+    },
+    {
+      "id": "data",
+      "label": "Data & receipts",
+      "role": "How state is stored and proven",
+      "nodes": [
+        {
+          "id": "d1-ledger",
+          "name": "D1 ai-bridge-ledger",
+          "kind": "database",
+          "visibility": "operator",
+          "stack": ["Cloudflare D1", "SQLite"],
+          "role": "Cross-machine bridge / ledger store"
+        },
+        {
+          "id": "context-ledger",
+          "name": "Context Ledger",
+          "kind": "audit",
+          "visibility": "operator",
+          "stack": ["SHA-256 sealed events", "local-first", "Tailscale sync"],
+          "role": "Session enter/access/change/leave for AI operators"
+        },
+        {
+          "id": "geoseal-receipts",
+          "name": "GeoSeal receipts",
+          "kind": "audit",
+          "visibility": "operator",
+          "stack": ["JSON receipts", "AetherDesk receipt pane"],
+          "role": "Per-action sealed evidence of desktop / tool work"
+        },
+        {
+          "id": "hf-corpora",
+          "name": "Training corpora",
+          "kind": "dataset",
+          "visibility": "mixed",
+          "url": "https://huggingface.co/issdandavis",
+          "stack": ["Hugging Face", "local clay/scbe-finetune mirrors"],
+          "role": "Provenance-backed training packs; not public DB for the site"
+        }
+      ]
+    }
+  ],
+  "flows": [
+    {
+      "id": "visitor-shop",
+      "label": "Visitor buys / reads",
+      "steps": ["Browser", "GitHub Pages", "assistant.html", "Stripe / manuals", "no operator host"]
+    },
+    {
+      "id": "governed-chat",
+      "label": "Governed chat (edge)",
+      "steps": ["Client", "scbe-shim Worker", "HF Inference or local runner", "scbe_governance field"]
+    },
+    {
+      "id": "operator-desk",
+      "label": "Operator desk session",
+      "steps": ["Human/AI", "AetherDesk :5717", "Control Bridge", "GeoSeal receipt", "Context Ledger"]
+    },
+    {
+      "id": "agent-mcp",
+      "label": "Agent tools via MCP",
+      "steps": ["Agent", "tunnel scbe-mcp", "127.0.0.1:8765", "verify MCP tools", "receipt"]
+    },
+    {
+      "id": "browser-audit",
+      "label": "AetherWeb page audit",
+      "steps": ["AetherDesk", "aetherdesk_web_audit", "Playwright", "public URL only", "report"]
+    }
+  ],
+  "schema_entities": [
+    {
+      "entity": "Session",
+      "fields": ["session_id", "host", "actor", "started_at"],
+      "stores": ["context-ledger"]
+    },
+    {
+      "entity": "Receipt",
+      "fields": ["action", "decision", "sha256", "ts", "surface"],
+      "stores": ["geoseal-receipts", "aetherdesk"]
+    },
+    {
+      "entity": "DesktopState",
+      "fields": ["windows", "active_target", "apps", "control_modes"],
+      "stores": ["aetherdesk"]
+    },
+    {
+      "entity": "TunnelConnector",
+      "fields": ["name", "status", "origin", "hostname", "connections"],
+      "stores": ["cloudflare"]
+    },
+    {
+      "entity": "GovernedChat",
+      "fields": ["messages", "decision", "harmonic_score", "audit"],
+      "stores": ["scbe-shim"]
+    },
+    {
+      "entity": "BridgeEvent",
+      "fields": ["envelope", "host", "payload_hash"],
+      "stores": ["d1-ledger"]
+    }
+  ],
+  "relations": [
+    { "from": "Session", "to": "Receipt", "card": "1:N" },
+    { "from": "DesktopState", "to": "Receipt", "card": "1:N" },
+    { "from": "TunnelConnector", "to": "DesktopState", "card": "N:1" },
+    { "from": "GovernedChat", "to": "Receipt", "card": "1:1" },
+    { "from": "Session", "to": "BridgeEvent", "card": "1:N" }
+  ],
+  "public_probes": [
+    {
+      "id": "site-home",
+      "label": "aethermoore.com",
+      "url": "https://aethermoore.com/"
+    },
+    {
+      "id": "shim-health",
+      "label": "scbe-shim health",
+      "url": "https://scbe-shim.issdandavis7795.workers.dev/v1/health"
+    },
+    {
+      "id": "shim-scorecard",
+      "label": "scbe-shim scorecard",
+      "url": "https://scbe-shim.issdandavis7795.workers.dev/v1/scorecard"
+    },
+    {
+      "id": "ops-evidence",
+      "label": "operations evidence",
+      "url": "https://aethermoore.com/research/operations.html"
+    }
+  ],
+  "local_probes_note": "Local probes only work when this page is opened from a browser on the operator machine with AetherDesk/MCP running. Browsers block cross-origin to 127.0.0.1 from aethermoore.com unless you use the desk itself.",
+  "local_probes": [
+    { "id": "desk-health", "label": "AetherDesk", "url": "http://127.0.0.1:5717/health.json" },
+    { "id": "mcp-sse", "label": "SCBE MCP", "url": "http://127.0.0.1:8765/sse" }
+  ]
+}

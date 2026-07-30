@@ -27,6 +27,7 @@ The site has ten intentional surfaces:
 - **Assistant:** the primary front door. It routes people into tools, public product buckets, manuals, support, research, or gated lanes before doing extra reasoning.
 
 - **Tools:** the action surface for humans and assistants who need to try, compare, or operate something now.
+- **Backroom:** the behind-the-counter ops floor (architecture diagram, data schema, AetherDesk/GeoSeal/AetherWeb stations, live edge monitors). Visual backend map of how the stack runs; not the public shop floor. https://aethermoore.com/backroom.html
 - **Studio:** the public browser IDE and media/transcript workspace. It is browser-local and does not expose the owner-only Clay, GeoSeal, or host command runtime.
 - **Support:** the recovery surface when delivery, setup, broken links, or AI workflow behavior needs triage.
 - **Manuals:** the deployment and buyer surface for setup, delivery, and package usage.
@@ -40,6 +41,7 @@ The site has ten intentional surfaces:
 
 - If the user is not sure where to start, begin at **Assistant**: https://aethermoore.com/assistant.html
 - If the user wants to do something on the site now, start at **Tools**: https://aethermoore.com/tools.html
+- If the user asks for the backend map, architecture diagram, admin dashboard, AetherDesk/GeoSeal/AetherWeb wiring, tunnels, or "behind the counter" ops view, use **Backroom**: https://aethermoore.com/backroom.html
 - If the user wants a browser IDE, local media workspace, or transcript editor, use **Studio**: https://aethermoore.com/studio/
 - If the user needs recovery, troubleshooting, or the shortest operational path, start at **Support**: https://aethermoore.com/support.html
 - If the user needs setup, delivery, or integration guidance, use **Manuals**: https://aethermoore.com/product-manual/index.html

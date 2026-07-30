@@ -1,6 +1,6 @@
 {
   "site": "https://aethermoore.com",
-  "version": "2026-07-24",
+  "version": "2026-07-30",
   "role": "Deterministic routing map for site assistants and low-overhead operator flows.",
   "default_start": "https://aethermoore.com/assistant.html",
   "policy": {
@@ -77,6 +77,11 @@
       "name": "github-page-map",
       "url": "https://aethermoore.com/github-map.html",
       "purpose": "Complete public inventory mapping every SCBE-AETHERMOORE HTML page to its versioned GitHub source."
+    },
+    {
+      "name": "backroom",
+      "url": "https://aethermoore.com/backroom.html",
+      "purpose": "Behind-the-counter ops floor: architecture diagram, data schema, AetherDesk/GeoSeal/AetherWeb stations, and live edge monitors. Operator kitchen, not the public shop floor."
     }
   ],
   "routes": [
@@ -154,6 +159,26 @@
       "intent": "inspect_public_source",
       "keywords": ["github map", "page source", "source inventory", "site map", "public source"],
       "target": "https://aethermoore.com/github-map.html"
+    },
+    {
+      "intent": "backroom_ops_floor",
+      "keywords": [
+        "backroom",
+        "behind the counter",
+        "ops floor",
+        "architecture diagram",
+        "backend visual",
+        "admin dashboard",
+        "aetherdesk map",
+        "geoseal station",
+        "aetherweb",
+        "system map",
+        "operator kitchen",
+        "control plane map",
+        "tunnel map",
+        "how the stack runs"
+      ],
+      "target": "https://aethermoore.com/backroom.html"
     },
     {
       "intent": "restricted_or_gated",
