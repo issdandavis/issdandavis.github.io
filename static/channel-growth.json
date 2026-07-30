@@ -1,0 +1,82 @@
+{
+  "schema": "aethermoore_channel_growth_v1",
+  "updated": "2026-07-30",
+  "channel": {
+    "handle": "@id8461",
+    "url": "https://www.youtube.com/@id8461",
+    "approx_videos": 69
+  },
+  "truth": {
+    "strength": [
+      "Long serialized content (Miracle audiobook + illustrated)",
+      "Clear story IP (Six Tongues / Aethermoore)",
+      "Talk that bridges DnD → AI safety (Everweave)"
+    ],
+    "gap": [
+      "Playlists incomplete / low discoverability from Home",
+      "No consistent Shorts funnel into full chapters",
+      "Low view density — every video needs a next-click path",
+      "Audio quality varies; re-upload only fixes with masters"
+    ]
+  },
+  "series": [
+    {
+      "id": "start-here",
+      "title": "Start here (3 videos)",
+      "goal": "Convert a cold click into a subscriber",
+      "videos": [
+        { "id": "HhGA0aXpTAg", "role": "Who is this / why care" },
+        { "id": "PTT5R9TEhds", "role": "Story hook Ch.1" },
+        { "id": "EEBhGdWTEuk", "role": "Miracle Ch.0 audio — deeper series" }
+      ]
+    },
+    {
+      "id": "six-tongues",
+      "title": "Six Tongues (story shorts)",
+      "playlist": "PL4NrJc8z1YGBSCOM4wYBQw3PJWnJKM7XG",
+      "cadence": "1 short or chapter recap / week"
+    },
+    {
+      "id": "miracle-audio",
+      "title": "Miracle audiobook",
+      "playlist": "PL4NrJc8z1YGB19mIkcVRCiUW_9rNIrGtZ",
+      "cadence": "2–3 chapters / week until caught up; then 1/week"
+    }
+  ],
+  "weekly_cadence": {
+    "monday": "Post 1 Short (30–45s hook from a chapter — cold open line + end card Subscribe)",
+    "wednesday": "Full upload: Miracle chapter OR Six Tongues essay",
+    "friday": "Community post or pinned comment linking aethermoore.com/videos + books",
+    "sunday": "30 min: titles/thumbnails for next 3 videos; fix one description batch"
+  },
+  "studio_checklist_every_video": [
+    "Custom thumbnail (face or strong title text, readable at phone size)",
+    "Title: benefit or tension first, series tag second (e.g. 'What if magic was cryptography? | Six Tongues Ch.2')",
+    "Description first 2 lines: who it's for + link https://aethermoore.com/videos.html",
+    "Add to the correct playlist immediately",
+    "End screen: next chapter + Subscribe + Books",
+    "Pinned comment: next video URL + Proton contact if needed",
+    "Chapters timestamps if longer than 8 minutes"
+  ],
+  "title_templates": [
+    "{Tension question}? | Six Tongues Ch.{n}",
+    "Miracle Was The Memory — Ch.{n}: {short scene title} (audiobook)",
+    "Miracle Was The Memory — Ch.{n}: {short scene title} (illustrated)",
+    "{Concrete claim about AI / governance} | Everweave"
+  ],
+  "funnel": {
+    "youtube": "Subscribe + playlist autoplay",
+    "site": "https://aethermoore.com/videos.html",
+    "money": [
+      "https://aethermoore.com/books.html",
+      "https://aethermoore.com/shop.html",
+      "https://aethermoore.com/math-ledger.html"
+    ]
+  },
+  "thirty_day_targets": {
+    "outputs": "8 Shorts + 4 long videos + all Miracle chapters in one playlist order",
+    "channel": "Channel trailer = Start-here trilogy edit or Everweave + Ch.1",
+    "site": "Every book/shop page links Videos",
+    "metrics_to_watch": ["CTR on thumbnails", "Average view duration", "Subscribers from Start-here playlist"]
+  }
+}

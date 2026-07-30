@@ -50,6 +50,15 @@
     .vid-card .kind{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
     .vid-card h3{font-size:14px;line-height:1.35}
     .note{margin-top:28px;padding:14px 16px;border-radius:12px;border:1px dashed var(--line);color:var(--dim);font-size:13px}
+    .grow{margin:24px 0;padding:18px;border-radius:16px;border:1px solid rgba(255,217,119,.25);background:linear-gradient(135deg,rgba(255,217,119,.08),rgba(10,28,24,.9))}
+    .grow h2{margin-top:0;color:var(--gold)}
+    .grow ol{margin:10px 0 0 1.2em;color:var(--muted);font-size:14px}
+    .grow li{margin:8px 0}
+    .path{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:16px 0 8px}
+    .path .step{padding:14px;border-radius:12px;border:1px solid var(--line);background:rgba(0,0,0,.2)}
+    .path .n{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+    .path h3{font-size:14px;margin-bottom:6px}
+    .path p{font-size:12px;color:var(--muted)}
     footer{max-width:var(--max);margin:0 auto;padding:0 16px 48px;color:var(--dim);font-size:12px}
     @media(max-width:480px){.btn{width:100%}}
   </style>
@@ -69,17 +78,53 @@
     </div>
   </header>
   <main>
-    <div class="kicker">YouTube · @id8461</div>
-    <h1>Watch the <em>story</em> and the systems</h1>
+    <div class="kicker">YouTube · @id8461 · grow the channel</div>
+    <h1>Watch the <em>story</em> — then subscribe</h1>
     <p class="lede">
       Audiobook and illustrated chapters of <em>The Miracle Was The Memory</em>, Six Tongues story shorts,
-      and talks on how a campaign became an AI safety framework. Subscribe on the channel for new chapters.
+      and the Everweave talk. New here? Take the 3-step path below, then open the full channel.
     </p>
     <div class="actions">
-      <a class="btn btn-gold" href="https://www.youtube.com/@id8461" target="_blank" rel="noopener">Open channel @id8461</a>
-      <a class="btn" href="https://www.youtube.com/playlist?list=PL4NrJc8z1YGB19mIkcVRCiUW_9rNIrGtZ" target="_blank" rel="noopener">Miracle audiobook playlist</a>
-      <a class="btn" href="https://www.youtube.com/playlist?list=PL4NrJc8z1YGBSCOM4wYBQw3PJWnJKM7XG" target="_blank" rel="noopener">Six Tongues playlist</a>
+      <a class="btn btn-gold" href="https://www.youtube.com/@id8461?sub_confirmation=1" target="_blank" rel="noopener">Subscribe @id8461</a>
+      <a class="btn" href="https://www.youtube.com/@id8461" target="_blank" rel="noopener">Open channel</a>
+      <a class="btn" href="https://www.youtube.com/playlist?list=PL4NrJc8z1YGB19mIkcVRCiUW_9rNIrGtZ" target="_blank" rel="noopener">Miracle audiobook</a>
+      <a class="btn" href="https://www.youtube.com/playlist?list=PL4NrJc8z1YGBSCOM4wYBQw3PJWnJKM7XG" target="_blank" rel="noopener">Six Tongues</a>
       <a class="btn" href="books.html">Buy the books</a>
+    </div>
+
+    <h2>Start here (cold visitor path)</h2>
+    <div class="path">
+      <div class="step">
+        <div class="n">Step 1 · 5 min</div>
+        <h3>Everweave talk</h3>
+        <p>DnD campaign → AI safety framework. Why this channel exists.</p>
+        <a href="https://www.youtube.com/watch?v=HhGA0aXpTAg" target="_blank" rel="noopener">Watch →</a>
+      </div>
+      <div class="step">
+        <div class="n">Step 2 · story hook</div>
+        <h3>Six Tongues Ch.1</h3>
+        <p>Fell through reality into a world of code — series open.</p>
+        <a href="https://www.youtube.com/watch?v=PTT5R9TEhds" target="_blank" rel="noopener">Watch →</a>
+      </div>
+      <div class="step">
+        <div class="n">Step 3 · deep series</div>
+        <h3>Miracle Ch.0 (audio)</h3>
+        <p>Author’s note, then the full audiobook playlist.</p>
+        <a href="https://www.youtube.com/watch?v=EEBhGdWTEuk" target="_blank" rel="noopener">Watch →</a>
+      </div>
+    </div>
+
+    <div class="grow">
+      <h2>30-day channel build (operator checklist)</h2>
+      <ol>
+        <li><strong>Channel trailer / featured:</strong> pin Everweave + Ch.1 as the first two “Featured” videos in Studio.</li>
+        <li><strong>Playlists:</strong> keep Miracle audiobook in chapter order; Six Tongues Ch.1→8 sequential; add a public “Start here” playlist of those 3.</li>
+        <li><strong>Cadence:</strong> Mon Short · Wed full chapter · Fri community post with link to this page.</li>
+        <li><strong>Every upload:</strong> thumbnail, tension-first title, first 2 description lines + <code>aethermoore.com/videos</code>, end screen next chapter + Subscribe, pinned comment next URL.</li>
+        <li><strong>Funnel:</strong> YouTube → this page → Books / Shop / Math Ledger.</li>
+        <li><strong>Quality:</strong> new recordings only with cleaner mic; use <code>scripts/youtube-quality-pass.ps1</code> on masters before upload — can’t fix old encodes in place.</li>
+      </ol>
+      <p style="margin-top:12px;font-size:13px;color:var(--dim)">Machine-readable plan: <a href="/static/channel-growth.json">static/channel-growth.json</a></p>
     </div>
 
     <h2>Playlists</h2>
@@ -118,9 +163,10 @@
 
     <p class="note">
       <strong>Audio/video quality:</strong> YouTube does not let a CLI “upgrade” bitrate or fix a muffly mic on an
-      already-published file without re-upload. Local path (when you want it): keep masters →
-      <code>yt-dlp</code> + <code>ffmpeg</code> loudnorm/denoise → export 1080p → re-upload or replace as unlisted new versions.
-      Channel data for this page: <a href="/static/youtube-videos.json"><code>static/youtube-videos.json</code></a>.
+      already-published file without re-upload. Local path: keep masters →
+      <code>scripts/youtube-quality-pass.ps1</code> (or yt-dlp + ffmpeg) → re-upload.
+      Catalog: <a href="/static/youtube-videos.json"><code>youtube-videos.json</code></a> ·
+      Growth plan: <a href="/static/channel-growth.json"><code>channel-growth.json</code></a>.
     </p>
   </main>
   <footer>Videos · <a href="https://www.youtube.com/@id8461">youtube.com/@id8461</a> · Proton contact on <a href="contact.html">Contact</a></footer>
