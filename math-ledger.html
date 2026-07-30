@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ever-Lesson Math Ledger v0 | Adult practice · AetherMoore</title>
+  <meta name="description" content="Free adult math practice pack: 10 calm lessons (money, time, work) with a permanent lesson ledger. Print, spiral later, optional side write-panel in physical edition.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://aethermoore.com/math-ledger.html">
+  <meta property="og:title" content="Ever-Lesson Math Ledger v0">
+  <meta property="og:description" content="Adult-framed math at calm visual density + everlasting ledger pages.">
+  <meta property="og:url" content="https://aethermoore.com/math-ledger.html">
+  <meta property="og:image" content="https://aethermoore.com/hero.webp">
+  <style>
+    :root {
+      --ink:#1a1a1a; --paper:#faf8f4; --line:#d0cbc0; --accent:#2d5a4a;
+      --muted:#5c5a54; --screen-bg:#071412; --screen-text:#e7fff7; --mint:#8fffd3; --gold:#ffd977;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Georgia,"Times New Roman",serif;background:var(--screen-bg);color:var(--screen-text);line-height:1.5}
+    .screen-nav{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding:12px 20px;border-bottom:1px solid rgba(139,255,223,.15);display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+    .screen-nav a{color:var(--mint);text-decoration:none;font-size:13px}
+    .screen-hero{max-width:720px;margin:0 auto;padding:28px 20px 16px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    .screen-hero h1{font-size:clamp(24px,4vw,34px);font-weight:800;margin:8px 0}
+    .screen-hero p{color:#9bc5ba;font-size:15px;max-width:58ch}
+    .screen-hero .tag{display:inline-block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(255,217,119,.3);padding:4px 10px;border-radius:999px}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}
+    .btn{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding:10px 14px;border-radius:10px;font-size:13px;font-weight:600;border:1px solid rgba(143,255,211,.35);background:rgba(143,255,211,.12);color:var(--mint);cursor:pointer;text-decoration:none;display:inline-flex}
+    .print-sheet{
+      max-width:8.5in;margin:24px auto;background:var(--paper);color:var(--ink);
+      padding:0.55in 0.65in;border-radius:4px;box-shadow:0 20px 60px rgba(0,0,0,.4);
+      page-break-after:always;
+    }
+    .print-sheet h2{font-size:18px;color:var(--accent);margin-bottom:6px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    .print-sheet .meta{font-size:12px;color:var(--muted);margin-bottom:14px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    .print-sheet p{margin:8px 0;font-size:15px}
+    .print-sheet ol,.print-sheet ul{margin:8px 0 8px 1.3em;font-size:15px}
+    .print-sheet li{margin:8px 0}
+    .work-lines{margin-top:12px}
+    .work-lines .line{border-bottom:1px solid var(--line);height:28px;margin:4px 0}
+    .box{border:1.5px solid var(--ink);border-radius:6px;padding:10px 12px;margin:12px 0;min-height:48px}
+    .box label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-family:-apple-system,sans-serif;margin-bottom:6px}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    @media(max-width:640px){.two-col{grid-template-columns:1fr}}
+    .ledger-table{width:100%;border-collapse:collapse;font-size:13px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    .ledger-table th,.ledger-table td{border:1px solid var(--line);padding:8px 6px;text-align:left}
+    .ledger-table th{background:#efece4;font-size:11px;text-transform:uppercase;letter-spacing:.06em}
+    .ledger-table td{height:32px}
+    .side-panel-mock{
+      border:2px dashed #888;border-radius:8px;padding:12px;margin-top:14px;
+      background:linear-gradient(180deg,#e8e8e8,#f5f5f5);min-height:120px;
+      font-family:-apple-system,sans-serif;font-size:12px;color:#444;
+    }
+    .footer-note{max-width:720px;margin:0 auto 48px;padding:0 20px;font-family:-apple-system,sans-serif;font-size:12px;color:#6a9488}
+    @media print{
+      body{background:#fff;color:#000}
+      .screen-nav,.screen-hero,.actions,.footer-note,.no-print{display:none !important}
+      .print-sheet{box-shadow:none;margin:0;border-radius:0;max-width:none;page-break-after:always}
+    }
+  </style>
+</head>
+<body>
+  <div class="screen-nav no-print">
+    <a href="/">AetherMoore</a>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="books.html">Books</a>
+      <a href="#ledger">Jump to ledger</a>
+    </div>
+  </div>
+
+  <div class="screen-hero no-print">
+    <div class="tag">v0 · free sample · printable</div>
+    <h1>Ever-Lesson Math Ledger</h1>
+    <p>
+      Adult-framed practice at a calm visual density (early-grade <em>layout</em>, grown-up <em>situations</em>).
+      Ten lessons + a permanent log. Print this page. Spiral-bind later. Physical editions can add a thin dry-erase
+      side panel in a brochure sleeve — write, erase, no bleed into the lesson paper.
+    </p>
+    <div class="actions">
+      <button class="btn" type="button" onclick="window.print()">Print / Save PDF</button>
+      <a class="btn" href="shop.html">Back to shop</a>
+      <a class="btn" href="mailto:issac@aethermoorgames.com?subject=Math%20Ledger%20feedback">Send feedback</a>
+    </div>
+  </div>
+
+  <!-- Cover -->
+  <article class="print-sheet">
+    <h2>Ever-Lesson Math Ledger · v0</h2>
+    <div class="meta">AetherMoore · Issac Daniel Davis · Free sample for print · Not a kids’ workbook</div>
+    <p><strong>How to use</strong></p>
+    <ol>
+      <li>Do one lesson when you have 15–20 quiet minutes.</li>
+      <li>Work in the blank lines. Guessing is allowed; check answers when ready.</li>
+      <li>Log the date and lesson ID in the <strong>Ledger</strong> at the back — one place forever.</li>
+      <li>Optional: use a dry-erase board or scrap for scratch work so the lesson page stays clean.</li>
+    </ol>
+    <div class="box">
+      <label>My name / callsign</label>
+      <div class="work-lines"><div class="line"></div></div>
+    </div>
+    <div class="box">
+      <label>Why I’m practicing (job · GED · money · confidence)</label>
+      <div class="work-lines"><div class="line"></div><div class="line"></div></div>
+    </div>
+    <p class="meta" style="margin-top:20px">Physical roadmap: spiral composition + perforated practice + thin graphite/dry-erase insert in a fold-out sleeve. This HTML is the content prototype.</p>
+  </article>
+
+  <!-- Lessons 1-10 -->
+  <article class="print-sheet" id="L01">
+    <h2>Lesson 01 · Money on the counter</h2>
+    <div class="meta">ID: L01 · Topic: whole numbers · add / subtract · adult context</div>
+    <p>You sell three items: a coffee for <strong>$4</strong>, a pastry for <strong>$3</strong>, and a bag for <strong>$12</strong>.</p>
+    <ol>
+      <li>What is the total before tax?</li>
+      <li>A customer pays with a <strong>$20</strong> bill. How much change?</li>
+      <li>If you run the same three sales <strong>5</strong> times today, how much money came in (before tax)?</li>
+    </ol>
+    <div class="box"><label>Work</label><div class="work-lines"><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div></div>
+    <div class="two-col">
+      <div class="box"><label>Answers (fold / cover)</label><p style="font-size:13px">1) $19 &nbsp; 2) $1 &nbsp; 3) $95</p></div>
+      <div class="box"><label>Ledger note</label><div class="work-lines"><div class="line"></div><div class="line"></div></div>
+    </div>
+  </article>
+
+  <article class="print-sheet" id="L02">
+    <h2>Lesson 02 · Hours that pay</h2>
+    <div class="meta">ID: L02 · Topic: multiply · whole numbers · wages</div>
+    <p>You earn <strong>$18</strong> per hour. You work <strong>6</strong> hours on Monday and <strong>7</strong> hours on Tuesday.</p>
+    <ol>
+      <li>Monday pay?</li>
+      <li>Tuesday pay?</li>
+      <li>Two-day total?</li>
+      <li>If you want <strong>$540</strong> this week at $18/hr, how many hours do you need?</li>
+    </ol>
+    <div class="box"><label>Work</label><div class="work-lines"><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div></div>
+    <div class="box"><label>Answers</label><p style="font-size:13px">1) $108 &nbsp; 2) $126 &nbsp; 3) $234 &nbsp; 4) 30 hours</p></div>
+  </article>
+
+  <article class="print-sheet" id="L03">
+    <h2>Lesson 03 · Split the bill fairly</h2>
+    <div class="meta">ID: L03 · Topic: divide · whole numbers · shared cost</div>
+    <p>A work lunch is <strong>$64</strong> for <strong>4</strong> people. Everyone pays the same.</p>
+    <ol>
+      <li>How much each?</li>
+      <li>If one person covers a <strong>$8</strong> tip alone, and the other three do not tip extra, what did the tip-person pay in total (share + tip)?</li>
+      <li>Could $64 split evenly among <strong>5</strong> people with whole dollars only? Explain.</li>
+    </ol>
+    <div class="box"><label>Work</label><div class="work-lines"><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div></div>
+    <div class="box"><label>Answers</label><p style="font-size:13px">1) $16 &nbsp; 2) $24 &nbsp; 3) No — 64÷5 = 12.8, not a whole dollar without rounding.</p></div>
+  </article>
+
+  <article class="print-sheet" id="L04">
+    <h2>Lesson 04 · Fuel and distance</h2>
+    <div class="meta">ID: L04 · Topic: multiply / divide · rates</div>
+    <p>Your car gets about <strong>25</strong> miles per gallon. Gas is <strong>$4</strong> per gallon.</p>
+    <ol>
+      <li>How many gallons for a <strong>100</strong>-mile trip?</li>
+      <li>Fuel cost for that trip?</li>
+      <li>You drive <strong>300</strong> miles this week at the same rate. Fuel cost?</li>
+    </ol>
+    <div class="box"><label>Work</label><div class="work-lines"><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div></div>
+    <div class="box"><label>Answers</label><p style="font-size:13px">1) 4 gal &nbsp; 2) $16 &nbsp; 3) 12 gal → $48</p></div>
+  </article>
+
+  <article class="print-sheet" id="L05">
+    <h2>Lesson 05 · Time windows</h2>
+    <div class="meta">ID: L05 · Topic: elapsed time · hours / minutes</div>
+    <p>You start a task at <strong>9:20</strong> and finish at <strong>11:05</strong>.</p>
+    <ol>
+      <li>How long did it take (hours and minutes)?</li>
+      <li>If you take a <strong>15</strong>-minute break in the middle, how much time was actual work?</li>
+      <li>You need <strong>3 hours</strong> of work today. If you start at <strong>1:00</strong>, when do you stop (no break)?</li>
+    </ol>
+    <div class="box"><label>Work</label><div class="work-lines"><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div></div>
+    <div class="box"><label>Answers</label><p style="font-size:13px">1) 1 hr 45 min &nbsp; 2) 1 hr 30 min &nbsp; 3) 4:00</p></div>
+  </article>
+
+  <article class="print-sheet" id="L06">
+    <h2>Lesson 06 · Percent that matter</h2>
+    <div class="meta">ID: L06 · Topic: 10% and 50% · tips and sales</div>
+    <p>A tool costs <strong>$80</strong>.</p>
+    <ol>
+      <li>What is <strong>10%</strong> of $80? (tip or tax sketch)</li>
+      <li>What is <strong>50%</strong> off $80?</li>
+      <li>Sale price after 50% off, then you add a <strong>10%</strong> tip on the <em>sale</em> price — tip amount?</li>
+    </ol>
+    <div class="box"><label>Work</label><div class="work-lines"><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div></div>
+    <div class="box"><label>Answers</label><p style="font-size:13px">1) $8 &nbsp; 2) $40 &nbsp; 3) tip on $40 → $4</p></div>
+  </article>
+
+  <article class="print-sheet" id="L07">
+    <h2>Lesson 07 · Measure twice</h2>
+    <div class="meta">ID: L07 · Topic: length · add · units in inches</div>
+    <p>A shelf needs boards: <strong>24 in</strong>, <strong>18 in</strong>, and <strong>12 in</strong>.</p>
+    <ol>
+      <li>Total length of board if cut from one piece with <strong>no</strong> waste?</li>
+      <li>You only have a <strong>48 in</strong> board. How much is left after those three cuts?</li>
+      <li>How many full <strong>12 in</strong> pieces can you cut from 48 in?</li>
+    </ol>
+    <div class="box"><label>Work</label><div class="work-lines"><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div></div>
+    <div class="box"><label>Answers</label><p style="font-size:13px">1) 54 in &nbsp; 2) You need 54 in but only have 48 in — short by 6 in (cannot cut all three). &nbsp; 3) 4 pieces</p></div>
+  </article>
+
+  <article class="print-sheet" id="L08">
+    <h2>Lesson 08 · Pack the box</h2>
+    <div class="meta">ID: L08 · Topic: area · rectangles</div>
+    <p>A flat mailer is <strong>10 in</strong> by <strong>8 in</strong>.</p>
+    <ol>
+      <li>What is the area in square inches?</li>
+      <li>A label is <strong>4 in</strong> by <strong>3 in</strong>. How much area does it cover?</li>
+      <li>Roughly how many such labels fit on the mailer without overlap (area only — ignore shape packing tricks)?</li>
+    </ol>
+    <div class="box"><label>Work</label><div class="work-lines"><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div></div>
+    <div class="box"><label>Answers</label><p style="font-size:13px">1) 80 in² &nbsp; 2) 12 in² &nbsp; 3) 80÷12 ≈ 6 (about six by area)</p></div>
+  </article>
+
+  <article class="print-sheet" id="L09">
+    <h2>Lesson 09 · Keep the streak</h2>
+    <div class="meta">ID: L09 · Topic: patterns · sequences</div>
+    <p>You practice <strong>10</strong> minutes on day 1, then add <strong>5</strong> minutes each day.</p>
+    <ol>
+      <li>Minutes on day 2? Day 3?</li>
+      <li>Minutes on day 5?</li>
+      <li>Total minutes after 5 days?</li>
+    </ol>
+    <div class="box"><label>Work</label><div class="work-lines"><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div></div>
+    <div class="box"><label>Answers</label><p style="font-size:13px">1) 15, 20 &nbsp; 2) 30 &nbsp; 3) 10+15+20+25+30 = 100</p></div>
+  </article>
+
+  <article class="print-sheet" id="L10">
+    <h2>Lesson 10 · Story check</h2>
+    <div class="meta">ID: L10 · Topic: multi-step · mixed review</div>
+    <p>You buy materials for <strong>$36</strong>, sell the finished piece for <strong>$90</strong>, and spend <strong>2</strong> hours of work you value at <strong>$20</strong>/hour.</p>
+    <ol>
+      <li>Cash profit ignoring your time (90 − 36)?</li>
+      <li>Value of your time?</li>
+      <li>“True” leftover if you subtract both materials and time value?</li>
+      <li>Was it worth it for you today? One sentence — no wrong answer.</li>
+    </ol>
+    <div class="box"><label>Work</label><div class="work-lines"><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div></div>
+    <div class="box"><label>Answers</label><p style="font-size:13px">1) $54 &nbsp; 2) $40 &nbsp; 3) $14 &nbsp; 4) reflection</p></div>
+    <div class="side-panel-mock">
+      <strong>Physical edition note — side write panel</strong><br>
+      Thin dry-erase / graphite-feel insert slides into a brochure pocket on the spiral cover.
+      Scratch work here; wipe clean; lesson pages stay in the ledger forever.
+    </div>
+  </article>
+
+  <!-- Ledger -->
+  <article class="print-sheet" id="ledger">
+    <h2>Permanent Lesson Ledger</h2>
+    <div class="meta">Log every session here · photocopy extra pages as needed · one book for years</div>
+    <table class="ledger-table">
+      <thead>
+        <tr>
+          <th style="width:14%">Date</th>
+          <th style="width:10%">ID</th>
+          <th style="width:18%">Topic</th>
+          <th style="width:12%">Minutes</th>
+          <th style="width:12%">Score</th>
+          <th>Note (hard / easy / retry)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+    <div class="box" style="margin-top:16px">
+      <label>Weekly reflection</label>
+      <div class="work-lines"><div class="line"></div><div class="line"></div><div class="line"></div></div>
+    </div>
+  </article>
+
+  <article class="print-sheet">
+    <h2>Ledger page 2 · more rows</h2>
+    <div class="meta">Duplicate as needed</div>
+    <table class="ledger-table">
+      <thead>
+        <tr>
+          <th style="width:14%">Date</th>
+          <th style="width:10%">ID</th>
+          <th style="width:18%">Topic</th>
+          <th style="width:12%">Minutes</th>
+          <th style="width:12%">Score</th>
+          <th>Note</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+  </article>
+
+  <p class="footer-note no-print">
+    Ever-Lesson Math Ledger v0 · free content prototype · AetherMoore ·
+    Feedback: issac@aethermoorgames.com · Physical spiral + write-panel insert when demand proves out.
+  </p>
+</body>
+</html>

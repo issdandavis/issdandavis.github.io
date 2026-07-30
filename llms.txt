@@ -29,6 +29,9 @@ The site has ten intentional surfaces:
 - **Tools:** the action surface for humans and assistants who need to try, compare, or operate something now.
 - **Backroom:** the behind-the-counter ops floor (architecture diagram, data schema, AetherDesk/GeoSeal/AetherWeb stations, live edge monitors). Visual backend map of how the stack runs; not the public shop floor. https://aethermoore.com/backroom.html
 - **Architecture:** civilization-in-a-box depth diorama of the stack, plus Langues and Related Fields (KO–DR) and browser operational fields. https://aethermoore.com/architecture.html · data: https://aethermoore.com/static/langues-fields.json
+- **Shop:** simple buy shelf — books, $29 packs, Math Ledger, hire. https://aethermoore.com/shop.html
+- **About:** trust facts (CAGE on file, Peninsula College, author, GitHub). https://aethermoore.com/about.html
+- **Math Ledger:** free Ever-Lesson adult math practice + permanent ledger (print). https://aethermoore.com/math-ledger.html
 - **Studio:** the public browser IDE and media/transcript workspace. It is browser-local and does not expose the owner-only Clay, GeoSeal, or host command runtime.
 - **Support:** the recovery surface when delivery, setup, broken links, or AI workflow behavior needs triage.
 - **Manuals:** the deployment and buyer surface for setup, delivery, and package usage.
@@ -40,8 +43,11 @@ The site has ten intentional surfaces:
 
 ## Routing Rules
 
-- If the user is not sure where to start, begin at **Assistant**: https://aethermoore.com/assistant.html
-- If the user wants to do something on the site now, start at **Tools**: https://aethermoore.com/tools.html
+- If the user is not sure where to start, begin at **Shop** for buying or **Assistant** for routing: https://aethermoore.com/shop.html · https://aethermoore.com/assistant.html
+- If the user wants to buy books, packs, or hire, use **Shop**: https://aethermoore.com/shop.html
+- If the user asks who Issac is, CAGE, college, or trust, use **About**: https://aethermoore.com/about.html
+- If the user wants adult math practice / workbook / ledger, use **Math Ledger**: https://aethermoore.com/math-ledger.html
+- If the user wants to do something technical on the site now, start at **Tools**: https://aethermoore.com/tools.html
 - If the user asks for the backend map, admin dashboard, AetherDesk/GeoSeal/AetherWeb wiring, tunnels, or "behind the counter" ops view, use **Backroom**: https://aethermoore.com/backroom.html
 - If the user asks for architecture diagrams, Langues/fields, tongue weights, depth/diorama view, or system layout, use **Architecture**: https://aethermoore.com/architecture.html
 - If the user wants a browser IDE, local media workspace, or transcript editor, use **Studio**: https://aethermoore.com/studio/

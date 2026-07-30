@@ -87,6 +87,21 @@
       "name": "architecture",
       "url": "https://aethermoore.com/architecture.html",
       "purpose": "Depth diorama of the stack plus Langues and Related Fields (KO–DR tongue fields) and browser operational fields. Civilization-in-a-box architecture view."
+    },
+    {
+      "name": "shop",
+      "url": "https://aethermoore.com/shop.html",
+      "purpose": "Simple buy shelf: Amazon books, $29 Stripe packs, Math Ledger sample, hire."
+    },
+    {
+      "name": "about",
+      "url": "https://aethermoore.com/about.html",
+      "purpose": "Trust facts: CAGE on file, Peninsula College, books, GitHub, contact."
+    },
+    {
+      "name": "math-ledger",
+      "url": "https://aethermoore.com/math-ledger.html",
+      "purpose": "Ever-Lesson Math Ledger v0 — adult practice lessons + permanent ledger, print-ready."
     }
   ],
   "routes": [
@@ -201,6 +216,21 @@
         "KO AV RU CA UM DR"
       ],
       "target": "https://aethermoore.com/architecture.html"
+    },
+    {
+      "intent": "shop_or_buy",
+      "keywords": ["shop", "buy", "purchase", "stripe", "checkout", "store", "price", "how much"],
+      "target": "https://aethermoore.com/shop.html"
+    },
+    {
+      "intent": "about_or_trust",
+      "keywords": ["about", "who are you", "cage", "peninsula", "college", "trust", "credentials"],
+      "target": "https://aethermoore.com/about.html"
+    },
+    {
+      "intent": "math_ledger_practice",
+      "keywords": ["math", "workbook", "ledger", "practice", "adult math", "ged math", "ever-lesson"],
+      "target": "https://aethermoore.com/math-ledger.html"
     },
     {
       "intent": "restricted_or_gated",

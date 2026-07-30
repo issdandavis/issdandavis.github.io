@@ -7,6 +7,9 @@ The primary front door is `assistant.html`. The assistant is expected to route p
 
 ## Core Surfaces
 - `assistant.html`: front desk, shopkeeper, and routing layer
+- `shop.html`: simple buy shelf (books, $29 packs, math ledger, hire)
+- `about.html`: trust facts (CAGE on file, Peninsula College, author, contact)
+- `math-ledger.html`: Ever-Lesson Math Ledger v0 (print-ready adult practice)
 - `tools.html`: live action surface
 - `backroom.html`: behind-the-counter ops floor (architecture, schema, stations, monitors); data in `static/backroom-map.json`
 - `architecture.html`: depth diorama + Langues/Related Fields; data in `static/langues-fields.json`
