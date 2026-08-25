@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Forge — Governed Coding Workspace | AetherMoore</title>
+<meta name="description" content="A browser-native agent coding workspace. Bring your own API key, watch every tool call pass a LatticeGate check, run the result in a terminable sandbox.">
+<link rel="canonical" href="https://aethermoore.com/forge.html">
+<style>
+:root{
+  --bg:#071412; --bg-deep:#04100f; --bg-soft:#0d1d1a;
+  --panel:rgba(10,28,24,.82); --panel-strong:rgba(8,24,20,.94);
+  --line:rgba(139,255,223,.15); --line-bright:rgba(139,255,223,.30);
+  --text:#e7fff7; --muted:#9bc5ba; --dim:#6a9488;
+  --mint:#8fffd3; --aqua:#6dd8ff; --gold:#ffd977; --rose:#ff9ec7; --violet:#c49cff;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --rail-l:236px; --rail-r:290px; --hdr:52px;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; background:var(--bg-deep); color:var(--text);
+  font-family:var(--sans); font-size:14px; line-height:1.5;
+  -webkit-font-smoothing:antialiased; overflow:hidden;
+}
+button,input,select,textarea{font-family:inherit;font-size:inherit;color:inherit}
+button{cursor:pointer;background:none;border:none}
+a{color:var(--mint);text-decoration:none}
+a:hover{text-decoration:underline}
+::-webkit-scrollbar{width:9px;height:9px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(139,255,223,.14);border-radius:6px}
+::-webkit-scrollbar-thumb:hover{background:rgba(139,255,223,.28)}
+
+/* ---------- top bar ---------- */
+.topbar{
+  height:var(--hdr); display:flex; align-items:center; gap:18px;
+  padding:0 14px; border-bottom:1px solid var(--line);
+  background:var(--panel-strong); position:relative; z-index:40;
+}
+.brand{
+  font-weight:700; letter-spacing:.08em; font-size:13px; text-transform:uppercase;
+  color:var(--text); text-decoration:none; white-space:nowrap;
+}
+.brand span{color:var(--mint)}
+.topnav{display:flex;gap:14px;flex:1;overflow:hidden}
+.topnav a{color:var(--muted);font-size:12.5px;white-space:nowrap}
+.topnav a:hover{color:var(--mint);text-decoration:none}
+.topbar-right{display:flex;align-items:center;gap:8px;margin-left:auto}
+.pill{
+  display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;
+  border:1px solid var(--line);background:rgba(139,255,223,.05);
+  font-size:11px;letter-spacing:.05em;color:var(--muted);white-space:nowrap;
+}
+.pill.warn{border-color:rgba(255,217,119,.35);color:var(--gold);background:rgba(255,217,119,.07)}
+.pill.ok{border-color:rgba(143,255,211,.35);color:var(--mint)}
+.btn{
+  border:1px solid var(--line-bright);border-radius:8px;padding:5px 12px;
+  background:rgba(139,255,223,.07);color:var(--text);font-size:12.5px;
+  transition:background .15s,border-color .15s;
+}
+.btn:hover{background:rgba(139,255,223,.15);border-color:var(--mint)}
+.btn.primary{background:var(--mint);color:#04100f;border-color:var(--mint);font-weight:600}
+.btn.primary:hover{background:#a9ffe0}
+.btn.ghost{border-color:var(--line);background:transparent;color:var(--muted)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+
+/* ---------- app grid ---------- */
+.app{
+  display:grid; height:calc(100vh - var(--hdr));
+  grid-template-columns:var(--rail-l) minmax(360px,1fr) minmax(380px,1.15fr) var(--rail-r);
+  grid-template-areas:"sessions chat work context";
+}
+.app.no-left{grid-template-columns:0 minmax(360px,1fr) minmax(380px,1.15fr) var(--rail-r)}
+.app.no-right{grid-template-columns:var(--rail-l) minmax(360px,1fr) minmax(380px,1.15fr) 0}
+.app.no-left.no-right{grid-template-columns:0 minmax(360px,1fr) minmax(380px,1.15fr) 0}
+.pane{min-width:0;min-height:0;display:flex;flex-direction:column;overflow:hidden}
+#sessions{grid-area:sessions;border-right:1px solid var(--line);background:var(--bg-deep)}
+#chat{grid-area:chat;border-right:1px solid var(--line);background:var(--bg)}
+#work{grid-area:work;background:var(--bg-soft);border-right:1px solid var(--line)}
+#context{grid-area:context;background:var(--bg-deep)}
+.app.no-left #sessions,.app.no-right #context{display:none}
+
+.pane-head{
+  display:flex;align-items:center;gap:8px;padding:9px 12px;
+  border-bottom:1px solid var(--line);min-height:40px;flex:0 0 auto;
+}
+.pane-title{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);font-weight:600}
+.pane-body{flex:1;overflow-y:auto;overflow-x:hidden}
+.spacer{flex:1}
+
+/* ---------- sessions rail ---------- */
+.rail-group{padding:10px 10px 4px}
+.rail-label{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);padding:10px 6px 6px;font-weight:600}
+.rail-item{
+  display:flex;align-items:center;gap:8px;width:100%;text-align:left;
+  padding:7px 9px;border-radius:8px;color:var(--muted);font-size:13px;
+  border:1px solid transparent;
+}
+.rail-item:hover{background:rgba(139,255,223,.06);color:var(--text)}
+.rail-item.active{background:rgba(139,255,223,.11);color:var(--text);border-color:var(--line)}
+.rail-item .ico{width:16px;text-align:center;opacity:.85;flex:0 0 auto}
+.rail-item .txt{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rail-foot{border-top:1px solid var(--line);padding:10px}
+
+/* ---------- transcript ---------- */
+.transcript{padding:18px 20px 8px;display:flex;flex-direction:column;gap:16px}
+.msg{display:flex;flex-direction:column;gap:6px;max-width:100%}
+.msg.user{align-items:flex-end}
+.bubble{
+  border-radius:14px;padding:10px 14px;max-width:86%;
+  white-space:pre-wrap;word-wrap:break-word;overflow-wrap:anywhere;
+}
+.msg.user .bubble{background:rgba(139,255,223,.10);border:1px solid var(--line)}
+.msg.assistant .bubble{background:var(--panel);border:1px solid var(--line);max-width:100%}
+.msg-role{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);padding:0 4px}
+.bubble code{font-family:var(--mono);font-size:12.5px;background:rgba(0,0,0,.35);padding:1px 5px;border-radius:4px}
+.bubble pre{
+  font-family:var(--mono);font-size:12.5px;background:var(--bg-deep);
+  border:1px solid var(--line);border-radius:8px;padding:10px;overflow-x:auto;margin:8px 0;
+}
+.bubble pre code{background:none;padding:0}
+
+/* tool call cards */
+.toolcard{
+  border:1px solid var(--line);border-radius:10px;background:var(--panel);
+  overflow:hidden;font-size:12.5px;
+}
+.toolcard-head{
+  display:flex;align-items:center;gap:8px;padding:8px 11px;cursor:pointer;
+  border-bottom:1px solid transparent;
+}
+.toolcard.open .toolcard-head{border-bottom-color:var(--line)}
+.toolcard-name{font-family:var(--mono);color:var(--aqua);font-size:12px}
+.toolcard-arg{color:var(--dim);font-family:var(--mono);font-size:11.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0}
+.toolcard-body{display:none;padding:10px 11px;border-top:0}
+.toolcard.open .toolcard-body{display:block}
+.toolcard-body pre{
+  font-family:var(--mono);font-size:11.5px;margin:0;white-space:pre-wrap;
+  word-break:break-word;color:var(--muted);max-height:260px;overflow:auto;
+}
+.chev{color:var(--dim);font-size:10px;transition:transform .15s}
+.toolcard.open .chev{transform:rotate(90deg)}
+
+/* gate verdict chips */
+.verdict{
+  font-family:var(--mono);font-size:10px;letter-spacing:.1em;font-weight:700;
+  padding:2px 7px;border-radius:5px;white-space:nowrap;
+}
+.v-ALLOW{background:rgba(143,255,211,.14);color:var(--mint);border:1px solid rgba(143,255,211,.35)}
+.v-ATTENUATE{background:rgba(255,217,119,.14);color:var(--gold);border:1px solid rgba(255,217,119,.35)}
+.v-COLLAPSE{background:rgba(255,158,199,.14);color:var(--rose);border:1px solid rgba(255,158,199,.35)}
+.receipt{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.02em}
+
+.notice{
+  margin:0 20px 12px;border:1px solid rgba(255,217,119,.32);background:rgba(255,217,119,.07);
+  border-radius:10px;padding:10px 12px;font-size:12.5px;color:var(--gold);
+  display:flex;gap:10px;align-items:flex-start;
+}
+.notice b{color:var(--gold)}
+.notice .x{margin-left:auto;color:var(--gold);opacity:.7;font-size:14px;line-height:1}
+
+.starter{
+  padding:40px 22px;display:flex;flex-direction:column;gap:14px;align-items:flex-start;
+}
+.starter h2{font-size:17px;margin:0;font-weight:600}
+.starter p{margin:0;color:var(--muted);font-size:13px;max-width:44ch;line-height:1.55}
+.chipwrap{display:flex;flex-direction:column;gap:7px;width:100%;margin-top:4px}
+.chip{
+  text-align:left;border:1px solid var(--line);border-radius:10px;padding:9px 12px;
+  background:rgba(139,255,223,.04);color:var(--muted);font-size:12.5px;line-height:1.45;
+  transition:border-color .15s,color .15s;
+}
+.chip:hover{border-color:var(--line-bright);color:var(--text)}
+.chip b{color:var(--mint);font-weight:600}
+
+/* composer */
+.composer{flex:0 0 auto;padding:10px 20px 14px;border-top:1px solid var(--line);background:var(--bg)}
+.composer-box{
+  border:1px solid var(--line);border-radius:14px;background:var(--panel-strong);
+  padding:10px 12px;transition:border-color .15s;
+}
+.composer-box:focus-within{border-color:var(--line-bright)}
+#prompt{
+  width:100%;border:none;background:none;outline:none;resize:none;
+  min-height:44px;max-height:200px;line-height:1.5;
+}
+#prompt::placeholder{color:var(--dim)}
+.composer-row{display:flex;align-items:center;gap:8px;margin-top:6px}
+.sel{
+  background:var(--bg-deep);border:1px solid var(--line);border-radius:7px;
+  padding:4px 8px;font-size:12px;color:var(--muted);outline:none;
+}
+.composer-foot{text-align:center;font-size:11px;color:var(--dim);margin-top:8px}
+.send{
+  width:30px;height:30px;border-radius:8px;background:var(--mint);color:#04100f;
+  display:grid;place-items:center;font-weight:700;flex:0 0 auto;
+}
+.send:disabled{background:rgba(139,255,223,.2);color:var(--dim)}
+
+/* ---------- work pane (editor / preview / console) ---------- */
+.tabs{display:flex;gap:2px;overflow-x:auto;flex:1;min-width:0}
+.tab{
+  padding:5px 10px;border-radius:7px 7px 0 0;font-size:12px;color:var(--dim);
+  border:1px solid transparent;border-bottom:none;white-space:nowrap;font-family:var(--mono);
+}
+.tab:hover{color:var(--text)}
+.tab.active{background:var(--bg);color:var(--text);border-color:var(--line)}
+.tab .close{margin-left:7px;opacity:.5}
+.tab .close:hover{opacity:1;color:var(--rose)}
+.editor-wrap{flex:1;display:flex;min-height:0;background:var(--bg);position:relative}
+.gutter{
+  flex:0 0 46px;padding:10px 8px 10px 0;text-align:right;font-family:var(--mono);
+  font-size:12px;line-height:1.6;color:var(--dim);opacity:.55;overflow:hidden;
+  border-right:1px solid var(--line);user-select:none;background:var(--bg-deep);white-space:pre;
+}
+#editor{
+  flex:1;border:none;background:none;outline:none;resize:none;padding:10px 12px;
+  font-family:var(--mono);font-size:12.5px;line-height:1.6;white-space:pre;
+  overflow:auto;tab-size:2;color:var(--text);
+}
+.empty{
+  flex:1;display:grid;place-items:center;text-align:center;padding:30px;color:var(--dim);
+}
+.empty h3{color:var(--muted);font-size:14px;font-weight:600;margin:0 0 6px}
+.empty p{margin:0;font-size:12.5px;max-width:340px}
+.work-split{display:flex;flex-direction:column;flex:1;min-height:0}
+.out-pane{
+  flex:0 0 auto;height:190px;border-top:1px solid var(--line);
+  display:flex;flex-direction:column;background:var(--bg-deep);
+}
+.out-pane.collapsed{height:36px}
+.out-head{display:flex;align-items:center;gap:8px;padding:7px 11px;border-bottom:1px solid var(--line);flex:0 0 auto}
+.out-body{flex:1;overflow:auto;padding:8px 11px;font-family:var(--mono);font-size:11.5px;line-height:1.55}
+.out-pane.collapsed .out-body{display:none}
+.log{white-space:pre-wrap;word-break:break-word;padding:1px 0}
+.log.err{color:var(--rose)}
+.log.warn{color:var(--gold)}
+.log.info{color:var(--muted)}
+.log.meta{color:var(--dim)}
+.log.res{color:var(--aqua)}
+#preview{flex:1;border:none;background:#fff;width:100%}
+
+/* ---------- context rail ---------- */
+.card{border:1px solid var(--line);border-radius:10px;background:var(--panel);margin:10px;overflow:hidden}
+.card-head{
+  display:flex;align-items:center;gap:8px;padding:9px 11px;cursor:pointer;
+  font-size:12px;font-weight:600;color:var(--text);
+}
+.card-body{padding:0 11px 11px;font-size:12.5px;color:var(--muted)}
+.card.closed .card-body{display:none}
+.card-head .chev{transition:transform .15s;color:var(--dim);font-size:10px;transform:rotate(90deg)}
+.card.closed .card-head .chev{transform:rotate(0deg)}
+.step{display:flex;gap:9px;padding:6px 0;align-items:flex-start}
+.step-n{
+  flex:0 0 19px;height:19px;border-radius:50%;display:grid;place-items:center;
+  font-size:10.5px;font-weight:700;border:1px solid var(--line);color:var(--dim);
+}
+.step.done .step-n{background:var(--mint);color:#04100f;border-color:var(--mint)}
+.step.active .step-n{border-color:var(--mint);color:var(--mint)}
+.step.done .step-t{color:var(--dim);text-decoration:line-through}
+.step.active .step-t{color:var(--text);font-weight:600}
+.step-t{font-size:12.5px;line-height:1.4}
+.kv{display:flex;justify-content:space-between;gap:10px;padding:3px 0;font-size:12px}
+.kv span:last-child{font-family:var(--mono);color:var(--text)}
+.file-row{
+  display:flex;align-items:center;gap:7px;padding:4px 6px;border-radius:6px;
+  font-family:var(--mono);font-size:11.5px;color:var(--muted);width:100%;text-align:left;
+}
+.file-row:hover{background:rgba(139,255,223,.07);color:var(--text)}
+.gate-row{display:flex;align-items:center;gap:7px;padding:4px 0;font-size:11.5px}
+
+/* ---------- modal ---------- */
+.modal-bg{
+  position:fixed;inset:0;background:rgba(2,8,7,.78);backdrop-filter:blur(4px);
+  display:none;place-items:center;z-index:100;padding:20px;
+}
+.modal-bg.open{display:grid}
+.modal{
+  width:min(520px,100%);max-height:86vh;overflow-y:auto;background:var(--bg);
+  border:1px solid var(--line-bright);border-radius:14px;padding:20px;
+  box-shadow:0 30px 90px rgba(0,0,0,.6);
+}
+.modal h2{margin:0 0 4px;font-size:16px}
+.modal .sub{color:var(--muted);font-size:12.5px;margin:0 0 16px}
+.field{margin-bottom:13px}
+.field label{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:5px;font-weight:600}
+.field input,.field select{
+  width:100%;background:var(--bg-deep);border:1px solid var(--line);border-radius:8px;
+  padding:8px 10px;outline:none;font-size:13px;
+}
+.field input:focus,.field select:focus{border-color:var(--line-bright)}
+.field .hint{font-size:11.5px;color:var(--dim);margin-top:5px;line-height:1.45}
+.modal-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:18px}
+.warnbox{
+  border:1px solid rgba(255,217,119,.3);background:rgba(255,217,119,.06);
+  border-radius:9px;padding:10px 12px;font-size:12px;color:var(--gold);margin-bottom:16px;line-height:1.5;
+}
+
+@media (max-width:1180px){
+  .app{grid-template-columns:0 minmax(300px,1fr) minmax(320px,1fr) 0}
+  #sessions,#context{display:none}
+}
+@media (max-width:820px){
+  .app{grid-template-columns:1fr;grid-template-areas:"chat"}
+  #work{display:none}
+  .topnav{display:none}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="index.html">Aether<span>Moore</span></a>
+  <nav class="topnav" aria-label="Primary">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="assistant.html">Assistant</a>
+    <a href="demos/index.html">Demos</a>
+    <a href="research/index.html">Research</a>
+    <a href="hire.html">Hire</a>
+  </nav>
+  <div class="topbar-right">
+    <span class="pill" id="keyPill">No key</span>
+    <button class="btn ghost" id="toggleL" title="Toggle sessions rail">&#9776;</button>
+    <button class="btn ghost" id="toggleR" title="Toggle context rail">&#9707;</button>
+    <button class="btn" id="openSettings">Settings</button>
+  </div>
+</header>
+
+<div class="app" id="app">
+
+  <!-- ============ sessions rail ============ -->
+  <aside class="pane" id="sessions">
+    <div class="rail-group">
+      <button class="btn primary" id="newSession" style="width:100%">+ New session</button>
+    </div>
+    <div class="pane-body">
+      <div class="rail-label">Workspace</div>
+      <div class="rail-group" style="padding-top:0">
+        <button class="rail-item active" data-view="editor"><span class="ico">&#9998;</span><span class="txt">Editor</span></button>
+        <button class="rail-item" data-view="preview"><span class="ico">&#9635;</span><span class="txt">Preview</span></button>
+        <button class="rail-item" data-view="console"><span class="ico">&#9002;</span><span class="txt">Console</span></button>
+      </div>
+      <div class="rail-label">Sessions</div>
+      <div class="rail-group" id="sessionList" style="padding-top:0"></div>
+    </div>
+    <div class="rail-foot">
+      <div style="font-size:11px;color:var(--dim);line-height:1.5">
+        Keys and files stay in this browser. Nothing is sent to aethermoore.com.
+      </div>
+    </div>
+  </aside>
+
+  <!-- ============ chat ============ -->
+  <section class="pane" id="chat">
+    <div class="pane-head">
+      <span class="pane-title">The Forge</span>
+      <span class="pill" id="modelPill">not configured</span>
+      <div class="spacer"></div>
+      <button class="btn ghost" id="clearChat" title="Clear this transcript">Clear</button>
+    </div>
+
+    <div class="pane-body" id="transcriptWrap">
+      <div class="transcript" id="transcript"></div>
+    </div>
+
+    <div class="notice" id="firstRun">
+      <div>
+        <b>Bring your own key.</b> This page has no server. Your key is held in this browser
+        and posted straight to the provider you pick. Open <b>Settings</b> to start, or use
+        a local Ollama model and send no key at all.
+      </div>
+      <button class="x" id="closeNotice" aria-label="Dismiss">&times;</button>
+    </div>
+
+    <div class="composer">
+      <div class="composer-box">
+        <textarea id="prompt" rows="1" placeholder="Ask for a file, a function, a fix&hellip;"></textarea>
+        <div class="composer-row">
+          <select class="sel" id="providerQuick" title="Provider"></select>
+          <select class="sel" id="modelQuick" title="Model"></select>
+          <div class="spacer"></div>
+          <span class="pill" id="turnPill">idle</span>
+          <button class="send" id="send" title="Send (Enter)">&uarr;</button>
+        </div>
+      </div>
+      <div class="composer-foot">
+        Models make mistakes. Every tool call is gate-checked and receipted below the turn &mdash; read them.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ work pane ============ -->
+  <section class="pane" id="work">
+    <div class="pane-head">
+      <div class="tabs" id="tabs"></div>
+      <button class="btn ghost" id="newFile" title="New file">+</button>
+      <button class="btn ghost" id="saveFile" title="Download the open file">&darr;</button>
+      <button class="btn" id="runBtn" title="Run the open file">&#9654; Run</button>
+    </div>
+
+    <div class="work-split">
+      <div class="editor-wrap" id="editorView">
+        <div class="gutter" id="gutter">1</div>
+        <textarea id="editor" spellcheck="false" placeholder="// Files the agent writes land here. You can edit them and hit Run."></textarea>
+      </div>
+
+      <div class="empty" id="emptyView">
+        <div>
+          <h3>No file open</h3>
+          <p>Ask the agent for something &mdash; &ldquo;write a function that computes the harmonic wall
+          H(d,R)=R^(d&sup2;) and test it&rdquo; &mdash; and the file it writes opens here.</p>
+        </div>
+      </div>
+
+      <iframe id="preview" sandbox="allow-scripts" style="display:none" title="HTML preview"></iframe>
+
+      <div class="out-pane" id="outPane">
+        <div class="out-head">
+          <span class="pane-title">Console</span>
+          <span class="pill" id="runPill">idle</span>
+          <div class="spacer"></div>
+          <button class="btn ghost" id="clearOut">Clear</button>
+          <button class="btn ghost" id="collapseOut" title="Collapse">&minus;</button>
+        </div>
+        <div class="out-body" id="out"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ context rail ============ -->
+  <aside class="pane" id="context">
+    <div class="pane-body">
+
+      <div class="card" id="cardProgress">
+        <div class="card-head" data-card="cardProgress"><span class="chev">&#9656;</span> Progress</div>
+        <div class="card-body" id="progressBody">
+          <div style="color:var(--dim);font-size:12px">No plan yet. The agent posts one when a task needs more than one step.</div>
+        </div>
+      </div>
+
+      <div class="card" id="cardFiles">
+        <div class="card-head" data-card="cardFiles"><span class="chev">&#9656;</span> Outputs</div>
+        <div class="card-body" id="filesBody">
+          <div style="color:var(--dim);font-size:12px">No files yet.</div>
+        </div>
+      </div>
+
+      <div class="card" id="cardGate">
+        <div class="card-head" data-card="cardGate"><span class="chev">&#9656;</span> LatticeGate</div>
+        <div class="card-body">
+          <div class="kv"><span>Allowed</span><span id="gAllow">0</span></div>
+          <div class="kv"><span>Attenuated</span><span id="gAtt">0</span></div>
+          <div class="kv"><span>Collapsed</span><span id="gCol">0</span></div>
+          <div id="gateLog" style="margin-top:8px;border-top:1px solid var(--line);padding-top:8px"></div>
+          <div style="font-size:11px;color:var(--dim);margin-top:9px;line-height:1.45">
+            Rule-count heuristic over the tool arguments &mdash; a deterministic pattern gate,
+            not the 14-layer SCBE pipeline. It is here so refusals are visible and receipted,
+            not to stand in for the real scorer.
+          </div>
+        </div>
+      </div>
+
+      <div class="card" id="cardCtx">
+        <div class="card-head" data-card="cardCtx"><span class="chev">&#9656;</span> Context</div>
+        <div class="card-body">
+          <div class="kv"><span>Provider</span><span id="ctxProv">&mdash;</span></div>
+          <div class="kv"><span>Model</span><span id="ctxModel">&mdash;</span></div>
+          <div class="kv"><span>Turns</span><span id="ctxTurns">0</span></div>
+          <div class="kv"><span>Tool calls</span><span id="ctxTools">0</span></div>
+          <div class="kv"><span>Files</span><span id="ctxFiles">0</span></div>
+          <div class="kv"><span>Sent chars</span><span id="ctxChars">0</span></div>
+        </div>
+      </div>
+
+      <div class="card closed" id="cardTools">
+        <div class="card-head" data-card="cardTools"><span class="chev">&#9656;</span> Tools available</div>
+        <div class="card-body" id="toolsBody"></div>
+      </div>
+
+    </div>
+  </aside>
+</div>
+
+<!-- ============ settings modal ============ -->
+<div class="modal-bg" id="settingsBg">
+  <div class="modal">
+    <h2>Connect a model</h2>
+    <p class="sub">The Forge runs entirely in your browser. Pick a provider, paste a key, go.</p>
+
+    <div class="warnbox">
+      Your key is stored in this browser's <code>localStorage</code> and sent only to the provider's
+      own endpoint. It never reaches aethermoore.com &mdash; there is no server here to reach.
+      Anyone with access to this browser profile can read it. On a shared machine, use
+      &ldquo;Session only&rdquo; below or a local Ollama model.
+    </div>
+
+    <div class="field">
+      <label for="provider">Provider</label>
+      <select id="provider"></select>
+      <div class="hint" id="provHint"></div>
+    </div>
+
+    <div class="field" id="keyField">
+      <label for="apikey">API key</label>
+      <input id="apikey" type="password" placeholder="sk-&hellip;" autocomplete="off" spellcheck="false">
+      <div class="hint">
+        <label style="display:inline-flex;align-items:center;gap:6px;text-transform:none;letter-spacing:0;font-size:11.5px;color:var(--muted);font-weight:400;cursor:pointer">
+          <input type="checkbox" id="sessionOnly" style="width:auto"> Session only &mdash; keep in memory, forget on reload
+        </label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="model">Model</label>
+      <input id="model" type="text" spellcheck="false" placeholder="model id">
+      <div class="hint" id="modelHint"></div>
+    </div>
+
+    <div class="field">
+      <label for="baseurl">Endpoint override <span style="text-transform:none;letter-spacing:0">(optional)</span></label>
+      <input id="baseurl" type="text" spellcheck="false" placeholder="leave blank for the provider default">
+      <div class="hint">Point this at a proxy, a self-hosted gateway, or your own Polly endpoint if it speaks the OpenAI chat-completions shape.</div>
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn ghost" id="forgetKey">Forget key</button>
+      <button class="btn" id="cancelSettings">Cancel</button>
+      <button class="btn primary" id="saveSettings">Save</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* =========================================================================
+   The Forge — browser-native governed coding workspace
+   No build step, no dependencies, no server. Everything below runs client-side.
+   ========================================================================= */
+
+/* ------------------------- tiny helpers ------------------------- */
+const $  = (s,r)=> (r||document).querySelector(s);
+const $$ = (s,r)=> Array.from((r||document).querySelectorAll(s));
+const esc = s => String(s==null?'':s)
+  .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+  .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+const el = (tag, cls, html) => { const n=document.createElement(tag); if(cls)n.className=cls; if(html!=null)n.innerHTML=html; return n; };
+
+/* localStorage that never throws (private mode, embedded previews, blocked storage) */
+const mem = Object.create(null);
+const store = {
+  get(k){ try{ const v=localStorage.getItem(k); return v==null? (k in mem? mem[k]:null) : v; }catch(e){ return k in mem? mem[k]:null; } },
+  set(k,v){ mem[k]=v; try{ localStorage.setItem(k,v); }catch(e){} },
+  del(k){ delete mem[k]; try{ localStorage.removeItem(k); }catch(e){} }
+};
+const jget = (k,d)=>{ const v=store.get(k); if(!v) return d; try{ return JSON.parse(v); }catch(e){ return d; } };
+const jset = (k,v)=> store.set(k, JSON.stringify(v));
+
+async function sha256hex(str){
+  try{
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+    return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+  }catch(e){
+    // SubtleCrypto needs a secure context; fall back to a labelled non-crypto digest
+    let h1=0x811c9dc5, h2=0x01000193;
+    for(let i=0;i<str.length;i++){ h1=(h1^str.charCodeAt(i))>>>0; h1=(h1*0x01000193)>>>0; h2=(h2+h1)>>>0; }
+    return 'fnv'+((h1>>>0).toString(16)+(h2>>>0).toString(16)).padStart(16,'0');
+  }
+}
+
+/* ------------------------- providers ------------------------- */
+const PROVIDERS = {
+  anthropic: {
+    label: 'Anthropic',
+    shape: 'anthropic',
+    url: 'https://api.anthropic.com/v1/messages',
+    model: 'claude-sonnet-4-5',
+    keyPrefix: 'sk-ant-',
+    hint: 'Direct browser calls need a key with browser access enabled. The request sends anthropic-dangerous-direct-browser-access, which is what makes CORS work — and it means the key is exposed to anything running in this tab.',
+    modelHint: 'e.g. claude-sonnet-4-5, claude-opus-4-1, claude-haiku-4-5. Check the model list in your Anthropic console — ids change.'
+  },
+  openai: {
+    label: 'OpenAI',
+    shape: 'openai',
+    url: 'https://api.openai.com/v1/chat/completions',
+    model: 'gpt-4.1',
+    keyPrefix: 'sk-',
+    hint: 'Standard chat-completions endpoint with CORS enabled.',
+    modelHint: 'Any tool-calling chat model, e.g. gpt-4.1 or gpt-4o-mini.'
+  },
+  openrouter: {
+    label: 'OpenRouter',
+    shape: 'openai',
+    url: 'https://openrouter.ai/api/v1/chat/completions',
+    model: 'anthropic/claude-sonnet-4.5',
+    keyPrefix: 'sk-or-',
+    hint: 'One key, many models. Good if you want to switch model families without switching keys.',
+    modelHint: 'Fully qualified id, e.g. anthropic/claude-sonnet-4.5 or openai/gpt-4.1. Pick one that supports tools.'
+  },
+  ollama: {
+    label: 'Ollama (local)',
+    shape: 'openai',
+    url: 'http://localhost:11434/v1/chat/completions',
+    model: 'qwen2.5-coder:7b',
+    noKey: true,
+    hint: 'No key, no cloud. Ollama must be started so it accepts this origin: OLLAMA_ORIGINS=https://aethermoore.com ollama serve. If the browser still refuses the call, save this page and open it locally instead.',
+    modelHint: 'Must be a model that supports tool calling — qwen2.5-coder, llama3.1, mistral-nemo. Plain code-completion models will not drive the loop.'
+  },
+  custom: {
+    label: 'Custom / self-hosted',
+    shape: 'openai',
+    url: '',
+    model: '',
+    hint: 'Anything that speaks the OpenAI chat-completions shape, including tool calls. Put the full URL in the endpoint override.',
+    modelHint: 'Whatever your gateway expects.'
+  }
+};
+
+/* ------------------------- config ------------------------- */
+let cfg = jget('forge.cfg', { provider:'anthropic', model:PROVIDERS.anthropic.model, baseurl:'', sessionOnly:false });
+let API_KEY = cfg.sessionOnly ? '' : (store.get('forge.key') || '');
+
+function provider(){ return PROVIDERS[cfg.provider] || PROVIDERS.anthropic; }
+function endpoint(){ return (cfg.baseurl && cfg.baseurl.trim()) || provider().url; }
+function hasKey(){ return provider().noKey || !!API_KEY; }
+
+/* ------------------------- LatticeGate ------------------------- */
+/* A deterministic pattern gate. Named rules, fixed weights, reproducible receipt.
+   This is NOT the SCBE 14-layer scorer — it is a visible, auditable stand-in so
+   that every tool call carries a verdict you can read and re-derive. */
+const RULES = [
+  // COLLAPSE — refuse outright
+  {id:'net-egress',   v:'COLLAPSE', w:5, tools:['run_js'],     re:/\b(fetch\s*\(|XMLHttpRequest|sendBeacon|new\s+WebSocket|importScripts\s*\()/,
+   why:'generated code tried to open a network connection'},
+  {id:'cred-read',    v:'COLLAPSE', w:5, tools:['run_js'],     re:/\b(document\s*\.\s*cookie|localStorage|sessionStorage|indexedDB)\b/,
+   why:'generated code tried to read browser-stored credentials or state'},
+  {id:'frame-escape', v:'COLLAPSE', w:5, tools:['run_js'],     re:/\b(parent|top|opener)\s*\./,
+   why:'generated code tried to reach outside its sandbox'},
+  {id:'path-escape',  v:'COLLAPSE', w:5, tools:['write_file','read_file','preview_html'], field:'path', re:/(^\/|\.\.[\/\\]|^[a-zA-Z]:[\/\\])/,
+   why:'path escapes the workspace root'},
+  // ATTENUATE — allow, but flag and constrain
+  {id:'unbounded-loop', v:'ATTENUATE', w:2, tools:['run_js'], re:/(while\s*\(\s*(true|1)\s*\)|for\s*\(\s*;\s*;)/,
+   why:'unbounded loop — the watchdog will terminate the worker at the timeout'},
+  {id:'dynamic-eval',   v:'ATTENUATE', w:2, tools:['run_js'], re:/(\beval\s*\(|new\s+Function\s*\()/,
+   why:'dynamic evaluation inside the sandbox'},
+  {id:'remote-script',  v:'ATTENUATE', w:2, tools:['write_file','preview_html'], field:'content', re:/<script[^>]+src\s*=\s*["']https?:/i,
+   why:'file pulls a script from a remote origin — the preview sandbox will block it'},
+  {id:'large-write',    v:'ATTENUATE', w:1, tools:['write_file'], field:'content', test:v=>String(v||'').length>20000,
+   why:'write over 20k characters'}
+];
+const LIMITS = { runTimeoutMs: 5000, maxWriteChars: 200000, maxToolLoops: 12 };
+
+function ruleValue(rule, args){
+  if(rule.field) return args[rule.field];
+  return Object.keys(args).map(k=>args[k]).filter(v=>typeof v==='string').join('\n');
+}
+async function gate(tool, args){
+  const hits=[];
+  for(const r of RULES){
+    if(r.tools && r.tools.indexOf(tool)===-1) continue;
+    const val = ruleValue(r, args);
+    const matched = r.test ? r.test(val) : (typeof val==='string' && r.re.test(val));
+    if(matched) hits.push(r);
+  }
+  let verdict='ALLOW';
+  if(hits.some(h=>h.v==='COLLAPSE')) verdict='COLLAPSE';
+  else if(hits.length) verdict='ATTENUATE';
+  const weight = hits.reduce((a,h)=>a+h.w,0);
+  const payload = JSON.stringify({tool, args, verdict, rules:hits.map(h=>h.id)});
+  const digest = await sha256hex(payload);
+  return { verdict, weight, hits, receipt: digest.slice(0,12), reasons: hits.map(h=>h.id+': '+h.why) };
+}
+
+/* ------------------------- state ------------------------- */
+const S = {
+  sessions: jget('forge.sessions', []),
+  cur: null,                 // current session object
+  busy: false,
+  openTab: null,
+  counts: {tools:0, turns:0, chars:0, ALLOW:0, ATTENUATE:0, COLLAPSE:0},
+  gateLog: [],
+  view: 'editor'
+};
+
+function newSession(){
+  return { id:'s'+Date.now().toString(36)+Math.floor(Math.random()*1e4).toString(36),
+           title:'New session', messages:[], files:{}, plan:[], created:Date.now() };
+}
+function saveSessions(){
+  const trimmed = S.sessions.slice(-25).map(s=>({
+    id:s.id, title:s.title, created:s.created, plan:s.plan, files:s.files,
+    messages:s.messages.slice(-60)
+  }));
+  jset('forge.sessions', trimmed);
+}
+
+/* ------------------------- virtual filesystem + editor ------------------------- */
+function files(){ return S.cur.files; }
+function writeFile(path, content){
+  files()[path] = String(content==null?'':content).slice(0, LIMITS.maxWriteChars);
+  renderFiles(); renderTabs(); saveSessions();
+}
+function openFile(path){
+  if(!(path in files())) return;
+  S.openTab = path; S.view='editor';
+  $('#editor').value = files()[path];
+  syncGutter(); renderTabs(); renderViews();
+}
+function closeFile(path){
+  delete files()[path];
+  if(S.openTab===path){ const k=Object.keys(files()); S.openTab = k.length?k[0]:null; }
+  if(S.openTab) $('#editor').value = files()[S.openTab];
+  renderFiles(); renderTabs(); renderViews(); syncGutter(); saveSessions();
+}
+function renderTabs(){
+  const t=$('#tabs'); t.innerHTML='';
+  Object.keys(files()).forEach(p=>{
+    const b = el('button','tab'+(p===S.openTab?' active':''),
+      esc(p)+' <span class="close" data-close="'+esc(p)+'">&times;</span>');
+    b.addEventListener('click', e=>{
+      const c=e.target.getAttribute('data-close');
+      if(c){ e.stopPropagation(); closeFile(c); } else openFile(p);
+    });
+    t.appendChild(b);
+  });
+}
+function renderFiles(){
+  const b=$('#filesBody');
+  const keys=Object.keys(files());
+  $('#ctxFiles').textContent = keys.length;
+  if(!keys.length){ b.innerHTML='<div style="color:var(--dim);font-size:12px">No files yet.</div>'; return; }
+  b.innerHTML='';
+  keys.forEach(p=>{
+    const r=el('button','file-row','<span>&#9679;</span><span style="flex:1;overflow:hidden;text-overflow:ellipsis">'+esc(p)+'</span><span style="color:var(--dim)">'+files()[p].length+'</span>');
+    r.addEventListener('click',()=>openFile(p));
+    b.appendChild(r);
+  });
+}
+function syncGutter(){
+  const ta=$('#editor'), n=ta.value.split('\n').length;
+  const g=$('#gutter'); let s=''; for(let i=1;i<=n;i++) s+=i+'\n';
+  g.textContent=s; g.scrollTop=ta.scrollTop;
+}
+function renderViews(){
+  /* the console is a bottom panel, not a replacement view — running code must never
+     hide the file you are looking at */
+  const hasFile = !!S.openTab;
+  const top = (S.view==='preview') ? 'preview' : 'editor';
+  $('#editorView').style.display = (top==='editor' && hasFile) ? 'flex':'none';
+  $('#emptyView').style.display  = (top==='editor' && !hasFile) ? 'grid':'none';
+  $('#preview').style.display    = (top==='preview') ? 'block':'none';
+  $('#outPane').style.display    = (top==='preview') ? 'none':'flex';
+  $$('.rail-item[data-view]').forEach(b=>b.classList.toggle('active', b.dataset.view===S.view));
+  if(S.view==='console') $('#outPane').classList.remove('collapsed');
+}
+
+/* ------------------------- sandboxed execution ------------------------- */
+/* JS runs in a Blob Web Worker: no DOM, no parent access, and terminable —
+   which is the only way an unbounded loop can be stopped without killing the tab. */
+const WORKER_SRC = `
+self.onmessage = async function(e){
+  const fmt = v => {
+    if (typeof v === 'string') return v;
+    if (v instanceof Error) return v.name + ': ' + v.message;
+    try { return JSON.stringify(v, null, 2); } catch(_) { return String(v); }
+  };
+  const send = (level, args) => self.postMessage({t:'log', level, text: args.map(fmt).join(' ')});
+  console.log   = (...a)=>send('log',a);
+  console.info  = (...a)=>send('info',a);
+  console.warn  = (...a)=>send('warn',a);
+  console.error = (...a)=>send('err',a);
+  console.debug = (...a)=>send('meta',a);
+  try {
+    const fn = new Function('return (async () => {' + e.data.code + '\\n})()');
+    const result = await fn();
+    if (result !== undefined) self.postMessage({t:'result', text: fmt(result)});
+    self.postMessage({t:'done'});
+  } catch (err) {
+    self.postMessage({t:'log', level:'err', text: (err && err.stack) ? err.stack : String(err)});
+    self.postMessage({t:'done', failed:true});
+  }
+};`;
+
+function logOut(level, text){
+  const o=$('#out');
+  const d=el('div','log '+(level||''), esc(text));
+  o.appendChild(d); o.scrollTop=o.scrollHeight;
+}
+
+function runJS(code){
+  return new Promise(resolve=>{
+    let url, w, killed=false;
+    const lines=[];
+    const finish = (status)=>{
+      clearTimeout(timer);
+      try{ w && w.terminate(); }catch(e){}
+      try{ url && URL.revokeObjectURL(url); }catch(e){}
+      $('#runPill').textContent = status==='ok' ? 'ok' : status;
+      $('#runPill').className = 'pill ' + (status==='ok'?'ok':'warn');
+      resolve({status, output: lines.join('\n') || '(no output)'});
+    };
+    const timer = setTimeout(()=>{
+      killed=true;
+      logOut('err','[watchdog] terminated after '+LIMITS.runTimeoutMs+'ms');
+      lines.push('[watchdog] terminated after '+LIMITS.runTimeoutMs+'ms — the code did not finish');
+      finish('timeout');
+    }, LIMITS.runTimeoutMs);
+
+    try{
+      url = URL.createObjectURL(new Blob([WORKER_SRC], {type:'text/javascript'}));
+      w = new Worker(url);
+    }catch(err){
+      logOut('err','worker unavailable: '+err.message);
+      return finish('worker-unavailable');
+    }
+    $('#runPill').textContent='running'; $('#runPill').className='pill warn';
+    w.onmessage = ev => {
+      if(killed) return;
+      const m=ev.data;
+      if(m.t==='log'){ logOut(m.level, m.text); lines.push(m.text); }
+      else if(m.t==='result'){ logOut('res','← '+m.text); lines.push('return: '+m.text); }
+      else if(m.t==='done'){ finish(m.failed?'error':'ok'); }
+    };
+    w.onerror = err => { if(!killed){ logOut('err', err.message||'worker error'); lines.push(err.message||'worker error'); finish('error'); } };
+    w.postMessage({code:String(code)});
+  });
+}
+
+function previewHTML(html){
+  /* sandbox="allow-scripts" only: opaque origin, no same-origin access, no parent reach */
+  $('#preview').srcdoc = String(html||'');
+  S.view='preview'; renderViews();
+}
+
+/* ------------------------- tools ------------------------- */
+const TOOLS = [
+  { name:'write_file',
+    description:'Create or overwrite a file in the browser workspace and open it in the editor. Use this for every piece of code you produce — do not paste long code into your message text.',
+    params:{ type:'object', properties:{
+      path:{type:'string', description:'Relative path, e.g. "wall.js" or "src/gate.js". No leading slash, no "..".'},
+      content:{type:'string', description:'Full file contents. This replaces the file.'}
+    }, required:['path','content'] } },
+  { name:'read_file',
+    description:'Read a file already in the workspace.',
+    params:{ type:'object', properties:{ path:{type:'string'} }, required:['path'] } },
+  { name:'list_files',
+    description:'List every file currently in the workspace with its size.',
+    params:{ type:'object', properties:{} } },
+  { name:'run_js',
+    description:'Execute JavaScript in a terminable Web Worker and get the console output back. No DOM, no network, no storage. Use it to actually test what you wrote instead of claiming it works.',
+    params:{ type:'object', properties:{
+      code:{type:'string', description:'JavaScript. Top-level await is allowed. console.log to report. The last expression is not returned — log or return explicitly.'}
+    }, required:['code'] } },
+  { name:'preview_html',
+    description:'Render an HTML file from the workspace in a sandboxed preview frame so the user can see it.',
+    params:{ type:'object', properties:{ path:{type:'string'} }, required:['path'] } }
+];
+
+async function dispatch(name, args){
+  switch(name){
+    case 'write_file': {
+      writeFile(args.path, args.content); openFile(args.path);
+      return 'Wrote '+args.path+' ('+files()[args.path].length+' chars).';
+    }
+    case 'read_file': {
+      if(!(args.path in files())) return 'ERROR: no such file: '+args.path+'. Files: '+(Object.keys(files()).join(', ')||'(none)');
+      openFile(args.path);
+      return files()[args.path];
+    }
+    case 'list_files': {
+      const k=Object.keys(files());
+      return k.length ? k.map(p=>p+' ('+files()[p].length+' chars)').join('\n') : '(workspace is empty)';
+    }
+    case 'run_js': {
+      S.view='console'; renderViews();
+      logOut('meta','── run ──');
+      const r = await runJS(args.code);
+      return 'status: '+r.status+'\n'+r.output;
+    }
+    case 'preview_html': {
+      if(!(args.path in files())) return 'ERROR: no such file: '+args.path;
+      previewHTML(files()[args.path]);
+      return 'Rendered '+args.path+' in the preview frame.';
+    }
+    default: return 'ERROR: unknown tool '+name;
+  }
+}
+
+/* ------------------------- transcript rendering ------------------------- */
+function mdlite(src){
+  let s = esc(src);
+  s = s.replace(/```([a-zA-Z0-9_+-]*)\n([\s\S]*?)```/g, (m,l,c)=>'<pre><code>'+c.replace(/\n$/,'')+'</code></pre>');
+  s = s.replace(/`([^`\n]+)`/g,'<code>$1</code>');
+  s = s.replace(/\*\*([^*\n]+)\*\*/g,'<strong>$1</strong>');
+  return s;
+}
+function addMsg(role, text){
+  const st=$('.starter'); if(st) st.remove();
+  const wrap = el('div','msg '+role);
+  wrap.appendChild(el('div','msg-role', role==='user'?'You':'Forge'));
+  const b = el('div','bubble', mdlite(text));
+  wrap.appendChild(b);
+  $('#transcript').appendChild(wrap);
+  scrollChat();
+  return b;
+}
+function addToolCard(name, argSummary){
+  const card = el('div','toolcard');
+  card.innerHTML =
+    '<div class="toolcard-head"><span class="chev">&#9656;</span>'+
+    '<span class="toolcard-name">'+esc(name)+'</span>'+
+    '<span class="toolcard-arg">'+esc(argSummary)+'</span>'+
+    '<span class="verdict" data-slot="verdict">…</span>'+
+    '<span class="receipt" data-slot="receipt"></span></div>'+
+    '<div class="toolcard-body"><pre data-slot="body">running…</pre></div>';
+  card.querySelector('.toolcard-head').addEventListener('click',()=>card.classList.toggle('open'));
+  const holder = el('div','msg assistant');
+  holder.appendChild(card);
+  $('#transcript').appendChild(holder);
+  scrollChat();
+  return {
+    setVerdict(v, receipt){
+      const s=card.querySelector('[data-slot=verdict]');
+      s.textContent=v; s.className='verdict v-'+v;
+      card.querySelector('[data-slot=receipt]').textContent='#'+receipt;
+    },
+    setBody(txt, open){
+      card.querySelector('[data-slot=body]').textContent = String(txt).slice(0,4000);
+      if(open) card.classList.add('open');
+      scrollChat();
+    }
+  };
+}
+function scrollChat(){ const w=$('#transcriptWrap'); w.scrollTop=w.scrollHeight; }
+
+function renderPlan(){
+  const b=$('#progressBody'), plan=S.cur.plan||[];
+  if(!plan.length){ b.innerHTML='<div style="color:var(--dim);font-size:12px">No plan yet. The agent posts one when a task needs more than one step.</div>'; return; }
+  b.innerHTML='';
+  plan.forEach((p,i)=>{
+    const d=el('div','step '+(p.done?'done':(p.active?'active':'')));
+    d.innerHTML='<div class="step-n">'+(p.done?'&#10003;':(i+1))+'</div><div class="step-t">'+esc(p.text)+'</div>';
+    b.appendChild(d);
+  });
+}
+function pushGate(tool, g){
+  S.counts[g.verdict]++;
+  $('#gAllow').textContent=S.counts.ALLOW;
+  $('#gAtt').textContent=S.counts.ATTENUATE;
+  $('#gCol').textContent=S.counts.COLLAPSE;
+  const row=el('div','gate-row',
+    '<span class="verdict v-'+g.verdict+'">'+g.verdict[0]+'</span>'+
+    '<span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+esc(tool)+'</span>'+
+    '<span class="receipt">#'+g.receipt+'</span>');
+  const log=$('#gateLog'); log.insertBefore(row, log.firstChild);
+  while(log.children.length>12) log.removeChild(log.lastChild);
+}
+function renderCtx(){
+  $('#ctxProv').textContent = provider().label;
+  $('#ctxModel').textContent = cfg.model || '—';
+  $('#ctxTurns').textContent = S.counts.turns;
+  $('#ctxTools').textContent = S.counts.tools;
+  $('#ctxChars').textContent = S.counts.chars.toLocaleString();
+  $('#modelPill').textContent = hasKey() ? (cfg.model||'no model') : 'not configured';
+  $('#modelPill').className = 'pill ' + (hasKey()?'ok':'warn');
+  $('#keyPill').textContent = provider().noKey ? 'local' : (API_KEY ? 'key set' : 'No key');
+  $('#keyPill').className = 'pill ' + ((provider().noKey||API_KEY)?'ok':'warn');
+}
+
+/* ------------------------- the agent loop ------------------------- */
+const SYSTEM = [
+  'You are Forge, the coding agent embedded in aethermoore.com. You work inside a browser workspace.',
+  '',
+  'Hard facts about your environment:',
+  '- The workspace is a virtual filesystem held in the visitor\'s browser tab. It vanishes on close unless they save.',
+  '- run_js executes in a Web Worker: no DOM, no network, no localStorage, and it is killed at ' + LIMITS.runTimeoutMs + 'ms.',
+  '- preview_html renders in a sandboxed iframe with scripts only — remote scripts and same-origin access are blocked.',
+  '- Every tool call passes a LatticeGate pattern check first. A COLLAPSE verdict means the call did not run. Read the reason and change approach; do not retry the same call.',
+  '',
+  'How to work:',
+  '- Put code in files with write_file. Do not paste long code blocks into your message text.',
+  '- After writing code that can be tested, actually test it with run_js. Report what it printed, not what you expect it to print.',
+  '- If a test fails, say so plainly and fix it. Never describe an untested file as working.',
+  '- Keep prose short. The visitor can read the file.',
+  '- For a task needing several steps, open with a numbered plan of 2-5 lines, then execute it.'
+].join('\n');
+
+function toolsFor(shape){
+  if(shape==='anthropic') return TOOLS.map(t=>({name:t.name, description:t.description, input_schema:t.params}));
+  return TOOLS.map(t=>({type:'function', function:{name:t.name, description:t.description, parameters:t.params}}));
+}
+function buildWire(shape, history){
+  const out=[];
+  for(const h of history){
+    if(h.type==='user'){
+      out.push(shape==='anthropic' ? {role:'user',content:[{type:'text',text:h.text}]} : {role:'user',content:h.text});
+    } else if(h.type==='assistant'){
+      if(shape==='anthropic'){
+        const c=[];
+        if(h.text) c.push({type:'text',text:h.text});
+        (h.calls||[]).forEach(k=>c.push({type:'tool_use',id:k.id,name:k.name,input:k.args}));
+        if(c.length) out.push({role:'assistant',content:c});
+      } else {
+        const m={role:'assistant',content:h.text||null};
+        if((h.calls||[]).length) m.tool_calls=h.calls.map(k=>({id:k.id,type:'function',function:{name:k.name,arguments:JSON.stringify(k.args)}}));
+        out.push(m);
+      }
+    } else if(h.type==='tool_results'){
+      if(shape==='anthropic'){
+        out.push({role:'user',content:h.results.map(r=>({type:'tool_result',tool_use_id:r.id,content:String(r.content).slice(0,12000)}))});
+      } else {
+        h.results.forEach(r=>out.push({role:'tool',tool_call_id:r.id,content:String(r.content).slice(0,12000)}));
+      }
+    }
+  }
+  return out;
+}
+
+async function callModel(history){
+  const p=provider(), shape=p.shape, url=endpoint();
+  if(!url) throw new Error('No endpoint configured. Open Settings and set one.');
+  const headers={'Content-Type':'application/json'};
+  let body;
+  if(shape==='anthropic'){
+    headers['x-api-key']=API_KEY;
+    headers['anthropic-version']='2023-06-01';
+    headers['anthropic-dangerous-direct-browser-access']='true';
+    body={ model:cfg.model, max_tokens:4096, system:SYSTEM, tools:toolsFor('anthropic'), messages:buildWire('anthropic',history) };
+  } else {
+    if(API_KEY) headers['Authorization']='Bearer '+API_KEY;
+    body={ model:cfg.model, messages:[{role:'system',content:SYSTEM}].concat(buildWire('openai',history)), tools:toolsFor('openai'), tool_choice:'auto' };
+  }
+  const payload=JSON.stringify(body);
+  S.counts.chars += payload.length;
+  const res = await fetch(url, {method:'POST', headers, body:payload});
+  const raw = await res.text();
+  if(!res.ok){
+    let detail=raw;
+    try{ const j=JSON.parse(raw); detail=(j.error&&(j.error.message||j.error.type))||raw; }catch(e){}
+    throw new Error('HTTP '+res.status+' — '+String(detail).slice(0,500));
+  }
+  const data=JSON.parse(raw);
+  if(shape==='anthropic'){
+    const text=(data.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('\n').trim();
+    const calls=(data.content||[]).filter(b=>b.type==='tool_use').map(b=>({id:b.id,name:b.name,args:b.input||{}}));
+    return {text, calls};
+  }
+  const m=(data.choices&&data.choices[0]&&data.choices[0].message)||{};
+  const calls=(m.tool_calls||[]).map(c=>{
+    let a={}; try{ a=JSON.parse(c.function.arguments||'{}'); }catch(e){ a={_unparsed:c.function.arguments}; }
+    return {id:c.id, name:c.function.name, args:a};
+  });
+  return {text:(m.content||'').trim(), calls};
+}
+
+function argSummary(name,args){
+  if(name==='write_file'||name==='read_file'||name==='preview_html') return args.path||'';
+  if(name==='run_js') return String(args.code||'').split('\n')[0].slice(0,70);
+  return '';
+}
+
+async function turn(userText){
+  if(S.busy) return;
+  if(!hasKey()){ openSettings(); return; }
+  S.busy=true; setBusy(true);
+  S.cur.messages.push({type:'user',text:userText});
+  addMsg('user', userText);
+  S.counts.turns++;
+  if(S.cur.title==='New session'){ S.cur.title=userText.slice(0,42); renderSessions(); }
+
+  try{
+    for(let loop=0; loop<LIMITS.maxToolLoops; loop++){
+      $('#turnPill').textContent = loop? 'tool loop '+(loop+1) : 'thinking';
+      const {text, calls} = await callModel(S.cur.messages);
+      S.cur.messages.push({type:'assistant', text, calls});
+      if(text) addMsg('assistant', text);
+      if(!calls.length) break;
+
+      const results=[];
+      for(const c of calls){
+        S.counts.tools++;
+        const card = addToolCard(c.name, argSummary(c.name,c.args));
+        const g = await gate(c.name, c.args);
+        card.setVerdict(g.verdict, g.receipt);
+        pushGate(c.name, g);
+        if(g.verdict==='COLLAPSE'){
+          const msg='BLOCKED by LatticeGate (receipt #'+g.receipt+'). Reasons:\n- '+g.reasons.join('\n- ')+
+                    '\nThis call did not execute. Change approach; do not retry it unchanged.';
+          card.setBody(msg, true);
+          results.push({id:c.id, name:c.name, content:msg});
+          continue;
+        }
+        let out;
+        try{ out = await dispatch(c.name, c.args); }
+        catch(err){ out='ERROR: '+(err&&err.message||String(err)); }
+        const note = g.verdict==='ATTENUATE' ? '[attenuated: '+g.reasons.join('; ')+']\n' : '';
+        card.setBody(note+out, g.verdict==='ATTENUATE' || c.name==='run_js');
+        results.push({id:c.id, name:c.name, content:note+out});
+      }
+      S.cur.messages.push({type:'tool_results', results});
+      renderCtx();
+    }
+  }catch(err){
+    const b=addMsg('assistant','**Request failed.** '+(err&&err.message||String(err)));
+    b.style.borderColor='rgba(255,158,199,.4)';
+  }finally{
+    S.busy=false; setBusy(false);
+    $('#turnPill').textContent='idle';
+    renderCtx(); saveSessions();
+  }
+}
+
+/* ------------------------- sessions ------------------------- */
+function renderSessions(){
+  const b=$('#sessionList'); b.innerHTML='';
+  S.sessions.slice().reverse().forEach(s=>{
+    const r=el('button','rail-item'+(S.cur&&s.id===S.cur.id?' active':''),
+      '<span class="ico">&#9702;</span><span class="txt">'+esc(s.title)+'</span>');
+    r.addEventListener('click',()=>loadSession(s.id));
+    b.appendChild(r);
+  });
+}
+const STARTERS = [
+  ['Prove the harmonic wall grows the way you say it does.',
+   'Write a JS function for H(d,R)=R^(d^2), then run it for d=1..5 at R=2 and print the table. Tell me where it overflows a double.'],
+  ['Test something instead of describing it.',
+   'Write a Poincare-ball distance function, then run a property test: 500 random point pairs inside the unit ball, assert symmetry and the triangle inequality, and report any failures.'],
+  ['Show me the gate refusing something.',
+   'Write and run a snippet that fetches https://example.com and logs the status.'],
+  ['Build a page I can see.',
+   'Build a single-file HTML page that draws a Poincare disk with 40 geodesics on a canvas, then preview it.']
+];
+function renderStarter(){
+  const t=$('#transcript');
+  const w=el('div','starter');
+  w.innerHTML='<h2>The Forge</h2><p>An agent workspace that runs in your tab. It writes files, '+
+    'executes them in a worker it can kill, and shows you a gate verdict and receipt for every call it makes. '+
+    'Your key never leaves this browser.</p>';
+  const cw=el('div','chipwrap');
+  STARTERS.forEach(([label,prompt])=>{
+    const c=el('button','chip','<b>'+esc(label)+'</b><br>'+esc(prompt));
+    c.addEventListener('click',()=>{ $('#prompt').value=prompt; $('#prompt').focus(); autosize(); });
+    cw.appendChild(c);
+  });
+  w.appendChild(cw);
+  t.appendChild(w);
+}
+function renderTranscript(){
+  $('#transcript').innerHTML='';
+  if(!(S.cur.messages||[]).length){ renderStarter(); return; }
+  (S.cur.messages||[]).forEach(h=>{
+    if(h.type==='user') addMsg('user',h.text);
+    else if(h.type==='assistant'){
+      if(h.text) addMsg('assistant',h.text);
+      (h.calls||[]).forEach(c=>{
+        const card=addToolCard(c.name, argSummary(c.name,c.args));
+        card.setVerdict('ALLOW','replay');
+        card.setBody('(from a previous session — result not stored)');
+      });
+    }
+  });
+}
+function loadSession(id){
+  const s=S.sessions.find(x=>x.id===id);
+  if(!s) return;
+  S.cur=s;
+  S.openTab=Object.keys(s.files||{})[0]||null;
+  $('#editor').value = S.openTab ? s.files[S.openTab] : '';
+  S.view='editor';
+  renderSessions(); renderTranscript(); renderTabs(); renderFiles(); renderPlan(); renderViews(); renderCtx(); syncGutter();
+}
+function startSession(){
+  const s=newSession();
+  S.sessions.push(s);
+  loadSession(s.id);
+  saveSessions();
+}
+
+/* ------------------------- settings ------------------------- */
+function fillProviderSelects(){
+  const opts=Object.keys(PROVIDERS).map(k=>'<option value="'+k+'">'+esc(PROVIDERS[k].label)+'</option>').join('');
+  $('#provider').innerHTML=opts;
+  $('#providerQuick').innerHTML=opts;
+  $('#provider').value=cfg.provider;
+  $('#providerQuick').value=cfg.provider;
+  refreshQuickModels();
+}
+function refreshQuickModels(){
+  const m=cfg.model||provider().model||'';
+  $('#modelQuick').innerHTML = m ? '<option>'+esc(m)+'</option>' : '<option>set a model</option>';
+}
+function syncProviderUI(){
+  const p=PROVIDERS[$('#provider').value];
+  $('#provHint').textContent=p.hint;
+  $('#modelHint').textContent=p.modelHint;
+  $('#keyField').style.display = p.noKey ? 'none':'block';
+  if(!$('#model').value || $('#model').value===cfg.model) $('#model').value = (cfg.provider===$('#provider').value ? (cfg.model||p.model) : p.model);
+}
+function openSettings(){
+  $('#provider').value=cfg.provider;
+  $('#model').value=cfg.model||provider().model;
+  $('#baseurl').value=cfg.baseurl||'';
+  $('#apikey').value=API_KEY?'••••••••••••••••':'';
+  $('#sessionOnly').checked=!!cfg.sessionOnly;
+  syncProviderUI();
+  $('#settingsBg').classList.add('open');
+  setTimeout(()=>$('#apikey').focus(),40);
+}
+function closeSettings(){ $('#settingsBg').classList.remove('open'); }
+function saveSettings(){
+  cfg.provider=$('#provider').value;
+  cfg.model=$('#model').value.trim();
+  cfg.baseurl=$('#baseurl').value.trim();
+  cfg.sessionOnly=$('#sessionOnly').checked;
+  const typed=$('#apikey').value;
+  if(typed && typed.indexOf('•')===-1){
+    API_KEY=typed.trim();
+    if(cfg.sessionOnly) store.del('forge.key'); else store.set('forge.key',API_KEY);
+  }
+  if(cfg.sessionOnly) store.del('forge.key');
+  jset('forge.cfg',{provider:cfg.provider,model:cfg.model,baseurl:cfg.baseurl,sessionOnly:cfg.sessionOnly});
+  fillProviderSelects(); renderCtx(); closeSettings();
+}
+
+/* ------------------------- wiring ------------------------- */
+function setBusy(b){
+  $('#send').disabled=b;
+  $('#prompt').disabled=b;
+  $('#turnPill').className='pill '+(b?'warn':'');
+}
+function autosize(){ const t=$('#prompt'); t.style.height='auto'; t.style.height=Math.min(t.scrollHeight,200)+'px'; }
+
+function boot(){
+  fillProviderSelects();
+
+  $('#openSettings').addEventListener('click',openSettings);
+  $('#cancelSettings').addEventListener('click',closeSettings);
+  $('#saveSettings').addEventListener('click',saveSettings);
+  $('#forgetKey').addEventListener('click',()=>{ API_KEY=''; store.del('forge.key'); $('#apikey').value=''; renderCtx(); });
+  $('#provider').addEventListener('change',()=>{ const p=PROVIDERS[$('#provider').value]; $('#model').value=p.model; syncProviderUI(); });
+  $('#settingsBg').addEventListener('click',e=>{ if(e.target===$('#settingsBg')) closeSettings(); });
+  $('#providerQuick').addEventListener('change',()=>{
+    cfg.provider=$('#providerQuick').value; cfg.model=PROVIDERS[cfg.provider].model;
+    jset('forge.cfg',cfg); fillProviderSelects(); renderCtx();
+  });
+
+  $('#toggleL').addEventListener('click',()=>$('#app').classList.toggle('no-left'));
+  $('#toggleR').addEventListener('click',()=>$('#app').classList.toggle('no-right'));
+  $('#newSession').addEventListener('click',startSession);
+  $('#clearChat').addEventListener('click',()=>{ S.cur.messages=[]; renderTranscript(); saveSessions(); });
+  $('#closeNotice').addEventListener('click',()=>{ $('#firstRun').style.display='none'; store.set('forge.notice','hidden'); });
+  if(store.get('forge.notice')==='hidden') $('#firstRun').style.display='none';
+
+  $$('.rail-item[data-view]').forEach(b=>b.addEventListener('click',()=>{ S.view=b.dataset.view; renderViews(); }));
+  $$('.card-head').forEach(h=>h.addEventListener('click',()=>$('#'+h.dataset.card).classList.toggle('closed')));
+  $('#cardTools').querySelector('.card-body').innerHTML =
+    TOOLS.map(t=>'<div style="padding:5px 0;border-bottom:1px solid var(--line)"><code style="color:var(--aqua);font-family:var(--mono);font-size:11.5px">'+esc(t.name)+'</code><div style="font-size:11.5px;color:var(--dim);margin-top:2px;line-height:1.4">'+esc(t.description.split('.')[0])+'.</div></div>').join('');
+
+  const ta=$('#editor');
+  ta.addEventListener('input',()=>{ if(S.openTab){ files()[S.openTab]=ta.value; saveSessions(); } syncGutter(); });
+  ta.addEventListener('scroll',()=>{ $('#gutter').scrollTop=ta.scrollTop; });
+  ta.addEventListener('keydown',e=>{
+    if(e.key==='Tab'){ e.preventDefault(); const s=ta.selectionStart,en=ta.selectionEnd;
+      ta.value=ta.value.slice(0,s)+'  '+ta.value.slice(en); ta.selectionStart=ta.selectionEnd=s+2;
+      if(S.openTab) files()[S.openTab]=ta.value; syncGutter(); }
+  });
+
+  $('#newFile').addEventListener('click',()=>{
+    const p=prompt('File name','untitled.js'); if(!p) return;
+    writeFile(p,''); openFile(p);
+  });
+  $('#runBtn').addEventListener('click',async ()=>{
+    if(!S.openTab) return;
+    const src=files()[S.openTab];
+    if(/\.html?$/i.test(S.openTab)){ previewHTML(src); return; }
+    S.view='console'; renderViews();
+    logOut('meta','── manual run: '+S.openTab+' ──');
+    const g=await gate('run_js',{code:src});
+    pushGate('run_js (manual)',g);
+    if(g.verdict==='COLLAPSE'){ logOut('err','BLOCKED #'+g.receipt+' — '+g.reasons.join('; ')); return; }
+    if(g.verdict==='ATTENUATE') logOut('warn','attenuated #'+g.receipt+' — '+g.reasons.join('; '));
+    await runJS(src);
+  });
+  $('#saveFile').addEventListener('click',()=>{
+    if(!S.openTab) return;
+    const blob=new Blob([files()[S.openTab]],{type:'text/plain'});
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(blob); a.download=S.openTab.split('/').pop();
+    document.body.appendChild(a); a.click();
+    setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); },1000);
+  });
+  $('#clearOut').addEventListener('click',()=>{ $('#out').innerHTML=''; });
+  $('#collapseOut').addEventListener('click',()=>$('#outPane').classList.toggle('collapsed'));
+
+  const p=$('#prompt');
+  p.addEventListener('input',autosize);
+  p.addEventListener('keydown',e=>{
+    if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); submit(); }
+  });
+  $('#send').addEventListener('click',submit);
+  function submit(){
+    const v=p.value.trim(); if(!v||S.busy) return;
+    p.value=''; autosize(); turn(v);
+  }
+
+  if(!S.sessions.length) startSession(); else loadSession(S.sessions[S.sessions.length-1].id);
+  renderCtx();
+  if(!hasKey()) setTimeout(openSettings, 600);
+}
+
+if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',boot); else boot();
+})();
+</script>
+</body>
+</html>
