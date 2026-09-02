@@ -1,0 +1,157 @@
+{
+  "patrol": {
+    "drill": "patrol",
+    "timestamp": "2026-09-02T10:09:05.444480+00:00",
+    "pages_checked": 106,
+    "links_ok": 113,
+    "links_broken": [
+      {
+        "url": "https://aethermoore.com/hire.html",
+        "status": "timeout",
+        "found_on": "https://aethermoore.com/about.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/articles/ai-firewall-landscape-2026.html",
+        "status": "('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))",
+        "type": "page"
+      },
+      {
+        "url": "https://aethermoore.com/articles/tri-synesthesia.html",
+        "status": "timeout",
+        "found_on": "https://aethermoore.com/articles/cyber-suite-launch.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/articles/14-layer-explained.html",
+        "status": "timeout",
+        "found_on": "https://aethermoore.com/articles/github-ecosystem.html",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/assistant.html",
+        "status": "('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))",
+        "type": "page"
+      },
+      {
+        "url": "https://aethermoore.com/training-bus.html",
+        "status": "timeout",
+        "found_on": "https://aethermoore.com/",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/demos/audio-telemetry.html",
+        "status": "timeout",
+        "found_on": "https://aethermoore.com/",
+        "type": "internal_link"
+      },
+      {
+        "url": "https://aethermoore.com/product-manual/n8n-workflow-pack.html",
+        "status": "timeout",
+        "found_on": "https://aethermoore.com/product-manual/ai-governance-toolkit.html",
+        "type": "internal_link"
+      }
+    ],
+    "missing_meta": [
+      "https://aethermoore.com/chat.html",
+      "https://aethermoore.com/demos/audio-composition.html",
+      "https://aethermoore.com/demos/energy-landscape.html",
+      "https://aethermoore.com/models.html",
+      "https://aethermoore.com/studio/index.html",
+      "https://aethermoore.com/training-lab.html"
+    ],
+    "missing_og": [
+      "https://aethermoore.com/chat.html",
+      "https://aethermoore.com/delivery-proof.html",
+      "https://aethermoore.com/demos/audio-composition.html",
+      "https://aethermoore.com/demos/energy-landscape.html",
+      "https://aethermoore.com/forge.html",
+      "https://aethermoore.com/github-map.html",
+      "https://aethermoore.com/hire/index.html",
+      "https://aethermoore.com/hire.html",
+      "https://aethermoore.com/models.html",
+      "https://aethermoore.com/offers/index.html",
+      "https://aethermoore.com/product-manual/training-vault.html",
+      "https://aethermoore.com/studio/index.html",
+      "https://aethermoore.com/training-bus.html",
+      "https://aethermoore.com/training-lab.html"
+    ],
+    "missing_canonical": [
+      "https://aethermoore.com/benchmark-kit.html",
+      "https://aethermoore.com/chat.html",
+      "https://aethermoore.com/demos/audio-composition.html",
+      "https://aethermoore.com/demos/energy-landscape.html",
+      "https://aethermoore.com/models.html",
+      "https://aethermoore.com/studio/index.html",
+      "https://aethermoore.com/training-lab.html"
+    ],
+    "sitemap_pages": 108,
+    "actual_pages": 106
+  },
+  "security": {
+    "drill": "security",
+    "timestamp": "2026-09-02T10:09:05.444480+00:00",
+    "headers": {
+      "HSTS": {
+        "present": false,
+        "value": null
+      },
+      "X-Content-Type-Options": {
+        "present": false,
+        "value": null
+      },
+      "X-Frame-Options": {
+        "present": false,
+        "value": null
+      },
+      "CSP": {
+        "present": false,
+        "value": null
+      },
+      "Referrer-Policy": {
+        "present": false,
+        "value": null
+      },
+      "Permissions-Policy": {
+        "present": false,
+        "value": null
+      }
+    },
+    "tls": {
+      "valid": true,
+      "issuer": {
+        "countryName": "US",
+        "organizationName": "Let's Encrypt",
+        "commonName": "YR1"
+      },
+      "expires": "Oct 23 00:40:44 2026 GMT",
+      "subject": {
+        "commonName": "aethermoore.com"
+      }
+    },
+    "secrets_found": [],
+    "score": 2,
+    "max_score": 8
+  },
+  "review": {
+    "drill": "review",
+    "timestamp": "2026-09-02T10:09:05.444480+00:00",
+    "site_test_count": null,
+    "articles_count": 17,
+    "research_pages": 14,
+    "demo_pages": 17,
+    "tongue_coverage": {
+      "KO": 0,
+      "AV": 225,
+      "RU": 12,
+      "CA": 182,
+      "UM": 35,
+      "DR": 6
+    },
+    "freshness": {
+      "newest": "2026-08-25",
+      "oldest": "2026-08-25",
+      "total_urls": 108
+    }
+  }
+}
