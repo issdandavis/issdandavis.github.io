@@ -163,9 +163,9 @@
         </p>
         <div class="chips">
           <span class="chip">main updated after PR #649</span>
-          <span class="chip">91/91 blocked</span>
-          <span class="chip">0/15 false positives</span>
-          <span class="chip">108/108 system checks passed</span>
+          <span class="chip">91/91 project corpus fit</span>
+          <span class="chip">0/15 on stated clean set</span>
+          <span class="chip">108/108 authored checks passed</span>
         </div>
       </div>
       <aside class="panel">
@@ -176,12 +176,12 @@
             <span class="ok">0/15 false positives</span>
           </div>
           <div class="stat">
-            <span>Industry baseline</span>
+            <span>Archived comparator lane</span>
             <strong>10/91</strong>
             <span class="warn">ProtectAI blocked</span>
           </div>
           <div class="stat">
-            <span>Formal verification</span>
+            <span>Project-authored checks</span>
             <strong>108/108</strong>
             <span class="ok">all checks passed</span>
           </div>
@@ -282,7 +282,7 @@
           <div>
             <h3>Decision fusion</h3>
             <p>
-              This is the real interaction zone: geometry, lexical evidence, spin and session state combine here. The current fixed gate is winning because the decision is made from the constellation, not from one scalar.
+              This is the measured interaction zone: geometry, lexical evidence, spin and session state combine here. In this project harness, the fixed gate performed best when the decision used the combined signals rather than one scalar.
             </p>
           </div>
         </div>
@@ -293,7 +293,7 @@
       <h2>What the fixed branch actually says</h2>
       <ul>
         <li>The session-bleed regression is gone in the harnessed benchmark lane.</li>
-        <li>The full adversarial harness is back at <strong>91/91</strong> detected with <strong>0/15</strong> clean false positives.</li>
+        <li>The authored adversarial corpus returned to <strong>91/91</strong>, with <strong>0/15</strong> false positives on its stated clean set. This is regression coverage, not a generalization result.</li>
         <li>The old trace simulator is still useful, but now it is explicitly marked as a trace lane instead of a claim lane.</li>
         <li>The main decision path is <strong>L3 → L7 → L12 → L13</strong>, with lexical and session evidence joining the geometric variables before the final block/allow outcome.</li>
       </ul>
@@ -302,7 +302,7 @@
     <section class="panel">
       <h2>Next morning handoff</h2>
       <p>
-        The next serious upgrade is not more threshold tuning. It is replacing the old front-door projection with the real tongue reader or learned tongue head, while preserving the proven L7-L13 fusion path.
+        The next serious upgrade is not more threshold tuning. It is replacing the old front-door projection with the real tongue reader or learned tongue head, while preserving and retesting the observed L7-L13 fusion path.
       </p>
     </section>
   </main>

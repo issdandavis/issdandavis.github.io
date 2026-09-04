@@ -6,10 +6,10 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Evidence Ledger | Real SCBE Benchmark Results</title>
-  <meta name="description" content="Honest numbers from real experiments. 99.42% combined AUC on 6 attack types, 91/91 blocked on red team, 150/150 compliance tests across 13 frameworks. Plus what we disproved.">
+  <meta name="description" content="An archived SCBE evidence ledger with in-project experiment results, limitations, negative findings, and links to the current evidence surface.">
   <link rel="canonical" href="https://aethermoore.com/research/evidence.html">
   <meta property="og:title" content="Evidence Ledger | Real SCBE Benchmark Results">
-  <meta property="og:description" content="Honest numbers from real experiments — including what we disproved. 99.42% combined AUC, 150/150 compliance tests, 13 frameworks.">
+  <meta property="og:description" content="Archived in-project results with limitations, negative findings, and links to current evidence.">
   <meta property="og:url" content="https://aethermoore.com/research/evidence.html">
   <meta property="og:image" content="https://aethermoore.com/hero.webp">
   <meta property="og:type" content="website">
@@ -108,20 +108,24 @@
   <main>
     <span class="hero-label">Evidence Ledger</span>
     <h1><span class="gradient">Honest numbers.</span><br>Including what failed.</h1>
-    <p class="subtitle">Most AI governance vendors publish only the metrics that make them look good. This page lists <strong style="color:var(--text)">everything we measured</strong> — the wins, the caveats, and the things we tried that didn't work. If you're about to spend $5K to $150K with me, you deserve to see the receipts before you sign.</p>
+    <p class="subtitle">This ledger keeps the measurements we can currently document — including wins, caveats, and failed experiments. It is a project-authored record, not an independent certification. Read the scope and reproduction status before using a number to make a buying decision.</p>
+
+    <div class="panel warn">
+      <p style="margin:0;"><strong>Evidence-state notice · reviewed September 3, 2026:</strong> this page preserves earlier in-project measurements. Some historical reproduction paths no longer exist on current <code>main</code>. These results are not independent replication, certification, or proof of generalization. Use the <a href="https://github.com/issdandavis/SCBE-AETHERMOORE#detection-performance-measured" target="_blank" rel="noopener">current measured scope</a> and <a href="/research/operations.html">dated operations snapshot</a> before quoting them.</p>
+    </div>
 
     <div class="row">
       <div class="stat-box">
         <span class="num xl">99.42%</span>
-        <span class="lbl">Combined AUC (6 attack types × 50 trials)</span>
+        <span class="lbl">Archived in-project AUC (6 attack types × 50 trials)</span>
       </div>
       <div class="stat-box">
         <span class="num xl">91/91</span>
-        <span class="lbl">Red team prompts blocked, 0 false positives</span>
+        <span class="lbl">In-project regression corpus; not generalization</span>
       </div>
       <div class="stat-box">
         <span class="num xl">150/150</span>
-        <span class="lbl">Compliance tests across 13 frameworks</span>
+        <span class="lbl">Project-authored checks; not certification</span>
       </div>
       <div class="stat-box">
         <span class="num xl">0.33ms</span>
@@ -133,8 +137,8 @@
       <p style="margin:0;"><strong style="color:var(--text)">Looking for Kaggle, product, npm, GitHub, or Clay capability evidence?</strong> Open the <a href="/research/operations.html">Operations Evidence explorer</a>. It keeps public scores, rules and forum review freshness, controlled experiments, deterministic checks, model records, and missing proof in separate lanes.</p>
     </div>
 
-    <h2>1. Three-mechanism combined defense <span class="tag tag-proven">Proven</span></h2>
-    <p>The headline number. Six attack types, 50 trials each (300 total), running against the real <code>scbe_14layer_reference.py</code> pipeline. Combined mean AUC: <strong class="num">0.9942</strong>.</p>
+    <h2>1. Three-mechanism combined defense <span class="tag tag-proven">Archived in-project result</span></h2>
+    <p>An earlier project experiment used six synthetic attack types with 50 trials each (300 total) against <code>scbe_14layer_reference.py</code> and recorded a combined mean AUC of <strong class="num">0.9942</strong>. Treat this as development evidence until the exact runner, corpus, environment, and result bundle are restored or pinned publicly.</p>
 
     <div class="panel accent">
       <table>
@@ -151,12 +155,12 @@
           <tr style="border-top: 2px solid var(--line-bright);"><td><strong>Mean</strong></td><td>0.6146</td><td>0.9029</td><td>0.7575</td><td class="num"><strong>0.9942</strong></td></tr>
         </tbody>
       </table>
-      <p style="margin:0;font-size:13px;">Each detector alone is incomplete — phase catches E but fails A/B/D/F, tonic catches A/B/D but fails F, drift catches C/E/F but fails A/D. <strong style="color:var(--text)">The combined defense is the product.</strong></p>
+      <p style="margin:0;font-size:13px;">Each detector alone was incomplete in this archived experiment — phase caught E but failed A/B/D/F, tonic caught A/B/D but failed F, and drift caught C/E/F but failed A/D. The combined score was the strongest tested configuration in that experiment; it is not a current cross-domain guarantee.</p>
       <a class="source-link" href="https://github.com/issdandavis/SCBE-AETHERMOORE/blob/main/experiments/three_mechanism_results.json" target="_blank" rel="noopener">experiments/three_mechanism_results.json</a>
     </div>
 
-    <h2>2. Red team benchmark vs public comparators <span class="tag tag-proven">Proven</span></h2>
-    <p>91 adversarial prompts across 10 attack categories. Published as a <a href="https://huggingface.co/datasets/issdandavis/scbe-red-team-benchmarks" target="_blank" rel="noopener">public HuggingFace dataset</a> so anyone can reproduce.</p>
+    <h2>2. Red team regression corpus <span class="tag tag-proven">In-project result</span></h2>
+    <p>The 91 adversarial prompts span 10 project-authored categories. The pipeline was developed against this corpus, so 91/91 is useful regression coverage but does not measure generalization. The current README separately reports a held-out paraphrase lane.</p>
 
     <div class="panel accent">
       <table>
@@ -171,15 +175,15 @@
           <tr><td>No protection</td><td class="num bad">0/91</td><td>—</td><td>0%</td></tr>
         </tbody>
       </table>
-      <p style="margin:0;font-size:13px;">These are public comparators evaluated on the same 91 prompts. The dataset is downloadable and the test harness is published.</p>
+      <p style="margin:0;font-size:13px;">This is an archived project table. Comparator lanes in the default runner may be simulated unless external models are explicitly enabled; do not read it as an independent head-to-head model benchmark.</p>
       <a class="source-link" href="https://huggingface.co/datasets/issdandavis/scbe-red-team-benchmarks" target="_blank" rel="noopener">huggingface.co/datasets/issdandavis/scbe-red-team-benchmarks</a>
     </div>
 
-    <h2>3. Regulatory compliance tests <span class="tag tag-proven">Proven</span></h2>
-    <p>150 automated compliance tests covering 13 frameworks, 14 pipeline layers, and 12 security axioms. Raw output:</p>
+    <h2>3. Framework-mapped project checks <span class="tag tag-proven">Not certification</span></h2>
+    <p>150 project-authored automated checks were mapped to 13 framework references, 14 pipeline layers, and 12 security axioms. The linked table includes zero-test areas, including FedRAMP and layers L2–L6; passing these checks is not independent compliance validation or certification.</p>
 
     <div class="panel accent">
-      <h3 style="margin-top:0;">Frameworks covered (150/150 passing)</h3>
+      <h3 style="margin-top:0;">Framework references in the project mapping (150/150 authored checks passing)</h3>
       <p style="font-size:13px;line-height:1.9;">
         HIPAA/HITECH · NIST 800-53 · FIPS 140-3 · PCI-DSS v4.0 · SOX Section 302/404 · GDPR · ISO 27001:2022 · IEC 62443 · SOC 2 Type II · FedRAMP · CMMC 2.0 · FDA 21 CFR Part 11 · NERC CIP
       </p>
@@ -194,7 +198,7 @@
 
     <div class="panel warn">
       <p><strong style="color:var(--text)">What this does NOT measure:</strong> end-to-end request-response wall clock through a real API gateway. That benchmark is pending. Don't take the 0.33 ms/agent number as "your chatbot will add 0.33 ms per message" — network, serialization, and policy load-time add overhead.</p>
-      <p style="margin:0;">Realistic estimate for a production deployment: <strong class="num">&lt;100 ms added latency per message</strong>, which is what the solution pages quote.</p>
+      <p style="margin:0;">Any end-to-end latency target must be measured in the buyer's actual stack. No production latency guarantee is inferred from this microbenchmark.</p>
       <a class="source-link" href="https://github.com/issdandavis/SCBE-AETHERMOORE/blob/main/experiments/pipeline_vs_baseline_results.json" target="_blank" rel="noopener">experiments/pipeline_vs_baseline_results.json</a>
     </div>
 
@@ -210,8 +214,8 @@
           <tr><td>Adaptive</td><td class="num">0.8864</td><td>0.8220</td><td>0.6905</td></tr>
         </tbody>
       </table>
-      <p><strong style="color:var(--red)">The raw 14-layer pipeline scores 0.054 AUC on subtle attacks — worse than random guessing.</strong> This is why you don't buy "the 14-layer pipeline" — you buy the <strong style="color:var(--text)">three-mechanism combined defense</strong> (phase + tonic + drift) that sits on top and hits 99.42%.</p>
-      <p style="margin:0;">We could have hidden this result. We're publishing it because the combined defense is the real product and the pipeline is a component, not the answer. Anyone selling you "14-layer detection" without the combined scoring layer is selling you the worst possible configuration.</p>
+      <p><strong style="color:var(--red)">The raw 14-layer pipeline scored 0.054 AUC on subtle attacks — worse than random guessing.</strong> In a separate archived experiment, the phase + tonic + drift combination reached 0.9942 mean AUC on its six in-project attack types. Those results motivate the combined design, but they do not establish performance on a new client system.</p>
+      <p style="margin:0;">Publishing the failed ablation matters because architecture depth alone was not the answer. A buyer-facing engagement still needs a fresh baseline, relevant controls, held-out cases, and acceptance criteria on the target stack.</p>
       <a class="source-link" href="https://github.com/issdandavis/SCBE-AETHERMOORE/blob/main/experiments/pipeline_vs_baseline_results.json" target="_blank" rel="noopener">experiments/pipeline_vs_baseline_results.json</a>
     </div>
 
@@ -226,7 +230,7 @@
       <p>Measured 0.543 AUC on swarm detection. Below useful threshold. Retired.</p>
 
       <h3 style="color:var(--red);">X3. Constant-time cryptographic operations in pure Python/numpy</h3>
-      <p>Impossible at the Python/numpy layer. Constant-time work happens in the underlying C crypto libraries (liboqs, PyCryptodome), not in our code. We stopped claiming "constant time" in our layer and deferred to the crypto library guarantees.</p>
+      <p>Not established at the Python/numpy layer. Constant-time properties, where documented, belong to the underlying cryptographic implementation and still require platform-specific verification. We stopped claiming that property for our Python layer.</p>
 
       <h3 style="color:var(--red);">X4. Tripoint centroid hyperbolic advantage</h3>
       <p>Tried using three-point hyperbolic centroids as a trust anchor. Measured no advantage over the Euclidean baseline. Removed from the pipeline.</p>
@@ -240,16 +244,15 @@
       <p style="margin:0;">The full ledger: <a href="https://github.com/issdandavis/SCBE-AETHERMOORE/blob/main/docs/CLAIMS_AUDIT_V4.md" target="_blank" rel="noopener">docs/CLAIMS_AUDIT_V4.md</a></p>
     </div>
 
-    <h2>Run it yourself</h2>
-    <p>Everything on this page is reproducible from the <a href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank" rel="noopener">open source repo</a>. Clone it, run the experiments, compare against your own data.</p>
+    <h2>Verify the current surface</h2>
+    <p>The historical experiment commands previously printed here no longer resolve on current <code>main</code>, so they have been removed rather than presented as runnable. Start with the repository's <a href="https://github.com/issdandavis/SCBE-AETHERMOORE#detection-performance-measured" target="_blank" rel="noopener">current measured detection section</a>, which states the corpus, limitations, dependencies, and current command.</p>
 
     <div class="panel">
-      <h3 style="margin-top:0;">To reproduce the headline numbers:</h3>
+      <h3 style="margin-top:0;">Current runnable check:</h3>
       <p style="margin-bottom:6px;"><code>git clone https://github.com/issdandavis/SCBE-AETHERMOORE.git</code></p>
       <p style="margin-bottom:6px;"><code>cd SCBE-AETHERMOORE &amp;&amp; pip install -e ".[test]"</code></p>
-      <p style="margin-bottom:6px;"><code>python experiments/three_mechanism_combined.py</code> (reproduces the 99.42%)</p>
-      <p style="margin-bottom:6px;"><code>python experiments/pipeline_vs_baseline.py</code> (reproduces the ablation table)</p>
-      <p style="margin-bottom:0;"><code>python -m pytest tests/ -v</code> (runs the Python test suite)</p>
+      <p style="margin-bottom:6px;"><code>pip install ".[ml-onnx]"</code></p>
+      <p style="margin-bottom:0;"><code>SCBE_INJECTION_MODEL=1 pytest tests/test_intent_model_benchmark.py -q</code> (use the platform-appropriate environment-variable syntax)</p>
     </div>
 
     <h2>Questions I get asked</h2>
@@ -260,10 +263,10 @@
     <p>Because layer depth is a blunt instrument. More layers means more parameters to fit the training distribution, which makes subtle out-of-distribution attacks easier to miss. The three-mechanism combined defense (phase + tonic + drift) corrects for this by using complementary detection strategies — each covers attack types the others miss.</p>
 
     <h3>Can I trust any of the claims on the solution pages?</h3>
-    <p>Yes. The numbers on <a href="/cx-guardrail.html">CX Guardrail</a>, <a href="/iso-42001.html">ISO 42001</a>, and <a href="/red-team.html">Red Team</a> are grounded in the files linked on this page. The only softer claims are latency ("under 100 ms per message in production") which comes from a realistic estimate, not a measured benchmark, because we don't have the end-to-end gateway benchmark yet. I'd rather say "about this" than fake precision.</p>
+    <p>Treat solution pages as product descriptions, then verify each metric against a dated artifact, its stated corpus, and its limitations. This archived ledger is useful context, but it is not a blanket validation of every solution-page claim.</p>
 
     <h3>Where are the 29,000 tests?</h3>
-    <p>The earlier claim of "29,000+ tests passing" was a conflation of total TypeScript test assertions across the ecosystem and the Python test count. The verified numbers: <strong>638 Python tests</strong> + <strong>150 compliance tests</strong> + <strong>91 red-team prompts</strong> = real and reproducible. The TypeScript-side count needs its own audit before we publish it.</p>
+    <p>The earlier claim of "29,000+ tests passing" conflated TypeScript assertions across the ecosystem with the Python count. This archived snapshot recorded <strong>638 Python tests</strong>, <strong>150 project compliance checks</strong>, and <strong>91 project-authored red-team prompts</strong>. Each count still needs its own version, date, runner, and scope before reuse as a current headline.</p>
   </main>
 
   <footer>

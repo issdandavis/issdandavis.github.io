@@ -82,7 +82,7 @@
     return `
       <article class="catalog-card">
         <div class="catalog-type">${escapeHtml(item.type)}</div>
-        <h3>${escapeHtml(item.name)}</h3>
+        <h4>${escapeHtml(item.name)}</h4>
         <p>${escapeHtml(item.description)}</p>
         <div class="catalog-actions">
           ${item.manual_url ? `<a href="${escapeHtml(item.manual_url)}">${escapeHtml(manualLabel)}</a>` : ''}
@@ -98,7 +98,7 @@
     return `
       <article class="catalog-card">
         <div class="catalog-type">${escapeHtml(item.type)}</div>
-        <h3>${escapeHtml(item.name)}</h3>
+        <h4>${escapeHtml(item.name)}</h4>
         <p>${escapeHtml(item.description)}</p>
         <ul class="catalog-list">${includes}</ul>
         <div class="catalog-actions">
@@ -112,7 +112,7 @@
     return `
       <article class="catalog-card restricted">
         <div class="catalog-type">${escapeHtml(item.type)}</div>
-        <h3>${escapeHtml(item.name)}</h3>
+        <h4>${escapeHtml(item.name)}</h4>
         <p>${escapeHtml(item.description)}</p>
         <p class="catalog-boundary">${escapeHtml(item.boundary)}</p>
         <div class="catalog-actions">

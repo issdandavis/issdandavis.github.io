@@ -52,6 +52,30 @@
       min-height: 100vh;
     }
     a { color: inherit; text-decoration: none; }
+    .skip-link {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 1000;
+      padding: 10px 14px;
+      border-radius: 8px;
+      background: var(--mint);
+      color: var(--bg-deep);
+      font-weight: 800;
+      transform: translateY(-180%);
+    }
+    .skip-link:focus { transform: translateY(0); }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
     .topbar {
       position: sticky;
       top: 0;
@@ -523,7 +547,7 @@
       font-weight: 700;
       margin-right: 14px;
     }
-    .catalog-card h3 {
+    .catalog-card h4 {
       font-size: 20px;
       margin-bottom: 8px;
     }
@@ -677,12 +701,24 @@
       .btn {
         width: 100%;
       }
+      [data-hire-cta="apex"] {
+        display: none !important;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
     }
   </style>
   <link rel="stylesheet" href="/static/galactic-theme.css">
   <script src="/static/galactic-stars.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to assistant</a>
 <noscript>
     <div style="position:fixed;top:0;left:0;right:0;z-index:99999;background:#04100f;border-bottom:1px solid rgba(139,255,223,0.2);padding:12px 24px;text-align:center;color:#9bc5ba;font-size:13px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
       JavaScript is required for the assistant, interactive demos, and AI Arena. <a href="mailto:aethermoregames@pm.me" style="color:#8fffd3;text-decoration:underline;">Email us</a> for a static version.
@@ -692,10 +728,10 @@
   <header class="topbar">
     <div class="topbar-inner">
       <a class="brand" href="index.html">SCBE-AETHERMOORE</a>
-      <button class="mobile-toggle" onclick="document.querySelector('.nav').classList.toggle('open')" aria-label="Toggle navigation">&#9776;</button>
-      <nav class="nav" aria-label="Primary">
+      <button class="mobile-toggle" id="assistant-menu-toggle" type="button" aria-label="Toggle navigation" aria-controls="assistant-primary-nav" aria-expanded="false">&#9776;</button>
+      <nav class="nav" id="assistant-primary-nav" aria-label="Primary">
         <a href="index.html">Home</a>
-        <a href="index.html#solutions" class="nav-cta">Solutions</a>
+        <a href="index.html#products" class="nav-cta">Products</a>
         <a href="datasets.html" class="nav-commercial">Datasets</a>
         <a href="demos/index.html">Demos</a>
         <a href="tools.html">Tools</a>
@@ -711,7 +747,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <section class="hero">
       <div class="hero-inner hero-grid">
         <div class="hero-copy">
@@ -729,8 +765,8 @@
             <a class="btn btn-secondary" href="#catalog">Browse public product buckets</a>
           </div>
         </div>
-        <aside class="hero-panel">
-          <h2>What Polly is for</h2>
+        <aside class="hero-panel" aria-labelledby="polly-purpose-title">
+          <h2 id="polly-purpose-title">What Polly is for</h2>
           <p>Use Polly when you want one sentence turned into the right next route: a live tool, a package, a custom public build, or a support path.</p>
           <div id="assistant-status" class="status-card">
             <div class="status-label">Starting</div>
@@ -770,12 +806,13 @@
           </div>
           <div id="assistant-history" class="assistant-history" aria-live="polite"></div>
           <form id="assistant-form" class="assistant-form">
+            <label class="sr-only" for="assistant-input">Describe what you want Polly to route</label>
             <textarea id="assistant-input" placeholder="Example: I need a public-facing assistant for my website that can route buyers, support issues, and custom product requests."></textarea>
             <button class="btn btn-primary" type="submit">Route it</button>
           </form>
         </section>
 
-        <aside class="assistant-sidebar">
+        <aside class="assistant-sidebar" aria-label="Assistant recommendation and routes">
           <section class="sidebar-block">
             <div class="eyebrow">Current Recommendation</div>
             <div id="assistant-recommendation" class="recommendation-card"></div>
@@ -806,7 +843,7 @@
         <div class="catalog-header">
           <div>
             <div class="eyebrow">Public catalog</div>
-            <h2>Products, working builds, proof, and hard boundaries.</h2>
+            <h2>Products, working builds, evidence, and hard boundaries.</h2>
             <p>Every public system is labeled by what it is today. Anything proprietary, government-linked, or high-assurance stays behind a gate.</p>
           </div>
         </div>
@@ -852,10 +889,29 @@
   <script>
     // Use deterministic local routing until a public Polly API is deployed.
     window.__POLLY_BACKEND_HTTP__ = window.__POLLY_BACKEND_HTTP__ || "";
+
+    const menuToggle = document.getElementById('assistant-menu-toggle');
+    const primaryNav = document.getElementById('assistant-primary-nav');
+    const setMenuOpen = (open) => {
+      primaryNav.classList.toggle('open', open);
+      menuToggle.setAttribute('aria-expanded', String(open));
+    };
+    menuToggle.addEventListener('click', () => {
+      setMenuOpen(menuToggle.getAttribute('aria-expanded') !== 'true');
+    });
+    primaryNav.addEventListener('click', (event) => {
+      if (event.target.closest('a')) setMenuOpen(false);
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && menuToggle.getAttribute('aria-expanded') === 'true') {
+        setMenuOpen(false);
+        menuToggle.focus();
+      }
+    });
   </script>
   <script src="static/polly-assistant.js?v=2"></script>
   <script src="/static/cookie-consent.js" defer></script>
-<a href="/SCBE-AETHERMOORE/hire.html" target="_self"
+<a href="/services.html#hire" target="_self"
    aria-label="Hire Issac"
    data-hire-cta="apex"
    style="position:fixed;bottom:20px;right:20px;z-index:9999;background:#17c6cf;color:#06121a;padding:12px 20px;border-radius:999px;font-family:system-ui,-apple-system,sans-serif;font-weight:600;font-size:15px;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,0.35);transition:transform .15s ease;"

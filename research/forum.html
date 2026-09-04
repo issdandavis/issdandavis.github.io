@@ -272,9 +272,10 @@
       </div>
       <div class="stat">
         <div class="stat-num">91/91</div>
-        <div class="stat-label">Red team (0 FP)</div>
+        <div class="stat-label">Project regression corpus</div>
       </div>
     </div>
+    <p style="max-width:760px;margin:14px auto 0;color:var(--muted);font-size:13px;">Counts and benchmark figures are historical project snapshots. The 91/91 figure measures fit on an authored regression corpus, not independent validation or generalization.</p>
     <a class="cta-primary" href="https://github.com/issdandavis/SCBE-AETHERMOORE/discussions/new" target="_blank">
       + Start a Discussion
     </a>
@@ -394,7 +395,7 @@ const POLLY_KNOWLEDGE = {
   "phdm": "PHDM = 21-Dimensional Poincar\u00e9 Ball embedding: 6D hyperbolic + 6D phase + 3D flux + 6D audit. Maps agent state into safe/unsafe regions of a manifold.",
   "patent": "Patent pending: USPTO #63/961,403. Filed by Issac Davis. Covers the hyperbolic geometry security framework and the Six Sacred Tongues protocol.",
   "tri-synesthesia": "Tri-synesthesia cross-domain detection: Light waves (data flow frequency/amplitude), Sound waves (event timing harmony/dissonance), Code patterns (AST depth/branching). When all three domains converge on an anomaly, confidence approaches 1.0.",
-  "product": "Products: AI Governance Toolkit ($29), HYDRA Agent Templates ($29), n8n Workflow Pack ($29), Content Spin Engine ($29), The Six Tongues Protocol novel (Amazon KDP), and training data packs ($49-$399). The open-source framework is free (MIT). Details at aethermoore.com or ask Polly.",
+  "product": "Products: AI Governance Toolkit ($29), HYDRA Agent Templates ($9), n8n Workflow Pack ($29), Content Spin Engine ($29), The Six Tongues Protocol novel (Amazon KDP), and training data packs ($49-$399). The open-source framework is free (MIT). Details at aethermoore.com or ask Polly.",
 };
 
 const POLLY_SYSTEM = `You are Polly, the route-first operator for the SCBE-AETHERMOORE website (aethermoore.com).
@@ -408,7 +409,7 @@ CRITICAL RULE: Only recommend products that are listed below. NEVER invent produ
    Buy: https://buy.stripe.com/cNibJ25Ca2TJ9gQ3a6dby06
    Manual: https://aethermoore.com/product-manual/ai-governance-toolkit.html
 
-2. HYDRA Agent Templates \u2014 $29 one-time
+2. HYDRA Agent Templates \u2014 $9 one-time
    Buy: https://buy.stripe.com/6oUeVe5Ca2TJdx6262dby08
    Manual: https://aethermoore.com/product-manual/hydra-agent-templates.html
 
@@ -421,7 +422,7 @@ CRITICAL RULE: Only recommend products that are listed below. NEVER invent produ
    Manual: https://aethermoore.com/product-manual/content-spin-engine.html
 
 5. The Six Tongues Protocol (Novel) \u2014 Amazon KDP
-   Buy: https://www.amazon.com/dp/B0F28PHSPR
+   Buy: https://www.amazon.com/dp/B0GSSFQD9G
 
 6. Training Data (aethermoore.com/datasets.html):
    SCBE Governance SFT Pack ($99), Red Team Fortress ($149), Theory Documents Bundle ($129),
@@ -622,7 +623,7 @@ async function loadDiscussions() {
 loadDiscussions();
 </script>
 <script>
-  window.__POLLY_BACKEND_HTTP__ = window.__POLLY_BACKEND_HTTP__ || "https://api.aethermoore.com";
+  window.__POLLY_BACKEND_HTTP__ = window.__POLLY_BACKEND_HTTP__ || "";
 </script>
 <script src="/static/polly-sidebar.js"></script>
   <script src="/static/cookie-consent.js" defer></script>

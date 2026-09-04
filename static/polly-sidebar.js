@@ -18,16 +18,16 @@
 
     === SOLUTIONS (outcome-first offerings) ===
 
-    A. CX Refund Guardrail — $500-5K/month SaaS
-       Stop chatbots from promising refunds they can't deliver. Policy-enforcement middleware between LLM and customer. Built after Moffatt v. Air Canada made chatbot liability case law.
+    A. CX Refund Guardrail — scoped service offer, $500-5K/month
+       Policy-enforcement middleware intended to reduce unsupported refund promises. This is a scoped implementation service, not a self-serve guarantee.
        Page: https://aethermoore.com/cx-guardrail.html
 
-    B. ISO 42001 Evidence-as-a-Service — $50-150K/year
-       Adversarial testing, risk reports, drift monitoring, audit response dossiers for banks, insurers, and regulated enterprises. Maps SCBE 6-tier test pyramid to ISO 42001 clauses.
+    B. ISO 42001 Evidence-as-a-Service — scoped service offer, $50-150K/year
+       Project-authored testing, risk reports, drift monitoring, and evidence mapping to selected ISO 42001 clauses. It is not certification or legal advice.
        Page: https://aethermoore.com/iso-42001.html
 
-    C. AI Red Team as a Service — $5-50K/engagement
-       6,066 adversarial tests run against your LLM application. Branded PDF report, remediation roadmap, quarterly re-tests. Mid-market focused.
+    C. AI Red Team as a Service — scoped engagement, $5-50K
+       Uses a project-authored adversarial test library to evaluate a client system. Exact coverage and claims depend on the agreed scope and observed run results.
        Page: https://aethermoore.com/red-team.html
 
     === PAID PRODUCTS AND PUBLIC BUILDS (status matters) ===
@@ -37,7 +37,7 @@
        Buy: https://buy.stripe.com/cNibJ25Ca2TJ9gQ3a6dby06
        Manual: https://aethermoore.com/product-manual/ai-governance-toolkit.html
 
-    2. HYDRA Agent Templates — $29 one-time
+    2. HYDRA Agent Templates — $9 one-time
        Ready-made agent roles, packet patterns, and launch structure for small governed swarms.
        Buy: https://buy.stripe.com/6oUeVe5Ca2TJdx6262dby08
        Manual: https://aethermoore.com/product-manual/hydra-agent-templates.html
@@ -54,7 +54,7 @@
 
     5. The Six Tongues Protocol (Novel) — Amazon KDP
        22 chapters, 70K words. The novel that teaches the SCBE framework through story.
-       Buy: https://www.amazon.com/dp/B0F28PHSPR
+       Buy: https://www.amazon.com/dp/B0GSSFQD9G
 
     6. Training Data (sold direct on aethermoore.com/datasets.html):
        - SCBE Governance SFT Pack — $99 (5,188 SFT pairs)
@@ -80,27 +80,27 @@
        - HYDRA 6-agent swarm + MCP servers (in monorepo): https://github.com/issdandavis/SCBE-AETHERMOORE/tree/main/agents
 
        Research & evidence:
-       - Reproducible benchmarks, 99.42% AUC source (in monorepo): https://github.com/issdandavis/SCBE-AETHERMOORE/tree/main/experiments
+       - Current project-authored evaluations and archived experiment material (in monorepo): https://github.com/issdandavis/SCBE-AETHERMOORE
        - QLoRA configs, SFT records, eval harness (in monorepo): https://github.com/issdandavis/SCBE-AETHERMOORE/tree/main/training
        - Claims ledger, architecture, buyer proof (in monorepo): https://github.com/issdandavis/SCBE-AETHERMOORE/tree/main/docs
 
     8. AetherBrowser — WORKING PROTOTYPE, not a finished commercial browser
-       Governed desktop browser with an agent sidepanel, bounded actions, page analysis, and a local control plane. Desktop and iOS source exist; the public page is a simulation.
+       Governed desktop browser with an agent sidepanel, bounded actions, page analysis, and a local control plane. Desktop source is public; the public page is a simulation.
        Demo: https://aethermoore.com/demos/aetherbrowser-demo.html
        Source: https://github.com/issdandavis/aetherbrowser
 
     9. AetherDesk — LOCAL OPERATOR APP, not a hosted SaaS product
        Local-first desktop for bounded AI and human workflows, registered actions, and receipts.
        Map: https://aethermoore.com/backroom.html
-       Source: https://github.com/issdandavis/AetherDesk
+       Source access: private; use the contact route for questions.
 
-    10. Operator Agent Bus — PROOF-BACKED PROTOTYPE
+    10. Operator Agent Bus — PROTOTYPE WITH DATED PUBLIC RECEIPTS
         Packet, constraint, review, and receipt coordination for bounded agents.
-        Proof: https://aethermoore.com/training-bus.html
+        Evidence snapshot: https://aethermoore.com/training-bus.html
 
-    11. Trust Verifier — OPEN-SOURCE UTILITY
+    11. Trust Verifier — INTERNAL UTILITY / PRIVATE SOURCE
         Local Python and JavaScript cross-checker that returns a concrete disagreement witness. Agreement is evidence, not proof of correctness.
-        Source: https://github.com/issdandavis/trust-verifier
+        Ask about the build: https://aethermoore.com/contact.html
 
     Clay is active training and evaluation work. Do not present Clay as a finished frontier-model product.
 
@@ -152,18 +152,18 @@
   // --- LOCAL INTENT FALLBACK (no API needed) ---
   const LOCAL_INTENTS = [
     { keys: ['hi','hello','hey','howdy'], response: "Hey. I'm Polly, the route-first operator for SCBE-AETHERMOORE. Tell me what you're looking for — pricing, products, research, support, or something else — and I'll point you to the right page." },
-    { keys: ['price','cost','how much','pricing','monthly','subscription','fee'], response: "Our solutions range from $29 one-time products to $150K/year enterprise services. See the full pricing grid at https://aethermoore.com/pricing.html" },
-    { keys: ['refund','guardrail','cx','policy enforcement','moffatt'], response: "The CX Refund Guardrail stops chatbots from promising refunds they can't deliver. $500-5K/month. https://aethermoore.com/cx-guardrail.html" },
-    { keys: ['iso 42001','audit','compliance','regulatory','eu ai act','governance framework'], response: "ISO 42001 Evidence-as-a-Service provides adversarial testing, risk reports, drift monitoring, and audit response dossiers. $50-150K/year. https://aethermoore.com/iso-42001.html" },
-    { keys: ['red team','penetration','adversarial','attack','security test','vulnerability','threat'], response: "AI Red Team as a Service runs 6,000+ adversarial tests against your LLM application. $5-50K/engagement. https://aethermoore.com/red-team.html" },
+    { keys: ['price','cost','how much','pricing','monthly','subscription','fee'], response: "Published packs start at $9. Custom and enterprise pages show indicative scoping bands, not guaranteed quotes. See https://aethermoore.com/pricing.html" },
+    { keys: ['refund','guardrail','cx','policy enforcement','moffatt'], response: "The CX Refund Guardrail is a scoped middleware pilot intended to catch unsupported refund promises. Compatibility, latency, and acceptance tests are set per implementation. https://aethermoore.com/cx-guardrail.html" },
+    { keys: ['iso 42001','audit','compliance','regulatory','eu ai act','governance framework'], response: "The ISO 42001 lane is a scoped evidence-packaging service mapped to selected controls. It supports audit preparation but is not certification or legal advice. https://aethermoore.com/iso-42001.html" },
+    { keys: ['red team','penetration','adversarial','attack','security test','vulnerability','threat'], response: "The red-team lane is a scoped evaluation using project-authored and system-specific tests. Results are reported from the actual client run, not promised in advance. https://aethermoore.com/red-team.html" },
     { keys: ['dataset','training data','sft','corpus','prompt pack'], response: "We sell training datasets including the Governance SFT Pack ($99), Red Team Fortress ($149), and The Full Arsenal bundle ($399). https://aethermoore.com/datasets.html" },
     { keys: ['contact','email','reach out','talk to','schedule','get in touch'], response: "Email me directly at aethermoregames@pm.me or use the contact form at https://aethermoore.com/contact.html. I usually reply within 24 hours." },
     { keys: ['help','support','broken','missing','delivery','issue','problem'], response: "For support with purchases, delivery, or broken links, visit https://aethermoore.com/support.html or email aethermoregames@pm.me." },
     { keys: ['tool','calculator','demo','interactive','visualization'], response: "Our live browser tools and interactive demos are at https://aethermoore.com/demos/index.html. No install needed." },
-    { keys: ['aetherbrowser','aether browser','governed browser','browser agent','browser sidepanel'], response: "AetherBrowser is a working desktop and iOS prototype, not a finished commercial browser. Try the public simulation at https://aethermoore.com/demos/aetherbrowser-demo.html or inspect the source at https://github.com/issdandavis/aetherbrowser" },
-    { keys: ['aetherdesk','aether desk','operator desktop','local ai desktop'], response: "AetherDesk is a local-first operator app with bounded actions and receipts. See the public map at https://aethermoore.com/backroom.html or inspect https://github.com/issdandavis/AetherDesk" },
-    { keys: ['agent bus','operator bus','training bus'], response: "The Operator Agent Bus is a proof-backed prototype for packet, constraint, review, and receipt coordination. Inspect the current proof surface at https://aethermoore.com/training-bus.html" },
-    { keys: ['trust verifier','cross-language','cross language','code witness','twin gate'], response: "Trust Verifier is an open-source local checker that compares Python and JavaScript executions and returns a disagreement witness. Agreement is evidence, not proof. https://github.com/issdandavis/trust-verifier" },
+    { keys: ['aetherbrowser','aether browser','governed browser','browser agent','browser sidepanel'], response: "AetherBrowser is a working desktop prototype, not a finished commercial browser. Try the public simulation at https://aethermoore.com/demos/aetherbrowser-demo.html or inspect the desktop source at https://github.com/issdandavis/aetherbrowser" },
+    { keys: ['aetherdesk','aether desk','operator desktop','local ai desktop'], response: "AetherDesk is a local-first operator build with bounded actions and receipts. See the public map at https://aethermoore.com/backroom.html. Its source repository is private." },
+    { keys: ['agent bus','operator bus','training bus'], response: "The Operator Agent Bus is a prototype with public packet, constraint, review, and receipt evidence. Inspect the dated proof surface at https://aethermoore.com/training-bus.html" },
+    { keys: ['trust verifier','cross-language','cross language','code witness','twin gate'], response: "Trust Verifier is a private-source internal checker that compares Python and JavaScript executions and returns a disagreement witness. Agreement is evidence, not proof. Ask about the build at https://aethermoore.com/contact.html" },
     { keys: ['research','benchmark','evidence','paper','study','proof','technical'], response: "Benchmarks, proofs, and technical justification are at https://aethermoore.com/research/index.html. Member-only raw notes are at https://aethermoore.com/members/research-notes.html" },
     { keys: ['member','exclusive','insider','gated','early access'], response: "Members get raw research notes, early datasets, and member-only tools. Join SCBE Weekly to get the access PIN. https://aethermoore.com/members/" },
     { keys: ['github','open source','repo','code','npm','pypi','install'], response: "The framework is MIT-licensed and lives in one auditable monorepo. Main repo: github.com/issdandavis/SCBE-AETHERMOORE. npm install scbe-aethermoore" },
@@ -418,29 +418,37 @@
   // --- UI CONSTRUCTION ---
   const launcher = document.createElement('button');
   launcher.className = 'polly-launcher';
+  launcher.type = 'button';
+  launcher.id = 'polly-launcher';
+  launcher.setAttribute('aria-label', 'Open Polly assistant');
+  launcher.setAttribute('aria-controls', 'polly-panel');
+  launcher.setAttribute('aria-expanded', 'false');
   launcher.innerHTML = '<span class="polly-dot"></span><span>Polly</span>';
 
   const panel = document.createElement('aside');
   panel.className = 'polly-panel';
+  panel.id = 'polly-panel';
+  panel.setAttribute('aria-label', 'Polly assistant');
+  panel.setAttribute('aria-hidden', 'true');
   panel.innerHTML = `
     <div class="polly-header">
       <div class="polly-kicker">Site Operator</div>
       <div class="polly-title">Polly</div>
     </div>
-    <div class="polly-tabs">
-      <div class="polly-tab active" data-tab="chat">Chat</div>
-      <div class="polly-tab" data-tab="lab">Lab</div>
-      <div class="polly-tab" data-tab="nav">Routes</div>
+    <div class="polly-tabs" role="tablist" aria-label="Polly views">
+      <button type="button" class="polly-tab active" id="polly-tab-chat" role="tab" aria-selected="true" aria-controls="polly-chat" tabindex="0" data-tab="chat">Chat</button>
+      <button type="button" class="polly-tab" id="polly-tab-lab" role="tab" aria-selected="false" aria-controls="polly-lab" tabindex="-1" data-tab="lab">Lab</button>
+      <button type="button" class="polly-tab" id="polly-tab-nav" role="tab" aria-selected="false" aria-controls="polly-nav" tabindex="-1" data-tab="nav">Routes</button>
     </div>
-    <div class="polly-content active" id="polly-chat">
-      <div id="chat-history" style="height: 100%;">
+    <div class="polly-content active" id="polly-chat" role="tabpanel" aria-labelledby="polly-tab-chat">
+      <div id="chat-history" role="log" aria-live="polite" aria-relevant="additions" style="height: 100%;">
         <div class="polly-chat-msg polly">
           <span class="name">Polly</span>
           Tell me what you want done. I will point you to the right tool, package, manual, support path, research note, or gated lane first.
         </div>
       </div>
     </div>
-    <div class="polly-content" id="polly-lab">
+    <div class="polly-content" id="polly-lab" role="tabpanel" aria-labelledby="polly-tab-lab" hidden>
       <div class="polly-kicker">Operations</div>
       <div class="polly-lab-item" style="border-color:var(--polly-accent); background:rgba(143,255,211,0.05);">
         <div id="lab-stats" style="font-weight:800; font-size:14px; margin-bottom:12px; color:var(--polly-accent);">Local Training Pairs: 0</div>
@@ -457,7 +465,7 @@
         </div>
       </div>
     </div>
-    <div class="polly-content" id="polly-nav">
+    <div class="polly-content" id="polly-nav" role="tabpanel" aria-labelledby="polly-tab-nav" hidden>
       <div class="polly-link-grid">
         <a class="polly-link" href="${root}/assistant.html"><strong>Assistant</strong><span>Front door & product routing</span></a>
         <a class="polly-link" href="${root}/tools.html"><strong>Tools</strong><span>Live action surfaces</span></a>
@@ -480,8 +488,8 @@
       </label>
     </div>
     <div class="polly-input-area">
-      <input type="text" class="polly-input" id="polly-input" placeholder="Ask, search, or say 'email...', 'slack...', 'think about...'">
-      <button class="polly-send" id="polly-send">➔</button>
+      <input type="text" class="polly-input" id="polly-input" aria-label="Message Polly" placeholder="Ask, search, or say 'email...', 'slack...', 'think about...'">
+      <button type="button" class="polly-send" id="polly-send" aria-label="Send message">➔</button>
     </div>
   `;
 
@@ -490,6 +498,7 @@
   // and the sidebar stopped before the launcher could appear.
   document.body.appendChild(launcher);
   document.body.appendChild(panel);
+  panel.inert = true;
 
   // --- LOGIC ---
   const state = { history: [], currentTab: 'chat', trustLevel: 1, trainingLogs: [] };
@@ -803,17 +812,56 @@ async function fetchLore() {
   }
 
   function switchTab(tabId) {
-    document.querySelectorAll('.polly-tab, .polly-content').forEach(el => el.classList.remove('active'));
-    document.querySelector(`[data-tab="${tabId}"]`).classList.add('active');
-    document.getElementById(`polly-${tabId}`).classList.add('active');
+    panel.querySelectorAll('.polly-tab').forEach((tab) => {
+      const active = tab.dataset.tab === tabId;
+      tab.classList.toggle('active', active);
+      tab.setAttribute('aria-selected', String(active));
+      tab.tabIndex = active ? 0 : -1;
+    });
+    panel.querySelectorAll('.polly-content').forEach((content) => {
+      const active = content.id === `polly-${tabId}`;
+      content.classList.toggle('active', active);
+      content.hidden = !active;
+    });
     state.currentTab = tabId;
   }
 
+  function setPanelOpen(open) {
+    panel.classList.toggle('open', open);
+    panel.inert = !open;
+    panel.setAttribute('aria-hidden', String(!open));
+    launcher.setAttribute('aria-expanded', String(open));
+    launcher.setAttribute('aria-label', open ? 'Close Polly assistant' : 'Open Polly assistant');
+    if (open) {
+      document.getElementById('polly-input').focus();
+    } else {
+      launcher.focus();
+    }
+  }
+
   // --- EVENTS ---
-  launcher.addEventListener('click', () => panel.classList.toggle('open'));
+  launcher.addEventListener('click', () => setPanelOpen(!panel.classList.contains('open')));
   
-  panel.querySelectorAll('.polly-tab').forEach(tab => {
+  const tabs = Array.from(panel.querySelectorAll('.polly-tab'));
+  tabs.forEach(tab => {
     tab.addEventListener('click', () => switchTab(tab.dataset.tab));
+    tab.addEventListener('keydown', (event) => {
+      const current = tabs.indexOf(tab);
+      let next = null;
+      if (event.key === 'ArrowRight') next = (current + 1) % tabs.length;
+      if (event.key === 'ArrowLeft') next = (current - 1 + tabs.length) % tabs.length;
+      if (event.key === 'Home') next = 0;
+      if (event.key === 'End') next = tabs.length - 1;
+      if (next !== null) {
+        event.preventDefault();
+        switchTab(tabs[next].dataset.tab);
+        tabs[next].focus();
+      }
+    });
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && panel.classList.contains('open')) setPanelOpen(false);
   });
 
   document.getElementById('polly-send').addEventListener('click', handleSend);
@@ -868,5 +916,4 @@ async function fetchLore() {
     getBackendContext(false).catch(() => {});
   }
 
-  launcher.addEventListener('click', () => {});
 })();

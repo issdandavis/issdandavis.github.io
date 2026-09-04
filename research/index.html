@@ -210,7 +210,7 @@
         <div class="brand"><a href="../index.html">SCBE RESEARCH</a></div>
         <nav>
             <a href="../index.html">Home</a>
-            <a href="../index.html#solutions" class="nav-cta">Solutions</a>
+            <a href="../index.html#products" class="nav-cta">Products</a>
             <a href="../datasets.html" class="nav-commercial">Datasets</a>
             <a href="../demos/index.html">Demos</a>
             <a href="../tools.html">Tools</a>
@@ -249,11 +249,11 @@
             </p>
             <div class="benchmark-board">
                 <div class="panel">
-                    <div class="score">91 / 91</div>
-                    <h3>Adversarial benchmark blocked</h3>
+                    <div class="score">93% / 34% FP</div>
+                    <h3>Held-out paraphrase model lane</h3>
                     <p>
-                        Public benchmark headline for the landing page. Use this as the clean summary, then send technical readers
-                        deeper into methodology and replication notes rather than compressing everything into a single hero claim.
+                        On 56 held-out attacks and 32 hard negatives, the opt-in DeBERTa gate reached 93% recall with a 34% benign
+                        false-positive rate. The recall lift comes from the classifier, not the geometry; model-only hits escalate for review.
                     </p>
                     <div class="metric-list">
                         <div class="metric">
@@ -277,9 +277,9 @@
                         <p>Publication-safe scores, rules and forum Research Watch, experiments, npm packages, repositories, and claim boundaries.</p>
                     </div>
                     <div class="rail-item">
-                        <div class="mini">Confirmed output</div>
-                        <h4>Attack benchmark</h4>
-                        <p>Good public-facing proof surface. Strongest current result.</p>
+                        <div class="mini">Regression coverage</div>
+                        <h4>91 / 91 in-project corpus</h4>
+                        <p>Useful for catching regressions against project-authored attacks. It measures corpus fit, not generalization.</p>
                     </div>
                     <div class="rail-item">
                         <div class="mini">Active experiment</div>

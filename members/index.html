@@ -264,20 +264,7 @@
     window.scbeMembers.login(currentEmail, pass);
     show('success');
 
-    // Notify via API
-    try {
-      fetch('https://api.aethermoore.com/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: 'Member Gate',
-          email: currentEmail,
-          subject: 'New Member Access Granted',
-          message: 'A user unlocked the members section with PIN and set a custom password.',
-          page: 'members/index.html'
-        })
-      });
-    } catch(e) {}
+    // This browser-local gate does not claim to notify a remote service.
   });
 
   // Step 4: Login

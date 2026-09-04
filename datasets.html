@@ -358,7 +358,7 @@
       <button class="mobile-toggle" onclick="document.querySelector('.nav').classList.toggle('open')" aria-label="Toggle navigation">&#9776;</button>
       <nav class="nav" aria-label="Primary">
         <a href="index.html">Home</a>
-        <a href="index.html#solutions" class="nav-cta">Solutions</a>
+        <a href="index.html#products" class="nav-cta">Products</a>
         <a href="datasets.html" class="nav-active nav-commercial">Datasets</a>
         <a href="demos/index.html">Demos</a>
         <a href="tools.html">Tools</a>
@@ -387,7 +387,7 @@
           Training Data Marketplace
         </div>
         <h1><span class="gradient">Training data built from a real, running governance system</span></h1>
-        <p class="hero-desc">Every dataset here was generated from SCBE-AETHERMOORE -- a framework with 99.42% combined AUC · 91/91 red team, a patent-pending architecture, and production-grade security layers. Not synthetic slop. Real governance data.</p>
+        <p class="hero-desc">These datasets were assembled from SCBE-AETHERMOORE source, documentation, experiments, and project sessions. Counts and formats are concrete; benchmark results are project-authored and should be read with the scope and limitations in the evidence ledger.</p>
         <div class="hero-ctas">
           <a class="btn btn-gold" href="#individual-packs">Browse Datasets</a>
           <a class="btn btn-primary" href="#full-arsenal">Get the Full Arsenal</a>
@@ -411,7 +411,7 @@
           <div class="stat-card stat-gold"><div class="stat-number">48</div><div class="stat-label">Session transcripts</div></div>
           <div class="stat-card stat-rose"><div class="stat-number">6</div><div class="stat-label">Theory documents</div></div>
           <div class="stat-card stat-violet"><div class="stat-number">~52MB</div><div class="stat-label">Total dataset size</div></div>
-          <div class="stat-card stat-mint"><div class="stat-number">1,579</div><div class="stat-label">HuggingFace downloads</div></div>
+          <div class="stat-card stat-mint"><div class="stat-number">Public</div><div class="stat-label">HuggingFace hub access</div></div>
         </div>
       </div>
     </section>
@@ -421,7 +421,7 @@
       <div class="section-inner">
         <span class="section-label">Tier 1 &mdash; Individual Packs</span>
         <h2 class="section-title">Targeted datasets for specific use cases.</h2>
-        <p class="section-subtitle">Each pack is self-contained, documented, and ready for QLoRA fine-tuning out of the box.</p>
+        <p class="section-subtitle">Each pack is documented and formatted for QLoRA-style pipelines. Validate its schema, license, split, and task fit with your chosen trainer before spending compute.</p>
 
         <div class="products-grid">
           <!-- 1. Governance SFT Pack -->
@@ -435,7 +435,7 @@
               <li>Merged multi-source SFT corpus (~5,188 pairs) covering governance + system + codebase</li>
               <li>QLoRA-ready JSONL with governance decisions, risk labels, and Sacred Tongue routing tags</li>
               <li>Sources: HF <code>scbe-aethermoore-training-data</code>, internal <code>sft_repo_merged.jsonl</code></li>
-              <li>Fine-tune any base model to understand AI governance pipelines</li>
+              <li>Use as one input to governance-oriented fine-tuning experiments; results depend on the base model, mix, and evaluation design</li>
             </ul>
             <span class="product-format">JSONL &middot; QLoRA-Ready</span>
             <a class="btn btn-primary" href="mailto:aethermoregames@pm.me?subject=Purchase%3A%20SCBE%20Governance%20SFT%20Pack%20%28%2499%29&body=I%20would%20like%20to%20purchase%20the%20SCBE%20Governance%20SFT%20Pack%20for%20%2499.%0A%0APlease%20send%20me%20payment%20instructions.">Purchase -- $99</a>
@@ -447,7 +447,7 @@
             <div class="product-icon">&#128737;</div>
             <h3>Red Team Fortress</h3>
             <div class="product-price">$149</div>
-            <p>91 adversarial attack prompts across 10 categories, labeled by failure layer (L1-L14). Battle-tested against the SCBE pipeline.</p>
+            <p>91 project-authored adversarial prompts across 10 categories, labeled by failure layer (L1-L14). The current 91/91 result is regression-corpus fit, not a generalization claim.</p>
             <ul class="product-details">
               <li>91 attack prompts across 10 adversarial categories</li>
               <li>Each prompt labeled by failure layer (L1 through L14)</li>
@@ -530,7 +530,7 @@
             <div class="product-icon" style="font-size:48px;">&#9876;</div>
             <h3 style="font-size:28px;">The Full Arsenal</h3>
             <div class="product-price" style="font-size:40px;">$399 <span class="was">$506</span> <span class="save">SAVE $107</span></div>
-            <p>The complete SCBE-AETHERMOORE training data collection. Everything you need to fine-tune a governance-aware AI model from scratch.</p>
+            <p>The combined SCBE-AETHERMOORE data collection for governed-AI experiments. A usable fine-tune still requires a compatible base model, trainer, compute budget, validation split, and independent evaluation.</p>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;">
               <ul class="product-details">
                 <li>5,188+ SFT training pairs</li>
@@ -570,12 +570,12 @@
             <div class="product-icon">&#128737;</div>
             <h3>SCBE-AETHERMOORE</h3>
             <div class="product-price" style="color:var(--mint);">FREE</div>
-            <p>The full 14-layer pipeline, Sacred Tongues, and hyperbolic cost engine. Open source and production-ready.</p>
+            <p>The experimental 14-layer pipeline, Sacred Tongues, and hyperbolic cost engine. Open source for inspection and testing; production readiness depends on your threat model and validation.</p>
             <ul class="product-details">
               <li>Full 14-layer security pipeline</li>
               <li>Sacred Tongues tokenizers</li>
               <li>Hyperbolic cost scaling (H(d,R) = R^(d&sup2;))</li>
-              <li>99.42% combined AUC · 91/91 red team</li>
+              <li>Project-authored evaluation artifacts with scope and limitations published separately</li>
             </ul>
             <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;">
               <code>npm i scbe-aethermoore</code>
@@ -591,8 +591,8 @@
             <div class="product-price" style="color:var(--mint);">FREE</div>
             <p>Community datasets available for immediate download on HuggingFace.</p>
             <ul class="product-details">
-              <li>scbe-aethermoore-training-data (1,484 downloads)</li>
-              <li>scbe-red-team-benchmarks (95 downloads)</li>
+              <li>scbe-aethermoore-training-data</li>
+              <li>scbe-red-team-benchmarks</li>
               <li>polly-training-data</li>
               <li>polly-chat-seed</li>
             </ul>
@@ -601,7 +601,7 @@
 
           <!-- Prompt Injection Bit Signatures -->
           <div class="product-card" id="injection-bits">
-            <div class="product-badge badge-free">LIVE &middot; 92.01% AUC</div>
+            <div class="product-badge badge-free">Project baseline &middot; 0.9201 AUC</div>
             <div class="product-icon">&#128200;</div>
             <h3>Prompt Injection &rarr; Bit Signatures</h3>
             <div class="product-price" style="color:var(--mint);">FREE</div>
@@ -626,27 +626,27 @@
       <div class="section-inner">
         <span class="section-label">Models</span>
         <h2 class="section-title">HuggingFace Model Zoo.</h2>
-        <p class="section-subtitle">12 models trained on SCBE data. The Polly family powers our assistant. PHDM-21D is the geometric foundation.</p>
+        <p class="section-subtitle">Experimental checkpoints published from SCBE data work. Model-card descriptions identify their intended lane; they are not claims of frontier capability.</p>
 
         <div class="models-grid">
           <a class="model-card" href="https://huggingface.co/issdandavis/polly-base-v1" target="_blank" rel="noopener">
             <div class="model-icon">&#129302;</div>
             <h3>polly-base-v1</h3>
-            <p>Base Polly model. General-purpose assistant fine-tuned on SCBE governance data.</p>
+            <p>Early Polly checkpoint fine-tuned on SCBE governance data.</p>
             <span class="model-tag tag-mint">Polly Family</span>
           </a>
 
           <a class="model-card" href="https://huggingface.co/issdandavis/polly-base-v2" target="_blank" rel="noopener">
             <div class="model-icon">&#129302;</div>
             <h3>polly-base-v2</h3>
-            <p>Second generation Polly. Improved governance alignment and session handling.</p>
+            <p>Second Polly checkpoint intended to test governance alignment and session handling.</p>
             <span class="model-tag tag-mint">Polly Family</span>
           </a>
 
           <a class="model-card" href="https://huggingface.co/issdandavis/polly-base-v3" target="_blank" rel="noopener">
             <div class="model-icon">&#129302;</div>
             <h3>polly-base-v3</h3>
-            <p>Latest Polly base. Enhanced with theory doc training and conlang awareness.</p>
+            <p>Later Polly checkpoint incorporating theory-document and conlang training data.</p>
             <span class="model-tag tag-mint">Polly Family</span>
           </a>
 
@@ -721,7 +721,7 @@
       <div class="section-inner">
         <span class="section-label">Custom Work</span>
         <h2 class="section-title">Need something specific?</h2>
-        <p class="section-subtitle">We build custom training datasets tailored to your model architecture, domain, and compliance requirements.</p>
+        <p class="section-subtitle">Custom dataset work can be scoped around a model architecture, domain, format, and measurable validation plan.</p>
 
         <div class="cta-banner">
           <h3>Custom Dataset Requests</h3>
@@ -740,7 +740,7 @@
               <span style="color:var(--mint);font-weight:800;">&#10003;</span> Red team augmentation
             </div>
             <div style="display:flex;align-items:center;gap:8px;font-size:14px;color:var(--muted);">
-              <span style="color:var(--mint);font-weight:800;">&#10003;</span> Compliance-ready documentation
+              <span style="color:var(--mint);font-weight:800;">&#10003;</span> Documentation mapped to the agreed controls
             </div>
           </div>
           <a class="btn btn-gold" href="mailto:aethermoregames@pm.me?subject=Custom%20Dataset%20Request&body=Hi%2C%0A%0AI%20am%20interested%20in%20a%20custom%20training%20dataset.%0A%0AModel%20architecture%3A%20%0ADomain%3A%20%0AFormat%20requirements%3A%20%0AEstimated%20size%3A%20%0A%0APlease%20send%20me%20a%20quote.">Contact Us -- aethermoregames@pm.me</a>
@@ -759,7 +759,7 @@
       <div class="footer-links-row">
         <a href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank" rel="noopener">GitHub</a>
         <a href="https://huggingface.co/issdandavis" target="_blank" rel="noopener">HuggingFace</a>
-        <a href="https://www.amazon.com/dp/B0F28PHSPR" target="_blank" rel="noopener">Amazon</a>
+        <a href="https://www.amazon.com/dp/B0GSSFQD9G" target="_blank" rel="noopener">Amazon</a>
         <a href="https://www.youtube.com/@id8461" target="_blank" rel="noopener">YouTube</a>
         <a href="mailto:aethermoregames@pm.me">Email</a>
         <a href="challenges.html">Kaggle Challenges</a>
@@ -768,7 +768,7 @@
   </footer>
 
   <script>
-    window.__POLLY_BACKEND_HTTP__ = window.__POLLY_BACKEND_HTTP__ || "https://api.aethermoore.com";
+    window.__POLLY_BACKEND_HTTP__ = window.__POLLY_BACKEND_HTTP__ || "";
   </script>
   <script src="/static/polly-sidebar.js"></script>
   <script src="/static/cookie-consent.js" defer></script>

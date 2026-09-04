@@ -646,7 +646,7 @@
         <table class="spec-table">
           <tr><td>Method</td><td>Fake assets planted on real endpoints pointing to decoy systems</td></tr>
           <tr><td>Breadcrumbs</td><td>Fake SSH keys, RDP shortcuts, credential cache entries</td></tr>
-          <tr><td>Detection</td><td>Any interaction = confidence 1.0 (zero false positives)</td></tr>
+          <tr><td>Detection rule</td><td>Any interaction with an isolated decoy is treated as a high-confidence signal; real false-positive rates depend on deployment isolation and must be measured.</td></tr>
           <tr><td>Concept From</td><td>Attivo Networks, Illusive Networks</td></tr>
           <tr><td>Domain</td><td><span class="tongue-badge">UM</span> Security &amp; Privacy</td></tr>
         </table>
@@ -834,7 +834,7 @@
 
 </div>
 <script>
-  window.__POLLY_BACKEND_HTTP__ = window.__POLLY_BACKEND_HTTP__ || "https://api.aethermoore.com";
+  window.__POLLY_BACKEND_HTTP__ = window.__POLLY_BACKEND_HTTP__ || "";
 </script>
 <script src="/static/polly-sidebar.js"></script>
 <script src="/static/polly-autoconverse.js"></script>

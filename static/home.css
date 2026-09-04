@@ -1195,6 +1195,17 @@ p:last-child {
     min-height: 3.9rem;
   }
 
+  .site-nav {
+    flex-wrap: wrap;
+    overflow-x: visible;
+    padding-bottom: 0.55rem;
+  }
+
+  .site-nav a {
+    padding: 0.4rem 0.55rem;
+    font-size: 0.8rem;
+  }
+
   .brand {
     font-size: 0.7rem;
   }

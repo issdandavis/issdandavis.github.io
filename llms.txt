@@ -13,20 +13,20 @@ SCBE-AETHERMOORE is an open-source AI governance framework for prompt injection 
 
 Avoid phrasing that claims attacks are "mathematically impossible." Better framing: the system raises the cost of unsafe behavior, scores risk, and routes workflows toward review, throttling, or containment.
 
-Latest launch-proof surfaces:
+Evidence and delivery surfaces (check the date and scope on each page):
 
 - Training Bus: https://aethermoore.com/training-bus.html
 - Offer Delivery Proof: https://aethermoore.com/delivery-proof.html
-- Operations Evidence: https://aethermoore.com/research/operations.html
-- SCBE Project Delivery Manual: https://aethermoore.com/SCBE-AETHERMOORE/product-manual/delivery-and-access.html
+- Operations Evidence (historical July 25, 2026 snapshot): https://aethermoore.com/research/operations.html
+- Delivery and access guide: https://aethermoore.com/product-manual/delivery-and-access.html
 
 Working products and public builds:
 
 - AetherBrowser — governed desktop-browser prototype; public simulation: https://aethermoore.com/demos/aetherbrowser-demo.html · source: https://github.com/issdandavis/aetherbrowser
-- AetherDesk — local-first operator desktop with bounded actions and receipts; map: https://aethermoore.com/backroom.html · source: https://github.com/issdandavis/AetherDesk
-- Operator Agent Bus — packet, constraint, review, and receipt coordination proof: https://aethermoore.com/training-bus.html
+- AetherDesk — local-first operator desktop with bounded actions and receipts; public map: https://aethermoore.com/backroom.html · source repository is private
+- Operator Agent Bus — prototype with dated packet, constraint, review, and receipt evidence: https://aethermoore.com/training-bus.html
 - SCBE SDK — published TypeScript and Python package surface: https://www.npmjs.com/package/scbe-aethermoore · https://pypi.org/project/scbe-aethermoore/
-- Trust Verifier — local cross-language checker that returns disagreement witnesses; agreement is evidence, not proof: https://github.com/issdandavis/trust-verifier
+- Trust Verifier — private-source local cross-language checker that returns disagreement witnesses; agreement is evidence, not proof: https://aethermoore.com/contact.html
 - Clay remains an active training and evaluation program, not a finished frontier-model product.
 
 ## Site Structure For Assistants
@@ -38,18 +38,18 @@ The site has ten intentional surfaces:
 - **Tools:** the action surface for humans and assistants who need to try, compare, or operate something now.
 - **Backroom:** the behind-the-counter ops floor (architecture diagram, data schema, AetherDesk/GeoSeal/AetherWeb stations, live edge monitors). Visual backend map of how the stack runs; not the public shop floor. https://aethermoore.com/backroom.html
 - **Architecture:** civilization-in-a-box depth diorama of the stack, plus Langues and Related Fields (KO–DR) and browser operational fields. https://aethermoore.com/architecture.html · data: https://aethermoore.com/static/langues-fields.json
-- **Shop:** simple buy shelf — books, $29 packs, Math Ledger, hire. https://aethermoore.com/shop.html
+- **Shop:** simple buy shelf — books, clearly priced digital packs, Math Ledger, hire. https://aethermoore.com/shop.html
 - **About:** trust facts (CAGE on file, Peninsula College, author, GitHub). https://aethermoore.com/about.html
 - **Math Ledger:** free Ever-Lesson adult math practice + permanent ledger (print). https://aethermoore.com/math-ledger.html
 - **Videos:** YouTube embeds (@id8461) — Miracle audiobook/illustrated, Six Tongues, talks. https://aethermoore.com/videos.html
 - **Studio:** the public browser IDE and media/transcript workspace. It is browser-local and does not expose the owner-only Clay, GeoSeal, or host command runtime.
 - **Support:** the recovery surface when delivery, setup, broken links, or AI workflow behavior needs triage.
 - **Manuals:** the deployment and buyer surface for setup, delivery, and package usage.
-- **Research:** the proof surface for benchmarks, architecture, and technical justification.
+- **Research:** the evidence surface for project-authored benchmarks, architecture, limitations, and technical justification.
 - **Operations Evidence:** the publication-safe Kaggle gold roadmap, rules and forum Research Watch, and portfolio ledger for results, controlled experiments, products, npm packages, public repositories, and scoped Clay capability records.
 - **Book:** the narrative teaching surface. It exists because story makes the system easier to remember.
 - **Training Bus:** the latest SCBE project training proof surface for Operator Agent Bus work and constrained-decoding gate results.
-- **Delivery Proof:** the public proof that paid packets are separate from open-source code and have a buyer-only delivery route.
+- **Delivery Guide:** the public description of how paid packets are separated from open-source code and how buyers recover access.
 
 ## Routing Rules
 
@@ -67,8 +67,8 @@ The site has ten intentional surfaces:
 - If the user asks for a Kaggle gold plan, medal target, current top-1% score proxy, competition rules or forum freshness, pre-submit review status, competition results, experiment status, product benchmarks, owned npm/GitHub assets, or Clay capability boundaries, use **Operations Evidence**: https://aethermoore.com/research/operations.html
 - If the user asks for the new bus, training gate, constrained-decoding proof, or operator agent bus, use **Training Bus**: https://aethermoore.com/training-bus.html
 - If the user asks for AetherBrowser, a governed browser, or a browser agent sidepanel, use the **AetherBrowser demo**: https://aethermoore.com/demos/aetherbrowser-demo.html and source: https://github.com/issdandavis/aetherbrowser
-- If the user asks for AetherDesk or a local operator desktop, use the **Backroom map**: https://aethermoore.com/backroom.html and source: https://github.com/issdandavis/AetherDesk
-- If the user asks for cross-language code checks, disagreement witnesses, or Trust Verifier, use: https://github.com/issdandavis/trust-verifier
+- If the user asks for AetherDesk or a local operator desktop, use the **Backroom map**: https://aethermoore.com/backroom.html. Its source repository is private.
+- If the user asks for cross-language code checks, disagreement witnesses, or Trust Verifier, explain that it is a private-source internal utility and use: https://aethermoore.com/contact.html
 - If the user asks whether paid or non-open-source delivery is ready, use **Offer Delivery Proof**: https://aethermoore.com/delivery-proof.html and **Delivery + Access**: https://aethermoore.com/product-manual/delivery-and-access.html
 - If the user asks why there is story or fiction on the site, explain that the book is the memory surface for the same vocabulary and architecture: https://aethermoore.com/book.html
 - If the user asks for a custom public-facing build, route through **Assistant** first so the request can be matched to a public sellable bucket.

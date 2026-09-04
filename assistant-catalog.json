@@ -42,8 +42,8 @@
     {
       "id": "training-bus-proof",
       "name": "Operator Agent Bus",
-      "type": "proof-backed prototype",
-      "description": "Latest public proof surface for the Operator Agent Bus, constrained-decoding gate checks, and receipt-backed training artifacts.",
+      "type": "prototype with public receipts",
+      "description": "Dated public evidence surface for the Operator Agent Bus, constrained-decoding gate checks, and receipt-backed training artifacts.",
       "keywords": ["training bus", "operator bus", "agent bus", "gate proof", "25/25", "constrained decoding", "training proof", "latest training"],
       "manual_url": "https://aethermoore.com/training-bus.html",
       "manual_label": "Open proof",
@@ -54,7 +54,7 @@
       "id": "aetherbrowser",
       "name": "AetherBrowser",
       "type": "working prototype",
-      "description": "A governed desktop browser with an agent sidepanel, bounded actions, page analysis, and a local control plane. The public page is a simulation; desktop and iOS source are available.",
+      "description": "A governed desktop browser with an agent sidepanel, bounded actions, page analysis, and a local control plane. The public page is a simulation; desktop source is public.",
       "keywords": ["aetherbrowser", "aether browser", "governed browser", "agent browser", "browser sidepanel", "browser agent"],
       "manual_url": "https://aethermoore.com/demos/aetherbrowser-demo.html",
       "manual_label": "Try public demo",
@@ -64,13 +64,13 @@
     {
       "id": "aetherdesk",
       "name": "AetherDesk",
-      "type": "local operator app",
+      "type": "local build with private source",
       "description": "A local-first desktop for bounded AI and human workflows, with registered actions and receipts instead of unrestricted host control.",
       "keywords": ["aetherdesk", "aether desk", "operator desktop", "local ai desktop", "bounded terminal", "operator app"],
       "manual_url": "https://aethermoore.com/backroom.html",
       "manual_label": "See system map",
-      "buy_url": "https://github.com/issdandavis/AetherDesk",
-      "buy_label": "Inspect source"
+      "buy_url": "https://aethermoore.com/contact.html",
+      "buy_label": "Ask about build"
     },
     {
       "id": "scbe-sdk",
@@ -86,17 +86,17 @@
     {
       "id": "trust-verifier",
       "name": "Trust Verifier",
-      "type": "open-source utility",
+      "type": "internal utility with private source",
       "description": "A local Python and JavaScript cross-checker that reports disagreements with concrete witnesses. Agreement is evidence, not a proof of correctness.",
       "keywords": ["trust verifier", "cross language verifier", "python javascript compare", "code witness", "twin gate", "verdict sound"],
-      "manual_url": "https://github.com/issdandavis/trust-verifier",
-      "manual_label": "Run from source"
+      "manual_url": "https://aethermoore.com/contact.html",
+      "manual_label": "Ask about build"
     },
     {
       "id": "buyer-delivery-proof",
-      "name": "Buyer Delivery Proof",
-      "type": "proof",
-      "description": "Public delivery readiness surface for paid packet rebuilds, buyer-only download URLs, support recovery, and non-open-source delivery separation.",
+      "name": "Buyer Delivery Guide",
+      "type": "delivery guide",
+      "description": "Public description of paid-packet delivery, buyer-only download URLs, support recovery, and separation from open-source code.",
       "keywords": ["delivery proof", "non open source", "paid packet", "buyer packet", "download url", "private delivery", "stripe delivery", "offer delivery"],
       "manual_url": "https://aethermoore.com/product-manual/delivery-and-access.html",
       "buy_url": "https://aethermoore.com/delivery-proof.html"
@@ -104,8 +104,8 @@
     {
       "id": "operations-evidence",
       "name": "Operations Evidence",
-      "type": "proof",
-      "description": "Publication-safe Kaggle gold roadmap, rules and forum Research Watch, results, experiments, product benchmarks, capability boundaries, npm packages, and owned public repositories.",
+      "type": "historical evidence snapshot",
+      "description": "July 25, 2026 operations snapshot covering competition planning, experiments, package inventory, and scoped capability records. Treat expired rows as historical.",
       "keywords": ["kaggle", "kaggle gold roadmap", "medal target", "top 1 percent proxy", "competition result", "public score", "competition rules", "forum review", "research watch", "pre-submit review", "experiment ledger", "product benchmark", "capability matrix", "clay capability", "npm package", "owned repository", "operations evidence"],
       "manual_url": "https://aethermoore.com/research/operations.html",
       "buy_url": "https://aethermoore.com/research/operations.html"
@@ -113,8 +113,8 @@
     {
       "id": "red-team-service",
       "name": "AI Red Team as a Service",
-      "type": "service",
-      "description": "Adversarial testing for your AI system. 91 red team prompts, branded PDF report, remediation roadmap, quarterly re-tests.",
+      "type": "scoped service offer",
+      "description": "A scoped adversarial evaluation that starts from a project-authored regression corpus, adds system-specific tests, and reports observed findings and limitations.",
       "keywords": ["red team", "adversarial", "pentest", "attack", "jailbreak", "prompt injection", "security test", "break my ai", "test my ai", "hack my", "vulnerability", "adversarial testing", "pen test", "safety test"],
       "manual_url": "https://aethermoore.com/red-team.html",
       "buy_url": "mailto:aethermoregames@pm.me?subject=SCBE%20Red%20Team%20Engagement"
@@ -122,8 +122,8 @@
     {
       "id": "cx-refund-guardrail",
       "name": "CX Refund Guardrail",
-      "type": "saas",
-      "description": "Policy-enforcement middleware between your LLM and your customer. Stops your chatbot from promising refunds it cannot deliver.",
+      "type": "scoped pilot offer",
+      "description": "A scoped middleware pilot intended to catch unsupported refund promises. Compatibility, latency, and acceptance thresholds are tested per implementation.",
       "keywords": ["refund", "cx guardrail", "customer service ai", "refund policy", "chatbot guardrail", "chatbot refund", "support bot", "customer support ai", "cx ai", "chatbot safety", "ai customer service"],
       "manual_url": "https://aethermoore.com/cx-guardrail.html",
       "buy_url": "mailto:aethermoregames@pm.me?subject=SCBE%20CX%20Guardrail"
@@ -131,8 +131,8 @@
     {
       "id": "iso-42001-evidence",
       "name": "ISO 42001 Evidence Service",
-      "type": "service",
-      "description": "Audit-ready documentation for banks, insurers, and regulated enterprises facing ISO 42001, SR 11-7, and EU AI Act pressure.",
+      "type": "scoped evidence service",
+      "description": "Project-authored testing and evidence packaging mapped to selected governance controls. It supports audit preparation but is not certification or legal advice.",
       "keywords": ["iso 42001", "compliance", "audit", "sr 11-7", "eu ai act", "regulation", "evidence", "regulatory", "audit-ready", "ai act", "model risk", "compliance evidence", "certification"],
       "manual_url": "https://aethermoore.com/iso-42001.html",
       "buy_url": "mailto:aethermoregames@pm.me?subject=SCBE%20ISO%2042001%20Evidence"

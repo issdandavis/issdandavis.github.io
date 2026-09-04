@@ -209,7 +209,7 @@
       feed.style.display = 'none';
     } else {
       if (!POLLY_BACKEND_HTTP) {
-        alert('Polly backend is not configured. The page needs __POLLY_BACKEND_HTTP__ set to https://api.aethermoore.com');
+        alert('Polly auto-conversation is unavailable because no public backend is deployed. Local routing remains available.');
         return;
       }
       if (!confirm('Start Polly Auto-Training?\n\nThis will run AI conversations via the backend API in the background (1 round every 30s).\n\nTraining data is stored locally and can be exported as JSONL.\n\nContinue?')) return;

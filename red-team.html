@@ -6,16 +6,16 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Red Team as a Service | Adversarial Testing</title>
-  <meta name="description" content="91 red team prompts &middot; 0 false positives against your LLM application. Branded PDF report. Remediation roadmap. $5K-50K per engagement. Fast, mid-market focused.">
+  <meta name="description" content="Scoped adversarial testing for LLM applications using project-authored and system-specific cases, with observed findings, raw output, and remediation guidance.">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta property="og:title" content="AI Red Team as a Service | Adversarial Testing">
-  <meta property="og:description" content="We break your AI before the adversaries do. 91 red team prompts &middot; 0 false positives. Branded PDF report. Remediation roadmap. Quarterly re-tests. $5K-50K per engagement.">
+  <meta property="og:description" content="Scoped adversarial evaluation for LLM applications, with test evidence, reproducible findings, and remediation guidance.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://aethermoore.com/red-team.html">
   <meta property="og:image" content="https://aethermoore.com/hero.webp">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="AI Red Team as a Service | Adversarial Testing">
-  <meta name="twitter:description" content="91 red team prompts &middot; 0 false positives against your LLM application. Branded PDF report. Remediation roadmap. $5K-50K per engagement.">
+  <meta name="twitter:description" content="Scoped adversarial evaluation for LLM applications, with observed findings and explicit limitations.">
   <meta name="twitter:image" content="https://aethermoore.com/hero.webp">
   <link rel="canonical" href="https://aethermoore.com/red-team.html">
   <script type="application/ld+json">
@@ -35,7 +35,7 @@
         "name": "AI Red Team as a Service",
         "serviceType": "AI Security / Adversarial Testing",
         "provider": { "@id": "https://aethermoore.com/#org" },
-        "description": "Adversarial testing for LLM applications. 91 red team prompts, 0 false positives, across 6 tiers covering prompt injection, jailbreaks, data exfiltration, and agent abuse. Branded PDF report and remediation roadmap delivered in four weeks.",
+        "description": "Scoped adversarial testing for LLM applications using a project-authored regression corpus plus system-specific cases. Delivery, coverage, and acceptance tests are confirmed after scoping.",
         "areaServed": "Worldwide",
         "audience": { "@type": "BusinessAudience", "audienceType": "Mid-market companies deploying LLM products" },
         "offers": [
@@ -44,7 +44,7 @@
             "name": "Quick Scan",
             "priceCurrency": "USD",
             "price": "5000",
-            "description": "One-time engagement, 4-week delivery, standard report. For startups and single-product validation.",
+            "description": "Indicative one-time engagement for a scoped endpoint evaluation; final coverage and delivery date are confirmed in writing.",
             "url": "https://aethermoore.com/red-team.html#pricing"
           },
           {
@@ -78,7 +78,7 @@
         "name": "What LLMs do you test?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Any. OpenAI, Anthropic, local open-weights (Llama, Mistral, Qwen), custom fine-tunes, and agent frameworks including LangChain, LlamaIndex, CrewAI, and bespoke orchestration. If it takes a prompt and returns a response, we can attack it."
+          "text": "Text endpoints and agent surfaces can be evaluated after access, rate limits, data handling, and test compatibility are scoped."
         }
       },
       {
@@ -94,7 +94,7 @@
         "name": "Is this disruptive to production?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. We run against a staging endpoint you provision specifically for the engagement. Zero impact on production. If you can't stand up a staging environment we can work against a replica, but we never touch live traffic."
+          "text": "The default plan uses a client-provided staging endpoint or replica. Production traffic is out of scope unless it is separately authorized and controlled."
         }
       },
       {
@@ -361,7 +361,7 @@
       <button class="mobile-toggle" onclick="document.querySelector('.nav').classList.toggle('open')" aria-label="Toggle navigation">&#9776;</button>
       <nav class="nav" aria-label="Primary">
         <a href="index.html">Home</a>
-        <a href="index.html#solutions" class="nav-cta nav-active">Solutions</a>
+        <a href="index.html#products" class="nav-cta nav-active">Products</a>
         <a href="datasets.html" class="nav-commercial">Datasets</a>
         <a href="demos/index.html">Demos</a>
         <a href="tools.html">Tools</a>
@@ -389,14 +389,14 @@
           AI Red Team as a Service
         </div>
         <h1><span class="gradient">We break your AI before the adversaries do.</span></h1>
-        <p class="hero-desc">91 red team prompts &middot; 0 false positives. Branded PDF report. Remediation roadmap. Quarterly re-tests. $5K-50K per engagement.</p>
+        <p class="hero-desc">A scoped evaluation that starts with a 91-case project regression corpus, adds tests for your system, and reports what the run actually finds. Indicative engagements: $5K&ndash;50K.</p>
         <div class="hero-ctas">
           <a class="btn btn-rose" href="mailto:aethermoregames@pm.me?subject=Red%20Team%20Engagement%20-%20Scoping%20Call&body=Hi%2C%0A%0AI%20would%20like%20to%20book%20a%20red%20team%20scoping%20call.%0A%0ACompany%3A%20%0AAI%20product%3A%20%0ADeployment%20stage%3A%20%0APreferred%20tier%3A%20%0A%0AThanks.">Book an engagement</a>
           <a class="btn btn-secondary" href="#what-we-test">See what we test for</a>
         </div>
         <div class="hero-meta">
-          <span><span class="pip"></span> 91 red team prompts &middot; 0 false positives</span>
-          <span><span class="pip"></span> 4-week delivery</span>
+          <span><span class="pip"></span> 91-case project starting corpus</span>
+          <span><span class="pip"></span> Timeline set after scope</span>
           <span><span class="pip"></span> Branded PDF report</span>
           <span><span class="pip"></span> Mid-market focus</span>
         </div>
@@ -408,10 +408,10 @@
       <div class="section-inner">
         <div style="background:var(--panel-strong); border:2px solid #000; border-radius:20px; padding:36px; box-shadow:4px 4px 0px rgba(255,158,199,0.18);">
           <p style="color:var(--muted); font-size:17px; line-height:1.7; max-width:72ch;">
-            Lakera, Robust Intelligence, and HiddenLayer target Fortune 500 budgets at <strong style="color:var(--text);">$150K-$1M per engagement</strong>. Mid-market is wide open. If you have deployed an LLM product -- a chatbot, an agent, a RAG system -- you need to know how it breaks before an attacker or a reporter does.
+            If you have deployed an LLM product -- a chatbot, an agent, or a RAG system -- you need evidence about how its actual integration behaves under adversarial input. The useful result is a reproducible finding tied to your system, not a generic security headline.
           </p>
           <p style="color:var(--muted); font-size:17px; line-height:1.7; margin-top:16px; max-width:72ch;">
-            SCBE-AETHERMOORE ships with <strong style="color:var(--mint);">91 red team prompts, 0 false positives</strong> across 6 adversarial tiers (L1 basic through L6 full adversarial). We run those tests against your LLM application, deliver a branded PDF report mapped to your threat model, and hand you a prioritized remediation roadmap. Quick engagements. Real findings. No vaporware.
+            SCBE-AETHERMOORE includes a <strong style="color:var(--mint);">91-case project-authored regression corpus</strong> organized by adversarial tier. Its 91/91 in-project result measures corpus fit, not transfer to a client application. A scoped engagement adds relevant cases and reports the observed misses, false positives, limitations, and remediation priorities.
           </p>
         </div>
       </div>
@@ -458,7 +458,7 @@
       <div class="section-inner">
         <span class="section-label">Timeline</span>
         <h2 class="section-title">The process</h2>
-        <p class="section-subtitle">From kickoff to delivery in four weeks. No drawn-out consulting cycles.</p>
+        <p class="section-subtitle">A four-week cycle is an indicative target for a bounded endpoint. The written scope controls the actual timeline.</p>
 
         <div class="process-grid">
           <div class="process-step">
@@ -469,7 +469,7 @@
           <div class="process-step">
             <span class="step-num">2</span><span class="step-week">Week 2</span>
             <h3>Execution</h3>
-            <p>91 red team prompts &middot; 0 false positives, run against your endpoint. Results captured as structured JSONL with full request, response, and judge output for every attempt.</p>
+            <p>Run the agreed project and system-specific cases against the scoped endpoint. Capture each request, response, evaluator decision, and uncertainty in structured output.</p>
           </div>
           <div class="process-step">
             <span class="step-num">3</span><span class="step-week">Week 3</span>
@@ -489,8 +489,8 @@
     <section class="section" id="pricing">
       <div class="section-inner">
         <span class="section-label">Pricing</span>
-        <h2 class="section-title">Three tiers. Pick one.</h2>
-        <p class="section-subtitle">Fixed-price engagements, no scope creep, no hidden fees. Start where you are.</p>
+        <h2 class="section-title">Three indicative scopes.</h2>
+        <p class="section-subtitle">These bands help start a conversation. The final price, test count, timeline, and deliverables follow the written scope.</p>
 
         <div class="pricing-grid">
           <div class="price-card">
@@ -498,8 +498,8 @@
             <div class="price">$5,000</div>
             <div class="price-note">one-time engagement</div>
             <ul>
-              <li>4-week delivery</li>
-              <li>91 red team prompts &middot; 0 false positives against one endpoint</li>
+              <li>Four-week target after access is ready</li>
+              <li>Project corpus plus agreed system-specific cases against one endpoint</li>
               <li>Standard branded PDF report</li>
               <li>Raw JSONL test output</li>
               <li>Remediation roadmap</li>
@@ -509,7 +509,7 @@
           </div>
 
           <div class="price-card featured">
-            <span class="badge-tier">Most popular</span>
+            <span class="badge-tier">Expanded scope</span>
             <div class="tier-name">Deep Engagement</div>
             <div class="price">$25,000</div>
             <div class="price-note">one-time engagement</div>
@@ -581,10 +581,10 @@
     <!-- Example findings -->
     <section class="section" id="findings">
       <div class="section-inner">
-        <span class="section-label">Case Studies</span>
-        <h2 class="section-title">Example findings from real engagements</h2>
-        <p class="section-subtitle">Anonymized, but representative. This is what a typical report looks like in practice.</p>
-        <p style="margin:-8px 0 24px; font-size:15px;"><a href="/research/evidence.html" style="color:var(--mint); font-weight:600;">91/91 blocked, 0 false positives &mdash; vs ProtectAI 62/91 and Meta Prompt Guard 15/91. See the comparator table &rarr;</a></p>
+        <span class="section-label">Illustrative report patterns</span>
+        <h2 class="section-title">Examples of the findings a scoped test can produce</h2>
+        <p class="section-subtitle">These are illustrative scenarios, not claims about completed customer engagements. A real report contains only findings reproduced on the system under test.</p>
+        <p style="margin:-8px 0 24px; font-size:15px;"><a href="/research/evidence.html" style="color:var(--mint); font-weight:600;">Read the project-authored evidence, archived comparisons, and limitations &rarr;</a></p>
 
         <div class="case-grid">
           <div class="case">
@@ -617,14 +617,14 @@
         <p class="section-subtitle">SCBE-AETHERMOORE is the adversarial framework powering every engagement. Open-source core, patent-pending architecture.</p>
 
         <div class="tech-banner">
-          <div class="tech-stat"><div class="num">91/91</div><div class="lbl">Red team blocked (0 FP)</div></div>
+          <div class="tech-stat"><div class="num">91</div><div class="lbl">Project regression cases</div></div>
           <div class="tech-stat"><div class="num">L1-L6</div><div class="lbl">Adversarial tiers</div></div>
           <div class="tech-stat"><div class="num">14</div><div class="lbl">Pipeline layers</div></div>
           <div class="tech-stat"><div class="num">Patent</div><div class="lbl">USPTO #63/961,403</div></div>
         </div>
 
         <p style="color:var(--muted); font-size:16px; line-height:1.7; margin-top:32px; max-width:72ch;">
-          The test suite is organized in six tiers: <strong style="color:var(--mint);">L1 basic</strong> through <strong style="color:var(--rose);">L6 full adversarial</strong>. L1 covers the trivial attacks every LLM should refuse. L6 is our full adversarial fleet -- multi-turn, multi-modal, cross-session, chained agents. Every test is reproducible, every test is versioned, every test is mapped to a specific failure layer in the 14-layer pipeline.
+          The project test taxonomy is organized in six tiers: <strong style="color:var(--mint);">L1 basic</strong> through <strong style="color:var(--rose);">L6 adversarial</strong>. Coverage varies by implementation and corpus; the current public evidence should be read as project-authored testing, not independent certification.
         </p>
         <p style="color:var(--muted); font-size:16px; line-height:1.7; margin-top:16px; max-width:72ch;">
           The core is open source. Inspect it, run it yourself, fork it. What we sell is the expertise, the curation, the reporting, and the remediation follow-through.
@@ -645,7 +645,7 @@
         <div class="faq-list">
           <details class="faq-item">
             <summary>What LLMs do you test?</summary>
-            <div class="faq-body">Any. OpenAI, Anthropic, local open-weights (Llama, Mistral, Qwen), custom fine-tunes, and agent frameworks including LangChain, LlamaIndex, CrewAI, and bespoke orchestration. If it takes a prompt and returns a response, we can attack it.</div>
+            <div class="faq-body">Text endpoints and agent surfaces can be evaluated after access, rate limits, data handling, and test compatibility are scoped.</div>
           </details>
           <details class="faq-item">
             <summary>How do we get you access?</summary>
@@ -653,7 +653,7 @@
           </details>
           <details class="faq-item">
             <summary>Is this disruptive to production?</summary>
-            <div class="faq-body">No. We run against a staging endpoint you provision specifically for the engagement. Zero impact on production. If you can't stand up a staging environment we can work against a replica, but we never touch live traffic.</div>
+            <div class="faq-body">The default plan uses a client-provided staging endpoint or replica. Production traffic is out of scope unless it is separately authorized and controlled.</div>
           </details>
           <details class="faq-item">
             <summary>Can we get the raw test data?</summary>
@@ -692,7 +692,7 @@
       <div class="footer-links-row">
         <a href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank" rel="noopener">GitHub</a>
         <a href="https://huggingface.co/issdandavis" target="_blank" rel="noopener">HuggingFace</a>
-        <a href="https://www.amazon.com/dp/B0F28PHSPR" target="_blank" rel="noopener">Amazon</a>
+        <a href="https://www.amazon.com/dp/B0GSSFQD9G" target="_blank" rel="noopener">Amazon</a>
         <a href="https://www.youtube.com/@id8461" target="_blank" rel="noopener">YouTube</a>
         <a href="mailto:aethermoregames@pm.me">Email</a>
       </div>
@@ -700,7 +700,7 @@
   </footer>
 
   <script>
-    window.__POLLY_BACKEND_HTTP__ = window.__POLLY_BACKEND_HTTP__ || "https://api.aethermoore.com";
+    window.__POLLY_BACKEND_HTTP__ = window.__POLLY_BACKEND_HTTP__ || "";
   </script>
   <script src="/static/polly-sidebar.js"></script>
   <script src="/static/cookie-consent.js" defer></script>

@@ -234,7 +234,7 @@ form.addEventListener('submit', async (e) => {
   } catch {}
 
   // Fallback: open mailto with the subscription
-  const mailto = `mailto:ai@aethermoore.com?subject=${encodeURIComponent('Newsletter signup: ' + email)}&body=${encodeURIComponent('Please add ' + email + ' to the SCBE Weekly newsletter.')}`;
+  const mailto = `mailto:aethermoregames@pm.me?subject=${encodeURIComponent('Newsletter signup: ' + email)}&body=${encodeURIComponent('Please add ' + email + ' to the SCBE Weekly newsletter.')}`;
   const a = document.createElement('a');
   a.href = mailto;
   a.click();

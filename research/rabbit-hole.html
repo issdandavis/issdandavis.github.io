@@ -6,9 +6,9 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Research Codex | SCBE-AETHERMOORE</title>
-  <meta name="description" content="Mass Effect Codex-style encyclopedia of SCBE-AETHERMOORE research.">
+  <meta name="description" content="Interactive archive of SCBE-AETHERMOORE project research, experiments, and hypotheses.">
   <meta property="og:title" content="Research Codex &#8212; SCBE-AETHERMOORE">
-  <meta property="og:description" content="Interactive 3D research encyclopedia. Six Sacred Tongues. Benchmark data.">
+  <meta property="og:description" content="Interactive 3D project research archive. Six Sacred Tongues, scoped experiments, and hypotheses.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://aethermoore.com/research/rabbit-hole.html">
   <meta name="keywords" content="AI governance framework, prompt injection defense, LLM security pipeline, hyperbolic geometry AI, AI guardrails open source">
@@ -23,7 +23,7 @@
   <header class="topbar"><div class="topbar-inner"><a class="brand" href="../index.html">SCBE AETHERMOORE</a><nav class="nav"><a href="../index.html">Home</a><a href="hub.html">Research Hub</a><a href="../arena.html">Arena</a><a href="../demos/index.html">Demos</a><a href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank">GitHub</a></nav></div></header>
   <div class="search-wrap"><span class="search-icon">&#x1F50D;</span><input class="search-input" id="searchInput" type="text" placeholder="Search research entries..." autocomplete="off"><div class="search-results" id="searchResults"></div></div>
   <canvas id="starfield"></canvas>
-  <div class="surface-title" id="surfaceTitle"><h1>Research Codex</h1><p>Click a tongue node to explore. Drag to rotate. Scroll to fly through.</p></div>
+  <div class="surface-title" id="surfaceTitle"><h1>Research Codex</h1><p>Project archive — labels and metrics describe scoped internal work, not certification. Click a tongue node to explore.</p></div>
   <div class="constellation-wrap" id="constellationWrap"><div class="stage" id="stage"><div class="constellation" id="constellation"></div></div></div>
   <div class="depth-hud" id="depthHud"><span class="depth-label">Depth</span><div class="depth-bar"><div class="depth-fill" id="depthFill"></div></div><span id="depthValue">0</span></div>
   <div class="entry-list" id="entryList"></div>
@@ -33,6 +33,7 @@
   <div class="audio-toggle" id="audioToggle" title="Toggle ambient audio"><div class="audio-bars"><div class="audio-bar"></div><div class="audio-bar"></div><div class="audio-bar"></div><div class="audio-bar"></div></div></div>
   <footer class="site-footer"><a href="../index.html">Home</a><a href="hub.html">Research Hub</a><a href="../demos/index.html">Demos</a><a href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank">GitHub</a></footer>
 <script src="rabbit-hole.js"></script>
+<script src="rabbit-hole-scope.js"></script>
   <script src="/static/cookie-consent.js" defer></script>
 </body>
 </html>

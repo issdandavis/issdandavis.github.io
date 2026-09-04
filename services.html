@@ -232,7 +232,7 @@
       <nav class="nav" aria-label="Primary">
         <a href="index.html">Home</a>
         <a href="services.html" class="nav-active">Shop</a>
-        <a href="index.html#solutions">Solutions</a>
+        <a href="index.html#products">Products</a>
         <a href="datasets.html">Datasets</a>
         <a href="demos/index.html">Demos</a>
         <a href="tools.html">Tools</a>
@@ -260,15 +260,19 @@
       </div>
       <div class="shop-meta-item">
         <strong>Patent pending</strong>
-        USPTO #63/961,403 &middot; framework is MIT-licensed &middot; 99.42% combined AUC, 91/91 red team in CI.
+        USPTO #63/961,403 filed and pending &middot; framework is MIT-licensed &middot; benchmark scope and limitations are published in the evidence ledger.
       </div>
     </div>
 
+    <p class="section-desc" style="max-width:none;padding:16px 18px;border:1px solid rgba(255,217,119,.3);border-radius:12px;background:rgba(255,217,119,.06);">
+      <strong style="color:var(--gold);">Offer status:</strong> books and one-time packs use published purchase routes. Custom and enterprise services below are scoping offers, not deployed SaaS or guaranteed outcomes; compatibility, timing, controls, and acceptance tests are written into a project scope before work begins. Benchmark numbers are project-authored evidence with the limitations shown in the research ledger.
+    </p>
+
     <!-- HIRE ME / CUSTOM WORK SECTION -->
-    <section>
+    <section id="hire">
       <span class="section-label" style="color:var(--rose); background:rgba(255,158,199,0.08); border-color:rgba(255,158,199,0.25);">Custom Work</span>
       <h2>Hire me for your project.</h2>
-      <p class="section-desc">I help people ship AI features they can actually trust in production. If your project doesn't fit one of the packaged offerings below, let's talk about a custom build.</p>
+      <p class="section-desc">I scope and build bounded AI features, evaluation harnesses, data workflows, and assistant surfaces. Production readiness is something we define and test for each project, not a blanket promise.</p>
 
       <div class="hire-panel">
         <div class="hire-highlight">&#128161; I cover my own AI API costs &mdash; you don't pay for OpenAI/Anthropic tokens on top of my rate.</div>
@@ -309,35 +313,35 @@
 
     <!-- SOLUTIONS / SAAS -->
     <section>
-      <span class="section-label">Solutions</span>
-      <h2>Productized solutions.</h2>
-      <p class="section-desc">Outcome-first offerings for regulated verticals. Monthly SaaS or annual programs. Pick one, buy one, deploy one.</p>
+      <span class="section-label">Scoped service concepts</span>
+      <h2>Start with the problem and a testable scope.</h2>
+      <p class="section-desc">These are defined service lanes with indicative price bands. They become commitments only after the target system, evidence requirements, delivery dates, and acceptance tests are agreed in writing.</p>
       <div class="product-grid">
         <div class="product-card featured">
-          <div class="product-badge badge-saas">SaaS</div>
+          <div class="product-badge badge-saas">Scoped pilot</div>
           <h3>CX Refund Guardrail</h3>
           <div class="price"><span class="from">from</span>$500<span class="unit">/mo</span></div>
-          <p>Stop your chatbot from promising refunds it can't deliver. Policy-enforcement middleware sits between your LLM and your customer. Works with any API.</p>
+          <p>Design and test policy-enforcement middleware intended to catch unsupported refund promises before delivery. API compatibility and latency are verified in the pilot.</p>
           <div class="btn-row">
             <a class="btn btn-primary" href="cx-guardrail.html">See the page</a>
             <a class="btn btn-secondary" href="mailto:aethermoregames@pm.me?subject=CX%20Guardrail%20inquiry">Email me</a>
           </div>
         </div>
         <div class="product-card featured">
-          <div class="product-badge badge-service">Service</div>
+          <div class="product-badge badge-service">Scoped engagement</div>
           <h3>ISO 42001 Evidence Service</h3>
           <div class="price"><span class="from">from</span>$50K<span class="unit">/audit</span></div>
-          <p>Audit-ready documentation for banks, insurers, and regulated enterprises facing ISO 42001, SR 11-7, and EU AI Act pressure.</p>
+          <p>Project-authored testing and evidence packaging mapped to selected governance controls. This supports an audit team; it is not certification or legal advice.</p>
           <div class="btn-row">
             <a class="btn btn-primary" href="iso-42001.html">See the page</a>
             <a class="btn btn-secondary" href="mailto:aethermoregames@pm.me?subject=ISO%2042001%20inquiry">Email me</a>
           </div>
         </div>
         <div class="product-card featured">
-          <div class="product-badge badge-service">Service</div>
+          <div class="product-badge badge-service">Scoped engagement</div>
           <h3>AI Red Team as a Service</h3>
           <div class="price"><span class="from">from</span>$5,000<span class="unit">/engagement</span></div>
-          <p>91 red team prompts &middot; 0 false positives against your LLM application. Branded PDF report. Remediation roadmap. 4-week delivery.</p>
+          <p>Start from a project-authored 91-case regression corpus, then add system-specific tests and report the observed findings. Corpus fit is not presented as a result on your application.</p>
           <div class="btn-row">
             <a class="btn btn-primary" href="red-team.html">See the page</a>
             <a class="btn btn-secondary" href="mailto:aethermoregames@pm.me?subject=Red%20Team%20inquiry">Email me</a>
@@ -350,7 +354,7 @@
     <section>
       <span class="section-label">Packages</span>
       <h2>One-time packages.</h2>
-      <p class="section-desc">Self-serve templates and toolkits. Buy once, use forever. Stripe checkout then the thank-you page has your ZIP download.</p>
+      <p class="section-desc">One-time templates and toolkits with published manuals. Read the matching manual before checkout so the expected contents and support route are clear.</p>
       <div class="product-grid">
         <div class="product-card">
           <div class="product-badge badge-package">Package</div>
@@ -365,10 +369,10 @@
         <div class="product-card">
           <div class="product-badge badge-package">Package</div>
           <h3>HYDRA Agent Templates</h3>
-          <div class="price">$29</div>
+          <div class="price">$9</div>
           <p>Ready-made agent roles, packet patterns, and launch structure for small governed swarms.</p>
           <div class="btn-row">
-            <a class="btn btn-primary" href="https://buy.stripe.com/6oUeVe5Ca2TJdx6262dby08" target="_blank" rel="noopener">Buy $29</a>
+            <a class="btn btn-primary" href="https://buy.stripe.com/6oUeVe5Ca2TJdx6262dby08" target="_blank" rel="noopener">Buy $9</a>
             <a class="btn btn-secondary" href="product-manual/hydra-agent-templates.html">Read manual</a>
           </div>
         </div>
@@ -452,7 +456,7 @@
           <div class="price">$9.99</div>
           <p>Kindle eBook. Also available as narrated audio chapters on YouTube (free, 22 episodes).</p>
           <div class="btn-row">
-            <a class="btn btn-primary" href="https://www.amazon.com/dp/B0F28PHSPR" target="_blank" rel="noopener">Buy on Amazon</a>
+            <a class="btn btn-primary" href="https://www.amazon.com/dp/B0GSSFQD9G" target="_blank" rel="noopener">Buy on Amazon</a>
             <a class="btn btn-secondary" href="book.html">Read the page</a>
           </div>
         </div>
@@ -558,11 +562,11 @@
   </footer>
 
   <script>
-    window.__POLLY_BACKEND_HTTP__ = window.__POLLY_BACKEND_HTTP__ || "https://api.aethermoore.com";
+    window.__POLLY_BACKEND_HTTP__ = window.__POLLY_BACKEND_HTTP__ || "";
   </script>
   <script src="/static/polly-sidebar.js"></script>
   <script src="/static/cookie-consent.js" defer></script>
-<a href="/SCBE-AETHERMOORE/hire.html" target="_self"
+<a href="/services.html#hire" target="_self"
    aria-label="Hire Issac"
    data-hire-cta="apex"
    style="position:fixed;bottom:20px;right:20px;z-index:9999;background:#17c6cf;color:#06121a;padding:12px 20px;border-radius:999px;font-family:system-ui,-apple-system,sans-serif;font-weight:600;font-size:15px;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,0.35);transition:transform .15s ease;"
