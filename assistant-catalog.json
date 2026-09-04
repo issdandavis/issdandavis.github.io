@@ -1,7 +1,7 @@
 {
   "site": "https://aethermoore.com",
-  "version": "2026-07-25",
-  "role": "Public sellable buckets and routing limits for the SCBE-AETHERMOORE assistant.",
+  "version": "2026-09-03",
+  "role": "Public products, working builds, proof surfaces, and routing limits for the SCBE-AETHERMOORE assistant.",
   "public_products": [
     {
       "id": "governance-toolkit",
@@ -41,12 +41,56 @@
     },
     {
       "id": "training-bus-proof",
-      "name": "SCBE Training Bus Proof",
-      "type": "proof",
+      "name": "Operator Agent Bus",
+      "type": "proof-backed prototype",
       "description": "Latest public proof surface for the Operator Agent Bus, constrained-decoding gate checks, and receipt-backed training artifacts.",
       "keywords": ["training bus", "operator bus", "agent bus", "gate proof", "25/25", "constrained decoding", "training proof", "latest training"],
       "manual_url": "https://aethermoore.com/training-bus.html",
-      "buy_url": "https://aethermoore.com/training-bus.html"
+      "manual_label": "Open proof",
+      "buy_url": "https://github.com/issdandavis/SCBE-AETHERMOORE",
+      "buy_label": "Inspect framework"
+    },
+    {
+      "id": "aetherbrowser",
+      "name": "AetherBrowser",
+      "type": "working prototype",
+      "description": "A governed desktop browser with an agent sidepanel, bounded actions, page analysis, and a local control plane. The public page is a simulation; desktop and iOS source are available.",
+      "keywords": ["aetherbrowser", "aether browser", "governed browser", "agent browser", "browser sidepanel", "browser agent"],
+      "manual_url": "https://aethermoore.com/demos/aetherbrowser-demo.html",
+      "manual_label": "Try public demo",
+      "buy_url": "https://github.com/issdandavis/aetherbrowser",
+      "buy_label": "Inspect source"
+    },
+    {
+      "id": "aetherdesk",
+      "name": "AetherDesk",
+      "type": "local operator app",
+      "description": "A local-first desktop for bounded AI and human workflows, with registered actions and receipts instead of unrestricted host control.",
+      "keywords": ["aetherdesk", "aether desk", "operator desktop", "local ai desktop", "bounded terminal", "operator app"],
+      "manual_url": "https://aethermoore.com/backroom.html",
+      "manual_label": "See system map",
+      "buy_url": "https://github.com/issdandavis/AetherDesk",
+      "buy_label": "Inspect source"
+    },
+    {
+      "id": "scbe-sdk",
+      "name": "SCBE SDK",
+      "type": "published package",
+      "description": "The public TypeScript and Python package surface for governed automation and risk-scoring experiments.",
+      "keywords": ["scbe sdk", "scbe package", "npm package", "pypi package", "scbe-aethermoore sdk", "install scbe"],
+      "manual_url": "https://aethermoore.com/product-manual/user-guide.html",
+      "manual_label": "Read user guide",
+      "buy_url": "https://www.npmjs.com/package/scbe-aethermoore",
+      "buy_label": "Open npm"
+    },
+    {
+      "id": "trust-verifier",
+      "name": "Trust Verifier",
+      "type": "open-source utility",
+      "description": "A local Python and JavaScript cross-checker that reports disagreements with concrete witnesses. Agreement is evidence, not a proof of correctness.",
+      "keywords": ["trust verifier", "cross language verifier", "python javascript compare", "code witness", "twin gate", "verdict sound"],
+      "manual_url": "https://github.com/issdandavis/trust-verifier",
+      "manual_label": "Run from source"
     },
     {
       "id": "buyer-delivery-proof",

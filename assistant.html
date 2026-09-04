@@ -805,14 +805,14 @@
       <div class="section-inner catalog-section">
         <div class="catalog-header">
           <div>
-            <div class="eyebrow">Things We Can Sell Bucket</div>
-            <h2>Public packages, public builds, and hard boundaries.</h2>
-            <p>The assistant only sells what belongs on the public site. Anything proprietary, government-linked, or high-assurance stays behind a gate.</p>
+            <div class="eyebrow">Public catalog</div>
+            <h2>Products, working builds, proof, and hard boundaries.</h2>
+            <p>Every public system is labeled by what it is today. Anything proprietary, government-linked, or high-assurance stays behind a gate.</p>
           </div>
         </div>
         <div class="section-stack">
           <div>
-            <h3>Public packages</h3>
+            <h3>Public products and working builds</h3>
           </div>
           <div id="public-products" class="catalog-grid"></div>
         </div>
@@ -850,7 +850,11 @@
   </footer>
 
   <script>
-    window.__POLLY_BACKEND_HTTP__ = window.__POLLY_BACKEND_HTTP__ || "https://api.aethermoore.com";
+    if (typeof window.__POLLY_BACKEND_HTTP__ === "undefined") {
+      window.__POLLY_BACKEND_HTTP__ = /^(localhost|127\.0\.0\.1)$/.test(window.location.hostname)
+        ? ""
+        : "https://api.aethermoore.com";
+    }
   </script>
   <script src="static/polly-assistant.js?v=2"></script>
   <script src="/static/cookie-consent.js" defer></script>

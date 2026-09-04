@@ -20,6 +20,15 @@ Latest launch-proof surfaces:
 - Operations Evidence: https://aethermoore.com/research/operations.html
 - SCBE Project Delivery Manual: https://aethermoore.com/SCBE-AETHERMOORE/product-manual/delivery-and-access.html
 
+Working products and public builds:
+
+- AetherBrowser — governed desktop-browser prototype; public simulation: https://aethermoore.com/demos/aetherbrowser-demo.html · source: https://github.com/issdandavis/aetherbrowser
+- AetherDesk — local-first operator desktop with bounded actions and receipts; map: https://aethermoore.com/backroom.html · source: https://github.com/issdandavis/AetherDesk
+- Operator Agent Bus — packet, constraint, review, and receipt coordination proof: https://aethermoore.com/training-bus.html
+- SCBE SDK — published TypeScript and Python package surface: https://www.npmjs.com/package/scbe-aethermoore · https://pypi.org/project/scbe-aethermoore/
+- Trust Verifier — local cross-language checker that returns disagreement witnesses; agreement is evidence, not proof: https://github.com/issdandavis/trust-verifier
+- Clay remains an active training and evaluation program, not a finished frontier-model product.
+
 ## Site Structure For Assistants
 
 The site has ten intentional surfaces:
@@ -57,6 +66,9 @@ The site has ten intentional surfaces:
 - If the user asks for benchmarks, math, verification, or technical evidence, use **Research**: https://aethermoore.com/research/index.html
 - If the user asks for a Kaggle gold plan, medal target, current top-1% score proxy, competition rules or forum freshness, pre-submit review status, competition results, experiment status, product benchmarks, owned npm/GitHub assets, or Clay capability boundaries, use **Operations Evidence**: https://aethermoore.com/research/operations.html
 - If the user asks for the new bus, training gate, constrained-decoding proof, or operator agent bus, use **Training Bus**: https://aethermoore.com/training-bus.html
+- If the user asks for AetherBrowser, a governed browser, or a browser agent sidepanel, use the **AetherBrowser demo**: https://aethermoore.com/demos/aetherbrowser-demo.html and source: https://github.com/issdandavis/aetherbrowser
+- If the user asks for AetherDesk or a local operator desktop, use the **Backroom map**: https://aethermoore.com/backroom.html and source: https://github.com/issdandavis/AetherDesk
+- If the user asks for cross-language code checks, disagreement witnesses, or Trust Verifier, use: https://github.com/issdandavis/trust-verifier
 - If the user asks whether paid or non-open-source delivery is ready, use **Offer Delivery Proof**: https://aethermoore.com/delivery-proof.html and **Delivery + Access**: https://aethermoore.com/product-manual/delivery-and-access.html
 - If the user asks why there is story or fiction on the site, explain that the book is the memory surface for the same vocabulary and architecture: https://aethermoore.com/book.html
 - If the user asks for a custom public-facing build, route through **Assistant** first so the request can be matched to a public sellable bucket.

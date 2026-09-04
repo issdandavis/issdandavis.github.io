@@ -30,7 +30,7 @@
        6,066 adversarial tests run against your LLM application. Branded PDF report, remediation roadmap, quarterly re-tests. Mid-market focused.
        Page: https://aethermoore.com/red-team.html
 
-    === REAL PRODUCTS (only these exist) ===
+    === PAID PRODUCTS AND PUBLIC BUILDS (status matters) ===
 
     1. AI Governance Toolkit — $29 one-time
        Templates, thresholds, decision records, and starter rollout guidance for governed AI work.
@@ -83,6 +83,26 @@
        - Reproducible benchmarks, 99.42% AUC source (in monorepo): https://github.com/issdandavis/SCBE-AETHERMOORE/tree/main/experiments
        - QLoRA configs, SFT records, eval harness (in monorepo): https://github.com/issdandavis/SCBE-AETHERMOORE/tree/main/training
        - Claims ledger, architecture, buyer proof (in monorepo): https://github.com/issdandavis/SCBE-AETHERMOORE/tree/main/docs
+
+    8. AetherBrowser — WORKING PROTOTYPE, not a finished commercial browser
+       Governed desktop browser with an agent sidepanel, bounded actions, page analysis, and a local control plane. Desktop and iOS source exist; the public page is a simulation.
+       Demo: https://aethermoore.com/demos/aetherbrowser-demo.html
+       Source: https://github.com/issdandavis/aetherbrowser
+
+    9. AetherDesk — LOCAL OPERATOR APP, not a hosted SaaS product
+       Local-first desktop for bounded AI and human workflows, registered actions, and receipts.
+       Map: https://aethermoore.com/backroom.html
+       Source: https://github.com/issdandavis/AetherDesk
+
+    10. Operator Agent Bus — PROOF-BACKED PROTOTYPE
+        Packet, constraint, review, and receipt coordination for bounded agents.
+        Proof: https://aethermoore.com/training-bus.html
+
+    11. Trust Verifier — OPEN-SOURCE UTILITY
+        Local Python and JavaScript cross-checker that returns a concrete disagreement witness. Agreement is evidence, not proof of correctness.
+        Source: https://github.com/issdandavis/trust-verifier
+
+    Clay is active training and evaluation work. Do not present Clay as a finished frontier-model product.
 
     === CUSTOM WORK (quote via email) ===
     - Assistant and site setup — Turn a static site into a route-aware assistant surface
@@ -140,6 +160,10 @@
     { keys: ['contact','email','reach out','talk to','schedule','get in touch'], response: "Email me directly at aethermoregames@pm.me or use the contact form at https://aethermoore.com/contact.html. I usually reply within 24 hours." },
     { keys: ['help','support','broken','missing','delivery','issue','problem'], response: "For support with purchases, delivery, or broken links, visit https://aethermoore.com/support.html or email aethermoregames@pm.me." },
     { keys: ['tool','calculator','demo','interactive','visualization'], response: "Our live browser tools and interactive demos are at https://aethermoore.com/demos/index.html. No install needed." },
+    { keys: ['aetherbrowser','aether browser','governed browser','browser agent','browser sidepanel'], response: "AetherBrowser is a working desktop and iOS prototype, not a finished commercial browser. Try the public simulation at https://aethermoore.com/demos/aetherbrowser-demo.html or inspect the source at https://github.com/issdandavis/aetherbrowser" },
+    { keys: ['aetherdesk','aether desk','operator desktop','local ai desktop'], response: "AetherDesk is a local-first operator app with bounded actions and receipts. See the public map at https://aethermoore.com/backroom.html or inspect https://github.com/issdandavis/AetherDesk" },
+    { keys: ['agent bus','operator bus','training bus'], response: "The Operator Agent Bus is a proof-backed prototype for packet, constraint, review, and receipt coordination. Inspect the current proof surface at https://aethermoore.com/training-bus.html" },
+    { keys: ['trust verifier','cross-language','cross language','code witness','twin gate'], response: "Trust Verifier is an open-source local checker that compares Python and JavaScript executions and returns a disagreement witness. Agreement is evidence, not proof. https://github.com/issdandavis/trust-verifier" },
     { keys: ['research','benchmark','evidence','paper','study','proof','technical'], response: "Benchmarks, proofs, and technical justification are at https://aethermoore.com/research/index.html. Member-only raw notes are at https://aethermoore.com/members/research-notes.html" },
     { keys: ['member','exclusive','insider','gated','early access'], response: "Members get raw research notes, early datasets, and member-only tools. Join SCBE Weekly to get the access PIN. https://aethermoore.com/members/" },
     { keys: ['github','open source','repo','code','npm','pypi','install'], response: "The framework is MIT-licensed and lives in one auditable monorepo. Main repo: github.com/issdandavis/SCBE-AETHERMOORE. npm install scbe-aethermoore" },
@@ -460,6 +484,12 @@
       <button class="polly-send" id="polly-send">➔</button>
     </div>
   `;
+
+  // Mount before querying panel controls by document ID. The previous order
+  // left the controls in a detached subtree, so getElementById returned null
+  // and the sidebar stopped before the launcher could appear.
+  document.body.appendChild(launcher);
+  document.body.appendChild(panel);
 
   // --- LOGIC ---
   const state = { history: [], currentTab: 'chat', trustLevel: 1, trainingLogs: [] };
@@ -833,9 +863,6 @@ async function fetchLore() {
   // Refresh service status periodically
   setInterval(renderServiceStatus, 2000);
   refreshServiceStatus().then(renderServiceStatus);
-
-  document.body.appendChild(launcher);
-  document.body.appendChild(panel);
 
   if (POLLY_BACKEND_HTTP) {
     getBackendContext(false).catch(() => {});

@@ -1,6 +1,6 @@
 {
   "site": "https://aethermoore.com",
-  "version": "2026-07-30",
+  "version": "2026-09-03",
   "role": "Deterministic routing map for site assistants and low-overhead operator flows.",
   "default_start": "https://aethermoore.com/assistant.html",
   "policy": {
@@ -67,6 +67,21 @@
       "name": "training-bus",
       "url": "https://aethermoore.com/training-bus.html",
       "purpose": "Latest SCBE training proof surface — Operator Agent Bus, constrained-decoding gate results, and receipt-backed training artifacts."
+    },
+    {
+      "name": "aetherbrowser",
+      "url": "https://aethermoore.com/demos/aetherbrowser-demo.html",
+      "purpose": "Public simulation and source route for the AetherBrowser governed desktop-browser prototype."
+    },
+    {
+      "name": "aetherdesk",
+      "url": "https://aethermoore.com/backroom.html",
+      "purpose": "Public architecture route for AetherDesk, the local-first operator desktop with bounded actions and receipts."
+    },
+    {
+      "name": "trust-verifier",
+      "url": "https://github.com/issdandavis/trust-verifier",
+      "purpose": "Source for the local cross-language execution checker and machine-decodable verdict utility."
     },
     {
       "name": "delivery-proof",
@@ -174,6 +189,21 @@
       "intent": "training_bus_or_gate_proof",
       "keywords": ["training bus", "operator bus", "agent bus", "gate proof", "25/25", "constrained decoding", "training proof", "latest training"],
       "target": "https://aethermoore.com/training-bus.html"
+    },
+    {
+      "intent": "aetherbrowser_product",
+      "keywords": ["aetherbrowser", "aether browser", "governed browser", "agent browser", "browser sidepanel"],
+      "target": "https://aethermoore.com/demos/aetherbrowser-demo.html"
+    },
+    {
+      "intent": "aetherdesk_product",
+      "keywords": ["aetherdesk", "aether desk", "operator desktop", "local ai desktop", "bounded terminal"],
+      "target": "https://aethermoore.com/backroom.html"
+    },
+    {
+      "intent": "trust_verifier_product",
+      "keywords": ["trust verifier", "cross language verifier", "python javascript compare", "code witness", "twin gate"],
+      "target": "https://github.com/issdandavis/trust-verifier"
     },
     {
       "intent": "paid_delivery_proof",

@@ -1,72 +1,60 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AetherMoore | Books, tools, and governed AI by Issac Daniel Davis</title>
-  <meta name="description" content="Buy books on Amazon, $29 digital packs on Stripe, free adult Math Ledger sample, or hire Issac. Built systems (SCBE, AetherDesk) behind a simple shop front. CAGE on file · Peninsula College.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AetherMoore | Find the right book, tool, proof, or build path</title>
+  <meta name="description" content="Start with Polly, the AetherMoore front desk. Find books, $29 AI workflow packs, open tools, research evidence, support, or fixed-scope work by Issac Daniel Davis.">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <meta property="og:title" content="AetherMoore | Shop · books · packs · hire">
-  <meta property="og:description" content="Simple shelf: Amazon books, $29 toolkits, free Math Ledger, fixed-scope hire. Systems and research when you need them.">
+  <meta property="og:title" content="AetherMoore | Start with the outcome">
+  <meta property="og:description" content="One clear front door for AetherMoore books, tools, evidence, and hands-on work.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://aethermoore.com/">
   <meta property="og:image" content="https://aethermoore.com/hero.webp">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="AetherMoore | Shop · books · packs · hire">
-  <meta name="twitter:description" content="Buy something useful — or hire the builder. Clear prices.">
+  <meta name="twitter:title" content="AetherMoore | Start with the outcome">
+  <meta name="twitter:description" content="Polly routes you to the right book, tool, proof, or build path.">
   <meta name="twitter:image" content="https://aethermoore.com/hero.webp">
-  <meta name="keywords" content="AI governance, AI security, prompt injection defense, AI guardrails, LLM security, hyperbolic geometry, runtime governance, AI compliance, EU AI Act, NIST AI RMF, agentic AI security, AI risk management, Sacred Tongues, post-quantum cryptography, LLM firewall, adversarial ML, geometric security, AI red team, multi-agent security, Poincare ball">
   <link rel="canonical" href="https://aethermoore.com/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/static/home.css">
+  <link rel="stylesheet" href="/static/polly-sidebar.css">
+  <link rel="preconnect" href="https://api.aethermoore.com">
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "Organization",
-        "@id": "https://aethermoore.com/#org",
-        "name": "SCBE-AETHERMOORE",
+        "@type": "WebSite",
+        "@id": "https://aethermoore.com/#website",
         "url": "https://aethermoore.com/",
-        "logo": "https://aethermoore.com/favicon.svg",
-        "email": "aethermoregames@pm.me"
+        "name": "AetherMoore",
+        "description": "Books, governed AI tools, research evidence, and fixed-scope work by Issac Daniel Davis."
       },
       {
-        "@type": "SoftwareApplication",
-        "name": "SCBE-AETHERMOORE",
-        "applicationCategory": "SecurityApplication",
-        "operatingSystem": "Linux, Windows, macOS",
-        "description": "Hyperbolic AI governance framework and 14-layer security pipeline.",
-        "author": { "@id": "https://aethermoore.com/#org" },
-        "softwareVersion": "5.0",
-        "codeRepository": "https://github.com/issdandavis/SCBE-AETHERMOORE"
+        "@type": "Person",
+        "@id": "https://aethermoore.com/#issac",
+        "name": "Issac Daniel Davis",
+        "url": "https://aethermoore.com/about.html",
+        "email": "aethermoregames@pm.me",
+        "sameAs": [
+          "https://github.com/issdandavis",
+          "https://huggingface.co/issdandavis",
+          "https://www.amazon.com/stores/Issac-Daniel-Davis/author/B0H1W2JP1N"
+        ]
       },
       {
         "@type": "Product",
-        "name": "SCBE AI Governance Toolkit",
-        "description": "A one-time package for governed AI workflows with templates, decision records, setup guidance, buyer manual, and direct support.",
-        "image": "https://aethermoore.com/hero.webp",
+        "name": "AI Governance Toolkit",
+        "description": "Templates, thresholds, decision records, and starter rollout guidance for governed AI work.",
         "brand": { "@type": "Brand", "name": "AetherMoore" },
         "offers": {
           "@type": "Offer",
-          "priceCurrency": "USD",
           "price": "29",
+          "priceCurrency": "USD",
           "availability": "https://schema.org/InStock",
           "url": "https://buy.stripe.com/cNibJ25Ca2TJ9gQ3a6dby06"
-        }
-      },
-      {
-        "@type": "Product",
-        "name": "SCBE AI Security Training Vault",
-        "description": "A buyer package for AI security training data, benchmark materials, notebook workflows, and governed model-training instructions.",
-        "image": "https://aethermoore.com/hero.webp",
-        "brand": { "@type": "Brand", "name": "AetherMoore" },
-        "offers": {
-          "@type": "Offer",
-          "priceCurrency": "USD",
-          "price": "29",
-          "availability": "https://schema.org/InStock",
-          "url": "https://buy.stripe.com/28E8wQ5Cacuj64EaCydby0g"
         }
       },
       {
@@ -74,26 +62,26 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "What is SCBE-AETHERMOORE?",
+            "name": "Where should I start on AetherMoore?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "SCBE-AETHERMOORE is an open-source AI governance framework for evaluating and constraining autonomous AI workflows. It combines a 14-layer pipeline, benchmark surfaces, and a hyperbolic risk model where deeper and wider attacks become progressively more expensive to execute and easier to flag for review. Patent pending USPTO #63/961,403."
+              "text": "Start with Polly, the public front desk. Polly routes visitors to products, tools, evidence, support, manuals, or a custom-work inquiry."
             }
           },
           {
             "@type": "Question",
-            "name": "How does hyperbolic security pricing work?",
+            "name": "What can I buy today?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "The formula H(d,R) = R^(d²) models how attack cost scales as an operation goes deeper (d) and spreads wider (R). At small depths, legitimate actions remain cheap. As depth and scope increase, risk scoring rises rapidly and the system can escalate, throttle, or stop the action."
+              "text": "AetherMoore currently links to published books on Amazon and one-time digital workflow packs through Stripe. Fixed-scope work starts through the hire page."
             }
           },
           {
             "@type": "Question",
-            "name": "What are the Six Sacred Tongues?",
+            "name": "Can I inspect the work before buying?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Six security domains weighted by the Fibonacci/golden ratio sequence: KO (Control, 1.0), AV (I/O, 1.618), RU (Policy, 2.618), CA (Logic, 4.236), UM (Security, 6.854), DR (Types, 11.09). Each tongue governs a different aspect of AI governance."
+              "text": "Yes. Public source, operations evidence, research notes, manuals, tools, and delivery proof are linked from the site."
             }
           }
         ]
@@ -101,853 +89,414 @@
     ]
   }
   </script>
-  <style>:root {
-      --bg: #071412; --bg-deep: #04100f; --bg-soft: #0d1d1a;
-      --panel: rgba(10, 28, 24, 0.82); --panel-strong: rgba(8, 24, 20, 0.94);
-      --line: rgba(139, 255, 223, 0.15); --line-bright: rgba(139, 255, 223, 0.30);
-      --text: #e7fff7; --muted: #9bc5ba; --dim: #6a9488;
-      --mint: #8fffd3; --aqua: #6dd8ff; --gold: #ffd977;
-      --rose: #ff9ec7; --violet: #c49cff;
-      --shadow: 0 30px 80px rgba(0, 0, 0, 0.45); --max: 1220px;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: radial-gradient(ellipse at 15% 8%, rgba(109,216,255,0.10), transparent 32%),
-        radial-gradient(ellipse at 80% 5%, rgba(143,255,211,0.12), transparent 28%),
-        linear-gradient(180deg, var(--bg-deep) 0%, var(--bg) 30%, var(--bg-soft) 100%);
-      color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased;
-    }
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-    .topbar { position: sticky; top: 0; z-index: 100; backdrop-filter: blur(16px); background: rgba(4,16,15,0.85); border-bottom: 1px solid var(--line); }
-    .topbar-inner { max-width: var(--max); margin: 0 auto; padding: 0 24px; min-height: 60px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-    .brand { font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mint); font-weight: 700; white-space: nowrap; }
-    .nav { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
-    .nav a { padding: 6px 12px; border-radius: 8px; font-size: 13px; font-weight: 500; color: var(--muted); transition: all 150ms; }
-    .nav a:hover { color: var(--text); background: rgba(143,255,211,0.08); }
-    .nav a.nav-cta { background: rgba(143,255,211,0.12); color: var(--mint); border: 1px solid rgba(143,255,211,0.25); }
-    .nav a.nav-cta:hover { background: rgba(143,255,211,0.20); }
-    .mobile-toggle { display: none; background: none; border: none; color: var(--mint); font-size: 24px; cursor: pointer; padding: 8px; }
-    .section { padding: 80px 24px; }
-    .section-inner { max-width: var(--max); margin: 0 auto; }
-    .section-label { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mint); margin-bottom: 16px; padding: 4px 12px; border-radius: 20px; background: rgba(143,255,211,0.08); border: 1px solid rgba(143,255,211,0.15); }
-    .section-title { font-size: clamp(28px, 4.5vw, 48px); font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 16px; }
-    .section-subtitle { color: var(--muted); font-size: clamp(16px, 2vw, 20px); max-width: 64ch; }
-    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 24px; border-radius: 12px; font-size: 15px; font-weight: 600; border: 1px solid transparent; transition: all 180ms; cursor: pointer; text-decoration: none; }
-    .btn-primary { background: linear-gradient(135deg, rgba(143,255,211,0.18), rgba(109,216,255,0.12)); border-color: rgba(143,255,211,0.35); color: var(--mint); }
-    .btn-primary:hover { background: linear-gradient(135deg, rgba(143,255,211,0.28), rgba(109,216,255,0.18)); transform: translateY(-1px); }
-    .btn-secondary { border-color: var(--line); color: var(--muted); }
-    .btn-secondary:hover { border-color: var(--line-bright); color: var(--text); }
-    .btn-gold { background: linear-gradient(135deg, rgba(255,217,119,0.18), rgba(240,191,103,0.10)); border-color: rgba(255,217,119,0.35); color: var(--gold); }
-    .btn-gold:hover { background: linear-gradient(135deg, rgba(255,217,119,0.28), rgba(240,191,103,0.18)); transform: translateY(-1px); }
-    .footer { border-top: 1px solid var(--line); padding: 32px 24px 48px; color: var(--dim); font-size: 13px; }
-    .footer-inner { max-width: var(--max); margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; flex-wrap: wrap; }
-    .footer-left { display: flex; flex-direction: column; gap: 6px; }
-    .footer-left .footer-brand { color: var(--muted); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; font-size: 12px; }
-    .footer-links-row { display: flex; gap: 16px; flex-wrap: wrap; }
-    .footer-links-row a { color: var(--dim); transition: color 150ms; }
-    .footer-links-row a:hover { color: var(--mint); }
-    @media (max-width: 768px) {
-      .nav { display: none; }
-      .nav.open { display: flex; flex-direction: column; position: absolute; top: 60px; left: 0; right: 0; background: rgba(4,16,15,0.96); padding: 16px 24px; border-bottom: 1px solid var(--line); gap: 4px; z-index: 200; }
-      .nav.open a { padding: 10px 12px; }
-      .mobile-toggle { display: block; }
-    }
-    @media (max-width: 480px) {
-      .section { padding: 60px 16px; }
-      .btn { width: 100%; }
-    }
-    .hero { padding: 100px 24px 80px; position: relative; overflow: hidden; }
-    .hero::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 30% 30%, rgba(143,255,211,0.06), transparent 50%), radial-gradient(ellipse at 70% 60%, rgba(109,216,255,0.04), transparent 40%); }
-    .hero-inner { max-width: var(--max); margin: 0 auto; position: relative; z-index: 1; }
-    .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 600; color: var(--mint); letter-spacing: 0.06em; background: rgba(143,255,211,0.08); border: 1px solid rgba(143,255,211,0.20); margin-bottom: 24px; }
-    .hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--mint); animation: pulse 2s infinite; }
-    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
-    .hero h1 { font-size: clamp(40px, 7vw, 80px); font-weight: 800; line-height: 0.95; letter-spacing: -0.04em; margin-bottom: 24px; max-width: 14ch; }
-    .hero h1 .gradient { background: linear-gradient(135deg, var(--mint), var(--aqua)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .hero-desc { font-size: clamp(17px, 2vw, 21px); color: var(--muted); max-width: 58ch; margin-bottom: 32px; line-height: 1.65; }
-    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 28px; }
-    .hero-meta { display: flex; gap: 24px; flex-wrap: wrap; color: var(--dim); font-size: 13px; }
-    .hero-meta span { display: flex; align-items: center; gap: 6px; }
-    .hero-meta .pip { width: 5px; height: 5px; border-radius: 50%; background: var(--mint); opacity: 0.6; }
-    .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 32px; }
-    .product-card { position: relative; background: var(--panel); border: 1px solid var(--line); border-radius: 20px; padding: 28px; display: flex; flex-direction: column; transition: all 200ms; }
-    .product-card:hover { border-color: var(--line-bright); transform: translateY(-3px); box-shadow: var(--shadow); }
-    .product-badge { position: absolute; top: 16px; right: 16px; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border-radius: 8px; }
-    .badge-amazon { background: rgba(255,217,119,0.15); color: var(--gold); border: 1px solid rgba(255,217,119,0.25); }
-    .badge-free { background: rgba(143,255,211,0.12); color: var(--mint); border: 1px solid rgba(143,255,211,0.25); }
-    .badge-soon { background: rgba(196,156,255,0.12); color: var(--violet); border: 1px solid rgba(196,156,255,0.25); }
-    .badge-live { background: rgba(109,216,255,0.12); color: var(--aqua); border: 1px solid rgba(109,216,255,0.25); }
-    .product-icon { font-size: 32px; margin-bottom: 16px; }
-    .product-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
-    .product-card p { color: var(--muted); font-size: 15px; line-height: 1.55; flex: 1; margin-bottom: 16px; }
-    .product-card .product-link { font-size: 14px; font-weight: 600; color: var(--mint); }
-    .product-card .product-link:hover { text-decoration: underline; }
-    .product-card code { display: inline-block; font-size: 13px; padding: 3px 8px; border-radius: 6px; background: rgba(143,255,211,0.08); color: var(--mint); font-family: "SF Mono", Consolas, monospace; }
-    .demos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin-top: 32px; }
-    .demo-card { display: block; padding: 22px; border-radius: 16px; background: var(--panel); border: 1px solid var(--line); transition: all 200ms; }
-    .demo-card:hover { border-color: var(--line-bright); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
-    .demo-card .demo-icon { font-size: 24px; margin-bottom: 10px; }
-    .demo-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
-    .demo-card p { color: var(--muted); font-size: 13px; line-height: 1.5; margin-bottom: 10px; }
-    .demo-card .demo-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border-radius: 6px; background: rgba(143,255,211,0.12); color: var(--mint); }
-    .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-top: 32px; }
-    .story-timeline { display: flex; flex-direction: column; gap: 20px; }
-    .story-step { display: flex; gap: 16px; align-items: flex-start; }
-    .story-step .step-marker { flex-shrink: 0; width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; font-size: 14px; font-weight: 700; background: rgba(143,255,211,0.08); border: 1px solid var(--line); color: var(--mint); }
-    .story-step .step-text h4 { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
-    .story-step .step-text p { color: var(--muted); font-size: 14px; }
-    .story-visual { background: var(--panel); border: 1px solid var(--line); border-radius: 20px; padding: 32px; text-align: center; }
-    .story-visual .big-number { font-size: 64px; font-weight: 800; line-height: 1; color: var(--mint); margin-bottom: 8px; }
-    .story-visual .big-label { color: var(--muted); font-size: 16px; }
-    .story-visual .patent { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 14px; color: var(--dim); }
-    .story-visual .patent strong { color: var(--gold); }
-    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; margin-top: 32px; }
-    .stat-card { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 24px; text-align: center; }
-    .stat-card .stat-number { font-size: 32px; font-weight: 800; line-height: 1; margin-bottom: 6px; }
-    .stat-card .stat-label { color: var(--muted); font-size: 13px; line-height: 1.4; }
-    .stat-mint .stat-number { color: var(--mint); }
-    .stat-aqua .stat-number { color: var(--aqua); }
-    .stat-gold .stat-number { color: var(--gold); }
-    .stat-rose .stat-number { color: var(--rose); }
-    .stat-violet .stat-number { color: var(--violet); }
-    .links-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; margin-top: 32px; }
-    .link-card { display: flex; align-items: center; gap: 14px; padding: 16px 20px; border-radius: 14px; background: var(--panel); border: 1px solid var(--line); transition: all 150ms; font-size: 15px; font-weight: 500; }
-    .link-card:hover { border-color: var(--line-bright); background: rgba(143,255,211,0.04); }
-    .link-card .link-icon { font-size: 20px; flex-shrink: 0; }
-    .link-card .link-label { color: var(--dim); font-size: 12px; display: block; }
-    .link-card .link-name { color: var(--text); }
-
-    /* Pricing Section */
-    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 40px; }
-    .pricing-card { background: var(--panel-strong); border: 1px solid var(--line); border-radius: 24px; padding: 40px; display: flex; flex-direction: column; transition: all 200ms; position: relative; overflow: hidden; }
-    .pricing-card.popular { border-color: var(--mint); box-shadow: 0 0 40px rgba(143,255,211,0.15); }
-    .pricing-card.popular::before { content: "Most Popular"; position: absolute; top: 20px; right: -35px; background: var(--mint); color: var(--bg-deep); font-size: 11px; font-weight: 800; text-transform: uppercase; padding: 4px 40px; transform: rotate(45deg); }
-    .pricing-tier { font-size: 14px; font-weight: 700; color: var(--mint); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
-    .pricing-price { font-size: 48px; font-weight: 800; margin-bottom: 8px; }
-    .pricing-price span { font-size: 16px; font-weight: 500; color: var(--dim); }
-    .pricing-desc { color: var(--muted); font-size: 15px; margin-bottom: 24px; min-height: 3em; }
-    .pricing-features { list-style: none; margin-bottom: 32px; flex: 1; }
-    .pricing-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--muted); margin-bottom: 12px; }
-    .pricing-features li::before { content: "✓"; color: var(--mint); font-weight: 800; }
-
-    .nav a.nav-commercial { background: rgba(255,217,119,0.12); color: var(--gold); border: 1px solid rgba(255,217,119,0.25); }
-    .nav a.nav-commercial:hover { background: rgba(255,217,119,0.20); }
-
-    /* ── Tablet (1024px) ── */
-    @media (max-width: 1024px) {
-      .products-grid { grid-template-columns: repeat(2, 1fr); }
-      .demos-grid { grid-template-columns: repeat(2, 1fr); }
-      .pricing-grid { grid-template-columns: 1fr 1fr; }
-      .stats-grid { grid-template-columns: repeat(3, 1fr); }
-      .links-grid { grid-template-columns: repeat(2, 1fr); }
-      .story-grid { gap: 24px; }
-    }
-    /* ── Mobile (768px) ── */
-    @media (max-width: 768px) {
-      .hero h1 { max-width: 100%; }
-      .products-grid { grid-template-columns: 1fr; }
-      .story-grid { grid-template-columns: 1fr; }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .links-grid { grid-template-columns: 1fr; }
-      .pricing-grid { grid-template-columns: 1fr; }
-      .demos-grid { grid-template-columns: 1fr 1fr; }
-      /* Touch targets: min 44px for all interactive elements */
-      .nav.open a { min-height: 44px; display: flex; align-items: center; }
-      .btn { min-height: 48px; }
-      .link-card { min-height: 48px; }
-      .demo-card { min-height: 48px; }
-      .footer-links-row a { padding: 8px 4px; min-height: 44px; display: inline-flex; align-items: center; }
-      .footer-links-row { gap: 8px; }
-      /* Prevent horizontal overflow */
-      .hero-inner, .section-inner, .footer-inner { overflow-x: hidden; }
-      .pricing-price { font-size: 36px; }
-      .pricing-card { padding: 28px; }
-    }
-    /* ── Small phone (480px) ── */
-    @media (max-width: 480px) {
-      .hero { padding: 28px 16px 100px; }
-      .hero-badge { margin-bottom: 12px; font-size: 11px; padding: 5px 10px; }
-      .hero h1 { font-size: clamp(28px, 9vw, 40px); margin-bottom: 12px; line-height: 1.05; }
-      .hero-desc { font-size: 15px; margin-bottom: 16px; line-height: 1.5; }
-      .hero-ctas { flex-direction: column; gap: 8px; margin-bottom: 14px; }
-      .hero-meta { gap: 10px 14px; font-size: 11px; }
-      .hero-meta .hero-meta-more,
-      .hero-ctas .hero-meta-more { display: none; }
-      #aether-ticker-bar { display: none; }
-      #shop-strip { padding-top: 12px !important; }
-      .demos-grid { grid-template-columns: 1fr; }
-      .stats-grid { grid-template-columns: 1fr 1fr; }
-      .links-grid { grid-template-columns: 1fr; }
-      .footer-inner { flex-direction: column; text-align: center; align-items: center; }
-      .footer-links-row { justify-content: center; }
-      .story-visual .big-number { font-size: 48px; }
-      .product-card { padding: 20px; }
-      .stat-card { padding: 16px; }
-      .stat-card .stat-number { font-size: 26px; }
-    }
-    @media (max-width: 768px) {
-      #aether-ticker-bar { max-height: 36px; overflow: hidden; }
-      .hero { padding: 40px 20px 88px; }
-    }
-    /* ── Touch and responsive utilities ── */
-    @media (hover: none) and (pointer: coarse) {
-      .product-card:hover, .demo-card:hover, .link-card:hover, .spec-card:hover { transform: none; }
-      .btn:active { transform: scale(0.97); }
-      * { -webkit-tap-highlight-color: rgba(143,255,211,0.15); }
-    }
-
-    /* Tongue color bar */
-    .tongue-bar {
-      height: 3px;
-      background: linear-gradient(90deg, #2dd3a6, #17c6cf, #ff6b6b, #f0a050, #b07aff, #a8c44a, #2dd3a6);
-      background-size: 200% 100%;
-      animation: tongue-flow 8s linear infinite;
-    }
-    @keyframes tongue-flow {
-      0% { background-position: 0% 50%; }
-      100% { background-position: 200% 50%; }
-    }
-
-    /* Aethermoor Atmosphere Overlay */
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 9999;
-      background: radial-gradient(circle at 80% 20%, rgba(255, 217, 119, 0.08), transparent 40%), 
-                  linear-gradient(180deg, rgba(196, 156, 255, 0.05) 0%, transparent 100%);
-      mix-blend-mode: soft-light;
-    }
-
-    .aether-mist {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      pointer-events: none;
-      z-index: 9998;
-      opacity: 0.3;
-      background: repeating-linear-gradient(0deg, rgba(255,255,255,0.01) 0px, transparent 1px, transparent 3px);
-      filter: sepia(1) saturate(5) hue-rotate(240deg);
-      animation: mist-drift 60s linear infinite;
-    }
-
-    @keyframes mist-drift {
-      from { background-position: 0 0; }
-      to { background-position: 1000px 1000px; }
-    }
-
-    .hero-inner { filter: drop-shadow(0 0 30px rgba(196, 156, 255, 0.2)); }
-    h1 .gradient { background: linear-gradient(135deg, var(--gold), var(--violet)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    
-    /* Cel-shaded look for cards */
-    .product-card, .link-card, .stat-card {
-      border: 2px solid #000 !important;
-      box-shadow: 4px 4px 0px rgba(196, 156, 255, 0.2);
-    }
-    .hero-particles .particle {
-      position: absolute;
-      border-radius: 50%;
-      opacity: 0.15;
-      filter: blur(40px);
-      animation: float 20s ease-in-out infinite;
-    }
-    .hero-particles .particle:nth-child(1) { background: #2dd3a6; width: 300px; height: 300px; top: -50px; left: -50px; animation-delay: 0s; }
-    .hero-particles .particle:nth-child(2) { background: #17c6cf; width: 250px; height: 250px; top: 20%; right: -30px; animation-delay: -4s; }
-    .hero-particles .particle:nth-child(3) { background: #ff6b6b; width: 200px; height: 200px; bottom: 10%; left: 20%; animation-delay: -8s; }
-    .hero-particles .particle:nth-child(4) { background: #f0a050; width: 280px; height: 280px; top: 40%; right: 20%; animation-delay: -12s; }
-    .hero-particles .particle:nth-child(5) { background: #b07aff; width: 220px; height: 220px; bottom: -30px; right: 40%; animation-delay: -16s; }
-    .hero-particles .particle:nth-child(6) { background: #a8c44a; width: 260px; height: 260px; top: 10%; left: 40%; animation-delay: -20s; }
-    @keyframes float {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      25% { transform: translate(30px, -20px) scale(1.1); }
-      50% { transform: translate(-20px, 30px) scale(0.9); }
-      75% { transform: translate(10px, 10px) scale(1.05); }
-    }
-
-    /* ── AI Lab section ── */
-    .lab-model-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 8px; }
-    .lab-model-card { display: flex; flex-direction: column; gap: 4px; padding: 16px; background: rgba(143,255,211,0.04); border: 1px solid rgba(143,255,211,0.18); border-radius: 10px; text-decoration: none; transition: border-color 0.2s, background 0.2s; }
-    .lab-model-card:hover { border-color: rgba(143,255,211,0.5); background: rgba(143,255,211,0.08); }
-    .lab-model-size { font-size: 24px; font-weight: 900; color: var(--mint); line-height: 1; }
-    .lab-model-name { font-size: 13px; font-weight: 700; color: #fff; }
-    .lab-model-base { font-size: 11px; color: var(--muted); }
-    .lab-model-tag { display: inline-block; margin-top: 6px; font-size: 9px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); background: rgba(255,217,119,0.1); border: 1px solid rgba(255,217,119,0.25); border-radius: 3px; padding: 2px 7px; align-self: flex-start; }
-
-    .lab-dataset-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .lab-dataset-card { display: flex; flex-direction: column; gap: 6px; padding: 14px 16px; background: rgba(109,216,255,0.04); border: 1px solid rgba(109,216,255,0.15); border-radius: 10px; text-decoration: none; transition: border-color 0.2s, background 0.2s; }
-    .lab-dataset-card:hover { border-color: rgba(109,216,255,0.4); background: rgba(109,216,255,0.07); }
-    .lab-ds-name { font-size: 13px; font-weight: 700; color: var(--aqua); font-family: 'JetBrains Mono', monospace; }
-    .lab-ds-meta { font-size: 12px; color: var(--muted); }
-
-    @media (max-width: 900px) { .lab-model-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 600px) { .lab-model-grid, .lab-dataset-grid { grid-template-columns: 1fr; } }</style>
-  <link rel="stylesheet" href="static/polly-sidebar.css">
-  <link rel="stylesheet" href="static/ticker.css">
-  <link rel="stylesheet" href="/static/galactic-theme.css">
-  <script src="/static/galactic-stars.js" defer></script>
-  <link rel="preconnect" href="https://api.aethermoore.com">
 </head>
 <body>
-<noscript>
-    <div style="position:fixed;top:0;left:0;right:0;z-index:99999;background:#04100f;border-bottom:1px solid rgba(139,255,223,0.2);padding:12px 24px;text-align:center;color:#9bc5ba;font-size:13px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
-      JavaScript is required for the assistant, interactive demos, and AI Arena. <a href="mailto:aethermoregames@pm.me" style="color:#8fffd3;text-decoration:underline;">Email us</a> for a static version.
-    </div>
-  </noscript>
+  <a class="skip-link" href="#main">Skip to main content</a>
 
-  <div class="aether-mist"></div>
-  <div class="tongue-bar"></div>
-  <header class="topbar">
-    <div class="topbar-inner">
-      <a class="brand" href="index.html">AetherMoore</a>
-      <button class="mobile-toggle" onclick="document.querySelector('.nav').classList.toggle('open')" aria-label="Toggle navigation">&#9776;</button>
-      <nav class="nav" aria-label="Primary">
-        <a href="index.html">Home</a>
-        <a href="shop.html" class="nav-cta">Shop</a>
-        <a href="videos.html">Videos</a>
-        <a href="math-ledger.html">Math Ledger</a>
-        <a href="books.html">Books</a>
-        <a href="about.html">About</a>
-        <a href="hire.html">Hire</a>
-        <a href="assistant.html">Assistant</a>
-        <a href="services.html">Services</a>
-        <a href="research/index.html">Research</a>
-        <a href="https://github.com/issdandavis" target="_blank" rel="noopener">GitHub</a>
+  <header class="site-header">
+    <div class="tongue-ruler" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="wrap header-row">
+      <a class="brand" href="/"><span class="brand-mark">A</span>etherMoore</a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="#products">Products</a>
+        <a href="/shop.html">Shop</a>
+        <a href="/books.html">Books</a>
+        <a href="/tools.html">Tools</a>
+        <a href="/research/operations.html">Proof</a>
+        <a href="/about.html">About</a>
       </nav>
+      <a class="header-action" href="/assistant.html">Ask Polly</a>
     </div>
   </header>
 
-  <!-- ═══ AETHER NEWS TICKER ══════════════════════════════════════════════════════
-       Live AI governance news + market ticker.
-       News: pulled from GNews RSS (free, CORS-friendly via rss2json.com free tier).
-       Markets: pulled from Finnhub free public quote endpoint (no key needed for ETFs).
-       Updates every 90 seconds. No trackers. No iframes. No third-party scripts.
-  ══════════════════════════════════════════════════════ -->
-  <div id="aether-ticker-bar" class="aether-ticker-bar" aria-label="Live news and market feed">
-    <div class="ticker-section ticker-markets" aria-label="Markets">
-      <span class="ticker-label">MARKETS</span>
-      <span id="ticker-markets-inner" class="ticker-markets-inner">loading…</span>
-    </div>
-    <div class="ticker-section ticker-news" aria-label="AI News">
-      <span class="ticker-label">AI GOV</span>
-      <div class="ticker-track-outer">
-        <div id="ticker-news-track" class="ticker-track">Loading AI governance news…</div>
-      </div>
-    </div>
-  </div>
-  <script src="static/ticker.js" defer></script>
-
-  <main>
-    <section class="hero">
-      <div class="hero-particles">
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-      </div>
-      <div class="hero-inner">
-        <div class="hero-badge"><span class="dot"></span> Shop open · books · $29 packs · free Math Ledger · hire</div>
-        <h1><span class="gradient">Build systems. Sell useful things.</span></h1>
-        <p class="hero-desc">I’m Issac — author, systems builder, Peninsula College student, CAGE on file. The deep stack (SCBE, AetherDesk, Clay) powers the work. The front door is simple: <strong style="color:var(--gold);">buy a book, a pack, practice math, or hire me.</strong></p>
-        <div class="hero-ctas">
-          <a class="btn btn-gold" href="shop.html">Open the shop</a>
-          <a class="btn btn-primary" href="https://buy.stripe.com/cNibJ25Ca2TJ9gQ3a6dby06" target="_blank" rel="noopener">Toolkit $29</a>
-          <a class="btn btn-primary" href="books.html">Books on Amazon</a>
-          <a class="btn btn-secondary" href="math-ledger.html">Free Math Ledger</a>
-          <a class="btn btn-secondary hero-meta-more" href="hire.html">Hire</a>
-          <a class="btn btn-secondary hero-meta-more" href="about.html">About &amp; trust</a>
+  <main id="main">
+    <section class="wrap hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Books · useful AI systems · verifiable work</p>
+        <h1 id="hero-title">Start with the outcome. <em>We’ll route the rest.</em></h1>
+        <p>AetherMoore is Issac Daniel Davis’s independent workshop. Tell Polly what you are trying to do, and the front desk will point you to the right product, tool, evidence page, or human handoff.</p>
+        <div class="actions">
+          <a class="button button-primary" href="/assistant.html">Tell Polly what you need</a>
+          <a class="button button-secondary" href="/shop.html">Browse the shop</a>
         </div>
-        <div class="hero-meta">
-          <span><span class="pip"></span> Amazon KDP</span>
-          <span><span class="pip"></span> Stripe packs</span>
-          <span><span class="pip"></span> CAGE on file</span>
-          <span class="hero-meta-more"><span class="pip"></span> Peninsula College</span>
-          <span class="hero-meta-more"><span class="pip"></span> GitHub @issdandavis</span>
+        <ul class="truth-line" aria-label="Trust facts">
+          <li>Three published books</li>
+          <li>Open-source packages</li>
+          <li>Patent application filed and pending</li>
+        </ul>
+      </div>
+
+      <a class="route-console" href="/assistant.html" aria-label="Open Polly, the AetherMoore routing assistant">
+        <div class="console-head">
+          <span>Public route map</span>
+          <span class="console-status">Ready</span>
+        </div>
+        <div class="route-field" aria-hidden="true">
+          <span class="axis-x"></span>
+          <span class="axis-y"></span>
+          <span class="route-node node-shop">Buy</span>
+          <span class="route-node node-build">Build</span>
+          <span class="route-node node-proof">Verify</span>
+          <span class="route-node node-learn">Learn</span>
+          <span class="route-core">Polly</span>
+        </div>
+        <div class="console-foot">
+          <span>Intent → route → next action</span>
+          <span>Open ↗</span>
+        </div>
+      </a>
+    </section>
+
+    <section class="section" aria-labelledby="routes-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Choose by intent</p>
+            <h2 id="routes-title">Four doors. No maze.</h2>
+          </div>
+          <p>You do not need to understand the whole SCBE, Clay, or AetherDesk stack to use something built from it. Start with what you want to accomplish.</p>
+        </div>
+
+        <div class="route-list">
+          <a class="route-row" href="/assistant.html">
+            <span class="route-index">01 / choose</span>
+            <span>
+              <h3>I am not sure where to start.</h3>
+              <p>Describe the outcome in ordinary language. Polly will select a public route or prepare a clean handoff.</p>
+            </span>
+            <span class="route-go">Ask Polly →</span>
+          </a>
+          <a class="route-row" href="/shop.html">
+            <span class="route-index">02 / buy</span>
+            <span>
+              <h3>I want a book or ready-made pack.</h3>
+              <p>Use the short shelf for published books, one-time digital packs, free material, and direct links.</p>
+            </span>
+            <span class="route-go">Open shop →</span>
+          </a>
+          <a class="route-row" href="/hire.html">
+            <span class="route-index">03 / build</span>
+            <span>
+              <h3>I need something adapted or built.</h3>
+              <p>Bring the problem, current system, constraints, and desired finish line. Start with a fixed scope.</p>
+            </span>
+            <span class="route-go">Hire Issac →</span>
+          </a>
+          <a class="route-row" href="/research/operations.html">
+            <span class="route-index">04 / verify</span>
+            <span>
+              <h3>I want evidence before claims.</h3>
+              <p>Inspect public source, measured results, capability boundaries, training receipts, and known nulls.</p>
+            </span>
+            <span class="route-go">Check proof →</span>
+          </a>
         </div>
       </div>
     </section>
 
-    <section class="section" id="shop-strip" style="padding-top:24px;padding-bottom:40px;">
-      <div class="section-inner">
-        <span class="section-label">Shop shelf</span>
-        <h2 class="section-title" style="font-size:clamp(24px,3.5vw,36px);">Four things people can buy today</h2>
-        <p class="section-subtitle">Everything else (research, demos, backroom) is for builders. Start here if you want to support the work or use a product.</p>
-        <div class="products-grid">
-          <div class="product-card popular">
-            <div class="product-badge badge-live">Books</div>
-            <div class="product-icon">&#128214;</div>
-            <h3>Amazon titles</h3>
-            <p>Six Tongues Protocol, The Miracle Was The Memory, Witnessed — live on KDP.</p>
-            <a href="books.html" class="product-link">Browse books &rarr;</a>
+    <section class="section commercial" aria-labelledby="offers-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">A simple value ladder</p>
+            <h2 id="offers-title">Read it. Use it. Build with it.</h2>
           </div>
-          <div class="product-card popular">
-            <div class="product-badge badge-live">$29</div>
-            <div class="product-icon">&#128230;</div>
-            <h3>Digital toolkits</h3>
-            <p>Governance toolkit, training vault, HYDRA templates — Stripe checkout, thank-you delivery.</p>
-            <a href="shop.html" class="product-link">Open shop packs &rarr;</a>
-          </div>
-          <div class="product-card">
-            <div class="product-badge badge-live">Free sample</div>
-            <div class="product-icon">&#9998;</div>
-            <h3>Ever-Lesson Math Ledger</h3>
-            <p>Adult-framed math practice + permanent log. Print now; spiral + write-panel later.</p>
-            <a href="math-ledger.html" class="product-link">Open Math Ledger &rarr;</a>
-          </div>
-          <div class="product-card">
-            <div class="product-badge badge-live">YouTube</div>
-            <div class="product-icon">&#127909;</div>
-            <h3>Videos &amp; audiobook</h3>
-            <p>Miracle chapters, Six Tongues series, Everweave talk — embedded on the Videos page.</p>
-            <a href="videos.html" class="product-link">Watch videos &rarr;</a>
-          </div>
-          <div class="product-card">
-            <div class="product-badge badge-live">Hire</div>
-            <div class="product-icon">&#128188;</div>
+          <p>Three levels keep the choice proportionate to the problem. You can support the work with a book, use a finished pack, or begin a scoped engagement.</p>
+        </div>
+
+        <div class="offer-grid">
+          <article class="offer">
+            <span class="offer-kind">01 · Published work</span>
+            <h3>Books</h3>
+            <p>Science fiction, literary fiction, and creative nonfiction by Issac Daniel Davis. Three titles are published; one more is clearly marked as a draft.</p>
+            <div class="offer-price">Amazon</div>
+            <div class="offer-links">
+              <a href="/books.html">Browse the books →</a>
+              <a href="https://www.amazon.com/stores/Issac-Daniel-Davis/author/B0H1W2JP1N" target="_blank" rel="noopener">Author store</a>
+            </div>
+          </article>
+
+          <article class="offer">
+            <span class="offer-kind">02 · Ready-made system</span>
+            <h3>AI Governance Toolkit</h3>
+            <p>Templates, thresholds, decision records, and starter rollout guidance for teams putting boundaries around AI work.</p>
+            <div class="offer-price">$29 · one time</div>
+            <div class="offer-links">
+              <a href="https://buy.stripe.com/cNibJ25Ca2TJ9gQ3a6dby06" target="_blank" rel="noopener">Buy the toolkit →</a>
+              <a href="/product-manual/ai-governance-toolkit.html">Read the manual</a>
+            </div>
+          </article>
+
+          <article class="offer">
+            <span class="offer-kind">03 · Human collaboration</span>
             <h3>Fixed-scope work</h3>
-            <p>Assistants, governed AI wiring, automation, custom packages. Scoping call first.</p>
-            <a href="hire.html" class="product-link">Hire page &rarr;</a>
-          </div>
+            <p>AI workflow packaging, assistant and site setup, content operations, governance surfaces, or a bounded custom build.</p>
+            <div class="offer-price">Scoped first</div>
+            <div class="offer-links">
+              <a href="/hire.html">Start an inquiry →</a>
+              <a href="/services.html">See service lanes</a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="launch-proof">
-      <div class="section-inner">
-        <span class="section-label">Launch Proof</span>
-        <h2 class="section-title">The product path is wired, not just described.</h2>
-        <p class="section-subtitle">The public site now points to the latest SCBE project proof surfaces: the Operator Agent Bus, constrained-decoding gate results, package rebuild checks, and buyer-only delivery configuration for non-open-source packets.</p>
-        <div class="products-grid">
-          <div class="product-card popular">
-            <div class="product-badge badge-live">Training Bus</div>
-            <div class="product-icon">&#128652;</div>
-            <h3>Operator Agent Bus</h3>
-            <p>Receipt-backed dispatch and training proof are published in the GitHub Pages project surface. The latest gate result shows 25/25 constrained shim coverage on the tracked contract.</p>
-            <a href="training-bus.html" class="product-link">Open training proof &rarr;</a>
+    <section class="section products" id="products" aria-labelledby="products-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Working products</p>
+            <h2 id="products-title">Built here. Labeled honestly.</h2>
           </div>
-          <div class="product-card">
-            <div class="product-badge badge-live">Delivery</div>
-            <div class="product-icon">&#128230;</div>
-            <h3>Buyer Packet Delivery</h3>
-            <p>Paid ZIP bundles rebuild locally, remain out of the public website repo, and can be delivered through buyer-only URLs using Stripe fulfillment environment variables.</p>
-            <a href="delivery-proof.html" class="product-link">Verify offer delivery &rarr;</a>
-          </div>
-          <div class="product-card">
-            <div class="product-badge badge-live">Manual</div>
-            <div class="product-icon">&#128214;</div>
-            <h3>Non-Open Delivery Rules</h3>
-            <p>The delivery manual separates open-source framework access from paid packet delivery, recovery, support, and private endpoint handling.</p>
-            <a href="product-manual/delivery-and-access.html" class="product-link">Read buyer instructions &rarr;</a>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="section" id="solutions">
-      <div class="section-inner">
-        <span class="section-label">Solutions</span>
-        <h2 class="section-title">Outcomes, not plumbing.</h2>
-        <p class="section-subtitle">You don't buy governance. You buy the thing governance lets you ship safely. Pick a vertical, solve a real problem, keep the audit trail.</p>
-        <div class="products-grid">
-          <div class="product-card">
-            <div class="product-badge badge-live">$500-5K/mo SaaS</div>
-            <div class="product-icon">&#128172;</div>
-            <h3>CX Refund Guardrail</h3>
-            <p>Stop your chatbot from promising refunds it can't deliver. Policy-enforcement middleware sits between your LLM and your customer. Moffatt v. Air Canada made this case law.</p>
-            <a href="cx-guardrail.html" class="product-link">See the solution &rarr;</a>
-          </div>
-          <div class="product-card popular">
-            <div class="product-badge badge-live">$50-150K/yr</div>
-            <div class="product-icon">&#128195;</div>
-            <h3>ISO 42001 Evidence Service</h3>
-            <p>Auditors are coming. Your LLM deployment needs documented adversarial testing, risk reports, and drift monitoring. We deliver the paper trail your compliance team hands to regulators.</p>
-            <a href="iso-42001.html" class="product-link">See the solution &rarr;</a>
-          </div>
-          <div class="product-card">
-            <div class="product-badge badge-live">$5-50K/engagement</div>
-            <div class="product-icon">&#128737;</div>
-            <h3>AI Red Team as a Service</h3>
-            <p>We break your AI before adversaries do. 91 red team prompts &middot; 0 false positives, branded PDF report, prioritized remediation roadmap. Quick engagements, real findings, mid-market pricing.</p>
-            <a href="red-team.html" class="product-link">See the solution &rarr;</a>
-          </div>
-        </div>
-        <div style="margin-top:24px; padding:20px; border:1px dashed var(--line); border-radius:12px; background:rgba(143,255,211,0.03);">
-          <strong style="color:var(--mint);">Need something else?</strong>
-          <span style="color:var(--muted); margin-left:8px;">Legal contract audit trails, medical coding verification, insurance underwriting explainability, HR bias audits &mdash; if your AI is in a regulated vertical, we can help. <a href="mailto:aethermoregames@pm.me?subject=Custom%20Solution%20Inquiry" style="color:var(--aqua);">Email us</a>.</span>
-        </div>
-      </div>
-    </section>
-    <section class="section" id="products">
-      <div class="section-inner">
-        <span class="section-label">System Architecture</span>
-        <h2 class="section-title">Why the math matters.</h2>
-        <div class="products-grid">
-          <div class="product-card">
-            <div class="product-icon">&#128737;</div>
-            <div class="product-badge badge-live">SDK</div>
-            <h3>14-Layer Pipeline</h3>
-            <p>Every interaction is processed through 14 sequential security layers, from complex context ingestion to audio harmonic verification.</p>
-            <code>npm i scbe-aethermoore</code>
-          </div>
-          <div class="product-card popular">
-            <div class="product-icon">&#128208;</div>
-            <div class="product-badge badge-live">Security</div>
-            <h3>Hyperbolic Trust</h3>
-            <p>Uses Poincar&eacute; Ball embeddings to scale defense costs exponentially as adversarial intent drifts toward the boundary.</p>
-            <a href="research/index.html" class="product-link">View whitepaper &rarr;</a>
-          </div>
-          <div class="product-card">
-            <div class="product-icon">&#128274;</div>
-            <div class="product-badge badge-live">Protocol</div>
-            <h3>RWP1 Protocol</h3>
-            <p>Recursive Wave Pipeline envelopes ensure data integrity and domain-separated intent verification across any model fleet.</p>
-            <a href="demos/index.html" class="product-link">Explore demos &rarr;</a>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="section" id="ecosystem">
-      <div class="section-inner">
-        <span class="section-label">One Monorepo · Focused Layers</span>
-        <h2 class="section-title">One auditable repo, organized into focused layers.</h2>
-        <p class="section-subtitle">SCBE-AETHERMOORE is one auditable monorepo — the 14-layer pipeline, the HYDRA agent swarm, the tongue toolchain, the training lab, and the experiments all live in it, so a reviewer can clone one thing and see everything. A few pieces also ship as standalone packages and tools. Pick the layer you need.</p>
-        <div style="margin:32px 0 8px; font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--mint);">Core Framework</div>
-        <div class="products-grid">
-          <div class="product-card popular"><span class="product-badge badge-free">MIT</span><div class="product-icon">&#128737;</div><h3>SCBE-AETHERMOORE</h3><p>The core framework: 14-layer pipeline, three-mechanism combined defense, hyperbolic cost engine, compliance harness. <code>npm i scbe-aethermoore</code></p><a class="product-link" href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank" rel="noopener">View on GitHub &rarr;</a></div>
-          <div class="product-card"><span class="product-badge badge-live">Math</span><div class="product-icon">&#128208;</div><h3>Hyperbolica</h3><p>Hyperbolic geometry primitives. Poincar&eacute; ball distance, Mobius transformations, tangent maps. The math library underneath.</p><a class="product-link" href="https://github.com/issdandavis/hyperbolica" target="_blank" rel="noopener">View on GitHub &rarr;</a></div>
-          <div class="product-card"><span class="product-badge badge-live">Model</span><div class="product-icon">&#127760;</div><h3>PHDM-21D Embedding</h3><p>21-dimensional Poincar&eacute; Ball embedding: 6D hyperbolic + 6D phase + 3D flux + 6D audit. The geometric foundation.</p><a class="product-link" href="https://github.com/issdandavis/phdm-21d-embedding" target="_blank" rel="noopener">View on GitHub &rarr;</a></div>
+          <p>These systems are at different stages. Some are published packages, some are local tools, and some are working prototypes. Every link opens something you can inspect.</p>
         </div>
 
-        <div style="margin:40px 0 8px; font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold);">Developer Tooling <span style="color:var(--mint);">&middot; NEW</span></div>
-        <div class="products-grid">
-          <div class="product-card"><span class="product-badge badge-free">CLI</span><div class="product-icon">&#128274;</div><h3>GeoSeal CLI</h3><p>Six Sacred Tongues tokenizer + sealed envelope CLI. Stdlib only. Now with built-in <code>explain</code> subcommand using free AI (Ollama or HF).</p><a class="product-link" href="https://github.com/issdandavis/six-tongues-geoseal" target="_blank" rel="noopener">View on GitHub &rarr;</a></div>
-          <div class="product-card"><span class="product-badge badge-free">NEW</span><div class="product-icon">&#128736;</div><h3>Tongues Toolchain</h3><p>Sacred Tongue assembler + VM. Write programs in <code>.sts</code>, compile to bytecode, execute on stvm. The Python VM for the programmable tongue layer.</p><a class="product-link" href="https://github.com/issdandavis/SCBE-AETHERMOORE/tree/main/tools" target="_blank" rel="noopener">View on GitHub &rarr;</a></div>
-          <div class="product-card"><span class="product-badge badge-free">NEW</span><div class="product-icon">&#129302;</div><h3>SCBE Agents</h3><p>HYDRA 6-agent swarm coordinator + agent runtime + MCP servers. Each head is a Sacred Tongue specialist. Bounded teammate AI, auditable by default.</p><a class="product-link" href="https://github.com/issdandavis/SCBE-AETHERMOORE/tree/main/agents" target="_blank" rel="noopener">View on GitHub &rarr;</a></div>
+        <div class="product-showcase">
+          <article class="product-stage product-browser">
+            <div class="product-copy">
+              <span class="product-state">Working prototype</span>
+              <h3>AetherBrowser</h3>
+              <p>A governed desktop browser with an agent sidepanel, bounded actions, page analysis, and a local control plane. Desktop and iOS code are available; the public page is an interactive simulation.</p>
+              <div class="product-actions">
+                <a href="/demos/aetherbrowser-demo.html">Try the public demo</a>
+                <a href="https://github.com/issdandavis/aetherbrowser" target="_blank" rel="noopener">Inspect the source</a>
+              </div>
+            </div>
+            <div class="browser-preview" aria-hidden="true">
+              <div class="browser-bar">
+                <span></span><span></span><span></span>
+                <b>review://current-page</b>
+              </div>
+              <div class="browser-body">
+                <div class="browser-page">
+                  <i></i><i></i><i></i><i></i>
+                </div>
+                <div class="browser-guard">
+                  <span>Agent sidepanel</span>
+                  <strong>Review before action</strong>
+                  <small>observe</small><small>plan</small><small>approve</small>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-stage product-desk">
+            <span class="product-state">Local operator app</span>
+            <h3>AetherDesk</h3>
+            <p>A local-first desktop for bounded AI and human workflows, with registered actions and receipts instead of unrestricted host control.</p>
+            <div class="desk-preview" aria-hidden="true">
+              <span>Terminal</span><span>Browser</span><span>GitHub</span><span>Ledger</span>
+            </div>
+            <div class="product-actions">
+              <a href="/backroom.html">See the system map</a>
+              <a href="https://github.com/issdandavis/AetherDesk" target="_blank" rel="noopener">Source</a>
+            </div>
+          </article>
+
+          <article class="product-stage product-bus">
+            <div>
+              <span class="product-state">Proof-backed prototype</span>
+              <h3>Operator Agent Bus</h3>
+              <p>A packet-and-receipt route for coordinating bounded agents, constrained outputs, checks, and human review.</p>
+              <div class="product-actions">
+                <a href="/training-bus.html">Open the proof surface</a>
+                <a href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank" rel="noopener">Framework source</a>
+              </div>
+            </div>
+            <div class="bus-preview" aria-hidden="true">
+              <span>request</span><i></i><span>route</span><i></i><span>verify</span><i></i><span>receipt</span>
+            </div>
+          </article>
+
+          <article class="product-stage product-sdk">
+            <span class="product-state">Published package</span>
+            <h3>SCBE SDK</h3>
+            <p>The public TypeScript and Python package surface for governed automation and risk-scoring experiments.</p>
+            <div class="sdk-preview" aria-hidden="true">
+              <code>npm install<br>scbe-aethermoore</code>
+              <code>pip install<br>scbe-aethermoore</code>
+            </div>
+            <div class="product-actions">
+              <a href="https://www.npmjs.com/package/scbe-aethermoore" target="_blank" rel="noopener">npm</a>
+              <a href="https://pypi.org/project/scbe-aethermoore/" target="_blank" rel="noopener">PyPI</a>
+            </div>
+          </article>
+
+          <article class="product-stage product-verifier">
+            <span class="product-state">Open-source utility</span>
+            <h3>Trust Verifier</h3>
+            <p>Runs the same candidate function through Python and JavaScript, reports disagreement with a concrete witness, and can emit a machine-decodable verdict tone.</p>
+            <div class="verify-preview" aria-hidden="true">
+              <span>Python</span><span>JavaScript</span><strong>compare</strong><b>SEAL / REJECT / ABSTAIN</b>
+            </div>
+            <div class="product-actions">
+              <a href="https://github.com/issdandavis/trust-verifier" target="_blank" rel="noopener">Run it from source</a>
+            </div>
+          </article>
         </div>
 
-        <div style="margin:40px 0 8px; font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--aqua);">Research &amp; Evidence <span style="color:var(--mint);">&middot; NEW</span></div>
-        <div class="products-grid">
-          <div class="product-card"><span class="product-badge badge-free">NEW</span><div class="product-icon">&#128202;</div><h3>SCBE Experiments</h3><p>Reproducible experiment scripts + raw JSON results. Every number on our <a href="research/evidence.html" style="color:var(--mint);">evidence page</a> sources from here. 99.42% AUC, published honestly.</p><a class="product-link" href="https://github.com/issdandavis/SCBE-AETHERMOORE/tree/main/experiments" target="_blank" rel="noopener">View on GitHub &rarr;</a></div>
-          <div class="product-card"><span class="product-badge badge-free">NEW</span><div class="product-icon">&#128200;</div><h3>Training Lab</h3><p>QLoRA configs, training scripts, SFT records, eval harness. Lives in the monorepo under <code>training/</code>.</p><a class="product-link" href="https://github.com/issdandavis/SCBE-AETHERMOORE/tree/main/training" target="_blank" rel="noopener">View on GitHub &rarr;</a></div>
-          <div class="product-card"><span class="product-badge badge-free">NEW</span><div class="product-icon">&#128218;</div><h3>Docs Archive</h3><p>High-value documentation corpus: claims audits, evidence ledger, architecture, buyer proof checklist, DARPA outreach package.</p><a class="product-link" href="https://github.com/issdandavis/SCBE-AETHERMOORE/tree/main/docs" target="_blank" rel="noopener">View on GitHub &rarr;</a></div>
-        </div>
-
-        <div style="margin:40px 0 8px; font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--rose);">Story &amp; Play</div>
-        <div class="products-grid">
-          <div class="product-card"><span class="product-badge badge-amazon">Amazon KDP</span><div class="product-icon">&#128214;</div><h3>The Six Tongues Protocol</h3><p>22 chapters, 70K words. The novel that teaches the framework through story. Same vocabulary as the codebase.</p><a class="product-link" href="https://www.amazon.com/dp/B0F28PHSPR" target="_blank" rel="noopener">Buy on Amazon &rarr;</a></div>
-          <div class="product-card"><span class="product-badge badge-live">Browser</span><div class="product-icon">&#9876;</div><h3>AI Arena</h3><p>9 AI models, one prompt. BYOK round table. Ask a question and watch models debate it live in your browser.</p><a class="product-link" href="arena.html">Open the Arena &rarr;</a></div>
-          <div class="product-card"><span class="product-badge badge-live">Free</span><div class="product-icon">&#128218;</div><h3>Live Research Feed</h3><p>Auto-updating daily feed of arXiv + HackerNews AI safety research. Runs on GitHub Actions, pushes to the site automatically.</p><a class="product-link" href="research/latest.html">Browse the feed &rarr;</a></div>
-        </div>
-      </div>
-    </section>
-    <section class="section" id="demos" style="background:rgba(0,0,0,0.15);">
-      <div class="section-inner">
-        <span class="section-label">Demos</span>
-        <h2 class="section-title">See it working.</h2>
-        <p class="section-subtitle">Interactive visualizations that run in your browser. No install, no API key, no signup.</p>
-        <div class="demos-grid">
-          <a class="demo-card" href="demos/risk-calculator.html"><div class="demo-icon">&#128737;</div><h3>Harmonic Wall</h3><p>See why attacks cost exponentially more. Drag the distance slider and watch the cost curve.</p><span class="demo-tag">Live</span></a>
-          <a class="demo-card" href="demos/tongue-encoder.html"><div class="demo-icon">&#127793;</div><h3>Tongue Heatmap</h3><p>Type text, watch the 6D tongue activation in real-time across KO, AV, RU, CA, UM, DR.</p><span class="demo-tag">Live</span></a>
-          <a class="demo-card" href="demos/governance-gate.html"><div class="demo-icon">&#128678;</div><h3>Attack Radar</h3><p>12 attack categories. SCBE vs DeBERTa vs no defense. Interactive comparison.</p><span class="demo-tag">Live</span></a>
-          <a class="demo-card" href="demos/distance-explorer.html"><div class="demo-icon">&#128200;</div><h3>Distance Explorer</h3><p>Visualize Poincare ball distances and see hyperbolic geometry in action.</p><span class="demo-tag">Live</span></a>
-          <a class="demo-card" href="research/hub.html"><div class="demo-icon">&#128218;</div><h3>Research Codex</h3><p>Infinite-zoom 3D research encyclopedia. Mass Effect-style codex for the full framework.</p><span class="demo-tag">Live</span></a>
-          <a class="demo-card" href="demos/embedding-space.html"><div class="demo-icon">&#127760;</div><h3>Embedding Space</h3><p>3D visualization of the embedding manifold where security decisions live.</p><span class="demo-tag">Live</span></a>
-          <a class="demo-card" href="demos/spectral-coherence.html"><div class="demo-icon">&#127926;</div><h3>Spectral Coherence</h3><p>FFT-based coherence analysis. Watch frequency decomposition of security signals.</p><span class="demo-tag">Live</span></a>
-          <a class="demo-card" href="demos/swarm-formations.html"><div class="demo-icon">&#129302;</div><h3>Swarm Formations</h3><p>Multi-agent fleet visualization. See how governance agents coordinate in real time.</p><span class="demo-tag">Live</span></a>
-          <a class="demo-card" href="demos/energy-landscape.html"><div class="demo-icon">&#9889;</div><h3>Energy Landscape</h3><p>Hamiltonian energy wells. Visualize the multi-well potential that traps adversarial states.</p><span class="demo-tag">Live</span></a>
-          <a class="demo-card" href="demos/breathing-phase.html"><div class="demo-icon">&#127744;</div><h3>Breathing Phase</h3><p>Mobius breathing transform. Watch the manifold expand and contract.</p><span class="demo-tag">Live</span></a>
-          <a class="demo-card" href="demos/context-fingerprint.html"><div class="demo-icon">&#128270;</div><h3>Context Fingerprint</h3><p>Unique identity signatures derived from context vectors. See your fingerprint.</p><span class="demo-tag">Live</span></a>
-          <a class="demo-card" href="demos/audio-telemetry.html"><div class="demo-icon">&#127911;</div><h3>Audio Telemetry</h3><p>Layer 14 audio axis. Hear security decisions as sound.</p><span class="demo-tag">Live</span></a>
-        </div>
-      </div>
-    </section>
-    <section class="section" id="story">
-      <div class="section-inner">
-        <span class="section-label">Why Story Exists</span>
-        <h2 class="section-title">Story is how the system stays legible.</h2>
-        <div class="story-grid">
-          <div class="story-timeline">
-            <div class="story-step"><div class="step-marker">1</div><div class="step-text"><h4>Story gave the system names that stick</h4><p>Aethermoor, the Six Tongues, and the harmonic wall are memory hooks for the control model, not random decoration.</p></div></div>
-            <div class="story-step"><div class="step-marker">2</div><div class="step-text"><h4>Narrative pressure forced internal consistency</h4><p>Once the world had rules, the architecture had to stop being vague and become precise enough to survive repeated use.</p></div></div>
-            <div class="story-step"><div class="step-marker">3</div><div class="step-text"><h4>The framework hardened into code</h4><p>Those concepts became the 14-layer pipeline, risk scoring model, demos, and integration surfaces that now run in the repo.</p></div></div>
-            <div class="story-step"><div class="step-marker">4</div><div class="step-text"><h4>The assistant turned the site into a front door</h4><p>Polly now sits in front of the tools, manuals, support, research, and story surfaces so people can start in one place and be pointed into the right lane.</p></div></div>
-            <div class="story-step"><div class="step-marker">5</div><div class="step-text"><h4>The book became the memory surface</h4><p>&ldquo;The Six Tongues Protocol&rdquo; exists so the framework can be carried in scenes, symbols, and vocabulary instead of only diagrams.</p></div></div>
-          </div>
-          <div class="story-visual"><div class="big-number">12,596</div><div class="big-label">paragraphs of worldbuilding<br>fed the early narrative surface</div><div class="patent">Patent pending: <strong>USPTO #63/961,403</strong></div></div>
-        </div>
-        <div style="margin-top: 32px; border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08);">
-          <iframe width="100%" height="400" loading="lazy"
-            src="https://www.youtube.com/embed/videoseries?list=PL4NrJc8z1YGBSCOM4wYBQw3PJWnJKM7XG&amp;autoplay=0"
-            title="The Six Tongues Protocol – Story Series"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-            style="aspect-ratio: 16/9; width: 100%;">
-          </iframe>
-          <div style="padding: 16px; background: rgba(10,20,18,0.8); font-size: 14px; color: #8a9e96;">
-            Listen to the story surface. 22 chapters set in the same world, vocabulary, and control logic as the framework.
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="section" id="numbers" style="background:rgba(0,0,0,0.15);">
-      <div class="section-inner">
-        <span class="section-label">Numbers</span>
-        <h2 class="section-title">The system already runs.</h2>
-        <p class="section-subtitle">Not a whitepaper. Not a pitch deck. Running code with real tests and real publications.</p>
-        <div class="stats-grid">
-          <div class="stat-card stat-mint"><div class="stat-number" data-target="5549">0</div><div class="stat-label">TypeScript tests passing</div></div>
-          <div class="stat-card stat-aqua"><div class="stat-number" data-target="24174">0</div><div class="stat-label">Python tests passing</div></div>
-          <div class="stat-card stat-gold"><div class="stat-number" data-target="0.813">0</div><div class="stat-label">F1 score (semantic projector)</div></div>
-          <div class="stat-card stat-mint"><div class="stat-number" data-target="14">0</div><div class="stat-label">Security layers</div></div>
-          <div class="stat-card stat-rose"><div class="stat-number" data-target="6">0</div><div class="stat-label">Sacred Tongues</div></div>
-          <div class="stat-card stat-aqua"><div class="stat-number" data-target="58">0</div><div class="stat-label">GitHub repos</div></div>
-          <div class="stat-card stat-violet"><div class="stat-number" style="font-size:18px;padding-top:6px;">USPTO<br>#63/961,403</div><div class="stat-label">Patent pending</div></div>
-          <div class="stat-card stat-gold"><div class="stat-number" data-target="17">0</div><div class="stat-label">Models on Hugging Face</div></div>
-          <div class="stat-card stat-mint"><div class="stat-number" data-target="23">0</div><div class="stat-label">Datasets published</div></div>
-          <div class="stat-card stat-aqua"><div class="stat-number" data-target="24254">0</div><div class="stat-label">Labeled prompt-injection samples</div></div>
-          <div class="stat-card stat-rose"><div class="stat-number" data-target="110">0</div><div class="stat-label">Red team benchmark downloads</div></div>
-        </div>
+        <p class="product-boundary"><strong>In active research:</strong> Clay is being trained and evaluated, but it is not advertised here as a finished frontier model. Measured progress belongs in the evidence lane.</p>
       </div>
     </section>
 
-    <section class="section" id="data">
-      <div class="section-inner">
-        <span class="section-label">Data Marketplace</span>
-        <h2 class="section-title">High-Fidelity Training Sets.</h2>
-        <p class="section-subtitle">We've proven that training on multiple layers of semantic intent produces superior model reasoning. Buy our verified SCBE datasets to harden your own AI.</p>
-        
-        <div class="products-grid">
-          <div class="product-card">
-            <div class="product-badge badge-live">Creative</div>
-            <div class="product-icon">&#128214;</div>
-            <h3>The Lore Verbatim Pack</h3>
-            <p>12,500+ paragraphs of consistent, mathematically-grounded worldbuilding and conlang data. Perfect for fine-tuning creative/roleplay models.</p>
-            <div style="font-weight:800; font-size:24px; color:var(--mint); margin-bottom:16px;">$99</div>
-            <a href="datasets.html" class="btn btn-primary">View Training Data</a>
-          </div>
-          
-          <div class="product-card popular">
-            <div class="product-badge badge-live">Technical</div>
-            <div class="product-icon">&#128208;</div>
-            <h3>The Technical Core</h3>
-            <p>Comprehensive semantic layers for Geometry, Distributed Systems, and NLP. Structured for 14-layer SCBE alignment. 50,000+ verified pairs.</p>
-            <div style="font-weight:800; font-size:24px; color:var(--mint); margin-bottom:16px;">$299</div>
-            <a href="datasets.html" class="btn btn-primary">View Training Data</a>
-          </div>
-          
-          <div class="product-card">
-            <div class="product-badge badge-live">Enterprise</div>
-            <div class="product-icon">&#128737;</div>
-            <h3>The Red Team Fortress</h3>
-            <p>Our gold-standard adversarial dataset. Thousands of failed prompt injection attempts, labeled by failure layer (L1-L14). The ultimate defense training set.</p>
-            <div style="font-weight:800; font-size:24px; color:var(--mint); margin-bottom:16px;">$999</div>
-            <a href="datasets.html" class="btn btn-gold">View Training Data</a>
-          </div>
+    <section class="section" aria-labelledby="evidence-title">
+      <div class="wrap evidence-layout">
+        <div class="evidence-intro">
+          <p class="eyebrow">Evidence before theater</p>
+          <h2 id="evidence-title">Look under the surface.</h2>
+          <p>The public site separates what exists, what was measured, what failed, and what still needs work. Use these records before relying on a headline.</p>
         </div>
-      </div>
-    </section>
 
-    <!-- ═══ AI LAB ════════════════════════════════════════ -->
-    <section class="section" id="lab" style="background:rgba(0,0,0,0.18);">
-      <div class="section-inner">
-        <span class="section-label">AI Lab</span>
-        <h2 class="section-title">Live models. Real training runs.</h2>
-        <p class="section-subtitle">17 fine-tuned models and 23 datasets published on Hugging Face. Every visitor interaction feeds the next training round through our Sacred Egg flywheel.</p>
-
-        <!-- Model lineup -->
-        <div style="margin-bottom:40px;">
-          <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">Polly Model Fleet</div>
-          <div class="lab-model-grid">
-            <a class="lab-model-card" href="https://huggingface.co/issdandavis/polly-scbe-7b-v2" target="_blank" rel="noopener">
-              <span class="lab-model-size">7B</span>
-              <span class="lab-model-name">polly-scbe-7b-v2</span>
-              <span class="lab-model-base">Qwen2.5-7B · LoRA · SFT</span>
-              <span class="lab-model-tag">Flagship</span>
+        <ol class="evidence-list">
+          <li>
+            <a href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank" rel="noopener">
+              <span class="evidence-code">SRC</span>
+              <span><span class="evidence-name">Public source</span><span class="evidence-note">Inspect the framework, tests, and implementation history.</span></span>
+              <span class="evidence-arrow">↗</span>
             </a>
-            <a class="lab-model-card" href="https://huggingface.co/issdandavis/scbe-1.5b-multi_lang_forge-lora" target="_blank" rel="noopener">
-              <span class="lab-model-size">1.5B</span>
-              <span class="lab-model-name">multi-lang-forge</span>
-              <span class="lab-model-base">Qwen2.5-Coder-1.5B · LoRA</span>
-              <span class="lab-model-tag">Coder</span>
+          </li>
+          <li>
+            <a href="/research/operations.html">
+              <span class="evidence-code">OPS</span>
+              <span><span class="evidence-name">Operations evidence</span><span class="evidence-note">Results, experiment records, capability boundaries, and public artifacts.</span></span>
+              <span class="evidence-arrow">→</span>
             </a>
-            <a class="lab-model-card" href="https://huggingface.co/issdandavis/polly-covenantal-qwen-0.5b" target="_blank" rel="noopener">
-              <span class="lab-model-size">0.5B</span>
-              <span class="lab-model-name">polly-covenantal</span>
-              <span class="lab-model-base">Qwen2.5-0.5B · LoRA · 48 DL</span>
-              <span class="lab-model-tag">Governance</span>
+          </li>
+          <li>
+            <a href="/training-bus.html">
+              <span class="evidence-code">RUN</span>
+              <span><span class="evidence-name">Training bus proof</span><span class="evidence-note">Receipt-backed training artifacts and constrained gate checks.</span></span>
+              <span class="evidence-arrow">→</span>
             </a>
-            <a class="lab-model-card" href="https://huggingface.co/issdandavis/phdm-21d-embedding" target="_blank" rel="noopener">
-              <span class="lab-model-size">21D</span>
-              <span class="lab-model-name">phdm-embedding</span>
-              <span class="lab-model-base">sentence-transformers · Poincaré</span>
-              <span class="lab-model-tag">Geometry</span>
+          </li>
+          <li>
+            <a href="/delivery-proof.html">
+              <span class="evidence-code">DLV</span>
+              <span><span class="evidence-name">Buyer delivery proof</span><span class="evidence-note">How paid packets, private downloads, and support recovery are separated.</span></span>
+              <span class="evidence-arrow">→</span>
             </a>
-          </div>
-        </div>
-
-        <!-- Key datasets -->
-        <div style="margin-bottom:40px;">
-          <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--mint);margin-bottom:16px;">Flagship Datasets</div>
-          <div class="lab-dataset-grid">
-            <a class="lab-dataset-card" href="https://huggingface.co/datasets/issdandavis/scbe-aethermoore-training-data" target="_blank" rel="noopener">
-              <div class="lab-ds-name">scbe-aethermoore-training-data</div>
-              <div class="lab-ds-meta">1.9K downloads · 2 &#9829; · Self-referential SFT</div>
+          </li>
+          <li>
+            <a href="/about.html">
+              <span class="evidence-code">ID</span>
+              <span><span class="evidence-name">About and trust</span><span class="evidence-note">Who built the work, what is filed, and what is not being claimed.</span></span>
+              <span class="evidence-arrow">→</span>
             </a>
-            <a class="lab-dataset-card" href="https://huggingface.co/datasets/issdandavis/prompt-injection-bit-signatures" target="_blank" rel="noopener">
-              <div class="lab-ds-name">prompt-injection-bit-signatures</div>
-              <div class="lab-ds-meta">24,254 labeled samples · Sacred Tongues bijective tokenization</div>
-            </a>
-            <a class="lab-dataset-card" href="https://huggingface.co/datasets/issdandavis/scbe-red-team-benchmarks" target="_blank" rel="noopener">
-              <div class="lab-ds-name">scbe-red-team-benchmarks</div>
-              <div class="lab-ds-meta">110 downloads · Patent: USPTO #63/961,403 · L1-L14 labeled</div>
-            </a>
-            <a class="lab-dataset-card" href="https://huggingface.co/datasets/issdandavis/code-flow-pretraining" target="_blank" rel="noopener">
-              <div class="lab-ds-name">code-flow-pretraining</div>
-              <div class="lab-ds-meta">57 downloads · Multi-language coder forge pairs</div>
-            </a>
-          </div>
-        </div>
-
-        <!-- External lab links -->
-        <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
-          <a class="btn btn-secondary" href="https://huggingface.co/issdandavis" target="_blank" rel="noopener">&#129303; All models on Hugging Face</a>
-          <a class="btn btn-secondary" href="https://www.kaggle.com/issacizrealdavis" target="_blank" rel="noopener">&#128202; Kaggle notebooks &amp; datasets</a>
-          <a class="btn btn-secondary" href="datasets.html">Browse training data</a>
-        </div>
+          </li>
+        </ol>
       </div>
     </section>
 
-    <section class="section" id="pricing">
-      <div class="section-inner">
-        <span class="section-label">Early Access</span>
-        <h2 class="section-title">Get Started.</h2>
-        <p class="section-subtitle">Open source framework, buyer-ready ZIP delivery, and direct consulting when a team needs implementation help.</p>
+    <section class="section directory" aria-labelledby="directory-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">The rest of the workshop</p>
+            <h2 id="directory-title">Go deeper on purpose.</h2>
+          </div>
+          <p>The archive still exists. It is grouped by job now, so demos, research, support, story, and system detail no longer compete for the same attention.</p>
+        </div>
 
-        <div class="pricing-grid">
-          <div class="pricing-card">
-            <div class="pricing-tier">Open Source</div>
-            <div class="pricing-price">Free</div>
-            <p class="pricing-desc">The full 14-layer pipeline, Sacred Tongues, and hyperbolic cost engine. MIT licensed.</p>
-            <ul class="pricing-features">
-              <li>Full 14-layer security pipeline</li>
-              <li>Sacred Tongues tokenizers</li>
-              <li>Hyperbolic cost scaling logic</li>
-              <li>99.42% combined AUC &middot; 91/91 red team</li>
+        <div class="directory-grid">
+          <nav class="directory-group" aria-label="Use and build">
+            <h3>Use &amp; build</h3>
+            <ul>
+              <li><a href="/tools.html">Live tools</a></li>
+              <li><a href="/studio/">Clay Studio</a></li>
+              <li><a href="/product-manual/index.html">Product manuals</a></li>
+              <li><a href="/support.html">Support and recovery</a></li>
+              <li><a href="/backroom.html">Operations backroom</a></li>
             </ul>
-            <a href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank" class="btn btn-secondary">View on GitHub</a>
-          </div>
+          </nav>
 
-          <div class="pricing-card popular">
-            <div class="pricing-tier">AI Governance Toolkit</div>
-            <div class="pricing-price">$29</div>
-            <p class="pricing-desc">A buyer-ready package for governed AI workflows: templates, decision records, setup guidance, buyer manual, and support route.</p>
-            <ul class="pricing-features">
-              <li>SCBE AI Governance Toolkit ZIP</li>
-              <li>Delivery bridge backed by private storage</li>
-              <li>Buyer manual and support path</li>
-              <li>Stripe checkout with post-payment redirect</li>
+          <nav class="directory-group" aria-label="Research and verification">
+            <h3>Research &amp; verify</h3>
+            <ul>
+              <li><a href="/research/index.html">Research index</a></li>
+              <li><a href="/architecture.html">Architecture map</a></li>
+              <li><a href="/datasets.html">Datasets</a></li>
+              <li><a href="/models.html">Models</a></li>
+              <li><a href="/demos/index.html">Interactive demos</a></li>
             </ul>
-            <a href="https://buy.stripe.com/cNibJ25Ca2TJ9gQ3a6dby06" target="_blank" rel="noopener" class="btn btn-primary">Buy Toolkit</a>
-          </div>
+          </nav>
 
-          <div class="pricing-card">
-            <div class="pricing-tier">AI Security Training Vault</div>
-            <div class="pricing-price">$29</div>
-            <p class="pricing-desc">Training data, benchmark materials, notebook workflows, and instructions for teams testing governed model-training paths.</p>
-            <ul class="pricing-features">
-              <li>SCBE AI Security Training Vault ZIP</li>
-              <li>Training-data and benchmark materials</li>
-              <li>Notebook-oriented workflow guidance</li>
-              <li>Buyer-only delivery URL after checkout</li>
+          <nav class="directory-group" aria-label="Read and follow">
+            <h3>Read &amp; follow</h3>
+            <ul>
+              <li><a href="/books.html">Books</a></li>
+              <li><a href="/book.html">Six Tongues story</a></li>
+              <li><a href="/videos.html">Videos</a></li>
+              <li><a href="/math-ledger.html">Math Ledger</a></li>
+              <li><a href="/blog.html">Notes and articles</a></li>
             </ul>
-            <a href="https://buy.stripe.com/28E8wQ5Cacuj64EaCydby0g" target="_blank" rel="noopener" class="btn btn-gold">Buy Training Vault</a>
-          </div>
+          </nav>
         </div>
       </div>
     </section>
-    <section class="section" id="links">
-      <div class="section-inner">
-        <span class="section-label">Find Us</span>
-        <h2 class="section-title">Everywhere the work lives.</h2>
-        <div class="links-grid">
-          <a class="link-card" href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank" rel="noopener"><span class="link-icon">&#128187;</span><span><span class="link-label">GitHub</span><span class="link-name">issdandavis/SCBE-AETHERMOORE</span></span></a>
-          <a class="link-card" href="https://www.npmjs.com/package/scbe-aethermoore" target="_blank" rel="noopener"><span class="link-icon">&#128230;</span><span><span class="link-label">npm</span><span class="link-name">scbe-aethermoore</span></span></a>
-          <a class="link-card" href="https://pypi.org/project/scbe-aethermoore/" target="_blank" rel="noopener"><span class="link-icon">&#128013;</span><span><span class="link-label">PyPI</span><span class="link-name">scbe-aethermoore</span></span></a>
-          <a class="link-card" href="https://huggingface.co/issdandavis" target="_blank" rel="noopener"><span class="link-icon">&#129303;</span><span><span class="link-label">HuggingFace</span><span class="link-name">issdandavis</span></span></a>
-          <a class="link-card" href="https://www.kaggle.com/issacizrealdavis" target="_blank" rel="noopener"><span class="link-icon">&#128202;</span><span><span class="link-label">Kaggle</span><span class="link-name">datasets &amp; notebooks</span></span></a>
-          <a class="link-card" href="https://ollama.com/issdandavis7795" target="_blank" rel="noopener"><span class="link-icon">&#128017;</span><span><span class="link-label">Ollama</span><span class="link-name">local model pulls</span></span></a>
-          <a class="link-card" href="https://colab.research.google.com/github/issdandavis/SCBE-AETHERMOORE" target="_blank" rel="noopener"><span class="link-icon">&#128187;</span><span><span class="link-label">Google Colab</span><span class="link-name">one-click notebooks</span></span></a>
-          <a class="link-card" href="https://www.amazon.com/dp/B0F28PHSPR" target="_blank" rel="noopener"><span class="link-icon">&#128214;</span><span><span class="link-label">Amazon KDP</span><span class="link-name">The Six Tongues Protocol</span></span></a>
-          <a class="link-card" href="https://www.youtube.com/@id8461" target="_blank" rel="noopener"><span class="link-icon">&#127909;</span><span><span class="link-label">YouTube</span><span class="link-name">@id8461</span></span></a>
-          <a class="link-card" href="mailto:aethermoregames@pm.me"><span class="link-icon">&#128231;</span><span><span class="link-label">Email</span><span class="link-name">aethermoregames@pm.me</span></span></a>
-          <a class="link-card" href="profile.html"><span class="link-icon">&#129489;&#8205;&#128187;</span><span><span class="link-label">Personal</span><span class="link-name">Issac's Profile</span></span></a>
+
+    <section class="wrap closing" aria-labelledby="closing-title">
+      <div>
+        <p class="eyebrow">Still unsure?</p>
+        <h2 id="closing-title">Give Polly the messy version.</h2>
+        <p>You do not need the right vocabulary. Say what you are trying to finish, what is blocking it, and whether you want to learn, buy, verify, or build. The routing layer handles the organization.</p>
+        <div class="actions">
+          <a class="button button-primary" href="/assistant.html">Open the front desk</a>
+          <a class="button button-secondary" href="mailto:aethermoregames@pm.me?subject=AetherMoore%20inquiry">Email Issac</a>
         </div>
+      </div>
+      <div class="closing-code" aria-hidden="true">Route<br>first</div>
+    </section>
+
+    <section class="wrap faq" aria-labelledby="faq-title">
+      <p class="eyebrow">Quick answers</p>
+      <h2 id="faq-title">Before you open another tab.</h2>
+      <div class="faq-list">
+        <details>
+          <summary>What is AetherMoore?</summary>
+          <p>An independent body of books, open-source AI governance work, public research, digital tools, and client services built by Issac Daniel Davis.</p>
+        </details>
+        <details>
+          <summary>Do I need to understand the full framework?</summary>
+          <p>No. The public assistant and the four intent routes are designed to get you to a useful surface before exposing deeper architecture.</p>
+        </details>
+        <details>
+          <summary>Can I inspect something before I buy?</summary>
+          <p>Yes. Start with the public source, operations evidence, manuals, tools, and delivery proof linked above. Paid downloads remain separate from the open-source repository.</p>
+        </details>
       </div>
     </section>
   </main>
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-left">
-        <span class="footer-brand">SCBE-AETHERMOORE</span>
-        <span>Built by Issac Davis in Port Angeles, WA</span>
-        <span>Patent Pending: USPTO #63/961,403</span>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <div class="footer-title">AetherMoore</div>
+        <p class="footer-copy">Built by Issac Daniel Davis in Port Angeles, Washington. Patent application USPTO #63/961,403 is filed and pending, not granted.</p>
       </div>
-      <div class="footer-links-row">
-        <a href="services.html">Shop</a>
-        <a href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://www.linkedin.com/in/issac-davis-scbe-aether" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://huggingface.co/issdandavis" target="_blank" rel="noopener">HuggingFace</a>
-        <a href="https://www.kaggle.com/issacizrealdavis" target="_blank" rel="noopener">Kaggle</a>
-        <a href="https://ollama.com/issdandavis7795" target="_blank" rel="noopener">Ollama</a>
-        <a href="https://colab.research.google.com/github/issdandavis/SCBE-AETHERMOORE" target="_blank" rel="noopener">Colab</a>
-        <a href="https://www.amazon.com/dp/B0F28PHSPR" target="_blank" rel="noopener">Amazon</a>
+      <nav class="footer-links" aria-label="External links">
+        <a href="https://github.com/issdandavis" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://huggingface.co/issdandavis" target="_blank" rel="noopener">Hugging Face</a>
+        <a href="https://www.npmjs.com/package/scbe-aethermoore" target="_blank" rel="noopener">npm</a>
+        <a href="https://pypi.org/project/scbe-aethermoore/" target="_blank" rel="noopener">PyPI</a>
         <a href="https://www.youtube.com/@id8461" target="_blank" rel="noopener">YouTube</a>
         <a href="mailto:aethermoregames@pm.me">Email</a>
-      </div>
+      </nav>
     </div>
   </footer>
 
+  <noscript>
+    <p class="wrap">Polly’s chat panel needs JavaScript, but every route on this page remains available.</p>
+  </noscript>
   <script>
-    // Intersection Observer to trigger count-up animation
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const el = entry.target;
-          const target = parseFloat(el.dataset.target);
-          const isDecimal = el.dataset.target.includes('.');
-          const duration = 2000;
-          const start = performance.now();
-
-          function update(now) {
-            const progress = Math.min((now - start) / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3);
-            const current = eased * target;
-            el.textContent = isDecimal ? current.toFixed(3) : Math.floor(current).toLocaleString();
-            if (progress < 1) requestAnimationFrame(update);
-          }
-          requestAnimationFrame(update);
-          observer.unobserve(el);
-        }
-      });
-    }, { threshold: 0.5 });
-
-    document.querySelectorAll('[data-target]').forEach(el => observer.observe(el));
+    if (typeof window.__POLLY_BACKEND_HTTP__ === "undefined") {
+      window.__POLLY_BACKEND_HTTP__ = /^(localhost|127\.0\.0\.1)$/.test(window.location.hostname)
+        ? ""
+        : "https://api.aethermoore.com";
+    }
   </script>
-  <script>
-    window.__POLLY_BACKEND_HTTP__ = window.__POLLY_BACKEND_HTTP__ || "https://api.aethermoore.com";
-  </script>
-  <script src="static/polly-sidebar.js"></script>
-<script src="/static/polly-autoconverse.js"></script>
+  <script src="/static/polly-sidebar.js" defer></script>
   <script src="/static/cookie-consent.js" defer></script>
-<a href="/SCBE-AETHERMOORE/hire.html" target="_self"
-   aria-label="Hire Issac"
-   data-hire-cta="apex"
-   style="position:fixed;bottom:20px;right:20px;z-index:9999;background:#17c6cf;color:#06121a;padding:12px 20px;border-radius:999px;font-family:system-ui,-apple-system,sans-serif;font-weight:600;font-size:15px;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,0.35);transition:transform .15s ease;"
-   onmouseover="this.style.transform='translateY(-2px)'"
-   onmouseout="this.style.transform=''">Hire Issac</a>
 </body>
 </html>

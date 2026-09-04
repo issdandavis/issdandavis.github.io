@@ -77,14 +77,16 @@
   }
 
   function buildProductCard(item) {
+    const manualLabel = item.manual_label || (item.type === 'package' ? 'Manual' : 'Details');
+    const buyLabel = item.buy_label || (item.type === 'package' ? 'Buy' : 'Open');
     return `
       <article class="catalog-card">
         <div class="catalog-type">${escapeHtml(item.type)}</div>
         <h3>${escapeHtml(item.name)}</h3>
         <p>${escapeHtml(item.description)}</p>
         <div class="catalog-actions">
-          ${item.manual_url ? `<a href="${escapeHtml(item.manual_url)}">Manual</a>` : ''}
-          ${item.buy_url ? `<a href="${escapeHtml(item.buy_url)}" target="_blank" rel="noopener">Buy</a>` : ''}
+          ${item.manual_url ? `<a href="${escapeHtml(item.manual_url)}">${escapeHtml(manualLabel)}</a>` : ''}
+          ${item.buy_url ? `<a href="${escapeHtml(item.buy_url)}" target="_blank" rel="noopener">${escapeHtml(buyLabel)}</a>` : ''}
           ${item.contact_url ? `<a href="${escapeHtml(item.contact_url)}">Ask about this</a>` : ''}
         </div>
       </article>
@@ -177,14 +179,18 @@
     }
 
     if (result.kind === 'product') {
+      const recommendationLinks = [];
+      if (result.item.manual_url) {
+        recommendationLinks.push(`<a class="recommendation-link" href="${escapeHtml(result.item.manual_url)}">${escapeHtml(result.item.manual_label || 'Open details')} &rarr;</a>`);
+      }
+      if (result.item.buy_url) {
+        recommendationLinks.push(`<a class="recommendation-link" href="${escapeHtml(result.item.buy_url)}" target="_blank" rel="noopener">${escapeHtml(result.item.buy_label || (result.item.type === 'package' ? 'Open checkout' : 'Open'))} &rarr;</a>`);
+      }
       els.recommendation.innerHTML = `
-        <div class="recommendation-label">Public package</div>
+        <div class="recommendation-label">${escapeHtml(result.item.type || 'Public product')}</div>
         <h3>${escapeHtml(result.item.name)}</h3>
         <p>${escapeHtml(result.item.description)}</p>
-        <div class="recommendation-actions">
-          <a class="recommendation-link" href="${escapeHtml(result.item.manual_url)}">Read the manual &rarr;</a>
-          <a class="recommendation-link" href="${escapeHtml(result.item.buy_url)}" target="_blank" rel="noopener">Open checkout &rarr;</a>
-        </div>
+        <div class="recommendation-actions">${recommendationLinks.join(' ')}</div>
       `;
       return;
     }
@@ -390,15 +396,15 @@
     if (result.kind === 'product') {
       const links = [];
       if (result.item.manual_url) {
-        links.push(`<a href="${escapeHtml(result.item.manual_url)}">Open the manual &rarr;</a>`);
+        links.push(`<a href="${escapeHtml(result.item.manual_url)}">${escapeHtml(result.item.manual_label || 'Open details')} &rarr;</a>`);
       }
       if (result.item.buy_url) {
-        links.push(`<a href="${escapeHtml(result.item.buy_url)}" target="_blank" rel="noopener">Get started &rarr;</a>`);
+        links.push(`<a href="${escapeHtml(result.item.buy_url)}" target="_blank" rel="noopener">${escapeHtml(result.item.buy_label || 'Get started')} &rarr;</a>`);
       }
       return `
-        <p>The closest public package is <strong>${escapeHtml(result.item.name)}</strong>.</p>
+        <p>The closest public product or build is <strong>${escapeHtml(result.item.name)}</strong>.</p>
         <p>${escapeHtml(result.item.description)}</p>
-        <p>Open the manual first, then decide whether the package already covers the need or whether it should become a custom build.</p>
+        <p>Use its status and linked evidence to decide whether it is ready for your need or should become a scoped build.</p>
         <div class="reply-links">${links.join(' ')}</div>
       `;
     }
