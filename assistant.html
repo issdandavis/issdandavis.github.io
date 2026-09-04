@@ -850,11 +850,8 @@
   </footer>
 
   <script>
-    if (typeof window.__POLLY_BACKEND_HTTP__ === "undefined") {
-      window.__POLLY_BACKEND_HTTP__ = /^(localhost|127\.0\.0\.1)$/.test(window.location.hostname)
-        ? ""
-        : "https://api.aethermoore.com";
-    }
+    // Use deterministic local routing until a public Polly API is deployed.
+    window.__POLLY_BACKEND_HTTP__ = window.__POLLY_BACKEND_HTTP__ || "";
   </script>
   <script src="static/polly-assistant.js?v=2"></script>
   <script src="/static/cookie-consent.js" defer></script>

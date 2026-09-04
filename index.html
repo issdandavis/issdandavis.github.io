@@ -19,7 +19,6 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="stylesheet" href="/static/home.css">
   <link rel="stylesheet" href="/static/polly-sidebar.css">
-  <link rel="preconnect" href="https://api.aethermoore.com">
 
   <script type="application/ld+json">
   {
@@ -490,11 +489,10 @@
     <p class="wrap">Polly’s chat panel needs JavaScript, but every route on this page remains available.</p>
   </noscript>
   <script>
-    if (typeof window.__POLLY_BACKEND_HTTP__ === "undefined") {
-      window.__POLLY_BACKEND_HTTP__ = /^(localhost|127\.0\.0\.1)$/.test(window.location.hostname)
-        ? ""
-        : "https://api.aethermoore.com";
-    }
+    // The public DNS has no Polly API endpoint today. Keep deterministic routing
+    // active without generating failed network requests. A deployed host may
+    // inject this value before the sidebar script in a future release.
+    window.__POLLY_BACKEND_HTTP__ = window.__POLLY_BACKEND_HTTP__ || "";
   </script>
   <script src="/static/polly-sidebar.js" defer></script>
   <script src="/static/cookie-consent.js" defer></script>
