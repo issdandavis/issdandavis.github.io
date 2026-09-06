@@ -1,0 +1,557 @@
+{
+  "schema": "aethermoore.miracle-video-inventory.v1",
+  "generated_utc": "2026-09-06T22:26:26.9021449Z",
+  "intent": {
+    "work": "The Miracle Was The Memory",
+    "subject": "A story about Jesus",
+    "dedication": "Created by Issac Daniel Davis for his great-grandfather",
+    "handling": "Preserve the Christian and family-memorial intent; do not rewrite theology during production polish."
+  },
+  "channel": {
+    "name": "Issac “Izreal” Davis",
+    "url": "https://www.youtube.com/@id8461"
+  },
+  "playlist": {
+    "id": "PL4NrJc8z1YGB19mIkcVRCiUW_9rNIrGtZ",
+    "url": "https://www.youtube.com/playlist?list=PL4NrJc8z1YGB19mIkcVRCiUW_9rNIrGtZ",
+    "title": "The Miracle Was The Memory — Audiobook Chapters",
+    "total_entries": 59,
+    "audiobook_entries": 46,
+    "illustrated_entries": 13
+  },
+  "practice_pair": {
+    "illustrated": {
+      "id": "qbusE76OM7o",
+      "title": "The Miracle Was The Memory - Chapter 1: Prologue: The Road Before Mercy (illustrated)",
+      "kind": "illustrated",
+      "chapter": 1,
+      "duration_seconds": 384,
+      "url": "https://www.youtube.com/watch?v=qbusE76OM7o"
+    },
+    "audiobook": {
+      "id": "ly0j3-2YH-s",
+      "title": "The Miracle Was The Memory — Chapter 1: Prologue: The Road Before Mercy (audiobook)",
+      "kind": "audiobook",
+      "chapter": 1,
+      "duration_seconds": 395,
+      "url": "https://www.youtube.com/watch?v=ly0j3-2YH-s"
+    },
+    "reason": "Same chapter in illustrated and audiobook forms; useful for testing picture pacing, transcript sync, captions, and narration without changing the story."
+  },
+  "recovered_assets": {
+    "youtube_metadata": "source.info.json",
+    "youtube_thumbnail": "source.webp",
+    "youtube_auto_captions": [
+      "source.en-orig.srt",
+      "source.en.srt"
+    ],
+    "published_video_file": null,
+    "published_video_download_status": "HTTP 403 after two public, cookie-free attempts; current YouTube playback requests may require a Proof-of-Origin token. Account cookies were not exported.",
+    "local_chapter_audio": {
+      "path": "C:\\dev\\_wt_aethermore_live_20260906\\static\\audio\\miracle-ch01.mp3",
+      "bytes": 4650669,
+      "sha256": "a70e6e02d0ab7258695e3dfe8d8978527c3f06c7909daabbef8924267eeb99cd",
+      "duration_seconds": 387.475,
+      "codec": "mp3",
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "integrated_lufs": -20.51,
+      "true_peak_db": -1.87,
+      "loudness_range_lu": 2.7
+    }
+  },
+  "master_search": {
+    "status": "NOT_FOUND_IN_OBVIOUS_LOCATIONS",
+    "searched": [
+      "C:\\dev media files",
+      "C:\\Users\\issda\\Documents",
+      "C:\\Users\\issda\\Downloads",
+      "C:\\Users\\issda\\OneDrive",
+      "gdrive_personal:Videos",
+      "gdrive_personal:OneDrive_Migration_2026-03-20/Videos",
+      "onedrive:Videos",
+      "onedrive:Books"
+    ],
+    "finding": "The public YouTube encodes, metadata, captions, thumbnail, and one local Chapter 1 MP3 are available. The original Miracle video project/master files were not found in these locations."
+  },
+  "tooling": {
+    "yt_dlp": "C:\\Users\\issda\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\yt-dlp.exe",
+    "ffmpeg": "C:\\dev\\ffmpeg\\ffmpeg-8.1.2-essentials_build\\bin\\ffmpeg.exe",
+    "ffprobe": "C:\\dev\\ffmpeg\\ffmpeg-8.1.2-essentials_build\\bin\\ffprobe.exe",
+    "youtube_po_token_reference": "https://github.com/yt-dlp/yt-dlp/wiki/PO-Token-Guide"
+  },
+  "entries": [
+    {
+      "id": "EEBhGdWTEuk",
+      "title": "The Miracle Was The Memory — Chapter 0: Author's Note: What Is Source, What Is Story (audiobook)",
+      "kind": "audiobook",
+      "chapter": 0,
+      "duration_seconds": 185,
+      "url": "https://www.youtube.com/watch?v=EEBhGdWTEuk"
+    },
+    {
+      "id": "ly0j3-2YH-s",
+      "title": "The Miracle Was The Memory — Chapter 1: Prologue: The Road Before Mercy (audiobook)",
+      "kind": "audiobook",
+      "chapter": 1,
+      "duration_seconds": 395,
+      "url": "https://www.youtube.com/watch?v=ly0j3-2YH-s"
+    },
+    {
+      "id": "DbKqMWMQGC0",
+      "title": "The Miracle Was The Memory — Chapter 2: Smoke Over Sepphoris (audiobook)",
+      "kind": "audiobook",
+      "chapter": 2,
+      "duration_seconds": 478,
+      "url": "https://www.youtube.com/watch?v=DbKqMWMQGC0"
+    },
+    {
+      "id": "e-JTW9P3ISQ",
+      "title": "The Miracle Was The Memory — Chapter 3: John's Water (audiobook)",
+      "kind": "audiobook",
+      "chapter": 3,
+      "duration_seconds": 625,
+      "url": "https://www.youtube.com/watch?v=e-JTW9P3ISQ"
+    },
+    {
+      "id": "2yHNomGEp2s",
+      "title": "The Miracle Was The Memory — Chapter 4: Mara Keeps The Lamp (audiobook)",
+      "kind": "audiobook",
+      "chapter": 4,
+      "duration_seconds": 524,
+      "url": "https://www.youtube.com/watch?v=2yHNomGEp2s"
+    },
+    {
+      "id": "6bw4teX-rbc",
+      "title": "The Miracle Was The Memory — Chapter 5: The First Water Skin (audiobook)",
+      "kind": "audiobook",
+      "chapter": 5,
+      "duration_seconds": 464,
+      "url": "https://www.youtube.com/watch?v=6bw4teX-rbc"
+    },
+    {
+      "id": "hq7GaGhzMwg",
+      "title": "The Miracle Was The Memory — Chapter 6: The Wedding Edge (audiobook)",
+      "kind": "audiobook",
+      "chapter": 6,
+      "duration_seconds": 357,
+      "url": "https://www.youtube.com/watch?v=hq7GaGhzMwg"
+    },
+    {
+      "id": "UlFN3p0fYKM",
+      "title": "The Miracle Was The Memory — Chapter 7: The Name Returned (audiobook)",
+      "kind": "audiobook",
+      "chapter": 7,
+      "duration_seconds": 679,
+      "url": "https://www.youtube.com/watch?v=UlFN3p0fYKM"
+    },
+    {
+      "id": "-XUG1iZL5xI",
+      "title": "The Miracle Was The Memory — Chapter 8: Small Food (audiobook)",
+      "kind": "audiobook",
+      "chapter": 8,
+      "duration_seconds": 564,
+      "url": "https://www.youtube.com/watch?v=-XUG1iZL5xI"
+    },
+    {
+      "id": "j1t1vjW9nsk",
+      "title": "The Miracle Was The Memory — Interlude: The Soldiers' Game (audiobook)",
+      "kind": "audiobook",
+      "chapter": null,
+      "duration_seconds": 523,
+      "url": "https://www.youtube.com/watch?v=j1t1vjW9nsk"
+    },
+    {
+      "id": "CcwbMDPcSfg",
+      "title": "The Miracle Was The Memory — Chapter 9: The Missing One (audiobook)",
+      "kind": "audiobook",
+      "chapter": 9,
+      "duration_seconds": 789,
+      "url": "https://www.youtube.com/watch?v=CcwbMDPcSfg"
+    },
+    {
+      "id": "9zPrLiiOlaM",
+      "title": "The Miracle Was The Memory — Chapter 10: Between Rooms (audiobook)",
+      "kind": "audiobook",
+      "chapter": 10,
+      "duration_seconds": 572,
+      "url": "https://www.youtube.com/watch?v=9zPrLiiOlaM"
+    },
+    {
+      "id": "LPPUJCYjSPs",
+      "title": "The Miracle Was The Memory — Chapter 11: The Stones In Her Skirt (audiobook)",
+      "kind": "audiobook",
+      "chapter": 11,
+      "duration_seconds": 565,
+      "url": "https://www.youtube.com/watch?v=LPPUJCYjSPs"
+    },
+    {
+      "id": "DUEX5Anqnc0",
+      "title": "The Miracle Was The Memory - Chapter 12: Lamps Of The Maccabees (audiobook)",
+      "kind": "audiobook",
+      "chapter": 12,
+      "duration_seconds": 1036,
+      "url": "https://www.youtube.com/watch?v=DUEX5Anqnc0"
+    },
+    {
+      "id": "1NxVTAGxL3U",
+      "title": "The Miracle Was The Memory - Chapter 13: The Temple Moment (audiobook)",
+      "kind": "audiobook",
+      "chapter": 13,
+      "duration_seconds": 754,
+      "url": "https://www.youtube.com/watch?v=1NxVTAGxL3U"
+    },
+    {
+      "id": "sDl86wfyuyc",
+      "title": "The Miracle Was The Memory - Chapter 14: The Last Wedding (audiobook)",
+      "kind": "audiobook",
+      "chapter": 14,
+      "duration_seconds": 608,
+      "url": "https://www.youtube.com/watch?v=sDl86wfyuyc"
+    },
+    {
+      "id": "iPBl0BYuVxU",
+      "title": "The Miracle Was The Memory - Chapter 15: Mary Brings Oil (audiobook)",
+      "kind": "audiobook",
+      "chapter": 15,
+      "duration_seconds": 601,
+      "url": "https://www.youtube.com/watch?v=iPBl0BYuVxU"
+    },
+    {
+      "id": "X2PSrm0l-EU",
+      "title": "The Miracle Was The Memory - Chapter 16: The Hour Before Procedure (audiobook)",
+      "kind": "audiobook",
+      "chapter": 16,
+      "duration_seconds": 676,
+      "url": "https://www.youtube.com/watch?v=X2PSrm0l-EU"
+    },
+    {
+      "id": "62pC2w4OP0k",
+      "title": "The Miracle Was The Memory - Interlude 02: Interlude. What My Sister Wrote Down (audiobook)",
+      "kind": "audiobook",
+      "chapter": null,
+      "duration_seconds": 687,
+      "url": "https://www.youtube.com/watch?v=62pC2w4OP0k"
+    },
+    {
+      "id": "7jd9G6J1Cww",
+      "title": "The Miracle Was The Memory - Chapter 17: Rome Has Procedure (audiobook)",
+      "kind": "audiobook",
+      "chapter": 17,
+      "duration_seconds": 913,
+      "url": "https://www.youtube.com/watch?v=7jd9G6J1Cww"
+    },
+    {
+      "id": "slAflTTN1LU",
+      "title": "The Miracle Was The Memory - Chapter 18: Leaving The City (audiobook)",
+      "kind": "audiobook",
+      "chapter": 18,
+      "duration_seconds": 933,
+      "url": "https://www.youtube.com/watch?v=slAflTTN1LU"
+    },
+    {
+      "id": "Ag9GWlKvsBs",
+      "title": "The Miracle Was The Memory - Chapter 19: Three Days On The Road (audiobook)",
+      "kind": "audiobook",
+      "chapter": 19,
+      "duration_seconds": 692,
+      "url": "https://www.youtube.com/watch?v=Ag9GWlKvsBs"
+    },
+    {
+      "id": "y1lBZRUEVLk",
+      "title": "The Miracle Was The Memory - Chapter 20: Mary Comes Laughing (audiobook)",
+      "kind": "audiobook",
+      "chapter": 20,
+      "duration_seconds": 657,
+      "url": "https://www.youtube.com/watch?v=y1lBZRUEVLk"
+    },
+    {
+      "id": "wFI0pgVGacA",
+      "title": "The Miracle Was The Memory - Chapter 21: The Third Day By The Water (audiobook)",
+      "kind": "audiobook",
+      "chapter": 21,
+      "duration_seconds": 951,
+      "url": "https://www.youtube.com/watch?v=wFI0pgVGacA"
+    },
+    {
+      "id": "qbbDsH_54TQ",
+      "title": "The Miracle Was The Memory - Interlude 03: Interlude. Friend (audiobook)",
+      "kind": "audiobook",
+      "chapter": null,
+      "duration_seconds": 343,
+      "url": "https://www.youtube.com/watch?v=qbbDsH_54TQ"
+    },
+    {
+      "id": "0Np7pxTSm7Q",
+      "title": "The Miracle Was The Memory - Chapter 22: The Room That Would Not Open (audiobook)",
+      "kind": "audiobook",
+      "chapter": 22,
+      "duration_seconds": 702,
+      "url": "https://www.youtube.com/watch?v=0Np7pxTSm7Q"
+    },
+    {
+      "id": "lekwdo2D7hA",
+      "title": "The Miracle Was The Memory - Chapter 23: Breakfast Smoke (audiobook)",
+      "kind": "audiobook",
+      "chapter": 23,
+      "duration_seconds": 717,
+      "url": "https://www.youtube.com/watch?v=lekwdo2D7hA"
+    },
+    {
+      "id": "pwzqEZHNRvM",
+      "title": "The Miracle Was The Memory - Chapter 24: The Road Given Back (audiobook)",
+      "kind": "audiobook",
+      "chapter": 24,
+      "duration_seconds": 847,
+      "url": "https://www.youtube.com/watch?v=pwzqEZHNRvM"
+    },
+    {
+      "id": "6jLbfhSrpnU",
+      "title": "The Miracle Was The Memory - Chapter 25: When He Left Standing (audiobook)",
+      "kind": "audiobook",
+      "chapter": 25,
+      "duration_seconds": 1010,
+      "url": "https://www.youtube.com/watch?v=6jLbfhSrpnU"
+    },
+    {
+      "id": "Tx6S4v2L3Xo",
+      "title": "The Miracle Was The Memory - Chapter 26: Fire In The Room (audiobook)",
+      "kind": "audiobook",
+      "chapter": 26,
+      "duration_seconds": 752,
+      "url": "https://www.youtube.com/watch?v=Tx6S4v2L3Xo"
+    },
+    {
+      "id": "z0JZD6dN9zU",
+      "title": "The Miracle Was The Memory - Chapter 27: The Meal Changes (audiobook)",
+      "kind": "audiobook",
+      "chapter": 27,
+      "duration_seconds": 713,
+      "url": "https://www.youtube.com/watch?v=z0JZD6dN9zU"
+    },
+    {
+      "id": "1r2ZntOx9z0",
+      "title": "The Miracle Was The Memory - Chapter 28: The Gate That Heard His Name (audiobook)",
+      "kind": "audiobook",
+      "chapter": 28,
+      "duration_seconds": 1054,
+      "url": "https://www.youtube.com/watch?v=1r2ZntOx9z0"
+    },
+    {
+      "id": "7h02v0tpuxE",
+      "title": "The Miracle Was The Memory - Chapter 29: The Price Of Looking Whole (audiobook)",
+      "kind": "audiobook",
+      "chapter": 29,
+      "duration_seconds": 622,
+      "url": "https://www.youtube.com/watch?v=7h02v0tpuxE"
+    },
+    {
+      "id": "nhUP8RoXXps",
+      "title": "The Miracle Was The Memory - Chapter 30: Widows In Two Tongues (audiobook)",
+      "kind": "audiobook",
+      "chapter": 30,
+      "duration_seconds": 771,
+      "url": "https://www.youtube.com/watch?v=nhUP8RoXXps"
+    },
+    {
+      "id": "RKBGVXfIKW0",
+      "title": "The Miracle Was The Memory - Chapter 31: The Coats At The Feet (audiobook)",
+      "kind": "audiobook",
+      "chapter": 31,
+      "duration_seconds": 886,
+      "url": "https://www.youtube.com/watch?v=RKBGVXfIKW0"
+    },
+    {
+      "id": "aIyNlyPh4A0",
+      "title": "The Miracle Was The Memory - Chapter 32: The Road That Broke Saul (audiobook)",
+      "kind": "audiobook",
+      "chapter": 32,
+      "duration_seconds": 632,
+      "url": "https://www.youtube.com/watch?v=aIyNlyPh4A0"
+    },
+    {
+      "id": "uDQuxDlzVkI",
+      "title": "The Miracle Was The Memory - Chapter 33: Eliezer (audiobook)",
+      "kind": "audiobook",
+      "chapter": 33,
+      "duration_seconds": 616,
+      "url": "https://www.youtube.com/watch?v=uDQuxDlzVkI"
+    },
+    {
+      "id": "hJScneU9ehA",
+      "title": "The Miracle Was The Memory - Chapter 34: The Night The Field Was Tested (audiobook)",
+      "kind": "audiobook",
+      "chapter": 34,
+      "duration_seconds": 1515,
+      "url": "https://www.youtube.com/watch?v=hJScneU9ehA"
+    },
+    {
+      "id": "aQ_gsblGxek",
+      "title": "The Miracle Was The Memory - Chapter 35: A Letter At Dinner (audiobook)",
+      "kind": "audiobook",
+      "chapter": 35,
+      "duration_seconds": 561,
+      "url": "https://www.youtube.com/watch?v=aQ_gsblGxek"
+    },
+    {
+      "id": "2bo56qGQ_6s",
+      "title": "The Miracle Was The Memory - Chapter 36: Ink And Argument (audiobook)",
+      "kind": "audiobook",
+      "chapter": 36,
+      "duration_seconds": 665,
+      "url": "https://www.youtube.com/watch?v=2bo56qGQ_6s"
+    },
+    {
+      "id": "1eJ4bFP9SCs",
+      "title": "The Miracle Was The Memory - Chapter 37: The First Handoff (audiobook)",
+      "kind": "audiobook",
+      "chapter": 37,
+      "duration_seconds": 1241,
+      "url": "https://www.youtube.com/watch?v=1eJ4bFP9SCs"
+    },
+    {
+      "id": "sCyrznC89b0",
+      "title": "The Miracle Was The Memory - Chapter 38: Living Voices Thin (audiobook)",
+      "kind": "audiobook",
+      "chapter": 38,
+      "duration_seconds": 630,
+      "url": "https://www.youtube.com/watch?v=sCyrznC89b0"
+    },
+    {
+      "id": "5VQSBut3mwE",
+      "title": "The Miracle Was The Memory - Chapter 39: The Last Living Witness (audiobook)",
+      "kind": "audiobook",
+      "chapter": 39,
+      "duration_seconds": 669,
+      "url": "https://www.youtube.com/watch?v=5VQSBut3mwE"
+    },
+    {
+      "id": "b7P2VJ_DLpY",
+      "title": "The Miracle Was The Memory - Chapter 40: Four Ways To Carry Fire (audiobook)",
+      "kind": "audiobook",
+      "chapter": 40,
+      "duration_seconds": 802,
+      "url": "https://www.youtube.com/watch?v=b7P2VJ_DLpY"
+    },
+    {
+      "id": "06PEBZTxXzY",
+      "title": "The Miracle Was The Memory - Chapter 41: Cold Records (audiobook)",
+      "kind": "audiobook",
+      "chapter": 41,
+      "duration_seconds": 737,
+      "url": "https://www.youtube.com/watch?v=06PEBZTxXzY"
+    },
+    {
+      "id": "6HpYXcO8hpA",
+      "title": "The Miracle Was The Memory - Chapter 42: The Feast Did Not End (audiobook)",
+      "kind": "audiobook",
+      "chapter": 42,
+      "duration_seconds": 4990,
+      "url": "https://www.youtube.com/watch?v=6HpYXcO8hpA"
+    },
+    {
+      "id": "IwsGTPdoVV0",
+      "title": "The Miracle Was The Memory - Chapter 0: Author's Note: What Is Source, What Is Story (illustrated)",
+      "kind": "illustrated",
+      "chapter": 0,
+      "duration_seconds": 176,
+      "url": "https://www.youtube.com/watch?v=IwsGTPdoVV0"
+    },
+    {
+      "id": "qbusE76OM7o",
+      "title": "The Miracle Was The Memory - Chapter 1: Prologue: The Road Before Mercy (illustrated)",
+      "kind": "illustrated",
+      "chapter": 1,
+      "duration_seconds": 384,
+      "url": "https://www.youtube.com/watch?v=qbusE76OM7o"
+    },
+    {
+      "id": "8b08_MDxqbw",
+      "title": "The Miracle Was The Memory - Chapter 2: Smoke Over Sepphoris (illustrated)",
+      "kind": "illustrated",
+      "chapter": 2,
+      "duration_seconds": 466,
+      "url": "https://www.youtube.com/watch?v=8b08_MDxqbw"
+    },
+    {
+      "id": "egmpvagzbe0",
+      "title": "The Miracle Was The Memory - Chapter 3: John's Water (illustrated)",
+      "kind": "illustrated",
+      "chapter": 3,
+      "duration_seconds": 613,
+      "url": "https://www.youtube.com/watch?v=egmpvagzbe0"
+    },
+    {
+      "id": "3XeqkQMxBr0",
+      "title": "The Miracle Was The Memory - Chapter 4: Mara Keeps The Lamp (illustrated)",
+      "kind": "illustrated",
+      "chapter": 4,
+      "duration_seconds": 512,
+      "url": "https://www.youtube.com/watch?v=3XeqkQMxBr0"
+    },
+    {
+      "id": "1zT4fRpzSH4",
+      "title": "The Miracle Was The Memory - Chapter 5: The First Water Skin (illustrated)",
+      "kind": "illustrated",
+      "chapter": 5,
+      "duration_seconds": 453,
+      "url": "https://www.youtube.com/watch?v=1zT4fRpzSH4"
+    },
+    {
+      "id": "Mg2GZHzdXeg",
+      "title": "The Miracle Was The Memory - Chapter 6: The Wedding Edge (illustrated)",
+      "kind": "illustrated",
+      "chapter": 6,
+      "duration_seconds": 346,
+      "url": "https://www.youtube.com/watch?v=Mg2GZHzdXeg"
+    },
+    {
+      "id": "udpED9u8Nwo",
+      "title": "The Miracle Was The Memory - Chapter 7: The Name Returned (illustrated)",
+      "kind": "illustrated",
+      "chapter": 7,
+      "duration_seconds": 665,
+      "url": "https://www.youtube.com/watch?v=udpED9u8Nwo"
+    },
+    {
+      "id": "FwBMhqh0mQ4",
+      "title": "The Miracle Was The Memory - Chapter 8: Small Food (illustrated)",
+      "kind": "illustrated",
+      "chapter": 8,
+      "duration_seconds": 550,
+      "url": "https://www.youtube.com/watch?v=FwBMhqh0mQ4"
+    },
+    {
+      "id": "bOlQk4fIQuQ",
+      "title": "The Miracle Was The Memory - Interlude 01: Interlude. The Soldiers' Game (illustrated)",
+      "kind": "illustrated",
+      "chapter": null,
+      "duration_seconds": 511,
+      "url": "https://www.youtube.com/watch?v=bOlQk4fIQuQ"
+    },
+    {
+      "id": "PaseRqtwleU",
+      "title": "The Miracle Was The Memory - Chapter 9: The Missing One (illustrated)",
+      "kind": "illustrated",
+      "chapter": 9,
+      "duration_seconds": 776,
+      "url": "https://www.youtube.com/watch?v=PaseRqtwleU"
+    },
+    {
+      "id": "UXNEIKTAEOw",
+      "title": "The Miracle Was The Memory - Chapter 10: Between Rooms (illustrated)",
+      "kind": "illustrated",
+      "chapter": 10,
+      "duration_seconds": 559,
+      "url": "https://www.youtube.com/watch?v=UXNEIKTAEOw"
+    },
+    {
+      "id": "wD1fvyZG7JY",
+      "title": "The Miracle Was The Memory - Chapter 11: The Stones In Her Skirt (illustrated)",
+      "kind": "illustrated",
+      "chapter": 11,
+      "duration_seconds": 552,
+      "url": "https://www.youtube.com/watch?v=wD1fvyZG7JY"
+    }
+  ]
+}
