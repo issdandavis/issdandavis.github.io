@@ -38,21 +38,43 @@
     return String(value || '').toLowerCase();
   }
 
+  // Keywords must match on word boundaries, not as bare substrings. The
+  // restricted bucket lists "gov", and a plain .includes() found it inside
+  // "governance" -- so asking about the public AI Governance Toolkit was
+  // answered with "this falls into a gated lane". Hyphen/space tolerant so
+  // multi-word keywords like "decision record" still match.
+  function keywordHit(text, keyword) {
+    const kw = normalize(keyword).trim();
+    if (!kw) return false;
+    const escaped = kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    return new RegExp(`(^|[^a-z0-9])${escaped}([^a-z0-9]|$)`).test(normalize(text));
+  }
+
   function includesKeyword(text, keywords) {
-    const normalized = normalize(text);
-    return (keywords || []).some((keyword) => normalized.includes(normalize(keyword)));
+    return (keywords || []).some((keyword) => keywordHit(text, keyword));
   }
 
   // Scored matching. The old path used .find(), which returned whichever entry
   // happened to be listed first with ANY keyword hit -- so "what does SCBE
   // cost" could land on an unrelated product. Score by total matched keyword
   // length so the most specific match wins and runners-up can be offered.
+  // A multi-word keyword also counts when all of its words appear separately,
+  // scored lower than an exact adjacent phrase. Real questions rarely use the
+  // catalog's exact wording -- "build an assistant for my website" should still
+  // reach the "build assistant" bucket.
   function scoreKeywords(text, keywords) {
-    const normalized = normalize(text);
     let score = 0;
     (keywords || []).forEach((keyword) => {
-      const kw = normalize(keyword);
-      if (kw && normalized.includes(kw)) score += kw.length;
+      const kw = normalize(keyword).trim();
+      if (!kw) return;
+      if (keywordHit(text, kw)) {
+        score += kw.length;
+        return;
+      }
+      const words = kw.split(/\s+/).filter(Boolean);
+      if (words.length > 1 && words.every((word) => keywordHit(text, word))) {
+        score += Math.round(kw.length / 2);
+      }
     });
     return score;
   }
@@ -193,8 +215,10 @@
       return { kind: 'route', item: route.item, surface: getSurfaceForRoute(route.item), pricing };
     }
 
+    // Nothing matched. Distinct from a real route match so the reply can say so
+    // instead of silently pointing at the assistant surface as if it answered.
     return {
-      kind: 'route',
+      kind: 'none',
       item: null,
       pricing,
       surface: (state.routing?.surfaces || []).find((surface) => surface.name === 'assistant') || null
@@ -469,11 +493,20 @@
       `;
     }
 
-    if (result.surface) {
+    if (result.kind !== 'none' && result.surface) {
       return `
         <p>The shortest route is <strong>${escapeHtml(result.surface.name)}</strong>.</p>
         <p>${escapeHtml(result.surface.purpose)}</p>
         <p><a href="${escapeHtml(result.surface.url)}">Open ${escapeHtml(result.surface.name)} &rarr;</a></p>
+      `;
+    }
+
+    if (result.pricing) {
+      return `
+        <p>I do not hold prices &mdash; the catalog has no price field, and scope decides
+           cost, so there is no list figure to quote.</p>
+        <p>Name the product you are asking about and I will give you its details and its
+           buy or contact link, which carry the current terms.</p>
       `;
     }
 
