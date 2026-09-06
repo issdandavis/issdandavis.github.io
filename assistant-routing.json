@@ -39,6 +39,11 @@
       "purpose": "Benchmarks, verification, and technical justification."
     },
     {
+      "name": "evidence-ledger",
+      "url": "https://aethermoore.com/research/evidence-ledger.html",
+      "purpose": "Scoped test-campaign ledger that separates measured behavior, limitations, underpowered results, and refuted claims."
+    },
+    {
       "name": "operations-evidence",
       "url": "https://aethermoore.com/research/operations.html",
       "purpose": "Historical July 25, 2026 operations snapshot with competition planning, experiments, package inventory, and scoped capability records."
@@ -154,6 +159,11 @@
       "intent": "deploy_or_integrate",
       "keywords": ["install", "manual", "package", "deploy", "integration", "buyer", "delivery"],
       "target": "https://aethermoore.com/product-manual/index.html"
+    },
+    {
+      "intent": "inspect_evidence_ledger",
+      "keywords": ["evidence ledger", "test campaign", "what is proven", "what failed", "refuted claim", "underpowered result", "reproduce results"],
+      "target": "https://aethermoore.com/research/evidence-ledger.html"
     },
     {
       "intent": "portfolio_evidence",
