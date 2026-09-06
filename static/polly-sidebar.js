@@ -94,9 +94,9 @@
        Map: https://aethermoore.com/backroom.html
        Source access: private; use the contact route for questions.
 
-    10. Operator Agent Bus — PROTOTYPE WITH DATED PUBLIC RECEIPTS
-        Packet, constraint, review, and receipt coordination for bounded agents.
-        Evidence snapshot: https://aethermoore.com/training-bus.html
+    10. Agent Runtime — BOUNDED AGENT-WORK MAP
+        Task packets, capability checks, isolated execution, and durable effect receipts.
+        Runtime map and linked evidence: https://aethermoore.com/training-bus.html
 
     11. Trust Verifier — INTERNAL UTILITY / PRIVATE SOURCE
         Local Python and JavaScript cross-checker that returns a concrete disagreement witness. Agreement is evidence, not proof of correctness.
@@ -162,7 +162,7 @@
     { keys: ['tool','calculator','demo','interactive','visualization'], response: "Our live browser tools and interactive demos are at https://aethermoore.com/demos/index.html. No install needed." },
     { keys: ['aetherbrowser','aether browser','governed browser','browser agent','browser sidepanel'], response: "AetherBrowser is a working desktop prototype, not a finished commercial browser. Try the public simulation at https://aethermoore.com/demos/aetherbrowser-demo.html or inspect the desktop source at https://github.com/issdandavis/aetherbrowser" },
     { keys: ['aetherdesk','aether desk','operator desktop','local ai desktop'], response: "AetherDesk is a local-first operator build with bounded actions and receipts. See the public map at https://aethermoore.com/backroom.html. Its source repository is private." },
-    { keys: ['agent bus','operator bus','training bus'], response: "The Operator Agent Bus is a prototype with public packet, constraint, review, and receipt evidence. Inspect the dated proof surface at https://aethermoore.com/training-bus.html" },
+    { keys: ['agent bus','operator bus','training bus'], response: "The Agent Runtime page maps task packets, capability checks, bounded execution, and durable receipts, with links to dated proof: https://aethermoore.com/training-bus.html" },
     { keys: ['trust verifier','cross-language','cross language','code witness','twin gate'], response: "Trust Verifier is a private-source internal checker that compares Python and JavaScript executions and returns a disagreement witness. Agreement is evidence, not proof. Ask about the build at https://aethermoore.com/contact.html" },
     { keys: ['research','benchmark','evidence','paper','study','proof','technical'], response: "Benchmarks, proofs, and technical justification are at https://aethermoore.com/research/index.html. Member-only raw notes are at https://aethermoore.com/members/research-notes.html" },
     { keys: ['member','exclusive','insider','gated','early access'], response: "Members get raw research notes, early datasets, and member-only tools. Join SCBE Weekly to get the access PIN. https://aethermoore.com/members/" },

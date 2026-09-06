@@ -5,18 +5,18 @@
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Polly | SCBE Assistant and Product Front Desk</title>
+  <title>Ask Polly | AetherMoore</title>
   <meta name="description" content="Route-first assistant for SCBE-AETHERMOORE. Start here to use tools, request public custom builds, open manuals, recover from issues, or stay inside gated boundaries.">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <meta property="og:title" content="Polly | SCBE Assistant and Product Front Desk">
+  <meta property="og:title" content="Ask Polly | AetherMoore">
   <meta property="og:description" content="One front door for tools, public product buckets, manuals, support, research, and gated routes.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://aethermoore.com/assistant.html">
-  <meta property="og:image" content="https://aethermoore.com/hero.webp">
+  <meta property="og:image" content="https://aethermoore.com/social-card.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Polly | SCBE Assistant and Product Front Desk">
+  <meta name="twitter:title" content="Ask Polly | AetherMoore">
   <meta name="twitter:description" content="Start here when you need the assistant to route work, point to products, or send you into the right SCBE surface.">
-  <meta name="twitter:image" content="https://aethermoore.com/hero.webp">
+  <meta name="twitter:image" content="https://aethermoore.com/social-card.png">
   <link rel="canonical" href="https://aethermoore.com/assistant.html">
   <style>
     :root {
@@ -714,10 +714,11 @@
       }
     }
   </style>
-  <link rel="stylesheet" href="/static/galactic-theme.css">
-  <script src="/static/galactic-stars.js" defer></script>
+  <link rel="stylesheet" href="/static/site/aethermore.css">
+  <link rel="stylesheet" href="/static/site/interior.css">
+  <script src="/static/site/aethermore.js" defer></script>
 </head>
-<body>
+<body class="interior-page polly-page">
   <a class="skip-link" href="#main-content">Skip to assistant</a>
 <noscript>
     <div style="position:fixed;top:0;left:0;right:0;z-index:99999;background:#04100f;border-bottom:1px solid rgba(139,255,223,0.2);padding:12px 24px;text-align:center;color:#9bc5ba;font-size:13px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
@@ -725,24 +726,19 @@
     </div>
   </noscript>
 
-  <header class="topbar">
-    <div class="topbar-inner">
-      <a class="brand" href="index.html">SCBE-AETHERMOORE</a>
-      <button class="mobile-toggle" id="assistant-menu-toggle" type="button" aria-label="Toggle navigation" aria-controls="assistant-primary-nav" aria-expanded="false">&#9776;</button>
-      <nav class="nav" id="assistant-primary-nav" aria-label="Primary">
-        <a href="index.html">Home</a>
-        <a href="index.html#products" class="nav-cta">Products</a>
-        <a href="datasets.html" class="nav-commercial">Datasets</a>
-        <a href="demos/index.html">Demos</a>
-        <a href="tools.html">Tools</a>
-        <a href="studio/">Studio</a>
-        <a href="research/index.html">Research</a>
-        <a href="book.html">Book</a>
-        <a href="profile.html">Profile</a>
-        <a href="assistant.html" class="nav-active">Assistant</a>
-        <a href="support.html">Support</a>
-        <a href="product-manual/index.html">Manuals</a>
-        <a href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank" rel="noopener">GitHub</a>
+  <header class="site-header">
+    <div class="site-shell header-inner">
+      <a class="brand" href="/" aria-label="AetherMoore home">
+        <img class="brand-mark" src="/favicon.svg" alt="" width="42" height="42">
+        <span>AetherMoore</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" data-menu-toggle>Menu</button>
+      <nav class="site-nav" id="site-navigation" aria-label="Primary navigation" data-site-nav>
+        <a href="/assistant.html" aria-current="page">Ask Polly</a>
+        <a href="/training-bus.html">Work</a>
+        <a href="/#research">Research</a>
+        <a href="/about.html">About</a>
+        <a class="nav-source" href="https://github.com/issdandavis/SCBE-AETHERMOORE">GitHub <span aria-hidden="true">↗</span></a>
       </nav>
     </div>
   </header>
@@ -751,9 +747,9 @@
     <section class="hero">
       <div class="hero-inner hero-grid">
         <div class="hero-copy">
-          <div class="eyebrow"><span class="dot"></span>Assistant Surface</div>
-          <h1><span class="gradient">Polly is the front desk</span> for the system.</h1>
-          <p>This is the first place to start. Polly routes people into tools, public product buckets, manuals, support, research, or the book before the system spends extra effort reasoning.</p>
+          <div class="eyebrow"><span class="dot"></span>Assistant / route first</div>
+          <h1>Start with the request. <span class="gradient">Polly finds the route.</span></h1>
+          <p>Describe the outcome in ordinary language. Polly checks the published catalog and points to a real tool, manual, support path, research page, or gated review without inventing a destination.</p>
           <div class="hero-points">
             <span>Route first</span>
             <span>Public work stays public</span>
@@ -877,53 +873,27 @@
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-left">
-        <span class="footer-brand">SCBE-AETHERMOORE</span>
-        <span>One front door for tools, products, support, proof, and gated boundaries.</span>
-        <span>Public site first. Protected work stays protected.</span>
-      </div>
-      <div class="footer-links-row">
-        <a href="tools.html">Tools</a>
-        <a href="support.html">Support</a>
-        <a href="product-manual/index.html">Manuals</a>
-        <a href="research/index.html">Research</a>
+  <footer class="site-footer">
+    <div class="site-shell">
+      <a class="brand" href="/" aria-label="AetherMoore home">
+        <img class="brand-mark" src="/favicon.svg" alt="" width="42" height="42">
+        <span>AetherMoore</span>
+      </a>
+      <nav aria-label="Footer navigation">
+        <a href="/training-bus.html">Work</a>
+        <a href="/research/evidence-ledger.html">Evidence</a>
+        <a href="/support.html">Help</a>
         <a href="mailto:aethermoregames@pm.me?subject=SCBE%20Assistant%20Inquiry">Contact</a>
-      </div>
+      </nav>
+      <p>One front door for tools, support, proof, and gated boundaries.</p>
     </div>
   </footer>
 
   <script>
     // Use deterministic local routing until a public Polly API is deployed.
     window.__POLLY_BACKEND_HTTP__ = window.__POLLY_BACKEND_HTTP__ || "";
-
-    const menuToggle = document.getElementById('assistant-menu-toggle');
-    const primaryNav = document.getElementById('assistant-primary-nav');
-    const setMenuOpen = (open) => {
-      primaryNav.classList.toggle('open', open);
-      menuToggle.setAttribute('aria-expanded', String(open));
-    };
-    menuToggle.addEventListener('click', () => {
-      setMenuOpen(menuToggle.getAttribute('aria-expanded') !== 'true');
-    });
-    primaryNav.addEventListener('click', (event) => {
-      if (event.target.closest('a')) setMenuOpen(false);
-    });
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && menuToggle.getAttribute('aria-expanded') === 'true') {
-        setMenuOpen(false);
-        menuToggle.focus();
-      }
-    });
   </script>
   <script src="static/polly-assistant.js?v=3"></script>
   <script src="/static/cookie-consent.js" defer></script>
-<a href="/services.html#hire" target="_self"
-   aria-label="Hire Issac"
-   data-hire-cta="apex"
-   style="position:fixed;bottom:20px;right:20px;z-index:9999;background:#17c6cf;color:#06121a;padding:12px 20px;border-radius:999px;font-family:system-ui,-apple-system,sans-serif;font-weight:600;font-size:15px;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,0.35);transition:transform .15s ease;"
-   onmouseover="this.style.transform='translateY(-2px)'"
-   onmouseout="this.style.transform=''">Hire Issac</a>
 </body>
 </html>

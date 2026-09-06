@@ -1,148 +1,246 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Training Lab | SCBE-AETHERMOORE</title>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e27; color: #c8d1f0; line-height: 1.6; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
-    header { text-align: center; padding: 3rem 1rem; border-bottom: 1px solid #1a2040; }
-    header h1 { font-size: 2.5rem; color: #fff; margin-bottom: 0.5rem; }
-    header p { color: #7d84b8; font-size: 1.1rem; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-    .card { background: #11163a; border: 1px solid #1a2040; border-radius: 12px; padding: 1.5rem; transition: border-color 0.2s; }
-    .card:hover { border-color: #4a5fcf; }
-    .card h2 { color: #fff; font-size: 1.2rem; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
-    .card p { color: #7d84b8; font-size: 0.9rem; margin-bottom: 1rem; }
-    .badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600; margin-right: 0.5rem; }
-    .badge-orange { background: #331a00; color: #ff9f43; }
-    .badge-blue { background: #001a33; color: #4dabf7; }
-    .badge-green { background: #002200; color: #51cf66; }
-    .badge-purple { background: #1a0033; color: #cc5de8; }
-    .btn { display: inline-block; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-size: 0.85rem; font-weight: 600; margin-top: 0.5rem; margin-right: 0.5rem; border: none; cursor: pointer; }
-    .btn-primary { background: #4a5fcf; color: #fff; }
-    .btn-primary:hover { background: #5a6fdf; }
-    .btn-secondary { background: #1a2040; color: #c8d1f0; border: 1px solid #2a3060; }
-    .btn-secondary:hover { background: #2a3060; }
-    .status { display: flex; align-items: center; gap: 0.5rem; margin-top: 1rem; padding: 0.75rem; background: #0d1229; border-radius: 8px; font-size: 0.85rem; }
-    .status-dot { width: 8px; height: 8px; border-radius: 50%; }
-    .status-ok { background: #51cf66; }
-    .status-warn { background: #ff9f43; }
-    .status-off { background: #ff6b6b; }
-    .resource-list { list-style: none; margin-top: 0.75rem; }
-    .resource-list li { padding: 0.4rem 0; border-bottom: 1px solid #1a2040; font-size: 0.9rem; }
-    .resource-list li:last-child { border-bottom: none; }
-    .resource-list a { color: #4dabf7; text-decoration: none; }
-    .resource-list a:hover { text-decoration: underline; }
-    footer { text-align: center; padding: 3rem 1rem; color: #5a6090; font-size: 0.85rem; border-top: 1px solid #1a2040; margin-top: 3rem; }
-    .api-status { font-family: monospace; font-size: 0.8rem; color: #7d84b8; }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <header>
-      <h1>🧬 Training Lab</h1>
-      <p>Local control center for Kaggle, Colab, and HuggingFace training runs</p>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Training Lab | AetherMoore</title>
+    <meta
+      name="description"
+      content="A public guide to AetherMoore model experiments, evaluation boundaries, checkpoints, datasets, and controlled compute surfaces."
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://aethermoore.com/training-lab.html" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Training Lab | AetherMoore" />
+    <meta
+      property="og:description"
+      content="Model work shown with its controls, checkpoints, evaluation, and limits."
+    />
+    <meta property="og:url" content="https://aethermoore.com/training-lab.html" />
+    <meta property="og:image" content="https://aethermoore.com/social-card.png" />
+    <link rel="stylesheet" href="/static/site/aethermore.css" />
+    <link rel="stylesheet" href="/static/site/interior.css" />
+    <script src="/static/site/aethermore.js" defer></script>
+  </head>
+  <body class="interior-page lab-page">
+    <a class="skip-link" href="#main-content">Skip to training lab</a>
+    <header class="site-header">
+      <div class="site-shell header-inner">
+        <a class="brand" href="/" aria-label="AetherMoore home">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="42" height="42" />
+          <span>AetherMoore</span>
+        </a>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-navigation"
+          data-menu-toggle
+        >
+          Menu
+        </button>
+        <nav class="site-nav" id="site-navigation" aria-label="Primary navigation" data-site-nav>
+          <a href="/assistant.html">Ask Polly</a>
+          <a href="/training-bus.html">Work</a>
+          <a href="/training-lab.html" aria-current="page">Research</a>
+          <a href="/about.html">About</a>
+          <a class="nav-source" href="https://github.com/issdandavis/SCBE-AETHERMOORE"
+            >GitHub <span aria-hidden="true">↗</span></a
+          >
+        </nav>
+      </div>
     </header>
 
-    <div class="grid">
-      <!-- Local Backend -->
-      <div class="card">
-        <h2>🖥️ Local Backend</h2>
-        <p>SCBE-AETHERMOORE API running on this machine</p>
-        <div class="status" id="backendStatus">
-          <div class="status-dot status-warn"></div>
-          <span>Checking...</span>
+    <main class="interior-main" id="main-content">
+      <section class="interior-hero">
+        <div class="site-shell interior-hero-grid">
+          <div>
+            <span class="page-coordinate">Research / training lab / public guide</span>
+            <h1 class="page-title page-title-wide">Training is a measured process, not a progress bar.</h1>
+            <p class="page-lead">
+              A useful run preserves its parent, data pins, controls, checkpoints, evaluations, and
+              stopping reason. This page explains how to read that evidence without mistaking an
+              active process or a lower loss for a finished model.
+            </p>
+            <div class="button-row">
+              <a class="button button-primary" href="/research/evidence-ledger.html"
+                >Read the evidence ledger <span aria-hidden="true">→</span></a
+              >
+              <a class="button button-secondary" href="https://aethermoore.com/SCBE-AETHERMOORE/training-hub.html"
+                >Open operator proof <span aria-hidden="true">↗</span></a
+              >
+            </div>
+          </div>
+          <aside class="hero-index" aria-label="Training lab index">
+            <a href="#read"><span>01</span><strong>How to read a run</strong></a>
+            <a href="#surfaces"><span>02</span><strong>Public research surfaces</strong></a>
+            <a href="#compute"><span>03</span><strong>Compute contract</strong></a>
+            <a href="#boundary"><span>04</span><strong>Public boundary</strong></a>
+          </aside>
         </div>
-        <a class="btn btn-secondary" href="http://localhost:8080/docs" target="_blank">API Docs</a>
-        <a class="btn btn-secondary" href="http://localhost:8080/v1/health" target="_blank">Health Check</a>
-      </div>
+      </section>
 
-      <!-- HuggingFace -->
-      <div class="card">
-        <h2>🤗 HuggingFace</h2>
-        <p>Published models and datasets from the SCBE ecosystem</p>
-        <span class="badge badge-orange">Models</span>
-        <span class="badge badge-blue">Datasets</span>
-        <ul class="resource-list">
-          <li><a href="https://huggingface.co/issdandavis/polly-chat-qwen-0.5b" target="_blank">polly-chat-qwen-0.5b</a></li>
-          <li><a href="https://huggingface.co/issdandavis/scbe-pivot-qwen-0.5b" target="_blank">scbe-pivot-qwen-0.5b</a></li>
-          <li><a href="https://huggingface.co/issdandavis/phdm-21d-embedding" target="_blank">phdm-21d-embedding</a></li>
-          <li><a href="https://huggingface.co/datasets/issdandavis/scbe-aethermoore-datasets" target="_blank">scbe-aethermoore-datasets</a> (15K rows)</li>
-          <li><a href="https://huggingface.co/datasets/issdandavis/polly-training-data" target="_blank">polly-training-data</a></li>
-        </ul>
-        <a class="btn btn-primary" href="https://huggingface.co/issdandavis" target="_blank">Open Profile</a>
-      </div>
+      <section class="field-section" id="read">
+        <div class="site-shell">
+          <div class="field-heading">
+            <div>
+              <span class="section-coordinate">Lab 01 / reading order</span>
+              <h2>Follow the lineage before the score.</h2>
+            </div>
+            <p>
+              A result is interpretable only when the checkpoint and evaluator belong to the same
+              declared experiment. The reading order below keeps a plausible number from becoming
+              a claim it cannot support.
+            </p>
+          </div>
+          <div class="field-grid">
+            <article class="field-cell">
+              <span class="cell-index">1 / lineage</span>
+              <h3>Parent and data</h3>
+              <p>Identify the exact parent, tokenizer, datasets, and source hashes used by the run.</p>
+            </article>
+            <article class="field-cell">
+              <span class="cell-index">2 / comparison</span>
+              <h3>Controls and seeds</h3>
+              <p>Compare against a baseline and size-matched control across more than one seed.</p>
+            </article>
+            <article class="field-cell">
+              <span class="cell-index">3 / retention</span>
+              <h3>What stayed intact</h3>
+              <p>Check protected examples and domain scores beside the optimization target.</p>
+            </article>
+            <article class="field-cell">
+              <span class="cell-index">4 / behavior</span>
+              <h3>Actual output</h3>
+              <p>Inspect generated behavior; a good aggregate can still hide repetition or zeros.</p>
+            </article>
+            <article class="field-cell">
+              <span class="cell-index">5 / recovery</span>
+              <h3>Checkpoint receipt</h3>
+              <p>Verify that model, optimizer, sampler, and evaluator state can resume exactly.</p>
+            </article>
+            <article class="field-cell">
+              <span class="cell-index">6 / conclusion</span>
+              <h3>Claim boundary</h3>
+              <p>State what passed, what remains underpowered, and what the run did not test.</p>
+            </article>
+          </div>
+        </div>
+      </section>
 
-      <!-- Google Colab -->
-      <div class="card">
-        <h2>📓 Google Colab</h2>
-        <p>Launch training notebooks directly in Colab (free T4 GPU)</p>
-        <span class="badge badge-green">Notebooks</span>
-        <ul class="resource-list">
-          <li><a href="https://colab.research.google.com/github/issdandavis/SCBE-AETHERMOORE/blob/main/scripts/train_lora_colab.ipynb" target="_blank">FLUX Art LoRA Training</a></li>
-          <li><a href="https://colab.research.google.com/github/issdandavis/SCBE-AETHERMOORE/blob/main/scripts/train_smollm2_kaggle.py" target="_blank">SmolLM2 SFT (via script)</a></li>
-        </ul>
-        <a class="btn btn-primary" href="https://colab.research.google.com/github/issdandavis/scbe-training-lab" target="_blank">Open Training Lab</a>
-      </div>
+      <section class="field-section" id="surfaces">
+        <div class="site-shell">
+          <div class="field-heading">
+            <div>
+              <span class="section-coordinate">Lab 02 / open surfaces</span>
+              <h2>Inspect the work at its source.</h2>
+            </div>
+            <p>
+              These are publication and evidence routes. They do not expose the local controller,
+              private storage, credentials, or a live command surface through the public website.
+            </p>
+          </div>
+          <div class="split-list">
+            <div class="split-row">
+              <h3>Evidence ledger</h3>
+              <p>Named campaigns, measured outcomes, and explicit limitations.</p>
+              <a class="text-link" href="/research/evidence-ledger.html">Open ledger</a>
+            </div>
+            <div class="split-row">
+              <h3>Operations evidence</h3>
+              <p>Searchable publication-safe records and integrity receipts.</p>
+              <a class="text-link" href="/research/operations.html">Open explorer</a>
+            </div>
+            <div class="split-row">
+              <h3>Published models and data</h3>
+              <p>Artifacts released through the AetherMoore Hugging Face account.</p>
+              <a class="text-link" href="https://huggingface.co/issdandavis">Hugging Face</a>
+            </div>
+            <div class="split-row">
+              <h3>Source and protocols</h3>
+              <p>Code, notebooks, tests, and change history in the public repository.</p>
+              <a class="text-link" href="https://github.com/issdandavis/SCBE-AETHERMOORE">GitHub</a>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <!-- Kaggle -->
-      <div class="card">
-        <h2>🏆 Kaggle</h2>
-        <p>Free T4 GPU notebooks and datasets</p>
-        <span class="badge badge-purple">GPU</span>
-        <ul class="resource-list">
-          <li><a href="https://www.kaggle.com/datasets" target="_blank">Upload SCBE training data</a></li>
-          <li><a href="https://www.kaggle.com/code" target="_blank">Create notebook from train_smollm2_kaggle.py</a></li>
-        </ul>
-        <a class="btn btn-primary" href="https://www.kaggle.com" target="_blank">Open Kaggle</a>
-      </div>
+      <section class="field-section" id="compute">
+        <div class="site-shell">
+          <div class="field-heading">
+            <div>
+              <span class="section-coordinate">Lab 03 / compute boundary</span>
+              <h2>Every worker gets a contract.</h2>
+            </div>
+            <p>
+              Local hardware and cloud providers can change. The durable part is the contract that
+              limits time, cost, storage, data movement, checkpoints, and promotion.
+            </p>
+          </div>
+          <div class="route-sheet">
+            <div class="route-sheet-head">
+              <strong>Compute contract</strong>
+              <span>provider-independent</span>
+            </div>
+            <ol class="route-steps">
+              <li>
+                <span class="step-index">1</span>
+                <div><h3>Budget</h3><p>Name wall time, phase limits, paid-compute ceiling, and stop conditions.</p></div>
+                <small>time + money</small>
+              </li>
+              <li>
+                <span class="step-index">2</span>
+                <div><h3>Storage</h3><p>Pin inputs and reserve room for every checkpoint that must survive.</p></div>
+                <small>hashes + headroom</small>
+              </li>
+              <li>
+                <span class="step-index">3</span>
+                <div><h3>Execution</h3><p>Run one owned worker with bounded authority and resumable state.</p></div>
+                <small>lease + watchdog</small>
+              </li>
+              <li>
+                <span class="step-index">4</span>
+                <div><h3>Evaluation</h3><p>Measure against the frozen panel before choosing or extending a checkpoint.</p></div>
+                <small>controls + retention</small>
+              </li>
+              <li>
+                <span class="step-index">5</span>
+                <div><h3>Receipt</h3><p>Preserve cost, state, outcome, failures, and the next safe resume point.</p></div>
+                <small>no blind promotion</small>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
 
-      <!-- Quick Actions -->
-      <div class="card">
-        <h2>⚡ Quick Actions</h2>
-        <p>Common training workflow shortcuts</p>
-        <a class="btn btn-primary" href="datasets.html">Buy Training Data</a>
-        <a class="btn btn-secondary" href="models.html">Browse Models</a>
-        <a class="btn btn-secondary" href="chat.html">Try Polly Chat</a>
-        <a class="btn btn-secondary" href="benchmark-kit.html">Run Benchmarks</a>
-      </div>
+      <section class="field-section" id="boundary">
+        <div class="site-shell source-band">
+          <strong>Public boundary</strong>
+          <p>
+            The website intentionally does not promise a live backend or expose local health URLs.
+            Current run state belongs in authenticated operator receipts. Public visitors get the
+            stable protocol, released artifacts, and evidence that is safe to publish.
+          </p>
+        </div>
+      </section>
+    </main>
 
-      <!-- Training Scripts -->
-      <div class="card">
-        <h2>📂 Local Scripts</h2>
-        <p>Training scripts available on this machine</p>
-        <ul class="resource-list">
-          <li><code>~/SCBE-AETHERMOORE/scripts/train_smollm2_kaggle.py</code></li>
-          <li><code>~/SCBE-AETHERMOORE/scripts/hf_training_loop.py</code></li>
-          <li><code>~/SCBE-AETHERMOORE/scripts/unified_training_pipeline.py</code></li>
-          <li><code>~/scbe-training-lab/</code> (dedicated lab repo)</li>
-        </ul>
+    <footer class="site-footer">
+      <div class="site-shell">
+        <a class="brand" href="/" aria-label="AetherMoore home">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="42" height="42" />
+          <span>AetherMoore</span>
+        </a>
+        <nav aria-label="Footer navigation">
+          <a href="/assistant.html">Ask Polly</a>
+          <a href="/research/evidence-ledger.html">Evidence</a>
+          <a href="/support.html">Help</a>
+          <a href="mailto:aethermoregames@pm.me">Contact</a>
+        </nav>
+        <p>Independent work by Issac Daniel Davis.</p>
       </div>
-    </div>
-
-    <footer>
-      <p>SCBE-AETHERMOORE Training Lab &mdash; Local dev instance</p>
-      <p class="api-status" id="apiDetail"></p>
     </footer>
-  </div>
-
-  <script>
-    // Check local backend health
-    fetch('http://localhost:8080/v1/health')
-      .then(r => r.json())
-      .then(data => {
-        const status = document.getElementById('backendStatus');
-        status.innerHTML = '<div class="status-dot status-ok"></div><span>Backend healthy &mdash; ' + data.version + '</span>';
-        document.getElementById('apiDetail').textContent = 'Last check: ' + new Date().toLocaleTimeString();
-      })
-      .catch(() => {
-        const status = document.getElementById('backendStatus');
-        status.innerHTML = '<div class="status-dot status-off"></div><span>Backend offline &mdash; run ~/restart-backend.ps1</span>';
-      });
-  </script>
-</body>
+    <script src="/static/cookie-consent.js" defer></script>
+  </body>
 </html>
