@@ -26,17 +26,20 @@ jobs:
 
       - name: Clone SCBE and count tests
         run: |
-          set -euo pipefail
+          set -eu
           git clone --depth 1 https://github.com/issdandavis/SCBE-AETHERMOORE.git /tmp/scbe
 
-          TS=$(find /tmp/scbe -name '*.test.ts' -o -name '*.test.js' -o -name '*.spec.ts' \
-               | grep -v '/node_modules/' | wc -l)
-          PY=$(find /tmp/scbe -name 'test_*.py' -o -name '*_test.py' \
-               | grep -v '/node_modules/' | wc -l)
-          RS=$(find /tmp/scbe -path '*/tests/*' -name '*.rs' \
-               | grep -v '/target/' | wc -l)
+          # Filtering is done inside find, not through grep: grep exits 1 on no
+          # match, which kills the step for a legitimately-zero count.
+          TS=$(find /tmp/scbe -type f \( -name '*.test.ts' -o -name '*.test.js' -o -name '*.spec.ts' \) \
+                 -not -path '*/node_modules/*' | wc -l)
+          PY=$(find /tmp/scbe -type f \( -name 'test_*.py' -o -name '*_test.py' \) \
+                 -not -path '*/node_modules/*' | wc -l)
+          RS=$(find /tmp/scbe -type f -name '*.rs' -path '*/tests/*' \
+                 -not -path '*/target/*' | wc -l)
           TOTAL=$((TS + PY + RS))
           SHA=$(git -C /tmp/scbe rev-parse HEAD)
+          echo "ts=$TS py=$PY rs=$RS total=$TOTAL commit=$SHA"
 
           mkdir -p data
           jq -n \
@@ -61,7 +64,7 @@ jobs:
 
       - name: Commit if changed
         run: |
-          set -euo pipefail
+          set -eu
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/scbe-stats.json
