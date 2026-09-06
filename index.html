@@ -1,500 +1,606 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AetherMoore | Find the right book, tool, proof, or build path</title>
-  <meta name="description" content="Start with Polly, the AetherMoore front desk. Find books, $29 AI workflow packs, open tools, research evidence, support, or fixed-scope work by Issac Daniel Davis.">
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <meta property="og:title" content="AetherMoore | Start with the outcome">
-  <meta property="og:description" content="One clear front door for AetherMoore books, tools, evidence, and hands-on work.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://aethermoore.com/">
-  <meta property="og:image" content="https://aethermoore.com/hero.webp">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="AetherMoore | Start with the outcome">
-  <meta name="twitter:description" content="Polly routes you to the right book, tool, proof, or build path.">
-  <meta name="twitter:image" content="https://aethermoore.com/hero.webp">
-  <link rel="canonical" href="https://aethermoore.com/">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="stylesheet" href="/static/home.css">
-  <link rel="stylesheet" href="/static/polly-sidebar.css">
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="static/site/aethermore.css" />
+    <title>AetherMoore | Verifiable AI Systems</title>
+    <meta
+      name="description"
+      content="AetherMoore builds AI systems where models propose, software checks permission, and actions leave receipts, plus language tools and measured model research."
+    />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
+    <meta property="og:title" content="AetherMoore | Verifiable AI Systems" />
+    <meta
+      property="og:description"
+      content="AI systems that can show their work: bounded agent actions, exact representations, and research with receipts."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://aethermoore.com/" />
+    <meta property="og:image" content="https://aethermoore.com/social-card.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="AetherMoore verifiable AI system mission map" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="AetherMoore | Verifiable AI Systems" />
+    <meta
+      name="twitter:description"
+      content="AI systems that can show their work: bounded actions, exact representations, and research with receipts."
+    />
+    <meta name="twitter:image" content="https://aethermoore.com/social-card.png" />
+    <meta name="twitter:image:alt" content="AetherMoore verifiable AI system mission map" />
+    <link rel="canonical" href="https://aethermoore.com/" />
+    <script defer src="static/site/aethermore.js"></script>
+    <script type="application/ld+json">
       {
-        "@type": "WebSite",
-        "@id": "https://aethermoore.com/#website",
-        "url": "https://aethermoore.com/",
-        "name": "AetherMoore",
-        "description": "Books, governed AI tools, research evidence, and fixed-scope work by Issac Daniel Davis."
-      },
-      {
-        "@type": "Person",
-        "@id": "https://aethermoore.com/#issac",
-        "name": "Issac Daniel Davis",
-        "url": "https://aethermoore.com/about.html",
-        "email": "aethermoregames@pm.me",
-        "sameAs": [
-          "https://github.com/issdandavis",
-          "https://huggingface.co/issdandavis",
-          "https://www.amazon.com/stores/Issac-Daniel-Davis/author/B0H1W2JP1N"
-        ]
-      },
-      {
-        "@type": "Product",
-        "name": "AI Governance Toolkit",
-        "description": "Templates, thresholds, decision records, and starter rollout guidance for governed AI work.",
-        "brand": { "@type": "Brand", "name": "AetherMoore" },
-        "offers": {
-          "@type": "Offer",
-          "price": "29",
-          "priceCurrency": "USD",
-          "availability": "https://schema.org/InStock",
-          "url": "https://buy.stripe.com/cNibJ25Ca2TJ9gQ3a6dby06"
-        }
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
+        "@context": "https://schema.org",
+        "@graph": [
           {
-            "@type": "Question",
-            "name": "Where should I start on AetherMoore?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Start with Polly, the public front desk. Polly routes visitors to products, tools, evidence, support, manuals, or a custom-work inquiry."
-            }
+            "@type": "WebSite",
+            "@id": "https://aethermoore.com/#website",
+            "url": "https://aethermoore.com/",
+            "name": "AetherMoore",
+            "description": "Verifiable agent infrastructure, exact language systems, and measured small-model research.",
+            "publisher": { "@id": "https://aethermoore.com/#lab" }
           },
           {
-            "@type": "Question",
-            "name": "What can I buy today?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "AetherMoore currently links to published books on Amazon and one-time digital workflow packs through Stripe. Fixed-scope work starts through the hire page."
-            }
+            "@type": "Organization",
+            "@id": "https://aethermoore.com/#lab",
+            "name": "AetherMoore",
+            "url": "https://aethermoore.com/",
+            "founder": { "@id": "https://aethermoore.com/#issac" },
+            "sameAs": [
+              "https://github.com/issdandavis/SCBE-AETHERMOORE",
+              "https://huggingface.co/issdandavis"
+            ]
           },
           {
-            "@type": "Question",
-            "name": "Can I inspect the work before buying?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. Public source, operations evidence, research notes, manuals, tools, and delivery proof are linked from the site."
-            }
+            "@type": "Person",
+            "@id": "https://aethermoore.com/#issac",
+            "name": "Issac Daniel Davis",
+            "url": "https://aethermoore.com/about.html",
+            "email": "aethermoregames@pm.me"
           }
         ]
       }
-    ]
-  }
-  </script>
-</head>
-<body>
-  <a class="skip-link" href="#main">Skip to main content</a>
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
 
-  <header class="site-header">
-    <div class="tongue-ruler" aria-hidden="true">
-      <span></span><span></span><span></span><span></span><span></span><span></span>
-    </div>
-    <div class="wrap header-row">
-      <a class="brand" href="/"><span class="brand-mark">A</span>etherMoore</a>
-      <nav class="site-nav" aria-label="Primary navigation">
-        <a href="#products">Products</a>
-        <a href="/shop.html">Shop</a>
-        <a href="/books.html">Books</a>
-        <a href="/tools.html">Tools</a>
-        <a href="/research/operations.html">Proof</a>
-        <a href="/about.html">About</a>
-      </nav>
-      <a class="header-action" href="/assistant.html">Ask Polly</a>
-    </div>
-  </header>
+    <header class="site-header" data-site-header>
+      <div class="site-shell header-inner">
+        <a class="brand" href="index.html" aria-label="AetherMoore home">
+          <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+            <path d="M24 2.75 42.4 13.4v21.2L24 45.25 5.6 34.6V13.4Z" />
+            <path d="m24 2.75 10.6 18.4L24 45.25 13.4 21.15Zm-18.4 10.65h36.8L24 45.25Z" />
+          </svg>
+          <span>AetherMoore</span>
+        </a>
 
-  <main id="main">
-    <section class="wrap hero" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="eyebrow">Books · useful AI systems · verifiable work</p>
-        <h1 id="hero-title">Start with the outcome. <em>We’ll route the rest.</em></h1>
-        <p>AetherMoore is Issac Daniel Davis’s independent workshop. Tell Polly what you are trying to do, and the front desk will point you to the right product, tool, evidence page, or human handoff.</p>
-        <div class="actions">
-          <a class="button button-primary" href="/assistant.html">Tell Polly what you need</a>
-          <a class="button button-secondary" href="/shop.html">Browse the shop</a>
-        </div>
-        <ul class="truth-line" aria-label="Trust facts">
-          <li>Three published books</li>
-          <li>Open-source packages</li>
-          <li>Patent application filed and pending</li>
-        </ul>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-navigation"
+          data-menu-toggle
+        >
+          Menu
+        </button>
+
+        <nav class="site-nav" id="site-navigation" aria-label="Primary navigation" data-site-nav>
+          <a href="assistant.html">Ask Polly</a>
+          <a href="#work">Work</a>
+          <a href="#research">Research</a>
+          <a href="#about">About</a>
+          <a class="nav-source" href="https://github.com/issdandavis/SCBE-AETHERMOORE"
+            >GitHub <span aria-hidden="true">↗</span></a
+          >
+        </nav>
       </div>
+    </header>
 
-      <a class="route-console" href="/assistant.html" aria-label="Open Polly, the AetherMoore routing assistant">
-        <div class="console-head">
-          <span>Public route map</span>
-          <span class="console-status">Ready</span>
-        </div>
-        <div class="route-field" aria-hidden="true">
-          <span class="axis-x"></span>
-          <span class="axis-y"></span>
-          <span class="route-node node-shop">Buy</span>
-          <span class="route-node node-build">Build</span>
-          <span class="route-node node-proof">Verify</span>
-          <span class="route-node node-learn">Learn</span>
-          <span class="route-core">Polly</span>
-        </div>
-        <div class="console-foot">
-          <span>Intent → route → next action</span>
-          <span>Open ↗</span>
-        </div>
-      </a>
-    </section>
-
-    <section class="section" aria-labelledby="routes-title">
-      <div class="wrap">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">Choose by intent</p>
-            <h2 id="routes-title">Four doors. No maze.</h2>
-          </div>
-          <p>You do not need to understand the whole SCBE, Clay, or AetherDesk stack to use something built from it. Start with what you want to accomplish.</p>
-        </div>
-
-        <div class="route-list">
-          <a class="route-row" href="/assistant.html">
-            <span class="route-index">01 / choose</span>
-            <span>
-              <h3>I am not sure where to start.</h3>
-              <p>Describe the outcome in ordinary language. Polly will select a public route or prepare a clean handoff.</p>
-            </span>
-            <span class="route-go">Ask Polly →</span>
-          </a>
-          <a class="route-row" href="/shop.html">
-            <span class="route-index">02 / buy</span>
-            <span>
-              <h3>I want a book or ready-made pack.</h3>
-              <p>Use the short shelf for published books, one-time digital packs, free material, and direct links.</p>
-            </span>
-            <span class="route-go">Open shop →</span>
-          </a>
-          <a class="route-row" href="/hire.html">
-            <span class="route-index">03 / build</span>
-            <span>
-              <h3>I need something adapted or built.</h3>
-              <p>Bring the problem, current system, constraints, and desired finish line. Start with a fixed scope.</p>
-            </span>
-            <span class="route-go">Hire Issac →</span>
-          </a>
-          <a class="route-row" href="/research/operations.html">
-            <span class="route-index">04 / verify</span>
-            <span>
-              <h3>I want evidence before claims.</h3>
-              <p>Inspect public source, measured results, capability boundaries, training receipts, and known nulls.</p>
-            </span>
-            <span class="route-go">Check evidence →</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section commercial" aria-labelledby="offers-title">
-      <div class="wrap">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">A simple value ladder</p>
-            <h2 id="offers-title">Read it. Use it. Build with it.</h2>
-          </div>
-          <p>Three levels keep the choice proportionate to the problem. You can support the work with a book, use a finished pack, or begin a scoped engagement.</p>
-        </div>
-
-        <div class="offer-grid">
-          <article class="offer">
-            <span class="offer-kind">01 · Published work</span>
-            <h3>Books</h3>
-            <p>Science fiction, literary fiction, and creative nonfiction by Issac Daniel Davis. Three titles are published; one more is clearly marked as a draft.</p>
-            <div class="offer-price">Amazon</div>
-            <div class="offer-links">
-              <a href="/books.html">Browse the books →</a>
-              <a href="https://www.amazon.com/stores/Issac-Daniel-Davis/author/B0H1W2JP1N" target="_blank" rel="noopener">Author store</a>
+    <main id="main-content">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="site-shell hero-grid">
+          <div class="hero-copy">
+            <h1 id="hero-title">
+              AI systems that can show their work<span aria-hidden="true">.</span>
+            </h1>
+            <p class="hero-lead">
+              Models propose. Software checks permission. Every action leaves a receipt.
+            </p>
+            <p class="hero-detail">
+              AetherMoore is an independent lab building verifiable agent infrastructure, exact
+              multi-view languages, and small-model research measured against controls.
+            </p>
+            <div class="button-row">
+              <a class="button button-primary" href="assistant.html">
+                Ask Polly where to start <span aria-hidden="true">→</span>
+              </a>
+              <a
+                class="button button-secondary"
+                href="https://github.com/issdandavis/SCBE-AETHERMOORE"
+              >
+                View source <span aria-hidden="true">↗</span>
+              </a>
             </div>
-          </article>
-
-          <article class="offer">
-            <span class="offer-kind">02 · Ready-made system</span>
-            <h3>AI Governance Toolkit</h3>
-            <p>Templates, thresholds, decision records, and starter rollout guidance for teams putting boundaries around AI work.</p>
-            <div class="offer-price">$29 · one time</div>
-            <div class="offer-links">
-              <a href="https://buy.stripe.com/cNibJ25Ca2TJ9gQ3a6dby06" target="_blank" rel="noopener">Buy the toolkit →</a>
-              <a href="/product-manual/ai-governance-toolkit.html">Read the manual</a>
-            </div>
-          </article>
-
-          <article class="offer">
-            <span class="offer-kind">03 · Human collaboration</span>
-            <h3>Fixed-scope work</h3>
-            <p>AI workflow packaging, assistant and site setup, content operations, governance surfaces, or a bounded custom build.</p>
-            <div class="offer-price">Scoped first</div>
-            <div class="offer-links">
-              <a href="/hire.html">Start an inquiry →</a>
-              <a href="/services.html">See service lanes</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section products" id="products" aria-labelledby="products-title">
-      <div class="wrap">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">Working products</p>
-            <h2 id="products-title">Built here. Labeled honestly.</h2>
+            <p class="active-readout">
+              <span class="active-dot" aria-hidden="true"></span>
+              Active checkpoint:
+              <strong data-route-readout>2 · Capability</strong>
+            </p>
           </div>
-          <p>These systems are at different stages. Some are published packages, some are local tools, and some are working prototypes. Every link opens something you can inspect.</p>
-        </div>
 
-        <div class="product-showcase">
-          <article class="product-stage product-browser">
-            <div class="product-copy">
-              <span class="product-state">Working prototype</span>
-              <h3>AetherBrowser</h3>
-              <p>A governed desktop browser with an agent sidepanel, bounded actions, page analysis, and a local control plane. Desktop source is public; the public page is an interactive simulation.</p>
-              <div class="product-actions">
-                <a href="/demos/aetherbrowser-demo.html">Try the public demo</a>
-                <a href="https://github.com/issdandavis/aetherbrowser" target="_blank" rel="noopener">Inspect the source</a>
+          <figure class="mission-map" data-route-map data-active-step="2">
+            <figcaption class="map-heading">
+              <span>Mission map · v1.0</span>
+              <small>Reference path for a governed action</small>
+            </figcaption>
+
+            <div class="map-layout">
+              <div class="plot plot-desktop" aria-hidden="true">
+                <svg viewBox="0 0 760 470" role="img">
+                  <defs>
+                    <pattern id="small-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+                      <path d="M24 0H0V24" class="grid-line" />
+                    </pattern>
+                    <pattern id="large-grid" width="120" height="120" patternUnits="userSpaceOnUse">
+                      <rect width="120" height="120" fill="url(#small-grid)" />
+                      <path d="M120 0H0V120" class="grid-line-major" />
+                    </pattern>
+                    <marker
+                      id="route-arrow"
+                      viewBox="0 0 10 10"
+                      refX="8"
+                      refY="5"
+                      markerWidth="6"
+                      markerHeight="6"
+                      orient="auto-start-reverse"
+                    >
+                      <path d="m0 0 10 5-10 5Z" class="arrow-head" />
+                    </marker>
+                  </defs>
+                  <rect width="760" height="470" fill="url(#large-grid)" />
+                  <path d="M28 230H732M378 24V446" class="axis" />
+                  <path
+                    d="M28 225v10m88-10v10m88-10v10m88-10v10m172-10v10m88-10v10m88-10v10m88-10v10"
+                    class="ticks"
+                  />
+                  <path d="M373 54h10m-10 88h10m-10 176h10m-10 88h10" class="ticks" />
+
+                  <path d="M38 112h63c24 0 20-38 49-38h18" class="route route-in" />
+                  <path d="M194 74v35c0 20 14 27 31 27h115c20 0 26 14 26 30v73" class="route" />
+                  <path
+                    d="M378 272c-34 0-70-4-70 52 0 62 102 69 174 52 42-10 54-45 82-65"
+                    class="route route-return"
+                  />
+                  <path d="M564 311v-43c0-19 16-28 33-28h30" class="route" />
+                  <path d="M646 221v-67" class="route" marker-end="url(#route-arrow)" />
+                  <path d="M668 122h62" class="route route-out" marker-end="url(#route-arrow)" />
+
+                  <g class="map-node" data-node-marker="1" transform="translate(181 74)">
+                    <circle r="20" />
+                    <text y="6">1</text>
+                  </g>
+                  <g class="map-node" data-node-marker="2" transform="translate(366 250)">
+                    <circle r="20" />
+                    <text y="6">2</text>
+                  </g>
+                  <g class="map-node" data-node-marker="3" transform="translate(548 322)">
+                    <circle r="20" />
+                    <text y="6">3</text>
+                  </g>
+                  <g class="map-node" data-node-marker="4" transform="translate(646 240)">
+                    <circle r="20" />
+                    <text y="6">4</text>
+                  </g>
+                  <g class="map-node" data-node-marker="5" transform="translate(646 122)">
+                    <circle r="20" />
+                    <text y="6">5</text>
+                  </g>
+
+                  <g class="plot-label" transform="translate(210 66)">
+                    <text>Proposal</text>
+                    <text y="20" class="plot-note">model proposes action + args</text>
+                  </g>
+                  <g class="plot-label" transform="translate(394 242)">
+                    <text>Capability</text>
+                    <text y="20" class="plot-note">host verifies authority</text>
+                  </g>
+                  <g class="plot-label" transform="translate(446 355)">
+                    <text>Isolation</text>
+                    <text y="20" class="plot-note">no ambient access</text>
+                  </g>
+                  <g class="plot-label" transform="translate(608 278)">
+                    <text>Action</text>
+                  </g>
+                  <g class="plot-label" transform="translate(674 112)">
+                    <text>Receipt</text>
+                    <text y="20" class="plot-note">record outcome</text>
+                  </g>
+                  <g class="plot-label recheck-label" transform="translate(350 408)">
+                    <text>Re-route / re-check</text>
+                  </g>
+                  <text x="720" y="220" class="axis-label">x</text>
+                  <text x="389" y="36" class="axis-label">y</text>
+                </svg>
+              </div>
+
+              <ol class="mobile-route" aria-label="Mission checkpoints">
+                <li data-mobile-step="1">
+                  <span>1</span>
+                  <div>
+                    <strong>Proposal</strong><small>Model proposes action + arguments.</small>
+                  </div>
+                </li>
+                <li data-mobile-step="2">
+                  <span>2</span>
+                  <div>
+                    <strong>Capability</strong><small>Host verifies identity and authority.</small>
+                  </div>
+                </li>
+                <li data-mobile-step="3">
+                  <span>3</span>
+                  <div>
+                    <strong>Isolation</strong
+                    ><small>Execution begins without ambient access.</small>
+                  </div>
+                </li>
+                <li data-mobile-step="4">
+                  <span>4</span>
+                  <div>
+                    <strong>Action</strong><small>Approved effect runs within limits.</small>
+                  </div>
+                </li>
+                <li data-mobile-step="5">
+                  <span>5</span>
+                  <div>
+                    <strong>Receipt</strong><small>System records the decision and outcome.</small>
+                  </div>
+                </li>
+              </ol>
+
+              <div class="checkpoint-panel">
+                <p>Checkpoints</p>
+                <ol>
+                  <li>
+                    <button type="button" data-route-step="1"><span>1</span> Proposal</button>
+                  </li>
+                  <li>
+                    <button type="button" data-route-step="2" aria-current="step">
+                      <span>2</span> Capability
+                    </button>
+                  </li>
+                  <li>
+                    <button type="button" data-route-step="3"><span>3</span> Isolation</button>
+                  </li>
+                  <li>
+                    <button type="button" data-route-step="4"><span>4</span> Action</button>
+                  </li>
+                  <li>
+                    <button type="button" data-route-step="5"><span>5</span> Receipt</button>
+                  </li>
+                </ol>
               </div>
             </div>
-            <div class="browser-preview" aria-hidden="true">
-              <div class="browser-bar">
-                <span></span><span></span><span></span>
-                <b>review://current-page</b>
-              </div>
-              <div class="browser-body">
-                <div class="browser-page">
-                  <i></i><i></i><i></i><i></i>
-                </div>
-                <div class="browser-guard">
-                  <span>Agent sidepanel</span>
-                  <strong>Review before action</strong>
-                  <small>observe</small><small>plan</small><small>approve</small>
-                </div>
-              </div>
-            </div>
-          </article>
 
-          <article class="product-stage product-desk">
-            <span class="product-state">Local build · private source</span>
-            <h3>AetherDesk</h3>
-            <p>A local-first desktop for bounded AI and human workflows, with registered actions and receipts instead of unrestricted host control.</p>
-            <div class="desk-preview" aria-hidden="true">
-              <span>Terminal</span><span>Browser</span><span>GitHub</span><span>Ledger</span>
+            <div class="map-footer">
+              <span>route: solid = forward · dashed = re-check</span>
+              <output data-route-description>
+                The host checks identity, capability, limits, and replay state before an effect.
+              </output>
             </div>
-            <div class="product-actions">
-              <a href="/backroom.html">See the system map</a>
-              <a href="/contact.html">Ask about the build</a>
-            </div>
-          </article>
+          </figure>
+        </div>
+      </section>
 
-          <article class="product-stage product-bus">
+      <section class="layers" id="work" aria-labelledby="layers-title">
+        <div class="site-shell">
+          <div class="section-heading">
+            <h2 id="layers-title">
+              One system. Three working layers<span aria-hidden="true">.</span>
+            </h2>
+            <p>
+              The research is broad. The public architecture becomes easier to inspect when it is
+              separated into three jobs.
+            </p>
+          </div>
+
+          <div class="layer-list">
+            <article class="layer-row">
+              <span class="layer-number">01</span>
+              <div class="layer-icon" aria-hidden="true">&gt;_</div>
+              <div class="layer-copy">
+                <h3>Agent runtime</h3>
+                <p>
+                  Agent Bus and GeoSeal carry plans through capability checks, bounded workers,
+                  policy decisions, and durable receipts.
+                </p>
+              </div>
+              <a class="text-link" href="training-bus.html"
+                >Inspect the runtime <span aria-hidden="true">→</span></a
+              >
+            </article>
+
+            <article class="layer-row">
+              <span class="layer-number">02</span>
+              <svg class="layer-icon layer-icon-svg" viewBox="0 0 48 48" aria-hidden="true">
+                <path d="m24 5 18 11-18 11L6 16Zm-18 22 18 11 18-11" />
+              </svg>
+              <div class="layer-copy">
+                <h3>Language substrate</h3>
+                <p>
+                  Six canonical language views, binary and trit representations, and compiler paths
+                  expose disagreement instead of hiding it in one encoding.
+                </p>
+              </div>
+              <a class="text-link" href="architecture.html"
+                >Map the language layer <span aria-hidden="true">→</span></a
+              >
+            </article>
+
+            <article class="layer-row">
+              <span class="layer-number">03</span>
+              <svg class="layer-icon layer-icon-svg" viewBox="0 0 48 48" aria-hidden="true">
+                <path d="M6 39h36M9 34l8-8 7 4 13-17M9 10h30M13 6v8m11-8v8m11-8v8" />
+              </svg>
+              <div class="layer-copy">
+                <h3>Clay research</h3>
+                <p>
+                  Small-model training uses retention checks, matched controls, saved lineage, and
+                  result receipts. Incomplete experiments stay labeled incomplete.
+                </p>
+              </div>
+              <a class="text-link" href="training-lab.html"
+                >See the training work <span aria-hidden="true">→</span></a
+              >
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="evidence" id="evidence" aria-labelledby="evidence-title">
+        <div class="site-shell">
+          <div class="section-heading section-heading-wide">
+            <h2 id="evidence-title">Evidence before claims<span aria-hidden="true">.</span></h2>
+            <p>
+              These are repository-local test campaigns with preserved commands and receipts. They
+              measure specific deterministic behavior. External audit is still pending.
+            </p>
+          </div>
+
+          <dl class="evidence-rail">
             <div>
-              <span class="product-state">Prototype · public receipts</span>
-              <h3>Operator Agent Bus</h3>
-              <p>A packet-and-receipt route for coordinating bounded agents, constrained outputs, checks, and human review.</p>
-              <div class="product-actions">
-                <a href="/training-bus.html">Open the proof surface</a>
-                <a href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank" rel="noopener">Framework source</a>
-              </div>
+              <dt>9,216</dt>
+              <dd>canonical transitive checks</dd>
             </div>
-            <div class="bus-preview" aria-hidden="true">
-              <span>request</span><i></i><span>route</span><i></i><span>verify</span><i></i><span>receipt</span>
+            <div>
+              <dt>2,934</dt>
+              <dd>compiler differential cases</dd>
             </div>
-          </article>
-
-          <article class="product-stage product-sdk">
-            <span class="product-state">Published package</span>
-            <h3>SCBE SDK</h3>
-            <p>The public TypeScript and Python package surface for governed automation and risk-scoring experiments.</p>
-            <div class="sdk-preview" aria-hidden="true">
-              <code>npm install<br>scbe-aethermoore</code>
-              <code>pip install<br>scbe-aethermoore</code>
+            <div>
+              <dt>728</dt>
+              <dd>Agent Bus package tests</dd>
             </div>
-            <div class="product-actions">
-              <a href="https://www.npmjs.com/package/scbe-aethermoore" target="_blank" rel="noopener">npm</a>
-              <a href="https://pypi.org/project/scbe-aethermoore/" target="_blank" rel="noopener">PyPI</a>
+            <div>
+              <dt>5,000</dt>
+              <dd>prime-coordinate controls</dd>
             </div>
-          </article>
+          </dl>
 
-          <article class="product-stage product-verifier">
-            <span class="product-state">Internal utility · private source</span>
-            <h3>Trust Verifier</h3>
-            <p>Runs the same candidate function through Python and JavaScript, reports disagreement with a concrete witness, and can emit a machine-decodable verdict tone.</p>
-            <div class="verify-preview" aria-hidden="true">
-              <span>Python</span><span>JavaScript</span><strong>compare</strong><b>SEAL / REJECT / ABSTAIN</b>
+          <div class="evidence-notes">
+            <span>Local evidence · campaigns through September 2026 · no certification claim</span>
+            <div>
+              <a class="text-link" href="research/evidence-ledger.html"
+                >Open evidence ledger <span aria-hidden="true">↗</span></a
+              >
+              <a class="text-link" href="research/operations.html"
+                >Open operations evidence <span aria-hidden="true">↗</span></a
+              >
             </div>
-            <div class="product-actions">
-              <a href="/contact.html">Ask about the build</a>
-            </div>
-          </article>
-        </div>
-
-        <p class="product-boundary"><strong>In active research:</strong> Clay is being trained and evaluated, but it is not advertised here as a finished frontier model. Measured progress belongs in the evidence lane.</p>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="evidence-title">
-      <div class="wrap evidence-layout">
-        <div class="evidence-intro">
-          <p class="eyebrow">Evidence before theater</p>
-          <h2 id="evidence-title">Look under the surface.</h2>
-          <p>The public site separates what exists, what was measured, what failed, and what still needs work. Use these records before relying on a headline.</p>
-        </div>
-
-        <ol class="evidence-list">
-          <li>
-            <a href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank" rel="noopener">
-              <span class="evidence-code">SRC</span>
-              <span><span class="evidence-name">Public source</span><span class="evidence-note">Inspect the framework, tests, and implementation history.</span></span>
-              <span class="evidence-arrow">↗</span>
-            </a>
-          </li>
-          <li>
-            <a href="/research/operations.html">
-              <span class="evidence-code">OPS</span>
-              <span><span class="evidence-name">Operations evidence</span><span class="evidence-note">Results, experiment records, capability boundaries, and public artifacts.</span></span>
-              <span class="evidence-arrow">→</span>
-            </a>
-          </li>
-          <li>
-            <a href="/training-bus.html">
-              <span class="evidence-code">RUN</span>
-              <span><span class="evidence-name">Training bus proof</span><span class="evidence-note">Receipt-backed training artifacts and constrained gate checks.</span></span>
-              <span class="evidence-arrow">→</span>
-            </a>
-          </li>
-          <li>
-            <a href="/delivery-proof.html">
-              <span class="evidence-code">DLV</span>
-              <span><span class="evidence-name">Buyer delivery proof</span><span class="evidence-note">How paid packets, private downloads, and support recovery are separated.</span></span>
-              <span class="evidence-arrow">→</span>
-            </a>
-          </li>
-          <li>
-            <a href="/about.html">
-              <span class="evidence-code">ID</span>
-              <span><span class="evidence-name">About and trust</span><span class="evidence-note">Who built the work, what is filed, and what is not being claimed.</span></span>
-              <span class="evidence-arrow">→</span>
-            </a>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <section class="section directory" aria-labelledby="directory-title">
-      <div class="wrap">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">The rest of the workshop</p>
-            <h2 id="directory-title">Go deeper on purpose.</h2>
           </div>
-          <p>The archive still exists. It is grouped by job now, so demos, research, support, story, and system detail no longer compete for the same attention.</p>
+        </div>
+      </section>
+
+      <section class="boundary" aria-labelledby="boundary-title">
+        <div class="site-shell">
+          <div class="boundary-heading">
+            <h2 id="boundary-title">
+              The model proposes. The system decides what may happen<span aria-hidden="true"
+                >.</span
+              >
+            </h2>
+            <button class="text-button" type="button" data-trace-path>
+              Trace this path <span aria-hidden="true">→</span>
+            </button>
+          </div>
+
+          <div class="boundary-canvas" data-boundary-canvas data-active-boundary="3">
+            <ol class="boundary-route">
+              <li>
+                <button type="button" data-boundary-step="1">
+                  <span>1</span><strong>Input</strong><small>Request enters the system.</small>
+                </button>
+              </li>
+              <li>
+                <button type="button" data-boundary-step="2">
+                  <span>2</span><strong>Model proposal</strong><small>Action and arguments.</small>
+                </button>
+              </li>
+              <li>
+                <button type="button" data-boundary-step="3" aria-current="step">
+                  <span>3</span><strong>Capability check</strong
+                  ><small>Identity, scope, limits.</small>
+                </button>
+              </li>
+              <li>
+                <button type="button" data-boundary-step="4">
+                  <span>4</span><strong>Isolated action</strong
+                  ><small>Effect runs in its boundary.</small>
+                </button>
+              </li>
+              <li>
+                <button type="button" data-boundary-step="5">
+                  <span>5</span><strong>Receipt</strong><small>Decision and outcome persist.</small>
+                </button>
+              </li>
+            </ol>
+
+            <div class="boundary-detail" aria-live="polite">
+              <span class="boundary-reticle" aria-hidden="true"></span>
+              <div>
+                <p data-boundary-kicker>Checkpoint 3 · Capability</p>
+                <strong data-boundary-description>
+                  Policy, identity, limits, and replay state are checked at the boundary.
+                </strong>
+              </div>
+              <p class="replan-note">failed check <span aria-hidden="true">↩</span> re-plan</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="research" id="research" aria-labelledby="research-title">
+        <div class="site-shell">
+          <div class="section-heading section-heading-wide">
+            <h2 id="research-title">Research with receipts<span aria-hidden="true">.</span></h2>
+            <p>
+              A useful lab records what survived a test, what remains uncertain, and what a control
+              disproved.
+            </p>
+          </div>
+
+          <div class="research-ledger" role="table" aria-label="Research status ledger">
+            <div class="ledger-head" role="row">
+              <span role="columnheader">Status</span>
+              <span role="columnheader">Finding</span>
+              <span role="columnheader">Evidence</span>
+            </div>
+            <article class="ledger-row" role="row">
+              <p class="status status-proven" role="cell">
+                <span aria-hidden="true"></span> Proven
+              </p>
+              <h3 role="cell">Six-view canonical transforms round-trip on the tested domain</h3>
+              <p role="cell">9,216 transitive checks · 256 quine walks</p>
+            </article>
+            <article class="ledger-row" role="row">
+              <p class="status status-experimental" role="cell">
+                <span aria-hidden="true"></span> Experimental
+              </p>
+              <h3 role="cell">Topology-guided routing on learned states</h3>
+              <p role="cell">Held-out controls and independent replication still required</p>
+            </article>
+            <article class="ledger-row" role="row">
+              <p class="status status-refuted" role="cell">
+                <span aria-hidden="true"></span> Refuted
+              </p>
+              <h3 role="cell">A learned opcode router caused the measured improvement</h3>
+              <p role="cell">Execution-accounting bug found; zero-parameter control won</p>
+            </article>
+          </div>
+
+          <a class="text-link research-link" href="research/evidence-ledger.html">
+            Open the research ledger <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="about" id="about" aria-labelledby="about-title">
+        <div class="site-shell about-grid">
+          <div class="about-copy">
+            <h2 id="about-title">
+              Built in the open, one claim at a time<span aria-hidden="true">.</span>
+            </h2>
+            <p>
+              AetherMoore is an independent lab founded by Issac Daniel Davis in Port Angeles,
+              Washington. The work combines geometric intuition, agent engineering, custom language
+              systems, and strict measurement.
+            </p>
+            <p>
+              AI systems help turn the ideas into code. Tests, controls, and receipts decide what
+              the lab can honestly say afterward. The result matters more than a dramatic claim.
+            </p>
+            <p class="patent-note">
+              Patent pending: U.S. Application 19/691,526, filed May 28, 2026, claiming priority to
+              provisional 63/961,403. Filed; not examined.
+            </p>
+            <div class="about-links">
+              <a class="text-link" href="about.html"
+                >About the lab <span aria-hidden="true">↗</span></a
+              >
+              <a class="text-link" href="mailto:aethermoregames@pm.me?subject=AetherMoore%20inquiry"
+                >Contact Issac <span aria-hidden="true">↗</span></a
+              >
+            </div>
+          </div>
+
+          <svg
+            class="rose-map"
+            viewBox="0 0 520 520"
+            role="img"
+            aria-labelledby="rose-title rose-description"
+          >
+            <title id="rose-title">Six-node AetherMoore compass</title>
+            <desc id="rose-description">
+              Six perimeter nodes connected across a circular plotting field.
+            </desc>
+            <circle cx="260" cy="260" r="176" />
+            <path d="M260 48v424M78 155l364 210M78 365l364-210M108 260h304" />
+            <path class="rose-dashed" d="m260 84 152 88v176l-152 88-152-88V172Z" />
+            <path class="rose-core" d="m260 84 152 264H108Zm-152 88h304L260 436Z" />
+            <g>
+              <circle cx="260" cy="84" r="14" />
+              <circle cx="412" cy="172" r="14" />
+              <circle cx="412" cy="348" r="14" />
+              <circle cx="260" cy="436" r="14" />
+              <circle cx="108" cy="348" r="14" />
+              <circle cx="108" cy="172" r="14" />
+            </g>
+          </svg>
+        </div>
+      </section>
+
+      <section class="closing" aria-labelledby="closing-title">
+        <div class="site-shell closing-top">
+          <h2 id="closing-title">
+            Inspect the work.<br />Trace the evidence<span aria-hidden="true">.</span>
+          </h2>
+          <div class="button-row">
+            <a class="button button-light" href="assistant.html"
+              >Ask Polly where to start <span aria-hidden="true">→</span></a
+            >
+            <a
+              class="button button-outline-light"
+              href="https://github.com/issdandavis/SCBE-AETHERMOORE"
+            >
+              View on GitHub <span aria-hidden="true">↗</span>
+            </a>
+          </div>
         </div>
 
-        <div class="directory-grid">
-          <nav class="directory-group" aria-label="Use and build">
-            <h3>Use &amp; build</h3>
-            <ul>
-              <li><a href="/tools.html">Live tools</a></li>
-              <li><a href="/studio/">Clay Studio</a></li>
-              <li><a href="/product-manual/index.html">Product manuals</a></li>
-              <li><a href="/support.html">Support and recovery</a></li>
-              <li><a href="/backroom.html">Operations backroom</a></li>
-            </ul>
+        <footer class="site-shell site-footer">
+          <nav aria-label="Footer navigation">
+            <a href="research/">Research</a>
+            <a href="product-manual/index.html">Documentation</a>
+            <a href="books.html">Books</a>
+            <a href="https://www.youtube.com/channel/UCO9aJ-ZH0Ddg_F0Dr655WIQ">YouTube</a>
+            <a href="https://huggingface.co/issdandavis">Hugging Face</a>
+            <a href="https://ko-fi.com/izdandavis">Support the lab</a>
+            <a href="https://buy.stripe.com/14AbJ20hQ79ZboYfWSdby0n"
+              >Behind-The-Scenes Process Pack</a
+            >
+            <a href="support.html">Help</a>
+            <a href="mailto:aethermoregames@pm.me">Contact</a>
           </nav>
-
-          <nav class="directory-group" aria-label="Research and verification">
-            <h3>Research &amp; verify</h3>
-            <ul>
-              <li><a href="/research/index.html">Research index</a></li>
-              <li><a href="/architecture.html">Architecture map</a></li>
-              <li><a href="/datasets.html">Datasets</a></li>
-              <li><a href="/models.html">Models</a></li>
-              <li><a href="/demos/index.html">Interactive demos</a></li>
-            </ul>
-          </nav>
-
-          <nav class="directory-group" aria-label="Read and follow">
-            <h3>Read &amp; follow</h3>
-            <ul>
-              <li><a href="/books.html">Books</a></li>
-              <li><a href="/book.html">Six Tongues story</a></li>
-              <li><a href="/videos.html">Videos</a></li>
-              <li><a href="/math-ledger.html">Math Ledger</a></li>
-              <li><a href="/blog.html">Notes and articles</a></li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </section>
-
-    <section class="wrap closing" aria-labelledby="closing-title">
-      <div>
-        <p class="eyebrow">Still unsure?</p>
-        <h2 id="closing-title">Give Polly the messy version.</h2>
-        <p>You do not need the right vocabulary. Say what you are trying to finish, what is blocking it, and whether you want to learn, buy, verify, or build. The routing layer handles the organization.</p>
-        <div class="actions">
-          <a class="button button-primary" href="/assistant.html">Open the front desk</a>
-          <a class="button button-secondary" href="mailto:aethermoregames@pm.me?subject=AetherMoore%20inquiry">Email Issac</a>
-        </div>
-      </div>
-      <div class="closing-code" aria-hidden="true">Route<br>first</div>
-    </section>
-
-    <section class="wrap faq" aria-labelledby="faq-title">
-      <p class="eyebrow">Quick answers</p>
-      <h2 id="faq-title">Before you open another tab.</h2>
-      <div class="faq-list">
-        <details>
-          <summary>What is AetherMoore?</summary>
-          <p>An independent body of books, open-source AI governance work, public research, digital tools, and client services built by Issac Daniel Davis.</p>
-        </details>
-        <details>
-          <summary>Do I need to understand the full framework?</summary>
-          <p>No. The public assistant and the four intent routes are designed to get you to a useful surface before exposing deeper architecture.</p>
-        </details>
-        <details>
-          <summary>Can I inspect something before I buy?</summary>
-          <p>Yes. Start with the public source, operations evidence, manuals, tools, and delivery proof linked above. Paid downloads remain separate from the open-source repository.</p>
-        </details>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="wrap footer-grid">
-      <div>
-        <div class="footer-title">AetherMoore</div>
-        <p class="footer-copy">Built by Issac Daniel Davis in Port Angeles, Washington. Patent application USPTO #63/961,403 is filed and pending, not granted.</p>
-      </div>
-      <nav class="footer-links" aria-label="External links">
-        <a href="https://github.com/issdandavis" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://huggingface.co/issdandavis" target="_blank" rel="noopener">Hugging Face</a>
-        <a href="https://www.npmjs.com/package/scbe-aethermoore" target="_blank" rel="noopener">npm</a>
-        <a href="https://pypi.org/project/scbe-aethermoore/" target="_blank" rel="noopener">PyPI</a>
-        <a href="https://www.youtube.com/@id8461" target="_blank" rel="noopener">YouTube</a>
-        <a href="mailto:aethermoregames@pm.me">Email</a>
-      </nav>
-    </div>
-  </footer>
-
-  <noscript>
-    <p class="wrap">Polly’s chat panel needs JavaScript, but every route on this page remains available.</p>
-  </noscript>
-  <script>
-    // The public DNS has no Polly API endpoint today. Keep deterministic routing
-    // active without generating failed network requests. A deployed host may
-    // inject this value before the sidebar script in a future release.
-    window.__POLLY_BACKEND_HTTP__ = window.__POLLY_BACKEND_HTTP__ || "";
-  </script>
-  <script src="/static/polly-sidebar.js" defer></script>
-  <script src="/static/cookie-consent.js" defer></script>
-</body>
+          <p>© 2026 AetherMoore · Independent research lab</p>
+        </footer>
+      </section>
+    </main>
+  </body>
 </html>

@@ -1,6 +1,6 @@
 {
   "site": "https://aethermoore.com",
-  "version": "2026-09-03",
+  "version": "2026-09-06",
   "role": "Public products, working builds, proof surfaces, and routing limits for the SCBE-AETHERMOORE assistant.",
   "public_products": [
     {
@@ -100,6 +100,15 @@
       "keywords": ["delivery proof", "non open source", "paid packet", "buyer packet", "download url", "private delivery", "stripe delivery", "offer delivery"],
       "manual_url": "https://aethermoore.com/product-manual/delivery-and-access.html",
       "buy_url": "https://aethermoore.com/delivery-proof.html"
+    },
+    {
+      "id": "evidence-ledger",
+      "name": "AetherMoore Evidence Ledger",
+      "type": "public evidence surface",
+      "description": "Scoped local campaigns with exact counts, reproduction rules, known limits, underpowered results, and refuted branches.",
+      "keywords": ["evidence ledger", "test campaign", "proven", "experimental", "refuted", "underpowered", "reproduction"],
+      "manual_url": "https://aethermoore.com/research/evidence-ledger.html",
+      "manual_label": "Inspect evidence"
     },
     {
       "id": "operations-evidence",
