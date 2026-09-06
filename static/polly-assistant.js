@@ -456,7 +456,11 @@
     }
 
     try {
-      const response = await fetch(`${BACKEND.replace(/\/$/, '')}/v1/polly/context`);
+      // /health is the liveness route the backend actually exposes. This used
+      // to probe /v1/polly/context, which scripts/polly-backend/server.py has
+      // never defined -- so the status pill reported "Backend unavailable"
+      // even when the backend was up and /v1/polly/respond was answering.
+      const response = await fetch(`${BACKEND.replace(/\/$/, '')}/health`);
       if (!response.ok) throw new Error('offline');
       state.backendOnline = true;
       setStatus('Backend online', 'Route-first assistant plus live Polly backend.', 'good');
