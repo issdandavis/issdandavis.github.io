@@ -1,8 +1,15 @@
-const CACHE_NAME = "aethercode-shell-v1";
+const CACHE_NAME = "aethercode-shell-v2";
 const APP_SHELL = [
   "/",
-  "/arena",
+  "/arena.html",
+  "/arena.js",
   "/manifest.json",
+  "/favicon.svg",
+  "/static/site/aethermore.css",
+  "/static/site/aethermore.js",
+  "/static/cookie-consent.js",
+  "/static/galactic-theme.css",
+  "/static/galactic-stars.js",
   "/static/icons/icon-192.png",
   "/static/icons/icon-512.png",
 ];
@@ -41,15 +48,27 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
+  const isShellAsset = APP_SHELL.includes(url.pathname);
+  const isNavigation = req.mode === "navigate";
+  if (!isShellAsset && !isNavigation) return;
+
   event.respondWith(
-    caches.match(req).then((cached) => {
-      if (cached) return cached;
-      return fetch(req).then((res) => {
-        if (!res || res.status !== 200) return res;
-        const copy = res.clone();
-        caches.open(CACHE_NAME).then((cache) => cache.put(req, copy));
+    fetch(req)
+      .then(async (res) => {
+        if (res && res.status === 200) {
+          const cache = await caches.open(CACHE_NAME);
+          await cache.put(req, res.clone());
+        }
         return res;
-      });
-    })
+      })
+      .catch(async () => {
+        const cached = await caches.match(req);
+        if (cached) return cached;
+        if (isNavigation) {
+          const home = await caches.match("/");
+          if (home) return home;
+        }
+        return Response.error();
+      })
   );
 });

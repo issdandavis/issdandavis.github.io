@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Operations Evidence | Kaggle, Products, and Capability Boundaries</title>
-  <meta name="description" content="A publication-safe Kaggle gold roadmap, rules and forum research watch, and ledger of results, experiments, products, benchmarks, capabilities, npm packages, and owned public repositories.">
+  <title>Operations Evidence | AetherMoore</title>
+  <meta name="description" content="Inspect AetherMoore results, experiments, public assets, limitations, and the proof still required for each claim.">
   <link rel="canonical" href="https://aethermoore.com/research/operations.html">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta property="og:title" content="Operations Evidence | Aethermoore">
   <meta property="og:description" content="Measured results, current limits, and the proof still required.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://aethermoore.com/research/operations.html">
-  <meta property="og:image" content="https://aethermoore.com/hero.webp">
+  <meta property="og:image" content="https://aethermoore.com/social-card.png">
   <style>
     :root {
       --bg: #071412;
@@ -390,34 +390,39 @@
       details.record summary::before { transition: none; }
     }
   </style>
-  <link rel="stylesheet" href="/static/galactic-theme.css">
-  <script src="/static/galactic-stars.js" defer></script>
+  <link rel="stylesheet" href="/static/site/aethermore.css">
+  <link rel="stylesheet" href="/static/site/interior.css">
+  <script src="/static/site/aethermore.js" defer></script>
 </head>
-<body data-evidence-url="./data/operations_evidence.json">
-  <header class="topbar">
-    <div class="topbar-inner">
-      <a class="brand" href="/">SCBE-AETHERMOORE</a>
-      <nav class="nav" aria-label="Research navigation">
-        <a href="/">Home</a>
-        <a href="/assistant.html">Assistant</a>
-        <a href="/research/index.html">Research</a>
-        <a href="/research/evidence.html">Evidence</a>
-        <a href="/research/operations.html" aria-current="page">Operations</a>
+<body class="interior-page operations-page" data-evidence-url="./data/operations_evidence.json">
+  <a class="skip-link" href="#main-content">Skip to operations evidence</a>
+  <header class="site-header">
+    <div class="site-shell header-inner">
+      <a class="brand" href="/" aria-label="AetherMoore home">
+        <img class="brand-mark" src="/favicon.svg" alt="" width="42" height="42">
+        <span>AetherMoore</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" data-menu-toggle>Menu</button>
+      <nav class="site-nav" id="site-navigation" aria-label="Primary navigation" data-site-nav>
+        <a href="/assistant.html">Ask Polly</a>
+        <a href="/training-bus.html">Work</a>
+        <a href="/#research" aria-current="page">Research</a>
+        <a href="/about.html">About</a>
+        <a class="nav-source" href="https://github.com/issdandavis/SCBE-AETHERMOORE">GitHub <span aria-hidden="true">↗</span></a>
       </nav>
     </div>
   </header>
 
-  <main>
-    <span class="hero-label">Operations Evidence</span>
-    <h1><span>Measured results.</span><br>Boundaries included.</h1>
+  <main class="interior-main" id="main-content">
+    <span class="hero-label">Evidence / dated export / claim boundaries</span>
+    <h1><span>Measured results.</span> Boundaries included.</h1>
     <p class="subtitle">
-      A publication-safe Kaggle gold roadmap with controlled experiments, owned
-      products, npm packages, public repositories, Clay capability evidence, and
-      hash-locked rules and forum review receipts. Every target keeps its evidence
-      class and the proof still required.
+      Search the publication-safe record of competitions, controlled experiments,
+      public software, research reviews, and Clay capability checks. Every row keeps
+      its evidence class, date, limitation, and the proof still required.
     </p>
     <div class="hero-links">
-      <a class="hero-link" href="/research/evidence.html">SCBE experiment ledger</a>
+      <a class="hero-link" href="/research/evidence-ledger.html">SCBE experiment ledger</a>
       <a class="hero-link" href="./data/operations_evidence.json">Download public JSON</a>
       <a class="hero-link" href="./data/operations_evidence.receipt.json">Verify export receipt</a>
     </div>
@@ -479,11 +484,20 @@
     </section>
   </main>
 
-  <footer>
-    SCBE-AETHERMOORE ·
-    <a href="/research/index.html">Research hub</a> ·
-    <a href="/research/evidence.html">SCBE evidence</a> ·
-    <a href="/assistant.html">Ask the assistant</a>
+  <footer class="site-footer">
+    <div class="site-shell">
+      <a class="brand" href="/" aria-label="AetherMoore home">
+        <img class="brand-mark" src="/favicon.svg" alt="" width="42" height="42">
+        <span>AetherMoore</span>
+      </a>
+      <nav aria-label="Footer navigation">
+        <a href="/assistant.html">Ask Polly</a>
+        <a href="/research/evidence-ledger.html">Evidence</a>
+        <a href="/support.html">Help</a>
+        <a href="mailto:aethermoregames@pm.me">Contact</a>
+      </nav>
+      <p>Independent work by Issac Daniel Davis.</p>
+    </div>
   </footer>
 
   <script src="/static/operations-evidence.js" defer></script>

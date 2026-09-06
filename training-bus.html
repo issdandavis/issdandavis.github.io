@@ -1,19 +1,233 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SCBE Training Bus Proof</title>
-  <meta name="description" content="Root customer route for the SCBE Operator Agent Bus and latest constrained-decoding training proof.">
-  <meta http-equiv="refresh" content="0; url=/SCBE-AETHERMOORE/training-hub.html">
-  <link rel="canonical" href="https://aethermoore.com/SCBE-AETHERMOORE/training-hub.html">
-  <link rel="stylesheet" href="static/galactic-theme.css">
-</head>
-<body>
-  <main style="max-width:760px;margin:80px auto;padding:24px;font-family:system-ui,-apple-system,Segoe UI,sans-serif;line-height:1.6;">
-    <h1>SCBE Training Bus Proof</h1>
-    <p>This route points customers to the current Operator Agent Bus and constrained-decoding training proof surface.</p>
-    <p><a href="/SCBE-AETHERMOORE/training-hub.html">Open the training proof</a></p>
-  </main>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Agent Runtime | AetherMoore</title>
+    <meta
+      name="description"
+      content="See how AetherMoore routes agent work through task packets, capability checks, isolated execution, and durable receipts."
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://aethermoore.com/training-bus.html" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Agent Runtime | AetherMoore" />
+    <meta
+      property="og:description"
+      content="A visible route from agent proposal to bounded action and durable receipt."
+    />
+    <meta property="og:url" content="https://aethermoore.com/training-bus.html" />
+    <meta property="og:image" content="https://aethermoore.com/social-card.png" />
+    <link rel="stylesheet" href="/static/site/aethermore.css" />
+    <link rel="stylesheet" href="/static/site/interior.css" />
+    <script src="/static/site/aethermore.js" defer></script>
+  </head>
+  <body class="interior-page work-page">
+    <a class="skip-link" href="#main-content">Skip to agent runtime</a>
+    <header class="site-header">
+      <div class="site-shell header-inner">
+        <a class="brand" href="/" aria-label="AetherMoore home">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="42" height="42" />
+          <span>AetherMoore</span>
+        </a>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-navigation"
+          data-menu-toggle
+        >
+          Menu
+        </button>
+        <nav class="site-nav" id="site-navigation" aria-label="Primary navigation" data-site-nav>
+          <a href="/assistant.html">Ask Polly</a>
+          <a href="/training-bus.html" aria-current="page">Work</a>
+          <a href="/#research">Research</a>
+          <a href="/about.html">About</a>
+          <a class="nav-source" href="https://github.com/issdandavis/SCBE-AETHERMOORE"
+            >GitHub <span aria-hidden="true">↗</span></a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main class="interior-main" id="main-content">
+      <section class="interior-hero">
+        <div class="site-shell interior-hero-grid">
+          <div>
+            <span class="page-coordinate">Work / agent runtime / public overview</span>
+            <h1 class="page-title page-title-wide">Bounded agents moving through a visible route.</h1>
+            <p class="page-lead">
+              A model can propose work. The runtime decides whether that work has authority, gives
+              it a narrow place to run, and records what happened. The route stays inspectable from
+              the first task packet to the final receipt.
+            </p>
+            <div class="button-row">
+              <a class="button button-primary" href="/assistant.html"
+                >Route a request with Polly <span aria-hidden="true">→</span></a
+              >
+              <a class="button button-secondary" href="/research/evidence-ledger.html"
+                >Read measured evidence <span aria-hidden="true">↗</span></a
+              >
+            </div>
+          </div>
+          <aside class="hero-index" aria-label="Agent runtime index">
+            <a href="#route"><span>01</span><strong>Request to receipt</strong></a>
+            <a href="#surfaces"><span>02</span><strong>Working surfaces</strong></a>
+            <a href="#proof"><span>03</span><strong>Proof and limits</strong></a>
+            <a href="https://aethermoore.com/SCBE-AETHERMOORE/training-hub.html"
+              ><span>04</span><strong>Detailed operator proof</strong></a
+            >
+          </aside>
+        </div>
+      </section>
+
+      <section class="field-section" id="route">
+        <div class="site-shell">
+          <div class="field-heading">
+            <div>
+              <span class="section-coordinate">Route 01 / effect boundary</span>
+              <h2>From request to receipt.</h2>
+            </div>
+            <p>
+              Each handoff narrows ambiguity. The model remains useful for planning and language;
+              ordinary software owns identity, scope, execution, and the durable record.
+            </p>
+          </div>
+
+          <div class="route-sheet">
+            <div class="route-sheet-head">
+              <strong>Agent Bus path</strong>
+              <span>proposal ≠ permission</span>
+            </div>
+            <ol class="route-steps">
+              <li>
+                <span class="step-index">1</span>
+                <div><h3>Task packet</h3><p>The request becomes explicit work, inputs, and expected output.</p></div>
+                <small>named intent + bounded context</small>
+              </li>
+              <li>
+                <span class="step-index">2</span>
+                <div><h3>Capability check</h3><p>Identity, allowed tools, limits, and replay state are checked.</p></div>
+                <small>allow / deny / quarantine / re-plan</small>
+              </li>
+              <li>
+                <span class="step-index">3</span>
+                <div><h3>Leased worker</h3><p>Approved work enters a worker with a fixed scope and lifetime.</p></div>
+                <small>no ambient authority</small>
+              </li>
+              <li>
+                <span class="step-index">4</span>
+                <div><h3>Verified effect</h3><p>The host checks the result against the declared action and boundary.</p></div>
+                <small>output + policy result</small>
+              </li>
+              <li>
+                <span class="step-index">5</span>
+                <div><h3>Durable receipt</h3><p>The decision, action, result, and unresolved human work remain inspectable.</p></div>
+                <small>traceable outcome</small>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section class="field-section" id="surfaces">
+        <div class="site-shell">
+          <div class="field-heading">
+            <div>
+              <span class="section-coordinate">Route 02 / system surfaces</span>
+              <h2>Different jobs, one contract.</h2>
+            </div>
+            <p>
+              The public pages describe the contract shared by the tools. Deeper repositories keep
+              the implementation, tests, and operator details beside the code that produced them.
+            </p>
+          </div>
+          <div class="field-grid">
+            <article class="field-cell">
+              <span class="cell-index">A / coordinate</span>
+              <h3>Agent Bus</h3>
+              <p>Coordinates task packets, workers, handoffs, and receipts across agent tools.</p>
+              <a class="text-link" href="https://aethermoore.com/SCBE-AETHERMOORE/training-hub.html"
+                >Open operator proof <span aria-hidden="true">↗</span></a
+              >
+            </article>
+            <article class="field-cell">
+              <span class="cell-index">B / command</span>
+              <h3>GeoSeal CLI</h3>
+              <p>Wraps commands in named scope, policy decisions, and evidence that can be reviewed.</p>
+              <a class="text-link" href="https://github.com/issdandavis/SCBE-AETHERMOORE"
+                >Inspect source <span aria-hidden="true">↗</span></a
+              >
+            </article>
+            <article class="field-cell">
+              <span class="cell-index">C / learning</span>
+              <h3>Clay research</h3>
+              <p>Keeps training claims tied to controls, retention checks, and preserved checkpoints.</p>
+              <a class="text-link" href="/training-lab.html"
+                >Open training lab <span aria-hidden="true">→</span></a
+              >
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="field-section" id="proof">
+        <div class="site-shell">
+          <div class="field-heading">
+            <div>
+              <span class="section-coordinate">Route 03 / claim boundary</span>
+              <h2>Proof travels with its limit.</h2>
+            </div>
+            <div>
+              <p>
+                Passing tests show the behavior exercised by those tests on that version. They do
+                not create a general security guarantee or certify every surrounding component.
+              </p>
+              <p class="claim-note">
+                <strong>Patent status</strong>
+                U.S. Application 19/691,526 was filed May 28, 2026, claiming priority to provisional
+                63/961,403. Filed; not examined.
+              </p>
+            </div>
+          </div>
+          <div class="split-list">
+            <div class="split-row">
+              <h3>Scoped campaigns</h3>
+              <p>Named local test campaigns and the conclusions they support.</p>
+              <a class="text-link" href="/research/evidence-ledger.html">Evidence ledger</a>
+            </div>
+            <div class="split-row">
+              <h3>Operations snapshot</h3>
+              <p>Publication-safe records with timestamps, boundaries, and required proof.</p>
+              <a class="text-link" href="/research/operations.html">Operations evidence</a>
+            </div>
+            <div class="split-row">
+              <h3>Implementation</h3>
+              <p>Public source remains the place to inspect code, tests, and change history.</p>
+              <a class="text-link" href="https://github.com/issdandavis/SCBE-AETHERMOORE">GitHub</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-shell">
+        <a class="brand" href="/" aria-label="AetherMoore home">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="42" height="42" />
+          <span>AetherMoore</span>
+        </a>
+        <nav aria-label="Footer navigation">
+          <a href="/assistant.html">Ask Polly</a>
+          <a href="/research/evidence-ledger.html">Evidence</a>
+          <a href="/support.html">Help</a>
+          <a href="mailto:aethermoregames@pm.me">Contact</a>
+        </nav>
+        <p>Independent work by Issac Daniel Davis.</p>
+      </div>
+    </footer>
+    <script src="/static/cookie-consent.js" defer></script>
+  </body>
 </html>

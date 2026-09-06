@@ -1,115 +1,232 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About &amp; trust | Issac Daniel Davis · AetherMoore</title>
-  <meta name="description" content="Issac Daniel Davis — builder of AetherMoore / SCBE systems, published author, CAGE-registered, Peninsula College student. What I sell, what I build, how to reach me.">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://aethermoore.com/about.html">
-  <meta property="og:title" content="About & trust | AetherMoore">
-  <meta property="og:description" content="Author, systems builder, CAGE-registered, Peninsula College. Clear trust facts.">
-  <meta property="og:url" content="https://aethermoore.com/about.html">
-  <meta property="og:image" content="https://aethermoore.com/hero.webp">
-  <style>
-    :root {
-      --bg:#071412; --bg-deep:#04100f; --panel:rgba(10,28,24,.9);
-      --line:rgba(139,255,223,.15); --text:#e7fff7; --muted:#9bc5ba; --dim:#6a9488;
-      --mint:#8fffd3; --aqua:#6dd8ff; --gold:#ffd977; --max:820px;
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:linear-gradient(180deg,var(--bg-deep),var(--bg));color:var(--text);line-height:1.65;min-height:100vh}
-    a{color:var(--aqua);text-decoration:none} a:hover{color:var(--mint)}
-    .topbar{position:sticky;top:0;z-index:20;backdrop-filter:blur(12px);background:rgba(4,16,15,.92);border-bottom:1px solid var(--line)}
-    .topbar-inner{max-width:var(--max);margin:0 auto;padding:14px 20px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}
-    .brand{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--mint);font-weight:700}
-    .nav{display:flex;gap:6px;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
-    .nav a{padding:10px 12px;min-height:44px;display:inline-flex;align-items:center;border-radius:8px;font-size:12px;color:var(--muted);white-space:nowrap;flex-shrink:0}
-    .nav a:hover{background:rgba(143,255,211,.08);color:var(--text)}
-    .nav a.on{color:var(--gold);border:1px solid rgba(255,217,119,.3)}
-    @media(max-width:480px){main{padding:28px 16px 72px}.trust{grid-template-columns:1fr}}
-    main{max-width:var(--max);margin:0 auto;padding:40px 20px 80px}
-    h1{font-size:clamp(28px,5vw,40px);font-weight:800;letter-spacing:-.03em;margin:12px 0 14px;line-height:1.15}
-    h2{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--mint);margin:32px 0 12px}
-    p,li{color:var(--muted);font-size:16px}
-    ul{padding-left:1.2em;margin:8px 0 0}
-    li{margin:6px 0}
-    .kicker{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);padding:5px 12px;border-radius:999px;border:1px solid rgba(255,217,119,.28);background:rgba(255,217,119,.08)}
-    .trust{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0}
-    @media(max-width:560px){.trust{grid-template-columns:1fr}}
-    .chip{padding:14px 16px;border-radius:12px;border:1px solid var(--line);background:var(--panel)}
-    .chip strong{display:block;color:var(--text);font-size:14px;margin-bottom:4px}
-    .chip span{font-size:13px;color:var(--dim)}
-    .panel{padding:18px;border-radius:14px;border:1px solid var(--line);background:var(--panel);margin-top:12px}
-    .panel p{margin-bottom:10px}
-    .btn{display:inline-flex;margin:6px 8px 0 0;padding:10px 14px;border-radius:10px;font-size:13px;font-weight:600;border:1px solid rgba(143,255,211,.3);background:rgba(143,255,211,.1);color:var(--mint)}
-    footer{max-width:var(--max);margin:0 auto;padding:0 20px 48px;color:var(--dim);font-size:12px}
-  </style>
-</head>
-<body>
-  <header class="topbar">
-    <div class="topbar-inner">
-      <a class="brand" href="/">AetherMoore</a>
-      <nav class="nav">
-        <a href="index.html">Home</a>
-        <a href="shop.html">Shop</a>
-        <a href="math-ledger.html">Math Ledger</a>
-        <a class="on" href="about.html">About</a>
-        <a href="books.html">Books</a>
-        <a href="https://github.com/issdandavis" target="_blank" rel="noopener">GitHub</a>
-      </nav>
-    </div>
-  </header>
-  <main>
-    <div class="kicker">About &amp; trust</div>
-    <h1>Issac Daniel Davis</h1>
-    <p>I build systems, write books, and sell practical packs online. The public brand is <strong style="color:var(--text)">AetherMoore / SCBE</strong> — governed AI tools, stories that teach the same vocabulary, and new products like adult math practice materials when they earn a place on the shelf.</p>
-
-    <h2>Trust facts</h2>
-    <div class="trust">
-      <div class="chip">
-        <strong>CAGE code</strong>
-        <span>Registered / on file for federal supplier work. Contact for verification — not posted as a public scrape target.</span>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About Issac Daniel Davis | AetherMoore</title>
+    <meta
+      name="description"
+      content="Meet Issac Daniel Davis, the independent builder behind AetherMoore and SCBE, with clear identity, patent, evidence, and contact boundaries."
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://aethermoore.com/about.html" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content="About Issac Daniel Davis | AetherMoore" />
+    <meta property="og:description" content="Independent systems work, published evidence, and clear claim boundaries." />
+    <meta property="og:url" content="https://aethermoore.com/about.html" />
+    <meta property="og:image" content="https://aethermoore.com/social-card.png" />
+    <link rel="stylesheet" href="/static/site/aethermore.css" />
+    <link rel="stylesheet" href="/static/site/interior.css" />
+    <script src="/static/site/aethermore.js" defer></script>
+  </head>
+  <body class="interior-page about-detail-page">
+    <a class="skip-link" href="#main-content">Skip to about</a>
+    <header class="site-header">
+      <div class="site-shell header-inner">
+        <a class="brand" href="/" aria-label="AetherMoore home">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="42" height="42" />
+          <span>AetherMoore</span>
+        </a>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-navigation"
+          data-menu-toggle
+        >
+          Menu
+        </button>
+        <nav class="site-nav" id="site-navigation" aria-label="Primary navigation" data-site-nav>
+          <a href="/assistant.html">Ask Polly</a>
+          <a href="/training-bus.html">Work</a>
+          <a href="/#research">Research</a>
+          <a href="/about.html" aria-current="page">About</a>
+          <a class="nav-source" href="https://github.com/issdandavis"
+            >GitHub <span aria-hidden="true">↗</span></a
+          >
+        </nav>
       </div>
-      <div class="chip">
-        <strong>Peninsula College</strong>
-        <span>Currently enrolled. Student-builder path, not a college endorsement of products.</span>
-      </div>
-      <div class="chip">
-        <strong>Published author</strong>
-        <span>Amazon KDP: Six Tongues Protocol, The Miracle Was The Memory, Witnessed.</span>
-      </div>
-      <div class="chip">
-        <strong>Public builder</strong>
-        <span>GitHub <a href="https://github.com/issdandavis" target="_blank" rel="noopener">@issdandavis</a> · site <a href="https://aethermoore.com/">aethermoore.com</a></span>
-      </div>
-    </div>
+    </header>
 
-    <h2>What I sell</h2>
-    <div class="panel">
-      <p><strong style="color:var(--text)">Now:</strong> books on Amazon · $29 digital toolkits on Stripe · hire for fixed-scope work.</p>
-      <p><strong style="color:var(--text)">New:</strong> free Ever-Lesson Math Ledger sample (print-ready) toward a physical spiral + write-panel product.</p>
-      <p><strong style="color:var(--text)">Systems (builder lane):</strong> SCBE governance, AetherDesk operator desktop, Clay training lanes, Cloudflare Workers/tunnels — sold as packages or custom builds, not as homework.</p>
-      <a class="btn" href="shop.html">Open shop</a>
-      <a class="btn" href="mailto:aethermoregames@pm.me?subject=Hello%20from%20aethermoore.com">Email Issac</a>
-    </div>
+    <main class="interior-main" id="main-content">
+      <section class="interior-hero">
+        <div class="site-shell interior-hero-grid">
+          <div>
+            <span class="page-coordinate">About / identity / trust</span>
+            <h1 class="page-title page-title-wide">Built in public. Claims kept narrow.</h1>
+            <p class="page-lead">
+              <strong>Issac Daniel Davis</strong> is the independent builder behind AetherMoore and
+              SCBE. The work joins agent infrastructure, custom language systems, model research,
+              books, and practical software while keeping experiments separate from proven behavior.
+            </p>
+            <div class="button-row">
+              <a class="button button-primary" href="mailto:aethermoregames@pm.me"
+                >Email Issac <span aria-hidden="true">→</span></a
+              >
+              <a class="button button-secondary" href="https://github.com/issdandavis"
+                >Review public work <span aria-hidden="true">↗</span></a
+              >
+            </div>
+          </div>
+          <aside class="hero-index" aria-label="About page index">
+            <a href="#identity"><span>01</span><strong>Identity and work</strong></a>
+            <a href="#method"><span>02</span><strong>How claims are handled</strong></a>
+            <a href="#patent"><span>03</span><strong>Patent status</strong></a>
+            <a href="#contact"><span>04</span><strong>Contact routes</strong></a>
+          </aside>
+        </div>
+      </section>
 
-    <h2>What I will not do</h2>
-    <ul>
-      <li>Claim attacks are “impossible.” Risk can be priced, logged, and contained — not magically erased.</li>
-      <li>Sell government or classified workflows on the public assistant. Gated work stays gated.</li>
-      <li>Post live secrets, CAGE numbers for scrapers, or unpaid “enterprise” theater.</li>
-    </ul>
+      <section class="field-section" id="identity">
+        <div class="site-shell">
+          <div class="field-heading">
+            <div>
+              <span class="section-coordinate">Profile 01 / identity</span>
+              <h2>One builder, several connected disciplines.</h2>
+            </div>
+            <p>
+              The common thread is inspectability: make the route visible, preserve the evidence,
+              and distinguish an idea, a prototype, a measured result, and a product.
+            </p>
+          </div>
+          <div class="field-grid">
+            <article class="field-cell">
+              <span class="cell-index">A / systems</span>
+              <h3>Agent infrastructure</h3>
+              <p>Agent Bus coordination, GeoSeal command boundaries, receipts, and operator tools.</p>
+              <a class="text-link" href="/training-bus.html">View the runtime</a>
+            </article>
+            <article class="field-cell">
+              <span class="cell-index">B / languages</span>
+              <h3>Compilers and Langues</h3>
+              <p>Exact symbolic systems, multi-view representations, tokenization, and translation.</p>
+              <a class="text-link" href="/architecture.html">View architecture</a>
+            </article>
+            <article class="field-cell">
+              <span class="cell-index">C / models</span>
+              <h3>Clay research</h3>
+              <p>Small-model experiments with controls, retention checks, and preserved lineage.</p>
+              <a class="text-link" href="/training-lab.html">View training lab</a>
+            </article>
+            <article class="field-cell">
+              <span class="cell-index">D / supplier</span>
+              <h3>CAGE code on file</h3>
+              <p>Registered for federal supplier work. The number is available through direct verification.</p>
+            </article>
+            <article class="field-cell">
+              <span class="cell-index">E / study</span>
+              <h3>Peninsula College</h3>
+              <p>Student-builder background. This statement is not a college endorsement of the work.</p>
+            </article>
+            <article class="field-cell">
+              <span class="cell-index">F / publication</span>
+              <h3>Published author</h3>
+              <p>Books include Six Tongues Protocol, The Miracle Was The Memory, and Witnessed.</p>
+              <a class="text-link" href="/books.html">View books</a>
+            </article>
+          </div>
+        </div>
+      </section>
 
-    <h2>Contact</h2>
-    <div class="panel">
-      <p><strong style="color:var(--text)">Email (Proton):</strong> <a href="mailto:aethermoregames@pm.me">aethermoregames@pm.me</a></p>
-      <p><strong style="color:var(--text)">Discord:</strong> email the Proton address with subject “Discord invite request” — no public cellphone.</p>
-      <p><strong style="color:var(--text)">Phone:</strong> not published. Business Twilio line later if needed; personal cell stays offline.</p>
-      <p>Hire: <a href="hire.html">hire.html</a> · <a href="contact.html">Contact page</a> · <a href="shop.html">Shop</a></p>
-    </div>
-  </main>
-  <footer>AetherMoore · Issac Daniel Davis · CAGE on file · Peninsula College student</footer>
-</body>
+      <section class="field-section" id="method">
+        <div class="site-shell">
+          <div class="field-heading">
+            <div>
+              <span class="section-coordinate">Profile 02 / claim method</span>
+              <h2>Read the status before the story.</h2>
+            </div>
+            <p>
+              AetherMoore uses labels and receipts to keep an engaging concept from outrunning the
+              evidence. The repository remains open to inspection, including negative results.
+            </p>
+          </div>
+          <div class="split-list">
+            <div class="split-row">
+              <h3>Working code</h3>
+              <p>A callable surface with source and tests. Its guarantee remains limited to what was exercised.</p>
+              <a class="text-link" href="https://github.com/issdandavis/SCBE-AETHERMOORE">Source</a>
+            </div>
+            <div class="split-row">
+              <h3>Measured result</h3>
+              <p>A named evaluator, input set, version, controls, and recorded outcome.</p>
+              <a class="text-link" href="/research/evidence-ledger.html">Evidence</a>
+            </div>
+            <div class="split-row">
+              <h3>Experimental idea</h3>
+              <p>A design worth testing that has not yet earned a product or scientific claim.</p>
+              <a class="text-link" href="/research/index.html">Research archive</a>
+            </div>
+            <div class="split-row">
+              <h3>Refuted branch</h3>
+              <p>A useful negative result preserved so the same mistake is not quietly rebuilt.</p>
+              <a class="text-link" href="/research/evidence-ledger.html">Read limits</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="field-section" id="patent">
+        <div class="site-shell">
+          <div class="field-heading">
+            <div>
+              <span class="section-coordinate">Profile 03 / filing status</span>
+              <h2>Patent pending, with the status stated plainly.</h2>
+            </div>
+            <div>
+              <p>
+                U.S. Application 19/691,526, titled “System and Method for Hyperbolic Geometry-Based
+                Authorization with Topological Control-Flow Integrity,” was filed May 28, 2026,
+                claiming priority to provisional application 63/961,403.
+              </p>
+              <p class="claim-note">
+                <strong>Current public claim</strong>
+                Filed; not examined. A filing is not a patent grant, product certification, or proof
+                that every implementation matches every claim.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="field-section" id="contact">
+        <div class="site-shell">
+          <div class="field-heading">
+            <div>
+              <span class="section-coordinate">Profile 04 / contact</span>
+              <h2>Start with the shortest useful route.</h2>
+            </div>
+            <div>
+              <p>
+                Use Polly when you are unsure where a request belongs. Use support for an existing
+                product or broken route. Use email for project, research, or verification questions.
+              </p>
+              <div class="button-row">
+                <a class="button button-primary" href="/assistant.html">Ask Polly</a>
+                <a class="button button-secondary" href="/support.html">Get help</a>
+                <a class="button button-secondary" href="mailto:aethermoregames@pm.me">Email Issac</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-shell">
+        <a class="brand" href="/" aria-label="AetherMoore home">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="42" height="42" />
+          <span>AetherMoore</span>
+        </a>
+        <nav aria-label="Footer navigation">
+          <a href="/assistant.html">Ask Polly</a>
+          <a href="/research/evidence-ledger.html">Evidence</a>
+          <a href="/support.html">Help</a>
+          <a href="mailto:aethermoregames@pm.me">Contact</a>
+        </nav>
+        <p>Independent work by Issac Daniel Davis.</p>
+      </div>
+    </footer>
+    <script src="/static/cookie-consent.js" defer></script>
+  </body>
 </html>

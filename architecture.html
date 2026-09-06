@@ -4,15 +4,15 @@
   <meta charset="UTF-8">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Architecture | Civilization-in-a-Box | AetherMoore</title>
-  <meta name="description" content="AetherMoore system architecture with depth: peer into a micro-box of edge, tunnels, stations, and Langues fields. Backend visuals for architecture, schema, builders, and monitors.">
+  <title>System Architecture | AetherMoore</title>
+  <meta name="description" content="Inspect AetherMoore from its public boundary through routing, governed execution, receipts, and the experimental Langues fields.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://aethermoore.com/architecture.html">
   <meta property="og:title" content="Architecture | AetherMoore">
   <meta property="og:description" content="Universe-in-a-box depth view of the AetherMoore stack and Langues fields.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://aethermoore.com/architecture.html">
-  <meta property="og:image" content="https://aethermoore.com/hero.webp">
+  <meta property="og:image" content="https://aethermoore.com/social-card.png">
   <meta name="twitter:card" content="summary_large_image">
   <style>
     :root {
@@ -80,7 +80,7 @@
       position: relative;
     }
     .box-window::after {
-      content: "peer into the stack · move mouse";
+      content: "peer into the stack · pointer or arrow keys · escape resets";
       position: absolute; bottom: 8px; left: 0; right: 0; text-align: center;
       font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
       color: rgba(155,197,186,0.55); z-index: 5; pointer-events: none;
@@ -229,33 +229,40 @@
       max-width: var(--max); margin: 0 auto;
     }
   </style>
+  <link rel="stylesheet" href="/static/site/aethermore.css">
+  <link rel="stylesheet" href="/static/site/interior.css">
+  <script src="/static/site/aethermore.js" defer></script>
 </head>
-<body>
-  <a class="skip" href="#main" style="position:absolute;left:-9999px">Skip to main content</a>
-  <header class="topbar">
-    <div class="topbar-inner">
-      <a class="brand" href="/">AetherMoore</a>
-      <nav class="nav">
-        <a href="assistant.html">Assistant</a>
-        <a href="backroom.html">Backroom</a>
-        <a class="on" href="architecture.html">Architecture</a>
-        <a href="tools.html">Tools</a>
-        <a href="research/index.html">Research</a>
+<body class="interior-page architecture-page">
+  <a class="skip-link" href="#main-content">Skip to architecture</a>
+  <header class="site-header">
+    <div class="site-shell header-inner">
+      <a class="brand" href="/" aria-label="AetherMoore home">
+        <img class="brand-mark" src="/favicon.svg" alt="" width="42" height="42">
+        <span>AetherMoore</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" data-menu-toggle>Menu</button>
+      <nav class="site-nav" id="site-navigation" aria-label="Primary navigation" data-site-nav>
+        <a href="/assistant.html">Ask Polly</a>
+        <a href="/training-bus.html">Work</a>
+        <a href="/#research" aria-current="page">Research</a>
+        <a href="/about.html">About</a>
+        <a class="nav-source" href="https://github.com/issdandavis/SCBE-AETHERMOORE">GitHub <span aria-hidden="true">↗</span></a>
       </nav>
     </div>
   </header>
 
-  <main id="main">
-    <div class="kicker">System architecture · depth viewport</div>
-    <h1>A <em>civilization in a box</em> — the stack you peer into</h1>
+  <main class="interior-main" id="main-content">
+    <div class="kicker">Architecture / boundary to receipt / interactive map</div>
+    <h1>A system you can inspect <em>from the boundary inward.</em></h1>
     <p class="lede">
-      Front of site is the glass. Behind it: edge Workers, tunnels, AetherDesk stations,
-      GeoSeal receipts, and the six Langues fields. Move your pointer over the frame to peer
-      around corners — same idea as a micro-world recessed into the page.
+      The viewport maps the intended layers: public edge, controlled routes, operator stations,
+      receipts, and experimental language fields. Move a pointer or use the arrow keys to inspect
+      the stack. The map explains the architecture; linked source and evidence support the claims.
     </p>
 
     <!-- Depth diorama -->
-    <div class="box-window" id="box-window" aria-label="3D architecture diorama of the AetherMoore stack">
+    <div class="box-window" id="box-window" tabindex="0" aria-label="Interactive 3D architecture map. Use the pointer or arrow keys to tilt it; press Escape to reset.">
       <div class="cube-environment" id="cube-environment">
         <div class="face wall-back">
           <h2>AetherMoore micro-stack</h2>
@@ -332,7 +339,7 @@
         <h3>Admin live probes</h3>
         <p>Edge health, scorecard, local desk/MCP when on operator machine.</p>
         <ul>
-          <li><a href="backroom.html#monitor">Backroom monitors</a></li>
+          <li><a href="backroom.html#monitor-strip">Backroom monitors</a></li>
           <li><a href="https://scbe-shim.issdandavis7795.workers.dev/v1/health">scbe-shim health</a></li>
           <li>Context Ledger events</li>
         </ul>
@@ -342,8 +349,9 @@
     <section class="block">
       <h2>Langues and Related Fields</h2>
       <p style="color:var(--muted);font-size:14px;margin-bottom:14px;max-width:60ch">
-        Source vault note: <code>Tokenizer Vault / Langues and Related Fields</code>.
-        Each tongue is a field of authority — weighted by φ-powers on the PHDM / governance path.
+        The published field registry describes each experimental tongue and its current weight
+        profile. These fields are implementation concepts under evaluation, not evidence of a
+        general capability or security guarantee.
       </p>
       <div class="fields-grid" id="fields-grid">
         <!-- filled by JS from langues-fields.json; static fallback below -->
@@ -380,19 +388,28 @@
     </div>
 
     <div class="src-note">
-      <strong>Sources found:</strong>
-      <code>SCBE-AETHERMOORE/notes/System Library/Tokenizer Vault/Langues and Related Fields.md</code>
-      and
-      <code>…/Plugins Vault/Browser System Fields and Surfaces.md</code>
-      (also under Documents/Avalon Files). Published for the site as
-      <code>/static/langues-fields.json</code>. Weight profiles: do not mix
-      <code>phdm-golden</code> with <code>lws-linear</code> without conversion
-      (<code>docs/LANGUES_WEIGHTING_SYSTEM.md</code>).
+      <strong>Public sources:</strong>
+      <a href="/static/langues-fields.json"><code>/static/langues-fields.json</code></a> records the
+      published field map, and the
+      <a href="https://github.com/issdandavis/SCBE-AETHERMOORE">public repository</a> exposes the
+      implementation and test history. This viewport is an architecture map, not proof by itself.
     </div>
   </main>
 
-  <footer>
-    AetherMoore architecture · depth diorama · Langues fields · not a product CMS
+  <footer class="site-footer">
+    <div class="site-shell">
+      <a class="brand" href="/" aria-label="AetherMoore home">
+        <img class="brand-mark" src="/favicon.svg" alt="" width="42" height="42">
+        <span>AetherMoore</span>
+      </a>
+      <nav aria-label="Footer navigation">
+        <a href="/assistant.html">Ask Polly</a>
+        <a href="/research/evidence-ledger.html">Evidence</a>
+        <a href="/support.html">Help</a>
+        <a href="mailto:aethermoregames@pm.me">Contact</a>
+      </nav>
+      <p>Independent work by Issac Daniel Davis.</p>
+    </div>
   </footer>
 
   <script>
@@ -401,6 +418,13 @@
       const env = document.getElementById("cube-environment");
       if (win && env) {
         const maxTilt = 22;
+        const homeX = -8;
+        const homeY = 12;
+        let keyboardX = homeX;
+        let keyboardY = homeY;
+        const renderKeyboardTilt = () => {
+          env.style.transform = "rotateX(" + keyboardX + "deg) rotateY(" + keyboardY + "deg)";
+        };
         win.addEventListener("mousemove", (e) => {
           const r = win.getBoundingClientRect();
           const x = (e.clientX - r.left) / r.width - 0.5;
@@ -409,7 +433,7 @@
             "rotateY(" + (x * maxTilt) + "deg) rotateX(" + (-y * maxTilt) + "deg)";
         });
         win.addEventListener("mouseleave", () => {
-          env.style.transform = "rotateX(-8deg) rotateY(12deg)";
+          renderKeyboardTilt();
         });
         // light touch support
         win.addEventListener("touchmove", (e) => {
@@ -421,6 +445,19 @@
           env.style.transform =
             "rotateY(" + (x * maxTilt) + "deg) rotateX(" + (-y * maxTilt) + "deg)";
         }, { passive: true });
+        win.addEventListener("keydown", (e) => {
+          const step = 4;
+          if (e.key === "ArrowLeft") keyboardY = Math.max(-maxTilt, keyboardY - step);
+          else if (e.key === "ArrowRight") keyboardY = Math.min(maxTilt, keyboardY + step);
+          else if (e.key === "ArrowUp") keyboardX = Math.max(-maxTilt, keyboardX - step);
+          else if (e.key === "ArrowDown") keyboardX = Math.min(maxTilt, keyboardX + step);
+          else if (e.key === "Escape") {
+            keyboardX = homeX;
+            keyboardY = homeY;
+          } else return;
+          e.preventDefault();
+          renderKeyboardTilt();
+        });
       }
 
       fetch("/static/langues-fields.json", { cache: "no-store" })
@@ -466,5 +503,6 @@
         });
     })();
   </script>
+  <script src="/static/cookie-consent.js" defer></script>
 </body>
 </html>

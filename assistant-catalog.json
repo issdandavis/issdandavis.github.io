@@ -41,12 +41,12 @@
     },
     {
       "id": "training-bus-proof",
-      "name": "Operator Agent Bus",
-      "type": "prototype with public receipts",
-      "description": "Dated public evidence surface for the Operator Agent Bus, constrained-decoding gate checks, and receipt-backed training artifacts.",
+      "name": "Agent Runtime",
+      "type": "bounded agent-work map",
+      "description": "Public overview of the route from task packet through capability checks, isolated execution, and a durable effect receipt.",
       "keywords": ["training bus", "operator bus", "agent bus", "gate proof", "25/25", "constrained decoding", "training proof", "latest training"],
       "manual_url": "https://aethermoore.com/training-bus.html",
-      "manual_label": "Open proof",
+      "manual_label": "Open runtime map",
       "buy_url": "https://github.com/issdandavis/SCBE-AETHERMOORE",
       "buy_label": "Inspect framework"
     },
