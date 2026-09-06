@@ -43,6 +43,38 @@
     return (keywords || []).some((keyword) => normalized.includes(normalize(keyword)));
   }
 
+  // Scored matching. The old path used .find(), which returned whichever entry
+  // happened to be listed first with ANY keyword hit -- so "what does SCBE
+  // cost" could land on an unrelated product. Score by total matched keyword
+  // length so the most specific match wins and runners-up can be offered.
+  function scoreKeywords(text, keywords) {
+    const normalized = normalize(text);
+    let score = 0;
+    (keywords || []).forEach((keyword) => {
+      const kw = normalize(keyword);
+      if (kw && normalized.includes(kw)) score += kw.length;
+    });
+    return score;
+  }
+
+  function rankMatches(text, items, limit) {
+    return (items || [])
+      .map((item) => ({ item, score: scoreKeywords(text, item.keywords) }))
+      .filter((entry) => entry.score > 0)
+      .sort((a, b) => b.score - a.score)
+      .slice(0, limit || 3);
+  }
+
+  function bestMatch(text, items) {
+    return rankMatches(text, items, 1)[0] || null;
+  }
+
+  const PRICING_PATTERN = /\b(cost|costs|price|prices|pricing|how much|quote|budget|rate|rates)\b/;
+
+  function asksAboutPricing(text) {
+    return PRICING_PATTERN.test(normalize(text));
+  }
+
   function addMessage(kind, title, body) {
     const item = document.createElement('article');
     item.className = `assistant-message ${kind}`;
@@ -129,29 +161,42 @@
 
   function classifyMessage(text) {
     const catalog = state.catalog || {};
-    const restricted = (catalog.restricted_buckets || []).find((item) => includesKeyword(text, item.keywords));
+    const pricing = asksAboutPricing(text);
+
+    // Restricted keeps absolute precedence: if a question touches a gated lane
+    // at all, it must route there rather than to whatever scored higher.
+    const restricted = bestMatch(text, catalog.restricted_buckets);
     if (restricted) {
-      return { kind: 'restricted', item: restricted };
+      return { kind: 'restricted', item: restricted.item, pricing };
     }
 
-    const custom = (catalog.custom_buckets || []).find((item) => includesKeyword(text, item.keywords));
-    if (custom) {
-      return { kind: 'custom', item: custom };
+    const custom = bestMatch(text, catalog.custom_buckets);
+    const productRanked = rankMatches(text, catalog.public_products, 3);
+    const product = productRanked[0] || null;
+
+    // Compare across categories instead of letting declaration order decide.
+    if (custom && (!product || custom.score >= product.score)) {
+      return { kind: 'custom', item: custom.item, pricing };
     }
 
-    const product = (catalog.public_products || []).find((item) => includesKeyword(text, item.keywords));
     if (product) {
-      return { kind: 'product', item: product };
+      return {
+        kind: 'product',
+        item: product.item,
+        alternatives: productRanked.slice(1).map((entry) => entry.item),
+        pricing
+      };
     }
 
-    const route = (state.routing?.routes || []).find((item) => includesKeyword(text, item.keywords));
+    const route = bestMatch(text, state.routing?.routes);
     if (route) {
-      return { kind: 'route', item: route, surface: getSurfaceForRoute(route) };
+      return { kind: 'route', item: route.item, surface: getSurfaceForRoute(route.item), pricing };
     }
 
     return {
       kind: 'route',
       item: null,
+      pricing,
       surface: (state.routing?.surfaces || []).find((surface) => surface.name === 'assistant') || null
     };
   }
@@ -401,10 +446,25 @@
       if (result.item.buy_url) {
         links.push(`<a href="${escapeHtml(result.item.buy_url)}" target="_blank" rel="noopener">${escapeHtml(result.item.buy_label || 'Get started')} &rarr;</a>`);
       }
+      const alternatives = (result.alternatives || []).length
+        ? `<p>Also close: ${result.alternatives
+            .map((item) => `<strong>${escapeHtml(item.name)}</strong>`)
+            .join(', ')}. Ask about any of them by name.</p>`
+        : '';
+
+      // The catalog carries no price field, so never imply a number exists.
+      const pricingNote = result.pricing
+        ? `<p>I do not hold prices in the catalog &mdash; scope decides cost, so there is no
+             list figure to quote. The links below carry current terms where a package has
+             them; otherwise the contact route is the honest next step.</p>`
+        : '';
+
       return `
         <p>The closest public product or build is <strong>${escapeHtml(result.item.name)}</strong>.</p>
         <p>${escapeHtml(result.item.description)}</p>
+        ${pricingNote}
         <p>Use its status and linked evidence to decide whether it is ready for your need or should become a scoped build.</p>
+        ${alternatives}
         <div class="reply-links">${links.join(' ')}</div>
       `;
     }
@@ -417,9 +477,19 @@
       `;
     }
 
+    // No keyword matched. Say so plainly and show what is actually answerable
+    // instead of a generic "try describing the job" that gives no foothold.
+    const known = ((state.catalog || {}).public_products || [])
+      .slice(0, 6)
+      .map((item) => `<strong>${escapeHtml(item.name)}</strong>`)
+      .join(', ');
+
     return `
-      <p>I can route you into the right surface, package, or support path.</p>
-      <p>Try describing the job, the problem, or the product you want to build.</p>
+      <p>Nothing in the catalog matched that, so I will not guess.</p>
+      ${known ? `<p>I can answer about: ${known} &mdash; and ${Math.max(
+        ((state.catalog || {}).public_products || []).length - 6, 0
+      )} more. Name one, or describe the job you want done.</p>` : ''}
+      <p>For anything custom or gated, say what the work is and I will route it to the right intake.</p>
     `;
   }
 
@@ -451,7 +521,7 @@
 
   async function refreshBackendStatus() {
     if (!BACKEND) {
-      setStatus('Local routing only', 'No Polly backend configured for this page.', 'neutral');
+      setStatus('Catalog router', 'Answers come from the published catalog, not a language model.', 'neutral');
       return;
     }
 
@@ -466,7 +536,7 @@
       setStatus('Backend online', 'Route-first assistant plus live Polly backend.', 'good');
     } catch (error) {
       state.backendOnline = false;
-      setStatus('Local routing only', 'Backend unavailable, deterministic routing still works.', 'neutral');
+      setStatus('Catalog router', 'Backend unreachable. Catalog answers still work.', 'neutral');
     }
   }
 
@@ -490,7 +560,7 @@
       addMessage('assistant', 'Polly backend', `<p>${escapeHtml(backendReply)}</p>`);
       setStatus('Backend online', 'Route-first assistant plus live Polly backend.', 'good');
     } else if (BACKEND) {
-      setStatus('Local routing only', 'Backend unavailable, deterministic routing still works.', 'neutral');
+      setStatus('Catalog router', 'Backend unreachable. Catalog answers still work.', 'neutral');
     }
   }
 
