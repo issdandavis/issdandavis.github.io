@@ -1,24 +1,73 @@
 name: Sync SCBE Stats
+
+# No cross-repo PAT. SCBE-AETHERMOORE is public, so this repo clones it
+# unauthenticated and commits the result to itself with the built-in
+# GITHUB_TOKEN. Nothing here can expire.
+
 on:
+  schedule:
+    - cron: '30 6 * * *'   # daily, after SCBE CI finishes (~05:50Z)
   repository_dispatch:
     types: [scbe-tests-passed]
   workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-scbe-stats
+  cancel-in-progress: false
+
 jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-python@v7
-        with:
-          python-version: '3.11'
-      - name: Count SCBE tests and update site
+
+      - name: Clone SCBE and count tests
         run: |
+          set -euo pipefail
           git clone --depth 1 https://github.com/issdandavis/SCBE-AETHERMOORE.git /tmp/scbe
-          TOTAL=$(find /tmp/scbe -name '*.test.*' -o -name 'test_*.py' | wc -l)
-          echo "Found $TOTAL test files"
-          # Update would go here with sed on index.html
+
+          TS=$(find /tmp/scbe -name '*.test.ts' -o -name '*.test.js' -o -name '*.spec.ts' \
+               | grep -v '/node_modules/' | wc -l)
+          PY=$(find /tmp/scbe -name 'test_*.py' -o -name '*_test.py' \
+               | grep -v '/node_modules/' | wc -l)
+          RS=$(find /tmp/scbe -path '*/tests/*' -name '*.rs' \
+               | grep -v '/target/' | wc -l)
+          TOTAL=$((TS + PY + RS))
+          SHA=$(git -C /tmp/scbe rev-parse HEAD)
+
+          mkdir -p data
+          jq -n \
+            --arg generated "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+            --arg commit "$SHA" \
+            --argjson ts "$TS" --argjson py "$PY" --argjson rs "$RS" --argjson total "$TOTAL" \
+            '{
+               generated_utc: $generated,
+               source: "issdandavis/SCBE-AETHERMOORE",
+               source_commit: $commit,
+               test_files: {
+                 typescript: $ts,
+                 python: $py,
+                 rust: $rs,
+                 total: $total
+               }
+             }' > data/scbe-stats.json
+
+          rm -rf /tmp/scbe
+          echo "--- data/scbe-stats.json ---"
+          cat data/scbe-stats.json
+
       - name: Commit if changed
         run: |
-          git config user.name "github-actions[bot]"
+          set -euo pipefail
+          git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git diff --quiet || (git add -A && git commit -m "chore: sync SCBE test stats" && git push)
+          git add data/scbe-stats.json
+          if git diff --cached --quiet; then
+            echo "No change in SCBE stats. Nothing to commit."
+          else
+            git commit -m "chore: sync SCBE test stats"
+            git push
+          fi
