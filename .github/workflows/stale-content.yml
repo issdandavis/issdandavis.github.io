@@ -15,6 +15,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+        with:
+          # Per-page modification dates require history beyond the latest commit.
+          fetch-depth: 0
 
       - uses: actions/setup-python@v7
         with:

@@ -53,6 +53,13 @@ The copied JSON and its hash receipt live under `research/data/`. CI reruns the
 same validation whenever the page, renderer, routing files, or evidence data
 changes.
 
+## Content maintenance
+
+The monthly `Stale Content Alert` workflow checks each HTML page's last Git
+change against a 60-day threshold. It fetches full history so unrelated site
+updates do not make old pages appear newly edited. A stale date is a review
+prompt; it does not mean the page needs rewriting.
+
 ## Links
 
 - **Live site:** https://aethermoore.com
