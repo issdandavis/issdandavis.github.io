@@ -37,8 +37,8 @@
        Buy: https://buy.stripe.com/cNibJ25Ca2TJ9gQ3a6dby06
        Manual: https://aethermoore.com/product-manual/ai-governance-toolkit.html
 
-    2. HYDRA Agent Templates — $9 one-time
-       Ready-made agent roles, packet patterns, and launch structure for small governed swarms.
+    2. HYDRA Multi-Agent Framework — $9 one-time
+       License for the HYDRA multi-agent coordination framework, plus role and packet templates.
        Buy: https://buy.stripe.com/6oUeVe5Ca2TJdx6262dby08
        Manual: https://aethermoore.com/product-manual/hydra-agent-templates.html
 
