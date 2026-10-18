@@ -46,20 +46,6 @@
       },
       {
         "@type": "Product",
-        "name": "Red Team Fortress",
-        "description": "91 adversarial attack prompts across 10 categories, labeled by failure layer (L1-L14). Includes compliance evals and attack scenario theory docs. JSONL format.",
-        "brand": { "@type": "Brand", "name": "AetherMoore" },
-        "category": "AI Training Data",
-        "offers": {
-          "@type": "Offer",
-          "priceCurrency": "USD",
-          "price": "149",
-          "availability": "https://schema.org/InStock",
-          "url": "https://aethermoore.com/datasets.html#red-team"
-        }
-      },
-      {
-        "@type": "Product",
         "name": "Six Tongues Conlang + Tokenization Pack",
         "description": "Constructed language design docs, tokenization theory, bijective encoding patterns. Includes theory_doc_conlang_intent.jsonl, tongues session transcripts, spiralverse codex SFT. JSONL format.",
         "brand": { "@type": "Brand", "name": "AetherMoore" },
@@ -103,7 +89,7 @@
       {
         "@type": "Product",
         "name": "The Full Arsenal",
-        "description": "Everything in one download: 5,188+ SFT pairs, 91 red team prompts, 6 theory docs, 48 session transcripts, conlang pack, context capsules, knowledge base files, and eval suites. ~52MB total.",
+        "description": "Everything in one download: 5,188+ SFT pairs, 6 theory docs, 48 session transcripts, conlang pack, context capsules, knowledge base files, and eval suites. ~52MB total.",
         "brand": { "@type": "Brand", "name": "AetherMoore" },
         "category": "AI Training Data",
         "offers": {
@@ -441,22 +427,21 @@
             <a class="btn btn-primary" href="mailto:aethermoregames@pm.me?subject=Purchase%3A%20SCBE%20Governance%20SFT%20Pack%20%28%2499%29&body=I%20would%20like%20to%20purchase%20the%20SCBE%20Governance%20SFT%20Pack%20for%20%2499.%0A%0APlease%20send%20me%20payment%20instructions.">Purchase -- $99</a>
           </div>
 
-          <!-- 2. Red Team Fortress -->
+          <!-- 2. Adversarial prompts: sold as the $5 Benchmark Kit -->
           <div class="product-card" id="red-team">
             <div class="product-badge badge-enterprise">Adversarial</div>
             <div class="product-icon">&#128737;</div>
-            <h3>Red Team Fortress</h3>
-            <div class="product-price">$149</div>
-            <p>91 project-authored adversarial prompts across 10 categories, labeled by failure layer (L1-L14). The current 91/91 result is regression-corpus fit, not a generalization claim.</p>
+            <h3>91 Adversarial Prompts &rarr; Benchmark Kit</h3>
+            <div class="product-price">$5</div>
+            <p>The 91 project-authored adversarial prompts (10 categories, labeled by failure layer L1-L14) are sold as one offer: the $5 Benchmark Kit. It also includes the benchmark script, scoring rubric, and report template. The current 91/91 result is regression-corpus fit, not a generalization claim.</p>
             <ul class="product-details">
-              <li>91 attack prompts across 10 adversarial categories</li>
+              <li>91 attack prompts across 10 adversarial categories (CSV + JSONL)</li>
               <li>Each prompt labeled by failure layer (L1 through L14)</li>
-              <li>Compliance evals and attack scenario theory docs included</li>
-              <li>Stress-test AI models and build adversarial training sets</li>
-              <li>Also available as a free preview on HuggingFace (95 downloads)</li>
+              <li>Benchmark script, Colab notebook, scoring rubric, report template</li>
+              <li>A free preview of the corpus is on HuggingFace</li>
             </ul>
-            <span class="product-format">JSONL</span>
-            <a class="btn btn-primary" href="mailto:aethermoregames@pm.me?subject=Purchase%3A%20Red%20Team%20Fortress%20%28%24149%29&body=I%20would%20like%20to%20purchase%20the%20Red%20Team%20Fortress%20dataset%20for%20%24149.%0A%0APlease%20send%20me%20payment%20instructions.">Purchase -- $149</a>
+            <span class="product-format">CSV &middot; JSONL</span>
+            <a class="btn btn-primary" href="benchmark-kit.html">See the Benchmark Kit -- $5</a>
           </div>
 
           <!-- 3. Six Tongues Conlang Pack -->
@@ -522,19 +507,18 @@
       <div class="section-inner">
         <span class="section-label">Tier 2 &mdash; Bundle</span>
         <h2 class="section-title">The Full Arsenal.</h2>
-        <p class="section-subtitle">Everything above in one download. Save $107 versus buying each pack individually.</p>
+        <p class="section-subtitle">The four data packs above in one download, plus context capsules, knowledge base files, and eval suites that are not sold separately. The 91 adversarial prompts are not part of this bundle; they are the $5 Benchmark Kit.</p>
 
         <div class="products-grid" style="grid-template-columns:1fr;">
           <div class="product-card" style="max-width:720px;margin:0 auto;border-color:var(--gold);">
-            <div class="product-badge badge-bundle">Save $107</div>
+            <div class="product-badge badge-bundle">Bundle</div>
             <div class="product-icon" style="font-size:48px;">&#9876;</div>
             <h3 style="font-size:28px;">The Full Arsenal</h3>
-            <div class="product-price" style="font-size:40px;">$399 <span class="was">$506</span> <span class="save">SAVE $107</span></div>
+            <div class="product-price" style="font-size:40px;">$399</div>
             <p>The combined SCBE-AETHERMOORE data collection for governed-AI experiments. A usable fine-tune still requires a compatible base model, trainer, compute budget, validation split, and independent evaluation.</p>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;">
               <ul class="product-details">
                 <li>5,188+ SFT training pairs</li>
-                <li>91 red team adversarial prompts</li>
                 <li>6 deep-dive theory documents</li>
                 <li>48 session transcripts (11 categories)</li>
               </ul>
