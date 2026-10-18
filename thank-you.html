@@ -62,10 +62,10 @@ ol.steps{counter-reset:step;list-style:none;padding-left:0}
   <div class="card">
     <h3>📥 How to use what you just bought</h3>
     <ol class="steps">
-      <li class="step"><strong>Download the ZIP</strong> using the button above. The file contains the complete package — templates, checklists, and the README with setup instructions.</li>
+      <li class="step"><strong>Download the ZIP</strong> using the button above (instant download after checkout). The file contains the complete package — templates, checklists, and the README with setup instructions.</li>
       <li class="step"><strong>Extract and open the README.md first.</strong> Every package starts there. It walks you through what's included and how the pieces fit together.</li>
       <li class="step"><strong>Adapt the templates to your context.</strong> These are governance scaffolds, not rigid prescriptions. Edit them to match your team's vocabulary and thresholds.</li>
-      <li class="step"><strong>Need help?</strong> Reply to your Stripe receipt email, or email <a class="nav-link" href="mailto:aethermoregames@pm.me">aethermoregames@pm.me</a> directly. Turnaround is usually within 24 hours.</li>
+      <li class="step"><strong>Need help?</strong> Reply to your Stripe receipt email, or email <a class="nav-link" href="mailto:aethermoregames@pm.me">aethermoregames@pm.me</a> directly. I usually answer within 24 hours.</li>
     </ol>
   </div>
 
@@ -92,10 +92,10 @@ ol.steps{counter-reset:step;list-style:none;padding-left:0}
 
 <script>
 (function(){
-  const PRODUCTS = {
+  var EMAIL = 'aethermoregames@pm.me';
+  var PRODUCTS = {
     'ai-governance-toolkit': {
       title: 'AI Governance Toolkit',
-      price: '$29',
       subtitle: 'Templates, thresholds, decision records, and starter rollout guidance.',
       zip: '/deliverables/ai-governance-toolkit.zip',
       includes: [
@@ -110,7 +110,6 @@ ol.steps{counter-reset:step;list-style:none;padding-left:0}
     },
     'hydra-agent-templates': {
       title: 'HYDRA Agent Templates',
-      price: '$29',
       subtitle: 'Ready-made agent roles, packet patterns, and launch structure for small governed swarms.',
       zip: '/deliverables/hydra-agent-templates.zip',
       includes: [
@@ -125,7 +124,6 @@ ol.steps{counter-reset:step;list-style:none;padding-left:0}
     },
     'n8n-workflow-pack': {
       title: 'n8n Workflow Pack',
-      price: '$29',
       subtitle: 'Governed automation building blocks. Importable workflows and delivery path.',
       zip: '/deliverables/n8n-workflow-pack.zip',
       includes: [
@@ -141,7 +139,6 @@ ol.steps{counter-reset:step;list-style:none;padding-left:0}
     },
     'content-spin-engine': {
       title: 'Content Spin Engine',
-      price: '$29',
       subtitle: 'Source-once content operations. Adapt, review, publish across channels without drift.',
       zip: '/deliverables/content-spin-engine.zip',
       includes: [
@@ -154,55 +151,100 @@ ol.steps{counter-reset:step;list-style:none;padding-left:0}
       ],
       manual: '/product-manual/content-spin-engine.html',
     },
+    // Products below have no downloadable file on the site yet: one-click email request.
+    'training-vault': {
+      title: 'AI Security Training Vault',
+      subtitle: 'Training records, schemas, and benchmark scripts for security-oriented AI work.',
+      zip: null,
+      includes: ['Curated SFT JSONL records', 'Training schema reference', 'Benchmark scripts', 'Architecture notes'],
+      manual: '/product-manual/training-vault.html',
+    },
+    'benchmark-kit': {
+      title: 'AI Security Benchmark Kit',
+      subtitle: '91 attacks across 10 categories, 4 compliance levels, one scored report.',
+      zip: null,
+      includes: ['Attack corpus (CSV + JSONL)', 'Benchmark script (Python)', 'Colab notebook', 'Scoring rubric', 'Report template'],
+      manual: '/benchmark-kit.html',
+    },
+    'process-pack': {
+      title: 'Behind-The-Scenes Process Pack',
+      subtitle: 'How the SCBE-AETHERMOORE work actually gets made.',
+      zip: null,
+      includes: [],
+      manual: null,
+    },
+    'governance-sft-pack': {
+      title: 'SCBE Governance SFT Pack',
+      subtitle: '~5,188 supervised fine-tuning pairs, QLoRA-ready JSONL.',
+      zip: null,
+      includes: ['Merged multi-source SFT corpus (JSONL)', 'Governance decisions, risk labels, routing tags'],
+      manual: '/datasets.html#governance-sft',
+    },
+    'full-arsenal': {
+      title: 'The Full Arsenal (dataset bundle)',
+      subtitle: 'Every SCBE dataset pack in one bundle.',
+      zip: null,
+      includes: [],
+      manual: '/datasets.html#full-arsenal',
+    },
   };
+  var ALIASES = { 'governance-toolkit': 'ai-governance-toolkit', 'hydra': 'hydra-agent-templates', 'n8n': 'n8n-workflow-pack',
+    'content-spin': 'content-spin-engine', 'vault': 'training-vault', 'benchmark': 'benchmark-kit', 'kit': 'benchmark-kit',
+    'behind-the-scenes': 'process-pack', 'governance-sft': 'governance-sft-pack', 'arsenal': 'full-arsenal' };
 
-  const params = new URLSearchParams(window.location.search);
-  const key = (params.get('product') || '').trim().toLowerCase();
-  const area = document.getElementById('productArea');
-  const titleEl = document.getElementById('pageTitle');
-  const subtitleEl = document.getElementById('pageSubtitle');
+  function esc(t){ return String(t).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
 
-  const product = PRODUCTS[key];
+  var params = new URLSearchParams(window.location.search);
+  var key = (params.get('product') || '').trim().toLowerCase();
+  key = ALIASES[key] || key;
+  var fromMemory = false;
+  if (!PRODUCTS[key]) {
+    // Stripe may return buyers without ?product=. Use the product they clicked "Buy" on (stored by /static/auto-delivery.js).
+    try {
+      var last = JSON.parse(localStorage.getItem('aethermoore_last_purchase') || 'null');
+      if (last && PRODUCTS[last.key] && (Date.now() - last.t) < 1000*60*60*24*3) { key = last.key; fromMemory = true; }
+    } catch (e) {}
+  }
+  var area = document.getElementById('productArea');
+  var titleEl = document.getElementById('pageTitle');
+  var subtitleEl = document.getElementById('pageSubtitle');
+  var product = PRODUCTS[key];
 
   if (product) {
-    titleEl.textContent = 'Your ' + product.title + ' is ready.';
-    subtitleEl.textContent = 'Thank you for your purchase. Download below, or come back to this URL anytime.';
+    if (fromMemory && history.replaceState) history.replaceState(null, '', '?product=' + key);
+    var includesList = product.includes.map(function(i){ return '<li style="margin-bottom:6px;color:#c8d4d0;font-size:14px;">' + esc(i) + '</li>'; }).join('');
+    var inside = includesList ? '<h4 style="color:#8fffd3;font-size:14px;font-weight:700;margin:20px 0 10px;letter-spacing:0.04em;">What\'s inside</h4><ul style="list-style:none;padding-left:0">' + includesList + '</ul>' : '';
+    var manualBtn = product.manual ? '<a class="secondary-btn" href="' + product.manual + '">Read the full manual</a>' : '';
+    var bookmark = '<p style="font-size:13px;color:#9bc5ba;margin-top:14px;">Your page: <code>aethermoore.com/thank-you.html?product=' + key + '</code> — bookmark it to come back anytime.</p>';
 
-    const includesList = product.includes.map(i => '<li style="margin-bottom:6px;color:#c8d4d0;font-size:14px;">' + i + '</li>').join('');
-
-    area.innerHTML = `
-      <div class="card">
-        <h3>📦 ${product.title} — ${product.price}</h3>
-        <p>${product.subtitle}</p>
-        <a class="download-btn" href="${product.zip}" download>⬇ Download ZIP</a>
-        <a class="secondary-btn" href="${product.manual}">Read the full manual</a>
-        <h4 style="color:#8fffd3;font-size:14px;font-weight:700;margin:20px 0 10px;letter-spacing:0.04em;">What's inside</h4>
-        <ul style="list-style:none;padding-left:0">${includesList}</ul>
-      </div>
-    `;
+    if (product.zip) {
+      titleEl.textContent = 'Your ' + product.title + ' is ready.';
+      subtitleEl.textContent = 'Thanks for buying, it genuinely helps me keep building. Your download is below. Bookmark this page so you can come back anytime.';
+      area.innerHTML =
+        '<div class="card"><h3>📦 ' + esc(product.title) + '</h3><p>' + esc(product.subtitle) + '</p>' +
+        '<a class="download-btn" href="' + product.zip + '" download>⬇ Download ' + esc(product.title) + ' (ZIP)</a>' + manualBtn + bookmark + inside + '</div>';
+    } else {
+      var subj = encodeURIComponent('Delivery: ' + product.title);
+      var body = encodeURIComponent('Hi Issac,\n\nI just bought the ' + product.title + '. Please send my files.\n\nEmail I used at checkout: \n');
+      titleEl.textContent = 'Thanks for buying the ' + product.title + '.';
+      subtitleEl.textContent = 'Your payment went through. This product is sent by email: one click below and it goes to the address you used at checkout.';
+      area.innerHTML =
+        '<div class="card unknown"><h3>📬 ' + esc(product.title) + '</h3><p>' + esc(product.subtitle) + '</p>' +
+        '<p>This package isn\'t available as an instant download yet. Click the button to send a pre-filled request and you\'ll get the files by email, usually within 24 hours.</p>' +
+        '<a class="download-btn" href="mailto:' + EMAIL + '?subject=' + subj + '&body=' + body + '">✉ Request my ' + esc(product.title) + '</a>' + manualBtn +
+        '<p style="font-size:13px;color:#9bc5ba;margin-top:14px;">Or email <a class="nav-link" href="mailto:' + EMAIL + '">' + EMAIL + '</a> directly.</p>' + bookmark + inside + '</div>';
+    }
   } else {
     titleEl.textContent = 'Thank you for your purchase.';
-    subtitleEl.textContent = 'To receive your download, please forward your Stripe receipt to aethermoregames@pm.me and I\\'ll send the file within 24 hours.';
-
-    area.innerHTML = `
-      <div class="card unknown">
-        <h3>⚠️ We couldn't identify your product from the URL</h3>
-        <p>This usually means your Stripe checkout didn't pass a product ID back to our thank-you page. It's fixable on our end but your delivery is not blocked.</p>
-        <p><strong>To get your download:</strong></p>
-        <ol class="steps">
-          <li class="step">Find your Stripe email receipt (subject starts with "Receipt from...")</li>
-          <li class="step">Forward it to <a class="nav-link" href="mailto:aethermoregames@pm.me?subject=Stripe%20receipt%20forwarded%20-%20need%20download">aethermoregames@pm.me</a></li>
-          <li class="step">You'll get a direct reply with the download link within 24 hours</li>
-        </ol>
-        <p style="font-size:13px;color:#9bc5ba;margin-top:16px;">If you want to try the URL directly, known products are:</p>
-        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px">
-          <a class="secondary-btn" style="font-size:12px;padding:8px 14px" href="?product=ai-governance-toolkit">Governance Toolkit</a>
-          <a class="secondary-btn" style="font-size:12px;padding:8px 14px" href="?product=hydra-agent-templates">HYDRA Templates</a>
-          <a class="secondary-btn" style="font-size:12px;padding:8px 14px" href="?product=n8n-workflow-pack">n8n Pack</a>
-          <a class="secondary-btn" style="font-size:12px;padding:8px 14px" href="?product=content-spin-engine">Content Spin</a>
-        </div>
-      </div>
-    `;
+    subtitleEl.textContent = 'Pick the product you bought below to open its instant download page.';
+    var picks = Object.keys(PRODUCTS).map(function(k){
+      return '<a class="secondary-btn" style="font-size:12px;padding:8px 14px" href="?product=' + k + '">' + esc(PRODUCTS[k].title) + '</a>';
+    }).join('');
+    area.innerHTML =
+      '<div class="card unknown"><h3>Which product did you buy?</h3>' +
+      '<p>Your checkout didn\'t tell this page which product it was. Choose it below — downloads open instantly.</p>' +
+      '<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px">' + picks + '</div>' +
+      '<p style="font-size:13px;color:#9bc5ba;margin-top:16px;">Not sure? Email <a class="nav-link" href="mailto:' + EMAIL + '?subject=Which%20product%20did%20I%20buy%3F">' + EMAIL + '</a> with the email you used at checkout.</p></div>';
   }
 })();
 </script>
