@@ -58,11 +58,11 @@
 
     6. Training Data (sold direct on aethermoore.com/datasets.html):
        - SCBE Governance SFT Pack — $99 (5,188 SFT pairs)
-       - Red Team Fortress — $149 (91 adversarial prompts, labeled by layer L1-L14)
        - Theory Documents Bundle — $129 (architecture, crypto, attacks, conlang, patent)
        - Six Tongues Conlang Pack — $79 (tokenization theory + session transcripts)
        - Spiralverse Session Transcripts — $49 (48 files, RPG/game AI training)
-       - The Full Arsenal — $399 (everything above, save $107)
+       - The Full Arsenal — $399 (the packs above plus context capsules, knowledge base, eval suites)
+       The 91 adversarial prompts are sold only as the $5 Benchmark Kit: https://aethermoore.com/benchmark-kit.html
        All at: https://aethermoore.com/datasets.html
        Contact: aethermoregames@pm.me
 
@@ -156,7 +156,7 @@
     { keys: ['refund','guardrail','cx','policy enforcement','moffatt'], response: "The CX Refund Guardrail is a scoped middleware pilot intended to catch unsupported refund promises. Compatibility, latency, and acceptance tests are set per implementation. https://aethermoore.com/cx-guardrail.html" },
     { keys: ['iso 42001','audit','compliance','regulatory','eu ai act','governance framework'], response: "The ISO 42001 lane is a scoped evidence-packaging service mapped to selected controls. It supports audit preparation but is not certification or legal advice. https://aethermoore.com/iso-42001.html" },
     { keys: ['red team','penetration','adversarial','attack','security test','vulnerability','threat'], response: "The red-team lane is a scoped evaluation using project-authored and system-specific tests. Results are reported from the actual client run, not promised in advance. https://aethermoore.com/red-team.html" },
-    { keys: ['dataset','training data','sft','corpus','prompt pack'], response: "We sell training datasets including the Governance SFT Pack ($99), Red Team Fortress ($149), and The Full Arsenal bundle ($399). https://aethermoore.com/datasets.html" },
+    { keys: ['dataset','training data','sft','corpus','prompt pack'], response: "We sell training datasets including the Governance SFT Pack ($99) and The Full Arsenal bundle ($399): https://aethermoore.com/datasets.html. The 91 adversarial red team prompts are the $5 Benchmark Kit: https://aethermoore.com/benchmark-kit.html" },
     { keys: ['contact','email','reach out','talk to','schedule','get in touch'], response: "Email me directly at aethermoregames@pm.me or use the contact form at https://aethermoore.com/contact.html. I usually reply within 24 hours." },
     { keys: ['help','support','broken','missing','delivery','issue','problem'], response: "For support with purchases, delivery, or broken links, visit https://aethermoore.com/support.html or email aethermoregames@pm.me." },
     { keys: ['tool','calculator','demo','interactive','visualization'], response: "Our live browser tools and interactive demos are at https://aethermoore.com/demos/index.html. No install needed." },
