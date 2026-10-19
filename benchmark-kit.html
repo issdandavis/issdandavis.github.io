@@ -79,7 +79,7 @@ section { margin-top: 40px; padding-top: 20px; border-top: 1px solid #1a1a3e; }
         <div class="eyebrow">Benchmark Kit</div>
         <h1>How Safe Is Your AI?<br>Find Out in 10 Minutes.</h1>
         <div class="price-hero">$5</div>
-        <p>91 attacks across 10 categories. 4 compliance levels from hobbyist to government. Run against any AI system. Get a scored report. Know exactly where you stand.</p>
+        <p>400 attacks across 20 categories. 4 compliance levels from hobbyist to government. Run against any AI system. Get a scored report. Know exactly where you stand.</p>
         <div style="margin-top: 24px; display: flex; gap: 16px; flex-wrap: wrap;">
             <a class="cta cta-buy" href="https://buy.stripe.com/dRm9AU8Om3XN3Ww6midby0h" data-ad-noted="1" target="_blank" rel="noopener">Buy Benchmark Kit ($5)</a>
             <a class="cta cta-free" href="test-suite.html">See Free Results First</a>
@@ -92,7 +92,7 @@ section { margin-top: 40px; padding-top: 20px; border-top: 1px solid #1a1a3e; }
         <h2>What's Inside</h2>
         <div class="kit-grid">
             <div class="kit-item">
-                <div class="count">91</div>
+                <div class="count">400</div>
                 <h4>Adversarial Prompts</h4>
                 <p>Production-grade attack corpus covering OWASP LLM Top 10, MITRE ATLAS techniques, and SCBE-specific vectors.</p>
             </div>
@@ -107,9 +107,9 @@ section { margin-top: 40px; padding-top: 20px; border-top: 1px solid #1a1a3e; }
                 <p>From hobbyist (basic safety) through enterprise (SOC 2) to government (NIST AI RMF + EU AI Act). Know which level your system hits.</p>
             </div>
             <div class="kit-item">
-                <div class="count">15</div>
+                <div class="count">20</div>
                 <h4>Benign Baselines</h4>
-                <p>Clean prompts across 6 categories to measure false positive rate. A good test catches attacks without blocking real users.</p>
+                <p>Clean everyday prompts (coding, writing, analysis) to measure false positive rate. A good test catches attacks without blocking real users.</p>
             </div>
             <div class="kit-item">
                 <div class="count">47</div>
@@ -178,16 +178,16 @@ section { margin-top: 40px; padding-top: 20px; border-top: 1px solid #1a1a3e; }
         <h2>How To Run It</h2>
         <h3>Option A: Python (recommended)</h3>
         <pre>
-pip install scbe-aethermoore
-python -m scbe_benchmark --target "your-api-endpoint" --key "your-api-key"
+# unzip the kit, then from its folder:
+python benchmark.py --target "https://your-api-base/v1" --key "your-api-key" --model "your-model"
 # Report saved to benchmark_report.json
         </pre>
 
         <h3>Option B: Colab (no install)</h3>
-        <p>Open the included Colab notebook. Paste your API key. Click Run All. Get your report in 10 minutes.</p>
+        <p>Open the included Colab notebook, upload the kit zip, paste your API key, and click Run All.</p>
 
         <h3>Option C: Manual (any system)</h3>
-        <p>The kit includes all 91 attack prompts as a CSV. Send them to your AI system however you want. Score the responses against the included rubric.</p>
+        <p>The kit includes all 400 attack prompts as a CSV. Send them to your AI system however you want. Score the responses against the included rubric.</p>
 
         <h3>What You Get Back</h3>
         <pre>
@@ -229,7 +229,7 @@ python -m scbe_benchmark --target "your-api-endpoint" --key "your-api-key"
             </div>
             <div class="kit-item">
                 <h4>Red team training</h4>
-                <p>"Our security team needs practice attacking AI systems." The 91 attacks are organized by category and difficulty. Great for tabletop exercises.</p>
+                <p>"Our security team needs practice attacking AI systems." The 400 attacks are organized by category and difficulty. Great for tabletop exercises.</p>
             </div>
         </div>
     </section>
@@ -239,7 +239,7 @@ python -m scbe_benchmark --target "your-api-endpoint" --key "your-api-key"
         <h2>Compare</h2>
         <table>
             <tr><th></th><th>This Kit ($5)</th><th>Promptfoo (free OSS)</th><th>Enterprise Red Team ($50K+)</th></tr>
-            <tr><td>Attack corpus</td><td>91 attacks, 10 classes</td><td>50+ vulnerability types</td><td>Custom per engagement</td></tr>
+            <tr><td>Attack corpus</td><td>400 attacks, 20 classes</td><td>50+ vulnerability types</td><td>Custom per engagement</td></tr>
             <tr><td>Compliance mapping</td><td>OWASP + NIST + MITRE + EU AI Act</td><td>OWASP + MITRE</td><td>Full custom</td></tr>
             <tr><td>Time to results</td><td>10 minutes</td><td>30 min - 2 hours</td><td>2-6 weeks</td></tr>
             <tr><td>Scored report</td><td>Yes (JSON + compliance level)</td><td>Yes (HTML)</td><td>Yes (PDF)</td></tr>
@@ -255,7 +255,7 @@ python -m scbe_benchmark --target "your-api-endpoint" --key "your-api-key"
     <section style="text-align: center; padding: 40px 0;">
         <h2>Get the Kit</h2>
         <div class="price-hero">$5</div>
-        <p style="max-width: 500px; margin: 0 auto 24px;">91 attacks. 4 compliance levels. 10 minutes. One JSON report that tells you exactly where your AI stands.</p>
+        <p style="max-width: 500px; margin: 0 auto 24px;">400 attacks. 4 compliance levels. One JSON report that tells you exactly where your AI stands.</p>
         <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
             <a class="cta cta-buy" href="https://buy.stripe.com/dRm9AU8Om3XN3Ww6midby0h" data-ad-noted="1" target="_blank" rel="noopener">Buy Benchmark Kit ($5)</a>
             <a class="cta cta-free" href="test-suite.html">See Free Results First</a>
