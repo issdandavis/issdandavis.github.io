@@ -151,6 +151,20 @@ ol.steps{counter-reset:step;list-style:none;padding-left:0}
       ],
       manual: '/product-manual/content-spin-engine.html',
     },
+    'benchmark-kit': {
+      title: 'AI Security Benchmark Kit',
+      subtitle: '400 attacks across 20 classes, 4 compliance levels, one scored report.',
+      zip: '/deliverables/benchmark-kit.zip',
+      includes: [
+        'README.md — what is inside and how to run it',
+        'attack_corpus.csv + attack_corpus.jsonl — 400 labelled attacks, 20 classes',
+        'benign_prompts.jsonl — 20 clean prompts for false-positive rate',
+        'benchmark.py — runner for any OpenAI-compatible endpoint (no extra packages)',
+        'benchmark_colab.ipynb — no-install Colab run',
+        'RUBRIC.md + REPORT_TEMPLATE.md — scoring rubric and report write-up',
+      ],
+      manual: '/benchmark-kit.html',
+    },
     // Products below have no downloadable file on the site yet: one-click email request.
     'training-vault': {
       title: 'AI Security Training Vault',
@@ -158,13 +172,6 @@ ol.steps{counter-reset:step;list-style:none;padding-left:0}
       zip: null,
       includes: ['Curated SFT JSONL records', 'Training schema reference', 'Benchmark scripts', 'Architecture notes'],
       manual: '/product-manual/training-vault.html',
-    },
-    'benchmark-kit': {
-      title: 'AI Security Benchmark Kit',
-      subtitle: '91 attacks across 10 categories, 4 compliance levels, one scored report.',
-      zip: null,
-      includes: ['Attack corpus (CSV + JSONL)', 'Benchmark script (Python)', 'Colab notebook', 'Scoring rubric', 'Report template'],
-      manual: '/benchmark-kit.html',
     },
     'process-pack': {
       title: 'Behind-The-Scenes Process Pack',
