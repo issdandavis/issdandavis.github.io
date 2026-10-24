@@ -39,10 +39,9 @@
         <article class="card">
           <h2>Included</h2>
           <ul class="checklist">
-            <li>Curated supervised fine-tuning JSONL records where available in the packaged build.</li>
-            <li>Training schema reference.</li>
-            <li>Benchmark scripts.</li>
-            <li>Architecture notes for the training context.</li>
+            <li>governance_starter.jsonl, 24 prompt and response rows.</li>
+            <li>validate_sft.py. Run python validate_sft.py governance_starter.jsonl.</li>
+            <li>The large public corpus is not in this zip.</li>
           </ul>
         </article>
         <article class="card">
@@ -57,10 +56,10 @@
         <h2>Expected workflow</h2>
         <ol>
           <li>Open the package README.</li>
-          <li>Inspect the `schemas/` folder.</li>
-          <li>Review the included `sft/` records.</li>
-          <li>Use a small local or Colab run first.</li>
-          <li>Record the model, seed, data subset, and evaluation result.</li>
+          <li>Run python validate_sft.py governance_starter.jsonl.</li>
+          <li>Read the 24 rows in governance_starter.jsonl.</li>
+          <li>The large public corpus stays on Hugging Face. It is not in this zip.</li>
+          <li>Record which rows you used before you train anything.</li>
         </ol>
       </div>
     </section>

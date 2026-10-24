@@ -1,0 +1,102 @@
+{
+  "name": "SCBE Decision Check",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "scbe-decision",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "WebhookDecision",
+      "name": "Webhook Decision",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [-520, 0]
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw = $input.first().json;\nconst body = raw.body || raw;\nconst decision = String(body.decision || '').trim().toUpperCase();\nconst rationale = String(body.rationale || '').trim();\nconst allowed = ['ALLOW', 'QUARANTINE', 'DENY'];\nconst ok = allowed.includes(decision) && rationale.length > 0;\nreturn [{ json: { ok, decision, rationale, workflow: body.workflow || '', owner: body.owner || '' } }];"
+      },
+      "id": "CheckRecord",
+      "name": "Check Record",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-260, 0]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ok-is-true",
+              "leftValue": "={{ $json.ok }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "IfRecordOk",
+      "name": "If Record Ok",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [0, 0]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": { "responseCode": 200 }
+      },
+      "id": "RespondOk",
+      "name": "Respond OK",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [280, -80]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ Object.assign({ error: 'decision must be ALLOW, QUARANTINE, or DENY and rationale must be set' }, $json) }}",
+        "options": { "responseCode": 400 }
+      },
+      "id": "RespondRejected",
+      "name": "Respond Rejected",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [280, 120]
+    }
+  ],
+  "connections": {
+    "Webhook Decision": {
+      "main": [[{ "node": "Check Record", "type": "main", "index": 0 }]]
+    },
+    "Check Record": {
+      "main": [[{ "node": "If Record Ok", "type": "main", "index": 0 }]]
+    },
+    "If Record Ok": {
+      "main": [
+        [{ "node": "Respond OK", "type": "main", "index": 0 }],
+        [{ "node": "Respond Rejected", "type": "main", "index": 0 }]
+      ]
+    }
+  },
+  "pinData": {},
+  "active": false,
+  "settings": { "executionOrder": "v1" },
+  "meta": { "templateCredsSetupCompleted": true },
+  "versionId": "scbe-decision-check-1"
+}

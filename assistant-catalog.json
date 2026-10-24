@@ -7,7 +7,7 @@
       "id": "governance-toolkit",
       "name": "AI Governance Toolkit",
       "type": "package",
-      "description": "Templates, thresholds, decision records, and starter rollout guidance for governed AI work.",
+      "description": "A checker for one decision record. The word is ALLOW, QUARANTINE, or DENY. Run python decide.py self-test.",
       "keywords": ["governance", "guardrails", "policy", "checklist", "decision record", "risk model", "governance toolkit", "ai policy", "risk framework", "safety policy"],
       "manual_url": "https://aethermoore.com/product-manual/ai-governance-toolkit.html",
       "buy_url": "https://buy.stripe.com/cNibJ25Ca2TJ9gQ3a6dby06"
@@ -16,7 +16,7 @@
       "id": "hydra-agent-templates",
       "name": "HYDRA Multi-Agent Framework",
       "type": "package",
-      "description": "License for the HYDRA multi-agent coordination framework, plus role and packet templates.",
+      "description": "A packet builder for KO, AV, RU, CA, UM, and DR. It is not a license for the free MIT repository.",
       "keywords": ["agent", "agents", "swarm", "hydra", "template", "packet", "role", "multi-agent", "agent template", "agent framework", "orchestration", "license", "framework", "coordination"],
       "manual_url": "https://aethermoore.com/product-manual/hydra-agent-templates.html",
       "buy_url": "https://buy.stripe.com/6oUeVe5Ca2TJdx6262dby08"
@@ -25,7 +25,7 @@
       "id": "n8n-workflow-pack",
       "name": "n8n Workflow Pack",
       "type": "package",
-      "description": "Governed automation building blocks for teams that need importable workflows and a cleaner delivery path.",
+      "description": "One n8n workflow that accepts ALLOW, QUARANTINE, or DENY with a rationale and rejects anything else.",
       "keywords": ["n8n", "workflow", "automation", "pipeline", "import", "automate", "workflow automation", "no-code", "low-code"],
       "manual_url": "https://aethermoore.com/product-manual/n8n-workflow-pack.html",
       "buy_url": "https://buy.stripe.com/8x228sc0y3XNeBafWSdby05"
@@ -34,7 +34,7 @@
       "id": "content-spin-engine",
       "name": "Content Spin Engine",
       "type": "package",
-      "description": "Source-once content operations for adapting, reviewing, and publishing across channels with less drift.",
+      "description": "Copies one note into a site draft, a short draft, and an email draft. It does not add a claim.",
       "keywords": ["content", "spin", "publishing", "repurpose", "editorial", "marketing", "content engine", "blog", "social media content", "content pipeline", "cross-post"],
       "manual_url": "https://aethermoore.com/product-manual/content-spin-engine.html",
       "buy_url": "https://buy.stripe.com/5kQ5kE5Ca65V78I5iedby07"
@@ -96,7 +96,7 @@
       "id": "buyer-delivery-proof",
       "name": "Buyer Delivery Guide",
       "type": "delivery guide",
-      "description": "Public description of paid-packet delivery, buyer-only download URLs, support recovery, and separation from open-source code.",
+      "description": "The six shop zips download from the thank-you page. The MIT repository and the public training set stay free.",
       "keywords": ["delivery proof", "non open source", "paid packet", "buyer packet", "download url", "private delivery", "stripe delivery", "offer delivery"],
       "manual_url": "https://aethermoore.com/product-manual/delivery-and-access.html",
       "buy_url": "https://aethermoore.com/delivery-proof.html"

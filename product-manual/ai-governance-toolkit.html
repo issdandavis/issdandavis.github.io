@@ -44,10 +44,10 @@
       <div class="hero-card">
         <div class="eyebrow">Buyer Manual</div>
         <h1>AI Governance Toolkit</h1>
-        <p class="lead">This package is for teams that need a practical governance layer before they need the full SCBE architecture. It should help you make safer decisions, document them clearly, and start with a small controlled pilot instead of a giant rollout.</p>
+        <p class="lead">The download is <code>decide.py</code> plus three example records. Run <code>python decide.py self-test</code>. A record passes when the decision is ALLOW, QUARANTINE, or DENY, and a quarantine or denial also has uncertainty and a follow-up.</p>
         <div class="chip-row">
           <span class="chip">Decision records</span>
-          <span class="chip">Threshold worksheets</span>
+          <span class="chip">decide.py</span>
           <span class="chip">Pilot-first</span>
           <span class="chip">AI-readable manual</span>
         </div>
@@ -62,8 +62,8 @@
             <div class="flow" role="img" aria-label="Open the toolkit, identify the first workflow, set thresholds, test one decision, and record the result.">
               <div class="flow-step"><strong>1. Unpack</strong><span>Open the files from the delivery bundle and keep them in one working folder.</span></div>
               <div class="flow-step"><strong>2. Choose one workflow</strong><span>Pick a single real automation or AI decision point to govern first.</span></div>
-              <div class="flow-step"><strong>3. Set thresholds</strong><span>Fill the worksheet with your starting allow, quarantine, and deny boundaries.</span></div>
-              <div class="flow-step"><strong>4. Record a decision</strong><span>Use the decision record template on one concrete example.</span></div>
+              <div class="flow-step"><strong>3. Run the self-test</strong><span>python decide.py self-test must pass before you trust a record.</span></div>
+              <div class="flow-step"><strong>4. Check one record</strong><span>python decide.py check example-quarantine.json, then check a record from your own workflow.</span></div>
               <div class="flow-step"><strong>5. Review</strong><span>Check whether the chosen thresholds match the operational reality you saw.</span></div>
             </div>
           </section>
@@ -75,10 +75,10 @@
                 <tr><th>Item</th><th>Why it matters</th><th>How to use it</th></tr>
               </thead>
               <tbody>
-                <tr><td>Decision record template</td><td>Keeps governance choices explicit and reviewable.</td><td>Fill it out for one real allow/quarantine/deny example.</td></tr>
-                <tr><td>Threshold worksheet</td><td>Stops the policy from staying vague.</td><td>Write the first safe starting values and assumptions.</td></tr>
-                <tr><td>Pilot checklist</td><td>Prevents over-scoping the first rollout.</td><td>Use it before applying the toolkit to more than one workflow.</td></tr>
-                <tr><td>Review notes format</td><td>Makes follow-up tuning easier.</td><td>Log what surprised you and what needs tightening.</td></tr>
+                <tr><td>decide.py</td><td>Rejects a record that is missing a required field or uses a word outside ALLOW, QUARANTINE, and DENY.</td><td>Run python decide.py self-test.</td></tr>
+                <tr><td>example-allow.json</td><td>A record the checker accepts.</td><td>python decide.py check example-allow.json</td></tr>
+                <tr><td>example-quarantine.json</td><td>Shows the extra fields a quarantine needs.</td><td>Confirm uncertainty and follow_up are present.</td></tr>
+                <tr><td>example-deny.json</td><td>Shows the extra fields a denial needs.</td><td>Copy the shape, then replace it with your own case.</td></tr>
               </tbody>
             </table>
           </section>
@@ -96,7 +96,7 @@
             <h3>Success check</h3>
             <ol class="step-list">
               <li>You can point to one governed workflow.</li>
-              <li>You have one completed threshold worksheet.</li>
+              <li>python decide.py self-test passes.</li>
               <li>You have one completed decision record tied to a real example.</li>
               <li>You know what to tighten before expanding the rollout.</li>
             </ol>

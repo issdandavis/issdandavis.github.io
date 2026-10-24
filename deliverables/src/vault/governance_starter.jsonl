@@ -1,0 +1,24 @@
+{"prompt":"Which decision words does the record checker accept?","response":"ALLOW, QUARANTINE, and DENY."}
+{"prompt":"A public page states its price and the file the buyer receives. The operator opened both. What decision do you record?","response":"ALLOW. The rationale is that the page and the file agree, the owner is named, and a review date is set."}
+{"prompt":"The page names a download, and nobody has opened the file. What decision do you record?","response":"QUARANTINE. Uncertainty: the file is unseen. Follow-up: open the zip and run its self-test."}
+{"prompt":"An action would send a credential to a host that is not on the operator's list. What decision do you record?","response":"DENY. Uncertainty: the destination is unnamed. Follow-up: stop the action and name the host before anyone retries."}
+{"prompt":"Can the decision word be MAYBE?","response":"No. The checker rejects any word other than ALLOW, QUARANTINE, or DENY."}
+{"prompt":"What extra fields do QUARANTINE and DENY require?","response":"uncertainty and follow_up. Both must be non-empty."}
+{"prompt":"Name the six HYDRA roles in order.","response":"KO Scout, AV Vision, RU Reader, CA Clicker, UM Typer, DR Judge."}
+{"prompt":"What does KO own on a packet?","response":"KO names the route and the bound of the mission, and does not widen the mission past the operator's sentence."}
+{"prompt":"What does DR own on a packet?","response":"DR records ALLOW, QUARANTINE, or DENY and the rationale. The dry-run packet leaves the decision blank until a person fills it."}
+{"prompt":"Does hydra_packet.py browse or click?","response":"No. It writes a six-role packet for one mission sentence and does not call a model."}
+{"prompt":"A benchmark request times out. Does that count as a blocked attack?","response":"No. A transport error is status error. It is excluded from the detection rate, and the band is incomplete."}
+{"prompt":"What does the benchmark band name mean?","response":"It is a refusal-word rate on the scored rows in this kit. It is not a certification."}
+{"prompt":"The benign file has 3 refusals out of 20 scored prompts. What happens to the band?","response":"The false-positive rate is above 10 percent, so the band drops by one. If any request failed, the band is incomplete instead."}
+{"prompt":"What does spin.py add to a source note?","response":"It copies the source into a site draft, a short draft, and an email draft. It does not add a new claim."}
+{"prompt":"The source note is empty. What should spin.py do?","response":"Exit with an error. An empty source is not a draft."}
+{"prompt":"What does validate_sft.py require on every JSONL row?","response":"A JSON object with non-empty string fields named prompt and response."}
+{"prompt":"Is the large SCBE training set inside the Training Vault zip?","response":"No. The vault is a starter file plus a checker. The large set is the public Hugging Face dataset issdandavis/scbe-aethermoore-training-data."}
+{"prompt":"A row in the starter file has an empty response. What should the checker return?","response":"A line error saying response must be a non-empty string, and a non-zero exit."}
+{"prompt":"Who may enter text in a HYDRA packet?","response":"UM Typer names the text that may be entered, or states that none may. UM must not enter a credential or an unnamed secret."}
+{"prompt":"How many actions may CA take in one packet?","response":"One. CA names a single action and does not take a second action in the same packet."}
+{"prompt":"What should the operator run first after unpacking the governance toolkit?","response":"python decide.py self-test"}
+{"prompt":"What should the operator run first after unpacking the benchmark kit?","response":"python benchmark.py --self-test"}
+{"prompt":"A workflow has no owner. Which decision fits before the work continues?","response":"QUARANTINE. The record needs an owner and a review date, plus uncertainty and a follow-up."}
+{"prompt":"Where do the books sell?","response":"The three published books sell on Amazon. The site packs sell through the existing Stripe links and then a zip on the delivery page."}

@@ -43,18 +43,15 @@
     }
   ],
   "packages": [
-    {"id": "governance-toolkit", "name": "AI Governance Toolkit", "price": 29, "unit": "one-time", "url": "https://aethermoore.com/product-manual/ai-governance-toolkit.html", "buy_url": "https://buy.stripe.com/cNibJ25Ca2TJ9gQ3a6dby06", "keywords": ["governance", "toolkit", "templates", "decision records"]},
-    {"id": "hydra-agent-templates", "name": "HYDRA Multi-Agent Framework", "price": 9, "unit": "one-time", "url": "https://aethermoore.com/product-manual/hydra-agent-templates.html", "buy_url": "https://buy.stripe.com/6oUeVe5Ca2TJdx6262dby08", "keywords": ["hydra", "agent", "template", "swarm", "license", "framework", "coordination", "multi-agent"], "description": "License for the HYDRA multi-agent coordination framework, plus role and packet templates."},
+    {"id": "governance-toolkit", "name": "AI Governance Toolkit", "price": 29, "unit": "one-time", "url": "https://aethermoore.com/product-manual/ai-governance-toolkit.html", "buy_url": "https://buy.stripe.com/cNibJ25Ca2TJ9gQ3a6dby06", "keywords": ["governance", "toolkit", "decide", "decision records"], "description": "Checks one decision record. ALLOW, QUARANTINE, or DENY."},
+    {"id": "hydra-agent-templates", "name": "HYDRA role packet", "price": 9, "unit": "one-time", "url": "https://aethermoore.com/product-manual/hydra-agent-templates.html", "buy_url": "https://buy.stripe.com/6oUeVe5Ca2TJdx6262dby08", "keywords": ["hydra", "agent", "packet", "swarm", "roles", "multi-agent"], "description": "Packet builder for KO, AV, RU, CA, UM, and DR. Not a license for the free repository."},
     {"id": "n8n-workflow-pack", "name": "n8n Workflow Pack", "price": 29, "unit": "one-time", "url": "https://aethermoore.com/product-manual/n8n-workflow-pack.html", "buy_url": "https://buy.stripe.com/8x228sc0y3XNeBafWSdby05", "keywords": ["n8n", "workflow", "automation", "import"]},
     {"id": "content-spin-engine", "name": "Content Spin Engine", "price": 29, "unit": "one-time", "url": "https://aethermoore.com/product-manual/content-spin-engine.html", "buy_url": "https://buy.stripe.com/5kQ5kE5Ca65V78I5iedby07", "keywords": ["content", "spin", "publishing", "repurpose"]}
   ],
   "datasets": [
-    {"id": "governance-sft", "name": "SCBE Governance SFT Pack", "price": 99, "unit": "one-time", "url": "https://aethermoore.com/datasets.html", "keywords": ["sft", "governance", "training data", "fine-tune"]},
-    {"id": "benchmark-kit", "name": "Benchmark Kit (91 adversarial prompts)", "price": 5, "unit": "one-time", "url": "https://aethermoore.com/benchmark-kit.html", "keywords": ["red team", "adversarial", "attack", "benchmark", "prompts"]},
-    {"id": "theory-bundle", "name": "Theory Documents Bundle", "price": 129, "unit": "one-time", "url": "https://aethermoore.com/datasets.html", "keywords": ["theory", "architecture", "crypto", "patent", "docs"]},
-    {"id": "conlang-pack", "name": "Six Tongues Conlang Pack", "price": 79, "unit": "one-time", "url": "https://aethermoore.com/datasets.html", "keywords": ["conlang", "language", "tokenization", "tongues"]},
-    {"id": "session-transcripts", "name": "Spiralverse Session Transcripts", "price": 49, "unit": "one-time", "url": "https://aethermoore.com/datasets.html", "keywords": ["rpg", "session", "transcript", "spiralverse", "game"]},
-    {"id": "full-arsenal", "name": "The Full Arsenal", "price": 399, "unit": "one-time", "url": "https://aethermoore.com/datasets.html", "keywords": ["bundle", "everything", "arsenal", "full"]}
+    {"id": "public-training-set", "name": "Public training set", "price": 0, "unit": "free", "url": "https://huggingface.co/datasets/issdandavis/scbe-aethermoore-training-data", "keywords": ["sft", "governance", "training data", "fine-tune", "corpus"], "description": "Free public dataset. Not a paid zip."},
+    {"id": "benchmark-kit", "name": "Benchmark Kit", "price": 5, "unit": "one-time", "url": "https://aethermoore.com/benchmark-kit.html", "buy_url": "https://buy.stripe.com/dRm9AU8Om3XN3Ww6midby0h", "keywords": ["red team", "adversarial", "attack", "benchmark", "prompts"], "description": "251 unique attack prompts and 20 benign prompts. Errors are not scored as blocks."},
+    {"id": "training-vault", "name": "Training Vault starter", "price": 29, "unit": "one-time", "url": "https://aethermoore.com/shop.html", "buy_url": "https://buy.stripe.com/28E8wQ5Cacuj64EaCydby0g", "keywords": ["vault", "starter", "jsonl", "sft"], "description": "24 rows and a JSONL checker. The public corpus is not in the zip."}
   ],
   "free": [
     {"id": "scbe-aethermoore", "name": "SCBE-AETHERMOORE", "license": "MIT", "url": "https://github.com/issdandavis/SCBE-AETHERMOORE", "npm": "scbe-aethermoore", "pypi": "scbe-aethermoore"},

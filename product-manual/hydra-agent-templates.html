@@ -9,12 +9,12 @@
   <meta property="og:image" content="https://aethermoore.com/hero.webp">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="HYDRA Multi-Agent Framework Manual">
-  <meta name="twitter:description" content="Buyer manual for the HYDRA multi-agent coordination framework license: role templates, packet patterns, startup path, and validation checks.">
+  <meta name="twitter:description" content="Buyer manual for hydra_packet.py: six roles, one packet, and a self-test. Not a license for the free repository.">
   <meta name="twitter:image" content="https://aethermoore.com/hero.webp">
-  <meta name="description" content="Buyer manual for the HYDRA multi-agent coordination framework license: role templates, packet patterns, startup path, and validation checks.">
+  <meta name="description" content="Buyer manual for hydra_packet.py: six roles, one packet, and a self-test. Not a license for the free repository.">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta property="og:title" content="HYDRA Multi-Agent Framework Manual">
-  <meta property="og:description" content="Buyer manual for the HYDRA multi-agent coordination framework license: role templates, packet patterns, startup path, and validation checks.">
+  <meta property="og:description" content="Buyer manual for hydra_packet.py: six roles, one packet, and a self-test. Not a license for the free repository.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://aethermoore.com/product-manual/hydra-agent-templates.html">
   <link rel="canonical" href="https://aethermoore.com/product-manual/hydra-agent-templates.html">
@@ -44,11 +44,11 @@
       <div class="hero-card">
         <div class="eyebrow">Buyer Manual</div>
         <h1>HYDRA Multi-Agent Framework</h1>
-        <p class="lead">This is a license for the HYDRA multi-agent coordination framework, plus templates. Use it to launch small coordinated agent groups with clearer ownership and cleaner handoffs — without inventing every role and packet from scratch.</p>
+        <p class="lead">The download is <code>hydra_packet.py</code>. It writes a packet for KO Scout, AV Vision, RU Reader, CA Clicker, UM Typer, and DR Judge. Run <code>python hydra_packet.py self-test</code>. It does not browse, and it is not a license for the free MIT repository.</p>
         <div class="chip-row">
           <span class="chip">Agent roles</span>
           <span class="chip">Packet patterns</span>
-          <span class="chip">Launch checklists</span>
+          <span class="chip">Decision left blank</span>
           <span class="chip">Swarm-ready</span>
         </div>
       </div>
@@ -61,7 +61,7 @@
             <h3>First-run path</h3>
             <div class="flow" role="img" aria-label="Choose a mission, assign roles, adapt templates, run one small swarm, and review the packet quality.">
               <div class="flow-step"><strong>1. Pick a mission</strong><span>Choose a single research, ops, or publishing task.</span></div>
-              <div class="flow-step"><strong>2. Assign roles</strong><span>Use the template set to define explorer, worker, reviewer, or operator lanes.</span></div>
+              <div class="flow-step"><strong>2. Read the six roles</strong><span>The script names KO, AV, RU, CA, UM, and DR. It leaves the decision blank.</span></div>
               <div class="flow-step"><strong>3. Adapt the packet</strong><span>Fill in scope, file ownership, and evidence expectations.</span></div>
               <div class="flow-step"><strong>4. Run a small swarm</strong><span>Start with the minimum viable group, not the biggest possible formation.</span></div>
               <div class="flow-step"><strong>5. Review the handoff</strong><span>Check whether the packet quality and ownership rules actually held.</span></div>
@@ -75,10 +75,9 @@
                 <tr><th>Item</th><th>Why it matters</th><th>How to use it</th></tr>
               </thead>
               <tbody>
-                <tr><td>Role templates</td><td>Gives each lane a real job instead of vague parallelism.</td><td>Choose only the roles you actually need.</td></tr>
-                <tr><td>Packet examples</td><td>Shows how to pass context without chaos.</td><td>Copy the closest example and adapt it to the mission.</td></tr>
-                <tr><td>Launch checklist</td><td>Reduces collisions and duplicate work.</td><td>Run it before the first handoff.</td></tr>
-                <tr><td>Review checklist</td><td>Stops weak swarm outputs from being treated as complete.</td><td>Use after the first loop.</td></tr>
+                <tr><td>hydra_packet.py</td><td>Writes one packet for KO, AV, RU, CA, UM, and DR.</td><td>Run python hydra_packet.py self-test.</td></tr>
+                <tr><td>example-packet.json</td><td>A filled mission with the decision left blank.</td><td>Read it, then replace the mission with yours.</td></tr>
+                <tr><td>README</td><td>Says this file is not a license for the MIT repository.</td><td>Keep the repository link. Do not treat the zip as the framework.</td></tr>
               </tbody>
             </table>
           </section>

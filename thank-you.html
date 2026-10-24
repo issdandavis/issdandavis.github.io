@@ -96,103 +96,91 @@ ol.steps{counter-reset:step;list-style:none;padding-left:0}
   var PRODUCTS = {
     'ai-governance-toolkit': {
       title: 'AI Governance Toolkit',
-      subtitle: 'Templates, thresholds, decision records, and starter rollout guidance.',
+      subtitle: 'A checker for one decision record. Run python decide.py self-test.',
       zip: '/deliverables/ai-governance-toolkit.zip',
       includes: [
-        'README.md — the starting point',
-        'decision-record-template.md — record governance decisions with clear audit trail',
-        'threshold-worksheet.md — set your risk thresholds explicitly',
-        'pilot-checklist.md — launch your first governed AI workflow',
-        'review-notes-template.md — structured review sessions',
-        'LICENSE.txt — single-buyer use license',
+        'decide.py — checks ALLOW, QUARANTINE, or DENY',
+        'example-allow.json, example-quarantine.json, example-deny.json',
+        'README.md and LICENSE.txt',
       ],
       manual: '/product-manual/ai-governance-toolkit.html',
     },
     'hydra-agent-templates': {
       title: 'HYDRA Multi-Agent Framework',
-      subtitle: 'License for multi-agent coordination, plus role and packet templates.',
+      subtitle: 'A six-role packet builder. It does not browse, and it is not a license for the free repository.',
       zip: '/deliverables/hydra-agent-templates.zip',
       includes: [
-        'README.md — the HYDRA swarm overview',
-        'role-templates.md — the 6 Sacred Tongue specialist roles (KO/AV/RU/CA/UM/DR)',
-        'packet-example.md — a real cross-agent packet with fields explained',
-        'launch-checklist.md — pre-flight checklist before running agents',
-        'review-checklist.md — post-run evaluation structure',
-        'LICENSE.txt',
+        'hydra_packet.py — KO, AV, RU, CA, UM, DR',
+        'example-packet.json',
+        'README.md and LICENSE.txt',
       ],
       manual: '/product-manual/hydra-agent-templates.html',
     },
     'n8n-workflow-pack': {
       title: 'n8n Workflow Pack',
-      subtitle: 'Governed automation building blocks. Importable workflows and delivery path.',
+      subtitle: 'One n8n workflow. A complete decision returns HTTP 200. Anything else returns HTTP 400.',
       zip: '/deliverables/n8n-workflow-pack.zip',
       includes: [
-        'README.md — import and setup instructions',
-        'workflows/SCBE_X_Merch_Autopilot.workflow.json — importable n8n workflow',
-        'workflows/connectors.n8n.json — connector definitions',
-        'environment-variable-map.md — what to set, why, where',
-        'connector-notes.md — per-connector gotchas',
-        'validation-checklist.md — verify before going live',
-        'LICENSE.txt',
+        'workflows/SCBE_Decision_Check.workflow.json',
+        'validation-checklist.md',
+        'README.md and LICENSE.txt',
       ],
       manual: '/product-manual/n8n-workflow-pack.html',
     },
     'content-spin-engine': {
       title: 'Content Spin Engine',
-      subtitle: 'Source-once content operations. Adapt, review, publish across channels without drift.',
+      subtitle: 'Copies one note into three drafts. It does not add a claim.',
       zip: '/deliverables/content-spin-engine.zip',
       includes: [
-        'README.md — content ops framing',
-        'source-to-channel-matrix.md — which source maps to which output',
-        'transformation-patterns.md — common rewrites with examples',
-        'review-checklist.md — pre-publish review gate',
-        'output-tracker.csv — track published variants',
-        'LICENSE.txt',
+        'spin.py — run python spin.py self-test',
+        'sample-source.md and a sample spin-out folder',
+        'README.md and LICENSE.txt',
       ],
       manual: '/product-manual/content-spin-engine.html',
     },
     'benchmark-kit': {
       title: 'AI Security Benchmark Kit',
-      subtitle: '400 attacks across 20 classes, 4 compliance levels, one scored report.',
+      subtitle: '251 unique attack prompts, 20 ordinary prompts, and a runner. Errors are not blocks.',
       zip: '/deliverables/benchmark-kit.zip',
       includes: [
-        'README.md — what is inside and how to run it',
-        'attack_corpus.csv + attack_corpus.jsonl — 400 labelled attacks, 20 classes',
-        'benign_prompts.jsonl — 20 clean prompts for false-positive rate',
-        'benchmark.py — runner for any OpenAI-compatible endpoint (no extra packages)',
-        'benchmark_colab.ipynb — no-install Colab run',
-        'RUBRIC.md + REPORT_TEMPLATE.md — scoring rubric and report write-up',
+        'benchmark.py — python benchmark.py --self-test',
+        'attack_corpus.jsonl and attack_corpus.csv — 251 unique prompts, 20 classes',
+        'benign_prompts.jsonl — 20 ordinary prompts',
+        'RUBRIC.md and REPORT_TEMPLATE.md',
       ],
       manual: '/benchmark-kit.html',
     },
     // Products below have no downloadable file on the site yet: one-click email request.
     'training-vault': {
       title: 'AI Security Training Vault',
-      subtitle: 'Training records, schemas, and benchmark scripts for security-oriented AI work.',
-      zip: null,
-      includes: ['Curated SFT JSONL records', 'Training schema reference', 'Benchmark scripts', 'Architecture notes'],
+      subtitle: '24 starter rows and a checker. The large public corpus is not in this zip.',
+      zip: '/deliverables/training-vault.zip',
+      includes: ['governance_starter.jsonl — 24 rows', 'validate_sft.py', 'README.md and LICENSE.txt'],
       manual: '/product-manual/training-vault.html',
     },
     'process-pack': {
       title: 'Behind-The-Scenes Process Pack',
-      subtitle: 'How the SCBE-AETHERMOORE work actually gets made.',
+      subtitle: 'This pack is not on the shelf.',
       zip: null,
+      closed: true,
       includes: [],
-      manual: null,
+      manual: '/shop.html',
     },
     'governance-sft-pack': {
       title: 'SCBE Governance SFT Pack',
-      subtitle: '~5,188 supervised fine-tuning pairs, QLoRA-ready JSONL.',
+      subtitle: 'This archive is not for sale. The public dataset is on Hugging Face. The paid starter is the Training Vault.',
       zip: null,
-      includes: ['Merged multi-source SFT corpus (JSONL)', 'Governance decisions, risk labels, routing tags'],
-      manual: '/datasets.html#governance-sft',
+      closed: true,
+      includes: [],
+      manual: '/shop.html',
     },
     'full-arsenal': {
       title: 'The Full Arsenal (dataset bundle)',
-      subtitle: 'Every SCBE dataset pack in one bundle.',
+      subtitle: 'There is no Full Arsenal archive. Use the shop for the files that download.',
       zip: null,
+      closed: true,
       includes: [],
-      manual: '/datasets.html#full-arsenal',
+      manual: '/shop.html',
     },
   };
   var ALIASES = { 'governance-toolkit': 'ai-governance-toolkit', 'hydra': 'hydra-agent-templates', 'n8n': 'n8n-workflow-pack',
@@ -224,7 +212,14 @@ ol.steps{counter-reset:step;list-style:none;padding-left:0}
     var manualBtn = product.manual ? '<a class="secondary-btn" href="' + product.manual + '">Read the full manual</a>' : '';
     var bookmark = '<p style="font-size:13px;color:#9bc5ba;margin-top:14px;">Your page: <code>aethermoore.com/thank-you.html?product=' + key + '</code> — bookmark it to come back anytime.</p>';
 
-    if (product.zip) {
+    if (product.closed) {
+      titleEl.textContent = product.title;
+      subtitleEl.textContent = product.subtitle;
+      area.innerHTML =
+        '<div class="card unknown"><h3>' + esc(product.title) + '</h3><p>' + esc(product.subtitle) + '</p>' +
+        '<a class="download-btn" href="/shop.html">Open the shop</a>' +
+        '<a class="secondary-btn" href="https://huggingface.co/datasets/issdandavis/scbe-aethermoore-training-data">Public dataset</a></div>';
+    } else if (product.zip) {
       titleEl.textContent = 'Your ' + product.title + ' is ready.';
       subtitleEl.textContent = 'Thanks for buying, it genuinely helps me keep building. Your download is below. Bookmark this page so you can come back anytime.';
       area.innerHTML =

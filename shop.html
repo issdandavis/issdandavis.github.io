@@ -4,176 +4,292 @@
   <meta charset="UTF-8">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shop | Books, packs, hire | AetherMoore</title>
-  <meta name="description" content="Buy Issac's books on Amazon, clearly priced digital packages on Stripe, a free Ever-Lesson Math Ledger sample, or request fixed-scope work.">
-  <meta name="robots" content="index, follow">
+  <title>Shop | AetherMoore</title>
+  <meta name="description" content="Six downloads you can run, three books on Amazon, and a way to hire Issac. Each download has a self-test.">
   <link rel="canonical" href="https://aethermoore.com/shop.html">
   <meta property="og:title" content="Shop | AetherMoore">
-  <meta property="og:description" content="Books · digital packs · math ledger · hire. Clear prices.">
+  <meta property="og:description" content="Run a self-test before you trust the file. Books stay on Amazon.">
   <meta property="og:url" content="https://aethermoore.com/shop.html">
   <meta property="og:image" content="https://aethermoore.com/hero.webp">
   <style>
     :root {
-      --bg:#071412; --bg-deep:#04100f; --panel:rgba(10,28,24,.9);
-      --line:rgba(139,255,223,.15); --text:#e7fff7; --muted:#9bc5ba; --dim:#6a9488;
-      --mint:#8fffd3; --aqua:#6dd8ff; --gold:#ffd977; --max:1080px;
+      --bg: #071412;
+      --ink: #e7fff7;
+      --muted: #9bc5ba;
+      --dim: #6a9488;
+      --line: rgba(139, 255, 223, 0.18);
+      --mint: #8fffd3;
+      --gold: #ffd977;
+      --aqua: #6dd8ff;
+      --max: 920px;
     }
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:linear-gradient(180deg,var(--bg-deep),var(--bg));color:var(--text);line-height:1.55;min-height:100vh}
-    a{color:var(--aqua);text-decoration:none} a:hover{color:var(--mint)}
-    .topbar{position:sticky;top:0;z-index:20;backdrop-filter:blur(12px);background:rgba(4,16,15,.92);border-bottom:1px solid var(--line)}
-    .topbar-inner{max-width:var(--max);margin:0 auto;padding:14px 20px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}
-    .brand{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--mint);font-weight:700}
-    .nav{display:flex;gap:6px;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;padding-bottom:2px}
-    .nav a{padding:10px 12px;min-height:44px;display:inline-flex;align-items:center;border-radius:8px;font-size:12px;color:var(--muted);white-space:nowrap;flex-shrink:0}
-    .nav a:hover{background:rgba(143,255,211,.08);color:var(--text)}
-    .nav a.on{color:var(--gold);border:1px solid rgba(255,217,119,.3)}
-    @media(max-width:480px){
-      main{padding:28px 16px 80px}
-      h1{font-size:clamp(26px,8vw,36px)}
-      .btn{min-height:48px;width:100%;justify-content:center}
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+      line-height: 1.5;
     }
-    main{max-width:var(--max);margin:0 auto;padding:40px 20px 80px}
-    h1{font-size:clamp(28px,5vw,44px);font-weight:800;letter-spacing:-.03em;margin:12px 0 10px}
-    h1 em{font-style:normal;background:linear-gradient(135deg,var(--gold),var(--mint));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    .lede{color:var(--muted);font-size:17px;max-width:58ch;margin-bottom:28px}
-    .kicker{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);padding:5px 12px;border-radius:999px;border:1px solid rgba(255,217,119,.28);background:rgba(255,217,119,.08)}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
-    .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:10px;transition:border-color .15s,transform .15s}
-    .card:hover{border-color:rgba(143,255,211,.35);transform:translateY(-2px)}
-    .card .tag{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
-    .card h3{font-size:18px;line-height:1.25}
-    .card p{color:var(--muted);font-size:14px;flex:1}
-    .price{font-size:28px;font-weight:800;color:var(--mint)}
-    .price span{font-size:13px;font-weight:500;color:var(--dim)}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;border-radius:10px;font-size:14px;font-weight:600;border:1px solid transparent;text-align:center}
-    .btn-primary{background:linear-gradient(135deg,rgba(143,255,211,.2),rgba(109,216,255,.12));border-color:rgba(143,255,211,.35);color:var(--mint)}
-    .btn-gold{background:linear-gradient(135deg,rgba(255,217,119,.2),rgba(240,191,103,.1));border-color:rgba(255,217,119,.35);color:var(--gold)}
-    .btn-secondary{border-color:var(--line);color:var(--muted)}
-    .section{margin-top:40px}
-    .section>h2{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--mint);margin-bottom:12px}
-    .note{margin-top:28px;padding:14px 16px;border-radius:12px;border:1px dashed var(--line);color:var(--dim);font-size:13px}
-    footer{max-width:var(--max);margin:0 auto;padding:0 20px 48px;color:var(--dim);font-size:12px}
+    a { color: var(--aqua); }
+    a:hover { color: var(--mint); }
+    a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      background: rgba(7, 20, 18, 0.94);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar-inner, main, footer {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      padding: 14px 0;
+    }
+    .brand {
+      color: var(--mint);
+      font-family: "Segoe UI", sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+    }
+    .nav {
+      display: flex;
+      gap: 14px;
+      font-family: "Segoe UI", sans-serif;
+      font-size: 14px;
+    }
+    .nav a { color: var(--muted); text-decoration: none; }
+    .nav a[aria-current="page"] { color: var(--gold); }
+    main { padding: 48px 0 72px; }
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(40px, 7vw, 68px);
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      line-height: 0.95;
+    }
+    .lede {
+      max-width: 38rem;
+      margin: 0 0 36px;
+      color: var(--muted);
+      font-family: "Segoe UI", sans-serif;
+      font-size: 18px;
+    }
+    h2 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 500;
+    }
+    .shelf { display: flex; flex-direction: column; }
+    .row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px 28px;
+      padding: 22px 0;
+      border-top: 1px solid var(--line);
+    }
+    .row p, .meta, code, .price, .actions, footer {
+      font-family: "Segoe UI", sans-serif;
+    }
+    .row p { margin: 8px 0 0; color: var(--muted); max-width: 62ch; }
+    code {
+      display: inline-block;
+      margin-top: 10px;
+      color: var(--mint);
+      font-size: 13px;
+    }
+    .buy { text-align: right; min-width: 148px; }
+    .price {
+      display: block;
+      color: var(--gold);
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .actions { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 14px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 650;
+    }
+    .btn-buy { background: var(--mint); color: #06211b; }
+    .btn-buy:hover { color: #06211b; background: #d8fff2; }
+    .btn-quiet { color: var(--muted); }
+    .group { margin-top: 42px; }
+    .group h3 {
+      margin: 0 0 8px;
+      font-family: "Segoe UI", sans-serif;
+      font-size: 13px;
+      font-weight: 650;
+      color: var(--dim);
+    }
+    .books { border-top: 1px solid var(--line); }
+    .books a {
+      display: block;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .books a span { color: var(--gold); font-family: "Segoe UI", sans-serif; font-size: 14px; }
+    footer { padding-bottom: 48px; color: var(--dim); font-size: 14px; }
+    @media (max-width: 700px) {
+      .row { grid-template-columns: 1fr; }
+      .buy { text-align: left; }
+      .actions { flex-direction: row; flex-wrap: wrap; }
+      .nav { gap: 10px; }
+    }
   </style>
 </head>
 <body>
   <header class="topbar">
     <div class="topbar-inner">
       <a class="brand" href="/">AetherMoore</a>
-      <nav class="nav">
+      <nav class="nav" aria-label="Shop">
         <a href="index.html">Home</a>
-        <a class="on" href="shop.html">Shop</a>
-        <a href="videos.html">Videos</a>
-        <a href="math-ledger.html">Math Ledger</a>
-        <a href="about.html">About</a>
+        <a href="shop.html" aria-current="page">Shop</a>
         <a href="books.html">Books</a>
+        <a href="videos.html">Videos</a>
         <a href="hire.html">Hire</a>
       </nav>
     </div>
   </header>
   <main>
-    <div class="kicker">Simple shelf</div>
-    <h1>Buy something. <em>Or hire me.</em></h1>
-    <p class="lede">Four clear lanes. No pipeline lecture required. Stripe for digital packs, Amazon for books, email for fixed-scope work.</p>
+    <h1>Run it before you keep it.</h1>
+    <p class="lede">Six downloads. Each one has a self-test that finishes on your machine with no API key. The three books are on Amazon.</p>
 
-    <div class="section">
-      <h2>1 · Books (Amazon)</h2>
-      <div class="grid">
-        <div class="card">
-          <div class="tag">Novel · framework story</div>
-          <h3>The Six Tongues Protocol</h3>
-          <p>Sci-fi that carries the SCBE vocabulary in scenes you can remember.</p>
-          <div class="price">Amazon</div>
-          <a class="btn btn-gold" href="https://www.amazon.com/dp/B0GSSFQD9G" target="_blank" rel="noopener">Buy on Amazon</a>
+    <section class="shelf" id="packs" aria-label="Downloads">
+      <article class="row">
+        <div>
+          <h2>AI Security Benchmark Kit</h2>
+          <p>251 unique attack prompts in 20 classes, 20 ordinary prompts, and a runner for any OpenAI-style chat server. A failed request is not counted as a block. The band is a refusal-word label for this file, not a certification.</p>
+          <code>python benchmark.py --self-test</code>
         </div>
-        <div class="card">
-          <div class="tag">Nonfiction</div>
-          <h3>The Miracle Was The Memory</h3>
-          <p>A first-person creative-nonfiction novel; Amazon lists it in fiction categories.</p>
-          <div class="price">Amazon</div>
-          <a class="btn btn-gold" href="https://www.amazon.com/dp/B0H1LJGP8L" target="_blank" rel="noopener">Buy on Amazon</a>
+        <div class="buy">
+          <span class="price">$5</span>
+          <div class="actions">
+            <a class="btn btn-buy" href="https://buy.stripe.com/dRm9AU8Om3XN3Ww6midby0h">Buy the kit</a>
+            <a class="btn btn-quiet" href="benchmark-kit.html">What is inside</a>
+          </div>
         </div>
-        <div class="card">
-          <div class="tag">Literary</div>
-          <h3>Witnessed</h3>
-          <p>Standalone literary work on Amazon KDP.</p>
-          <div class="price">Amazon</div>
-          <a class="btn btn-gold" href="https://www.amazon.com/dp/B0H257QJC2" target="_blank" rel="noopener">Buy on Amazon</a>
+      </article>
+
+      <article class="row">
+        <div>
+          <h2>HYDRA role packet</h2>
+          <p>Writes a handoff for KO Scout, AV Vision, RU Reader, CA Clicker, UM Typer, and DR Judge. It does not browse and it is not a license for the free MIT repository.</p>
+          <code>python hydra_packet.py self-test</code>
         </div>
+        <div class="buy">
+          <span class="price">$9</span>
+          <div class="actions">
+            <a class="btn btn-buy" href="https://buy.stripe.com/6oUeVe5Ca2TJdx6262dby08">Buy the packet</a>
+            <a class="btn btn-quiet" href="product-manual/hydra-agent-templates.html">Manual</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="row">
+        <div>
+          <h2>AI Governance Toolkit</h2>
+          <p>Checks one decision record. The word has to be ALLOW, QUARANTINE, or DENY. A quarantine or a denial also needs uncertainty and a follow-up.</p>
+          <code>python decide.py self-test</code>
+        </div>
+        <div class="buy">
+          <span class="price">$29</span>
+          <div class="actions">
+            <a class="btn btn-buy" href="https://buy.stripe.com/cNibJ25Ca2TJ9gQ3a6dby06">Buy the checker</a>
+            <a class="btn btn-quiet" href="product-manual/ai-governance-toolkit.html">Manual</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="row">
+        <div>
+          <h2>n8n decision check</h2>
+          <p>One workflow. Import it, turn it on, and POST a decision. A complete record returns HTTP 200. Anything else returns HTTP 400. No API key is inside the file.</p>
+          <code>workflows/SCBE_Decision_Check.workflow.json</code>
+        </div>
+        <div class="buy">
+          <span class="price">$29</span>
+          <div class="actions">
+            <a class="btn btn-buy" href="https://buy.stripe.com/8x228sc0y3XNeBafWSdby05">Buy the workflow</a>
+            <a class="btn btn-quiet" href="product-manual/n8n-workflow-pack.html">Manual</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="row">
+        <div>
+          <h2>Content Spin</h2>
+          <p>Copies one note into a site draft, a short draft, and an email draft. The words come from the note. The script does not add a claim.</p>
+          <code>python spin.py self-test</code>
+        </div>
+        <div class="buy">
+          <span class="price">$29</span>
+          <div class="actions">
+            <a class="btn btn-buy" href="https://buy.stripe.com/5kQ5kE5Ca65V78I5iedby07">Buy the copier</a>
+            <a class="btn btn-quiet" href="product-manual/content-spin-engine.html">Manual</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="row">
+        <div>
+          <h2>Training Vault starter</h2>
+          <p>24 prompt-and-response rows and a checker that rejects a row with an empty prompt or response. The large public corpus stays on Hugging Face. This zip is the starter, not that corpus.</p>
+          <code>python validate_sft.py governance_starter.jsonl</code>
+        </div>
+        <div class="buy">
+          <span class="price">$29</span>
+          <div class="actions">
+            <a class="btn btn-buy" href="https://buy.stripe.com/28E8wQ5Cacuj64EaCydby0g">Buy the starter</a>
+            <a class="btn btn-quiet" href="product-manual/training-vault.html">Manual</a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="group">
+      <h3>Free on this site</h3>
+      <div class="books">
+        <a href="math-ledger.html">Ever-Lesson Math Ledger <span>Printable sample</span></a>
+        <a href="videos.html">Narrated chapters <span>YouTube</span></a>
       </div>
-    </div>
+    </section>
 
-    <div class="section">
-      <h2>2 · Digital packs (Stripe)</h2>
-      <div class="grid">
-        <div class="card">
-          <div class="tag">One-time</div>
-          <h3>AI Governance Toolkit</h3>
-          <p>Templates, decision records, setup guidance, buyer manual, support path.</p>
-          <div class="price">$29 <span>one-time</span></div>
-          <a class="btn btn-primary" href="https://buy.stripe.com/cNibJ25Ca2TJ9gQ3a6dby06" target="_blank" rel="noopener">Buy Toolkit</a>
-        </div>
-        <div class="card">
-          <div class="tag">One-time</div>
-          <h3>AI Security Training Vault</h3>
-          <p>Training data materials, benchmarks, notebook-oriented workflows.</p>
-          <div class="price">$29 <span>one-time</span></div>
-          <a class="btn btn-primary" href="https://buy.stripe.com/28E8wQ5Cacuj64EaCydby0g" target="_blank" rel="noopener">Buy Training Vault</a>
-        </div>
-        <div class="card">
-          <div class="tag">One-time</div>
-          <h3>HYDRA Multi-Agent Framework</h3>
-          <p>License for the HYDRA multi-agent coordination framework, plus role and packet templates to run it.</p>
-          <div class="price">$9 <span>one-time</span></div>
-          <a class="btn btn-primary" href="https://buy.stripe.com/6oUeVe5Ca2TJdx6262dby08" target="_blank" rel="noopener">Buy license</a>
-        </div>
+    <section class="group">
+      <h3>Books on Amazon</h3>
+      <div class="books">
+        <a href="https://www.amazon.com/dp/B0GSSFQD9G">The Six Tongues Protocol <span>Kindle and paperback</span></a>
+        <a href="https://www.amazon.com/dp/B0H1LJGP8L">The Miracle Was The Memory <span>Kindle and paperback</span></a>
+        <a href="https://www.amazon.com/dp/B0H257QJC2">Witnessed <span>Kindle and paperback</span></a>
       </div>
-    </div>
+    </section>
 
-    <div class="section">
-      <h2>3 · Videos (YouTube free)</h2>
-      <div class="grid">
-        <div class="card">
-          <div class="tag">@id8461</div>
-          <h3>Watch on the site</h3>
-          <p>Miracle audiobook chapters, illustrated story, Six Tongues shorts, Everweave talk — embedded with playlists.</p>
-          <div class="price">Free <span>YouTube</span></div>
-          <a class="btn btn-gold" href="videos.html">Open Videos</a>
-          <a class="btn btn-secondary" href="https://www.youtube.com/@id8461" target="_blank" rel="noopener">Channel</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="section">
-      <h2>4 · Ever-Lesson Math Ledger (new)</h2>
-      <div class="grid">
-        <div class="card">
-          <div class="tag">Free sample · printable</div>
-          <h3>Adult math practice pack v0</h3>
-          <p>10 adult-framed lessons at calm visual density + everlasting ledger pages. Print, spiral later, side-panel write surface as physical SKU when proven.</p>
-          <div class="price">Free <span>HTML · print</span></div>
-          <a class="btn btn-gold" href="math-ledger.html">Open Math Ledger</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="section">
-      <h2>5 · Hire</h2>
-      <div class="grid">
-        <div class="card">
-          <div class="tag">Fixed scope</div>
-          <h3>Build / govern / ship with me</h3>
-          <p>Website assistant, governed AI wiring, automation, or a productized package customized to your stack. Scoping call first.</p>
-          <div class="price">Quote <span>after 30 min call</span></div>
-          <a class="btn btn-secondary" href="hire.html">Hire page</a>
-          <a class="btn btn-primary" href="mailto:aethermoregames@pm.me?subject=Hire%20%2F%20fixed%20scope">Email to start</a>
-        </div>
-      </div>
-    </div>
-
-    <p class="note">Enterprise SaaS tiers and red-team engagements live on <a href="services.html">Services</a> for teams that already know they need that lane. New visitors: start here.</p>
+    <section class="group">
+      <h3>A person, when the download is the wrong shape</h3>
+      <p class="lede">Fixed-scope work is quoted after a look at the job. The public corpus is free. Government quotes use the SAM record on the services page. This shop does not take those orders.</p>
+      <p><a href="hire.html">Hire page</a> · <a href="mailto:aethermoregames@pm.me">aethermoregames@pm.me</a> · <a href="https://huggingface.co/datasets/issdandavis/scbe-aethermoore-training-data">Public training set</a> · <a href="services.html#vendor">CAGE 1EXD5</a></p>
+    </section>
   </main>
-  <footer>AetherMoore shop · Issac Daniel Davis · <a href="about.html">About &amp; trust</a></footer>
+  <footer>
+    After checkout, open the matching delivery page from the receipt email or from <a href="thank-you.html">thank-you.html</a>. <a href="about.html">About</a>
+  </footer>
   <script src="/static/auto-delivery.js" defer></script>
 </body>
 </html>

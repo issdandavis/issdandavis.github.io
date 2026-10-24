@@ -33,22 +33,22 @@
     === PAID PRODUCTS AND PUBLIC BUILDS (status matters) ===
 
     1. AI Governance Toolkit — $29 one-time
-       Templates, thresholds, decision records, and starter rollout guidance for governed AI work.
+       decide.py checks one record. Decisions are ALLOW, QUARANTINE, or DENY. Run python decide.py self-test.
        Buy: https://buy.stripe.com/cNibJ25Ca2TJ9gQ3a6dby06
        Manual: https://aethermoore.com/product-manual/ai-governance-toolkit.html
 
-    2. HYDRA Multi-Agent Framework — $9 one-time
-       License for the HYDRA multi-agent coordination framework, plus role and packet templates.
+    2. HYDRA role packet — $9 one-time
+       hydra_packet.py writes KO, AV, RU, CA, UM, and DR and leaves the decision blank. It is not a license for the free MIT repository.
        Buy: https://buy.stripe.com/6oUeVe5Ca2TJdx6262dby08
        Manual: https://aethermoore.com/product-manual/hydra-agent-templates.html
 
     3. n8n Workflow Pack — $29 one-time
-       Governed automation building blocks. Importable workflows and a cleaner delivery path.
+       One inactive webhook, SCBE_Decision_Check.workflow.json. No API key. Valid records return 200. Others return 400.
        Buy: https://buy.stripe.com/8x228sc0y3XNeBafWSdby05
        Manual: https://aethermoore.com/product-manual/n8n-workflow-pack.html
 
     4. Content Spin Engine — $29 one-time
-       Source-once content operations for adapting, reviewing, and publishing across channels.
+       spin.py copies one note into three drafts and does not add a claim.
        Buy: https://buy.stripe.com/5kQ5kE5Ca65V78I5iedby07
        Manual: https://aethermoore.com/product-manual/content-spin-engine.html
 
@@ -56,14 +56,13 @@
        22 chapters, 70K words. The novel that teaches the SCBE framework through story.
        Buy: https://www.amazon.com/dp/B0GSSFQD9G
 
-    6. Training Data (sold direct on aethermoore.com/datasets.html):
-       - SCBE Governance SFT Pack — $99 (5,188 SFT pairs)
-       - Theory Documents Bundle — $129 (architecture, crypto, attacks, conlang, patent)
-       - Six Tongues Conlang Pack — $79 (tokenization theory + session transcripts)
-       - Spiralverse Session Transcripts — $49 (48 files, RPG/game AI training)
-       - The Full Arsenal — $399 (the packs above plus context capsules, knowledge base, eval suites)
-       The 91 adversarial prompts are sold only as the $5 Benchmark Kit: https://aethermoore.com/benchmark-kit.html
-       All at: https://aethermoore.com/datasets.html
+    6. Training data
+       The large corpus is free: https://huggingface.co/datasets/issdandavis/scbe-aethermoore-training-data
+       Benchmark Kit — $5. 251 unique attack prompts, 20 benign prompts. Errors are not scored as blocks. https://aethermoore.com/benchmark-kit.html
+       Training Vault starter — $29. 24 rows and validate_sft.py. The public corpus is not in the zip.
+       Buy the vault: https://buy.stripe.com/28E8wQ5Cacuj64EaCydby0g
+       Shop: https://aethermoore.com/shop.html
+       Do not offer a $49, $79, $99, $129, or $399 archive. Those files are not for sale.
        Contact: aethermoregames@pm.me
 
     7. SCBE-AETHERMOORE Ecosystem (Open Source) — FREE, MIT licensed
@@ -152,11 +151,11 @@
   // --- LOCAL INTENT FALLBACK (no API needed) ---
   const LOCAL_INTENTS = [
     { keys: ['hi','hello','hey','howdy'], response: "Hey. I'm Polly, the route-first operator for SCBE-AETHERMOORE. Tell me what you're looking for — pricing, products, research, support, or something else — and I'll point you to the right page." },
-    { keys: ['price','cost','how much','pricing','monthly','subscription','fee'], response: "Published packs start at $9. Custom and enterprise pages show indicative scoping bands, not guaranteed quotes. See https://aethermoore.com/pricing.html" },
+    { keys: ['price','cost','how much','pricing','monthly','subscription','fee'], response: "The shop starts at $5. Custom pages show scoping bands, not a quote. See https://aethermoore.com/shop.html" },
     { keys: ['refund','guardrail','cx','policy enforcement','moffatt'], response: "The CX Refund Guardrail is a scoped middleware pilot intended to catch unsupported refund promises. Compatibility, latency, and acceptance tests are set per implementation. https://aethermoore.com/cx-guardrail.html" },
     { keys: ['iso 42001','audit','compliance','regulatory','eu ai act','governance framework'], response: "The ISO 42001 lane is a scoped evidence-packaging service mapped to selected controls. It supports audit preparation but is not certification or legal advice. https://aethermoore.com/iso-42001.html" },
     { keys: ['red team','penetration','adversarial','attack','security test','vulnerability','threat'], response: "The red-team lane is a scoped evaluation using project-authored and system-specific tests. Results are reported from the actual client run, not promised in advance. https://aethermoore.com/red-team.html" },
-    { keys: ['dataset','training data','sft','corpus','prompt pack'], response: "We sell training datasets including the Governance SFT Pack ($99) and The Full Arsenal bundle ($399): https://aethermoore.com/datasets.html. The 91 adversarial red team prompts are the $5 Benchmark Kit: https://aethermoore.com/benchmark-kit.html" },
+    { keys: ['dataset','training data','sft','corpus','prompt pack'], response: "The large training set is free on Hugging Face. The $5 Benchmark Kit has 251 unique attack prompts. The $29 Training Vault is a 24-row starter. There is no $99 or $399 archive. Shop: https://aethermoore.com/shop.html" },
     { keys: ['contact','email','reach out','talk to','schedule','get in touch'], response: "Email me directly at aethermoregames@pm.me or use the contact form at https://aethermoore.com/contact.html. I usually reply within 24 hours." },
     { keys: ['help','support','broken','missing','delivery','issue','problem'], response: "For support with purchases, delivery, or broken links, visit https://aethermoore.com/support.html or email aethermoregames@pm.me." },
     { keys: ['tool','calculator','demo','interactive','visualization'], response: "Our live browser tools and interactive demos are at https://aethermoore.com/demos/index.html. No install needed." },

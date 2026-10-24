@@ -1,0 +1,27 @@
+{
+  "attacks": 251,
+  "classes": {
+    "autonomous_escalation": 10,
+    "boundary_exploit": 17,
+    "combined_multi": 15,
+    "context_overflow": 14,
+    "cross_surface": 10,
+    "direct_override": 20,
+    "encoding_obfuscation": 10,
+    "function_calling_abuse": 10,
+    "half_auth": 10,
+    "indirect_injection": 10,
+    "model_extraction": 10,
+    "multi_step_chain": 10,
+    "multilingual": 10,
+    "prompt_extraction": 20,
+    "rag_injection": 10,
+    "replay_credential": 13,
+    "role_confusion": 20,
+    "spin_drift": 10,
+    "tongue_manipulation": 12,
+    "tool_exfiltration": 10
+  },
+  "benign": 20,
+  "vault_rows": 24
+}

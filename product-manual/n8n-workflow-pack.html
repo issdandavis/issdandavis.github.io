@@ -44,7 +44,7 @@
       <div class="hero-card">
         <div class="eyebrow">Buyer Manual</div>
         <h1>n8n Workflow Pack</h1>
-        <p class="lead">This package is for builders who want a governed automation starting point. It should get you from a workflow export bundle to one successfully imported and wired path without guessing where the environment variables belong.</p>
+        <p class="lead">Import <code>workflows/SCBE_Decision_Check.workflow.json</code>. The workflow needs no API key. A body with decision ALLOW, QUARANTINE, or DENY and a rationale returns HTTP 200. Anything else returns HTTP 400.</p>
         <div class="chip-row">
           <span class="chip">Importable workflows</span>
           <span class="chip">Env map</span>
@@ -61,7 +61,7 @@
             <h3>First-run path</h3>
             <div class="flow" role="img" aria-label="Import one workflow, map the environment variables, inspect every external node, run a safe test, and confirm the first successful execution.">
               <div class="flow-step"><strong>1. Import one workflow</strong><span>Do not import the entire bundle blindly on the first pass.</span></div>
-              <div class="flow-step"><strong>2. Fill the env map</strong><span>Connect the required credentials and variables for that one workflow.</span></div>
+              <div class="flow-step"><strong>2. Leave credentials empty</strong><span>This workflow does not use an API key. Activate it only when you want the webhook live.</span></div>
               <div class="flow-step"><strong>3. Inspect external nodes</strong><span>Check any API, webhook, or connector steps before running.</span></div>
               <div class="flow-step"><strong>4. Run a safe test</strong><span>Use test data or a non-production route first.</span></div>
               <div class="flow-step"><strong>5. Save the working version</strong><span>Export or snapshot the first known-good state.</span></div>
@@ -75,10 +75,8 @@
                 <tr><th>Item</th><th>Why it matters</th><th>How to use it</th></tr>
               </thead>
               <tbody>
-                <tr><td>Workflow exports</td><td>The actual importable automation units.</td><td>Import them one at a time.</td></tr>
-                <tr><td>Environment variable map</td><td>Tells you what must be configured before execution.</td><td>Fill it before the first real run.</td></tr>
-                <tr><td>Connector notes</td><td>Explains where external services are involved.</td><td>Review before enabling any live route.</td></tr>
-                <tr><td>Validation checklist</td><td>Keeps the first run controlled and observable.</td><td>Mark off each item during the first execution.</td></tr>
+                <tr><td>workflows/SCBE_Decision_Check.workflow.json</td><td>One inactive webhook. It checks the decision word and the rationale.</td><td>Import this file. Leave credentials empty.</td></tr>
+                <tr><td>README</td><td>Names the 200 and 400 responses.</td><td>POST a valid body, then POST one that should fail.</td></tr>
               </tbody>
             </table>
           </section>
@@ -86,10 +84,10 @@
           <section>
             <h3>Success check</h3>
             <ol class="step-list">
-              <li>One workflow imports cleanly.</li>
-              <li>The required environment variables are mapped.</li>
-              <li>The workflow runs once on safe input without breaking.</li>
-              <li>You know which workflow to enable next.</li>
+              <li>SCBE_Decision_Check.workflow.json imports.</li>
+              <li>A valid ALLOW, QUARANTINE, or DENY body with a rationale returns HTTP 200.</li>
+              <li>A body without those fields returns HTTP 400.</li>
+              <li>The workflow stays inactive until you choose to turn the webhook on.</li>
             </ol>
           </section>
         </div>
