@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hybrid bonding matrices | AetherMoore research</title>
+  <meta name="description" content="A reading note on the overlay, overlap, and pad-role matrices used to accept a hybrid-bond route. Literature only. No bond was run here.">
+  <link rel="canonical" href="https://aethermoore.com/research/hybrid-bonding.html">
+  <meta property="og:title" content="Hybrid bonding matrices">
+  <meta property="og:description" content="How translation, rotation, and magnification move hybrid-bond pads, and how a route is accepted. Literature note, 24 October 2026.">
+  <meta property="og:url" content="https://aethermoore.com/research/hybrid-bonding.html">
+  <meta property="og:type" content="article">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/research/note.css">
+  <link rel="stylesheet" href="/static/galactic-theme.css">
+  <script src="/static/galactic-stars.js" defer></script>
+</head>
+<body>
+  <header class="note-top">
+    <div class="brand"><a href="/research/">Research</a></div>
+    <nav aria-label="Section">
+      <a href="/">Home</a>
+      <a href="/research/#notes">Notes</a>
+      <a href="/services.html">Writing</a>
+      <a href="/shop.html">Downloads</a>
+      <a href="/research/addresses.html">Addresses</a>
+    </nav>
+  </header>
+
+  <article class="sheet">
+    <p class="kicker">Literature note · 24 October 2026 · nothing on this page was measured on a bonder here</p>
+    <h1>Three matrices for a hybrid-bond route</h1>
+    <p>When two chips are joined face to face, the copper pads move. A router that ignores that movement will bless a link the bond cannot make. This note records the matrices the papers use, and the order in which a route would be accepted. No wafer map was fit, and no yield number below was produced on this machine.</p>
+
+    <h2>What the bond is</h2>
+    <p>Hybrid bonding joins two finished wafers, or a tested die onto a tested site, with no solder bump between them. Each face carries copper pads in a dielectric. Polishing leaves the dielectric flat and the copper a few nanometers below that surface. The faces touch at room temperature. The dielectric sticks first. A later anneal lets the copper expand, close the recess, and form the joint.</p>
+    <p>The flow imec describes is damascene cavities, barrier and copper fill, polish, align, contact at the center, a bonding wave out to the edge, then anneal. They report SiCN as stronger and more scalable than SiO2 for this bond. Wafer-to-wafer alignment is tighter, and one bad die can kill its partner. Die-to-wafer alignment is looser, and the stack can skip a known-bad die. The vertical wire is short: back-end metal, a pad, its mate, back-end metal. That wire is what the matrices protect.</p>
+
+    <h2>Overlay</h2>
+    <p>Chen and Gupta, in YAP+ (arXiv:2511.05506, 20 October 2025; IEEE Transactions on Computer-Aided Design, 23 January 2026), split misalignment into a systematic field and a random residual. The systematic part is translation, a small rotation, and magnification. Magnification tracks wafer bow. They write it as a fitted line, E = k<sub>mag</sub> · B, where B is the bow. At a pad designed at (x, y):</p>
+    <pre class="eq">Δx = T_x − α y + E x
+Δy = T_y + α x + E y
+s  = √(Δx² + Δy²)</pre>
+    <p>T<sub>x</sub> and T<sub>y</sub> are translations. α is the small rotation. E is the magnification. s is the pad-to-pad offset the contact test uses. The same pair is one 2×2 matrix plus a shift:</p>
+    <pre class="eq">[ x' ]   [ 1+E   −α ] [ x ]   [ T_x ]
+[ y' ] = [  α   1+E ] [ y ] + [ T_y ]</pre>
+    <p>Call the 2×2 block A and the shift t. For a small α, A is a uniform scale (1+E) plus a turn. The determinant is (1+E)² + α². The inverse a pre-bond correction needs is:</p>
+    <pre class="eq">A⁻¹ = 1/((1+E)² + α²) · [ 1+E    α ]
+                           [  −α   1+E ]</pre>
+    <p>That inverse is the linear algebra of their Δx and Δy. It is not a formula they print. If the bonder is expected to apply A and t, the pads are printed at A⁻¹(p − t) so the bond lands on the designed point p. Imec describes the same idea as a pre-bond lithography correction: move the copper in the mask to cancel the distortion the bonding wave will add. They report that this correction, on current bonders, reached a 300 nm pitch with overlay under 25 nm on 95% of the dies. A perfect inverse of a low-order A does not remove a bonding wave that is not uniform. Imec’s simulations say the wave does not propagate evenly, and that uneven wave is what bends the wafer.</p>
+    <p>After the systematic field is removed, YAP+ keeps a random residual, modeled as normal with mean zero and width σ₁. A single pad survives when the residual stays inside an allowance ±δ:</p>
+    <pre class="eq">POS = 1 / (σ₁ √(2π)) · ∫ from −δ to δ of exp(−u² / (2 σ₁²)) du</pre>
+    <p>δ is the largest offset that still leaves enough copper overlap and enough dielectric gap. The paper solves for δ from those two inequalities. This note does not copy a closed form for δ. A single-pad probability raised to the pad count is the wrong die yield. Particles cluster, and a signal pad, a power pad, and a dummy pad do not fail the die in the same way.</p>
+
+    <h2>Overlap, then the neighbor</h2>
+    <p>Once s is known, the joint is the overlap of two circular pads, top radius r1 and bottom radius r2. YAP+ writes the overlap area S in three cases. The contained case assumes r2 is at least r1.</p>
+    <ul>
+      <li>s &lt; r2 − r1: the smaller pad sits inside the larger one, so S = π r1².</li>
+      <li>r2 − r1 ≤ s ≤ r1 + r2: partial overlap, S = θ1 r1² + θ2 r2² − s r1 sin θ1. θ1 and θ2 are the sector angles in their figure.</li>
+      <li>s &gt; r1 + r2: the pads miss, S = 0, and the link is open.</li>
+    </ul>
+    <p>A pad is counted alive only when both of these hold. The overlap is still above a copper fraction, S &gt; k<sub>ca</sub> · π r1². The remaining dielectric gap to the neighbor is still at least k<sub>cd</sub> times the designed gap. For a perfect alignment that designed gap is CD = p − d2, pitch minus the bottom diameter. The same vector s that shrinks the wanted contact spends the gap to the neighbor.</p>
+    <p>YAP+ records a practical target used across this literature: keep total misalignment inside 50% of the bottom pad diameter. Imec states a related budget as a fraction of pitch, about one quarter: 100 nm of overlay for a 400 nm pitch, 50 nm for a 200 nm pitch. At the 400 nm pitch they showed in 2023, they separately argued that high-volume yield wants overlay under 100 nm. Unequal pads, smaller on top, buy misalignment room. In that imec study they also showed a higher dielectric breakdown strength than equal pads.</p>
+    <p>Contact resistance is not one constant a router can hard-code. A Journal of Electronic Materials paper from 6 June 2024 reports specific contact resistivity around 10⁻¹¹ Ω·cm² for Cu/SiO2 pads down to 400 nm, and says the value rises as the copper recess grows. A 2025 HBM resistance model cites a different band, about 10⁻⁸ to 10⁻⁹ Ω·cm², and then fits one stack. Both reports can be true of different processes. A route scored with the wrong resistivity looks either falsely easy or falsely impossible. Those two figures are not averaged here.</p>
+
+    <h2>Which pads may carry a net</h2>
+    <p>The pad array is not the netlist. YAP+ keeps three roles, and a router has to keep them split.</p>
+    <table>
+      <thead>
+        <tr><th>Role</th><th>What a miss does</th><th>How the layout uses it</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Signal</td><td>One dead signal pad can kill the die</td><td>Critical. A spare is drawn, not implied by a neighbor.</td></tr>
+        <tr><td>Power and ground</td><td>One miss is often tolerated</td><td>Many copies, spread across the die.</td></tr>
+        <tr><td>Dummy</td><td>Does not kill the die</td><td>Same pitch and size, so the polish sees an even copper density. Coverage in the designs they discuss is typically 40% to 90%.</td></tr>
+      </tbody>
+    </table>
+    <p>Dedicated redundancy pairs each signal with its own spare. Shared redundancy lets N signals draw on M spares, with M smaller than N. A spare helps only when the defect that killed the main pad does not also cover the spare. YAP+ computes that by dilating the defect over the real pad layout. A single kill ratio does not capture a cluster. Dummy copper is a process pad. Routing a signal onto a dummy, or deleting dummies to make room, changes the copper height the bond needs.</p>
+    <p>On a multi-tier stack, imec’s CMOS 2.0 description puts signal routing on the face and power delivery on the back. Face-to-face hybrid bonds stay the dense signal links. At VLSI 2025 they reported backside vias with a 20 nm bottom diameter on a 120 nm pitch. Power sent across the fine face grid spends the overlay budget on current the backside network is there to carry.</p>
+
+    <h2>How a route is accepted</h2>
+    <p>This order is a reading of the three matrices. It is not a tool that was executed.</p>
+    <ol>
+      <li>Start from the designed pad centers.</li>
+      <li>Apply the overlay field to one side: p′ = A p + t. Use the residual field if a pre-bond correction was already printed.</li>
+      <li>s is the distance from p′ to its mate.</li>
+      <li>Compute the overlap. Refuse the link when the copper fraction fails, or when the pads miss.</li>
+      <li>Apply the same shift to the neighbor. Refuse the link when the remaining dielectric gap falls below the keep-out.</li>
+      <li>If the net has a spare, try the spare that still passes both tests. A shared spare can be used once.</li>
+      <li>Leave dummy pads in the density field.</li>
+      <li>Keep power on the redundant power pads, or on the backside network when that network exists.</li>
+    </ol>
+    <p>Pitch is the consequence of the overlap test and the neighbor test. A smaller pitch raises the number of links per square millimeter and shortens the vertical wire. It also shrinks the designed gap and the offset those two tests will allow. Imec’s quarter-pitch overlay rule is that trade written as one number.</p>
+
+    <h2>Height is a separate failure</h2>
+    <p>A and t move pads sideways. The bond can still fail in height. Polish recesses the copper so the dielectric can touch first. Anneal has to expand the copper across that recess. Too little expansion leaves an open. Too much pries the dielectric apart. The free-bar rule Δh = α ΔT h is the wrong predictor once the pad is caged by oxide. An in-situ AFM study published 30 April 2025 measured expansion of 6.4 nm, 3.7 nm, and 2.3 nm at pad widths of 9 µm, 3 µm, and 1 µm. They say a revised expansion equation was required. That equation is paywalled and is not reconstructed here.</p>
+    <p>A grain study published 1 May 2026 ties the expansion to grain-boundary density and crystal orientation. They report that (111) nanotwinned copper expanded less, and, using that model, a Cu/SiO2 bond at 100 °C with a bonding strength of 461.2 MPa. They also state the polish window they needed: dielectric roughness under 0.5 nm, copper recess under 10 nm. Imec’s 2 µm die-to-wafer flow cites a tighter recess, under 2.5 nm. Those are windows from those reports.</p>
+
+    <h2>Figures, each tied to where it was read</h2>
+    <p>These numbers are reported by the sources. They were not remeasured here.</p>
+    <table>
+      <thead>
+        <tr><th>What</th><th>Reported figure</th><th>Where</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Density, cited</td><td>10,000 to 1,000,000 links per mm²</td><td>YAP+ introduction, citing others</td></tr>
+        <tr><td>Energy, cited</td><td>below 0.05 pJ/bit for a direct copper link</td><td>YAP+ introduction, citing others</td></tr>
+        <tr><td>Alignment, cited</td><td>down to 50 nm</td><td>YAP+ introduction, citing others</td></tr>
+        <tr><td>Wafer-to-wafer</td><td>400 nm pitch, overlay shown below 150 nm; high-volume yield argued to need overlay under 100 nm</td><td>imec, IEDM 2023</td></tr>
+        <tr><td>Pre-bond correction</td><td>300 nm pitch, overlay under 25 nm on 95% of dies</td><td>imec, current bonders</td></tr>
+        <tr><td>Next pitch called feasible</td><td>250 nm hexagonal, unequal pads; full-wafer yield needs a newer bonder</td><td>imec, VLSI 2025</td></tr>
+        <tr><td>Die-to-wafer</td><td>2 µm pitch, overlay under 350 nm, recess under 2.5 nm, Kelvin yield above 85%, daisy-chain yield above 70%</td><td>imec, ECTC 2024, as reprinted by Yole on 29 April 2024</td></tr>
+        <tr><td>Survey contrast</td><td>2 µm chip-on-wafer against 400 nm wafer-to-wafer</td><td>IEEE Spectrum, 11 August 2024</td></tr>
+      </tbody>
+    </table>
+    <p>A 13 October 2026 secondary write-up also says Applied Materials showed 450 nm pitch at 98% yield across 20 million links, and that an imec and EV Group result reached 200 nm pitch with overlay under 40 nm. Those two figures were not checked against the conference papers. Imec’s own page read for this note calls 250 nm feasible and 200 nm the roadmap target.</p>
+
+    <h2>What this note is</h2>
+    <p>It is a reading of public papers. It is not a hybrid-bond router, and no yield was simulated here. The quarter-pitch rule, the 50% diameter rule, and a contact resistivity are reported process targets. The closed form for δ, the revised copper-expansion equation, and the finite-element stiffness entries were not reconstructed. The overlay matrix is the bonder’s translation, rotation, and magnification. It is a separate geometry from the authorization distance used elsewhere on this site.</p>
+    <p>The next check, if one is wanted, is to fit A and t to a published overlay map, invert it, and score one public pad layout with the overlap test and the neighbor-gap test. Until that fit exists, the matrices above are the literature model.</p>
+
+    <h2>Sources</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2511.05506">Zhichao Chen and Puneet Gupta, YAP+, arXiv:2511.05506</a>. Author code: <a href="https://github.com/nanocad-lab/YAP">nanocad-lab/YAP</a>. Journal version: IEEE TCAD, vol. 45, no. 10, pp. 4814–4827, DOI 10.1109/TCAD.2026.3657674.</li>
+      <li><a href="https://www.imec-int.com/en/articles/wafer-wafer-hybrid-bonding-pushing-boundaries-400nm-interconnect-pitch">imec, wafer-to-wafer hybrid bonding at 400 nm pitch</a>, and <a href="https://www.imec-int.com/en/articles/path-high-density-front-and-backside-wafer-connectivity">the front- and backside connectivity note</a>.</li>
+      <li>Soon Aik Chew, Joeri De Vos, and Eric Beyne, “Wafer-to-wafer hybrid bonding at 400-nm interconnect pitch,” Nature Reviews Electrical Engineering 1, 71–72 (2024).</li>
+      <li><a href="https://spectrum.ieee.org/hybrid-bonding">Samuel K. Moore, “Hybrid Bonding Plays Starring Role in 3D Chips,” IEEE Spectrum, 11 August 2024</a>.</li>
+      <li>“Contact Resistivity of Submicron Hybrid Bonding Pads Down to 400 nm,” Journal of Electronic Materials, 6 June 2024.</li>
+      <li>In-situ AFM copper-expansion study, 30 April 2025. Grain-engineering Cu/SiO2 study, 1 May 2026. Zhao and Zhao, Microelectronic Engineering 299:112347 (2025), abstract only.</li>
+    </ul>
+
+    <aside class="shelf">
+      <h2>On this site</h2>
+      <p>This note is free to read. It is not a fabrication service. The things for sale are a writing pass, three books, and the download shop.</p>
+      <ul>
+        <li><a href="/services.html">Writing pass</a></li>
+        <li><a href="/books.html">Books</a></li>
+        <li><a href="/shop.html">Downloads</a></li>
+        <li><a href="/research/pv-harvester.html">Harvester note</a></li>
+        <li><a href="/research/addresses.html">Addresses</a></li>
+      </ul>
+    </aside>
+  </article>
+  <script src="/static/cookie-consent.js" defer></script>
+</body>
+</html>

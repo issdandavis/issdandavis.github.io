@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A harvester with an input | AetherMoore research</title>
+  <meta name="description" content="A parked spec for a small power-and-mobility platform that offsets its standing draw with sunlight or a beam. The radiator stays. Two closed-loop ideas are rejected on paper.">
+  <link rel="canonical" href="https://aethermoore.com/research/pv-harvester.html">
+  <meta property="og:title" content="A harvester with an input">
+  <meta property="og:description" content="PV-first power for a closed vehicle, with the cold side kept and two ideas rejected before any simulation.">
+  <meta property="og:url" content="https://aethermoore.com/research/pv-harvester.html">
+  <meta property="og:type" content="article">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/research/note.css">
+  <link rel="stylesheet" href="/static/galactic-theme.css">
+  <script src="/static/galactic-stars.js" defer></script>
+</head>
+<body>
+  <header class="note-top">
+    <div class="brand"><a href="/research/">Research</a></div>
+    <nav aria-label="Section">
+      <a href="/">Home</a>
+      <a href="/research/#notes">Notes</a>
+      <a href="/services.html">Writing</a>
+      <a href="/shop.html">Downloads</a>
+      <a href="/research/addresses.html">Addresses</a>
+    </nav>
+  </header>
+
+  <article class="sheet">
+    <p class="kicker">Parked spec · read from a June 2026 notebook · the link budget is still blank</p>
+    <h1>A harvester with an input</h1>
+    <p>A closed vehicle spends power just to stay alive. Call that standing draw k. The useful question is how to offset k with energy that arrives from outside. Sunlight is one arrival. A laser beamed from a grid on Earth is another. Vibration, crew motion, and a real thermal gradient are smaller ones. The machine that uses those arrivals is a harvester. Its output stops when the input stops.</p>
+
+    <h2>The audit that comes first</h2>
+    <p>Any sketch that loops the working fluid back so the heat can be reused is rejected on the whiteboard, before a simulation. A heat engine makes work from heat flowing from hot to cold. Carnot efficiency is η = 1 − T<sub>cold</sub>/T<sub>hot</sub>. Remove the cold side and the efficiency goes to zero. The radiator is half the engine. A simulation built on the closed loop would only draw an impossibility in the shape of a chart.</p>
+
+    <h2>Primary chain</h2>
+    <table>
+      <thead>
+        <tr><th>Stage</th><th>Choice</th><th>Why it is the first path</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Source</td>
+          <td>Sunlight, or a laser beamed from Earth</td>
+          <td>Solar sails have flown. JAXA IKAROS flew in 2010. LightSail 2 flew in 2019. Laser-push work such as Breakthrough Starshot is research, not an operating ship. Sending grid power as photons is a real power-beaming idea.</td>
+        </tr>
+        <tr>
+          <td>Capture</td>
+          <td>A photovoltaic cell matched to the beam wavelength</td>
+          <td>One wavelength skips the turbine, the fluid, and the moving parts. This spec does not lock a cell efficiency. The number that matters is the cell at that wavelength and at the temperature it will actually run.</td>
+        </tr>
+        <tr>
+          <td>Conditioning</td>
+          <td>Maximum-power tracking, then a buffer</td>
+          <td>A capacitor in front of the battery smooths beam jitter and eclipse, and it separates capture from the load.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>The thermal path is the spare</h2>
+    <p>Where a panel is the wrong tool, the spare path is a laser, a mercury boiler, a mercury-vapor turbine, a radiator, a condenser, and a pump. Mercury-vapor Rankine plants ran in the early twentieth century, including as topping cycles over steam. The radiator stays in the drawing. A larger temperature gap is more work. Mercury handling is the cost of this spare, so it is not the baseline.</p>
+
+    <h2>Two ideas that do not survive the audit</h2>
+    <p>A photon windmill does not power the vehicle. Radiation pressure from a 1 kW beam is a few micronewtons. A mirror sees about 2P/c, near 7 micronewtons per kilowatt. That is the textbook estimate, not a force measured on a vehicle here. Photon pressure is useful as propulsion over months. It is a poor way to harvest watts. The Crookes radiometer people picture spins on residual-gas heating, and it stops in a hard vacuum.</p>
+    <p>An orthogonal mercury loop that returns the heat to the start fails for the Carnot reason above. A cycle already returns to its start state. The heat still has to leave at the condenser. Pistons winding back spend work on friction and on mercury hysteresis.</p>
+
+    <h2>The small vehicles are a parts list</h2>
+    <p>The notebook calls the loads “mice”: small platforms the harvester would power. The list is a wheeled base, dry or electrostatic adhesion for a wall in low gravity, a tethered crane head, and onboard harvesting from sun, radio or laser, motion, and a thermal gradient. There is no mass budget in the note, and there is no split between Earth test, habitat, and vacuum. The crane head points at a separate Mars tether and fiber-relay spec in the public repository. That file is a written architecture. It is not a vehicle that has flown. <a href="https://github.com/issdandavis/SCBE-AETHERMOORE/blob/main/docs/research/mars_tethered_pushline_relay.md">mars_tethered_pushline_relay.md</a></p>
+    <p>The same notebook asks for hidden checks on amplitude decay, a lost beam, and thermal runaway before any larger machine is unlocked. Those checks are not built, and they are not one of the downloads on this site.</p>
+
+    <h2>Blanks still open</h2>
+    <ul>
+      <li>Delivered beam intensity at the range that matters.</li>
+      <li>Matched-cell efficiency at the chosen wavelength and temperature.</li>
+      <li>Radiator area against the duty cycle.</li>
+      <li>The standing draw k this harvester is actually supposed to offset.</li>
+    </ul>
+    <p>Until those four numbers exist, this page is a premise audit and a parts list. It is not a power system for sale.</p>
+
+    <aside class="shelf">
+      <h2>On this site</h2>
+      <p>This note is free to read. The things for sale are a writing pass, three books, and the download shop.</p>
+      <ul>
+        <li><a href="/services.html">Writing pass</a></li>
+        <li><a href="/books.html">Books</a></li>
+        <li><a href="/shop.html">Downloads</a></li>
+        <li><a href="/research/hybrid-bonding.html">Hybrid-bonding note</a></li>
+        <li><a href="/research/addresses.html">Addresses</a></li>
+      </ul>
+    </aside>
+  </article>
+  <script src="/static/cookie-consent.js" defer></script>
+</body>
+</html>
