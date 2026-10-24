@@ -3,13 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>A harvester with an input | AetherMoore research</title>
-  <meta name="description" content="A parked spec for a small power-and-mobility platform that offsets its standing draw with sunlight or a beam. The radiator stays. Two closed-loop ideas are rejected on paper.">
+  <title>The radiator is half the engine | AetherMoore research</title>
+  <meta name="description" content="A parked spec for a harvester that keeps its cold side. Radiation pressure for a 1 kW mirror is 6.67 micronewtons. The link budget is still blank.">
   <link rel="canonical" href="https://aethermoore.com/research/pv-harvester.html">
-  <meta property="og:title" content="A harvester with an input">
-  <meta property="og:description" content="PV-first power for a closed vehicle, with the cold side kept and two ideas rejected before any simulation.">
+  <meta property="og:title" content="The radiator is half the engine">
+  <meta property="og:description" content="A heat engine needs a cold side. This harvester note keeps the radiator and leaves the link budget blank.">
   <meta property="og:url" content="https://aethermoore.com/research/pv-harvester.html">
   <meta property="og:type" content="article">
+  <meta property="og:image" content="https://aethermoore.com/research/cards/harvester.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The radiator is half the engine">
+  <meta name="twitter:description" content="A heat engine needs a cold side. This harvester note keeps the radiator and leaves the link budget blank.">
+  <meta name="twitter:image" content="https://aethermoore.com/research/cards/harvester.png">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="stylesheet" href="/research/note.css">
   <link rel="stylesheet" href="/static/galactic-theme.css">
@@ -23,13 +28,15 @@
       <a href="/research/#notes">Notes</a>
       <a href="/services.html">Writing</a>
       <a href="/shop.html">Downloads</a>
-      <a href="/research/addresses.html">Addresses</a>
+      <a href="/research/kits.html">Kits</a>
     </nav>
   </header>
 
   <article class="sheet">
-    <p class="kicker">Parked spec · read from a June 2026 notebook · the link budget is still blank</p>
-    <h1>A harvester with an input</h1>
+    <p class="kicker">Parked spec · dates and the radiation-pressure arithmetic checked 24 October 2026 · the link budget is still blank</p>
+    <h1>The radiator is half the engine</h1>
+    <p class="share"><a href="https://twitter.com/intent/tweet?text=The%20radiator%20is%20half%20the%20engine.%20Take%20away%20the%20cold%20side%20and%20the%20efficiency%20is%20zero.&url=https%3A%2F%2Faethermoore.com%2Fresearch%2Fpv-harvester.html">Post this on X</a> · <a href="/research/cards/harvester.png">Poster</a></p>
+    <img class="card" src="/research/cards/harvester.png" width="1200" height="630" alt="Card: the radiator is half the engine. Carnot efficiency and the address of this note.">
     <p>A closed vehicle spends power just to stay alive. Call that standing draw k. The useful question is how to offset k with energy that arrives from outside. Sunlight is one arrival. A laser beamed from a grid on Earth is another. Vibration, crew motion, and a real thermal gradient are smaller ones. The machine that uses those arrivals is a harvester. Its output stops when the input stops.</p>
 
     <h2>The audit that comes first</h2>
@@ -44,7 +51,7 @@
         <tr>
           <td>Source</td>
           <td>Sunlight, or a laser beamed from Earth</td>
-          <td>Solar sails have flown. JAXA IKAROS flew in 2010. LightSail 2 flew in 2019. Laser-push work such as Breakthrough Starshot is research, not an operating ship. Sending grid power as photons is a real power-beaming idea.</td>
+          <td>JAXA’s IKAROS deployed its sail in June 2010 and was reported to accelerate on sunlight. LightSail 2 launched on 25 June 2019 and deployed its sail on 23 July 2019. Breakthrough Starshot is a research program, not a ship in flight. Sending grid power as photons is a real power-beaming idea, and this page does not size a beam.</td>
         </tr>
         <tr>
           <td>Capture</td>
@@ -60,11 +67,11 @@
     </table>
 
     <h2>The thermal path is the spare</h2>
-    <p>Where a panel is the wrong tool, the spare path is a laser, a mercury boiler, a mercury-vapor turbine, a radiator, a condenser, and a pump. Mercury-vapor Rankine plants ran in the early twentieth century, including as topping cycles over steam. The radiator stays in the drawing. A larger temperature gap is more work. Mercury handling is the cost of this spare, so it is not the baseline.</p>
+    <p>Where a panel is the wrong tool, the spare path is a laser, a boiler, a turbine, a radiator, a condenser, and a pump. Mercury vapor is one historical working fluid for that spare. A TIME report of 8 July 1929 says Hartford Electric Light had used a mercury-vapor turbine since 1923, with the exhaust used to raise steam. The Smithsonian holds the Emmet mercury-boiler records for that work. This page did not read the plant logs. The radiator stays in the drawing. Mercury vapor is poisonous, which is why this path is the spare and not the baseline.</p>
 
     <h2>Two ideas that do not survive the audit</h2>
-    <p>A photon windmill does not power the vehicle. Radiation pressure from a 1 kW beam is a few micronewtons. A mirror sees about 2P/c, near 7 micronewtons per kilowatt. That is the textbook estimate, not a force measured on a vehicle here. Photon pressure is useful as propulsion over months. It is a poor way to harvest watts. The Crookes radiometer people picture spins on residual-gas heating, and it stops in a hard vacuum.</p>
-    <p>An orthogonal mercury loop that returns the heat to the start fails for the Carnot reason above. A cycle already returns to its start state. The heat still has to leave at the condenser. Pistons winding back spend work on friction and on mercury hysteresis.</p>
+    <p>A photon windmill does not power the vehicle. Radiation pressure on a perfect mirror is 2P/c. For a 1 kW beam that is 2 × 1000 / 299792458, which is 6.67 micronewtons. A surface that absorbs the beam sees half of that. This is the arithmetic, not a force measured on a vehicle here. Photon pressure is useful as propulsion over months. It is a poor way to harvest watts. A Crookes radiometer spins on residual-gas heating, and it stops in a hard vacuum.</p>
+    <p>An orthogonal mercury loop that returns the heat to the start fails for the Carnot reason above. A cycle already returns to its start state. The heat still has to leave at the condenser. Pistons winding back spend work on friction.</p>
 
     <h2>The small vehicles are a parts list</h2>
     <p>The notebook calls the loads “mice”: small platforms the harvester would power. The list is a wheeled base, dry or electrostatic adhesion for a wall in low gravity, a tethered crane head, and onboard harvesting from sun, radio or laser, motion, and a thermal gradient. There is no mass budget in the note, and there is no split between Earth test, habitat, and vacuum. The crane head points at a separate Mars tether and fiber-relay spec in the public repository. That file is a written architecture. It is not a vehicle that has flown. <a href="https://github.com/issdandavis/SCBE-AETHERMOORE/blob/main/docs/research/mars_tethered_pushline_relay.md">mars_tethered_pushline_relay.md</a></p>
@@ -85,9 +92,10 @@
       <ul>
         <li><a href="/services.html">Writing pass</a></li>
         <li><a href="/books.html">Books</a></li>
+        <li><a href="/research/cards/harvester.png">Poster</a></li>
         <li><a href="/shop.html">Downloads</a></li>
         <li><a href="/research/hybrid-bonding.html">Hybrid-bonding note</a></li>
-        <li><a href="/research/addresses.html">Addresses</a></li>
+        <li><a href="/research/kits.html">Kits</a></li>
       </ul>
     </aside>
   </article>
