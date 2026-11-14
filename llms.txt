@@ -23,6 +23,7 @@ Evidence and delivery surfaces (check the date and scope on each page):
 
 Working products and public builds:
 
+- AI Security Benchmark Kit v2 — $5; checkout is currently paused. Includes 251 attack prompts, 20 benign prompts, full-reply HTML reports, compatible-run comparisons, and an offline synthetic demo. Refusal-word screening is not security certification: https://aethermoore.com/benchmark-kit.html
 - AetherBrowser — governed desktop-browser prototype; public simulation: https://aethermoore.com/demos/aetherbrowser-demo.html · source: https://github.com/issdandavis/aetherbrowser
 - AetherDesk — local-first operator desktop with bounded actions and receipts; public map: https://aethermoore.com/backroom.html · source repository is private
 - Agent Runtime — visible route from task packet through capability checks, bounded execution, and durable receipt: https://aethermoore.com/training-bus.html
@@ -32,13 +33,14 @@ Working products and public builds:
 
 ## Site Structure For Assistants
 
-The site has ten intentional surfaces:
+The site uses these surfaces:
 
 - **Assistant:** the primary front door. It routes people into tools, public product buckets, manuals, support, research, or gated lanes before doing extra reasoning.
 
 - **Tools:** the action surface for humans and assistants who need to try, compare, or operate something now.
 - **Backroom:** the behind-the-counter ops floor (architecture diagram, data schema, AetherDesk/GeoSeal/AetherWeb stations, live edge monitors). Visual backend map of how the stack runs; not the public shop floor. https://aethermoore.com/backroom.html
 - **Architecture:** an interactive boundary-to-receipt system map, plus Langues and Related Fields (KO–DR) and browser operational fields. https://aethermoore.com/architecture.html · data: https://aethermoore.com/static/langues-fields.json
+- **Benchmark Kit:** existing product page with usage instructions and a synthetic report preview. Checkout is currently paused. https://aethermoore.com/benchmark-kit.html
 - **Shop:** simple buy shelf — books, clearly priced digital packs, Math Ledger, hire. https://aethermoore.com/shop.html
 - **About:** identity, claim method, patent filing status, public source, and contact. https://aethermoore.com/about.html
 - **Math Ledger:** free Ever-Lesson adult math practice + permanent ledger (print). https://aethermoore.com/math-ledger.html
@@ -55,6 +57,7 @@ The site has ten intentional surfaces:
 
 ## Routing Rules
 
+- If the user asks for the benchmark kit, refusal-phrase reports, or before-and-after model comparisons, use **Benchmark Kit**: https://aethermoore.com/benchmark-kit.html. The $5 checkout is paused. Preview reports use synthetic replies; they are not measured model results.
 - If the user is not sure where to start, begin at **Shop** for buying or **Assistant** for routing: https://aethermoore.com/shop.html · https://aethermoore.com/assistant.html
 - If the user wants to buy books, packs, or hire, use **Shop**: https://aethermoore.com/shop.html
 - If the user asks who Issac is, CAGE, college, or trust, use **About**: https://aethermoore.com/about.html
@@ -89,6 +92,7 @@ The site has ten intentional surfaces:
 ## Primary URLs
 
 - Home: https://aethermoore.com/
+- Benchmark Kit: https://aethermoore.com/benchmark-kit.html
 - Assistant: https://aethermoore.com/assistant.html
 - Operator packet schema: https://aethermoore.com/assistant-task-packet.schema.json
 - Tools: https://aethermoore.com/tools.html

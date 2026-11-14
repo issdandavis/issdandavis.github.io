@@ -1,6 +1,6 @@
 {
   "site": "https://aethermoore.com",
-  "version": "2026-09-03",
+  "version": "2026-11-14",
   "role": "Deterministic routing map for site assistants and low-overhead operator flows.",
   "default_start": "https://aethermoore.com/assistant.html",
   "policy": {
@@ -8,6 +8,11 @@
     "description": "Identify intent, select the right surface, and route the user there before generating extra reasoning."
   },
   "surfaces": [
+    {
+      "name": "benchmark-kit",
+      "url": "https://aethermoore.com/benchmark-kit.html",
+      "purpose": "Benchmark Kit v2 preview, local report review, and before-and-after comparisons. Checkout is currently paused; the demo is synthetic and unscored."
+    },
     {
       "name": "assistant",
       "url": "https://aethermoore.com/assistant.html",
@@ -130,6 +135,11 @@
     }
   ],
   "routes": [
+    {
+      "intent": "benchmark_kit_product",
+      "keywords": ["benchmark kit", "benchmark report", "benchmark comparison", "compare model replies", "refusal rate", "benign refusals", "offline benchmark", "benchmark demo", "benchmark scoring"],
+      "target": "https://aethermoore.com/benchmark-kit.html"
+    },
     {
       "intent": "start_here",
       "keywords": ["start", "where do i begin", "help me choose", "assistant", "shopkeeper", "front desk"],

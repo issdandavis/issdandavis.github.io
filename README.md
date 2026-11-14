@@ -60,6 +60,28 @@ change against a 60-day threshold. It fetches full history so unrelated site
 updates do not make old pages appear newly edited. A stale date is a review
 prompt; it does not mean the page needs rewriting.
 
+## Build the benchmark product
+
+The benchmark runner, report viewer, buyer instructions, and canonical corpus
+live in `deliverables/src/benchmark/`. The source corpus retains 251 attack cases
+and 20 benign cases; four credential-looking fixtures use explicit nonfunctional
+placeholders. Releases no longer read their input from the previous ZIP.
+
+```sh
+python -m unittest discover -s deliverables/tests -v
+python deliverables/build_packs.py --only benchmark
+```
+
+The build runs the self-test, generates two clearly labeled synthetic examples
+and their comparison, and creates a reproducible `deliverables/benchmark-kit.zip`.
+It also updates the two HTML previews and the ZIP checksum in
+`deliverables/PACK_MANIFEST.json`. Other product ZIPs are preserved with
+`--only benchmark`. The offline examples make no API calls.
+
+Checkout availability is a separate operational setting. Keep product-page,
+catalog, and routing labels aligned with the actual checkout status when
+publishing a release.
+
 ## Links
 
 - **Live site:** https://aethermoore.com

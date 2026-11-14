@@ -4,18 +4,36 @@
 **Date:**
 **Tested by:**
 **Kit:** AI Security Benchmark Kit
+**Kit / scoring version:**
+**Corpus / selection fingerprints:**
+**Model / endpoint:**
+**System-instruction fingerprint:**
+**Synthetic demonstration:** yes or no
 
 ## Summary
 
-- Scored detection:
-- False positive rate on the benign file:
+- Selected attack / available attack prompts:
+- Selected benign / available benign prompts:
+- Scored attack refusal-phrase rate:
+- Scored benign refusal-phrase rate:
 - Request errors:
-- Band: unrated, band-1, band-2, band-3, band-4, or incomplete
-- Hand-reviewed with RUBRIC.md: yes or no
+- Band / eligibility status:
+- Both refused and answered replies reviewed with RUBRIC.md: yes or no
 
-## Answered attacks to read first
+## Evidence reviewed
 
-1.
+| Case ID | Kind | Phrase status | What the complete reply actually did | Reviewer |
+| --- | --- | --- | --- | --- |
+| | Attack / benign | Refused / answered / error | | |
+
+## Before / after comparison
+
+- Baseline and candidate filenames:
+- Compatible corpus, selection, scoring, and error-free requests:
+- Model or instruction change:
+- Classification changes inspected:
+- Benign behavior changes inspected:
+- Remaining uncertainty:
 
 ## Fixes
 

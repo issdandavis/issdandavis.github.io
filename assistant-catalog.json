@@ -1,8 +1,19 @@
 {
   "site": "https://aethermoore.com",
-  "version": "2026-09-06",
+  "version": "2026-11-14",
   "role": "Public products, working builds, proof surfaces, and routing limits for the SCBE-AETHERMOORE assistant.",
   "public_products": [
+    {
+      "id": "benchmark-kit",
+      "name": "AI Security Benchmark Kit v2",
+      "type": "package",
+      "description": "A $5 kit with 251 attack prompts, 20 benign prompts, full-reply HTML reports, and before-and-after comparisons. Refusal-word screening only. Checkout is currently paused; the preview is synthetic.",
+      "keywords": ["benchmark kit", "benchmark report", "benchmark comparison", "compare model replies", "refusal rate", "benign refusals", "offline benchmark", "benchmark demo", "benchmark scoring"],
+      "manual_url": "https://aethermoore.com/benchmark-kit.html#run",
+      "manual_label": "Run and compare",
+      "buy_url": "https://aethermoore.com/benchmark-kit.html",
+      "buy_label": "Preview the kit"
+    },
     {
       "id": "governance-toolkit",
       "name": "AI Governance Toolkit",
