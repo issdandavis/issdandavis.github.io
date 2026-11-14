@@ -3,11 +3,14 @@
 
 from __future__ import annotations
 
+import argparse
 import csv
+import hashlib
 import json
 import shutil
 import subprocess
 import sys
+import tempfile
 import zipfile
 from collections import Counter, OrderedDict
 from pathlib import Path
@@ -15,7 +18,6 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 SRC = ROOT / "src"
 SITE = ROOT.parent
-OLD_BENCH = ROOT / "benchmark-kit.zip"
 
 LICENSE = """# License
 
@@ -40,8 +42,12 @@ def zip_dir(folder: Path, dest: Path) -> None:
         dest.unlink()
     with zipfile.ZipFile(dest, "w", compression=zipfile.ZIP_DEFLATED) as handle:
         for path in sorted(folder.rglob("*")):
-            if path.is_file():
-                handle.write(path, path.relative_to(folder.parent).as_posix())
+            if path.is_file() and "__pycache__" not in path.parts and path.suffix != ".pyc":
+                info = zipfile.ZipInfo(path.relative_to(folder.parent).as_posix(), date_time=(2026, 1, 1, 0, 0, 0))
+                info.compress_type = zipfile.ZIP_DEFLATED
+                info.create_system = 3
+                info.external_attr = 0o100644 << 16
+                handle.writestr(info, path.read_bytes())
 
 
 def run(cmd: list[str], cwd: Path) -> None:
@@ -63,17 +69,12 @@ def keep_prompt(prompt: str) -> bool:
     return True
 
 
-def load_old_attacks() -> tuple[list[dict], list[dict]]:
-    attacks: list[dict] = []
-    benign: list[dict] = []
-    with zipfile.ZipFile(OLD_BENCH) as handle:
-        for name in handle.namelist():
-            if name.endswith("attack_corpus.jsonl"):
-                attacks = [json.loads(line) for line in handle.read(name).decode("utf-8").splitlines() if line.strip()]
-            if name.endswith("benign_prompts.jsonl"):
-                benign = [json.loads(line) for line in handle.read(name).decode("utf-8").splitlines() if line.strip()]
+def load_benchmark_corpus() -> tuple[list[dict], list[dict]]:
+    """Build from versioned source, never from the previous release ZIP."""
+    attacks = [json.loads(line) for line in (SRC / "benchmark" / "attack_corpus.jsonl").read_text(encoding="utf-8").splitlines() if line.strip()]
+    benign = [json.loads(line) for line in (SRC / "benchmark" / "benign_prompts.jsonl").read_text(encoding="utf-8").splitlines() if line.strip()]
     if not attacks or not benign:
-        raise SystemExit("benchmark-kit.zip is missing a corpus")
+        raise SystemExit("the source benchmark corpus is empty")
     return attacks, benign
 
 
@@ -100,7 +101,7 @@ def clean_attacks(rows: list[dict]) -> list[dict]:
 def stage_benchmark(build: Path, attacks: list[dict], benign: list[dict]) -> dict:
     folder = build / "benchmark_kit"
     folder.mkdir(parents=True)
-    for name in ("benchmark.py", "RUBRIC.md", "REPORT_TEMPLATE.md"):
+    for name in ("benchmark.py", "report.py", "README.md", "RUBRIC.md", "REPORT_TEMPLATE.md"):
         shutil.copy(SRC / "benchmark" / name, folder / name)
     attack_path = folder / "attack_corpus.jsonl"
     attack_path.write_text("".join(json.dumps(row, ensure_ascii=False) + "\n" for row in attacks), encoding="utf-8")
@@ -113,30 +114,9 @@ def stage_benchmark(build: Path, attacks: list[dict], benign: list[dict]) -> dic
         writer.writeheader()
         writer.writerows(attacks)
     counts = OrderedDict(sorted(Counter(row["class"] for row in attacks).items()))
-    write(
-        folder / "README.md",
-        f"""
-# AI Security Benchmark Kit
-
-Test an OpenAI-compatible chat endpoint against this corpus. The score is a refusal-word check. A failed request is not a block.
-
-## Counts
-- Unique attack prompts: {len(attacks)}
-- Classes: {len(counts)}
-- Benign prompts: {len(benign)}
-
-Class counts: {json.dumps(counts)}
-
-## Run
-```
-python benchmark.py --self-test
-python benchmark.py --target https://api.openai.com/v1 --key "$BENCH_API_KEY" --model gpt-4o-mini --limit 2
-```
-
-Only test a system you operate or have permission to test. A full run sends one request per attack plus the benign file. Read answered rows with RUBRIC.md before you repeat a number. The band names are kit labels, not a certification.
-
-Support: aethermoregames@pm.me
-""",
+    (folder / "CORPUS_MANIFEST.json").write_text(
+        json.dumps({"attacks": len(attacks), "classes": counts, "benign": len(benign)}, indent=2) + "\n",
+        encoding="utf-8",
     )
     write(folder / "LICENSE.txt", LICENSE)
     notebook = {
@@ -149,7 +129,7 @@ Support: aethermoregames@pm.me
                 "metadata": {},
                 "source": [
                     "# AI Security Benchmark Kit\n",
-                    "Upload this folder, then run the self-test. Point `--target` at a server you are allowed to test.\n",
+                    "Extract the kit and upload its files into the current working directory. Run the self-test, then the offline demo. Neither contacts a model.\n",
                 ],
             },
             {
@@ -158,16 +138,51 @@ Support: aethermoregames@pm.me
                 "execution_count": None,
                 "outputs": [],
                 "source": [
-                    "import runpy, sys\n",
-                    "sys.argv = ['benchmark.py', '--self-test']\n",
-                    "runpy.run_path('benchmark.py', run_name='__main__')\n",
+                    "import subprocess, sys\n",
+                    "subprocess.run([sys.executable, 'benchmark.py', '--self-test'], check=True)\n",
+                ],
+            },
+            {
+                "cell_type": "code",
+                "metadata": {},
+                "execution_count": None,
+                "outputs": [],
+                "source": [
+                    "import subprocess, sys\n",
+                    "subprocess.run([sys.executable, 'benchmark.py', '--demo', '--out', 'demo.json', '--html', 'demo.html'], check=True)\n",
+                    "from IPython.display import HTML, display\n",
+                    "display(HTML(filename='demo.html'))\n",
                 ],
             },
         ],
     }
     (folder / "benchmark_colab.ipynb").write_text(json.dumps(notebook, indent=2), encoding="utf-8")
     run([sys.executable, "benchmark.py", "--self-test"], folder)
-    return {"attacks": len(attacks), "classes": counts, "benign": len(benign)}
+    examples = folder / "examples"
+    examples.mkdir()
+    for variant in ("baseline", "candidate"):
+        relative = f"examples/demo-{variant}.json"
+        run([sys.executable, "benchmark.py", "--demo", "--demo-variant", variant,
+             "--name", f"Synthetic {variant}", "--out", relative], folder)
+        # Fixtures have a fixed timestamp and no measured latency. This keeps
+        # the ZIP reproducible and clearly separates examples from real runs.
+        report = json.loads((folder / relative).read_text(encoding="utf-8"))
+        report["timestamp"] = "2000-01-01T00:00:00+00:00"
+        for row in report["results"]:
+            row["elapsed_seconds"] = 0.0
+        (folder / relative).write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        run([sys.executable, "report.py", relative, "--html", f"examples/demo-{variant}.html"], folder)
+    run([sys.executable, "report.py", "examples/demo-baseline.json", "examples/demo-candidate.json",
+         "--html", "examples/demo-comparison.html", "--out", "examples/demo-comparison.json"], folder)
+    shutil.copy(examples / "demo-baseline.html", ROOT / "benchmark-demo.html")
+    shutil.copy(examples / "demo-comparison.html", ROOT / "benchmark-comparison-demo.html")
+    return {
+        "attacks": len(attacks),
+        "classes": counts,
+        "benign": len(benign),
+        "benchmark_version": report["kit_version"],
+        "benchmark_corpus_sha256": report["corpus_sha256"],
+    }
 
 
 def stage_toolkit(build: Path) -> None:
@@ -347,33 +362,35 @@ This zip does not contain that set.
 
 
 def main() -> None:
-    attacks, benign = load_old_attacks()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--only", choices=("benchmark",), help="Build only the benchmark release and its previews")
+    args = parser.parse_args()
+    attacks, benign = load_benchmark_corpus()
     attacks = clean_attacks(attacks)
-    build = ROOT / "_build"
-    if build.exists():
-        shutil.rmtree(build)
-    build.mkdir()
-    stats = stage_benchmark(build, attacks, benign)
-    stage_toolkit(build)
-    stage_hydra(build)
-    stage_n8n(build)
-    stage_spin(build)
-    vault_rows = stage_vault(build)
-    mapping = {
-        "benchmark_kit": ROOT / "benchmark-kit.zip",
-        "ai-governance-toolkit": ROOT / "ai-governance-toolkit.zip",
-        "hydra-agent-templates": ROOT / "hydra-agent-templates.zip",
-        "n8n-workflow-pack": ROOT / "n8n-workflow-pack.zip",
-        "content-spin-engine": ROOT / "content-spin-engine.zip",
-        "training-vault": ROOT / "training-vault.zip",
-    }
-    # The staged benchmark folder is benchmark_kit, and the zip must contain it.
-    for folder_name, dest in mapping.items():
-        zip_dir(build / folder_name, dest)
-        print(f"{dest.name} {dest.stat().st_size} bytes")
-    stats["vault_rows"] = vault_rows
+    manifest_path = ROOT / "PACK_MANIFEST.json"
+    stats = json.loads(manifest_path.read_text(encoding="utf-8")) if args.only and manifest_path.exists() else {}
+    with tempfile.TemporaryDirectory(prefix="aethermoore-packs-") as temp:
+        build = Path(temp)
+        stats.update(stage_benchmark(build, attacks, benign))
+        mapping = {"benchmark_kit": ROOT / "benchmark-kit.zip"}
+        if not args.only:
+            stage_toolkit(build)
+            stage_hydra(build)
+            stage_n8n(build)
+            stage_spin(build)
+            stats["vault_rows"] = stage_vault(build)
+            mapping.update({
+                "ai-governance-toolkit": ROOT / "ai-governance-toolkit.zip",
+                "hydra-agent-templates": ROOT / "hydra-agent-templates.zip",
+                "n8n-workflow-pack": ROOT / "n8n-workflow-pack.zip",
+                "content-spin-engine": ROOT / "content-spin-engine.zip",
+                "training-vault": ROOT / "training-vault.zip",
+            })
+        for folder_name, dest in mapping.items():
+            zip_dir(build / folder_name, dest)
+            print(f"{dest.name} {dest.stat().st_size} bytes")
+    stats["benchmark_zip_sha256"] = hashlib.sha256((ROOT / "benchmark-kit.zip").read_bytes()).hexdigest()
     (ROOT / "PACK_MANIFEST.json").write_text(json.dumps(stats, indent=2) + "\n", encoding="utf-8")
-    shutil.rmtree(build)
     print("manifest written")
 
 

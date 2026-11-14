@@ -58,7 +58,7 @@
 
     6. Training data
        The large corpus is free: https://huggingface.co/datasets/issdandavis/scbe-aethermoore-training-data
-       Benchmark Kit — $5. 251 unique attack prompts, 20 benign prompts. Errors are not scored as blocks. https://aethermoore.com/benchmark-kit.html
+       Benchmark Kit v2 — $5. Checkout is currently paused. Includes 251 attack prompts, 20 benign prompts, full-reply reports, and before-and-after comparisons. Preview the synthetic report. Refusal-word screening only. https://aethermoore.com/benchmark-kit.html
        Training Vault starter — $29. 24 rows and validate_sft.py. The public corpus is not in the zip.
        Buy the vault: https://buy.stripe.com/28E8wQ5Cacuj64EaCydby0g
        Shop: https://aethermoore.com/shop.html
@@ -150,12 +150,13 @@
 
   // --- LOCAL INTENT FALLBACK (no API needed) ---
   const LOCAL_INTENTS = [
+    { keys: ['benchmark kit','benchmark report','benchmark comparison','compare model replies','benign refusals','refusal rate'], response: "Benchmark Kit v2 is $5, with checkout currently paused. Preview its synthetic report, inspect full replies, and compare changed replies from matching runs. The score screens for refusal phrases; it does not certify security. https://aethermoore.com/benchmark-kit.html" },
     { keys: ['hi','hello','hey','howdy'], response: "Hey. I'm Polly, the route-first operator for SCBE-AETHERMOORE. Tell me what you're looking for — pricing, products, research, support, or something else — and I'll point you to the right page." },
-    { keys: ['price','cost','how much','pricing','monthly','subscription','fee'], response: "The shop starts at $5. Custom pages show scoping bands, not a quote. See https://aethermoore.com/shop.html" },
+    { keys: ['price','cost','how much','pricing','monthly','subscription','fee'], response: "The $5 Benchmark Kit has a preview; its checkout is currently paused. Other packs and scoped services are listed at https://aethermoore.com/shop.html" },
     { keys: ['refund','guardrail','cx','policy enforcement','moffatt'], response: "The CX Refund Guardrail is a scoped middleware pilot intended to catch unsupported refund promises. Compatibility, latency, and acceptance tests are set per implementation. https://aethermoore.com/cx-guardrail.html" },
     { keys: ['iso 42001','audit','compliance','regulatory','eu ai act','governance framework'], response: "The ISO 42001 lane is a scoped evidence-packaging service mapped to selected controls. It supports audit preparation but is not certification or legal advice. https://aethermoore.com/iso-42001.html" },
     { keys: ['red team','penetration','adversarial','attack','security test','vulnerability','threat'], response: "The red-team lane is a scoped evaluation using project-authored and system-specific tests. Results are reported from the actual client run, not promised in advance. https://aethermoore.com/red-team.html" },
-    { keys: ['dataset','training data','sft','corpus','prompt pack'], response: "The large training set is free on Hugging Face. The $5 Benchmark Kit has 251 unique attack prompts. The $29 Training Vault is a 24-row starter. There is no $99 or $399 archive. Shop: https://aethermoore.com/shop.html" },
+    { keys: ['dataset','training data','sft','corpus','prompt pack'], response: "The large training set is free on Hugging Face. The $5 Benchmark Kit has 251 attack prompts and full-reply reports; its checkout is currently paused. Preview: https://aethermoore.com/benchmark-kit.html. The $29 Training Vault is a 24-row starter. Shop: https://aethermoore.com/shop.html" },
     { keys: ['contact','email','reach out','talk to','schedule','get in touch'], response: "Email me directly at aethermoregames@pm.me or use the contact form at https://aethermoore.com/contact.html. I usually reply within 24 hours." },
     { keys: ['help','support','broken','missing','delivery','issue','problem'], response: "For support with purchases, delivery, or broken links, visit https://aethermoore.com/support.html or email aethermoregames@pm.me." },
     { keys: ['tool','calculator','demo','interactive','visualization'], response: "Our live browser tools and interactive demos are at https://aethermoore.com/demos/index.html. No install needed." },
