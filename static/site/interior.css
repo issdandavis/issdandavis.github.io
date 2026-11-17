@@ -107,6 +107,60 @@
   color: var(--cobalt);
 }
 
+.about-hero-side {
+  display: grid;
+  gap: 26px;
+}
+
+.builder-portrait {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--rule-strong);
+  margin: 0;
+  background: var(--night);
+  box-shadow: 12px 12px 0 var(--mist);
+}
+
+.builder-portrait::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 52%, rgba(3, 9, 17, 0.9));
+  content: '';
+  pointer-events: none;
+}
+
+.builder-portrait img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  display: block;
+  object-fit: cover;
+  object-position: center 38%;
+}
+
+.builder-portrait figcaption {
+  position: absolute;
+  z-index: 2;
+  right: 20px;
+  bottom: 18px;
+  left: 20px;
+  color: #fff;
+}
+
+.builder-portrait figcaption span {
+  display: block;
+  color: var(--azure);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.builder-portrait figcaption strong {
+  display: block;
+  margin-top: 4px;
+  font-size: 1.05rem;
+}
+
 .field-section {
   border-bottom: 1px solid var(--rule);
   padding: clamp(70px, 8vw, 120px) 0;

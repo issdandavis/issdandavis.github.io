@@ -78,6 +78,13 @@
     .hero h1 .gradient { background: linear-gradient(135deg, var(--gold), var(--rose)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .hero .byline { font-size: 18px; color: var(--muted); margin-bottom: 8px; }
     .hero .tagline { font-size: 18px; color: var(--mint); font-style: italic; margin: 12px auto 0; max-width: 56ch; }
+    .book-threshold { position: relative; min-height: 460px; overflow: hidden; border: 1px solid var(--line-bright); border-radius: 20px; margin: 0 0 42px; background: #06101d; box-shadow: var(--shadow); }
+    .book-threshold::after { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(3,9,17,.9), rgba(3,9,17,.18) 66%), linear-gradient(180deg, transparent 50%, rgba(3,9,17,.68)); content: ""; }
+    .book-threshold img { width: 100%; height: 100%; min-height: 460px; object-fit: cover; }
+    .book-threshold figcaption { position: absolute; z-index: 2; top: 50%; left: clamp(24px, 6vw, 72px); max-width: 470px; transform: translateY(-50%); }
+    .book-threshold .chapter-mark { display: block; margin-bottom: 14px; color: var(--aqua); font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    .book-threshold strong { display: block; font-size: clamp(30px, 5vw, 58px); line-height: .98; letter-spacing: -.04em; }
+    .book-threshold p { max-width: 42ch; margin-top: 18px; color: #c7d6df; font-size: 16px; line-height: 1.7; }
     .books-grid { display: grid; grid-template-columns: 1fr; gap: 28px; margin-bottom: 48px; }
     .book-card { display: grid; grid-template-columns: 240px 1fr; gap: 28px; background: var(--panel); border: 1px solid var(--line); border-radius: 20px; padding: 28px; transition: border-color 200ms, transform 200ms; }
     .book-card:hover { border-color: var(--line-bright); transform: translateY(-2px); }
@@ -147,6 +154,15 @@
       <p class="tagline">Three books, three rooms of the same house: a system told as story, a memory told as fiction, and a literary murder.</p>
     </section>
 
+    <figure class="book-threshold">
+      <img src="/static/showcase/aethermoor-rootlight-threshold-v1.webp" alt="A pale-azure path leading toward the luminous roots of Aethermoor's world tree" width="1672" height="941" fetchpriority="high">
+      <figcaption>
+        <span class="chapter-mark">A small taste / before the shelf</span>
+        <strong>The door into the system is a story.</strong>
+        <p>A burned-out engineer arrives in a world where permission, memory, translation, and trust are physical laws—and slowly discovers that maintenance can become a form of home.</p>
+      </figcaption>
+    </figure>
+
     <section class="books-grid">
 
       <!-- THE MIRACLE WAS THE MEMORY -->
@@ -208,7 +224,7 @@
           <h2><span class="gradient">The Six Tongues Protocol</span></h2>
           <p class="byline">Sci-fi &middot; isekai &middot; LitRPG</p>
           <p class="tagline">&ldquo;The code IS the magic system.&rdquo;</p>
-          <p class="desc">Marcus Chen, a systems architect, wakes up inside Aethermoor &mdash; a world where the laws of physics run on the same math as the security framework he built. 22 chapters, 70,000+ words. The novel is the memory surface for the framework, not a detached side project. Chapters 1&ndash;8 narrated on YouTube.</p>
+          <p class="desc">Marcus Chen, a systems architect, wakes up inside Aethermoor &mdash; a world where the laws of physics run on the same math as the security framework he built. The full-length novel is the memory surface for the framework, not a detached side project. Chapters 1&ndash;8 are narrated on YouTube.</p>
           <div class="cta-row">
             <a class="btn btn-gold" href="https://www.amazon.com/dp/B0GSSFQD9G" target="_blank" rel="noopener">Buy on Amazon</a>
             <a class="btn btn-secondary" href="book.html">Read the book page &rarr;</a>

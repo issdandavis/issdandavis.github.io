@@ -15,6 +15,9 @@
       .catalog-hero h1 { max-width: 900px; margin: 0; font-size: clamp(3.2rem, 8vw, 7.5rem); line-height: .9; letter-spacing: -.07em; }
       .catalog-hero h1 span { color: var(--cobalt); }
       .catalog-hero p { max-width: 720px; margin-top: 28px; color: var(--navy-soft); font-size: 1.25rem; }
+      .pricing-rule { display: grid; grid-template-columns: minmax(180px, .3fr) minmax(0, 1fr); gap: 48px; border-bottom: 1px solid var(--rule); padding: 30px 0; }
+      .pricing-rule strong { color: var(--cobalt); font-family: var(--mono); font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; }
+      .pricing-rule p { max-width: 70ch; color: var(--navy-soft); }
       .catalog { padding: 78px 0; }
       .catalog-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; border: 1px solid var(--rule); background: var(--rule); }
       .catalog-card { display: flex; min-height: 410px; flex-direction: column; background: #fff; padding: 30px; }
@@ -28,7 +31,7 @@
       body > footer.site-footer { color: var(--navy); border-top: 1px solid var(--rule); }
       body > footer.site-footer a { color: var(--navy); }
       body > footer.site-footer p { color: var(--navy-soft); }
-      @media (max-width: 900px) { .catalog-grid { grid-template-columns: 1fr; } .catalog-card { min-height: 0; } .price { margin-top: 30px !important; } }
+      @media (max-width: 900px) { .pricing-rule, .catalog-grid { grid-template-columns: 1fr; } .catalog-card { min-height: 0; } .price { margin-top: 30px !important; } }
     </style>
   </head>
   <body>
@@ -45,6 +48,10 @@
     </header>
     <main id="main-content">
       <section class="catalog-hero"><div class="site-shell"><h1>Buy the outcome, inspect the evidence<span>.</span></h1><p>There is one paid service I can describe precisely today. The source stays open, and the books keep their own Amazon checkout.</p></div></section>
+      <div class="site-shell pricing-rule">
+        <strong>Pricing covenant</strong>
+        <p>Every page should give you something useful before it asks for money. Payment begins where accountable human time, a bounded deliverable, or physical fulfillment begins. The service price follows the work I can promise—not a percentage of value I cannot honestly measure.</p>
+      </div>
       <section class="catalog" aria-label="Available work">
         <div class="site-shell">
           <div class="catalog-grid">

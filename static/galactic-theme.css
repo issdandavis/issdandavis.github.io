@@ -1,16 +1,17 @@
 /*
- * Minimal background theme — just lets the starfield canvas show through
- * and adds a gentle trippy nebula drift on top.
+ * Aethermoor atmosphere layer.
  *
- * Does NOT override colors, buttons, cards, nav, or anything else.
- * Each page keeps its own palette. The starfield sits behind. That's it.
+ * Individual pages keep their own interface palette. This file supplies the
+ * shared night sky: opaline structure, rootlight warmth, pale-azure routes,
+ * and quiet violet depth. It intentionally avoids rainbow hue rotation so the
+ * site feels like one inhabited world instead of a generic nebula skin.
  */
 
 /* Make body background transparent so the fixed-position canvas in
  * galactic-stars.js is visible underneath the content. */
 html, body {
   background: transparent !important;
-  background-color: #000 !important;
+  background-color: #030711 !important;
 }
 
 /* Gentle trippy nebula that slowly breathes over the starfield.
@@ -18,29 +19,30 @@ html, body {
 body::after {
   content: "";
   position: fixed;
-  inset: 0;
+  inset: -8%;
   pointer-events: none;
   z-index: -1;
   background:
-    radial-gradient(ellipse at 20% 30%, rgba(139, 92, 246, 0.12), transparent 45%),
-    radial-gradient(ellipse at 80% 70%, rgba(255, 7, 58, 0.06), transparent 48%),
-    radial-gradient(ellipse at 55% 55%, rgba(57, 255, 20, 0.04), transparent 60%);
-  animation: nebula-drift 40s ease-in-out infinite alternate;
+    radial-gradient(ellipse at 16% 18%, rgba(209, 229, 255, 0.13), transparent 34%),
+    radial-gradient(ellipse at 82% 24%, rgba(103, 204, 255, 0.10), transparent 36%),
+    radial-gradient(ellipse at 70% 82%, rgba(214, 160, 75, 0.09), transparent 38%),
+    radial-gradient(ellipse at 28% 78%, rgba(113, 78, 172, 0.10), transparent 42%);
+  animation: rootlight-breathe 34s ease-in-out infinite alternate;
   mix-blend-mode: screen;
 }
 
-@keyframes nebula-drift {
+@keyframes rootlight-breathe {
   0% {
-    transform: translate(0, 0) scale(1);
-    filter: hue-rotate(0deg);
+    opacity: 0.72;
+    transform: translate3d(0, 0, 0) scale(1);
   }
   50% {
-    transform: translate(-3%, 2%) scale(1.08);
-    filter: hue-rotate(25deg);
+    opacity: 0.95;
+    transform: translate3d(-1.2%, 0.8%, 0) scale(1.035);
   }
   100% {
-    transform: translate(4%, -3%) scale(1.03);
-    filter: hue-rotate(-15deg);
+    opacity: 0.78;
+    transform: translate3d(1.4%, -1%, 0) scale(1.02);
   }
 }
 
@@ -51,8 +53,22 @@ body::after {
   }
 }
 
-/* The old mist/tongue decorations fought with the starfield. Hide them. */
-.aether-mist,
-.tongue-bar {
+/* Only page-level ornament is suppressed. Nested .tongue-bar components are
+ * real Six Tongues data visualizations and must remain visible. */
+body > .aether-mist {
   display: none !important;
+}
+
+body > .tongue-bar {
+  display: block !important;
+  background: linear-gradient(
+    90deg,
+    #cb543f 0 16.666%,
+    #91cfff 16.666% 33.333%,
+    #7552a8 33.333% 50%,
+    #f4edd2 50% 66.666%,
+    #171523 66.666% 83.333%,
+    #c18a43 83.333% 100%
+  ) !important;
+  opacity: 0.72;
 }
