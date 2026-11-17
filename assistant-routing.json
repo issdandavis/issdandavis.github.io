@@ -39,6 +39,11 @@
       "purpose": "Benchmarks, verification, and technical justification."
     },
     {
+      "name": "radix-lattice-research",
+      "url": "https://aethermoore.com/research/hardware-defined-radix-lattice.html",
+      "purpose": "Evidence-ranked proposal and interactive mechanical sketch for exact byte identity, calibrated radix views, phase sweeps, and collision-aware routing."
+    },
+    {
       "name": "evidence-ledger",
       "url": "https://aethermoore.com/research/evidence-ledger.html",
       "purpose": "Scoped test-campaign ledger that separates measured behavior, limitations, underpowered results, and refuted claims."
@@ -169,6 +174,11 @@
       "intent": "portfolio_evidence",
       "keywords": ["kaggle", "kaggle gold roadmap", "medal target", "top 1 percent proxy", "competition result", "public score", "competition rules", "forum review", "research watch", "pre-submit review", "experiment ledger", "product benchmark", "capability matrix", "clay capability", "npm package", "owned repository", "operations evidence"],
       "target": "https://aethermoore.com/research/operations.html"
+    },
+    {
+      "intent": "inspect_radix_lattice",
+      "keywords": ["hardware defined radix", "radix lattice", "bit lattice", "phase sweep", "collision aware routing", "dH hardware", "beta H", "bit to byte sweep"],
+      "target": "https://aethermoore.com/research/hardware-defined-radix-lattice.html"
     },
     {
       "intent": "verify_claims",

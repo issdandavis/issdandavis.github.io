@@ -1,0 +1,17 @@
+id,mechanism,status,primary_source,supports,does_not_support
+E01,Non-integer radix,EXISTING,https://static.renyi.hu/renyi_cikkek/1957_representations_for_real_numbers_and_their_ergodic_properties.pdf,Expansions generated with non-integer bases,Arbitrary unique finite reversible hardware encoding
+E02,Signed-digit arithmetic,EXISTING,https://doi.org/10.1109/TEC.1961.5219227,Bounded carry and parallel arithmetic,Free unique encoding or extra entropy
+E03,Parallel addition in algebraic bases,EXISTING,https://arxiv.org/abs/1102.5683,Local constant-time addition for eligible bases,Validity for every selected radix
+E04,Systolic arrays,EXISTING,https://www.eecs.harvard.edu/htk/static/files/1978-cmu-cs-report-kung-leiserson.pdf,Rhythmic local operand movement,Efficiency for every lattice metaphor
+E05,Bit-serial matrix arithmetic,EXISTING,https://arxiv.org/abs/1806.08862,Precision-scalable bit-plane execution,Zero cycle cost
+E06,Circular convolution binding,EXISTING,https://doi.org/10.1109/72.377968,Fixed-width distributed binding,Exact lossless byte reconstruction
+E07,Permutation order encoding,EXISTING,https://ri.diva-portal.org/smash/get/diva2%3A1042478/FULLTEXT01.pdf,Cheap role and order transforms,Universal task improvement
+E08,Poisson-disk hard exclusion,EXISTING,https://www.cs.ubc.ca/~rbridson/docs/bridson-siggraph07-poissondisk.pdf,Seeded separated placement,Full occupancy or zero rejection
+E09,Random sequential adsorption,EXISTING,https://doi.org/10.1016/0022-5193(80)90358-6,Non-overlapping accepted placement and jamming,Optimal packing
+E10,Lattice-gas dynamics,EXISTING,https://doi.org/10.1103/PhysRevLett.56.1505,Local streaming and collision rules under constraints,Generic neural semantics
+E11,Transient reservoir computation,EXISTING,https://doi.org/10.1162/089976602760407955,Task computation through transient dynamics and readout,Learning without an evaluator or readout
+E12,Wave recurrent computation,EXISTING,https://doi.org/10.1126/sciadv.aay6946,Wave equations mapped to RNN dynamics for a demonstrated task,Universal reasoning or efficiency
+E13,Oscillator Ising machine,EXISTING,https://arxiv.org/abs/1709.08102,Phase-encoded states and programmable couplings,Guaranteed global optimum
+L01,Exact 11/4 carry transform,MEASURED_LOCAL,C:/dev/_wt_integer_phase_shards_20260906/src/crypto/integer_phase_shards.py,Exact rational scaling and reversal,New entropy or occupancy-field gain
+L02,Exact 30-degree phase rotation,MEASURED_LOCAL,C:/dev/_wt_integer_phase_shards_20260906/src/crypto/integer_phase_shards.py,Twelve-step exact phase identity,Physical oscillator behavior
+C01,Receipt-preserving full composition,NEW_CANDIDATE,docs/research/dh-radix-lattice-20261117/context_capsule.md,Bounded experiment candidate,Patent novelty or learning gain

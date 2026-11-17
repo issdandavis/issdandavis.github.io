@@ -212,6 +212,21 @@ main { max-width: var(--max); margin: 0 auto; padding: 110px 24px; }
 .state-copy p { margin: 0 0 14px; color: var(--muted); }
 .equation { color: var(--gold) !important; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 18px; }
 
+.voice-guide { display: grid; grid-template-columns: minmax(280px, .75fr) minmax(0, 1.25fr); gap: 18px; }
+.voice-player, .voice-transcript { border: 1px solid var(--line); border-radius: 20px; background: var(--panel); }
+.voice-player { padding: clamp(26px, 4vw, 42px); }
+.voice-player h3 { margin: 22px 0 8px; font-family: Georgia, serif; font-size: 28px; }
+.voice-player p { color: var(--muted); }
+.voice-player audio { width: 100%; margin: 18px 0; accent-color: var(--gold); }
+.voice-meta { display: flex; flex-wrap: wrap; gap: 8px; }
+.voice-meta span { padding: 5px 8px; border: 1px solid var(--line); border-radius: 99px; color: var(--muted); font-size: 10px; }
+.voice-research-link { display: inline-block; margin-top: 26px; color: var(--blue); font-size: 13px; text-decoration: none; }
+.voice-transcript { overflow: hidden; }
+.voice-transcript summary { padding: 24px 28px; color: var(--gold); font-weight: 800; cursor: pointer; }
+.voice-transcript[open] summary { border-bottom: 1px solid var(--line); }
+.voice-transcript > div { max-height: 470px; padding: 12px 30px 30px; overflow-y: auto; }
+.voice-transcript p { color: var(--muted); font-size: 14px; }
+
 .evidence-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .evidence-card { min-height: 270px; padding: 28px; border: 1px solid var(--line); border-radius: 18px; background: var(--panel); }
 .evidence-card h3 { margin: 18px 0 10px; font-size: 22px; }
@@ -252,7 +267,7 @@ main { max-width: var(--max); margin: 0 auto; padding: 110px 24px; }
   .metric:nth-child(2) { border-radius: 0 14px 0 0; }
   .metric:nth-child(3) { border-radius: 0 0 0 14px; }
   .metric:last-child { border-radius: 0 0 14px 0; }
-  .section-heading, .invariant-card, .state-lab { grid-template-columns: 1fr; }
+  .section-heading, .invariant-card, .state-lab, .voice-guide { grid-template-columns: 1fr; }
   .evidence-grid { grid-template-columns: 1fr; }
   .planes { grid-template-columns: repeat(2, 1fr); }
 }

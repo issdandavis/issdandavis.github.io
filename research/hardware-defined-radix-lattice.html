@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proposed Hardware-Defined Radix Lattice | Aethermoor Research</title>
+  <meta name="description" content="An evidence-ranked research note and interactive mechanical sketch for exact byte identity, hardware-defined radix views, phase-offset sweeps, and collision-aware field routing.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://aethermoore.com/research/hardware-defined-radix-lattice.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The Hardware-Defined Radix Lattice — Proposed">
+  <meta property="og:description" content="The primitives are real. The full composition is a testable proposal.">
+  <meta property="og:url" content="https://aethermoore.com/research/hardware-defined-radix-lattice.html">
+  <link rel="stylesheet" href="/static/radix-lattice.css">
+  <link rel="stylesheet" href="/static/galactic-theme.css">
+  <script src="/static/galactic-stars.js" defer></script>
+  <script src="/static/radix-lattice.js" defer></script>
+</head>
+<body>
+  <header class="rl-topbar">
+    <a class="rl-brand" href="index.html">AETHERMOOR / RESEARCH</a>
+    <nav aria-label="Primary navigation">
+      <a href="../trits-bits-and-bobs.html">Trits, Bits, and Bobs</a>
+      <a href="index.html">Research</a>
+      <a href="../books.html">Books</a>
+      <a href="../index.html">Home</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="rl-hero">
+      <div class="rl-hero-copy">
+        <div class="rl-status-line">
+          <span class="rl-label rl-proposed">Proposed integration</span>
+          <span class="rl-date">Research pass · 17 Nov 2026</span>
+        </div>
+        <p class="rl-kicker">A system idea translated without flattening the metaphor</p>
+        <h1>The hardware-defined <span>radix lattice</span></h1>
+        <p class="rl-deck">Keep the byte exact. Give it a second, hardware-shaped view. Sweep every bit forward and backward, let phase-offset paths negotiate a shared field, and keep a receipt for every place they touch.</p>
+        <p class="rl-boundary"><strong>The honest boundary:</strong> generalized radix, local dataflow, phase binding, hard-exclusion placement, and programmable fields already exist. Their full receipt-preserving composition—and any learning advantage—has not been demonstrated.</p>
+        <div class="rl-actions">
+          <a class="rl-button rl-button-primary" href="#field-lab">Run the mechanical sketch</a>
+          <a class="rl-button" href="#evidence">Inspect the evidence map</a>
+        </div>
+      </div>
+      <div class="rl-orbit" aria-hidden="true">
+        <div class="rl-orbit-ring ring-one"></div>
+        <div class="rl-orbit-ring ring-two"></div>
+        <div class="rl-orbit-ring ring-three"></div>
+        <div class="rl-orbit-core">β<sub>H</sub></div>
+        <span class="rl-orbit-bit bit-a">1</span>
+        <span class="rl-orbit-bit bit-b">0</span>
+        <span class="rl-orbit-bit bit-c">1</span>
+      </div>
+    </section>
+
+    <section class="rl-strip" aria-label="Evidence status summary">
+      <div><strong>26 / 26</strong><span>local carry + phase tests passed</span></div>
+      <div><strong>256</strong><span>byte identities remain canonical</span></div>
+      <div><strong>0</strong><span>new entropy claimed</span></div>
+      <div><strong>1</strong><span>bounded experiment proposed</span></div>
+    </section>
+
+    <section class="rl-section rl-story">
+      <div class="rl-section-heading">
+        <p class="rl-kicker">The translation</p>
+        <h2>The bullet becomes a record. The wake becomes a trace. The wind becomes a field.</h2>
+      </div>
+      <div class="rl-translation-grid">
+        <article>
+          <span>01</span>
+          <h3>Exact carrier</h3>
+          <p>The original eight bits stay attached to the byte. Geometry can route identity; it does not replace identity.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Radix view</h3>
+          <p><code>β<sub>H</sub></code> changes the positional projection used by the experiment. It is a typed view until an inverse is proven.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Phase sweep</h3>
+          <p>Forward and reverse records propose cell-time paths. A phase offset changes proposal order and direction.</p>
+        </article>
+        <article>
+          <span>04</span>
+          <h3>Receipt field</h3>
+          <p>A legal path reserves its cells. Rejected proposals, held reservations, and accepted routes remain countable.</p>
+        </article>
+      </div>
+      <div class="rl-equation-card">
+        <div>
+          <span class="rl-label rl-invariant">Canonical identity</span>
+          <p class="rl-equation">x = Σ b<sub>i</sub> · 2<sup>i</sup></p>
+          <small>This is the byte that must round-trip exactly.</small>
+        </div>
+        <div class="rl-arrow" aria-hidden="true">→</div>
+        <div>
+          <span class="rl-label rl-proposed">Task view</span>
+          <p class="rl-equation">v<sub>β</sub>(x) = Σ b<sub>i</sub> · β<sub>H</sub><sup>i</sup></p>
+          <small>This may organize a route; it does not create a second byte.</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="rl-section" id="field-lab">
+      <div class="rl-section-heading">
+        <p class="rl-kicker">Interactive mechanical sketch</p>
+        <h2>Give the wind a value. Watch the routes negotiate.</h2>
+        <p>This browser sketch is intentionally small and deterministic. It preserves a canonical bit receipt, generates forward and reverse path proposals, and rejects cell-time collisions. It is not a neural-network result or a hardware simulation.</p>
+      </div>
+      <div class="rl-lab">
+        <div class="rl-canvas-shell">
+          <canvas id="radix-field" width="960" height="560" aria-label="Animated lattice showing accepted phase-offset bit routes"></canvas>
+          <div class="rl-canvas-key" aria-hidden="true"><span class="key-forward"></span> forward <span class="key-reverse"></span> reverse <span class="key-root"></span> fixed roots</div>
+        </div>
+        <form class="rl-controls" id="radix-controls">
+          <label for="byte-value">Canonical byte <output id="byte-output">173</output></label>
+          <input id="byte-value" type="range" min="0" max="255" value="173">
+
+          <label for="beta-value">Radix view β<sub>H</sub> <output id="beta-output">2.75</output></label>
+          <input id="beta-value" type="range" min="1.25" max="4" step="0.05" value="2.75">
+
+          <label for="field-value">Field turn <output id="field-output">0.38</output></label>
+          <input id="field-value" type="range" min="-1" max="1" step="0.02" value="0.38">
+
+          <label for="seed-value">Receipt seed</label>
+          <input id="seed-value" type="number" min="1" max="999999" value="271828">
+          <button class="rl-button rl-button-primary" type="submit">Replay this field</button>
+
+          <div class="rl-readout" aria-live="polite">
+            <div><span>Bit receipt</span><strong id="bit-receipt">10101101</strong></div>
+            <div><span>β view</span><strong id="beta-view">—</strong></div>
+            <div><span>Accepted routes</span><strong id="accepted-routes">—</strong></div>
+            <div><span>Rejected proposals</span><strong id="rejected-proposals">—</strong></div>
+            <div><span>Exact byte replay</span><strong id="roundtrip-status">—</strong></div>
+          </div>
+        </form>
+      </div>
+      <p class="rl-caption">The visual may show lines crossing in two dimensions when they occupy different time bins. The collision ledger uses discrete <code>(x, y, t)</code> cells. Shared identity is not inferred from proximity.</p>
+    </section>
+
+    <section class="rl-section" id="evidence">
+      <div class="rl-section-heading">
+        <p class="rl-kicker">Evidence-ranked map</p>
+        <h2>What is established, what is adapted, and what still has to earn its name.</h2>
+      </div>
+      <div class="rl-evidence-grid">
+        <article class="rl-evidence-card">
+          <span class="rl-label rl-existing">Existing</span>
+          <h3>Radix and signed digits</h3>
+          <p>Non-integer bases and redundant signed digits are established mathematical tools. They come with admissibility, uniqueness, conversion, and hardware-cost constraints.</p>
+          <p class="rl-source"><a href="https://static.renyi.hu/renyi_cikkek/1957_representations_for_real_numbers_and_their_ergodic_properties.pdf">Rényi, 1957</a> · <a href="https://doi.org/10.1109/TEC.1961.5219227">Avižienis, 1961</a></p>
+        </article>
+        <article class="rl-evidence-card">
+          <span class="rl-label rl-existing">Existing</span>
+          <h3>Moving bit planes</h3>
+          <p>Systolic and bit-serial machines already move values through regular local arrays. Flexible precision trades against additional cycles and control.</p>
+          <p class="rl-source"><a href="https://www.eecs.harvard.edu/htk/static/files/1978-cmu-cs-report-kung-leiserson.pdf">Kung &amp; Leiserson, 1978</a> · <a href="https://arxiv.org/abs/1806.08862">BISMO, 2018</a></p>
+        </article>
+        <article class="rl-evidence-card">
+          <span class="rl-label rl-existing">Existing</span>
+          <h3>Phase and role binding</h3>
+          <p>Circular convolution and coordinate permutation can bind roles and order. Bundled recovery is approximate, so the exact byte needs its own receipt.</p>
+          <p class="rl-source"><a href="https://doi.org/10.1109/72.377968">Plate, 1995</a> · <a href="https://ri.diva-portal.org/smash/get/diva2%3A1042478/FULLTEXT01.pdf">Sahlgren et al., 2008</a></p>
+        </article>
+        <article class="rl-evidence-card">
+          <span class="rl-label rl-existing">Existing</span>
+          <h3>First legal place wins</h3>
+          <p>Hard-exclusion samplers and random sequential adsorption accept only separated placements. They can reject repeatedly and jam before full occupancy.</p>
+          <p class="rl-source"><a href="https://www.cs.ubc.ca/~rbridson/docs/bridson-siggraph07-poissondisk.pdf">Bridson, 2007</a> · <a href="https://doi.org/10.1016/0022-5193(80)90358-6">Feder, 1980</a></p>
+        </article>
+        <article class="rl-evidence-card">
+          <span class="rl-label rl-existing">Existing</span>
+          <h3>Wake and programmable medium</h3>
+          <p>Lattice, reservoir, wave-RNN, and oscillator systems can compute through local dynamics. A task, readout, and matched control are still required.</p>
+          <p class="rl-source"><a href="https://doi.org/10.1103/PhysRevLett.56.1505">Frisch et al., 1986</a> · <a href="https://doi.org/10.1126/sciadv.aay6946">Hughes et al., 2019</a> · <a href="https://arxiv.org/abs/1709.08102">Wang &amp; Roychowdhury, 2017</a></p>
+        </article>
+        <article class="rl-evidence-card rl-candidate-card">
+          <span class="rl-label rl-proposed">New candidate</span>
+          <h3>The exact composition</h3>
+          <p>Canonical byte identity + typed radix view + bidirectional phase sweeps + exclusion receipts + a declared field. The research question is whether this full contract improves a bounded routing or retrieval task.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="rl-section rl-gate">
+      <div class="rl-section-heading">
+        <p class="rl-kicker">The experiment that can say no</p>
+        <h2>A strange mechanism earns its keep only after the ordinary scheduler gets a fair race.</h2>
+      </div>
+      <div class="rl-gate-grid">
+        <div>
+          <h3>Five matched arms</h3>
+          <ol>
+            <li>Static first-fit binary routes</li>
+            <li>Seeded random choice from the same proposals</li>
+            <li>Ordinary collision-plus-length greedy routing</li>
+            <li>β<sub>H</sub> + phase + field + reservations</li>
+            <li>Shuffled byte-to-field binding</li>
+          </ol>
+        </div>
+        <div>
+          <h3>Hard gates</h3>
+          <ul>
+            <li>256/256 exact byte round-trips</li>
+            <li>zero unintended accepted-route collisions</li>
+            <li>complete proposed / delivered / held / rejected accounting</li>
+            <li>deterministic replay from seed and receipt</li>
+            <li>multiple seeds and a held-out load</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Promotion rule</h3>
+          <p>The field arm must beat both static routing and the ordinary matched greedy arm by more than twice pooled seed standard deviation, without starving records or spending more proposals. Otherwise the result is <strong>UNDERPOWERED</strong> or <strong>NO GAIN</strong>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="rl-close">
+      <div>
+        <span class="rl-label rl-invariant">Current claim</span>
+        <h2>A seeded collision-aware radial-routing proposal that keeps canonical byte identity exact.</h2>
+        <p>No hardware result, neural learning result, security gain, or general collision-free claim yet. That restraint is part of the design.</p>
+      </div>
+      <a class="rl-button rl-button-primary" href="../trits-bits-and-bobs.html">Return to the book experience</a>
+    </section>
+  </main>
+
+  <footer class="rl-footer">
+    <span>&copy; 2026 Issac Daniel Davis</span>
+    <span><a href="index.html">Research index</a> · <a href="../books.html">Books</a> · <a href="mailto:aethermoregames@pm.me">Email</a></span>
+  </footer>
+  <script src="/static/cookie-consent.js" defer></script>
+</body>
+</html>
