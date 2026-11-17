@@ -1,256 +1,51 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thank You | SCBE-AETHERMOORE</title>
-  <meta name="description" content="Thank you for your purchase. Your order confirmation and next steps.">
-  <meta property="og:title" content="Thank You | SCBE-AETHERMOORE">
-  <meta property="og:description" content="Thank you for your purchase. Your order confirmation and next steps.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://aethermoore.com/thank-you.html">
-  <meta property="og:image" content="https://aethermoore.com/hero.webp">
-
-<meta name="robots" content="noindex, nofollow">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#071412;color:#e7fff7;min-height:100vh;line-height:1.6}
-.container{max-width:720px;margin:0 auto;padding:60px 24px 40px}
-.topbar{padding:14px 20px;background:rgba(4,16,15,0.9);backdrop-filter:blur(12px);border-bottom:1px solid rgba(139,255,223,0.15);font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:#8fffd3;font-weight:700}
-.topbar a{color:#8fffd3;text-decoration:none}
-.badge{display:inline-block;padding:4px 12px;border-radius:20px;background:rgba(143,255,211,0.1);border:1px solid rgba(143,255,211,0.3);font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#8fffd3;margin-bottom:14px}
-h1{font-size:clamp(32px,6vw,48px);letter-spacing:-0.03em;background:linear-gradient(135deg,#8fffd3,#6dd8ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:16px;line-height:1.1}
-.subtitle{color:#9bc5ba;font-size:17px;margin-bottom:36px}
-.card{background:rgba(10,28,24,0.82);border:1px solid rgba(139,255,223,0.2);border-radius:14px;padding:28px;margin-bottom:20px}
-.card h3{color:#8fffd3;font-size:18px;margin-bottom:10px;display:flex;align-items:center;gap:8px}
-.card p{color:#c8d4d0;margin-bottom:14px}
-.download-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;background:linear-gradient(135deg,rgba(143,255,211,0.2),rgba(109,216,255,0.14));color:#8fffd3;font-weight:700;border:1px solid rgba(143,255,211,0.45);border-radius:12px;text-decoration:none;font-size:15px;margin:8px 8px 8px 0;transition:all 150ms}
-.download-btn:hover{background:linear-gradient(135deg,rgba(143,255,211,0.32),rgba(109,216,255,0.22));transform:translateY(-1px)}
-.secondary-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border:1px solid rgba(155,197,186,0.3);color:#c8d4d0;border-radius:10px;text-decoration:none;font-size:14px;margin:8px 8px 8px 0}
-.secondary-btn:hover{border-color:#8fffd3;color:#8fffd3}
-code{background:rgba(0,0,0,0.4);padding:2px 7px;border-radius:4px;color:#8fffd3;font-family:"SF Mono",Consolas,monospace;font-size:13px;border:1px solid rgba(143,255,211,0.15)}
-pre{background:rgba(0,0,0,0.5);padding:16px;border-radius:10px;overflow-x:auto;color:#c8d4d0;font-family:"SF Mono",Consolas,monospace;font-size:13px;line-height:1.5;border:1px solid rgba(123,140,255,0.14)}
-.unknown{border-color:rgba(255,217,119,0.3);background:rgba(255,217,119,0.04)}
-.unknown h3{color:#ffd977}
-footer{text-align:center;padding:32px;color:#9bc5ba;font-size:12px;border-top:1px solid rgba(139,255,223,0.1);margin-top:40px}
-footer a{color:#c8d4d0;text-decoration:none}
-.nav-link{color:#6dd8ff;text-decoration:none}
-.nav-link:hover{color:#8fffd3}
-.step{counter-increment:step;margin-bottom:14px;padding-left:32px;position:relative}
-.step::before{content:counter(step);position:absolute;left:0;top:0;width:22px;height:22px;border-radius:50%;background:rgba(143,255,211,0.1);border:1px solid rgba(143,255,211,0.35);color:#8fffd3;font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center}
-ol.steps{counter-reset:step;list-style:none;padding-left:0}
-</style>
-<link rel="stylesheet" href="/static/galactic-theme.css">
-<script src="/static/galactic-stars.js" defer></script>
-</head>
-<body>
-<header class="topbar">
-  <a href="/">SCBE-AETHERMOORE</a>
-</header>
-
-<div class="container">
-  <span class="badge">Order Confirmed</span>
-  <h1 id="pageTitle">Thank you for your purchase.</h1>
-  <p class="subtitle" id="pageSubtitle">Your download is ready below. Bookmark this page — you can return to it anytime.</p>
-
-  <div id="productArea">
-    <!-- Populated by JS based on ?product= query param -->
-  </div>
-
-  <div class="card">
-    <h3>📥 How to use what you just bought</h3>
-    <ol class="steps">
-      <li class="step"><strong>Download the ZIP</strong> using the button above (instant download after checkout). The file contains the complete package — templates, checklists, and the README with setup instructions.</li>
-      <li class="step"><strong>Extract and open the README.md first.</strong> Every package starts there. It walks you through what's included and how the pieces fit together.</li>
-      <li class="step"><strong>Adapt the templates to your context.</strong> These are governance scaffolds, not rigid prescriptions. Edit them to match your team's vocabulary and thresholds.</li>
-      <li class="step"><strong>Need help?</strong> Reply to your Stripe receipt email, or email <a class="nav-link" href="mailto:aethermoregames@pm.me">aethermoregames@pm.me</a> directly. I usually answer within 24 hours.</li>
-    </ol>
-  </div>
-
-  <div class="card">
-    <h3>💬 Support &amp; questions</h3>
-    <p>If the download doesn't work, if you need help adapting the templates, or if something doesn't match what was advertised, email me directly:</p>
-    <a class="download-btn" href="mailto:aethermoregames@pm.me?subject=Question%20about%20my%20SCBE%20purchase">Email support</a>
-    <p style="margin-top:16px;font-size:13px;color:#9bc5ba;">Refund policy: not satisfied within 14 days? Email me and I'll refund you in full, no questions. Keep the files.</p>
-  </div>
-
-  <div class="card">
-    <h3>⚡ What's next</h3>
-    <p>The open source framework that everything here integrates with is on GitHub. Clone it, run the tests, read the architecture docs.</p>
-    <a class="secondary-btn" href="https://github.com/issdandavis/SCBE-AETHERMOORE" target="_blank" rel="noopener">View on GitHub</a>
-    <a class="secondary-btn" href="/research/evidence.html">See the evidence ledger</a>
-    <a class="secondary-btn" href="/services.html">Browse other products</a>
-  </div>
-</div>
-
-<footer>
-  SCBE-AETHERMOORE · Built by Issac Davis in Port Angeles, WA · Patent Pending USPTO #63/961,403<br>
-  <a href="/">Home</a> · <a href="/services.html">Shop</a> · <a href="mailto:aethermoregames@pm.me">Email</a>
-</footer>
-
-<script>
-(function(){
-  var EMAIL = 'aethermoregames@pm.me';
-  var PRODUCTS = {
-    'ai-governance-toolkit': {
-      title: 'AI Governance Toolkit',
-      subtitle: 'A checker for one decision record. Run python decide.py self-test.',
-      zip: '/deliverables/ai-governance-toolkit.zip',
-      includes: [
-        'decide.py — checks ALLOW, QUARANTINE, or DENY',
-        'example-allow.json, example-quarantine.json, example-deny.json',
-        'README.md and LICENSE.txt',
-      ],
-      manual: '/product-manual/ai-governance-toolkit.html',
-    },
-    'hydra-agent-templates': {
-      title: 'HYDRA Multi-Agent Framework',
-      subtitle: 'A six-role packet builder. It does not browse, and it is not a license for the free repository.',
-      zip: '/deliverables/hydra-agent-templates.zip',
-      includes: [
-        'hydra_packet.py — KO, AV, RU, CA, UM, DR',
-        'example-packet.json',
-        'README.md and LICENSE.txt',
-      ],
-      manual: '/product-manual/hydra-agent-templates.html',
-    },
-    'n8n-workflow-pack': {
-      title: 'n8n Workflow Pack',
-      subtitle: 'One n8n workflow. A complete decision returns HTTP 200. Anything else returns HTTP 400.',
-      zip: '/deliverables/n8n-workflow-pack.zip',
-      includes: [
-        'workflows/SCBE_Decision_Check.workflow.json',
-        'validation-checklist.md',
-        'README.md and LICENSE.txt',
-      ],
-      manual: '/product-manual/n8n-workflow-pack.html',
-    },
-    'content-spin-engine': {
-      title: 'Content Spin Engine',
-      subtitle: 'Copies one note into three drafts. It does not add a claim.',
-      zip: '/deliverables/content-spin-engine.zip',
-      includes: [
-        'spin.py — run python spin.py self-test',
-        'sample-source.md and a sample spin-out folder',
-        'README.md and LICENSE.txt',
-      ],
-      manual: '/product-manual/content-spin-engine.html',
-    },
-    'benchmark-kit': {
-      title: 'AI Security Benchmark Kit',
-      subtitle: '251 unique attack prompts, 20 ordinary prompts, and a runner. Errors are not blocks.',
-      zip: '/deliverables/benchmark-kit.zip',
-      includes: [
-        'benchmark.py — python benchmark.py --self-test',
-        'attack_corpus.jsonl and attack_corpus.csv — 251 unique prompts, 20 classes',
-        'benign_prompts.jsonl — 20 ordinary prompts',
-        'RUBRIC.md and REPORT_TEMPLATE.md',
-      ],
-      manual: '/benchmark-kit.html',
-    },
-    // Products below have no downloadable file on the site yet: one-click email request.
-    'training-vault': {
-      title: 'AI Security Training Vault',
-      subtitle: '24 starter rows and a checker. The large public corpus is not in this zip.',
-      zip: '/deliverables/training-vault.zip',
-      includes: ['governance_starter.jsonl — 24 rows', 'validate_sft.py', 'README.md and LICENSE.txt'],
-      manual: '/product-manual/training-vault.html',
-    },
-    'process-pack': {
-      title: 'Behind-The-Scenes Process Pack',
-      subtitle: 'This pack is not on the shelf.',
-      zip: null,
-      closed: true,
-      includes: [],
-      manual: '/shop.html',
-    },
-    'governance-sft-pack': {
-      title: 'SCBE Governance SFT Pack',
-      subtitle: 'This archive is not for sale. The public dataset is on Hugging Face. The paid starter is the Training Vault.',
-      zip: null,
-      closed: true,
-      includes: [],
-      manual: '/shop.html',
-    },
-    'full-arsenal': {
-      title: 'The Full Arsenal (dataset bundle)',
-      subtitle: 'There is no Full Arsenal archive. Use the shop for the files that download.',
-      zip: null,
-      closed: true,
-      includes: [],
-      manual: '/shop.html',
-    },
-  };
-  var ALIASES = { 'governance-toolkit': 'ai-governance-toolkit', 'hydra': 'hydra-agent-templates', 'n8n': 'n8n-workflow-pack',
-    'content-spin': 'content-spin-engine', 'vault': 'training-vault', 'benchmark': 'benchmark-kit', 'kit': 'benchmark-kit',
-    'behind-the-scenes': 'process-pack', 'governance-sft': 'governance-sft-pack', 'arsenal': 'full-arsenal' };
-
-  function esc(t){ return String(t).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
-
-  var params = new URLSearchParams(window.location.search);
-  var key = (params.get('product') || '').trim().toLowerCase();
-  key = ALIASES[key] || key;
-  var fromMemory = false;
-  if (!PRODUCTS[key]) {
-    // Stripe may return buyers without ?product=. Use the product they clicked "Buy" on (stored by /static/auto-delivery.js).
-    try {
-      var last = JSON.parse(localStorage.getItem('aethermoore_last_purchase') || 'null');
-      if (last && PRODUCTS[last.key] && (Date.now() - last.t) < 1000*60*60*24*3) { key = last.key; fromMemory = true; }
-    } catch (e) {}
-  }
-  var area = document.getElementById('productArea');
-  var titleEl = document.getElementById('pageTitle');
-  var subtitleEl = document.getElementById('pageSubtitle');
-  var product = PRODUCTS[key];
-
-  if (product) {
-    if (fromMemory && history.replaceState) history.replaceState(null, '', '?product=' + key);
-    var includesList = product.includes.map(function(i){ return '<li style="margin-bottom:6px;color:#c8d4d0;font-size:14px;">' + esc(i) + '</li>'; }).join('');
-    var inside = includesList ? '<h4 style="color:#8fffd3;font-size:14px;font-weight:700;margin:20px 0 10px;letter-spacing:0.04em;">What\'s inside</h4><ul style="list-style:none;padding-left:0">' + includesList + '</ul>' : '';
-    var manualBtn = product.manual ? '<a class="secondary-btn" href="' + product.manual + '">Read the full manual</a>' : '';
-    var bookmark = '<p style="font-size:13px;color:#9bc5ba;margin-top:14px;">Your page: <code>aethermoore.com/thank-you.html?product=' + key + '</code> — bookmark it to come back anytime.</p>';
-
-    if (product.closed) {
-      titleEl.textContent = product.title;
-      subtitleEl.textContent = product.subtitle;
-      area.innerHTML =
-        '<div class="card unknown"><h3>' + esc(product.title) + '</h3><p>' + esc(product.subtitle) + '</p>' +
-        '<a class="download-btn" href="/shop.html">Open the shop</a>' +
-        '<a class="secondary-btn" href="https://huggingface.co/datasets/issdandavis/scbe-aethermoore-training-data">Public dataset</a></div>';
-    } else if (product.zip) {
-      titleEl.textContent = 'Your ' + product.title + ' is ready.';
-      subtitleEl.textContent = 'Thanks for buying, it genuinely helps me keep building. Your download is below. Bookmark this page so you can come back anytime.';
-      area.innerHTML =
-        '<div class="card"><h3>📦 ' + esc(product.title) + '</h3><p>' + esc(product.subtitle) + '</p>' +
-        '<a class="download-btn" href="' + product.zip + '" download>⬇ Download ' + esc(product.title) + ' (ZIP)</a>' + manualBtn + bookmark + inside + '</div>';
-    } else {
-      var subj = encodeURIComponent('Delivery: ' + product.title);
-      var body = encodeURIComponent('Hi Issac,\n\nI just bought the ' + product.title + '. Please send my files.\n\nEmail I used at checkout: \n');
-      titleEl.textContent = 'Thanks for buying the ' + product.title + '.';
-      subtitleEl.textContent = 'Your payment went through. This product is sent by email: one click below and it goes to the address you used at checkout.';
-      area.innerHTML =
-        '<div class="card unknown"><h3>📬 ' + esc(product.title) + '</h3><p>' + esc(product.subtitle) + '</p>' +
-        '<p>This package isn\'t available as an instant download yet. Click the button to send a pre-filled request and you\'ll get the files by email, usually within 24 hours.</p>' +
-        '<a class="download-btn" href="mailto:' + EMAIL + '?subject=' + subj + '&body=' + body + '">✉ Request my ' + esc(product.title) + '</a>' + manualBtn +
-        '<p style="font-size:13px;color:#9bc5ba;margin-top:14px;">Or email <a class="nav-link" href="mailto:' + EMAIL + '">' + EMAIL + '</a> directly.</p>' + bookmark + inside + '</div>';
-    }
-  } else {
-    titleEl.textContent = 'Thank you for your purchase.';
-    subtitleEl.textContent = 'Pick the product you bought below to open its instant download page.';
-    var picks = Object.keys(PRODUCTS).map(function(k){
-      return '<a class="secondary-btn" style="font-size:12px;padding:8px 14px" href="?product=' + k + '">' + esc(PRODUCTS[k].title) + '</a>';
-    }).join('');
-    area.innerHTML =
-      '<div class="card unknown"><h3>Which product did you buy?</h3>' +
-      '<p>Your checkout didn\'t tell this page which product it was. Choose it below — downloads open instantly.</p>' +
-      '<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px">' + picks + '</div>' +
-      '<p style="font-size:13px;color:#9bc5ba;margin-top:16px;">Not sure? Email <a class="nav-link" href="mailto:' + EMAIL + '?subject=Which%20product%20did%20I%20buy%3F">' + EMAIL + '</a> with the email you used at checkout.</p></div>';
-  }
-})();
-</script>
-
-  <script src="/static/cookie-consent.js" defer></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <title>Order access | AetherMoore</title>
+    <style>
+      * { box-sizing: border-box; }
+      body { margin: 0; min-height: 100vh; background: #f5f8fb; color: #10233a; font: 16px/1.6 Arial, Helvetica, sans-serif; }
+      header { border-bottom: 1px solid #cbd5df; background: #fff; }
+      header div, main { width: min(760px, calc(100% - 40px)); margin: 0 auto; }
+      header div { padding: 20px 0; font-weight: 800; }
+      main { padding: 84px 0; }
+      .eyebrow { color: #135fbd; font-size: .78rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+      h1 { margin: 12px 0 18px; font-size: clamp(2.5rem, 7vw, 5rem); line-height: .95; letter-spacing: -.055em; }
+      .lead { max-width: 650px; color: #536477; font-size: 1.2rem; }
+      .card { margin-top: 36px; padding: 30px; border: 1px solid #cbd5df; background: #fff; box-shadow: 10px 10px 0 #e8eef2; }
+      .button { display: inline-flex; margin-top: 10px; padding: 14px 20px; background: #135fbd; color: #fff; font-weight: 800; text-decoration: none; }
+      .button:hover { background: #0b4895; }
+      .muted { color: #536477; font-size: .9rem; }
+      a { color: #0b4895; }
+    </style>
+  </head>
+  <body>
+    <header><div><a href="/">AetherMoore</a></div></header>
+    <main>
+      <p class="eyebrow">Buyer access</p>
+      <h1 id="title">Verify your order.</h1>
+      <p class="lead" id="lead">A paid Stripe Checkout Session is required before a private product download can open.</p>
+      <section class="card" id="access-card">
+        <p id="access-copy">Use the access link in your Stripe return page or delivery email. Product names in a URL do not unlock a file.</p>
+        <a class="button" id="download-link" hidden href="#">Verify payment and download</a>
+        <p class="muted">If your receipt has no access link, email <a href="mailto:aethermoregames@pm.me?subject=Order%20access%20help">aethermoregames@pm.me</a> from the address used at checkout.</p>
+      </section>
+    </main>
+    <script>
+      (function () {
+        var sessionId = new URLSearchParams(location.search).get('session_id') || '';
+        if (!/^cs_(?:test_|live_)?[A-Za-z0-9]+$/.test(sessionId)) return;
+        var link = document.getElementById('download-link');
+        link.href = 'https://scbe-agent-bridge-vercel.vercel.app/api/agent/download?session_id=' + encodeURIComponent(sessionId);
+        link.hidden = false;
+        document.getElementById('title').textContent = 'Your order is ready to verify.';
+        document.getElementById('lead').textContent = 'The download service will check this Checkout Session directly with Stripe and release only the product attached to the paid order.';
+        document.getElementById('access-copy').textContent = 'Payment and product are verified on the server. An unpaid, forged, or wrong-product session is rejected.';
+      })();
+    </script>
+  </body>
 </html>

@@ -1,19 +1,185 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<title>AI Governance Snapshot — AetherMoore</title>
-<meta name="description" content="The AI Governance Snapshot intake has moved. Request an audit or scope a project on the AetherMoore services page.">
-<link rel="canonical" href="https://aethermoore.com/services.html#hire">
-<meta http-equiv="refresh" content="0; url=/services.html#hire">
-<meta name="robots" content="noindex">
-<style>body{font-family:system-ui,sans-serif;background:#06121a;color:#e6f4f6;padding:40px;text-align:center}a{color:#17c6cf}</style>
-</head>
-<body>
-<p>The Governance Snapshot intake form has moved. Redirecting to <a href="/services.html#hire">AetherMoore custom work</a>&hellip;</p>
-<p>Prefer email? <a href="mailto:aethermoregames@pm.me?subject=AI%20Governance%20Snapshot%20inquiry">aethermoregames@pm.me</a></p>
-<script>location.replace('/services.html#hire');</script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="static/site/aethermore.css" />
+    <title>AI Governance Snapshot | AetherMoore</title>
+    <meta
+      name="description"
+      content="A fixed-scope review of one AI-assisted workflow: decision map, prioritized control gaps, remediation plan, and evidence checklist for $500."
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://aethermoore.com/governance-snapshot.html" />
+    <meta property="og:title" content="AI Governance Snapshot | AetherMoore" />
+    <meta property="og:description" content="One workflow, fixed scope, written findings. $500." />
+    <meta property="og:type" content="product" />
+    <meta property="og:url" content="https://aethermoore.com/governance-snapshot.html" />
+    <meta property="og:image" content="https://aethermoore.com/social-card.png" />
+    <script defer src="static/site/aethermore.js"></script>
+    <style>
+      .offer-hero { padding: 112px 0 72px; border-bottom: 1px solid var(--rule); }
+      .offer-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(320px, .62fr); gap: 64px; align-items: start; }
+      .offer-kicker { margin: 0 0 18px; color: var(--cobalt); font-size: .78rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+      .offer-hero h1 { max-width: 780px; margin: 0; font-size: clamp(3rem, 7vw, 6.8rem); line-height: .92; letter-spacing: -.065em; }
+      .offer-hero h1 span { color: var(--cobalt); }
+      .offer-lead { max-width: 760px; margin: 28px 0 0; font-size: clamp(1.18rem, 2vw, 1.55rem); line-height: 1.5; color: var(--navy-soft); }
+      .offer-card { border: 1px solid var(--rule); background: var(--plot); padding: 30px; box-shadow: 10px 10px 0 var(--mist); }
+      .offer-card .price { margin: 4px 0 18px; font-size: 3rem; font-weight: 850; letter-spacing: -.05em; }
+      .offer-card p { color: var(--navy-soft); }
+      .offer-card .button { width: 100%; justify-content: center; margin: 8px 0 14px; }
+      .offer-fine { font-size: .82rem; line-height: 1.5; }
+      .success-note { display: none; margin: 0; padding: 16px 20px; background: #e9f7ef; border: 1px solid #7dc99b; color: #164c2c; font-weight: 700; }
+      .success-note[data-visible="true"] { display: block; }
+      .offer-section { padding: 84px 0; border-bottom: 1px solid var(--rule); }
+      .offer-section h2 { margin: 0 0 34px; max-width: 760px; font-size: clamp(2rem, 4.5vw, 4rem); line-height: 1; letter-spacing: -.045em; }
+      .deliverable-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+      .deliverable { background: #fff; padding: 30px; }
+      .deliverable strong { display: block; margin-bottom: 10px; font-size: 1.12rem; }
+      .deliverable p { margin: 0; color: var(--navy-soft); }
+      .scope-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+      .scope-grid h3 { font-size: 1.1rem; }
+      .scope-grid ul { margin: 0; padding-left: 1.2rem; color: var(--navy-soft); }
+      .scope-grid li { margin-bottom: 10px; }
+      .process { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; counter-reset: steps; }
+      .process article { counter-increment: steps; border-top: 3px solid var(--cobalt); padding-top: 20px; }
+      .process article::before { content: "0" counter(steps); display: block; margin-bottom: 18px; color: var(--cobalt); font-weight: 850; }
+      .process h3 { margin: 0 0 8px; }
+      .process p { margin: 0; color: var(--navy-soft); }
+      .offer-cta { padding: 84px 0; background: var(--navy); color: #fff; }
+      .offer-cta h2 { margin: 0 0 18px; max-width: 760px; font-size: clamp(2.4rem, 5vw, 5rem); line-height: .95; letter-spacing: -.055em; }
+      .offer-cta p { max-width: 700px; color: #c9d2dc; }
+      body > footer.site-footer { color: var(--navy); border-top: 1px solid var(--rule); }
+      body > footer.site-footer a { color: var(--navy); }
+      body > footer.site-footer p { color: var(--navy-soft); }
+      @media (max-width: 850px) { .offer-grid, .scope-grid { grid-template-columns: 1fr; } .deliverable-grid, .process { grid-template-columns: 1fr; } .offer-hero { padding-top: 78px; } }
+    </style>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "AI Governance Snapshot",
+        "provider": { "@type": "Organization", "name": "AetherMoore" },
+        "description": "A fixed-scope review of one AI-assisted workflow with a decision map, prioritized control gaps, remediation plan, and evidence checklist.",
+        "offers": { "@type": "Offer", "price": "500", "priceCurrency": "USD", "availability": "https://schema.org/InStock" }
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header" data-site-header>
+      <div class="site-shell header-inner">
+        <a class="brand" href="index.html" aria-label="AetherMoore home">
+          <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+            <path d="M24 2.75 42.4 13.4v21.2L24 45.25 5.6 34.6V13.4Z" />
+            <path d="m24 2.75 10.6 18.4L24 45.25 13.4 21.15Zm-18.4 10.65h36.8L24 45.25Z" />
+          </svg>
+          <span>AetherMoore</span>
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" data-menu-toggle>Menu</button>
+        <nav class="site-nav" id="site-navigation" aria-label="Primary navigation" data-site-nav>
+          <a href="index.html">Home</a>
+          <a href="research/">Research</a>
+          <a href="books.html">Books</a>
+          <a href="about.html">About</a>
+          <a class="nav-source" href="https://github.com/issdandavis/SCBE-AETHERMOORE">GitHub <span aria-hidden="true">↗</span></a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <p class="success-note" id="success-note" role="status">Checkout returned successfully. I will use the email on your Stripe receipt to send the intake within one business day.</p>
+      <section class="offer-hero">
+        <div class="site-shell offer-grid">
+          <div>
+            <p class="offer-kicker">Fixed-scope service · one AI workflow</p>
+            <h1>Find the control gap before it becomes the incident<span>.</span></h1>
+            <p class="offer-lead">I trace one AI-assisted workflow from input to effect, identify where human authority or deterministic checks are missing, and give you a prioritized plan you can actually implement.</p>
+          </div>
+          <aside class="offer-card" aria-label="Price and checkout">
+            <p class="offer-kicker">AI Governance Snapshot</p>
+            <p class="price">$500</p>
+            <p>One-time price. Written deliverables. No subscription and no sales call required.</p>
+            <a class="button button-primary" href="https://buy.stripe.com/eVqeVeaWu79ZgJi11Ydby0j">Buy securely on Stripe <span aria-hidden="true">→</span></a>
+            <p class="offer-fine">Have a scope question? <a href="mailto:aethermoregames@pm.me?subject=AI%20Governance%20Snapshot%20scope">Email me before buying.</a></p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="offer-section" aria-labelledby="deliverables-title">
+        <div class="site-shell">
+          <p class="offer-kicker">What you receive</p>
+          <h2 id="deliverables-title">A compact decision packet, not a generic slide deck.</h2>
+          <div class="deliverable-grid">
+            <article class="deliverable"><strong>1. Workflow decision map</strong><p>Inputs, model calls, tools, data stores, human approvals, and external effects shown in one inspectable path.</p></article>
+            <article class="deliverable"><strong>2. Prioritized gap register</strong><p>Up to ten concrete findings ranked by likely impact and effort, with the evidence used for each finding.</p></article>
+            <article class="deliverable"><strong>3. Remediation sequence</strong><p>A practical order of operations: what to gate first, what to log, what to test, and what can wait.</p></article>
+            <article class="deliverable"><strong>4. Evidence checklist</strong><p>The receipts, tests, ownership records, and failure cases your team should retain to support its claims.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="offer-section" aria-labelledby="scope-title">
+        <div class="site-shell">
+          <p class="offer-kicker">Scope boundary</p>
+          <h2 id="scope-title">Small enough to finish. Specific enough to use.</h2>
+          <div class="scope-grid">
+            <div>
+              <h3>Included</h3>
+              <ul>
+                <li>One workflow, agent, chatbot, or model-assisted decision path</li>
+                <li>Your architecture note, diagram, repository excerpt, or recorded walkthrough</li>
+                <li>One written follow-up round for factual corrections</li>
+                <li>A 30-minute handoff call or an asynchronous recorded handoff</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Not included</h3>
+              <ul>
+                <li>Legal advice, regulatory certification, or a compliance guarantee</li>
+                <li>A penetration test or an assurance that the system is secure</li>
+                <li>Production code changes, deployment, or an organization-wide audit</li>
+                <li>Review of unrelated workflows added after intake</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="offer-section" aria-labelledby="process-title">
+        <div class="site-shell">
+          <p class="offer-kicker">How it works</p>
+          <h2 id="process-title">Three steps, with the evidence attached.</h2>
+          <div class="process">
+            <article><h3>Intake</h3><p>After checkout, I email a short questionnaire. You provide the workflow and the materials you want reviewed.</p></article>
+            <article><h3>Trace</h3><p>I map authority, data movement, model decisions, deterministic checks, human gates, and external effects.</p></article>
+            <article><h3>Handoff</h3><p>You receive the written packet and a walkthrough. If the supplied scope is incomplete, I say so in the findings.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="offer-cta" aria-labelledby="cta-title">
+        <div class="site-shell">
+          <h2 id="cta-title">One workflow. One price. No invented certainty.</h2>
+          <p>The snapshot gives you an evidence-backed place to start. It does not pretend a short review can certify an entire organization.</p>
+          <div class="button-row">
+            <a class="button button-light" href="https://buy.stripe.com/eVqeVeaWu79ZgJi11Ydby0j">Buy the $500 snapshot <span aria-hidden="true">→</span></a>
+            <a class="button button-outline-light" href="mailto:aethermoregames@pm.me?subject=AI%20Governance%20Snapshot%20scope">Ask a scope question</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-shell site-footer">
+      <nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="research/">Research</a><a href="books.html">Books</a><a href="support.html">Help</a><a href="mailto:aethermoregames@pm.me">Contact</a></nav>
+      <p>© 2026 AetherMoore · Independent research lab</p>
+    </footer>
+    <script>
+      if (new URLSearchParams(location.search).get('status') === 'success') {
+        document.getElementById('success-note').dataset.visible = 'true';
+      }
+    </script>
+  </body>
 </html>

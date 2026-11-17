@@ -1,295 +1,61 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shop | AetherMoore</title>
-  <meta name="description" content="Six downloads you can run, three books on Amazon, and a way to hire Issac. Each download has a self-test.">
-  <link rel="canonical" href="https://aethermoore.com/shop.html">
-  <meta property="og:title" content="Shop | AetherMoore">
-  <meta property="og:description" content="Run a self-test before you trust the file. Books stay on Amazon.">
-  <meta property="og:url" content="https://aethermoore.com/shop.html">
-  <meta property="og:image" content="https://aethermoore.com/hero.webp">
-  <style>
-    :root {
-      --bg: #071412;
-      --ink: #e7fff7;
-      --muted: #9bc5ba;
-      --dim: #6a9488;
-      --line: rgba(139, 255, 223, 0.18);
-      --mint: #8fffd3;
-      --gold: #ffd977;
-      --aqua: #6dd8ff;
-      --max: 920px;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--ink);
-      font-family: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
-      line-height: 1.5;
-    }
-    a { color: var(--aqua); }
-    a:hover { color: var(--mint); }
-    a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 2;
-      background: rgba(7, 20, 18, 0.94);
-      border-bottom: 1px solid var(--line);
-    }
-    .topbar-inner, main, footer {
-      width: min(var(--max), calc(100% - 32px));
-      margin: 0 auto;
-    }
-    .topbar-inner {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      align-items: center;
-      padding: 14px 0;
-    }
-    .brand {
-      color: var(--mint);
-      font-family: "Segoe UI", sans-serif;
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-decoration: none;
-    }
-    .nav {
-      display: flex;
-      gap: 14px;
-      font-family: "Segoe UI", sans-serif;
-      font-size: 14px;
-    }
-    .nav a { color: var(--muted); text-decoration: none; }
-    .nav a[aria-current="page"] { color: var(--gold); }
-    main { padding: 48px 0 72px; }
-    h1 {
-      margin: 0 0 12px;
-      font-size: clamp(40px, 7vw, 68px);
-      font-weight: 500;
-      letter-spacing: -0.03em;
-      line-height: 0.95;
-    }
-    .lede {
-      max-width: 38rem;
-      margin: 0 0 36px;
-      color: var(--muted);
-      font-family: "Segoe UI", sans-serif;
-      font-size: 18px;
-    }
-    h2 {
-      margin: 0;
-      font-size: 22px;
-      font-weight: 500;
-    }
-    .shelf { display: flex; flex-direction: column; }
-    .row {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 18px 28px;
-      padding: 22px 0;
-      border-top: 1px solid var(--line);
-    }
-    .row p, .meta, code, .price, .actions, footer {
-      font-family: "Segoe UI", sans-serif;
-    }
-    .row p { margin: 8px 0 0; color: var(--muted); max-width: 62ch; }
-    code {
-      display: inline-block;
-      margin-top: 10px;
-      color: var(--mint);
-      font-size: 13px;
-    }
-    .buy { text-align: right; min-width: 148px; }
-    .price {
-      display: block;
-      color: var(--gold);
-      font-size: 28px;
-      font-weight: 700;
-      line-height: 1;
-    }
-    .actions { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 44px;
-      padding: 0 14px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 650;
-    }
-    .btn-buy { background: var(--mint); color: #06211b; }
-    .btn-buy:hover { color: #06211b; background: #d8fff2; }
-    .btn-quiet { color: var(--muted); }
-    .group { margin-top: 42px; }
-    .group h3 {
-      margin: 0 0 8px;
-      font-family: "Segoe UI", sans-serif;
-      font-size: 13px;
-      font-weight: 650;
-      color: var(--dim);
-    }
-    .books { border-top: 1px solid var(--line); }
-    .books a {
-      display: block;
-      padding: 14px 0;
-      border-bottom: 1px solid var(--line);
-      color: var(--ink);
-      text-decoration: none;
-    }
-    .books a span { color: var(--gold); font-family: "Segoe UI", sans-serif; font-size: 14px; }
-    footer { padding-bottom: 48px; color: var(--dim); font-size: 14px; }
-    @media (max-width: 700px) {
-      .row { grid-template-columns: 1fr; }
-      .buy { text-align: left; }
-      .actions { flex-direction: row; flex-wrap: wrap; }
-      .nav { gap: 10px; }
-    }
-  </style>
-</head>
-<body>
-  <header class="topbar">
-    <div class="topbar-inner">
-      <a class="brand" href="/">AetherMoore</a>
-      <nav class="nav" aria-label="Shop">
-        <a href="index.html">Home</a>
-        <a href="shop.html" aria-current="page">Shop</a>
-        <a href="books.html">Books</a>
-        <a href="videos.html">Videos</a>
-        <a href="hire.html">Hire</a>
-      </nav>
-    </div>
-  </header>
-  <main>
-    <h1>Run it before you keep it.</h1>
-    <p class="lede">Six downloads. Each one has a self-test that finishes on your machine with no API key. The three books are on Amazon.</p>
-
-    <section class="shelf" id="packs" aria-label="Downloads">
-      <article class="row">
-        <div>
-          <h2>AI Security Benchmark Kit</h2>
-          <p>251 unique attack prompts in 20 classes, 20 ordinary prompts, and a runner for any OpenAI-style chat server. A failed request is not counted as a block. The band is a refusal-word label for this file, not a certification.</p>
-          <code>python benchmark.py --self-test</code>
-        </div>
-        <div class="buy">
-          <span class="price">$5</span>
-          <div class="actions">
-            <a class="btn btn-buy" href="https://buy.stripe.com/dRm9AU8Om3XN3Ww6midby0h">Buy the kit</a>
-            <a class="btn btn-quiet" href="benchmark-kit.html">What is inside</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="row">
-        <div>
-          <h2>HYDRA role packet</h2>
-          <p>Writes a handoff for KO Scout, AV Vision, RU Reader, CA Clicker, UM Typer, and DR Judge. It does not browse and it is not a license for the free MIT repository.</p>
-          <code>python hydra_packet.py self-test</code>
-        </div>
-        <div class="buy">
-          <span class="price">$9</span>
-          <div class="actions">
-            <a class="btn btn-buy" href="https://buy.stripe.com/6oUeVe5Ca2TJdx6262dby08">Buy the packet</a>
-            <a class="btn btn-quiet" href="product-manual/hydra-agent-templates.html">Manual</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="row">
-        <div>
-          <h2>AI Governance Toolkit</h2>
-          <p>Checks one decision record. The word has to be ALLOW, QUARANTINE, or DENY. A quarantine or a denial also needs uncertainty and a follow-up.</p>
-          <code>python decide.py self-test</code>
-        </div>
-        <div class="buy">
-          <span class="price">$29</span>
-          <div class="actions">
-            <a class="btn btn-buy" href="https://buy.stripe.com/cNibJ25Ca2TJ9gQ3a6dby06">Buy the checker</a>
-            <a class="btn btn-quiet" href="product-manual/ai-governance-toolkit.html">Manual</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="row">
-        <div>
-          <h2>n8n decision check</h2>
-          <p>One workflow. Import it, turn it on, and POST a decision. A complete record returns HTTP 200. Anything else returns HTTP 400. No API key is inside the file.</p>
-          <code>workflows/SCBE_Decision_Check.workflow.json</code>
-        </div>
-        <div class="buy">
-          <span class="price">$29</span>
-          <div class="actions">
-            <a class="btn btn-buy" href="https://buy.stripe.com/8x228sc0y3XNeBafWSdby05">Buy the workflow</a>
-            <a class="btn btn-quiet" href="product-manual/n8n-workflow-pack.html">Manual</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="row">
-        <div>
-          <h2>Content Spin</h2>
-          <p>Copies one note into a site draft, a short draft, and an email draft. The words come from the note. The script does not add a claim.</p>
-          <code>python spin.py self-test</code>
-        </div>
-        <div class="buy">
-          <span class="price">$29</span>
-          <div class="actions">
-            <a class="btn btn-buy" href="https://buy.stripe.com/5kQ5kE5Ca65V78I5iedby07">Buy the copier</a>
-            <a class="btn btn-quiet" href="product-manual/content-spin-engine.html">Manual</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="row">
-        <div>
-          <h2>Training Vault starter</h2>
-          <p>24 prompt-and-response rows and a checker that rejects a row with an empty prompt or response. The large public corpus stays on Hugging Face. This zip is the starter, not that corpus.</p>
-          <code>python validate_sft.py governance_starter.jsonl</code>
-        </div>
-        <div class="buy">
-          <span class="price">$29</span>
-          <div class="actions">
-            <a class="btn btn-buy" href="https://buy.stripe.com/28E8wQ5Cacuj64EaCydby0g">Buy the starter</a>
-            <a class="btn btn-quiet" href="product-manual/training-vault.html">Manual</a>
-          </div>
-        </div>
-      </article>
-    </section>
-
-    <section class="group">
-      <h3>Free on this site</h3>
-      <div class="books">
-        <a href="math-ledger.html">Ever-Lesson Math Ledger <span>Printable sample</span></a>
-        <a href="videos.html">Narrated chapters <span>YouTube</span></a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="static/site/aethermore.css" />
+    <title>Work with AetherMoore</title>
+    <meta name="description" content="A fixed-scope AI Governance Snapshot, open-source tools, and books from AetherMoore." />
+    <link rel="canonical" href="https://aethermoore.com/shop.html" />
+    <script defer src="static/site/aethermore.js"></script>
+    <style>
+      .catalog-hero { padding: 112px 0 70px; border-bottom: 1px solid var(--rule); }
+      .catalog-hero h1 { max-width: 900px; margin: 0; font-size: clamp(3.2rem, 8vw, 7.5rem); line-height: .9; letter-spacing: -.07em; }
+      .catalog-hero h1 span { color: var(--cobalt); }
+      .catalog-hero p { max-width: 720px; margin-top: 28px; color: var(--navy-soft); font-size: 1.25rem; }
+      .catalog { padding: 78px 0; }
+      .catalog-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; border: 1px solid var(--rule); background: var(--rule); }
+      .catalog-card { display: flex; min-height: 410px; flex-direction: column; background: #fff; padding: 30px; }
+      .catalog-card.featured { background: var(--plot); }
+      .kicker { margin: 0 0 22px; color: var(--cobalt); font-size: .75rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+      .catalog-card h2 { margin: 0 0 14px; font-size: 2rem; letter-spacing: -.04em; }
+      .catalog-card p { color: var(--navy-soft); }
+      .price { margin: auto 0 14px !important; padding-top: 34px; color: var(--navy) !important; font-size: 2.3rem; font-weight: 850; letter-spacing: -.05em; }
+      .catalog-card .button { justify-content: center; }
+      .notice { margin-top: 30px; padding: 22px 26px; border-left: 4px solid var(--yellow); background: #fff9df; color: #5b4a00; }
+      body > footer.site-footer { color: var(--navy); border-top: 1px solid var(--rule); }
+      body > footer.site-footer a { color: var(--navy); }
+      body > footer.site-footer p { color: var(--navy-soft); }
+      @media (max-width: 900px) { .catalog-grid { grid-template-columns: 1fr; } .catalog-card { min-height: 0; } .price { margin-top: 30px !important; } }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header" data-site-header>
+      <div class="site-shell header-inner">
+        <a class="brand" href="index.html" aria-label="AetherMoore home">
+          <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 2.75 42.4 13.4v21.2L24 45.25 5.6 34.6V13.4Z"/><path d="m24 2.75 10.6 18.4L24 45.25 13.4 21.15Zm-18.4 10.65h36.8L24 45.25Z"/></svg>
+          <span>AetherMoore</span>
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" data-menu-toggle>Menu</button>
+        <nav class="site-nav" id="site-navigation" aria-label="Primary navigation" data-site-nav><a href="index.html">Home</a><a href="governance-snapshot.html">Governance Snapshot</a><a href="books.html">Books</a><a href="research/">Research</a><a href="about.html">About</a></nav>
       </div>
-    </section>
-
-    <section class="group">
-      <h3>Books on Amazon</h3>
-      <div class="books">
-        <a href="https://www.amazon.com/dp/B0GSSFQD9G">The Six Tongues Protocol <span>Kindle and paperback</span></a>
-        <a href="https://www.amazon.com/dp/B0H1LJGP8L">The Miracle Was The Memory <span>Kindle and paperback</span></a>
-        <a href="https://www.amazon.com/dp/B0H257QJC2">Witnessed <span>Kindle and paperback</span></a>
-      </div>
-    </section>
-
-    <section class="group">
-      <h3>A person, when the download is the wrong shape</h3>
-      <p class="lede">Fixed-scope work is quoted after a look at the job. The public corpus is free. Government quotes use the SAM record on the services page. This shop does not take those orders.</p>
-      <p><a href="hire.html">Hire page</a> · <a href="mailto:aethermoregames@pm.me">aethermoregames@pm.me</a> · <a href="https://huggingface.co/datasets/issdandavis/scbe-aethermoore-training-data">Public training set</a> · <a href="services.html#vendor">CAGE 1EXD5</a></p>
-    </section>
-  </main>
-  <footer>
-    After checkout, open the matching delivery page from the receipt email or from <a href="thank-you.html">thank-you.html</a>. <a href="about.html">About</a>
-  </footer>
-  <script src="/static/auto-delivery.js" defer></script>
-</body>
+    </header>
+    <main id="main-content">
+      <section class="catalog-hero"><div class="site-shell"><h1>Buy the outcome, inspect the evidence<span>.</span></h1><p>There is one paid service I can describe precisely today. The source stays open, and the books keep their own Amazon checkout.</p></div></section>
+      <section class="catalog" aria-label="Available work">
+        <div class="site-shell">
+          <div class="catalog-grid">
+            <article class="catalog-card featured"><p class="kicker">Fixed-scope service</p><h2>AI Governance Snapshot</h2><p>One AI-assisted workflow mapped from input to effect, with prioritized control gaps, a remediation sequence, and an evidence checklist.</p><p class="price">$500</p><a class="button button-primary" href="governance-snapshot.html">See exact scope <span aria-hidden="true">→</span></a></article>
+            <article class="catalog-card"><p class="kicker">Inspect before hiring</p><h2>Open-source systems</h2><p>SCBE-AETHERMOORE, No-Oracle Verification, AetherBrowser, and the supporting research are public. Run the tests and read the limits before deciding whether the approach fits.</p><p class="price">Free</p><a class="button button-secondary" href="https://github.com/issdandavis">Browse GitHub <span aria-hidden="true">↗</span></a></article>
+            <article class="catalog-card"><p class="kicker">Books</p><h2>AetherMoore library</h2><p>Technical ideas explored through fiction and nonfiction. Amazon handles pricing, formats, payment, and fulfillment.</p><p class="price">Amazon</p><a class="button button-secondary" href="books.html">Browse the books <span aria-hidden="true">→</span></a></article>
+          </div>
+          <p class="notice"><strong>Self-serve download packs are temporarily paused.</strong> Their buyer-only delivery path is being upgraded so a filename or product name cannot unlock a purchase. Existing buyers can email <a href="mailto:aethermoregames@pm.me?subject=Existing%20order%20access">aethermoregames@pm.me</a> with the address used at checkout.</p>
+        </div>
+      </section>
+    </main>
+    <footer class="site-shell site-footer"><nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="governance-snapshot.html">Governance Snapshot</a><a href="books.html">Books</a><a href="support.html">Help</a><a href="mailto:aethermoregames@pm.me">Contact</a></nav><p>© 2026 AetherMoore · Independent research lab</p></footer>
+  </body>
 </html>
