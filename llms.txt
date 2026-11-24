@@ -35,7 +35,7 @@ Working products and public builds:
 
 The site has ten intentional surfaces:
 
-- **Assistant:** the primary front door. It routes people into tools, public product buckets, manuals, support, research, or gated lanes before doing extra reasoning.
+- **Assistant:** the primary front door. Ask Polly matches requests to the published catalog in the browser, including when the live catalog cannot be refreshed. It routes people into tools, public products, manuals, support, research, or gated intake. The public site does not need a language model or API key for routing.
 
 - **Tools:** the action surface for humans and assistants who need to try, compare, or operate something now.
 - **Backroom:** the behind-the-counter ops floor (architecture diagram, data schema, AetherDesk/GeoSeal/AetherWeb stations, live edge monitors). Visual backend map of how the stack runs; not the public shop floor. https://aethermoore.com/backroom.html
@@ -92,6 +92,7 @@ The site has ten intentional surfaces:
 
 - Home: https://aethermoore.com/
 - Assistant: https://aethermoore.com/assistant.html
+- AI Governance Snapshot: https://aethermoore.com/governance-snapshot.html
 - Operator packet schema: https://aethermoore.com/assistant-task-packet.schema.json
 - Tools: https://aethermoore.com/tools.html
 - Studio: https://aethermoore.com/studio/

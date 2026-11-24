@@ -4,6 +4,22 @@
   "role": "Public products, working builds, proof surfaces, and routing limits for the SCBE-AETHERMOORE assistant.",
   "public_products": [
     {
+      "id": "governance-snapshot",
+      "name": "AI Governance Snapshot",
+      "type": "fixed-scope service",
+      "description": "A written review of one AI-assisted workflow, including a map of its controls, prioritized gaps, and an evidence checklist.",
+      "price_label": "$500 one-time",
+      "keywords": [
+        "ai governance snapshot",
+        "governance snapshot",
+        "workflow snapshot",
+        "control gap review",
+        "review my ai workflow"
+      ],
+      "manual_url": "https://aethermoore.com/governance-snapshot.html",
+      "manual_label": "See scope and current price"
+    },
+    {
       "id": "governance-toolkit",
       "name": "AI Governance Toolkit",
       "type": "package",
@@ -153,7 +169,7 @@
       "name": "Assistant and site setup",
       "type": "custom",
       "description": "Turn a static site into a route-aware assistant surface with tool lanes, manuals, support, and a clear front door.",
-      "keywords": ["assistant setup", "build chatbot", "build assistant", "site assistant", "website ai", "shopkeeper", "route map", "front desk", "build me a chatbot", "ai for my website", "add ai to my site", "website chatbot"],
+      "keywords": ["custom assistant", "assistant setup", "build chatbot", "build assistant", "site assistant", "website ai", "shopkeeper", "route map", "front desk", "build me a chatbot", "ai for my website", "add ai to my site", "website chatbot"],
       "includes": [
         "assistant landing page",
         "routing map",

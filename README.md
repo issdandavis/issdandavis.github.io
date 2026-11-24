@@ -36,6 +36,13 @@ before relying on a benchmark claim.
 - Pure HTML/CSS/JS — no build step, deploys instantly via GitHub Pages
 - CNAME → `aethermoore.com`
 
+## Update the Ask Polly catalog
+
+Edit `assistant-routing.json` or `assistant-catalog.json`, then run
+`node scripts/build-polly-catalog-fallback.mjs` and commit the generated fallback
+with the JSON. Run the same command with `--check` to verify they match. Polly
+starts from the bundled copy and refreshes from the published JSON when available.
+
 ## Refresh operations evidence
 
 The public evidence page is generated from the publication-safe Kaggle

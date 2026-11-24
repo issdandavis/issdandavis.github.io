@@ -3,7 +3,6 @@
     routing: null,
     catalog: null,
     backendOnline: false,
-    history: [],
     packetUrl: null
   };
 
@@ -35,7 +34,8 @@
   }
 
   function normalize(value) {
-    return String(value || '').toLowerCase();
+    return String(value || '').toLowerCase().normalize('NFKD')
+      .replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, ' ').trim();
   }
 
   // Keywords must match on word boundaries, not as bare substrings. The
@@ -90,6 +90,9 @@
   function bestMatch(text, items) {
     return rankMatches(text, items, 1)[0] || null;
   }
+
+  const SUPPORT_PATTERN = /\b(does not work|doesn t work|not working|doesn t load|not loading|won t load|can t access|cannot access|broken|missing download|lost access|refund my purchase|help with (a |my |an )?(purchase|order)|problem with (a |my |an )?(purchase|order))\b/;
+  const COMPARE_PATTERN = /\b(compare|browse|see|list)\b.*\b(packages|products|shop)\b/;
 
   const PRICING_PATTERN = /\b(cost|costs|price|prices|pricing|how much|quote|budget|rate|rates)\b/;
 
@@ -192,9 +195,27 @@
       return { kind: 'restricted', item: restricted.item, pricing };
     }
 
+    const routes = state.routing?.routes || [];
+    const routeResult = (route) => ({
+      kind: 'route', item: route, surface: getSurfaceForRoute(route), pricing
+    });
+    const namedProduct = (catalog.public_products || [])
+      .filter((item) => keywordHit(text, item.name))
+      .sort((a, b) => b.name.length - a.name.length)[0];
+    const support = routes.find((route) => route.intent === 'recover_issue');
+    const shop = routes.find((route) => route.intent === 'shop_or_buy');
+    if (support && SUPPORT_PATTERN.test(normalize(text))) return routeResult(support);
+    if (namedProduct) return { kind: 'product', item: namedProduct, alternatives: [], pricing };
+    if (shop && COMPARE_PATTERN.test(normalize(text))) return routeResult(shop);
+
     const custom = bestMatch(text, catalog.custom_buckets);
     const productRanked = rankMatches(text, catalog.public_products, 3);
     const product = productRanked[0] || null;
+
+    const route = bestMatch(text, routes.filter((item) => item.intent !== 'restricted_or_gated'));
+    if (route && route.score > Math.max(product?.score || 0, custom?.score || 0)) {
+      return routeResult(route.item);
+    }
 
     // Compare across categories instead of letting declaration order decide.
     if (custom && (!product || custom.score >= product.score)) {
@@ -210,10 +231,7 @@
       };
     }
 
-    const route = bestMatch(text, state.routing?.routes);
-    if (route) {
-      return { kind: 'route', item: route.item, surface: getSurfaceForRoute(route.item), pricing };
-    }
+    if (route) return routeResult(route.item);
 
     // Nothing matched. Distinct from a real route match so the reply can say so
     // instead of silently pointing at the assistant surface as if it answered.
@@ -259,13 +277,14 @@
         <div class="recommendation-label">${escapeHtml(result.item.type || 'Public product')}</div>
         <h3>${escapeHtml(result.item.name)}</h3>
         <p>${escapeHtml(result.item.description)}</p>
+        ${result.item.price_label ? `<p>${escapeHtml(result.item.price_label)}</p>` : ''}
         <div class="recommendation-actions">${recommendationLinks.join(' ')}</div>
       `;
       return;
     }
 
     const surface = result.surface;
-    if (surface) {
+    if (result.kind !== 'none' && surface) {
       els.recommendation.innerHTML = `
         <div class="recommendation-label">Primary route</div>
         <h3>${escapeHtml(surface.name)}</h3>
@@ -276,9 +295,9 @@
     }
 
     els.recommendation.innerHTML = `
-      <div class="recommendation-label">Primary route</div>
-      <h3>Assistant</h3>
-      <p>Start with routing, then move into tools, manuals, support, research, or the book.</p>
+      <div class="recommendation-label">No catalog match</div>
+      <h3>Try a product name or a specific task</h3>
+      <p><a href="/shop.html">Browse the shop</a> or <a href="/support.html">get support</a>.</p>
     `;
   }
 
@@ -292,7 +311,7 @@
     }
 
     if (result.kind === 'product') {
-      return `Public package match: ${result.item.name}.`;
+      return `Public catalog match: ${result.item.name}.`;
     }
 
     if (result.surface) {
@@ -320,7 +339,7 @@
     if (result.kind === 'product') {
       return {
         surface: 'manuals',
-        url: result.item.manual_url || 'https://aethermoore.com/product-manual/index.html'
+        url: result.item.manual_url || result.item.contact_url || result.item.buy_url || 'https://aethermoore.com/product-manual/index.html'
       };
     }
 
@@ -441,6 +460,8 @@
       new Blob([formatted], { type: 'application/json' })
     );
 
+    els.packetCopy.disabled = false;
+    els.packetDownload.hidden = false;
     els.packetDownload.href = state.packetUrl;
     els.packetDownload.download = `scbe-task-packet-${Date.now()}.json`;
   }
@@ -470,18 +491,20 @@
       if (result.item.buy_url) {
         links.push(`<a href="${escapeHtml(result.item.buy_url)}" target="_blank" rel="noopener">${escapeHtml(result.item.buy_label || 'Get started')} &rarr;</a>`);
       }
+      if (result.item.contact_url) {
+        links.push(`<a href="${escapeHtml(result.item.contact_url)}">Ask about this &rarr;</a>`);
+      }
       const alternatives = (result.alternatives || []).length
         ? `<p>Also close: ${result.alternatives
             .map((item) => `<strong>${escapeHtml(item.name)}</strong>`)
             .join(', ')}. Ask about any of them by name.</p>`
         : '';
 
-      // The catalog carries no price field, so never imply a number exists.
-      const pricingNote = result.pricing
-        ? `<p>I do not hold prices in the catalog &mdash; scope decides cost, so there is no
-             list figure to quote. The links below carry current terms where a package has
-             them; otherwise the contact route is the honest next step.</p>`
-        : '';
+      const pricingNote = result.item.price_label
+        ? `<p>Published price: <strong>${escapeHtml(result.item.price_label)}</strong>. Verify the current terms on the product page.</p>`
+        : result.pricing
+          ? '<p>No price is listed in this catalog entry. Check the details or checkout link for current terms.</p>'
+          : '';
 
       return `
         <p>The closest public product or build is <strong>${escapeHtml(result.item.name)}</strong>.</p>
@@ -503,8 +526,7 @@
 
     if (result.pricing) {
       return `
-        <p>I do not hold prices &mdash; the catalog has no price field, and scope decides
-           cost, so there is no list figure to quote.</p>
+        <p>I need the product or service name to look up its published terms.</p>
         <p>Name the product you are asking about and I will give you its details and its
            buy or contact link, which carry the current terms.</p>
       `;
@@ -577,6 +599,10 @@
     event.preventDefault();
     const text = els.input.value.trim();
     if (!text) return;
+    if (!state.routing || !state.catalog) {
+      addMessage('assistant', 'Polly', '<p>I can’t load the catalog right now. <a href="/shop.html">Browse the shop</a> or <a href="/support.html">open support</a>.</p>');
+      return;
+    }
 
     els.input.value = '';
     addMessage('user', 'You', `<p>${escapeHtml(text)}</p>`);
@@ -601,7 +627,9 @@
     document.querySelectorAll('[data-assistant-prompt]').forEach((button) => {
       button.addEventListener('click', () => {
         els.input.value = button.dataset.assistantPrompt || '';
-        els.input.focus();
+        els.form.requestSubmit();
+        els.input.focus({ preventScroll: true });
+        document.getElementById('assistant-console').scrollIntoView({ block: 'start' });
       });
     });
   }
@@ -623,53 +651,68 @@
     }
   }
 
-  async function init() {
-    const [routing, catalog] = await Promise.all([
-      fetch('./assistant-routing.json').then((response) => response.json()),
-      fetch('./assistant-catalog.json').then((response) => response.json())
-    ]);
+  function isRouting(value) {
+    return Array.isArray(value?.routes) && value.routes.length > 0 &&
+      Array.isArray(value?.surfaces) && value.surfaces.length > 0;
+  }
 
+  function isCatalog(value) {
+    return Array.isArray(value?.public_products) && value.public_products.length > 0 &&
+      Array.isArray(value?.custom_buckets) && Array.isArray(value?.restricted_buckets) &&
+      value.restricted_buckets.length > 0;
+  }
+
+  async function loadData(url, validate) {
+    const response = await fetch(url, { signal: AbortSignal.timeout(3500) });
+    if (!response.ok) throw new Error('Catalog request failed');
+    const value = await response.json();
+    if (!validate(value)) throw new Error('Catalog format invalid');
+    return value;
+  }
+
+  function displayData(routing, catalog) {
     state.routing = routing;
     state.catalog = catalog;
 
-    renderCardGrid(els.lanes, routing.surfaces || [], buildSurfaceCard);
-    renderCardGrid(els.publicProducts, catalog.public_products || [], buildProductCard);
-    renderCardGrid(els.customBuckets, catalog.custom_buckets || [], buildCustomCard);
-    renderCardGrid(els.restrictedBuckets, catalog.restricted_buckets || [], buildRestrictedCard);
+    renderCardGrid(els.lanes, routing.surfaces, buildSurfaceCard);
+    renderCardGrid(els.publicProducts, catalog.public_products, buildProductCard);
+    renderCardGrid(els.customBuckets, catalog.custom_buckets, buildCustomCard);
+    renderCardGrid(els.restrictedBuckets, catalog.restricted_buckets, buildRestrictedCard);
+  }
 
-    renderRecommendation({
-      kind: 'route',
-      surface: (routing.surfaces || []).find((surface) => surface.name === 'assistant')
-    });
-
-    renderTaskPacket(
-      buildTaskPacket(
-        'Help me choose the right lane.',
-        {
-          kind: 'route',
-          item: { intent: 'start_here' },
-          surface: (routing.surfaces || []).find((surface) => surface.name === 'assistant')
-        }
-      )
-    );
-
-    addMessage(
-      'assistant',
-      'Polly',
-      `
-        <p>I am the front desk for SCBE-AETHERMOORE.</p>
-        <p>I route you into the right surface, the right public package, or the right support path before I ask the system to think harder.</p>
-      `
-    );
-
+  async function init() {
     bindQuickActions();
     els.packetCopy.addEventListener('click', copyTaskPacket);
     els.form.addEventListener('submit', handleSubmit);
-    refreshBackendStatus();
+    els.input.addEventListener('keydown', (event) => {
+      if (event.key !== 'Enter' || (!event.ctrlKey && !event.metaKey) || event.isComposing) return;
+      event.preventDefault();
+      els.form.requestSubmit();
+    });
+
+    const fallback = window.__POLLY_CATALOG_FALLBACK__;
+    if (isRouting(fallback?.routing) && isCatalog(fallback?.catalog)) {
+      displayData(fallback.routing, fallback.catalog);
+      setStatus('Catalog router', 'Ready. Answers come from the catalog, not a language model.', 'neutral');
+    }
+
+    addMessage('assistant', 'Polly', '<p>Ask for a product, research evidence, a demo, or help with a purchase. I’ll find the matching page in the AetherMoore catalog.</p>');
+
+    try {
+      const [routing, catalog] = await Promise.all([
+        loadData('./assistant-routing.json', isRouting),
+        loadData('./assistant-catalog.json', isCatalog)
+      ]);
+      displayData(routing, catalog);
+      await refreshBackendStatus();
+    } catch (error) {
+      if (state.routing && state.catalog) {
+        setStatus('Built-in catalog', 'Live catalog unavailable. Routing still works from the copy included with this site.', 'neutral');
+      } else {
+        setStatus('Catalog unavailable', 'Try the shop or support links while the catalog is unavailable.', 'bad');
+      }
+    }
   }
 
-  init().catch((error) => {
-    setStatus('Assistant offline', 'The page failed to load its route map.', 'bad');
-    addMessage('assistant', 'Polly', `<p>${escapeHtml(error.message)}</p>`);
-  });
+  init();
 })();
