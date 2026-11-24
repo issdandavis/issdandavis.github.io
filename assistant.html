@@ -485,6 +485,8 @@
       transition: all 160ms;
     }
     .packet-button:hover,
+    .packet-download[hidden] { display: none; }
+
     .packet-download:hover {
       border-color: var(--line-bright);
       color: var(--mint);
@@ -765,7 +767,7 @@
         <aside class="hero-panel" aria-labelledby="polly-purpose-title">
           <h2 id="polly-purpose-title">What Polly is for</h2>
           <p>Use Polly when you want one sentence turned into the right next route: a live tool, a package, a custom public build, or a support path.</p>
-          <div id="assistant-status" class="status-card">
+          <div id="assistant-status" class="status-card" role="status">
             <div class="status-label">Starting</div>
             <div class="status-detail">Loading the route map and catalog.</div>
           </div>
@@ -774,11 +776,11 @@
               <strong>Custom assistant build</strong>
               <span>Route me into a public site-and-assistant setup lane.</span>
             </button>
-            <button type="button" data-assistant-prompt="I want to compare the public packages and see which one fits my workflow.">
+            <button type="button" data-assistant-prompt="Compare public packages">
               <strong>Compare public packages</strong>
               <span>Point me at the right manual or product bucket.</span>
             </button>
-            <button type="button" data-assistant-prompt="Open the public browser IDE and media transcript workspace.">
+            <button type="button" data-assistant-prompt="Open Clay Studio">
               <strong>Open Clay Studio</strong>
               <span>Use the browser-local IDE, media player, and transcript editor.</span>
             </button>
@@ -801,10 +803,10 @@
               <p>Describe the job, the product, the issue, or the workflow. Polly answers from the published catalog &mdash; real products, real links, no invented inventory. Name a product to get its details, or describe the work and Polly routes it.</p>
             </div>
           </div>
-          <div id="assistant-history" class="assistant-history" aria-live="polite"></div>
+          <div id="assistant-history" class="assistant-history" role="log" aria-live="polite"></div>
           <form id="assistant-form" class="assistant-form">
             <label class="sr-only" for="assistant-input">Describe what you want Polly to route</label>
-            <textarea id="assistant-input" placeholder="Example: I need a public-facing assistant for my website that can route buyers, support issues, and custom product requests."></textarea>
+            <textarea id="assistant-input" maxlength="2000" required placeholder="Example: I need a public-facing assistant for my website that can route buyers, support issues, and custom product requests."></textarea>
             <button class="btn btn-primary" type="submit">Route it</button>
           </form>
         </section>
@@ -812,14 +814,14 @@
         <aside class="assistant-sidebar" aria-label="Assistant recommendation and routes">
           <section class="sidebar-block">
             <div class="eyebrow">Current Recommendation</div>
-            <div id="assistant-recommendation" class="recommendation-card"></div>
+            <div id="assistant-recommendation" class="recommendation-card"><p>Ask a question, or browse <a href="/shop.html">the shop</a>, <a href="/support.html">support</a>, and <a href="/research/evidence-ledger.html">research evidence</a>.</p></div>
           </section>
           <section class="sidebar-block">
             <h3>Operator handoff</h3>
             <p>Generate a compact task packet that Cursor or Codex can execute without reconstructing the whole request.</p>
             <div class="packet-actions">
-              <button type="button" id="assistant-packet-copy" class="packet-button">Copy JSON</button>
-              <a id="assistant-packet-download" class="packet-download" href="#" download="scbe-task-packet.json">Download packet</a>
+              <button type="button" id="assistant-packet-copy" class="packet-button" disabled>Copy JSON</button>
+              <a id="assistant-packet-download" class="packet-download" hidden download="scbe-task-packet.json">Download packet</a>
             </div>
             <pre id="assistant-packet" class="packet-preview">{
   "packet_type": "scbe_operator_handoff",
@@ -894,7 +896,8 @@
     // Use deterministic local routing until a public Polly API is deployed.
     window.__POLLY_BACKEND_HTTP__ = window.__POLLY_BACKEND_HTTP__ || "";
   </script>
-  <script src="static/polly-assistant.js?v=3"></script>
+  <script src="/static/polly-catalog-fallback.js?v=1" defer></script>
+  <script src="/static/polly-assistant.js?v=4" defer></script>
   <script src="/static/cookie-consent.js" defer></script>
 </body>
 </html>
