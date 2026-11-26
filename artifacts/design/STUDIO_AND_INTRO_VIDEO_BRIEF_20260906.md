@@ -181,9 +181,26 @@ meaning. Do not judge it by the number of effects.
 
 ## Source recovery
 
-The original Miracle edit/project masters were not found in the obvious local
-media folders, OneDrive `Videos`/`Books`, or Google Drive `Videos` locations.
-The machine-readable catalog is
+The book's canonical source repository and safety archive were found:
+
+- [`issdandavis/miracle-memory-book`](https://github.com/issdandavis/miracle-memory-book),
+  local path `C:\dev\clay_sources\novels\miracle-memory-book`, commit
+  `b549f189dd0ba8c6a656dc40046e851a57a087b6`.
+- [`issdandavis/miracle-memory-archive`](https://github.com/issdandavis/miracle-memory-archive),
+  local path `C:\dev\clay_sources\novels\miracle-memory-archive`, commit
+  `691433b1a83b9c802a499606d4b241521ae14d5d`.
+
+The canonical repository contains the manuscript, book exports, character and
+research material, video scripts, upload queue, and the audiobook/video
+pipeline. The archive preserves an earlier source snapshot. Complete current
+GitHub trees, every fetched branch and tag, repository history, releases, and
+Actions artifacts contain no rendered video, audio, subtitle, or editor-project
+files. The documented `artifacts/youtube/` and
+`artifacts/youtube_bridge/projects/` output directories are absent locally.
+
+The original Miracle edit/project masters also were not found in the obvious
+local media folders, OneDrive `Videos`/`Books`, or Google Drive `Videos`
+locations. The machine-readable published-video catalog is
 [`MIRACLE_VIDEO_INVENTORY_20260906.json`](MIRACLE_VIDEO_INVENTORY_20260906.json).
 
 The cookie-free media download was blocked by current YouTube playback
